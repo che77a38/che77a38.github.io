@@ -13,7 +13,7 @@ mac及linux C++环境配置
 [m1 mac电脑的vs code配置方法]: https://www.bilibili.com/read/cv13768776
 [linux命令大全]: https://www.linuxcool.com/
 
-
+[vs code代码片段设置]: https://blog.csdn.net/Peerless__/article/details/110386388
 
 **linux系统介绍**
 
