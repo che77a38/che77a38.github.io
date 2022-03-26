@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="fps辅助整体分析  FPS游戏特性导致的，需要非常高的实时性，不能过度的网络验证 绘制部分可以使用透明窗口覆盖在游戏上，非常难以检测 自瞄部分，捕捉准星数据，准星路径曲线不规则或有中断（不能平滑，人类操作鼠标非常不圆滑） 连续爆头的行为检测行为数据异常等等  相关基础角度计算 tan，cos，sin函数，参数为弧度，弧度为π表示180度。 atan2，acos2，asin2，返回值为弧度。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FPS逆向">
+<meta property="og:url" content="http://zeroko14.gitee.io/blog/2022/03/26/FPS%E9%80%86%E5%90%91%E9%9A%8F%E7%AC%94/index.html">
+<meta property="og:site_name" content="ZEROKO14的个人博客">
+<meta property="og:description" content="fps辅助整体分析  FPS游戏特性导致的，需要非常高的实时性，不能过度的网络验证 绘制部分可以使用透明窗口覆盖在游戏上，非常难以检测 自瞄部分，捕捉准星数据，准星路径曲线不规则或有中断（不能平滑，人类操作鼠标非常不圆滑） 连续爆头的行为检测行为数据异常等等  相关基础角度计算 tan，cos，sin函数，参数为弧度，弧度为π表示180度。 atan2，acos2，asin2，返回值为弧度。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201221330618.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201221928872.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201221515481.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202203211338236.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202203211629382.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202203211712682.jpeg">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210514115116708.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202202161531874.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202202161531371.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202202161600416.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202202161654479.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202202162322962.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202202162313907.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202202162327528.png">
+<meta property="article:published_time" content="2022-03-26T14:25:00.717Z">
+<meta property="article:modified_time" content="2022-03-26T14:25:00.718Z">
+<meta property="article:author" content="ZEROKO14">
+<meta property="article:tag" content="FPS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201221330618.png">
+
+<link rel="canonical" href="http://zeroko14.gitee.io/blog/2022/03/26/FPS%E9%80%86%E5%90%91%E9%9A%8F%E7%AC%94/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>FPS逆向 | ZEROKO14的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ZEROKO14的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">zeroko14's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/2022/03/26/FPS%E9%80%86%E5%90%91%E9%9A%8F%E7%AC%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="ZEROKO14">
+      <meta itemprop="description" content="你好，欢迎来到ZEROKO14的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZEROKO14的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          FPS逆向
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-26 22:25:00" itemprop="dateCreated datePublished" datetime="2022-03-26T22:25:00+08:00">2022-03-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index"><span itemprop="name">杂项</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <span id="more"></span>
+
+<p>fps辅助整体分析</p>
+<ul>
+<li>FPS游戏特性导致的，需要非常高的实时性，不能过度的网络验证</li>
+<li>绘制部分可以使用透明窗口覆盖在游戏上，非常难以检测</li>
+<li>自瞄部分，捕捉准星数据，准星路径曲线不规则或有中断（不能平滑，人类操作鼠标非常不圆滑）</li>
+<li>连续爆头的行为检测行为数据异常等等</li>
+</ul>
+<h1 id="相关基础"><a href="#相关基础" class="headerlink" title="相关基础"></a>相关基础</h1><h2 id="角度计算"><a href="#角度计算" class="headerlink" title="角度计算"></a>角度计算</h2><ul>
+<li>tan，cos，sin函数，<strong>参数为弧度</strong>，弧度为π表示180度。</li>
+<li>atan2，acos2，asin2，<strong>返回值为弧度</strong>。</li>
+</ul>
+<p>$$<br>角度=(弧度*180)/π<br>$$</p>
+<p>$$<br>弧度=(角度*π)/180<br>$$</p>
+<p>向量内积是一个向量在另一个向量上的投影长度乘以另一个向量的长度</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//比如：[1,3]和[3,0]的向量内积为：</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">3</span>]*[<span class="number">3</span>,<span class="number">0</span>]=<span class="number">3</span>+<span class="number">0</span>=<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>矩阵的乘法：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202201221330618.png" alt="image-20220122133019389"></p>
+<h2 id="快捷键写法"><a href="#快捷键写法" class="headerlink" title="快捷键写法"></a>快捷键写法</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(GetKeyState(VK_F1)&amp;<span class="number">1</span>)<span class="comment">//VK_F1是键码</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//按下F1执行里面的指令,再按下F1停止执行里面的指令</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="绘制的三种方法"><a href="#绘制的三种方法" class="headerlink" title="绘制的三种方法"></a>绘制的三种方法</h2><ol>
+<li>hook d3d/opengl<ul>
+<li>优:完全不闪,代码简单</li>
+<li>缺:非常容易被检测</li>
+</ul>
+</li>
+<li>游戏窗口上自行绘制<ul>
+<li>优:适中</li>
+<li>缺:会闪</li>
+</ul>
+</li>
+<li>自己创建窗口,在自己创建的窗口上绘制<ul>
+<li>优:稳定</li>
+<li>缺:麻烦一点,会闪,需要通信</li>
+</ul>
+</li>
+</ol>
+<h1 id="3维坐标转屏幕算法"><a href="#3维坐标转屏幕算法" class="headerlink" title="3维坐标转屏幕算法"></a>3维坐标转屏幕算法</h1><p>两种坐标求导算法</p>
+<ul>
+<li>需要矩阵</li>
+<li>不需要矩阵</li>
+</ul>
+<h2 id="不需要矩阵"><a href="#不需要矩阵" class="headerlink" title="不需要矩阵"></a>不需要矩阵</h2><p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202201221928872.png" alt="image-20220122192831457"><br>$$<br>摄像机到准星的距离分辨率=\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}<br>\<br>\<br>\tan{x差角度}=\frac{屏幕的x差分辨率}{摄像机到准星的距离分辨率}<br>\<br>\<br>\tan{x差角度}=\frac{屏幕的x差分辨率}{\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}}<br>\<br>\<br>屏幕的x差分辨率=\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}\times\tan{x差角度}<br>\<br>$$<br>因为屏幕的左上角为(0,0)，向右为x变大，向下为y变大，因此可知：</p>
+<p><strong>屏幕上指向敌人的x坐标</strong>就是:<strong>屏幕的x差分辨率+水平分辨率/2</strong></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202201221515481.png" alt="image-20220122151558943"><br>$$<br>\frac{垂直FOV}{水平FOV}=\frac{垂直分辨率}{水平分辨率}<br>\<br>\<br>屏幕的y差分辨率=\frac{\frac{屏幕垂直分辨率}{2}}{\tan{\frac{垂直FOV}{2}}}\times\tan{y差角度}<br>\<br>\<br>屏幕的y差分辨率=\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}\times\tan{y差角度}<br>$$<br><strong>屏幕上指向敌人的y坐标</strong>就是:<strong>屏幕的y差分辨率+垂直分辨率/2</strong></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>$$<br>屏幕坐标X=\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}\times\tan{x差角度}+\frac{水平分辨率}{2}<br>\<br>\<br>屏幕坐标Y=\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}\times\tan{y差角度}+\frac{垂直分辨率}{2}<br>\<br>$$</p>
+<p>算法如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PI 3.1415926</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 坐标结构</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> X,Y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">float</span> 弧度转角度(<span class="keyword">float</span> 弧度)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> 弧度*<span class="number">180</span>/PI;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">float</span> 角度转弧度(<span class="keyword">float</span> 角度)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> 角度*PI/<span class="number">180</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> 世界坐标转屏幕坐标_非矩阵(坐标结构&amp; 屏幕坐标,<span class="keyword">float</span> 水平角度差,<span class="keyword">float</span> 垂直角度差,<span class="keyword">float</span> 水平FOV)</span><br><span class="line">&#123;</span><br><span class="line">    取窗口信息(水平分辨率，垂直分辨率);<span class="comment">//获取屏幕分辨率(伪函数)</span></span><br><span class="line">    <span class="keyword">float</span> 摄像机到准星的距离分辨率=水平分辨率/<span class="number">2</span>/(<span class="built_in">tan</span>(角度转弧度(水平FOV/<span class="number">2</span>)));</span><br><span class="line">    <span class="keyword">float</span> 高低最大可视角度=弧度转角度(<span class="built_in">atan2</span>(垂直分辨率/<span class="number">2</span>,摄像机到准星的距离分辨率));</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">fabs</span>(水平角度差)&gt;水平FOV/<span class="number">2</span>||<span class="built_in">fabs</span>(垂直角度差)&gt;高低最大可视角度)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//不在屏幕范围内</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> 水平差=摄像机到准星的距离分辨率*<span class="built_in">tan</span>(角度转弧度(水平角度差));</span><br><span class="line">    屏幕坐标.X=水平差+水平分辨率/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> 垂直差=摄像机到准星的距离分辨率*<span class="built_in">tan</span>(角度转弧度(垂直角度差));</span><br><span class="line">    屏幕坐标.Y=垂直差+垂直分辨率/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>无矩阵方式为:获取人物与目标的世界坐标高度差和世界水平距离来得到人物和目标的夹角,再通过人物准星减去目标夹角(或反过来)来确定准星偏转角度差,再通过准星偏转角度差和游戏宽高分辨率来转换成屏幕坐标进行绘图</p>
+<p>这种方式得到的坐标绘制多多少少有误差,下面用到矩阵的方式无误差</p>
+<h2 id="需要矩阵"><a href="#需要矩阵" class="headerlink" title="需要矩阵"></a>需要矩阵</h2><p>矩阵分行主序与列主序,主要是d3d和openGl的区别</p>
+<ul>
+<li><p>行主序(openGl)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a1 a2 a3 a4          x         a1*x+a2*y+a3*z+a4*w</span><br><span class="line">b1 b2 b3 b4    乘以  	y  =      b1*x+b2*y+b3*z+b4*w</span><br><span class="line">c1 c2 c3 c4          z         c1*x+c2*y+c3*z+c4*w</span><br><span class="line">d1 d2 d3 d4          w         d1*x+d2*y+d3*z+d4*w</span><br></pre></td></tr></table></figure></li>
+<li><p>列主序(D3D)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">               a1 b1 c1 d1    a1*x+a2*y+a3*z+a4*w</span><br><span class="line">x,y,z,w  乘以  a2 b2 c2 d2  =  b1*x+b2*y+b3*z+b4*w</span><br><span class="line">              a3 b3 c3 d3     c1*x+c2*y+c3*z+c4*w</span><br><span class="line">              a4 b4 c4 d4     d1*x+d2*y+d3*z+d4*w</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="缩放和位移矩阵"><a href="#缩放和位移矩阵" class="headerlink" title="缩放和位移矩阵"></a>缩放和位移矩阵</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//行主序:(openGl)</span></span><br><span class="line">Sx <span class="number">0</span>  <span class="number">0</span>  Tx</span><br><span class="line"><span class="number">0</span>  Sy <span class="number">0</span>  Ty</span><br><span class="line"><span class="number">0</span>  <span class="number">0</span>  Sz Tz</span><br><span class="line"><span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  Tw</span><br><span class="line"><span class="comment">//列主序:(D3D)</span></span><br><span class="line">Sx <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line"><span class="number">0</span>  Sy <span class="number">0</span>  <span class="number">0</span></span><br><span class="line"><span class="number">0</span>  <span class="number">0</span>  Sz <span class="number">0</span></span><br><span class="line">Tx Ty Tz Tw</span><br><span class="line">  </span><br><span class="line"><span class="comment">//平移缩放后的坐标如下</span></span><br><span class="line">                  Sx*x+w*Tx</span><br><span class="line">x,y,z,w乘以列主序= Sy*y+w*Ty</span><br><span class="line">  							 Sz*z+w*Tz</span><br><span class="line">                 w*Tw</span><br></pre></td></tr></table></figure>
+
+<p><strong>[第一结论]</strong> : 行主序最后一列,列主序最后一行,走路,跳,会发生改变,不代表别的动作不改变</p>
+<h3 id="旋转矩阵"><a href="#旋转矩阵" class="headerlink" title="旋转矩阵"></a><strong>旋转矩阵</strong></h3><h4 id="绕z轴旋转矩阵"><a href="#绕z轴旋转矩阵" class="headerlink" title="绕z轴旋转矩阵"></a>绕z轴旋转矩阵</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">绕z轴旋转矩阵(A表示点逆时针旋转角度 或 坐标系顺时针旋转角度)</span><br><span class="line"><span class="comment">//行主序</span></span><br><span class="line">cosA   -sinA  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">sinA   cosA   <span class="number">0</span>  <span class="number">0</span></span><br><span class="line"><span class="number">0</span>      <span class="number">0</span>      <span class="number">1</span>  <span class="number">0</span></span><br><span class="line"><span class="number">0</span>      <span class="number">0</span>      <span class="number">0</span>  <span class="number">1</span></span><br><span class="line"><span class="comment">//列主序</span></span><br><span class="line">cosA   sinA   <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">-sinA  cosA   <span class="number">0</span>  <span class="number">0</span></span><br><span class="line"><span class="number">0</span>      <span class="number">0</span>      <span class="number">1</span>  <span class="number">0</span></span><br><span class="line"><span class="number">0</span>      <span class="number">0</span>      <span class="number">0</span>  <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//绕z轴顺时针旋转后的坐标如下:</span></span><br><span class="line">                 xcosA-ysinA</span><br><span class="line">x,y,z,w乘以列主序= xsinA+yconsA</span><br><span class="line">                 z</span><br><span class="line">                 w</span><br></pre></td></tr></table></figure>
+
+<p><strong>[第二结论]</strong> : 水平转动的情况,行主序第三列不变,列主序第三行不变</p>
+<h4 id="绕x轴旋转矩阵"><a href="#绕x轴旋转矩阵" class="headerlink" title="绕x轴旋转矩阵"></a>绕x轴旋转矩阵</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">绕x轴旋转矩阵(A表示点逆时针旋转角度 或 坐标系顺时针旋转角度)</span><br><span class="line"><span class="comment">//行主序</span></span><br><span class="line"><span class="number">1</span>  <span class="number">0</span>     <span class="number">0</span>      <span class="number">0</span></span><br><span class="line"><span class="number">0</span>  conA  -sinA  <span class="number">0</span></span><br><span class="line"><span class="number">0</span>  sinA  cosA   <span class="number">0</span></span><br><span class="line"><span class="number">0</span>  <span class="number">0</span>     <span class="number">0</span>      <span class="number">1</span></span><br><span class="line"><span class="comment">//列主序</span></span><br><span class="line"><span class="number">1</span>  <span class="number">0</span>     <span class="number">0</span>      <span class="number">0</span></span><br><span class="line"><span class="number">0</span>  conA  sinA   <span class="number">0</span></span><br><span class="line"><span class="number">0</span>  -sinA cosA   <span class="number">0</span></span><br><span class="line"><span class="number">0</span>  <span class="number">0</span>     <span class="number">0</span>      <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//绕x轴顺时针旋转后的坐标如下:</span></span><br><span class="line">                 x</span><br><span class="line">x,y,z,w乘以列主序= -zsinA+yconsA</span><br><span class="line">                 ysinA+zcosA</span><br><span class="line">                 w</span><br></pre></td></tr></table></figure>
+
+<p><strong>[第三结论]</strong> : 高低朝向改变的时候,行主序第一行不变,列主序第一列不变</p>
+<h4 id="绕y轴旋转矩阵"><a href="#绕y轴旋转矩阵" class="headerlink" title="绕y轴旋转矩阵"></a>绕y轴旋转矩阵</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//绕y轴旋转矩阵(A表示点逆时针旋转角度 或 坐标系顺时针旋转角度)</span></span><br><span class="line"><span class="comment">//行主序</span></span><br><span class="line">cosA  <span class="number">0</span>  sinA  <span class="number">0</span></span><br><span class="line"><span class="number">0</span>     <span class="number">1</span>  <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">-sinA <span class="number">0</span>  cosA  <span class="number">0</span></span><br><span class="line"><span class="number">0</span>     <span class="number">0</span>  <span class="number">0</span>     <span class="number">1</span></span><br><span class="line"><span class="comment">//列主序</span></span><br><span class="line">cosA  <span class="number">0</span>  -sinA <span class="number">0</span></span><br><span class="line"><span class="number">0</span>     <span class="number">1</span>  <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">sinA  <span class="number">0</span>  cosA  <span class="number">0</span></span><br><span class="line"><span class="number">0</span>     <span class="number">0</span>  <span class="number">0</span>     <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//绕y轴顺时针旋转后的坐标如下:</span></span><br><span class="line">                 xcosA+zsinA</span><br><span class="line">x,y,z,w乘以列主序= y</span><br><span class="line">                 -xsinA+zcosA</span><br><span class="line">                 w</span><br></pre></td></tr></table></figure>
+
+<h3 id="找矩阵总结"><a href="#找矩阵总结" class="headerlink" title="找矩阵总结"></a>找矩阵总结</h3><ul>
+<li><strong>[第一结论]</strong> : 行主序最后一列,列主序最后一行,走路,跳,会发生改变,不代表别的动作不改变(随便走,不动准星,会有一行或一列4个在变化(如果只朝x或y前进,那么也只改变3个值,即行主序最后一列第一个与列主序最后一行第一个当沿着x或y方向走也不变),跳就只有三个值在一行或一列变化)</li>
+<li><strong>[第二结论]</strong> : 水平转动的情况,行主序第三列不变,列主序第三行不变</li>
+<li><strong>[第三结论]</strong> : 高低朝向改变的时候,行主序第一行不变,列主序第一列不变</li>
+</ul>
+<p>下面的结论不绝对</p>
+<ul>
+<li>**[第四结论]**矩阵第一个值往往是-1到1之间的</li>
+<li>**[第五结论]**行主序第一行第三个元素是固定的0,列主序第一列的第三个元素是0</li>
+<li>**[第六结论]**开倍镜,第一个值会乘以相应的倍数(这个是绝对的)</li>
+</ul>
+<p>[找矩阵实例](# 找矩阵)</p>
+<h3 id="世界坐标转换为屏幕坐标"><a href="#世界坐标转换为屏幕坐标" class="headerlink" title="世界坐标转换为屏幕坐标"></a><strong>世界坐标转换为屏幕坐标</strong></h3><blockquote>
+<p><strong>剪辑坐标</strong>:理解为三维世界的切片</p>
+</blockquote>
+<p><strong>NDC坐标</strong>(标准化设备坐标)</p>
+<p>就是将剪辑坐标的范围缩小至-1到1,如图:</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203211338236.png" alt="img"></p>
+<p><strong>世界坐标–&gt;剪辑坐标–&gt;NDC坐标</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//世界坐标转换为剪辑坐标(剪辑坐标和分辨率没有任何关系)</span></span><br><span class="line"><span class="comment">//世界坐标  *     矩阵</span></span><br><span class="line">                a0  a1  a2  a3</span><br><span class="line">x,y,z,w   乘以   a4  a5  a6  a7</span><br><span class="line">                a8  a9  a10 a11</span><br><span class="line">                a12 a13 a14 a15</span><br><span class="line">                  </span><br><span class="line">剪辑坐标x   =   a0*x+a4*y+a8*z+a12*w</span><br><span class="line">剪辑坐标y   =   a1*x+a5*y+a9*z+a13*w</span><br><span class="line">剪辑坐标z   =   a2*x+a6*y+a10*z+a14*w</span><br><span class="line">剪辑坐标w   =   a3*x+a7*y+a11*z+a15*w</span><br><span class="line"><span class="comment">//剪辑坐标w如果小于0表示在屏幕外!!!!!!!!!!!!!!!!!!!!!!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//剪辑坐标转换为NDC坐标</span></span><br><span class="line">NDC.x=剪辑坐标x/剪辑坐标w</span><br><span class="line">NDC.y=剪辑坐标y/剪辑坐标w</span><br><span class="line">NDC.z=剪辑坐标z/剪辑坐标w <span class="comment">//无用                 </span></span><br></pre></td></tr></table></figure>
+
+<p><strong>NDC坐标–&gt;屏幕坐标</strong></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203211629382.png" alt="捕获"></p>
+<p>实际上就是坐标系的转换,NDC坐标系转换成屏幕分辨率坐标系.</p>
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203211712682.jpeg" alt="截屏2022-03-21 17.12.02"  />
+$$
+\frac{目标点的NDC坐标X}{2}=\frac{屏幕坐标差x}{显示器分辨率宽}
+\\
+\\
+\frac{目标点的NDC坐标y}{2}=\frac{屏幕坐标差y}{显示器分辨率高}
+$$
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上面两个公式可知:</span></span><br><span class="line">目标点的屏幕坐标差x=目标点的NDC坐标X*显示器分辨率宽/<span class="number">2</span></span><br><span class="line">目标点的屏幕坐标差y=目标点的NDC坐标y*显示器分辨率高/<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>因此<strong>NDC坐标—&gt;屏幕坐标算法</strong>计算如下:<br>$$<br>目标点的屏幕坐标x=\frac{目标点的NDC坐标X\times分辨率宽}{2}+\frac{分辨率宽}{2}<br>\<br>目标点的屏幕坐标y=\frac{分辨率高}{2}-\frac{目标点的NDC坐标y\times分辨率高}{2}<br>$$<br>坐标点A和坐标点B均适用,说明四象限全适用.</p>
+<h2 id="朝向（准星）"><a href="#朝向（准星）" class="headerlink" title="朝向（准星）"></a>朝向（准星）</h2><p>准星数据寻找</p>
+<p>在fps游戏中，横轴是可以无限原地转圈的，而竖轴上下大概在180度左右，所以Y往往比X更合适用来当作这一数据的突破口。那么假设准星数据做了处理，应该如何找到瞄准call呢？搜索出与准星坐标相关的地址后，移动鼠标进行访问断，就有可能断到相关的函数。</p>
+<p>朝向极大概率是浮点数。</p>
+<p>需要找到x,y轴坐标对应的朝向。</p>
+<h1 id="FPS-逆向随笔"><a href="#FPS-逆向随笔" class="headerlink" title="FPS 逆向随笔"></a>FPS 逆向随笔</h1><p>通常情况下Dx9中会采用4*4的矩阵</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210514115116708.png" alt="image-20210514115116708"></p>
+<p> //荒野行动横矩阵第3排，第4列的数，光标朝天看的时候是1，朝地下是-1。（此结论通用性待验证）</p>
+<p>补充一个3*4列矩阵</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X X X x</span><br><span class="line">X X X y</span><br><span class="line">X X X z</span><br><span class="line"><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> 比例</span><br><span class="line"><span class="number">3</span>*<span class="number">4</span>（列矩阵）</span><br></pre></td></tr></table></figure>
+
+<p>UE4矩阵</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">UE4最常见的两种矩阵</span><br><span class="line">//第一种横矩阵格式（上+下-）（这就是上图中荒野行动那种）</span><br><span class="line">xxx xxx 0 xxxx</span><br><span class="line">xxx xxx 0 xxxx</span><br><span class="line">xxx xxx 0 xxxx</span><br><span class="line"> X   Y 比例 Z</span><br><span class="line">//第二种横矩阵格式(上-下+)</span><br><span class="line">xxx xxx xxxx 0</span><br><span class="line">xxx xxx xxxx 0</span><br><span class="line">xxx xxx xxxx 0</span><br><span class="line"> X   Y   Z  比例</span><br><span class="line"> //特征：除了XYZ，其他所有数值在（-2，+2）间</span><br></pre></td></tr></table></figure>
+
+<p>普通食物4*4横矩阵和竖矩阵的矩阵头在这个区间（-2，+2）</p>
+<p>针对自动瞄准，应该如何检测：</p>
+<p>1、模拟类自瞄</p>
+<p>一、Hook windows所提供的所有按键操作、鼠标操作类接口，函数全部由游戏安全系统接管。</p>
+<p>二、既然Hook了相关函数，那么就可以被突破，Hook被还原，还要在代码段上下crc，防止被还原Hook，在crc上多次套crc，多设防御关卡。</p>
+<p>三、检测鼠标轨迹和移动速度，没有谁可以一直直线移动鼠标。</p>
+<p>2、内存类自瞄</p>
+<p>一、Hook windows所提供的所有“写内存”类接口，如WriteProcessMemory（），函数全部由游戏安全系统接管，检测到非自身或者未知程序调用该类型函数对游戏进行操作时，将其踢下线。</p>
+<p>二、同模拟类自瞄第二条。</p>
+<p>三、同模拟类自瞄第三条。</p>
+<p>四、加密鼠标横轴（x坐标），且多个地址同步准星数据，当非法修改了准星位置，即准星数据不同步，即可知道非法修改了内存。</p>
+<p>​    那么接下来，同笔者一起分析，透视自瞄究竟是如何实现的呢？</p>
+<p>​    其实只要实现了自瞄，就相当于实现了透视，只是需要开发者通过一系列算法将其绘制在屏幕上而已。而实现自瞄，对于有相关工作经验的人来说，也算不上难，一套公式，几乎“通杀”所有FPS。自瞄算法可以简单的分为两种，一种通过玩家坐标和准星位置进行计算，一种为”矩阵自瞄“，计算模型骨骼等等，其实两种自瞄本质意义上区别不大，各有各的好处，只不过第二种更为精准，第一种则更为方便，需要的数据更少。</p>
+<p>自己封装内存模块用到的api</p>
+<ol>
+<li>打开进程===OpenProcess</li>
+<li>打开当前进程===OpenProcess</li>
+<li>写内存===WriteProcessMemory</li>
+<li>关闭句柄===CloseHandle</li>
+<li>读取内存整数===ReadProcessMemory</li>
+<li>保护内存===VirtualQueryEx</li>
+<li>读内存字节集===ReadProcessMemory</li>
+<li>提示自身进程权限===RtlAdjustPrivilege</li>
+<li>获取当前进程id===GetCurrentProcessId</li>
+<li>取一个窗口的标题===GetWindowTextA</li>
+<li>寻找窗口句柄===FindWindowExA</li>
+<li>获取窗口客户区===GetClientRect</li>
+<li>获取窗口类名===GetClassNameA</li>
+<li>终止进程===TerminateProcess</li>
+<li>获取快照信息===CreateToolhelp32Snapshot</li>
+<li>获取遍历快照的第一个进程===Process32First</li>
+<li>获取遍历快照的下一个进程===Process32Next</li>
+<li>获取遍历快照的第一个模块===MODULE32First</li>
+<li>获取遍历快照的下一个模块===MODULE32Next</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UE4</span><br><span class="line">Count(环境数量)→  -游戏类型  → 数组Actor</span><br><span class="line">↓                               ↓</span><br><span class="line">Uworld（世界地址）            人物坐标XYZ  血量 阵容  飞天</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X</span><br><span class="line">Y</span><br><span class="line">Z地址&quot;UE4Game-Win64-Shipping.exe&quot;+02CC5F50]+588]+158]+1D8</span><br><span class="line"></span><br><span class="line">[[[[[7FF714B28BF0+88+rcx*3*8+8]+10]+50]+270]+158]+1D0==233F0434FE0</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="CE找数据技巧"><a href="#CE找数据技巧" class="headerlink" title="CE找数据技巧"></a>CE找数据技巧</h1><p>找数据技巧：排除栈地址，排除ui上显示的数据信息，排除追踪到服务器模块的情况（如果本机有服务器的话）</p>
+<p>大量30~80的字符表示的是ascii字符串，4或C开头的4字节大概率是浮点数</p>
+<p>对于服务器和客户端模块都在本地的游戏,使用一些确定是服务器数据的数据来找来源,来源于的模块大概率就是服务器模块</p>
+<h1 id="CS1-6的逆向"><a href="#CS1-6的逆向" class="headerlink" title="CS1.6的逆向"></a>CS1.6的逆向</h1><h2 id="找内存数据"><a href="#找内存数据" class="headerlink" title="找内存数据"></a>找内存数据</h2><p>通过客户端或服务端来搜数据排查服务端的模块是哪一个</p>
+<p>找血量数据如下:</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202202161531874.png" alt="00001"></p>
+<p>只有蓝标数据真正可以修改目标血量,说明这个数据是服务端数据,到x32dbg中下写入断点来确定服务器模块,击中目标的瞬间断到下图位置</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202202161531371.png" alt="213213123"></p>
+<p>观察红线标记的模块,可知服务器模块应该就是mp.dll,可对其他数据进行下断确定不经过该模块.</p>
+<p>回头发现,只有鼠标经过指向目标才变回来的是个基地址,第三行数据往上追的过程中经过了mp.dll模块,因此最终确定到第二行数据才是真是数据,而不是第三行.</p>
+<p>在x32dbg中追第二行数据:</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202202161600416.png" alt="999999999999"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">得出队友血量的地址=[<span class="number">0x1A17CB8</span>]*<span class="number">0x68</span>+<span class="number">0x1A2565C</span></span><br><span class="line"><span class="comment">//可见0x1A17CB8地址存的是2(游戏中鼠标指向不同的人,下标会改变,从0开始),可能是一个下标.敌人存的血量填的是100即0x64,原因是敌人血量不可见,同时也看不到自己的血量(为0)</span></span><br><span class="line">  因此遍历实体血量:n*<span class="number">0x68</span>+<span class="number">0x1A2565C</span></span><br></pre></td></tr></table></figure>
+
+<p>比对数组项之间的差异,结构体大小为0x68(公式分析得出),-0x30的目的是因为我们找到的有可能并不是数组项的起始地址</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202202161654479.png" alt="987887"></p>
+<p>0和5下标是边界外,游戏目前数据只有1~4,1,2,4是队友,3是敌人</p>
+<p>打死队友发现其对应的生命不归零,因此需要找死亡标志</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假如我们设n*0x68+0x1A2565C-0x68为起始数组项地址(-0x68是为了使后面的偏移项都是正数)</span></span><br><span class="line"><span class="comment">//n*0x68+h1.exe+0x62565C-0x68    n下标从1开始(减掉68使得下标本来&quot;从0开始&quot;变成&quot;从1开始&quot;)</span></span><br><span class="line">+<span class="number">0x4E</span> BYTE  	<span class="comment">//阵容,1表示恐怖分子,2表示反恐精英,0是观察者</span></span><br><span class="line">+<span class="number">0x60</span>	BYTE		<span class="comment">//死亡标记:1表示死亡,0表示活着,超出范围的此项也为1</span></span><br><span class="line">+<span class="number">0x68</span> DWORD  	<span class="comment">//血量,死亡不清零,敌人和自己的血量均没有意义</span></span><br></pre></td></tr></table></figure>
+
+<p>我们还要找坐标的数据结构:</p>
+<p>通过反复让敌人行动找到了坐标,锁定才能触发屏闪的位置,不锁定什么反应都没有的情况,下硬件写入断点直接崩溃.</p>
+<p>发现必须找到是不锁定的情况下修改坐标人物抖动以下,这个才是真正要找的目标坐标.发现他是一个基地址:h1.exe+1B5A998</p>
+<p>并且在其附近发现了目标的名称</p>
+<p>下硬件访问断点开始追该地址</p>
+<p>断在的两个位置(分别是下图两次标黄)往上追都不好追,追丢了.但可以猜测出最末一层的结构体偏移为0x188</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202202162322962.png" alt="54646546"></p>
+<p>尝试不直接断坐标数据,而是断前后几个数据之一,断到的位置往上追一层偏移,放开断点后发现上一层偏移的地址中存的值变成了0,即这个地址是个临时的地址,也不能用</p>
+<p>尝试在名字下访问断,断下的位置发现有一个基地址偏移,因此大概率是可以追到数据结构的.</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202202162313907.png" alt="747474"></p>
+<p>上图可知:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//遍历名字算式为:0x2F5A6C8+0x24C*N</span></span><br><span class="line"><span class="comment">//N的范围为0~31,指向为0表示遍历结束</span></span><br></pre></td></tr></table></figure>
+
+<p>确定结构体首地址:</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202202162327528.png" alt="786474345"></p>
+<p>上图可知坐标比名字大0x84,前面有知道名字的末层偏移是0x188</p>
+<p>因此名字的末层偏移为0x104</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//因此结构体数组首地址为0x2F5A6C8-0x104=0x2F5A5C4</span></span><br><span class="line"><span class="comment">//所以结构体数组首地址算式为h1.exe+0x1B5A5C4+0x24C*N</span></span><br><span class="line"><span class="comment">//超出人物数量的结构体数组项全为0,加入的人物再把人物删除掉后并不会初始化该数组,但是名称最前面的一个字节会变成00</span></span><br><span class="line">+<span class="number">0x0</span>  	DWORD		<span class="comment">//等于0结束遍历(中间可能出现空坐标,但该项也一定不为空)&gt;&gt;&gt;注意遍历要跳过自己,因为自己该项也是0	</span></span><br><span class="line">+<span class="number">0x104</span>	ASCII		<span class="comment">//名称		名字为空的话,代表这个结构没有玩家,或玩家已死亡</span></span><br><span class="line">+<span class="number">0x130</span>  ASCII   <span class="comment">//人物模型字符串    比如:guerilla,leet等等等等</span></span><br><span class="line">+<span class="number">0x180</span>  FLOAT   <span class="comment">//该数值不断循环从0加到60,仅当处于本人范围内才变化,范围外不变化		可用于判断对应玩家是否处在本人坐标数据获取范围内</span></span><br><span class="line">+<span class="number">0x188</span>  FLOAT		X坐标   <span class="comment">//坐标超出范围不变化,变化说明在范围内;自己的坐标不变化</span></span><br><span class="line">+<span class="number">0x18C</span>	FLOAT		Y坐标</span><br><span class="line">+<span class="number">0x190</span>	FLOAT		Z坐标		<span class="comment">//坐标为0表示该项不存在,观察发现数组不一定是顺序存放</span></span><br></pre></td></tr></table></figure>
+
+<p>由于上面结构并没有本人坐标,因此下面逆向本人坐标</p>
+<p><strong>找本人坐标的时候,其特点是锁定数值后,修改数值,人物产生位移,解除锁定后,动下人物,人物瞬移回来</strong></p>
+<p>另外一种情况是锁定后,修改,不断的人物屏闪,这种内存也能用,但是最好不要下断,太快了,容易崩溃</p>
+<p><strong>要注意移动到一个位置后要等他完全静止才搜变动,因为有些内存更改比较慢(上面非屏闪情况就是这种)</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//本人坐标:(屏闪,非常快)</span></span><br><span class="line">h1.exe+<span class="number">1B</span>5A528	FLOAT	X坐标</span><br><span class="line">h1.exe+<span class="number">1B</span>5A52C	FLOAT	Y坐标</span><br><span class="line">h1.exe+<span class="number">1B</span>5A530	FLOAT	Z坐标</span><br><span class="line"><span class="comment">//不屏闪但慢慢会跳转(3个不同的X坐标)</span></span><br><span class="line">h1.exe+<span class="number">19E3</span>F28</span><br><span class="line">h1.exe+<span class="number">19f</span>0750</span><br><span class="line">h1.exe+<span class="number">19F</span>4A08</span><br><span class="line"><span class="comment">//完全不跳转,也不屏闪,锁定修改后完全没反应(最快)</span></span><br><span class="line">h1.exe+<span class="number">195F</span>E58</span><br><span class="line"><span class="comment">//意外发现朝向数据(但是只可以显示朝向数据,却无法改变准星朝向,本地必然还有一个内存存着真正可以控制准星的数据)</span></span><br><span class="line">h1.exe+<span class="number">1B</span>5A508	FLOAT	垂直朝向		<span class="comment">//范围是-89(向上为负)到89(向下为正)</span></span><br><span class="line">h1.exe+<span class="number">1B</span>5A50C	FLOAT	水平朝向		<span class="comment">//范围是360到0(左到右)</span></span><br></pre></td></tr></table></figure>
+
+<p>在x32dbg中简单观察了一下,初步确认不是来自于mp.dll的服务器数据</p>
+<p>利用上面找到的朝向数值来找真正的准星内存:(可以修改准星位置的内存数据)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">h1.exe+<span class="number">19E10</span>C4	FLOAT	垂直朝向		<span class="comment">//范围是-89(向上为负)到89(向下为正)</span></span><br><span class="line">h1.exe+<span class="number">19E10</span>C8	FLOAT	水平朝向		<span class="comment">//范围是360到0(左到右)</span></span><br><span class="line"><span class="comment">//0的方向是坐标x增大方向,180是坐标x减小的方向</span></span><br><span class="line"><span class="comment">//90的方向是坐标y增大方向,270是坐标y减小的方向</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="找矩阵"><a href="#找矩阵" class="headerlink" title="找矩阵"></a>找矩阵</h2><p>[找矩阵方法总结](# 找矩阵总结)</p>
+<p>按照上述方法找到的矩阵地址为: <code>0x2c20100</code>  =  <code>hl.exe+1820100</code></p>
+<p>口袋西游逆向参见详见51和53课</p>
+<h1 id="突袭的逆向"><a href="#突袭的逆向" class="headerlink" title="突袭的逆向"></a>突袭的逆向</h1>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/FPS/" rel="tag"># FPS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2022/03/26/C++%E5%9F%BA%E7%A1%80/" rel="prev" title="C++基础">
+      <i class="fa fa-chevron-left"></i> C++基础
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2022/03/26/PE/" rel="next" title="PE">
+      PE <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">相关基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%92%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">1.1.</span> <span class="nav-text">角度计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%86%99%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">快捷键写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">绘制的三种方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%E7%BB%B4%E5%9D%90%E6%A0%87%E8%BD%AC%E5%B1%8F%E5%B9%95%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">3维坐标转屏幕算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9F%A9%E9%98%B5"><span class="nav-number">2.1.</span> <span class="nav-text">不需要矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.1.1.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E7%9F%A9%E9%98%B5"><span class="nav-number">2.2.</span> <span class="nav-text">需要矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%A9%E6%94%BE%E5%92%8C%E4%BD%8D%E7%A7%BB%E7%9F%A9%E9%98%B5"><span class="nav-number">2.2.1.</span> <span class="nav-text">缩放和位移矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5"><span class="nav-number">2.2.2.</span> <span class="nav-text">旋转矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%95z%E8%BD%B4%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">绕z轴旋转矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%95x%E8%BD%B4%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">绕x轴旋转矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%95y%E8%BD%B4%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">绕y轴旋转矩阵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E7%9F%A9%E9%98%B5%E6%80%BB%E7%BB%93"><span class="nav-number">2.2.3.</span> <span class="nav-text">找矩阵总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B1%8F%E5%B9%95%E5%9D%90%E6%A0%87"><span class="nav-number">2.2.4.</span> <span class="nav-text">世界坐标转换为屏幕坐标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%9D%E5%90%91%EF%BC%88%E5%87%86%E6%98%9F%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">朝向（准星）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FPS-%E9%80%86%E5%90%91%E9%9A%8F%E7%AC%94"><span class="nav-number">3.</span> <span class="nav-text">FPS 逆向随笔</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CE%E6%89%BE%E6%95%B0%E6%8D%AE%E6%8A%80%E5%B7%A7"><span class="nav-number">4.</span> <span class="nav-text">CE找数据技巧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CS1-6%E7%9A%84%E9%80%86%E5%90%91"><span class="nav-number">5.</span> <span class="nav-text">CS1.6的逆向</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%BE%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE"><span class="nav-number">5.1.</span> <span class="nav-text">找内存数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%BE%E7%9F%A9%E9%98%B5"><span class="nav-number">5.2.</span> <span class="nav-text">找矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AA%81%E8%A2%AD%E7%9A%84%E9%80%86%E5%90%91"><span class="nav-number">6.</span> <span class="nav-text">突袭的逆向</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZEROKO14</p>
+  <div class="site-description" itemprop="description">你好，欢迎来到ZEROKO14的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZEROKO14</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+  <script defer src="/blog/lib/three/three.min.js"></script>
+    <script defer src="/blog/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
