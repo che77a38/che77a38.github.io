@@ -115,7 +115,7 @@ apt-get install vim #编辑工具
 | -o[0或1或2或3或] | 对生成的代码使用优化，中括号中的部分为优化级别，缺省的情况为2级优化，0为不进行优化。注意，采用更高级的优化并不一定得到效率更高的代码。 |
 | -Idir            | （dir表示具体的路径）在编译源程序时增加一个**搜素头文件的额外目录**--dir，即include增加一个搜索的额外目录（可以设置多个） |
 | -Ldir            | （dir表示具体的路径）在编译源文件时增加一个**搜索库文件(动态库或静态库)的额外目录**--dir（可以设置多个） |
-| -llibrary        | （library表示具体库的名字）在编译链接文件时，增加一个额外的库，库名为liblibrary.so |
+| -llibrary        | （library表示具体库的名字）在编译链接文件时，增加一个额外的库，库名为liblibrary.so(即此处写的名字是要去前缀和后缀的) |
 | -w               | 禁止所有警告                                                 |
 | -Wwarning        | （warning表示具体的取值）允许产生warning类型的警告，warning可以是：main，unused等很多取值，最常用是-Wall，表示产生所有警告。如果warning取值为error，其含义是将所有警告作为错误（error)，即出现警告就停止编译。 |
 
@@ -257,7 +257,7 @@ first_make:first_make.cpp second.cpp #目标文件：依赖文件
 
 **makefile工作流程**
 
-![image-20211224202502589](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202112242025323.png)
+![image-20211224202502589](https://raw.githubusercontent.com/che77a38/blogImage/main/202112242025323.png)
 
 **makefile文件主要包含了5部分内容**：
 
@@ -282,13 +282,13 @@ GUN的make很强大，它可以自动推导文件以及文件依赖关系后面�
 
 **makefile中常见预定义变量**
 
-![image-20211224164553549](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202112241646051.png)
+![image-20211224164553549](https://raw.githubusercontent.com/che77a38/blogImage/main/202112241646051.png)
 
 p.s.CXXFLAGS=-I../inc		表示头文件的路径在当前源文件的父文件夹中的inc文件夹中
 
 **在makefile中变量的用法**：$(变量名)
 
-![image-20211224204554371](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202112242045930.png)
+![image-20211224204554371](https://raw.githubusercontent.com/che77a38/blogImage/main/202112242045930.png)
 
 $(@D)是目标文件的目录，$(@F)是目标文件，
 
@@ -646,13 +646,13 @@ add_executable(helloWorld_cmake helloworld.cpp)
 
 内部构建后（还未执行`make`）如图：
 
-![image-20220117153415398](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202201171534397.png)
+![image-20220117153415398](https://raw.githubusercontent.com/che77a38/blogImage/main/202201171534397.png)
 
 红色框中是原有的文件，紫色框中的是内部构建生成的,可以看到非常乱
 
 外部构建后（还未执行`make`）如图：
 
-![image-20220117155157081](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202201171551365.png)
+![image-20220117155157081](https://raw.githubusercontent.com/che77a38/blogImage/main/202201171551365.png)
 
 cmake的产物都放到build文件夹下了，整洁了很多 ，如果之后执行`make`，生成的可执行文件也会在build文件夹下
 
@@ -660,7 +660,7 @@ cmake的产物都放到build文件夹下了，整洁了很多 ，如果之后执
 
 项目结构如下：
 
-![image-20220117162108450](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202201171621715.png)
+![image-20220117162108450](https://raw.githubusercontent.com/che77a38/blogImage/main/202201171621715.png)
 
 CMakeLists.txt如下：
 
@@ -676,11 +676,11 @@ add_executable(main_cmake main.cpp src/tool.cpp)
 
 操作如下：
 
-![image-20220117162245705](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202201171622366.png)
+![image-20220117162245705](https://raw.githubusercontent.com/che77a38/blogImage/main/202201171622366.png)
 
 `make`后结构如下：
 
-![image-20220117162516558](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202201171625167.png)
+![image-20220117162516558](https://raw.githubusercontent.com/che77a38/blogImage/main/202201171625167.png)
 
 下面两个等同于`cd build;cmake .`
 
@@ -729,17 +729,17 @@ add_executable(main_cmake ${SRC_MAIN} ${SRC})
 
 点击下面图片位置，创建json文件
 
-![image-20220119163310314](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202201191633093.png)
+![image-20220119163310314](https://raw.githubusercontent.com/che77a38/blogImage/main/202201191633093.png)
 
 **【超级重点】：必须在编辑框显示源文件的情况下点击这个按钮**
 
-![image-20220119201327676](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202201192013927.png)
+![image-20220119201327676](https://raw.githubusercontent.com/che77a38/blogImage/main/202201192013927.png)
 
 **CodeLLDB（用来debug，解决Catalina不支持lldb调试问题）**
 
 **Mac在更新到Catalina后不再支持lldb调试**,即C++(GDB/LLDB)无效，因此下载CodeLLDB插件，也因此上图选择LLDB按钮。
 
-![image-20220119201249218](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202201192012644.png)
+![image-20220119201249218](https://raw.githubusercontent.com/che77a38/blogImage/main/202201192012644.png)
 
 **红框中设置为生成的可执行文件的路径**
 
@@ -854,9 +854,9 @@ endif (OPENCV_FOUND)
 
 # git一图流
 
-![](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202112071513124.png)
+![](https://raw.githubusercontent.com/che77a38/blogImage/main/202112071513124.png)
 
-![image-20211207151102904](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202112071511344.png)
+![image-20211207151102904](https://raw.githubusercontent.com/che77a38/blogImage/main/202112071511344.png)
 
 [git学习网站]: https://learngitbranching.js.org/?locale=zh_CN
 
@@ -898,7 +898,7 @@ git config --list
 
 ## 基本指令架构
 
-![image-20211207131020235](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202112071310206.png)
+![image-20211207131020235](https://raw.githubusercontent.com/che77a38/blogImage/main/202112071310206.png)
 
 ## 上传指令
 
@@ -966,17 +966,17 @@ git checkout 想回到的commit节点的哈希值//返回到指定哈希值的co
 //Git 对哈希的处理很智能。你只需要提供能够唯一标识提交记录节点的前几个字符即可
 ```
 
-![image-20211209200758510](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202112092007970.png)
+![image-20211209200758510](https://raw.githubusercontent.com/che77a38/blogImage/main/202112092007970.png)
 
 commit编号就是个哈希值
 
-![image-20211209202104826](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202112092021609.png)
+![image-20211209202104826](https://raw.githubusercontent.com/che77a38/blogImage/main/202112092021609.png)
 
 git checkout commit编号与直接在上图左侧双击commit行均为使得文件恢复到与commit时的样子，二者效果一致。
 
 ### 还原技巧
 
-![src=http___upload-images.jianshu.io_upload_images_4311354-6a4562939fec66c0.png&refer=http___upload-images.jianshu](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202112101443772.jpeg)
+![src=http___upload-images.jianshu.io_upload_images_4311354-6a4562939fec66c0.png&refer=http___upload-images.jianshu](https://raw.githubusercontent.com/che77a38/blogImage/main/202112101443772.jpeg)
 
 **Untracked:表示未跟踪的**
 
@@ -1004,7 +1004,7 @@ git reset head^^,两个^表示返回两个commit记录的节点转为未跟踪�
 
 `git reset` 很方便，但是这种“改写历史”的方法对大家一起使用的**远程分支是无效**的,取而代之的是git revert xxx
 
-![image-20211210151213508](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202112101512015.png)![image-20211210151908657](https://gitee.com/ZEROKO14/blog-img/raw/master/img/202112101519242.png)
+![image-20211210151213508](https://raw.githubusercontent.com/che77a38/blogImage/main/202112101512015.png)![image-20211210151908657](https://raw.githubusercontent.com/che77a38/blogImage/main/202112101519242.png)
 
 ### Git分支(branch)
 
@@ -1064,7 +1064,7 @@ git branch -f main HEAD~3
 
 SourceTree
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/202112071856448.png" alt="image-20211207185614938" style="zoom:25%;" />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112071856448.png" alt="image-20211207185614938" style="zoom:25%;" />
 
 新建-创建本地仓库的意思就是 git init
 

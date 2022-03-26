@@ -135,27 +135,27 @@ Qt按照不同的版本发行，分为商业版和开源版
 
 打开Qt Creator 界面选择 New Project或者选择菜单栏 【文件】-【新建文件或项目】菜单项
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps37.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps37.jpg)
 
 弹出New Project对话框，选择Qt Widgets Application，
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps56.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps56.jpg)
 
 选择【Choose】按钮，弹出如下对话框
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps82.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps82.jpg)
 
 设置项目名称和路径，按照向导进行下一步，
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps125.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps125.jpg)
 
 选择编译套件
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps145.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps145.jpg)
 
 向导会默认添加一个继承自CMainWindow的类，可以在此修改类的名字和基类。默认的基类有QMainWindow、QWidget以及QDialog三个，我们可以选择QWidget（类似于空窗口），这里我们可以先创建一个不带UI的界面，继续下一步
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps169.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps169.jpg)
 
 系统会默认给我们添加main.cpp、mywidget.cpp、 mywidget.h和一个.pro项目文件，点击完成，即可创建出一个Qt桌面程序。
 
@@ -163,15 +163,15 @@ Qt按照不同的版本发行，分为商业版和开源版
 
 添加一个空项目
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps188.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps188.jpg)
 
 选择【choose】进行下一步。设置项目名称和路径 ---> 选择编译套件 --> 修改类信息 --> 完成（步骤同上），生成一个空项目。在空项目中添加文件：在项目名称上单击鼠标右键弹出右键菜单，选择【添加新文件】
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps201.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps201.jpg)
 
 弹出新建文件对话框
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps235.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps235.jpg)
 
 在此对话框中选择要添加的类或者文件，根据向导完成文件的添加。
 
@@ -243,7 +243,7 @@ HEADERS += mywidget.h
 
   *这条语句的含义是，如果QT_MAJOR_VERSION大于4（也就是当前使用的Qt5及更高版本）需要增加widgets模块。如果项目仅需支持Qt5，也可以直接添加"QT += widgets"一句。不过为了保持代码兼容，最好还是按照QtCreator生成的语句编写。**
 
-  ![Qt5 模块](https://gitee.com/ZEROKO14/blog-img/raw/master/img/Qt5 模块.png)
+  ![Qt5 模块](https://raw.githubusercontent.com/che77a38/blogImage/main/Qt5 模块.png)
 
 - #配置信息
 
@@ -271,7 +271,7 @@ int main(int argc, char *argv[])
 }
 ```
 
-![捕获](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E6%8D%95%E8%8E%B7.PNG)
+![捕获](https://raw.githubusercontent.com/che77a38/blogImage/main/%E6%8D%95%E8%8E%B7.PNG)
 
 解释：
 
@@ -293,7 +293,7 @@ int main(int argc, char *argv[])
 
 # 命名规范和QT的快捷键
 
-![image-20210425133943997](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210425133943997.png)
+![image-20210425133943997](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210425133943997.png)
 
 - `alt +enter` // 自动创建类的定义
 
@@ -391,7 +391,7 @@ QT对象树的意义：**简化了内存回收机制**
 
 其**构造与析构顺序**如下图（重难点）（析构函数内代码与真正析构释放过程相反）
 
-![Qt对象树](https://gitee.com/ZEROKO14/blog-img/raw/master/img/Qt%E5%AF%B9%E8%B1%A1%E6%A0%91.png)
+![Qt对象树](https://raw.githubusercontent.com/che77a38/blogImage/main/Qt%E5%AF%B9%E8%B1%A1%E6%A0%91.png)
 
 **【注意】**widget和继承于QPushButton的mypushbutton类的析构中分别添加输出
 
@@ -435,7 +435,7 @@ mypushbutton::~mypushbutton()
 
 输出如下：
 
-![image-20210425210702298](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210425210702298.png)
+![image-20210425210702298](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210425210702298.png)
 
 **【重点】**由此可知：**析构函数内代码的运行，是由上至下，而真正的析构释放过程是由下至上的。**
 
@@ -445,7 +445,7 @@ mypushbutton::~mypushbutton()
 
 以左上角为原点（0,0），X向右增加，Y向下增加。
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps16.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps16.jpg)
 
 对于嵌套窗口，其坐标是**相对于父窗口**来说的。
 
@@ -455,7 +455,7 @@ mypushbutton::~mypushbutton()
 
 一图流：
 
-![Qt信号和槽 ](https://gitee.com/ZEROKO14/blog-img/raw/master/img/Qt%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%A7%BD%20.png)
+![Qt信号和槽 ](https://raw.githubusercontent.com/che77a38/blogImage/main/Qt%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%A7%BD%20.png)
 
 ## 4.1 系统自带的信号和槽
 
@@ -486,7 +486,7 @@ $$
 
 那么系统自带的信号和槽通常如何查找呢，这个就需要利用帮助文档了，在帮助文档中比如我们上面的按钮的点击信号，在帮助文档中输入QPushButton，首先我们可以在Contents中寻找关键字 signals，信号的意思，但是我们发现并没有找到，这时候我们应该想到也许这个信号的被父类继承下来的，因此我们去他的父类QAbstractButton中就可以找到该关键字，点击signals索引到系统自带的信号有如下几个
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps39.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps39.jpg)
 
 这里的clicked就是我们要找到，槽函数的寻找方式和信号一样，只不过他的关键字是slot。
 
@@ -691,7 +691,7 @@ qDebug() << m;
 
 QMainWindow是一个为用户提供主窗口程序的类，包含一个菜单栏（menu bar）、多个工具栏(tool bars)、多个锚接部件(dock widgets)、一个状态栏(status bar)及一个中心部件(central widget)，是许多应用程序的基础，如文本编辑器，图片编辑器等。
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps72.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps72.jpg)
 
 ## 5.1 菜单栏
 
@@ -820,19 +820,19 @@ Qt 资源系统是一个跨平台的资源机制，用于将程序运行时所�
 
 使用 Qt Creator 可以很方便地创建资源文件。我们可以在工程上点右键，选择"添加新文件..."，可以在 Qt 分类下找到"Qt 资源文件"：
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps91.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps91.jpg)
 
 点击"选择..."按钮，打开"新建 Qt 资源文件"对话框。在这里我们输入资源文件的名字和路径：
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps110.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps110.jpg)
 
 点击下一步，选择所需要的版本控制系统，然后直接选择完成。我们可以在 Qt Creator 的左侧文件列表中看到"资源文件"一项，也就是我们新创建的资源文件。右键res.qrc，点击用编辑的方式打开。
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps150.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps150.jpg)
 
 右侧的编辑区有个"添加"，我们首先需要添加前缀，比如我们将前缀取名为 images。然后选中这个前缀，继续点击添加文件，可以找到我们所需添加的文件。这里，我们选择 document-open.png 文件。当我们完成操作之后，Qt Creator 应该是这样子的：
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps219.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps219.jpg)
 
 接下来，我们还可以添加另外的前缀或者另外的文件。这取决于你的需要。当我们添加完成之后，我们可以像前面一章讲解的那样，通过使用 : 开头的路径来找到这个文件。比如，我们的前缀是 /images，文件是 document-open.png，那么就可以使用:/images/document-open.png找到这个文件。
 $$
@@ -840,7 +840,7 @@ $$
 $$
 这么做带来的一个问题是，如果以后我们要更改文件名，比如将 docuemnt-open.png 改成 docopen.png，那么，所有使用了这个名字的路径都需要修改。所以，更好的办法是，我们给这个文件去一个"别名"，以后就以这个别名来引用这个文件。具体做法是，选中这个文件，添加别名信息：
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps237.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps237.jpg)
 
 这样，我们可以直接使用:/images/doc-open引用到这个资源，无需关心图片的真实文件名。
 
@@ -1219,7 +1219,7 @@ Qt 提供的布局中以下三种是我们最常用的：
 
 ## 7.1 系统提供的布局控件
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps61.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps61.jpg)
 
 这4个为系统给我们提供的布局的控件，但是使用起来不是非常的灵活，这里就不详细介绍了。
 
@@ -1227,13 +1227,13 @@ Qt 提供的布局中以下三种是我们最常用的：
 
 第二种布局方式是利用控件里的widget来做布局，在Containers中
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps78.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps78.jpg)
 
 在widget中的控件可以进行水平、垂直、栅格布局等操作，比较灵活。
 
 再布局的同时我们需要灵活运用**弹簧**的特性让我们的布局更加的美观，下面是一个登陆窗口，利用widget可以搭建出如下登陆界面：
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps101.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps101.jpg)
 
 # 8 常用控件
 
@@ -1539,27 +1539,27 @@ SmallWidget::SmallWidget(QWidget *parent) : QWidget(parent)
 }
 ```
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps44.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps44.jpg)
 
 那么这个SmallWidget可以作为独立的窗口显示,也可以作为一个控件来使用：
 
 打开Qt的.ui文件,因为SmallWidget是派生自Qwidget类,所以需要在ui文件中先放入一个QWidget控件, 然后再上边鼠标右键
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps23.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps23.jpg)
 
 弹出提升窗口部件对话框
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps66.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps66.jpg)
 
 添加要提升的类的名字,然后选择 添加
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps85.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps85.jpg)
 
 添加之后,类名会显示到上边的列表框中,然后单击提升按钮,完成操作.
 
 我们可以看到, 这个窗口对应的类从原来的QWidget变成了SmallWidget
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps106.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps106.jpg)
 
 再次运行程序,这个widget_3中就能显示出我们自定义的窗口了.
 
@@ -1635,7 +1635,7 @@ QString("[%1, %2]").arg(x).arg(y);
 
 运行上面的代码，当我们点击了一下鼠标之后，label 上将显示鼠标当前坐标值。
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/wps130.jpg)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps130.jpg)
 
 为什么要点击鼠标之后才能在mouseMoveEvent()函数中显示鼠标坐标值？
 
@@ -1710,7 +1710,7 @@ QTimer::singleShot(500,this,[=](){//this表示谁来执行
 
 ## 9.2 event（）事件分发器
 
-![事件分发器和事件过滤器](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E5%99%A8%E5%92%8C%E4%BA%8B%E4%BB%B6%E8%BF%87%E6%BB%A4%E5%99%A8.png)
+![事件分发器和事件过滤器](https://raw.githubusercontent.com/che77a38/blogImage/main/%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E5%99%A8%E5%92%8C%E4%BA%8B%E4%BB%B6%E8%BF%87%E6%BB%A4%E5%99%A8.png)
 
 事件对象创建完毕后，Qt 将这个事件对象传递给QObject的event()函数。event()函数并不直接处理事件，而是将这些事件对象按照它们不同的类型，分发给不同的事件处理器（event handler）。
 
@@ -1800,7 +1800,7 @@ switch (event->type()) {
 
 ## 9.3 事件过滤器
 
-![事件分发器和事件过滤器](https://gitee.com/ZEROKO14/blog-img/raw/master/img/事件分发器和事件过滤器.png)
+![事件分发器和事件过滤器](https://raw.githubusercontent.com/che77a38/blogImage/main/事件分发器和事件过滤器.png)
 
 有时候，对象需要查看、甚至要拦截发送到另外对象的事件。例如，对话框可能想要拦截按键事件，不让别的组件接收到；或者要修改回车键的默认处理。
 
@@ -2066,7 +2066,7 @@ Qt 的绘图系统允许使用相同的 API 在屏幕和其它打印设备上进
 
 下图给出了这三个类之间的层次结构:
 
-![image-20210505145620325](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210505145620325.png)
+![image-20210505145620325](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210505145620325.png)
 
 上面的示意图告诉我们，**Qt 的绘图系统实际上是，使用QPainter在QPainterDevice上进行绘制，它们之间使用QPaintEngine进行通讯（也就是翻译QPainter的指令）。**
 
@@ -2172,7 +2172,7 @@ void PaintWidget::paintEvent(QPaintEvent *)
 }
 ```
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/clip_image001.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/clip_image001.png)
 
 这里我们给出了两张png图片。butterfly1.png是没有透明色的纯白背景，而butterfly.png是具有透明色的背景。我们分别使用QPixmap和QBitmap来加载它们。注意看它们的区别：白色的背景在QBitmap中消失了，而透明色在QBitmap中转换成了黑色；其他颜色则是使用点的疏密程度来体现的。
 
@@ -2202,7 +2202,7 @@ void PaintWidget::paintEvent(QPaintEvent *)
 }
 ```
 
-![image-20210505200953174](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210505200953174.png)
+![image-20210505200953174](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210505200953174.png)
 
 QImage与QPixmap的区别
 
@@ -2263,7 +2263,7 @@ void PaintWidget::paintEvent(QPaintEvent *)
 
 文件操作是应用程序必不可少的部分。Qt 作为一个通用开发库，提供了跨平台的文件操作能力。Qt 通过QIODevice提供了对 I/O 设备的抽象，这些设备具有读写字节块的能力。下面是 I/O 设备的类图（Qt5）：
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/clip_image002.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/clip_image002.png)
 
 -   QIODevice：所有 I/O 设备类的父类，提供了字节块读写的通用操作以及基本接口；
 
@@ -2719,7 +2719,7 @@ t1->deletelater();//等同于delete t1;
 
 在下面的窗口中，点击按钮开始在子线程中数数，让后通过信号槽机制将数据传递给 UI 线程，通过 UI 线程将数据更新到窗口中。
 
-![1](https://gitee.com/ZEROKO14/blog-img/raw/master/img/1.gif)
+![1](https://raw.githubusercontent.com/che77a38/blogImage/main/1.gif)
 
 mythread.h
 
@@ -3005,7 +3005,7 @@ MainWindow::~MainWindow()
 - 当任务过多的时候，可以适当的创建一些新的工作线程
 - 当任务过少的时候，可以适当的销毁一些工作的线程
 
-![R9c00030b842edb1ae3d6a2b286e53916](https://gitee.com/ZEROKO14/blog-img/raw/master/img/R9c00030b842edb1ae3d6a2b286e53916.jpg)
+![R9c00030b842edb1ae3d6a2b286e53916](https://raw.githubusercontent.com/che77a38/blogImage/main/R9c00030b842edb1ae3d6a2b286e53916.jpg)
 
 ### QRunnable
 

@@ -23,7 +23,7 @@ c语言入门学习
 
 <!-- more -->
 
-![image-20200909140723886](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20200909140723886.png)
+![image-20200909140723886](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200909140723886.png)
 
 
 
@@ -187,7 +187,7 @@ gcc编译4步骤：【重点】
 		3）库引入
 ```
 
- ![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8714.png)
+ ![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8714.png)
 
 ```
 预处理：gcc -E hello.c -o hello.i
@@ -216,7 +216,7 @@ gcc编译4步骤：【重点】
 
 #### ***文件包含处理***
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8721.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8721.png)
 
 ***#incude<>和#include******""******区别***
 
@@ -266,7 +266,7 @@ gcc编译4步骤：【重点】
 
 #### 条件编译
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8722.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8722.png)
 
 ```c
 //防止头文件被重复包含引用
@@ -383,7 +383,7 @@ VS建议采用带_s的函数，如scanf_s、strcpy_s，但这些并不是标准C
 
 ##  数据类型
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8713.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8713.png)
 
 既能读又能写的内存对象，称为**变量**；
 
@@ -585,7 +585,7 @@ ASCII 码大致由以下两部分组成：
 
 2进制与十进制转换图
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8711.png)![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8712.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8711.png)![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8712.png)
 
 #### C语言如何表示相应进制数
 
@@ -672,7 +672,7 @@ i = 32
 
 ## 字符串常量
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%876.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%876.png)
 
 每个字符串的结尾，编译器会自动的添加一个结束标志位'\0'，即 "a" 包含两个字符'a'和’\0’。
 
@@ -708,7 +708,7 @@ printf附加格式：
 | 0(数字0)          | 将输出的前面补上0直到占满指定列宽为止不可以搭配使用-         |
 | m.n(代表一个整数) | m指域宽，即对应的输出项在输出设备上所占的字符数。n指精度，用于说明输出的实型数的小数位数。对数值型的来说，未指定n时，隐含的精度为n=6位。 |
 
-![image-20200922183129000](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20200922183129000.png)
+![image-20200922183129000](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200922183129000.png)
 
 ## scanf函数与getchar函数
 
@@ -1031,7 +1031,7 @@ void test(){
 
 出错显示：
 
-![image-20200925162410473](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20200925162410473.png)
+![image-20200925162410473](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200925162410473.png)
 
 ## 野指针,空指针,哑指针，垂悬指针
 
@@ -1045,7 +1045,7 @@ void test(){
 
 往空指针里塞东西：报错如下：
 
-![image-20200921222715218](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20200921222715218.png)
+![image-20200921222715218](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200921222715218.png)
 
 往野指针里塞东西也是报上图错误，仅红线部分不为0地址而已
 
@@ -1776,7 +1776,7 @@ C代码经过预处理、编译、汇编、链接4步后生成一个可执行程
 
 在 Windows 下，程序是一个普通的可执行文件，以下列出一个二进制可执行文件的基本情况：
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%872.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%872.png)
 
 > 通过上图可以得知，在没有运行程序前，也就是说程序没有加载到内存前，可执行程序内部已经分好3段信息，分别为代码区（text）、数据区（data）和未初始化数据区（bss）3 个部分（**有些人直接把data和bss合起来叫做静态区或全局区**）。
 
@@ -1794,9 +1794,9 @@ C代码经过预处理、编译、汇编、链接4步后生成一个可执行程
 
 程序在加载到内存前，代码区和全局区(data和bss)的大小就是固定的，程序运行期间不能改变。然后，运行可执行程序，系统把程序加载到内存，除了根据可执行程序的信息分出代码区（text）、数据区（data）和未初始化数据区（bss）之外，还额外增加了栈区、堆区。
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%871.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%871.png)
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%874.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%874.png)
 
 - .text 　　代码段
 - .rodata  存储字符串常量
@@ -1838,9 +1838,9 @@ void test(){
 
 栈是一种先进后出的内存结构，由编译器自动分配释放，存放函数的参数值、返回值、局部变量等。在程序运行过程中实时加载和释放，因此，局部变量的生存周期为申请到释放该段栈空间。
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%873.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%873.png)
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%875.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%875.png)
 
 如图为：内存生长方向(小端模式)
 
@@ -1894,7 +1894,7 @@ void test(){
 | register变量   | 一对{}内     | 当前函数       | 运行时存储在CPU寄存器           |
 | 字符串常量     | 当前文件     | 整个程序运行期 | data段                          |
 
-![1568374636_120805](https://gitee.com/ZEROKO14/blog-img/raw/master/img/1568374636_120805.jpg)
+![1568374636_120805](https://raw.githubusercontent.com/che77a38/blogImage/main/1568374636_120805.jpg)
 
 ## 内存操作函数
 
@@ -2008,7 +2008,7 @@ void *realloc(void *ptr, size_t size);
 - 在声明类型的同时定义变量
 - 直接定义结构体类型变量（无类型名）
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8710.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8710.png)
 
 ```c
 struct test{
@@ -2053,7 +2053,7 @@ struct Person p3 = {"Edward",33}; //通过类型直接定义
 
 **堆创建并释放带指针的结构体数组的案例：**（要求如下图：）
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8715.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8715.png)
 
 ```c
 struct Person {
@@ -2114,7 +2114,7 @@ struct Person {
 #pragma pack(show)
 ```
 
-![image-20201010154522488](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20201010154522488.png)
+![image-20201010154522488](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201010154522488.png)
 
 **案例如下：**
 
@@ -2153,7 +2153,7 @@ int main(int argc, char *argv[])
 
 stu1内存占用如下：
 
-![image-20201010164139876](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20201010164139876.png)
+![image-20201010164139876](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201010164139876.png)
 
 其他字节对齐命令：
 
@@ -2380,7 +2380,7 @@ FILE是系统使用typedef定义出来的有关文件信息的一种结构体类
 
 声明FILE结构体类型的信息包含在头文件“stdio.h”中，一般设置一个指向FILE类型变量的指针变量，然后通过它来引用这些FILE类型变量。通过文件指针就可对它所指的文件进行各种操作。 
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%879.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%879.png)
 
 **C语言中有三个特殊的文件指针由系统默认打开**，用户无需定义即可直接使用:
 
@@ -2402,7 +2402,7 @@ ANSI C标准采用“缓冲文件系统”处理数据文件。
 
 ![img](http://images.51cto.com/files/uploadimg/20090731/162655699.jpg)
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%878.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%878.png)
 
 - 磁盘文件，一般保存在硬盘、U盘等掉电不丢失的磁盘设备中，在需要时调入内存
 - 在内存中对文件进行编辑处理后，保存到磁盘中
@@ -2746,7 +2746,7 @@ void rewind(FILE *stream);
 
 负数移动光标：
 
-![image-20201010182023642](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20201010182023642.png)
+![image-20201010182023642](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201010182023642.png)
 
 ### Windows和Linux文本文件区别
 
@@ -3010,7 +3010,7 @@ fun @2
 
 如果是VS平台，必须要在连接器中添加.def文件
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/1.WEBP)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/1.WEBP)
 
 2. __declspec(dllexport) 关键字
 
@@ -3082,7 +3082,7 @@ fun @2
 
 集合结构中的数据元素除了同属于一个集合外，他们之间没有其他关系。各个数据元素是平等的。他们共同属于同一个集合，数据结构中的集合关系类似于数学中的集合。如图：
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8723.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8723.png)
 
 #### 线性结构
 
@@ -3092,13 +3092,13 @@ fun @2
 
 如图：
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8724.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8724.png)
 
 #### 树形结构
 
 树形结构中是数据元素之间存在一种**一对多**的层次关系，如图：
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8725.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8725.png)
 
 
 
@@ -3106,7 +3106,7 @@ fun @2
 
 图形结构的数据元素**多对多**的关系，如图：
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8726.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8726.png)
 
 ### 物理结构
 
@@ -3116,7 +3116,7 @@ fun @2
 
 是把数据元素存放在地址连续的存储单元里，其数据的逻辑关系和物理关系是一致的，如图：
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8727.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8727.png)
 
 
 
@@ -3124,7 +3124,7 @@ fun @2
 
 是把数据元素存放在任意的存储单元里，这组存储单元可以是连续的，也可以是不连续的。数据元素的存储关系并不能反映其逻辑关系，因此需要用一个指针存放数据元素的地址，这样通过地址就可以找到相关数据的位置。如图：
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8728.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8728.png)
 
 ## 线性表
 
@@ -3138,7 +3138,7 @@ fun @2
 
 下图中的链表指的就是**动态数组**
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8729.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8729.png)
 
 优点：
 
@@ -3375,11 +3375,11 @@ void removeByPos_DynamicArray(DynamicArray* dynamicArray, int pos)
 
 但大多数链表都只带头节点，如下图
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8716.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8716.png)
 
 不带链表头节点如下图：
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8720.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8720.png)
 
 > 头结点不固定，根据实际需要变换头结点(如在原来头结点前插入新节点，然后，新节点重新作为链表的头结点)。
 
@@ -3462,15 +3462,15 @@ void main()
 
 1. 单向链表
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8717.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8717.png)
 
 2. 双向链表
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8718.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8718.png)
 
 3. 单向循环链表
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8719.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8719.png)
 
 4. 双向循环链表
 
@@ -3813,7 +3813,7 @@ int getLength_LinkList(LinkList* _linklist)
 
 ***它的特殊之处在于限制了这个线性表的插入和删除的位置，它始终只在栈顶进行。这也就使得：栈底是固定的，最先进栈的只能在栈底。***（**先入后出**）
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8730.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8730.png)
 
 栈顶：top 
 
@@ -4475,7 +4475,7 @@ void destroy_LStack(LStack* _stack)
 
 ***队列（queue）是只允许在一端进行插入操作，而在另一端进行删除操作的线性表。***
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8731.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8731.png)
 
 队头元素：front             队尾元素：back             队列和栈一样不提供遍历功能
 
@@ -4876,7 +4876,7 @@ debugShow_linkQueue(linkQueue _queue, void(*myShow)(void*))
 
 **树的定义**：由一个或多个(n≥0)结点组成的有限集合T，有且仅有一个结点称为根（root），当n>1时，其余的结点分为***m(m≥0)个互不相交的有限集合***T1,T2，…，Tm。每个集合本身又是棵树，被称作这个根的子树 。
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8732.png" alt="img" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8732.png" alt="img" style="zoom:67%;" />
 
 **树的结构特点：**
 
@@ -4930,13 +4930,13 @@ debugShow_linkQueue(linkQueue _queue, void(*myShow)(void*))
 
 **事物之间的逻辑关系**可以通过图的形式很直观的表示出来，如下图：
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8733.png" alt="img" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8733.png" alt="img" style="zoom:50%;" />
 
 #### 广义表表示法
 
 **根作为由子树森林组成的表的名字写在表的左边。**
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8734.png" alt="img" style="zoom: 67%;" />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8734.png" alt="img" style="zoom: 67%;" />
 
 用广义表表示法表示上图：
 
@@ -4950,11 +4950,11 @@ debugShow_linkQueue(linkQueue _queue, void(*myShow)(void*))
 
 左孩子右兄弟表示法可以将一颗**多叉树**转化为一颗**二叉树**：
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8735.png" alt="img" style="zoom: 67%;" />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8735.png" alt="img" style="zoom: 67%;" />
 
 左孩子右兄弟表示法节点的结构
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8736.png"/>
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8736.png"/>
 
 节点有两个指针域，其中一个指针指向**子节点**，另一个指针指向其**兄弟节点**。
 
@@ -4973,7 +4973,7 @@ debugShow_linkQueue(linkQueue _queue, void(*myShow)(void*))
 
  **基本形态:**（最右边表示连根节点都没有的也算树）
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8737.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8737.png)
 
 **二叉树性质**
 
@@ -4985,11 +4985,11 @@ debugShow_linkQueue(linkQueue _queue, void(*myShow)(void*))
 
 使用性质5可以使用完全二叉树实现树的顺序存储。
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8740.png" alt="img" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8740.png" alt="img" style="zoom:67%;" />
 
 如果不是完全二叉树咋整???
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8741.png" alt="img" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8741.png" alt="img" style="zoom:67%;" />
 
 ***缺点：①浪费空间；②插入、删除不便***
 
@@ -5001,13 +5001,13 @@ debugShow_linkQueue(linkQueue _queue, void(*myShow)(void*))
 
 **特点：每层都“充满”了结点**
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8738.png" alt="img" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8738.png" alt="img" style="zoom:67%;" />
 
 ###### **完全二叉树**
 
 除最后一层外，每一层上的[节点](http://baike.baidu.com/view/47398.htm)数均达到最大值；在最后一层上只缺少右边的若干[结点](http://baike.baidu.com/view/549491.htm)。
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8739.png" alt="img" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8739.png" alt="img" style="zoom:67%;" />
 
 **理解：k-1层与满二叉树完全相同，第k层结点尽力靠左**
 
@@ -5017,7 +5017,7 @@ debugShow_linkQueue(linkQueue _queue, void(*myShow)(void*))
 
 存储结构：
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8742.png" alt="img" style="zoom: 50%;" />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8742.png" alt="img" style="zoom: 50%;" />
 
 结点数据类型定义：
 
@@ -5035,7 +5035,7 @@ typedef struct BiTNode
 
 存储结构：
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8743.png" alt="img" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8743.png" alt="img" style="zoom:67%;" />
 
 结点数据类型定义：
 
@@ -5062,7 +5062,7 @@ typedef struct TriTNode
 
 Ø 遍历方法
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8745.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8745.png)
 
 - DLR — 先(根)序遍历，即先根再左再右
 - LDR — 中(根)序遍历，即先左再根再右(此遍历方式正是按照顺序排序遍历)
@@ -5072,7 +5072,7 @@ typedef struct TriTNode
 
 ***从递归的角度看，这三种算法是完全相同的，或者说这三种遍历算法的访问路径是相同的，只是访问结点的时机不同。***
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8744.png" alt="img" style="zoom: 50%;" />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8744.png" alt="img" style="zoom: 50%;" />
 
 从虚线的出发点到终点的路径上，每个结点经过3次。
 
@@ -5427,7 +5427,7 @@ Kp1≤Kp2≤…≤Kpn
 
 如果在序列中有两个数据元素r[i]和r[j]，它们的关键字k[i] == k [j]，且在排序之前，对象r[i]排在r[j]前面。如果在排序之后，对象r[i]仍在r[j]前面，则称这个排序方法是稳定的，否则称这个排序方法是不稳定的。
 
- <img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8746.png" alt="img" style="zoom: 50%;" />
+ <img src="https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8746.png" alt="img" style="zoom: 50%;" />
 
 - 内排序和外排序
   1. 内排序：在排序过程中，待排序的所有记录全部都放置在内存中，排序分为：内排序和外排序。
@@ -5452,7 +5452,7 @@ Kp1≤Kp2≤…≤Kpn
 
 ### 选择排序
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%8747.png" alt="img"  />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8747.png" alt="img"  />
 
 ### 插入排序
 
@@ -5464,7 +5464,7 @@ Kp1≤Kp2≤…≤Kpn
 
 # 技术层次
 
-![img](https://gitee.com/ZEROKO14/blog-img/raw/master/img/%E5%9B%BE%E7%89%877.png)
+![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%877.png)
 
 里奇最早的C语言是K&R  C
 

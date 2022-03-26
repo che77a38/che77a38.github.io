@@ -19,9 +19,9 @@ categories: 杂项
 
 网线：
 
-![image-20210407153352145](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210407153352145.png)
+![image-20210407153352145](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210407153352145.png)
 
-![image-20210407153558825](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210407153558825.png)
+![image-20210407153558825](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210407153558825.png)
 
 机械硬盘：（寿命最少6年）
 
@@ -44,11 +44,11 @@ nas服务器：
 3. 威联通   TS-453Dmini（3700）
 4. microserver gen8
 
-##### <img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210407145052565.png" alt="image-20210407145052565" style="zoom:150%;" />
+##### <img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210407145052565.png" alt="image-20210407145052565" style="zoom:150%;" />
 
 https://www.synology.cn/zh-cn/products/series/home
 
-![image-20210407145118090](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210407145118090.png)
+![image-20210407145118090](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210407145118090.png)
 
 https://www.qnap.com.cn/zh-cn/product/series/enterprise
 

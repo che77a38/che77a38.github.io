@@ -36,9 +36,9 @@ malloc在windows上的底层也是win32实现的
 
 ### **原始**的ASCII编码
 
-![4f06232eed4f93be762cd15d664b407c](https://gitee.com/ZEROKO14/blog-img/raw/master/img/4f06232eed4f93be762cd15d664b407c.jpeg)
+![4f06232eed4f93be762cd15d664b407c](https://raw.githubusercontent.com/che77a38/blogImage/main/4f06232eed4f93be762cd15d664b407c.jpeg)
 
-![05d27497327d7264b74d178aaf312830](https://gitee.com/ZEROKO14/blog-img/raw/master/img/05d27497327d7264b74d178aaf312830.jpeg)
+![05d27497327d7264b74d178aaf312830](https://raw.githubusercontent.com/che77a38/blogImage/main/05d27497327d7264b74d178aaf312830.jpeg)
 
 原始的ASCII码只占一个字节
 
@@ -85,7 +85,7 @@ UTF-16大端存储
 4E 2D 56 FD 00 41
 ```
 
-![image-20210613135932861](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210613135932861.png)
+![image-20210613135932861](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210613135932861.png)
 
 上图箭头所指的没有明确说明是哪种存储方式的Unicode**实际上就是UTF-16**
 
@@ -284,7 +284,7 @@ PTSTR ptszStr=TEXT("中国");
 
 每个进程的内核部分其实是同一份
 
-![image-20210615121702693](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210615121702693.png)
+![image-20210615121702693](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210615121702693.png)
 
 ## 进程的创建
 
@@ -312,7 +312,7 @@ PTSTR ptszStr=TEXT("中国");
 
 创建进程的同时也创建了线程。
 
-![image-20210615134439052](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210615134439052.png)
+![image-20210615134439052](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210615134439052.png)
 
 ## CreateProcess函数
 
@@ -485,7 +485,7 @@ void main(int argc,char* argv[])
 
 像进程，线程，文件，互斥体，事件等在内核都有一个对应的结构体，这些结构体由内核负责管理。我们管这样的对象叫做内核对象。
 
-![image-20210615144439614](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210615144439614.png)
+![image-20210615144439614](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210615144439614.png)
 
 内核对象有如下：
 
@@ -513,7 +513,7 @@ void main(int argc,char* argv[])
 
 ### **如何管理内核对象**
 
-![image-20210615144902520](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210615144902520.png)
+![image-20210615144902520](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210615144902520.png)
 
 内核结构的地址一定是大于0x80000000的，属于内核区，如果应用层访问内核区的地址将**直接蓝屏**。为了避免这种情况，不能直接暴露内核地址给应用层，从根源上解决这种隐患。**句柄表**就是为了不直接暴露内核地址做的隔离层。
 
@@ -523,7 +523,7 @@ void main(int argc,char* argv[])
 
 只有进程内核对象才有句柄表
 
-![image-20210615145614061](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210615145614061.png)
+![image-20210615145614061](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210615145614061.png)
 
 **句柄表**：通过句柄表访问内核对象，而不直接通过内核地址。蓝色表格中的编号就是句柄，即**应用层通过进程中的句柄表中的句柄访问内核对象**。
 
@@ -537,7 +537,7 @@ void main(int argc,char* argv[])
 
 ### **多进程共享一个内核对象**
 
-![image-20210615150920853](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210615150920853.png)
+![image-20210615150920853](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210615150920853.png)
 
 上图可知，**句柄的值只针对当前进程才有意义**
 
@@ -549,13 +549,13 @@ A上面的2表示计数器，两个进程的句柄表都记录了A的句柄，�
 
 ### 句柄可以被继承
 
-![image-20210615155616437](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210615155616437.png)
+![image-20210615155616437](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210615155616437.png)
 
 父进程的句柄表中绿色表格部分表示**该句柄是否可以被子进程继承**。
 
 **创建子进程的bInheritHandles参数如果指定了true，表示该子进程继承父进程的句柄表，但只能继承绿色表格部分为1的句柄**。
 
-![image-20210615162232666](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210615162232666.png)
+![image-20210615162232666](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210615162232666.png)
 
 总结，多进程共享内核对象的方式：
 
@@ -574,7 +574,7 @@ A上面的2表示计数器，两个进程的句柄表都记录了A的句柄，�
 
 操作系统有一张**全局句柄表**，里面包含了所有进程和线程，**进程ID和线程ID**就是这张表中的句柄
 
-![image-20210615163527181](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210615163527181.png)
+![image-20210615163527181](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210615163527181.png)
 
 进程ID和线程ID是全局的，可以**跨进程**的。ID是**唯一**的，不同时存在重复的。
 
@@ -984,11 +984,11 @@ BOOL SetThreadContext(
 
 如下两个线程函数：全局变量存剩余票数
 
-![image-20210619181855365](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210619181855365.png)
+![image-20210619181855365](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210619181855365.png)
 
 产生的问题如下：
 
-![image-20210619182205646](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210619182205646.png)
+![image-20210619182205646](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210619182205646.png)
 
 解决方法：
 
@@ -1028,19 +1028,19 @@ BOOL SetThreadContext(
 
 原理图：
 
-![image-20210619190656121](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210619190656121.png)
+![image-20210619190656121](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210619190656121.png)
 
 真正的原理如何实现的参考**内核笔记**
 
 # 互斥体
 
-![image-20210619190048156](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210619190048156.png)
+![image-20210619190048156](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210619190048156.png)
 
 内核级临界资源怎么办？
 
 要既可以A进程中的X线程可以访问，又要进程b中的y线程可以访问，同时还必须线程安全
 
-![image-20210619190359223](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210619190359223.png)
+![image-20210619190359223](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210619190359223.png)
 
 互斥体是内核对象。
 
@@ -1261,7 +1261,7 @@ void main()
 
 打印结果：
 
-![image-20210623173443224](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210623173443224.png)
+![image-20210623173443224](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210623173443224.png)
 
 但其实并非真同步，只是显示出来是同步。实际上损耗了cpu很多性能（消耗了更多cpu时间片），上面代码1处和2处会打印很多========，之所以没打印可能是新系统优化好了。但要真正实现同步还是不能靠上面代码，而应该是下面的代码：
 
@@ -1331,7 +1331,7 @@ void main()
 
 打印结果：
 
-![image-20210623175414083](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210623175414083.png)
+![image-20210623175414083](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210623175414083.png)
 
 虽然结果都一样，但使用事件的才是真同步！
 
@@ -1341,13 +1341,13 @@ void main()
 
 # 窗口
 
-![image-20210623183240740](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210623183240740.png)
+![image-20210623183240740](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210623183240740.png)
 
 高2G是内核空间，多进程公用，里面有很多系统模块。
 
 其中和窗口最相关的主要是两个系统模块：
 
-![image-20210623183337829](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210623183337829.png)
+![image-20210623183337829](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210623183337829.png)
 
 kernel32.dll只是一个接口，它真正调用的是ntoskrnl.exe的模块，user32.dll和gdi32.dll也只是win32k.sys的内核模块的接口
 
@@ -1424,18 +1424,18 @@ ReleaseDC(hwnd,hdc);
 
 **每个线程只有一个消息队列**
 
-![image-20210627131449985](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210627131449985.png)
+![image-20210627131449985](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210627131449985.png)
 
 操作系统先捕获到我们的键盘鼠标操作，然后**根据每个窗口在内核的结构体中的信息，找到对应窗口的对应负责消息队列的线程，将消息放进他的消息队列**。
 
-![image-20210627132533158](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210627132533158.png)
+![image-20210627132533158](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210627132533158.png)
 
 窗口对象中有个成员记录了负责消息队列的线程的指针。
 
 - 一个线程可以有很多个窗口，多个窗口共用一个消息队列线程。
 - 每个窗口只属于一个线程
 
-![image-20210627133328265](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210627133328265.png)
+![image-20210627133328265](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210627133328265.png)
 
 红线是操作系统分发消息的过程。键盘，鼠标，内核程序的操作被操作系统捕获，封装成消息结构体，根据消息针对的窗口的对象找到对应的消息队列线程，将消息放进对应消息队列线程的消息队列
 
@@ -1623,7 +1623,7 @@ LRESULT DispatchMessage(
 );
 ```
 
-![image-20210627141039758](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210627141039758.png)
+![image-20210627141039758](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210627141039758.png)
 
 `消息结构中有窗口HWND，下面有MSG结构体详解`
 
@@ -1660,11 +1660,11 @@ case WM_CHAR:
 
 有TranslateMessage的情况
 
-![image-20210627151302111](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210627151302111.png)
+![image-20210627151302111](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210627151302111.png)
 
 无TranslateMessage的情况
 
-![image-20210627151210561](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210627151210561.png)
+![image-20210627151210561](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210627151210561.png)
 
 ### windows程序调试信息的输出
 
@@ -1708,7 +1708,7 @@ WINDOWS提供了编号的宏，message参数用于判断消息类型,罗列几�
 
 在微软官方在线开发者手册，可以搜索信息名，比如WM_KEYDOWM可以查到wParam和lParam的具体含义。
 
-![image-20210627144328602](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210627144328602.png)
+![image-20210627144328602](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210627144328602.png)
 
 ## 子窗口
 
@@ -1784,7 +1784,7 @@ BOOL SetDlgItemTextW(
 
 ## 虚拟内存与物理内存
 
-![image-20210627171511300](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210627171511300.png)
+![image-20210627171511300](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210627171511300.png)
 
 ### 虚拟内存
 
@@ -1806,7 +1806,7 @@ BOOL SetDlgItemTextW(
 
 ### 物理内存
 
-![5396392-230b8f4ea39a4f00](https://gitee.com/ZEROKO14/blog-img/raw/master/img/5396392-230b8f4ea39a4f00.webp)
+![5396392-230b8f4ea39a4f00](https://raw.githubusercontent.com/che77a38/blogImage/main/5396392-230b8f4ea39a4f00.webp)
 
 因特尔x86CPU架构将物理内存按照4KB的方式分成一页来进行页式管理
 
@@ -1821,17 +1821,17 @@ BOOL SetDlgItemTextW(
 
 32位系统最多可以识别物理内存为64G，但由于操作系统的限制，比如XP，只能识别4G（Windows 2003服务器版本 可以识别4G以上）
 
-![image-20210627184154084](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210627184154084.png)
+![image-20210627184154084](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210627184154084.png)
 
 物理内存不够用，可以把硬盘当成内存，操作如下：
 
-![image-20210627184851391](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210627184851391.png)
+![image-20210627184851391](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210627184851391.png)
 
 自定义大小中的初始大小可以修改硬盘当物理内存使用的大小。该大小可以在c盘直观地看到一个叫pagefile.sys的文件，占用就和你设置的值一样。
 
 对于程序员来说**感知不到物理内存的存在**是因为操作系统做了下面这些事：
 
-![image-20210627185746450](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210627185746450.png)
+![image-20210627185746450](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210627185746450.png)
 
 **已经分配的虚拟内存也可能没有物理页**，因为可能被临时移动到硬盘去给物理内存腾出空间放新的进程了。
 
@@ -1902,11 +1902,11 @@ CloseHandle(hMapFile);
 
 结果：
 
-![image-20210628152849905](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210628152849905.png)
+![image-20210628152849905](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210628152849905.png)
 
 下断点查看那块内存：
 
-![image-20210628153031108](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210628153031108.png)
+![image-20210628153031108](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210628153031108.png)
 
 ### CreateFileMapping函数（重点）
 
@@ -1988,15 +1988,15 @@ BOOL UnmapViewOfFile(
 
 下图设置加密：
 
-![image-20210630122311355](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210630122311355.png)
+![image-20210630122311355](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210630122311355.png)
 
 **磁盘配额**：让别的用户只能固定使用某个磁盘多少空间
 
-![image-20210630122444855](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210630122444855.png)
+![image-20210630122444855](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210630122444855.png)
 
 文件系统：
 
-![image-20210628154143292](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210628154143292.png)
+![image-20210628154143292](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210628154143292.png)
 
 ## 文件相关API
 
@@ -2039,7 +2039,7 @@ DWORD GetLogicalDriveStringsW(
 
 lpBuffer获取到的字符串如下：
 
-![image-20210703130407329](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703130407329.png)
+![image-20210703130407329](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703130407329.png)
 
 #### GetDriveType
 
@@ -2092,7 +2092,7 @@ BOOL GetVolumeInformationW(
 	GetVolumeInformation(TEXT("C://"), szVolumneName, 260, &dwVolumneSerial, &dwMaxLength, &dwFileSystem, szFileSystem, 260);
 ```
 
-![image-20210703132545845](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703132545845.png)
+![image-20210703132545845](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703132545845.png)
 
 ### 目录相关API
 
@@ -2319,7 +2319,7 @@ BOOL DeleteFileW(
 
 test.txt如图：
 
-![image-20210703161630006](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703161630006.png)
+![image-20210703161630006](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703161630006.png)
 
 ```cpp
 HANDLE hFile = CreateFile(
@@ -2358,7 +2358,7 @@ HANDLE hFile = CreateFile(
 
 案例输出如图：
 
-![image-20210703161739985](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703161739985.png)
+![image-20210703161739985](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703161739985.png)
 
 `红线是bom头`
 
@@ -2372,7 +2372,7 @@ WriteFile(hFile, szBuffer, strlen(szBuffer), &dwWritten, NULL);
 
 结果如图：
 
-![image-20210703163120600](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703163120600.png)
+![image-20210703163120600](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703163120600.png)
 
 ##### 拷贝文件和删除文件案例
 
@@ -2445,7 +2445,7 @@ dwFileAttributes可以是如下属性，通过这个字段可以检查找到的�
 
 ##### 查找文件案例
 
-![image-20210703170047278](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703170047278.png)
+![image-20210703170047278](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703170047278.png)
 
 ```cpp
 _WIN32_FIND_DATAA p;
@@ -2455,13 +2455,13 @@ _WIN32_FIND_DATAA p;
 		puts(p.cFileName);
 ```
 
-![image-20210703170103293](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703170103293.png)
+![image-20210703170103293](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703170103293.png)
 
 # 内存映射文件实现读写文件
 
 内存映射文件：把一个硬盘里的文件直接映射到物理页上，直接再把物理页映射到进程的虚拟内存里（如图）
 
-![image-20210703185707851](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703185707851.png)![image-20210703222153407](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703222153407.png)
+![image-20210703185707851](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703185707851.png)![image-20210703222153407](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703222153407.png)
 
 优点：对于大文件的读写性能非常好，操作方便，可以在**多个进程中共享**
 
@@ -2526,15 +2526,15 @@ _WIN32_FIND_DATAA p;
 
 程序结果：
 
-![image-20210703221045789](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703221045789.png)
+![image-20210703221045789](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703221045789.png)
 
 原本的文件：
 
-![image-20210703193415048](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703193415048.png)
+![image-20210703193415048](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703193415048.png)
 
 修改后的文件：
 
-![image-20210703220919906](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703220919906.png)
+![image-20210703220919906](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703220919906.png)
 
 ## FlushViewOfFile
 
@@ -2553,7 +2553,7 @@ BOOL FlushViewOfFile(
 
 ## 系统文件共享的注意点（重点理解）
 
-![image-20210703222600004](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703222600004.png)
+![image-20210703222600004](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703222600004.png)
 
 如kernel32.dll，user32.dll和ntdll.dll等系统模块，他在内存中就是文件映射到进程中的。
 
@@ -2563,7 +2563,7 @@ BOOL FlushViewOfFile(
 
 **A：**如果在MapViewOfFile映射的时候指定的是写拷贝**FILE_MAP_COPY**的话，就会产生上述效果，原理如下：
 
-![image-20210703223924648](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703223924648.png)![image-20210703224651453](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210703224651453.png)
+![image-20210703223924648](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703223924648.png)![image-20210703224651453](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210703224651453.png)
 
 当进程A修改的时候，并不会对原映射的物理页做修改，而是拷贝一份修改处的最少一页的物理页。然后再修改新出现的**物理页副本**。并且修改虚拟地址对物理页的映射关系（如上面右图）。最后映射结束的时候，对物理页的副本做的所有操作也并不会写回到文件中。
 
@@ -3021,7 +3021,7 @@ FS:[034] 上个错误号
 
 [TEB详解]: https://docs.microsoft.com/zh-cn/windows/win32/api/winternl/ns-winternl-teb
 
-![image-20210706131700275](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210706131700275.png)
+![image-20210706131700275](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210706131700275.png)
 
 #### NtTib成员
 
@@ -3295,21 +3295,21 @@ nt!_LDR_DATA_TABLE_ENTRY
 
 结构示意图：
 
-![image-20210707145837215](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210707145837215.png)
+![image-20210707145837215](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210707145837215.png)
 
-![image-20210707150201266](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210707150201266.png)
+![image-20210707150201266](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210707150201266.png)
 
-![image-20210707150256851](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210707150256851.png)
+![image-20210707150256851](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210707150256851.png)
 
-![image-20210707153018376](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210707153018376.png)
+![image-20210707153018376](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210707153018376.png)
 
-![image-20210707153029369](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210707153029369.png)
+![image-20210707153029369](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210707153029369.png)
 
 [结构详解]: https://www.freesion.com/article/19771019476/
 
 上面的图实际上都不是那么准确，下面这张图才是真正的结构。
 
-![image-20210707155954691](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210707155954691.png)
+![image-20210707155954691](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210707155954691.png)
 
 ###### _UNICODE_STRING的定义
 
@@ -3400,7 +3400,7 @@ myTool.showModuleFromPIDByAPI32(GetCurrentProcessId());
 getchar();
 ```
 
-![image-20210706162954067](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210706162954067.png)
+![image-20210706162954067](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210706162954067.png)
 
 ## 模块隐藏之VAD树
 
@@ -3536,11 +3536,11 @@ ShellCode：**不依赖环境，放到任何地方都可以执行的机器码**�
 
 2. 用局部数组写字符串
 
-   ![image-20210607170623362](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210607170623362.png)
+   ![image-20210607170623362](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607170623362.png)
 
 3. 因为调用其他PE的函数都是采用间接CALL的调用方式，实际上是由编译器填写的。系统调用都是在其他DLL中的，所以ShellCode中不能使用系统调用。
 
-   ![image-20210607172332382](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210607172332382.png)
+   ![image-20210607172332382](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607172332382.png)
 
 类似kernel32.dll中的函数，在同一个操作系统中，其在各个进程中的函数地址是一样的。可以现在别的进程找好要用的函数地址，把函数地址送进去目标进程。
 
@@ -3658,11 +3658,11 @@ ShellCode：**不依赖环境，放到任何地方都可以执行的机器码**�
 
 2. 用局部数组写字符串
 
-   ![image-20210607170623362](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210607170623362.png)
+   ![image-20210607170623362](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607170623362.png)
 
 3. 因为调用其他PE的函数都是采用间接CALL的调用方式，实际上是由编译器填写的。系统调用都是在其他DLL中的，所以ShellCode中不能使用系统调用。
 
-   ![image-20210607172332382](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210607172332382.png)
+   ![image-20210607172332382](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607172332382.png)
 
 # HOOK
 
@@ -3704,11 +3704,11 @@ HOOK的两种主要形式
 
 没改前：
 
-![image-20210707174332826](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210707174332826.png)
+![image-20210707174332826](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210707174332826.png)
 
 修改后：
 
-![image-20210707174410932](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210707174410932.png)
+![image-20210707174410932](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210707174410932.png)
 
 ### 虚表HOOK案例
 
@@ -3740,7 +3740,7 @@ void main()
 }
 ```
 
-![image-20210707184145923](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210707184145923.png)
+![image-20210707184145923](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210707184145923.png)
 
 缺点：只能HOOK虚表中的函数
 
@@ -3834,7 +3834,7 @@ void main()
 
 显示结果：
 
-![image-20210708190212173](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210708190212173.png)![image-20210708190233787](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210708190233787.png)![image-20210708190305081](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210708190305081.png)
+![image-20210708190212173](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210708190212173.png)![image-20210708190233787](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210708190233787.png)![image-20210708190305081](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210708190305081.png)
 
 IAT HOOK的缺点：
 
@@ -3946,13 +3946,13 @@ void main()
 }
 ```
 
-![image-20210709000121629](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210709000121629.png)
+![image-20210709000121629](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210709000121629.png)
 
 发现此处不需要修正函数地址，add函数名称直接是add的真实地址。目测是VS2015有自动修正。
 
 上面代码的VirtualProtect中PAGE_EXECUTE_READWRITE改为PAGE_READWRITE会报错：
 
-![image-20210709002047122](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210709002047122.png)
+![image-20210709002047122](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210709002047122.png)
 
 裸函数不可以有局部变量！
 
@@ -4109,11 +4109,11 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 
 未HOOK前：
 
-![image-20210710150602775](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210710150602775.png)
+![image-20210710150602775](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210710150602775.png)
 
 HOOK后：
 
-![image-20210710150629920](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210710150629920.png)
+![image-20210710150629920](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210710150629920.png)
 
 
 
@@ -4186,11 +4186,11 @@ void main()
 }
 ```
 
-![image-20210709163413382](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210709163413382.png)
+![image-20210709163413382](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210709163413382.png)
 
 结果：
 
-![image-20210709162621067](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210709162621067.png)
+![image-20210709162621067](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210709162621067.png)
 
 **通过这种间接调用函数的方式，就可以实现在上面代码的myFunc函数体中使用局部变量了！**
 
@@ -4303,9 +4303,9 @@ CRC最重要的是**模二运算**。模二运算就是不进位的运算，**�
 
 **异或运算**的本质：A 异或 B ：就相当于A按照B二进制表示中的1所对应的位进行反转。（即B中的1表示A对应位要反转）
 
-![image-20210714143816162](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210714143816162.png)
+![image-20210714143816162](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210714143816162.png)
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/WonderFox_Video_Recording_001_001.gif" style="zoom: 100%" />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/WonderFox_Video_Recording_001_001.gif" style="zoom: 100%" />
 
 [CRC原理视频详解链接]: https://www.bilibili.com/video/BV1V4411Z7VA?from=search&amp;seid=12068662759704731793
 
@@ -4355,7 +4355,7 @@ A检测B是否被挂起并且代码是否被修改，B检测C是是否被挂起�
 
 循环检测的伪代码：(下图相当于上面的C线程)
 
-![image-20210710163925510](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210710163925510.png)
+![image-20210710163925510](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210710163925510.png)
 
 该循环检测本身也被B线程CRC检测中，所以不能直接修改上图中的表层二进制代码。
 
@@ -4390,7 +4390,7 @@ UINT CMFCtestDlg::ThreadFunc(LPVOID pParam)
 }
 ```
 
-![image-20210715194421171](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210715194421171.png)
+![image-20210715194421171](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210715194421171.png)
 
 
 
@@ -4427,7 +4427,7 @@ CPU在执行完第一个hook位置后第一个push，正好进行hook。
 
 如图，对于执行到中途被HOOK代码处的线程，会将硬编码解读成完全不一样的指令：（解读成了下方右图的代码）
 
-![image-20211124154438711](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211124154438711.png)![image-20211124154455104](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211124154455104.png)
+![image-20211124154438711](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211124154438711.png)![image-20211124154455104](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211124154455104.png)
 
 解决方案就是不要hook这样的位置，找不影响堆栈的地方，找单条的长指令hook，或者短跳(2字节)，甚至用中断(2字节)。
 
@@ -4609,7 +4609,7 @@ Declare Function SetWindowsHookEx Lib "user32" Alias "SetWindowsHookExA" (ByVal 
 
 我的理解：
 
-![image-20210608224348679](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210608224348679.png)
+![image-20210608224348679](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210608224348679.png)
 
 全局到局部窗口的消息由操作系统进程分发
 

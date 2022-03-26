@@ -66,11 +66,11 @@ nt!_KAPC
 
 如果想让线程做什么事情，就给它的APC队列里面挂一个APC。 
 
-![image-20211013171657971](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211013171657971.png)
+![image-20211013171657971](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211013171657971.png)
 
-![image-20211023213229559](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211023213229559.png)
+![image-20211023213229559](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211023213229559.png)
 
-![image-20211023213307816](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211023213307816.png)
+![image-20211023213307816](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211023213307816.png)
 
 ## 什么时候执行APC中的函数？
 
@@ -171,7 +171,7 @@ _KeStackAttachProcess
 
 #### _KiMoveApcState
 
-![image-20211028152615008](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211028152615008.png)
+![image-20211028152615008](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211028152615008.png)
 
 
 
@@ -217,11 +217,11 @@ NtQueueApcThread到KiInsertQueueApc才真正插入完，插入的过程中有可
 
 TargetEnvironment(ApcStateIndex)里存的四种情况的枚举类型，出自WRK
 
-![image-20211018180147858](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211018180147858.png)
+![image-20211018180147858](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211018180147858.png)
 
 ### 用户APC挂入流程
 
-![image-20211012154033183](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211012154033183.png)
+![image-20211012154033183](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211012154033183.png)
 
 #### QueueUserAPC函数
 
@@ -386,11 +386,11 @@ IN PVOID Context//内核APC：NULL  用户APC：真正的APC函数   存储到_k
 ) 
 ```
 
-![image-20211019150353138](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211019150353138.png)
+![image-20211019150353138](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211019150353138.png)
 
 #### KeInsertQueueApc函数
 
-![image-20211029143018774](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211029143018774.png)
+![image-20211029143018774](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211029143018774.png)
 
 #### KiInsertQueueApc函数
 
@@ -400,17 +400,17 @@ IN PVOID Context//内核APC：NULL  用户APC：真正的APC函数   存储到_k
 4. 再根据KAPC结构中的Inserted置1，标识当前的KAPC为已插入状态
 5. KAPC_STATE结构中的KernelApcPending/UserApcPending置1(**UserApcPending未必置1，只有当前线程处于等待状态，并且是用户自己导致的等待，并且是可以吵醒(Alertable)的线程才置1**)
 
-![image-20211101140140226](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211101140140226.png)
+![image-20211101140140226](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211101140140226.png)
 
 该函数返回值为1表示APC已插入，但**如果UserApcPending未置1，则该用户APC未必有机会执行**
 
 插入的上半部分
 
-![image-20211101164401536](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211101164401536.png)
+![image-20211101164401536](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211101164401536.png)
 
 插入的下半部分
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211101164523600.png" alt="image-20211101164523600"  />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211101164523600.png" alt="image-20211101164523600"  />
 
 反汇编：
 
@@ -564,7 +564,7 @@ void main()
 }
 ```
 
-![image-20211026232558356](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211026232558356.png)
+![image-20211026232558356](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211026232558356.png)
 
 ## 内核APC执行流程
 
@@ -719,7 +719,7 @@ KiDeliverApc //执行内核APC函数
 
 **汇编流程如下：**
 
-<img src="https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211015132902898.png" alt="image-20211015132902898"  />
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211015132902898.png" alt="image-20211015132902898"  />
 
 ### 内核APC总结
 
@@ -731,17 +731,17 @@ KiDeliverApc //执行内核APC函数
 
 当产生系统调用，中断或者异常，线程在返回用户空间前都会调用\_KiServiceExit函数，在\_KiServiceExit会判断是否有要执行的用户APC，如果有则调用KiDeliverApc函数(第一个参数为1)进行处理
 
-![image-20211023221626174](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211023221626174.png)
+![image-20211023221626174](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211023221626174.png)
 
-![deliver](https://gitee.com/ZEROKO14/blog-img/raw/master/img/deliver.png)
+![deliver](https://raw.githubusercontent.com/che77a38/blogImage/main/deliver.png)
 
 上图是从用户模式调用Native API才走KiServiceExit2
 
 **总览流程图**
 
-![image-20211118112937375](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211118112937375.png)
+![image-20211118112937375](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211118112937375.png)
 
-![20201202171056458](https://gitee.com/ZEROKO14/blog-img/raw/master/img/20201202171056458.png)
+![20201202171056458](https://raw.githubusercontent.com/che77a38/blogImage/main/20201202171056458.png)
 
 ### 执行用户APC时的堆栈操作
 
@@ -776,7 +776,7 @@ KiInitializeUserApc要做的**第一件事就是备份**：
 3. 修改ESP
 4. 修改EIP（此EIP是固定修改为全局变量_KeUserApcDispatcher存的值，其值指向ntdll.KiUserApcDispatcher函数）
 
-![image-20211016154954475](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211016154954475.png)![image-20211016155050235](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20211016155050235.png)
+![image-20211016154954475](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211016154954475.png)![image-20211016155050235](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211016155050235.png)
 
 #### CONTEXT结构体
 
@@ -846,7 +846,7 @@ nt!_CONTEXT
    //win32的CONTEXT结构体共占0xCC+0x200=0x2CC字节
 ```
 
-![image-20210831191749044](https://gitee.com/ZEROKO14/blog-img/raw/master/img/image-20210831191749044.png)
+![image-20210831191749044](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210831191749044.png)
 
 #### ntdll.KiUserApcDispatcher分析
 
