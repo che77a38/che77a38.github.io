@@ -2897,6 +2897,25 @@ BOOL WinTool::remoteThreadInject(LPTSTR szProcessname, LPTSTR szDllName)
 
 `注入游戏的DLL带窗口是没有实用价值的，因为特征太明显了。`
 
+# 三环遍历进程代码
+
+```c
+//遍历全部进程名
+	PROCESSENTRY32 pe32;
+	pe32.dwSize = sizeof(pe32);
+	HANDLE hSnapshot_proc = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+	if (hSnapshot_proc != INVALID_HANDLE_VALUE)
+	{
+		BOOL check = Process32First(hSnapshot_proc, &pe32);
+		while (check)
+		{
+			myOutPutDebug("进程PID = %d 进程名 = %s\n", pe32.th32ProcessID, pe32.szExeFile);
+			check = Process32Next(hSnapshot_proc, &pe32);
+		}
+	}
+	CloseHandle(hSnapshot_proc);
+```
+
 # 模块隐藏
 
 直接注入的DLL是很容易被目标程序检测到的。
@@ -3164,6 +3183,8 @@ typedef struct _LIST_ENTRY {
 
 ##### _LDR_DATA_TABLE_ENTRY
 
+该结构未导出,需要自己定义
+
 ```cpp
 //x86
 typedef struct _LDR_DATA_TABLE_ENTRY
@@ -3291,7 +3312,7 @@ nt!_LDR_DATA_TABLE_ENTRY
       +0x000 QuadPart         : Int8B
 ```
 
-每个加载到进程中的DLL模块都对应一个_LDR_DATA_TABLE_ENTRY结构体，这些结构体相互链接，最终形成了_LIST_ENTRY双向链表。_PEB_LDR_DATA结构体中存在3种_LIST_ENTRY双向链表，也就是说，存在多个_LDR_DATA_TABLE_ENTRY结构体，并且有三种链接方法可以将它们链接起来。
+每个加载到进程中的DLL模块都对应一个\_LDR_DATA_TABLE_ENTRY结构体，这些结构体相互链接，最终形成了_LIST_ENTRY双向链表。\_PEB_LDR_DATA结构体中存在3种\_LIST_ENTRY双向链表，也就是说，存在多个\_LDR_DATA_TABLE_ENTRY结构体，并且有三种链接方法可以将它们链接起来。
 
 结构示意图：
 
@@ -4585,6 +4606,8 @@ PostMessage(
 	);
 ```
 
+[虚拟键码VK_code查询](https://docs.microsoft.com/zh-cn/windows/win32/inputdev/virtual-key-codes)
+
 ## keybd_event() 
 
 这个函数对大部分的窗口程序都有效，可是仍然有一部分游戏对它产生的键盘事件熟视无睹，这时候，你就要用上bScan这个参数了。一般的，bScan都传0，但是如果目标程序是一些DirectX游戏，那么你就需要正确使用这个参数传入扫描码，用了它可以产生正确的硬件事件消息，以被游戏识别。
@@ -4616,3 +4639,47 @@ Declare Function SetWindowsHookEx Lib "user32" Alias "SetWindowsHookExA" (ByVal 
 # 全局理解点
 
 **进程结束的时候，操作系统会在进程之后进行全面的清除，使得所有操作系统资源都不会保留下来。这意味着进程使用的所有内存均被释放，所有打开的文件全部关闭，所有内核对象的使用计数均被递减，同时所有的用户对象和GDI对象均被撤消。**
+
+# 图形图像处理
+
+easyx库 ``
+
+bmp格式的图片如何描述
+
+```c
+typedef struct tagBITMAPFILEHEADER {
+        WORD    bfType;//类型
+        DWORD   bfSize;//大小
+        WORD    bfReserved1;
+        WORD    bfReserved2;
+        DWORD   bfOffBits;//偏移
+} BITMAPFILEHEADER, FAR *LPBITMAPFILEHEADER, *PBITMAPFILEHEADER;
+
+typedef struct tagBITMAPINFOHEADER{
+        DWORD      biSize;
+        LONG       biWidth;
+        LONG       biHeight;
+        WORD       biPlanes;//调色板
+        WORD       biBitCount;//比特位总计
+        DWORD      biCompression;//描述
+        DWORD      biSizeImage;//Image图像的大小
+        LONG       biXPelsPerMeter;
+        LONG       biYPelsPerMeter;
+        DWORD      biClrUsed;
+        DWORD      biClrImportant;
+} BITMAPINFOHEADER, FAR *LPBITMAPINFOHEADER, *PBITMAPINFOHEADER;
+
+//这两个结构体描述bmp图片有关的信息
+//一张bmp图片的二进制格式为: (首)BITMAPFILEHEADER+BITMAPINFOHEADER+图片像素点数据(尾)
+```
+
+[tagBITMAPINFOHEADER官方信息查阅](https://docs.microsoft.com/zh-cn/windows/win32/api/wingdi/ns-wingdi-bitmapinfoheader?f1url=%3FappId%3DDev14IDEF1%26l%3DZH-CN%26k%3Dk(wingdi%252FtagBITMAPINFOHEADER)%3Bk(tagBITMAPINFOHEADER)%3Bk(DevLang-C%252B%252B)%3Bk(TargetOS-Windows)%26rd%3Dtrue)
+
+bmp文件是的像素点数据是反的,最先的像素点数据在文件最末尾.
+
+一个像素是3个字节
+
+[坐标关系转换相关查阅](https://blog.51cto.com/u_8081755/3354801)
+
+
+

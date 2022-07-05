@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="事件等待">
+<meta property="og:type" content="article">
+<meta property="og:title" content="事件等待">
+<meta property="og:url" content="http://zeroko14.gitee.io/blog/2022/05/05/%E4%BA%8B%E4%BB%B6%E7%AD%89%E5%BE%85/index.html">
+<meta property="og:site_name" content="ZEROKO14的个人博客">
+<meta property="og:description" content="事件等待">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211123140139897.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211123140514418.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211119150018704.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210925185126974.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211120121206696.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211120121347166.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210927173327826.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210927174427599.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211006113147014.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211006113218139.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211006120626662.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211010140706561.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211010140736176.png">
+<meta property="article:published_time" content="2022-05-05T07:29:14.972Z">
+<meta property="article:modified_time" content="2022-05-05T07:29:14.973Z">
+<meta property="article:author" content="ZEROKO14">
+<meta property="article:tag" content="内核">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211123140139897.png">
+
+<link rel="canonical" href="http://zeroko14.gitee.io/blog/2022/05/05/%E4%BA%8B%E4%BB%B6%E7%AD%89%E5%BE%85/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>事件等待 | ZEROKO14的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ZEROKO14的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">zeroko14's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/2022/05/05/%E4%BA%8B%E4%BB%B6%E7%AD%89%E5%BE%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="ZEROKO14">
+      <meta itemprop="description" content="你好，欢迎来到ZEROKO14的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZEROKO14的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          事件等待
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-05 15:29:14" itemprop="dateCreated datePublished" datetime="2022-05-05T15:29:14+08:00">2022-05-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="事件等待"><a href="#事件等待" class="headerlink" title="事件等待"></a>事件等待</h1><span id="more"></span>
+
+<p>并发是指多个线程在同时执行：</p>
+<ul>
+<li>单核(是分时执行，不是真正的同时)</li>
+<li>多核(在某一个时刻，会同时有多个线程在执行)</li>
+</ul>
+<p>同步则是保证在并发执行的各个环境中可以有序的执行</p>
+<p><strong>不同版本的内核文件</strong></p>
+<ul>
+<li>单核<ul>
+<li>ntkrnlpa.exe    2-9-9-12分页</li>
+<li>ntoskrnl.exe    10-10-12分页</li>
+</ul>
+</li>
+<li>多核<ul>
+<li>ntkrnlpa.exe    2-9-9-12分页</li>
+<li>ntoskrnl.exe    10-10-12分页</li>
+</ul>
+</li>
+</ul>
+<p><strong>同样是这个文件名，单核和多核里面的代码是不一样的</strong></p>
+<h2 id="单行代码原子操作"><a href="#单行代码原子操作" class="headerlink" title="单行代码原子操作"></a>单行代码原子操作</h2><h3 id="LOCK指令"><a href="#LOCK指令" class="headerlink" title="LOCK指令"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sunddenly/articles/14829255.html">LOCK</a>指令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov eax,[0x12345678]</span><br><span class="line">add eax,1</span><br><span class="line">mov [0x12345678],eax</span><br></pre></td></tr></table></figure>
+
+<p>如果产生线程切换就会出问题，因此是多线程不安全的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INC DWORD ptr ds:[0x12345678]</span><br></pre></td></tr></table></figure>
+
+<p>如果只有单核在跑，上述指令是安全的，但是在多核下可能会出现两个CPU同时执行这一个汇编指令。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> key = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> x = <span class="number">1000</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">threadCall</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Sleep(<span class="number">1</span>);</span><br><span class="line">	__asm</span><br><span class="line">	&#123;</span><br><span class="line">		dec [x];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		HANDLE hThread = CreateThread(<span class="literal">NULL</span>, <span class="number">0</span>, (LPTHREAD_START_ROUTINE)threadCall, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Sleep(<span class="number">10000</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\r\n&quot;</span>, x);</span><br><span class="line">	getchar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211123140139897.png" alt="image-20211123140139897"></p>
+<p>上图表示多核同时执行的时候，多次反复吞掉了中间值，因此不是0。</p>
+<p>给dec [x]前加上lock才能保证其是原子操作，即结果为0</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211123140514418.png" alt="image-20211123140514418"></p>
+<p>也是说lock后，就是一个原子操作。原子操作是指不会被线程调度机制打断的操作；这种操作一旦开始，就一直运行到结束，中间不会有任何 context switch （切换到另一个线程），在单处理器系统(UniProcessor，简称 UP)中，能够在单条指令中完成的操作都可以认为是原子操作，因为中断只能发生在指令与指令之间。在多处理器系统(Symmetric Multi-Processor，简称 SMP)中情况有所不同，由于系统中有多个处理器在独立的运行，即使在能单条指令中完成的操作也可能受到干扰。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCK INC DWORD ptr ds:[0x12345678]</span><br></pre></td></tr></table></figure>
+
+<p>这样就真正实现了多核的原子操作(多线程安全)，<strong>lock指令锁住了这条指令所在的内存，某一时刻只能有单核访问。</strong>保证了这条指令在多处理器环境中 的原子性</p>
+<p>lock只能接如下汇编指令，不然会产生<code>操作码异常</code>（ud）</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211119150018704.png" alt="image-20211119150018704"></p>
+<p>LOCK前缀只能预加在以下指令前面，并且只能加在这些形式的指令前面,其中目标操作数是内存操作数：<code>add、adc、and、btc、btr、bts、cmpxchg、cmpxch8b，cmpxchg16b，dec，inc，neg，not，or，sbb，sub，xor，xadd</code>和<code>xchg</code></p>
+<p><code>xchg</code>指令不管有没有声明LOCK前缀，总是会声明LOCK信号。</p>
+<p>参考：kernel32.InterlockedIncrement</p>
+<p>原子操作相关的API：</p>
+<ul>
+<li>InterlockedIncrement 全局变量++</li>
+<li>InterlockedDecrement 全局变量–</li>
+<li>InterlockedExchange 交换</li>
+<li>InterlockedCompareExchange 比较交换</li>
+<li>InterlockedExchangeAdd</li>
+<li>InterlockedFlushSList</li>
+<li>InterlockedPopEntrySList</li>
+<li>InterlockedPushEntrySList</li>
+</ul>
+<p><strong>InterlockedIncrement逆向</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.text:7C8097F6 ; LONG __stdcall InterlockedIncrement(volatile LONG *lpAddend)</span><br><span class="line">.text:7C8097F6                 public _InterlockedIncrement@4</span><br><span class="line">.text:7C8097F6 _InterlockedIncrement@4 proc near       ; CODE XREF: CreatePipe(x,x,x,x)+57↓p</span><br><span class="line">.text:7C8097F6                                         ; BasepCreateDefaultTimerQueue()+41↓p ...</span><br><span class="line">.text:7C8097F6</span><br><span class="line">.text:7C8097F6 lpAddend        = dword ptr  4</span><br><span class="line">.text:7C8097F6</span><br><span class="line">.text:7C8097F6                 mov     ecx, [esp+lpAddend]</span><br><span class="line">.text:7C8097FA                 mov     eax, 1</span><br><span class="line">.text:7C8097FF</span><br><span class="line">.text:7C8097FF loc_7C8097FF:                           ; DATA XREF: .data:_BasepLockPrefixTable↓o</span><br><span class="line">.text:7C8097FF                 lock xadd [ecx], eax;lock保证了该内存空间同时只能有一个核操作；xadd表示交换加，即先将两个数交换，再将二者之和送给第一个数。</span><br><span class="line">.text:7C809803                 inc     eax;函数返回值返回加后的结果</span><br><span class="line">.text:7C809804                 retn    4</span><br><span class="line">.text:7C809804 _InterlockedIncrement@4 endp</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="多行代码原子操作"><a href="#多行代码原子操作" class="headerlink" title="多行代码原子操作"></a>多行代码原子操作</h2><p><strong>临界区</strong>：一次只允许一个线程进入直到离开</p>
+<p>实现临界区的方式就是加锁</p>
+<p><strong>锁</strong>：全局变量，进去加1，出去减1</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210925185126974.png" alt="image-20210925185126974"></p>
+<h3 id="自己实现临界区："><a href="#自己实现临界区：" class="headerlink" title="自己实现临界区："></a><strong>自己实现临界区：</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">;全局变量：Flag = 0,临界区标志</span><br><span class="line">;进入临界区裸函数：</span><br><span class="line">Lab:</span><br><span class="line">mov eax,1;</span><br><span class="line">lock xadd [Flag],eax;//必须先+1，再判断</span><br><span class="line">cmp eax,0;//判断+1前原来的值是否为0</span><br><span class="line">jz endLab;//+1前原来的值为0的话跳转进入临界区</span><br><span class="line">dec [Flag];</span><br><span class="line">;//线程等待</span><br><span class="line">endLab:</span><br><span class="line">ret;</span><br><span class="line"></span><br><span class="line">;离开临界区裸函数：</span><br><span class="line">lock dec [Flag]</span><br></pre></td></tr></table></figure>
+
+<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><p>进入临界区enter函数，退出临界区leave函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> __declspec(naked) <span class="function">__fastcall <span class="title">enter</span><span class="params">(PVOID lock)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	__asm</span><br><span class="line">	&#123;</span><br><span class="line">	__start:</span><br><span class="line">		mov eax, <span class="number">1</span>;</span><br><span class="line">		lock xadd dword ptr[ecx], eax;</span><br><span class="line">		cmp eax, <span class="number">0</span>;</span><br><span class="line">		jnz label_enter;</span><br><span class="line">		retn;</span><br><span class="line">	label_enter:</span><br><span class="line">		lock dec[ecx];</span><br><span class="line">		push ecx;<span class="comment">//因为下面要回到__start,因此保留ecx防止被SleepEx破坏了,去除会报错</span></span><br><span class="line">		<span class="comment">//3）下面线程切换</span></span><br><span class="line">		push <span class="number">1</span>;</span><br><span class="line">		push <span class="number">1</span>;</span><br><span class="line">		call SleepEx;</span><br><span class="line">		pause;<span class="comment">//线程切换可以换成自旋锁，空转会比较卡</span></span><br><span class="line">		pop ecx;</span><br><span class="line">		jmp __start;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> __declspec(naked) <span class="function">__fastcall <span class="title">leave</span><span class="params">(PVOID lock)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	__asm</span><br><span class="line">	&#123;</span><br><span class="line">		lock dec[ecx];</span><br><span class="line">		retn;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>未进入临界区</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> key = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">threadCall</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Sleep(<span class="number">100</span>);</span><br><span class="line">	<span class="comment">//enter(&amp;key);//未进入临界区</span></span><br><span class="line">	x=x+<span class="number">1</span>;</span><br><span class="line">	<span class="comment">//leave(&amp;key);</span></span><br><span class="line">	Sleep(<span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		HANDLE hThread = CreateThread(<span class="literal">NULL</span>, <span class="number">0</span>, (LPTHREAD_START_ROUTINE)threadCall, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Sleep(<span class="number">6000</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\r\n&quot;</span>,x);</span><br><span class="line">	getchar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211120121206696.png" alt="image-20211120121206696"></p>
+<p>进入临界区</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> key = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">threadCall</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Sleep(<span class="number">100</span>);</span><br><span class="line">	enter(&amp;key);<span class="comment">//进入临界区</span></span><br><span class="line">	x=x+<span class="number">1</span>;</span><br><span class="line">	leave(&amp;key);</span><br><span class="line">	Sleep(<span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		HANDLE hThread = CreateThread(<span class="literal">NULL</span>, <span class="number">0</span>, (LPTHREAD_START_ROUTINE)threadCall, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Sleep(<span class="number">6000</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\r\n&quot;</span>,x);</span><br><span class="line">	getchar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211120121347166.png" alt="image-20211120121347166"></p>
+<p><strong>LOCK能保证某个处理器对存储该代码的共享内存的独占使用</strong>。</p>
+<h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><p>为什么离开临界区也要加lock，不然临界区无效？？</p>
+<h3 id="系统进出临界区函数"><a href="#系统进出临界区函数" class="headerlink" title="系统进出临界区函数"></a>系统进出临界区函数</h3><p>有进入临界区函数RtlEnterCriticalSection，以及离开临界区函数RtlLeaveCriticalSection</p>
+<p>ntdll中有进入临界区函数RtlEnterCriticalSection，以及离开临界区函数RtlLeaveCriticalSection</p>
+<h2 id="Windows自旋锁"><a href="#Windows自旋锁" class="headerlink" title="Windows自旋锁"></a>Windows自旋锁</h2><p><strong>关键代码：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lock bts dword ptr [ecx],0;</span><br></pre></td></tr></table></figure>
+
+<p><strong>LOCK</strong>是锁前缀，保证这条指令在同一个时刻只能有一个CPU访问</p>
+<p><strong>BTS</strong>指令：设置并检测，将ECX指向数据的第0位置1，如果[ECX]原来的值==0，那么CF=1，否则CF=0</p>
+<p>参考：KeAcquireSpinLockAtDpcLevel（SpinLock自旋锁）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">.text:0040B40B ; __stdcall KeAcquireSpinLockAtDpcLevel(x)</span><br><span class="line">.text:0040B40B                 public _KeAcquireSpinLockAtDpcLevel@4</span><br><span class="line">.text:0040B40B _KeAcquireSpinLockAtDpcLevel@4 proc near</span><br><span class="line">.text:0040B40B</span><br><span class="line">.text:0040B40B arg_0           = dword ptr  4</span><br><span class="line">.text:0040B40B</span><br><span class="line">.text:0040B40B                 mov     ecx, [esp+arg_0];ecx得到要锁的地址</span><br><span class="line">.text:0040B40F</span><br><span class="line">.text:0040B40F loc_40B40F:                             ; CODE XREF: KeAcquireSpinLockAtDpcLevel(x)+14↓j</span><br><span class="line">.text:0040B40F                 lock bts dword ptr [ecx], 0</span><br><span class="line">.text:0040B414                 jb      short loc_40B419;jb表示CF==1的时候跳转，如果[ecx]原来的值不为0就跳转</span><br><span class="line">.text:0040B416                 retn    4</span><br><span class="line">.text:0040B419 ; ---------------------------------------------------------------------------</span><br><span class="line">.text:0040B419</span><br><span class="line">.text:0040B419 loc_40B419:                             ; CODE XREF: KeAcquireSpinLockAtDpcLevel(x)+9↑j	已经有线程进入临界区了</span><br><span class="line">.text:0040B419                                         ; KeAcquireSpinLockAtDpcLevel(x)+18↓j</span><br><span class="line">.text:0040B419                 test    dword ptr [ecx], 1;</span><br><span class="line">.text:0040B41F                 jz      short loc_40B40F;[ecx]原来的值为0就跳转回去重新试图进入临界区</span><br><span class="line">.text:0040B421                 pause;让当前的CPU空转一会儿，降降温，因此叫自旋锁，在多核才有意义</span><br><span class="line">.text:0040B423                 jmp     short loc_40B419</span><br><span class="line">.text:0040B423 _KeAcquireSpinLockAtDpcLevel@4 endp</span><br></pre></td></tr></table></figure>
+
+<p>总结：</p>
+<ol>
+<li>自旋锁只对多核有意义。(查看不同版本的KeAcquireSpinLockAtDpcLevel函数)</li>
+<li>自旋锁与临界区，事件，互斥体一样，都是一种同步机制，都可以让当前线程处于等待状态，区别在于<strong>自旋锁不用切换线程</strong>(自旋，即pause空转)。</li>
+</ol>
+<h2 id="线程等待与唤醒"><a href="#线程等待与唤醒" class="headerlink" title="线程等待与唤醒"></a>线程等待与唤醒</h2><p>之前讲解了如何自己实现临界区以及什么是Windows自旋锁，这两种同步方案在线程无法进入临界区时都会让当前线程进入等待状态，一种是通过Sleep函数实现的，一种是通过让当前的CPU“空转”实现的，但这两种等待方式都有局限性：</p>
+<ol>
+<li>通过Sleep函数进程等待，等待时间该如何确定呢？</li>
+<li>通过“空转”的方式进行等待，只有等待时间很短的情况下才有意义，否则对CPU资源是种浪费，而且自旋锁只能在多核环境下才有意义。</li>
+</ol>
+<p>有没有更加合理的等待方式呢？只有在条件成熟的时候才将当前线程唤醒？</p>
+<h3 id="Windows的等待与唤醒机制"><a href="#Windows的等待与唤醒机制" class="headerlink" title="Windows的等待与唤醒机制"></a>Windows的等待与唤醒机制</h3><p>在Windows中，一个线程可以通过等待一个或者多个可等待对象，从而进入等待状态，另一个线程可以在某些时刻唤醒等待这些对象的其他线程</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210927173327826.png" alt="image-20210927173327826"></p>
+<p>如下<strong>可等待对象</strong>结构体</p>
+<table>
+<thead>
+<tr>
+<th>结构体</th>
+<th>结构类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>_KPROCESS</td>
+<td>进程</td>
+</tr>
+<tr>
+<td>_KTHREAD</td>
+<td>线程</td>
+</tr>
+<tr>
+<td>_KTIMER</td>
+<td>定时器</td>
+</tr>
+<tr>
+<td>_KSEMAPHORE</td>
+<td>信号量</td>
+</tr>
+<tr>
+<td>_KEVENT</td>
+<td>事件</td>
+</tr>
+<tr>
+<td>_KMUTANT</td>
+<td>互斥体</td>
+</tr>
+<tr>
+<td>_FILE_OBJECT</td>
+<td>文件</td>
+</tr>
+</tbody></table>
+<p>其共同点是他们都有一个成员是_DISPATCHER_HEADER内嵌结构体。</p>
+<p>_FILE_OBJECT没有_DISPATCHER_HEADER内嵌结构体的成员，但它含有_KEVENT内嵌结构体</p>
+<h4 id="可等待对象的差异"><a href="#可等待对象的差异" class="headerlink" title="可等待对象的差异"></a>可等待对象的差异</h4><p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210927174427599.png" alt="image-20210927174427599"></p>
+<h4 id="一个线程等待一个对象"><a href="#一个线程等待一个对象" class="headerlink" title="一个线程等待一个对象"></a>一个线程等待一个对象</h4><p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211006113147014.png" alt="image-20211006113147014"></p>
+<p>当前线程通过等待块_KWAIT_BLOCK与可等待对象建立起了联系</p>
+<p>线程结构体+5C的位置成员WaitBlockList，指向等待块_KWAIT_BLOCK结构体</p>
+<h5 id="KWAIT-BLOCK结构体"><a href="#KWAIT-BLOCK结构体" class="headerlink" title="_KWAIT_BLOCK结构体"></a>_KWAIT_BLOCK结构体</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">KWAIT_BLOCK</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">     LIST_ENTRY WaitListEntry;<span class="comment">//存储了当前可等待对象被别的线程等待的所有等待块的双向链表，该双向链表头是_DISPATCH_HEADER的WaitListHead成员</span></span><br><span class="line">     PKTHREAD Thread;<span class="comment">//当前等待块是哪个线程的</span></span><br><span class="line">     PVOID Object;<span class="comment">//被等待对象的地址。比如等待对象为进程，则此处为进程内核地址</span></span><br><span class="line">     PKWAIT_BLOCK NextWaitBlock;<span class="comment">//单向循环链表，指向当前线程的下一个等待块，如果当前线程只有一个等待块则指向自己</span></span><br><span class="line">     WORD WaitKey;<span class="comment">//等待块的索引，由0开始</span></span><br><span class="line">     UCHAR WaitType;<span class="comment">//设置等待所有可等待对象执行完毕才执行就是0，如果设置等待所有可等待对象其中一个执行完毕就执行此位就是1.</span></span><br><span class="line">     UCHAR SpareByte;</span><br><span class="line">&#125; KWAIT_BLOCK, *PKWAIT_BLOCK;</span><br></pre></td></tr></table></figure>
+
+<h5 id="DISPATCH-HEADER结构体"><a href="#DISPATCH-HEADER结构体" class="headerlink" title="_DISPATCH_HEADER结构体"></a>_DISPATCH_HEADER结构体</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> _<span class="title">DISPATCHER_HEADER</span></span></span><br><span class="line"><span class="class">　　&#123;</span></span><br><span class="line">  　　  UCHAR Type;  　　　　　　　<span class="comment">//类型（Event-0或1，互斥体-2，信号量-5，Thread....）　　　</span></span><br><span class="line">　　    UCHAR Absolute;  </span><br><span class="line">　　    UCHAR Size;     </span><br><span class="line">　　    UCHAR Inserted;       　</span><br><span class="line"> 　　   LONG SignalState;     　　<span class="comment">//是否有信号，&gt;0表示有信号</span></span><br><span class="line">  　　  <span class="class"><span class="keyword">struct</span> _<span class="title">LIST_ENTRY</span> <span class="title">WaitListHead</span>;</span> <span class="comment">//存储了当前可等待对象被别的线程等待的所有等待块的双向链表头</span></span><br><span class="line">　　&#125;; </span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="一个线程等待多个对象"><a href="#一个线程等待多个对象" class="headerlink" title="一个线程等待多个对象"></a>一个线程等待多个对象</h4><p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211006113218139.png" alt="image-20211006113218139"></p>
+<h4 id="等待网"><a href="#等待网" class="headerlink" title="等待网"></a>等待网</h4><p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211006120626662.png" alt="image-20211006120626662"></p>
+<p>一个线程只要进入等待链表，他一定在这张网上挂着(Sleep的线程也在这个网上挂着，只是他等待的可等待对象是定时器)</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<li>等待中的线程，一定在等待链表中（KiWaitListHead），同时也一定在这张网上（KTHREAD+5C的位置不为空）</li>
+<li>线程通过调用WaitForSingleObject/WaitForMultipleObjects函数将自己挂到这张网上。</li>
+<li>线程什么时候会再次执行取决于其他线程何时调用相关函数，等待对象不同调用的函数也不同。</li>
+</ol>
+<h3 id="WaitForSingleObject函数分析"><a href="#WaitForSingleObject函数分析" class="headerlink" title="WaitForSingleObject函数分析"></a>WaitForSingleObject函数分析</h3><p>无论可等待对象是何种类型，线程都是通过：</p>
+<ul>
+<li>WaitForSingleObject</li>
+<li>WaitForMultipleObjects</li>
+</ul>
+<p>进入等待状态的，这两个函数是理解线程等待与唤醒机制的核心</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//WaitForSingleObject对应的内核函数：</span></span><br><span class="line"><span class="function">NTSTATUS __stdcall <span class="title">NtWaitForSingleObject</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">HANDLE Handle, </span></span></span><br><span class="line"><span class="params"><span class="function">BOOLEAN Alertable, </span></span></span><br><span class="line"><span class="params"><span class="function">PLARGE_INTEGER Timeout)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>参数解读：</p>
+<ul>
+<li>Handle—用户层传递的等待对象的句柄</li>
+<li>Alertable—对应KTHREAD结构体的Alertable属性，若为1，在插入用户APC的时候，该线程将被吵醒</li>
+<li>Timeout—超时时间</li>
+</ul>
+<h4 id="WaitForSingleObject函数流程"><a href="#WaitForSingleObject函数流程" class="headerlink" title="WaitForSingleObject函数流程"></a>WaitForSingleObject函数流程</h4><ol>
+<li>调用ObReferenceObjectByHandle函数，通过对象句柄找到等待对象结构体地址</li>
+<li>调用KeWaitForSingleObject函数，进入关键循环</li>
+</ol>
+<h5 id="KeWaitForSingleObject函数流程"><a href="#KeWaitForSingleObject函数流程" class="headerlink" title="KeWaitForSingleObject函数流程"></a>KeWaitForSingleObject函数流程</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//_KTHREAD结构体节选：</span></span><br><span class="line">+<span class="number">0x05c</span> WaitBlockList    : Ptr32 _KWAIT_BLOCK<span class="comment">//指向第一个等待块</span></span><br><span class="line">       <span class="comment">//下面两成员是同一个位置，表示的是同一个成员的两种情况</span></span><br><span class="line">   +<span class="number">0x060</span> WaitListEntry    : _LIST_ENTRY<span class="comment">//当线程处于等待状态的时候指向等待链表(8字节)</span></span><br><span class="line">   +<span class="number">0x060</span> SwapListEntry    : _SINGLE_LIST_ENTRY<span class="comment">//等待线程的内存交换到硬盘的信息记录在该链表(8字节)</span></span><br><span class="line">   +<span class="number">0x068</span> WaitTime         : Uint4B</span><br><span class="line">   +<span class="number">0x06c</span> BasePriority     : Char<span class="comment">//优先级，其初始值是所属进程的BasePriority值（KPROCESS-&gt;BasePriority），以后可以通过KeSetBasePriorityThread()函数重新设定</span></span><br><span class="line">   +<span class="number">0x06d</span> DecrementCount   : UChar</span><br><span class="line">   +<span class="number">0x06e</span> PriorityDecrement : Char</span><br><span class="line">   +<span class="number">0x06f</span> Quantum          : Char<span class="comment">//当前线程剩余的CPU时间片</span></span><br><span class="line">   +<span class="number">0x070</span> WaitBlock        : [<span class="number">4</span>] _KWAIT_BLOCK<span class="comment">//等待哪个对象</span></span><br></pre></td></tr></table></figure>
+
+<p>+0x070的WaitBlock预留4个等待块空间。第四个等待块空间是固定给定时器使用的。</p>
+<p>如果等待的可等待对象数量&gt;3个，那么就会新分配空间，而不是存在默认的这个空间。</p>
+<h6 id="上半部分"><a href="#上半部分" class="headerlink" title="上半部分"></a>上半部分</h6><ol>
+<li>向_KTHREAD(+70)位置的等待块赋值</li>
+<li>如果超时时间不为0（这种情况下，即使只等待一个可等待对象，也实际上是等待两个对象，这种情况下<strong>第四个等待块位置是固定给定时器用的</strong>），KTHREAD(+70)第四个等待块与第一个等待块关联起来：第一个等待块指向第四个等待块，第四个等待块指向第一个等待块<code>（就是等待块中的NextWaitBlock成员指向，如果不设置超时时间，NextWaitBlock是指向自己）</code></li>
+<li>KTHREAD（+5c）指向第一个_KWAIT_BLOCK</li>
+<li>进入关键循环</li>
+</ol>
+<h6 id="下半部分"><a href="#下半部分" class="headerlink" title="下半部分"></a>下半部分</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)<span class="comment">//每次线程被其他线程唤醒，都要进入这个循环</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(符合激活条件)<span class="comment">//1.超时 2.等待对象SingnalState&gt;0(有信号)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//1.修改SignalState(不一定是清零，针对不同可等待对象类型的处理方式不一样)</span></span><br><span class="line">        <span class="comment">//2.退出循环</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(第一次执行)</span><br><span class="line">            将当前线程的等待块挂到等待对象的链表(WaitListHead)中;（挂入等待网）</span><br><span class="line">        <span class="comment">//将自己挂入等待队列(KiWaitListHead)</span></span><br><span class="line">        <span class="comment">//切换线程...再次获得CPU时，从这里开始执行</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//1.线程将自己的+5C位置清零(从等待网中摘出该线程,线程真正复活)</span></span><br><span class="line"><span class="comment">//2.释放_KWAIT_BLOCK所占内存</span></span><br></pre></td></tr></table></figure>
+
+<p>KeWaitForSingleObject和KeWaitForMultipleObjects的唯一区别仅仅：是前者挂一到两个等待块，后者挂多个等待块。</p>
+<p><strong>【重点理解】</strong>妙不可言</p>
+<p>不同的等待对象，用不同的方法来修改_DISPATCHER_HEADER(SignalState)比如：如果可等待对象是EVENT，其他线程通常使用SetEvent来设置SignalState = 1,并且将正在等待该对象的其他线程临时唤醒，也就是从等待链表（KiWaitListHead）中摘出来(线程临时复活)。但是，SetEvent函数并不会将线程从等待网上摘下来，是否要下来由当前线程自己来决定。</p>
+<h6 id="强制唤醒"><a href="#强制唤醒" class="headerlink" title="强制唤醒"></a>强制唤醒</h6><p>在APC专题，当我们插入一个用户APC时（Alertable=1），当前线程是可以被唤醒的，当并不是真正的唤醒。因为，如果当前的线程在等待网上，执行完用户APC后，仍然要进入等待状态</p>
+<p>不同的可等待对象的两点差异：</p>
+<ol>
+<li><em>符合激活条件处</em>不同</li>
+<li><em>修改SignalState处</em>不同</li>
+</ol>
+<h1 id="事件EVENT"><a href="#事件EVENT" class="headerlink" title="事件EVENT"></a>事件EVENT</h1><p>事件的**_DISPATCHER_HEADER中的Type为0或1**</p>
+<p>线程在进入临界区之前会调用WaitForSingleObject或者WaitForMultipleObjects</p>
+<ul>
+<li>此时如果有信号，线程会从函数中退出并进入临界区</li>
+<li>如果没有信号，那么线程将自己挂入等待链表，然后将自己挂入等待网，最后<strong>切换线程</strong>。</li>
+</ul>
+<p>其他线程在适当的时候，调用方法修改被等待对象的SignalState为有信号（不同的等待对象会调用不同的函数），并将等待该对象的其他线程从等待链表中摘掉，这样，当前线程便会在WaitForSingleObject或者WaitForMultipleObjects恢复执行（在哪线程切换在哪恢复执行），如果符合唤醒条件此时会修改SignalState的值，并将自己从等待网上摘下来，此时的线程才是<strong>真正的唤醒。</strong></p>
+<p><strong>创建事件对象</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CreateEvent(<span class="literal">NULL</span>,TRUE,FALSE,<span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上面函数的第三个参数就是代表了<strong>信号初始值</strong>，即_DISPATCHER_HEADER中的SignalState成员。</li>
+<li>第二个参数本质就是_DISPATCHER_HEADER中的Type成员(反值)<ul>
+<li><strong>TRUE</strong>—-通知类型对象—-_DISPATCHER_HEADER中的Type成员为<strong>0</strong></li>
+<li><strong>FALSE</strong>—-事件同步对象—-_DISPATCHER_HEADER中的Type成员为<strong>1</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="SetEvent函数分析"><a href="#SetEvent函数分析" class="headerlink" title="SetEvent函数分析"></a>SetEvent函数分析</h2><p>SetEvent对应的内核函数：<strong>KeSetEvent</strong></p>
+<ol>
+<li>修改信号值SignalState为1</li>
+<li>判断对象类型<ul>
+<li>如果类型为<strong>通知类型对象</strong>(0)，<strong>唤醒所有等待该状态的线程</strong></li>
+<li>如果类型为<strong>事件同步对象</strong>(1)，<strong>从链表头找到第一个</strong>WaitType为1(表示等待一个而非等待全部)的等待块</li>
+</ul>
+</li>
+</ol>
+<p>节选KeWaitForSingleObject单内核版</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">.text:00405168 loc_405168:                             ; CODE XREF: KeWaitForSingleObject(x,x,x,x,x)+C0↓j</span><br><span class="line">.text:00405168                 cmp     [ebx+_DISPATCHER_HEADER.SignalState], 0 ; 判断等待对象的SignalState</span><br><span class="line">.text:0040516C                 jle     loc_40527A      ; &lt;=0就是没有信号，不符合激活条件</span><br><span class="line">.text:00405172                 mov     al, [ebx+_DISPATCHER_HEADER.Type] ; 若大于0，取事件类型</span><br><span class="line">.text:00405174                 mov     cl, al</span><br><span class="line">.text:00405176                 and     cl, 7</span><br><span class="line">.text:00405179                 cmp     cl, 1</span><br><span class="line">.text:0040517C                 jz      loc_40E778      ; 这个类型决定了函数如何处理SignalState  type为1则跳，跳转后就是SignalState清零再跳回loc_405189</span><br><span class="line">.text:0040517C                                         ;</span><br><span class="line">.text:0040517C                                         ; 信号量：递减</span><br><span class="line">.text:0040517C                                         ;</span><br><span class="line">.text:0040517C                                         ; 事件：0--不修改SignalState   1--SignalState清零</span><br><span class="line">.text:00405182                 cmp     al, 5</span><br><span class="line">.text:00405184                 jnz     short loc_405189</span><br><span class="line">.text:00405186                 dec     [ebx+_DISPATCHER_HEADER.SignalState] ; 将SignalState减1</span><br><span class="line">.text:00405189</span><br><span class="line">.text:00405189 loc_405189:                             ; CODE XREF: KeWaitForSingleObject(x,x,x,x,x)-1C↑j</span><br><span class="line">.text:00405189                                         ; KiScanReadyQueues()+EF↓j</span><br><span class="line">.text:00405189                 xor     edi, edi</span><br><span class="line">.text:0040518B                 jmp     loc_4052AC</span><br><span class="line">.text:00405248 loc_405248:                             ; CODE XREF: KeWaitForSingleObject(x,x,x,x,x)+126↓j</span><br><span class="line">.text:00405248                 mov     edx, [ebp+Timeout] ; 关键循环</span><br><span class="line">.text:0040524B</span><br><span class="line">.text:0040524B loc_40524B:                             ; CODE XREF: KeWaitForSingleObject(x,x,x,x,x)+3B0EC↓j</span><br><span class="line">.text:0040524B                                         ; KeWaitForSingleObject(x,x,x,x,x)+3B0F5↓j</span><br><span class="line">.text:0040524B                 cmp     [esi+_KTHREAD.ApcState.KernelApcPending], 0 ; 每次循环先判断是否有内核APC，有就先执行</span><br><span class="line">.text:0040524F                 mov     eax, ds:_KeTickCount.LowPart</span><br><span class="line">.text:00405254                 mov     [esi+68h], eax  ; 修改当前线程的等待时间</span><br><span class="line">.text:00405257                 jnz     loc_4461F7      ; 如果有内核APC就去执行</span><br><span class="line">.text:0040525D</span><br><span class="line">.text:0040525D loc_40525D:                             ; CODE XREF: KeWaitForSingleObject(x,x,x,x,x)+4105D↓j</span><br><span class="line">.text:0040525D                 cmp     [ebx+_DISPATCHER_HEADER.Type], 2 ; 判断等待对象的类型是否是互斥体(2为互斥体)</span><br><span class="line">.text:00405260                 jnz     loc_405168      ; 如果不是互斥体，跳转</span><br><span class="line">.text:00405266                 mov     eax, [ebx+4]</span><br><span class="line">.text:00405269                 test    eax, eax</span><br><span class="line">.text:0040526B                 jg      loc_40D364</span><br><span class="line">.text:00405271                 cmp     esi, [ebx+18h]</span><br><span class="line">.text:00405274                 jz      loc_40D364</span><br><span class="line">.text:0040527A</span><br><span class="line">.text:0040527A loc_40527A:                             ; CODE XREF: KeWaitForSingleObject(x,x,x,x,x)-34↑j</span><br><span class="line">.text:0040527A                                         ; .text:00446222↓j</span><br><span class="line">.text:0040527A                 cmp     [ebp+Alertable], 0</span><br><span class="line">.text:0040527E                 jnz     loc_42BB51      ; 如果Alertable为1，说明可以强制唤醒</span><br><span class="line">.text:00405284                 cmp     [ebp+WaitMode], 0</span><br><span class="line">.text:00405288                 jz      short loc_405294</span><br><span class="line">.text:0040528A                 cmp     byte ptr [esi+4Ah], 0</span><br><span class="line">.text:0040528E                 jnz     loc_440534</span><br></pre></td></tr></table></figure>
+
+<h1 id="信号量Semaphore"><a href="#信号量Semaphore" class="headerlink" title="信号量Semaphore"></a>信号量Semaphore</h1><p>信号量的**_DISPATCHER_HEADER中的Type为5**</p>
+<p>上面讲到了事件(EVENT)对象，线程在进入临界区之前会通过调用WaitForSingleObject或者WaitForMultipleObjects来判断当前的事件对象是否有信号（SignalState&gt;0），只有当事件对象有信号时，才可以进入临界区(只允许一个线程进入直到退出的一段代码)，不单指用EnterCriticalSection()和LeaveCriticalSection()而形成的临界区)。</p>
+<p>通过我们对EVENT对象相关函数的分析，我们发现，EVENT对象的SignalState值只有2种可能：</p>
+<ul>
+<li> 1  ====  初始化时    或者    调用SetEvent时</li>
+<li> 0  ====  WaitForSingleObject，WaitForMultipleObjects，ResetEvent</li>
+</ul>
+<p>信号量和事件的区别</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211010140706561.png" alt="image-20211010140706561"></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211010140736176.png" alt="image-20211010140736176"></p>
+<p>信号量和事件的区别在于，<strong>信号量允许同时有几个线程进入临界区</strong></p>
+<h2 id="创建信号量对象"><a href="#创建信号量对象" class="headerlink" title="创建信号量对象"></a>创建信号量对象</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HANDLE WINAPI CreateSemaphore（</span><br><span class="line">  _In_opt_ LPSECURITY_ATTRIBUTES lpSemaphoreAttributes，</span><br><span class="line">  _In_ LONG lInitialCount，<span class="comment">//！！！</span></span><br><span class="line">  _In_ LONG lMaximumCount，<span class="comment">//！！！</span></span><br><span class="line">  _In_opt_ LPCTSTR lpName</span><br><span class="line">）;</span><br></pre></td></tr></table></figure>
+
+<p>内核结构解析：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">_KSEMAPHORE</span><br><span class="line">   +<span class="number">0x000</span> Header           : _DISPATCHER_HEADER</span><br><span class="line">   +<span class="number">0x010</span> Limit            : Int4B	<span class="comment">//lMaximumCount，SignalState允许设置的最大值</span></span><br><span class="line">_DISPATCHER_HEADER</span><br><span class="line">   +<span class="number">0x000</span> Type 			<span class="comment">//信号量类型为5</span></span><br><span class="line">   +<span class="number">0x001</span> Absolute </span><br><span class="line">   +<span class="number">0x002</span> Size</span><br><span class="line">   +<span class="number">0x003</span> Inserted</span><br><span class="line">   +<span class="number">0x004</span> SignalState		<span class="comment">//lInitialCount，信号量的这个值可以设置为比1大的值</span></span><br><span class="line">   +<span class="number">0x008</span> WaitListHead</span><br></pre></td></tr></table></figure>
+
+<h2 id="释放信号量对象"><a href="#释放信号量对象" class="headerlink" title="释放信号量对象"></a>释放信号量对象</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ReleaseSemaphore();</span><br><span class="line">-&gt;NtReleaseSemaphore();</span><br><span class="line">-&gt;KeReleaseSemaphore();(核心功能)</span><br></pre></td></tr></table></figure>
+
+<p>KeReleaseSemaphore功能描述</p>
+<ol>
+<li>设置SignalState = SignalState +N(参数)</li>
+<li>通过WaitListHead找到所有等待当前信号量的线程，从等待链表中摘掉</li>
+</ol>
+<h1 id="互斥体MUTANT"><a href="#互斥体MUTANT" class="headerlink" title="互斥体MUTANT"></a>互斥体MUTANT</h1><h2 id="为什么要有互斥体的两个原因"><a href="#为什么要有互斥体的两个原因" class="headerlink" title="为什么要有互斥体的两个原因"></a>为什么要有互斥体的两个原因</h2><ol>
+<li>解决等待对象被遗弃</li>
+<li>允许重入</li>
+</ol>
+<h3 id="解决等待对象被遗弃"><a href="#解决等待对象被遗弃" class="headerlink" title="解决等待对象被遗弃"></a>解决等待对象被遗弃</h3><p>互斥体（MUTANT）与事件(EVENT)和信号量(SEMAPHORE)一样，都可以用来进行线程的同步控制。</p>
+<p>但需要指出的是，这几个对象都是内核对象，这就意味着，通过这些对象可以进行<strong>跨进程的线程同步控制</strong>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    A进程中的X线程---》</span><br><span class="line">    					等待对象Z</span><br><span class="line">    B进程中的Y线程---》</span><br><span class="line"><span class="comment">//存在一种极端情况：</span></span><br><span class="line">如果B进程的Y线程还没有来得及调用修改SignalState的函数（如SetEvent）</span><br><span class="line">那么等待对象Z将被遗弃，这也就意味着X线程将永远等下去！</span><br></pre></td></tr></table></figure>
+
+<p>互斥体可以有效解决该问题，系统会处理</p>
+<p>当进程意外结束的时候，操作系统的函数会找到正在被当前线程占用的互斥体</p>
+<h3 id="允许重入"><a href="#允许重入" class="headerlink" title="允许重入"></a>允许重入</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">WaitForSingleObject(A)<span class="comment">//A走完这一步已经无信号了</span></span><br><span class="line">	.....</span><br><span class="line">	WaitForMultipleObjects(A,B,C)<span class="comment">//由于A已经没信号了，所以A就会卡死在这里：这种情况叫死锁</span></span><br><span class="line">	.....</span><br><span class="line"><span class="comment">//A对象如果是互斥体就不会出现死锁，因为互斥体允许重复进入临界区。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="互斥体结构"><a href="#互斥体结构" class="headerlink" title="互斥体结构"></a>互斥体结构</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_KMUTANT						</span><br><span class="line">   +<span class="number">0x000</span> Header           : _DISPATCHER_HEADER	</span><br><span class="line">   +<span class="number">0x010</span> MutantListEntry  : _LIST_ENTRY	<span class="comment">//圈着所有互斥体的链表头</span></span><br><span class="line">   +<span class="number">0x018</span> OwnerThread      : Ptr32 _KTHREAD   <span class="comment">//正在拥有互斥体的线程,如果没信号，但有所属线程，依然可以进入临界区</span></span><br><span class="line">   +<span class="number">0x01c</span> Abandoned        : UChar		<span class="comment">//是否已经被放弃不用</span></span><br><span class="line">   +<span class="number">0x01d</span> ApcDisable       : UChar	<span class="comment">//是否禁用内核APC</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="创建互斥体"><a href="#创建互斥体" class="headerlink" title="创建互斥体"></a>创建互斥体</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HANDLE <span class="title">CreateMutexW</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  LPSECURITY_ATTRIBUTES lpMutexAttributes,<span class="comment">//指向安全属性的指针</span></span></span></span><br><span class="line"><span class="params"><span class="function">  BOOL                  bInitialOwner,<span class="comment">//初始化互斥体对象的所有者</span></span></span></span><br><span class="line"><span class="params"><span class="function">  LPCWSTR               lpName<span class="comment">//指向互斥对象名的指针</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CreateMutex  -&gt;  NtCteateMutant(ApcDisable==<span class="number">0</span>)(内核函数)  -&gt; KeInitializeMutant(内核函数)<span class="comment">//3环调用CreateMutex宏一定创建的是Mutant(ApcDisable==0)</span></span><br><span class="line">NtCreateMutex(ApcDisable==<span class="number">1</span>)(内核函数)   -&gt; KeInitializeMutex(内核函数)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ApcDisable==0    NtCteateMutant</li>
+<li>ApcDisable==1    NtCreateMutex</li>
+</ul>
+<p>KeInitializeMutant主要功能：初始化MUTANT结构体</p>
+<ol>
+<li> MUTANT.Header.Type=2;</li>
+<li>MUTANT.Header.SignalState=bInitialOwner?0:1;</li>
+<li>MUTANT.Header.OwnerThread=当前线程 or NULL;</li>
+<li>MUTANT.Header.Abandoned=0;</li>
+<li>MUTANT.Header.ApcDisable=0;</li>
+<li>bInitialOwner == TRUE 将当前互斥体挂入到当前线程的互斥体链表（KTHREAD+0x10 MutantListHead）</li>
+</ol>
+<h2 id="释放互斥体"><a href="#释放互斥体" class="headerlink" title="释放互斥体"></a>释放互斥体</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL WINAPI <span class="title">ReleaseMutex</span><span class="params">(HANDLE hMutex)</span></span>;</span><br><span class="line"></span><br><span class="line">ReleaseMutex -&gt; NtReleaseMutant -&gt; KeReleaseMutant</span><br><span class="line">正常调用时:</span><br><span class="line">MUTANT.Header.SignalState++;</span><br><span class="line">如果SignalState=<span class="number">1</span> 说明其他进程可用了，将该互斥体从线程互斥体链表中摘除</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何解决等待对象被遗弃问题"><a href="#如何解决等待对象被遗弃问题" class="headerlink" title="如何解决等待对象被遗弃问题"></a>如何解决等待对象被遗弃问题</h2><p>意外终结的时候，系统会调用如下函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">MmUnloadSystemImage-&gt;KeReleaseMutant(X,Y,Abandon,Z)<span class="comment">//这个调用流程的Abandon一定是TRUE，表示释放的是非正常释放的互斥体</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span>(Abandon == <span class="literal">false</span>)<span class="comment">//正常调用</span></span><br><span class="line">&#123;</span><br><span class="line">    MUTANT.Header.SignalState++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    MUTANT.Header.SignalState == <span class="number">1</span>;</span><br><span class="line">    MUTANT.OwnerThread == <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(MUTANT.Header.SignalState == <span class="number">1</span>);</span><br><span class="line">&#123;</span><br><span class="line">    MUTANT.OwnerThread == <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//从当前线程互斥体链表中将当前互斥体移除</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="KeWaitForSingleObject函数分析"><a href="#KeWaitForSingleObject函数分析" class="headerlink" title="KeWaitForSingleObject函数分析"></a>KeWaitForSingleObject函数分析</h1>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/%E5%86%85%E6%A0%B8/" rel="tag"># 内核</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2022/05/05/%E7%A1%AC%E7%BC%96%E7%A0%81/" rel="prev" title="硬编码">
+      <i class="fa fa-chevron-left"></i> 硬编码
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2022/05/05/%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F/" rel="next" title="保护模式">
+      保护模式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%AD%89%E5%BE%85"><span class="nav-number">1.</span> <span class="nav-text">事件等待</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text">单行代码原子操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LOCK%E6%8C%87%E4%BB%A4"><span class="nav-number">1.1.1.</span> <span class="nav-text">LOCK指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.</span> <span class="nav-text">多行代码原子操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%B7%B1%E5%AE%9E%E7%8E%B0%E4%B8%B4%E7%95%8C%E5%8C%BA%EF%BC%9A"><span class="nav-number">1.2.1.</span> <span class="nav-text">自己实现临界区：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">实验</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.1.1.1.</span> <span class="nav-text">问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%BF%9B%E5%87%BA%E4%B8%B4%E7%95%8C%E5%8C%BA%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">系统进出临界区函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows%E8%87%AA%E6%97%8B%E9%94%81"><span class="nav-number">1.3.</span> <span class="nav-text">Windows自旋锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%AD%89%E5%BE%85%E4%B8%8E%E5%94%A4%E9%86%92"><span class="nav-number">1.4.</span> <span class="nav-text">线程等待与唤醒</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows%E7%9A%84%E7%AD%89%E5%BE%85%E4%B8%8E%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6"><span class="nav-number">1.4.1.</span> <span class="nav-text">Windows的等待与唤醒机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E7%AD%89%E5%BE%85%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">可等待对象的差异</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%BA%BF%E7%A8%8B%E7%AD%89%E5%BE%85%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">一个线程等待一个对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#KWAIT-BLOCK%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">1.4.1.2.1.</span> <span class="nav-text">_KWAIT_BLOCK结构体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DISPATCH-HEADER%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">1.4.1.2.2.</span> <span class="nav-text">_DISPATCH_HEADER结构体</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%BA%BF%E7%A8%8B%E7%AD%89%E5%BE%85%E5%A4%9A%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">一个线程等待多个对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AD%89%E5%BE%85%E7%BD%91"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">等待网</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.4.1.5.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WaitForSingleObject%E5%87%BD%E6%95%B0%E5%88%86%E6%9E%90"><span class="nav-number">1.4.2.</span> <span class="nav-text">WaitForSingleObject函数分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WaitForSingleObject%E5%87%BD%E6%95%B0%E6%B5%81%E7%A8%8B"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">WaitForSingleObject函数流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#KeWaitForSingleObject%E5%87%BD%E6%95%B0%E6%B5%81%E7%A8%8B"><span class="nav-number">1.4.2.1.1.</span> <span class="nav-text">KeWaitForSingleObject函数流程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%8A%E5%8D%8A%E9%83%A8%E5%88%86"><span class="nav-number">1.4.2.1.1.1.</span> <span class="nav-text">上半部分</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%8B%E5%8D%8A%E9%83%A8%E5%88%86"><span class="nav-number">1.4.2.1.1.2.</span> <span class="nav-text">下半部分</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E5%94%A4%E9%86%92"><span class="nav-number">1.4.2.1.1.3.</span> <span class="nav-text">强制唤醒</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6EVENT"><span class="nav-number">2.</span> <span class="nav-text">事件EVENT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SetEvent%E5%87%BD%E6%95%B0%E5%88%86%E6%9E%90"><span class="nav-number">2.1.</span> <span class="nav-text">SetEvent函数分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8FSemaphore"><span class="nav-number">3.</span> <span class="nav-text">信号量Semaphore</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.1.</span> <span class="nav-text">创建信号量对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8A%E6%94%BE%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.2.</span> <span class="nav-text">释放信号量对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%92%E6%96%A5%E4%BD%93MUTANT"><span class="nav-number">4.</span> <span class="nav-text">互斥体MUTANT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E4%BA%92%E6%96%A5%E4%BD%93%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%8E%9F%E5%9B%A0"><span class="nav-number">4.1.</span> <span class="nav-text">为什么要有互斥体的两个原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E7%AD%89%E5%BE%85%E5%AF%B9%E8%B1%A1%E8%A2%AB%E9%81%97%E5%BC%83"><span class="nav-number">4.1.1.</span> <span class="nav-text">解决等待对象被遗弃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%81%E8%AE%B8%E9%87%8D%E5%85%A5"><span class="nav-number">4.1.2.</span> <span class="nav-text">允许重入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%92%E6%96%A5%E4%BD%93%E7%BB%93%E6%9E%84"><span class="nav-number">4.2.</span> <span class="nav-text">互斥体结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BA%92%E6%96%A5%E4%BD%93"><span class="nav-number">4.3.</span> <span class="nav-text">创建互斥体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8A%E6%94%BE%E4%BA%92%E6%96%A5%E4%BD%93"><span class="nav-number">4.4.</span> <span class="nav-text">释放互斥体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E7%AD%89%E5%BE%85%E5%AF%B9%E8%B1%A1%E8%A2%AB%E9%81%97%E5%BC%83%E9%97%AE%E9%A2%98"><span class="nav-number">4.5.</span> <span class="nav-text">如何解决等待对象被遗弃问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#KeWaitForSingleObject%E5%87%BD%E6%95%B0%E5%88%86%E6%9E%90"><span class="nav-number">5.</span> <span class="nav-text">KeWaitForSingleObject函数分析</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZEROKO14</p>
+  <div class="site-description" itemprop="description">你好，欢迎来到ZEROKO14的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZEROKO14</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+  <script defer src="/blog/lib/three/three.min.js"></script>
+    <script defer src="/blog/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

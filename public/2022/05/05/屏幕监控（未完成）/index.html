@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="暂未完成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="屏幕监控">
+<meta property="og:url" content="http://zeroko14.gitee.io/blog/2022/05/05/%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89/index.html">
+<meta property="og:site_name" content="ZEROKO14的个人博客">
+<meta property="og:description" content="暂未完成">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200629210350955.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200629210443728.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200629220911038.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200629221800688.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200629222151897.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200629225519380.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200701220817504.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200701222427183.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200703214918912.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200703220301477.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200703221337098.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200703222637540.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200703225012357.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200704141305778.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705220044433.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705220725333.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705221146483.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705222632266.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705222819636.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705224557331.png">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/image-20200705225703780.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705230842481.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705231803595.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200706224314705.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200706225404931.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200706225517899.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200706225931768.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200706230522339.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200706222750126.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200706231402383.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708212230973.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708212503703.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708213526235.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708213554905.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708213858036.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708222249636.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200709145317675.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200709152845052.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708225159793.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708225630542.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708225859588.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708230605872.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708230851498.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708231112490.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708231153005.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708231818426.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708232251247.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708232355053.png">
+<meta property="og:image" content="https://img-blog.csdn.net/20160908212141364">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200903150113297.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200903150831035.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200903151002842.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200903184510234.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200903184738008.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200903185802722.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200903185922805.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200904135213693.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200904140334505.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200904145357478.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200904200111380.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200906163427470.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200906191901389.png">
+<meta property="article:published_time" content="2022-05-05T07:29:14.991Z">
+<meta property="article:modified_time" content="2022-05-05T07:29:14.994Z">
+<meta property="article:author" content="ZEROKO14">
+<meta property="article:tag" content="开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200629210350955.png">
+
+<link rel="canonical" href="http://zeroko14.gitee.io/blog/2022/05/05/%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>屏幕监控 | ZEROKO14的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ZEROKO14的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">zeroko14's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/2022/05/05/%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="ZEROKO14">
+      <meta itemprop="description" content="你好，欢迎来到ZEROKO14的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZEROKO14的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          屏幕监控
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-05 15:29:14" itemprop="dateCreated datePublished" datetime="2022-05-05T15:29:14+08:00">2022-05-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>暂未完成</p>
+<span id="more"></span>
+
+<h1 id="管道实现本地CMD"><a href="#管道实现本地CMD" class="headerlink" title="管道实现本地CMD"></a>管道实现本地CMD</h1><p>创建进程的3中方式：</p>
+<ol>
+<li>WinExec()</li>
+<li>ShellExecute()</li>
+<li>CreateProcess()</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200629210350955.png" alt="image-20200629210350955"></p>
+<p>项目如下：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200629210443728.png" alt="image-20200629210443728"></p>
+<p>进程间通信有很多种</p>
+<ol>
+<li>管道（1.匿名管道2.命名管道）</li>
+<li>邮件槽</li>
+<li>剪切板</li>
+<li>消息</li>
+<li>共享内存</li>
+<li>本地socket</li>
+<li>同步事件</li>
+<li>文件</li>
+<li>等等</li>
+</ol>
+<p>父子间通信，通过命令行相当于单次通信（由父到子）</p>
+<p>今天用管道。</p>
+<p>匿名管道（Anonymous Pipes）是在父进程和子进程间单向传输数据的一种未命名的管道，只能在本地计算机中使用，而不可用于网络间的通信。</p>
+<p>linux      a–&gt;|  –&gt;b   a程序通过管道给b程序数据流</p>
+<p>windows  netstat -an  | find “80”</p>
+<p>上面的解释：netstat -an输出所有端口的结果通过管道”|把结果作为输入，给find “80”命令来处理</p>
+<p>windows管道（英语pipe）：将a程序的数据发给b程序</p>
+<p>CreatePipe  创建管道的api</p>
+<p>该函数创建一个匿名管道，返回一个读和写管道的句柄</p>
+<p>匿名管道是单向的，命名管道是双向的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">HANDLE hReadPipe;<span class="comment">//读句柄</span></span><br><span class="line">HANDLE hWritePipe;<span class="comment">//写句柄</span></span><br><span class="line"><span class="keyword">bool</span> bRet=<span class="built_in">CreatePipe</span>(&amp;hReadPipe,<span class="comment">//读句柄</span></span><br><span class="line">                &amp;hWritePipe,<span class="comment">//写句柄</span></span><br><span class="line">                <span class="literal">NULL</span>,</span><br><span class="line">                <span class="number">0</span>);<span class="comment">//一次能写多大</span></span><br><span class="line"><span class="keyword">if</span>(!bRet)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;失败\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">chat szBuf[<span class="number">256</span>];</span><br><span class="line"><span class="built_in">memset</span>(szBuf,<span class="number">0</span>,<span class="number">256</span>);</span><br><span class="line"><span class="keyword">int</span> nLength=<span class="built_in">strlen</span>(<span class="string">&quot;Hello World!&quot;</span>)+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> nWritedLength=<span class="number">0</span>;<span class="comment">//一旦成功，写了多大</span></span><br><span class="line"><span class="built_in">memset</span>(szBuf,<span class="string">&quot;Hello World!&quot;</span>,nLength);</span><br><span class="line">bRet=<span class="built_in">WriteFile</span>(hWritePipe,<span class="comment">//管道和文件都是用同一个api来操作的</span></span><br><span class="line">          szBuf,<span class="comment">//写什么</span></span><br><span class="line">          nLength,<span class="comment">//写多大</span></span><br><span class="line">          (LPDWORD)&amp;nWritedLength,<span class="comment">//写成功多少</span></span><br><span class="line">          <span class="literal">NULL</span>);<span class="comment">//异步相关(NULL表示同步，意思是他没写完，则程序一直在这等)</span></span><br><span class="line"><span class="keyword">if</span>(!bRet)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;失败\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编程的套路就是调用api。</p>
+<p>读管道：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> szOutBuf[<span class="number">256</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="built_in">ReadFile</span>(hReadPipe,<span class="comment">//读句柄</span></span><br><span class="line">szOutBuf,<span class="comment">//读在哪</span></span><br><span class="line"><span class="number">256</span>,<span class="comment">//读取的最大字节数。</span></span><br><span class="line">&amp;nReadBytes,</span><br><span class="line"><span class="literal">NULL</span>);</span><br><span class="line"><span class="keyword">if</span>(!bRet)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;失败\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>读的时候是堵塞的，解决卡死的两种方案：</p>
+<ol>
+<li><p>针对堵塞</p>
+<p>（1）关掉阻塞，异步的写法 必须使用命名管道CreateNamedPipe</p>
+<p>（2）管道里面的数据读不够255个字节，但是你又要求他读255个字节，一直读不够，就会在这里等待，即卡死。使用PeekNamedPipe来判断管道中是否还有剩余字节数。PeekNamedPipe也可用于匿名管道。</p>
+</li>
+</ol>
+<p>因为cmd程序不是我们自己写的，因此并不能在cmd中去读管道，因此我们在创建cmd进程的时候将匿名管道导入标准输入</p>
+<p>标准输入输出抽象成设备</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200629220911038.png" alt="image-20200629220911038"></p>
+<p>命名管道较为复杂，写法有点像网络通信。</p>
+<p>因此此处用两个匿名管道来实现。</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200629221800688.png" alt="image-20200629221800688"></p>
+<p>为了远程向cmd传命令行参数，替换cmd的标准输入输出。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">STARTUPINFO si = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">si.cb=<span class="built_in"><span class="keyword">sizeof</span></span>(STARTUPINFO);</span><br><span class="line">si.dwFlags=STARTF_USESTDHANDLES;<span class="comment">//标志位，开启句柄替换的标志。不开启底下输入输出换管道就没有意义</span></span><br><span class="line">si.hStdInput=hCmdReadPipe;<span class="comment">//输入改成管道</span></span><br><span class="line">si.hStdOutput=hCmdWritePipe;<span class="comment">//输出改成管道</span></span><br><span class="line">si.hStdError=hCmdWritePipe;<span class="comment">//标准错误输出改成管道输出</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200629222151897.png" alt="image-20200629222151897"></p>
+<p>TRUE，代表父进程创建子进程的时候允许他继承，即子进程才能继承父进程管道的句柄。不允许继承的话，cmd没法访问管道句柄。</p>
+<p>管道也要打开继承属性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SECURITY_ATTRIBUTES sa=&#123;0&#125;;</span><br><span class="line">sa.nLength=sizeof(SECURITY_ATTRIBUTES );</span><br><span class="line">sa.bInheritHandle=TRUE;</span><br></pre></td></tr></table></figure>
+
+<p>搞定了以后，把我们的数据通过WriteFile写入hMyWritePipe，通过ReadFile读hMyReadPipe</p>
+<p>只用操作hMyWritePipe和hMyReadPipe。</p>
+<p>\r是换行，\n是回车</p>
+<p>写命令不要带零结尾！！！！</p>
+<h3 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h3><p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200629225519380.png" alt="image-20200629225519380"></p>
+<p>学有余力的话加个UI（MFC  QT  libcef/JS）</p>
+<p>代码在管道仿cmd</p>
+<p>坑点：</p>
+<ol>
+<li>CreatePipe的读写句柄写反了</li>
+<li>PreTranslateMessage中对回车添加响应</li>
+<li>GetDlgItemTextA(this-&gt;m_hWnd,IDC_EDIT1, szInBuf,256);通过这个方式读到了char*字符串，转换为CString进行处理和显示，之所以要转换为char*而不直接转换为CString是因为ReadFile等api要求char*变量。</li>
+<li>OnInitDialog中添加初始化代码。$err,hr用于监视api返回结果</li>
+</ol>
+<p>疑惑点待解决：</p>
+<p>ReadFile的堵塞问题。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/36064645">https://zhuanlan.zhihu.com/p/36064645</a></p>
+<p>现存bug是有时候读取不完整，每次cmd还没来得及给管道输入东西，我们已经先把东西读出来了。因此会出现读取不完整的情况</p>
+<h1 id="网络编程开发初步"><a href="#网络编程开发初步" class="headerlink" title="网络编程开发初步"></a>网络编程开发初步</h1><p>需要一台具备公网ip的服务器</p>
+<p>家用的宽带相当于运营商把你放在一台交换机之下的内网中，因此没有公网ip</p>
+<h2 id="没有公网ip怎么办呢？"><a href="#没有公网ip怎么办呢？" class="headerlink" title="没有公网ip怎么办呢？"></a>没有公网ip怎么办呢？</h2><p>在局域网中通内网的另外一条普通的电脑</p>
+<h2 id="通信的api"><a href="#通信的api" class="headerlink" title="通信的api"></a>通信的api</h2><p>套接字编程（socket一种编程标准）（linux和windows提供的接口是一样的）</p>
+<p>但是windows比较恶心一点，让你用windows api进行一些初始化。</p>
+<p>tcp 可靠通信     udp 不可靠通信（包在传送中的丢失我们不处理就叫不可靠）</p>
+<p>TCP协议：由操作系统帮我们做好了包的发送和接收的可靠处理，我们写代码不用考虑包究竟到没到目标电脑，中间存不存在丢失。tcp由于全世界所有电脑都在使用，所以他会考虑普通的应用需求，可能速度会有影响。</p>
+<p>UDP协议：直接利用底层数据包传输，不考虑丢包问题，因此用户使用时，可能会丢包。用这个要自己考虑丢包问题。</p>
+<p>总之tcp降低了速度换取了可靠，解决办法：使用第三方的可靠的库，就是使用了UDP，但是自己在用户层处理了可靠的传输，KCP。</p>
+<p>网络里比较好的书：wireshark抓包分析实战，wireshark网络分析就这么简单</p>
+<h2 id="使用tcp通信："><a href="#使用tcp通信：" class="headerlink" title="使用tcp通信："></a>使用tcp通信：</h2><p>需要两端：服务端      客户端</p>
+<p>C/S架构</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200701220817504.png" alt="image-20200701220817504"></p>
+<p>B/S（浏览器）是一种特殊的C/S架构</p>
+<p>还有一种架构，p2p架构</p>
+<p>网络编程相关的api：</p>
+<h4 id="使用tcp通信：-1"><a href="#使用tcp通信：-1" class="headerlink" title="使用tcp通信："></a>使用tcp通信：</h4><h5 id="Server端主体api"><a href="#Server端主体api" class="headerlink" title="Server端主体api"></a>Server端主体api</h5><ol>
+<li>socket 创建套接字</li>
+<li>bind/listen 绑定端口/监听</li>
+<li>accept 接收请求</li>
+<li>recv/send 收包/发包</li>
+<li>closesocket 关闭套接字</li>
+</ol>
+<h5 id="Client端主体api"><a href="#Client端主体api" class="headerlink" title="Client端主体api"></a>Client端主体api</h5><ol>
+<li>socket 创建套接字</li>
+<li>connect 连接服务器</li>
+<li>recv/send 收包/发包</li>
+<li>closesocket 关闭套接字</li>
+</ol>
+<p>可靠体现在哪里？</p>
+<p>客户端向服务端发起连接，服务端接收请求，就建立了<strong>可靠连接</strong>，就可以互相收发包了。</p>
+<h4 id="包含通信相关的头文件："><a href="#包含通信相关的头文件：" class="headerlink" title="包含通信相关的头文件："></a>包含通信相关的头文件：</h4><p>#include&lt;winsock2.h&gt;</p>
+<h4 id="包含通信相关的库文件：-告诉连接器连接的时候要找ws2-32-lib，这样你就不用在linker的lib设置里指定这个lib了。"><a href="#包含通信相关的库文件：-告诉连接器连接的时候要找ws2-32-lib，这样你就不用在linker的lib设置里指定这个lib了。" class="headerlink" title="包含通信相关的库文件：(告诉连接器连接的时候要找ws2_32.lib，这样你就不用在linker的lib设置里指定这个lib了。)"></a>包含通信相关的库文件：(告诉连接器连接的时候要找ws2_32.lib，这样你就不用在linker的lib设置里指定这个lib了。)</h4><p>#pragma comment(lib,”ws2_32.lib”)</p>
+<h3 id="服务端："><a href="#服务端：" class="headerlink" title="服务端："></a>服务端：</h3><p>**p.s.**windows很特殊，需要单独调用api来进行网络的初始化和反初始化。</p>
+<p>如下：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200701222427183.png" alt="image-20200701222427183"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//windows很特殊，需要单独调用api来进行网络的初始化和反初始化</span></span><br><span class="line">	WORD wVersionRequested;</span><br><span class="line">	WSADATA wsaData;</span><br><span class="line">	<span class="keyword">int</span> err;</span><br><span class="line">	wVersionRequested = <span class="built_in">MAKEWORD</span>(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">	<span class="comment">//初始化操作</span></span><br><span class="line">	err = <span class="built_in">WSAStartup</span>(wVersionRequested, &amp;wsaData);</span><br><span class="line">	<span class="keyword">if</span> (err!=<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//此处添加自己的代码</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">//...</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//反初始化操作</span></span><br><span class="line">	<span class="built_in">WSACleanup</span>();</span><br></pre></td></tr></table></figure>
+
+<p>socket 创建套接字</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SOCKET s=<span class="built_in">socket</span>(</span><br><span class="line">    AF_INET,<span class="comment">//INET协议簇</span></span><br><span class="line">    SOCK_STREAM,<span class="comment">//表示TCP协议   SOCK_DGRAM表示udp</span></span><br><span class="line">    <span class="number">0</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">if</span>(s==INVALID_SOCKET)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>bind/listen 绑定端口/监听</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//netsata -an打印被占用的端口</span></span><br><span class="line"><span class="comment">//端口 3389：RDP 80：HTTP端口，端口用于区分哪个应用的数据，只是个编号，范围是0-65535（因为在封包中占两个字节）</span></span><br><span class="line"><span class="comment">//一个应用程序可使用多少个端口？</span></span><br><span class="line"><span class="comment">//看见有多少个tcp连接</span></span><br><span class="line"><span class="comment">//源ip：源端口   ----------------  目标ip：目标端口</span></span><br><span class="line"><span class="comment">//sockaddr addr;//用于描述ip和端口的结构体，但不好用</span></span><br><span class="line">sockaddr_in addr;<span class="comment">//用与替换sockaddr结构体，两者一致，可以混着用，但这个更好用。</span></span><br><span class="line">addr.sin_family=AF_INET;<span class="comment">//写死</span></span><br><span class="line">addr.sin_addr.S_un.S_addr=<span class="built_in">inet_addr</span>(<span class="string">&quot;0.0.0.0&quot;</span>);<span class="comment">//固定套路，写0.0.0.0表示当前所有网卡的地址都可以接受外界的连接,如果写死一个ip就只可以接受该ip的地址。想要连外网,局域网最好写0.0.0.0</span></span><br><span class="line">addr.sin_port=<span class="built_in">htons</span>(<span class="number">10087</span>);<span class="comment">//有个坑。网络字节序（大端）和本地字节序（小端）。比如说端口由两个字节组成，网络的一般是大端排序，所以要htons()函数：host to network short(short表示2个字节，long表示4个字节)</span></span><br><span class="line"><span class="keyword">int</span> nLength=<span class="built_in"><span class="keyword">sizeof</span></span>(sockaddr_in);</span><br><span class="line"><span class="keyword">int</span> nRet=<span class="built_in">bind</span>(<span class="comment">//挑选一个本机其他软件没有使用的端口来绑定,固定的端口不能使用</span></span><br><span class="line">    s,<span class="comment">//套接字</span></span><br><span class="line">    (sockaddr*)&amp;addr,<span class="comment">//用于描述ip和端口的结构体</span></span><br><span class="line">    nLength</span><br><span class="line">);</span><br><span class="line"><span class="keyword">if</span>(SOCKET_ERROR==nRet)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//一个端口等别人来连接，要是很多人来就让他排队</span></span><br><span class="line"><span class="comment">//监听</span></span><br><span class="line">nRet=<span class="built_in">listen</span>(s,</span><br><span class="line">       <span class="number">5</span> );<span class="comment">//同一瞬间来5个，排队容量</span></span><br><span class="line"><span class="keyword">if</span>(SOCKET_ERROR==nRet)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//绑定只是在软件里面绑定起来了，listen才是真正在操作系统开了个端口，所以会弹防火墙允许访问的请求对话框。</span></span><br></pre></td></tr></table></figure>
+
+<p>accept 接收请求（阻塞等到有人连接）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//我们的服务端可以同时连接很多客户端</span></span><br><span class="line">sockaddr_in remoteAddr;<span class="comment">//对方的ip和端口的信息</span></span><br><span class="line">remoteAddr.sin_family=AF_INET;</span><br><span class="line"><span class="keyword">int</span> addrlen=<span class="built_in"><span class="keyword">sizeof</span></span>(sockaddr_in);</span><br><span class="line"><span class="comment">//返回的socket sClient是专门用于和客户端通信的socket,一般是开线程循环接收</span></span><br><span class="line">SOCKET sClient=<span class="built_in">accept</span>(s,<span class="comment">//表示连接socket专门用于连接</span></span><br><span class="line">       (sockaddr_in*)&amp;remoteAddr,</span><br><span class="line">       &amp;addrlen</span><br><span class="line">      );</span><br><span class="line"><span class="keyword">if</span>(sClient==INVALID_SOCKET)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>recv/send 收包/发包</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一旦成功建立连接，那么接下来就是收包和发包的过程（不用考虑丢包的问题）</span></span><br><span class="line"><span class="keyword">int</span> nSendedBytes=<span class="built_in">send</span>(sClient,<span class="string">&quot;Hello World&quot;</span>,<span class="built_in">strlen</span>(<span class="string">&quot;Hello World&quot;</span>)+<span class="number">1</span>,<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>closesocket 关闭套接字</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">closesocket</span>(s);</span><br></pre></td></tr></table></figure>
+
+<h3 id="客户端："><a href="#客户端：" class="headerlink" title="客户端："></a>客户端：</h3><p>connect 连接服务器</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sockaddr_in addr;<span class="comment">//用与替换sockaddr结构体，两者一致，可以混着用，但这个更好用。</span></span><br><span class="line">addr.sin_family=AF_INET;<span class="comment">//写死</span></span><br><span class="line">addr.sin_addr.S_un.S_addr=<span class="built_in">inet_addr</span>(<span class="string">&quot;0.0.0.0&quot;</span>);<span class="comment">//连谁填谁，目标ip</span></span><br><span class="line">addr.sin_port=<span class="built_in">htons</span>(<span class="number">10087</span>);<span class="comment">//目标端口  有个坑。网络字节序（大端）和本地字节序（小端）。比如说端口由两个字节组成，网络的一般是大端排序，所以要htons()函数：host to network short(short表示2个字节，long表示4个字节)</span></span><br><span class="line"><span class="keyword">int</span> nLength=<span class="built_in"><span class="keyword">sizeof</span></span>(sockaddr_in);</span><br><span class="line"><span class="keyword">int</span> nRet=<span class="built_in">connect</span>(<span class="comment">//挑选一个本机其他软件没有使用的端口来绑定,固定的端口不能使用</span></span><br><span class="line">    s,<span class="comment">//套接字</span></span><br><span class="line">    (sockaddr*)&amp;addr,<span class="comment">//用于描述ip和端口的结构体</span></span><br><span class="line">    nLength</span><br><span class="line">);</span><br><span class="line"><span class="keyword">if</span>(SOCKET_ERROR==nRet)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>recv/send 收包/发包</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一旦成功建立连接，那么接下来就是收包和发包的过程（不用考虑丢包的问题）</span></span><br><span class="line"><span class="keyword">char</span> szBuf[<span class="number">256</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> nRet=<span class="built_in">recv</span>(s,szBuf,<span class="number">256</span>,<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span>(nRet==<span class="number">0</span>)<span class="comment">//这里的判断比较复杂</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//表示tcp断开了</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;    </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(nRet&gt;<span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//返回值&gt;0 表示成功的字节</span></span><br><span class="line">    <span class="built_in">printf</span>(szBuf);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>closesocket 关闭套接字</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">closesocket</span>(s);</span><br></pre></td></tr></table></figure>
+
+<h3 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h3><p>在socket编程双方聊天文件夹中</p>
+<p>难点总结：</p>
+<ol>
+<li>第一，服务端发送的套接字是accept中的sClient</li>
+<li>接收字符串的时候用getchar才能控制用户输入的长度，getchar多余的键也会进入缓冲区，需要吃掉多余输入。send发送传入的指针，因此最后必须要\0结尾。</li>
+</ol>
+<p>（1）用fflush(stdin);//清空输入缓冲区：兼容性很差，某些环境无效</p>
+<p>（2）<strong>使用getchar不断获取缓冲区内的内容，直到缓冲区内空为止，这种方法很有效，建议使用，C primer 上也介绍了这种方法。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> ((c = <span class="built_in">getchar</span>()) != EOF &amp;&amp; c != <span class="string">&#x27;\n&#x27;</span>);<span class="comment">//不停地使用getchar()获取缓冲中字符，直到获取的c是“\n”或文件结尾符EOF为止  </span></span><br></pre></td></tr></table></figure>
+
+<p>(3) setbuf(stdin, NULL);//使stdin输入流由默认缓冲区转为无缓冲区  </p>
+<h3 id="tcp原理"><a href="#tcp原理" class="headerlink" title="tcp原理:"></a>tcp原理:</h3><p>Wireshark是一个抓包工具包（流经网卡的数据包，本质上是一个qt编写的界面）</p>
+<p>这个软件用的是winpcap，别人写好的库来实现的抓包，流经网卡的数据被这个库拦截下来进行分析，wireShark给了他一个界面</p>
+<p>数据包根据他的包的结构可以划分多种类型（其实就是根据协议划分）</p>
+<p>协议：数据格式的规范</p>
+<p>网络协议很复杂，因此，每一层解决一个问题</p>
+<p>网络协议分层：OSI七层模型（实际上现在是5层）</p>
+<p>计算机里的两种思维：1.分层思维，2.缓存思维</p>
+<p>客户端5层：</p>
+<p>应用层（软件自己定义的协议/http，smtp，pop3，ftp…）(解决业务逻辑问题)</p>
+<p>传输层 (TCP/UDP)（解决通信可靠性的问题）UDP的包只有8个字节 TCP有20个字节</p>
+<p>网络层 （IP）（ipv4有2的32次方个ip，ipv6解决两台终端寻找通信的问题，数据包寻路，用于找到目标终端）</p>
+<p>数据链路层（Mac地址，可以修改，设备的真正的物理地址，解决两台设备通信的问题（网线,wifi等），数据包的下一跳去哪里）</p>
+<p>物理层（物理的光电通信）（把数字信号变成电信号，或者光纤的话变成光信号）</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200703214918912.png" alt="image-20200703214918912"></p>
+<p>5层，从应用层给传输层最后到物理层，每层都会有相应的处理</p>
+<p>TCP：三次握手</p>
+<p>tcp在进行通信前需要建立连接，一旦连接建立完成，除非连接中断，否则数据可以完全达到另外一端。</p>
+<p>三次握手</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200703220301477.png" alt="image-20200703220301477"></p>
+<p>黑色代表包丢失了重传的部分</p>
+<p>下面就是三次握手(建立连接的过程)：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200703221337098.png" alt="image-20200703221337098"></p>
+<p>客户端—-&gt;服务端发请求包（SYN）</p>
+<p>服务端—-&gt;客户端发收到包（SYN+ACK）</p>
+<p>客户端—-&gt;服务端发确定包(ACK)</p>
+<p>狂发SYN包攻击。。。</p>
+<p>根据时间来判断包是否丢了。</p>
+<p>断开连接的四次发包，即四次挥手：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200703222637540.png" alt="image-20200703222637540"></p>
+<p>断开连接发起可以是客户端也可以是服务端</p>
+<p>客户端—-&gt;服务端发请求包（FIN）</p>
+<p>服务端—-&gt;客户端发收到包（ACK）==不在同一时间所以不能合并</p>
+<p>服务端—-&gt;客户端发确定包(FIN)=====不在同一时间所以不能合并</p>
+<p>-客户端—&gt;服务端发收到包（ACK）</p>
+<p>TCP的特性：数据流SOCK_STREAM代表的就是TCP</p>
+<p>一次发包发多少都可以总之形成一个流，但这过程会有一个粘包的过程。语音，图片，文本。。所有东西都粘在一起发。对方并不能处理，因此需要分割。一般来说是标志位+长度+数据来分割。这就是完全由自己定义的协议</p>
+<p>一般越复杂的软件，协议越复杂。</p>
+<h1 id="cmd与网络通信结合"><a href="#cmd与网络通信结合" class="headerlink" title="cmd与网络通信结合"></a>cmd与网络通信结合</h1><p>界面版 远程cmd功能 服务端控制客户端？</p>
+<p>客户端：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200703225012357.png" alt="image-20200703225012357"></p>
+<p>//开辟一个线程来处理读取管道内容并发送回服务端。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//头文件:#include&lt;thread&gt;</span></span><br><span class="line"><span class="comment">//创建了一个线程对象lamada表达式（C语言的东西,标准库的写法），括号里是线程的回调函数</span></span><br><span class="line"><span class="function"><span class="built_in">std</span>::thread <span class="title">thd</span><span class="params">([&amp;]()&#123;</span></span></span><br><span class="line"><span class="params"><span class="function">	<span class="comment">//表示程序拥有一个新的执行起点</span></span></span></span><br><span class="line"><span class="params"><span class="function">&#125;)</span></span></span><br><span class="line"><span class="function"><span class="comment">//避免主要线程结束时，子线程对象被销毁</span></span></span><br><span class="line"><span class="function">thd.<span class="title">detach</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>作业：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200704141305778.png" alt="image-20200704141305778"></p>
+<p>注意点：子线程改变ui可以通过线程传参或者自定义消息</p>
+<h1 id="键盘记录器（键盘钩子）"><a href="#键盘记录器（键盘钩子）" class="headerlink" title="键盘记录器（键盘钩子）"></a>键盘记录器（键盘钩子）</h1><h2 id="Hook-钩子"><a href="#Hook-钩子" class="headerlink" title="Hook 钩子"></a>Hook 钩子</h2><p>很多平台都能使用钩子的技术</p>
+<p>什么是钩子？</p>
+<p>针对第三方程序（执行流程通常不能改变，但是我们经常希望修改别人的代码）</p>
+<p>已经能成熟的帮我们完成注入的操作的框架：<br>frida<br>xposed（更偏重于底层）</p>
+<p>windows有一个api叫SetWindowsHookEx<br>api的好处就是很稳定，不会随系统变化而变化，缺点是太普通了，达不到高精尖的操作。</p>
+<h2 id="SetWindowsHookEx"><a href="#SetWindowsHookEx" class="headerlink" title="SetWindowsHookEx"></a>SetWindowsHookEx</h2><p>开始处理HOOK才做，钩子链，谁最后下钩子，谁最先被调用</p>
+<p>键盘钩子回调函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HHOOK g_hhk;</span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">KeyboardProc</span><span class="params">(<span class="keyword">int</span> code,WPARAM wParam,LPARAM lParam)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    </span><br><span class="line">    OutputDebugStringA(<span class="string">&quot;keyboard pressed!&quot;</span>);</span><br><span class="line">    <span class="comment">//调用下一个钩子,这是个规范</span></span><br><span class="line">    <span class="keyword">return</span> CallNextHookEx(g_hhk,code,wParam,lParam);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>SetWindowsHookEx本地钩子调用过程：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">g_hhk=SetWindowsHookEx(WH_KEYBOARD,<span class="comment">//钩子类型：键盘钩子</span></span><br><span class="line">                (HOOKPROC) KeyboardProc,<span class="comment">//回调函数</span></span><br><span class="line">                 <span class="literal">NULL</span>,<span class="comment">//表示第三方的注入DLL，全局钩子使用。比如说第三方本地程序钩子或者全局钩子，系统会自动帮我们把dll注入进目标程序</span></span><br><span class="line">    			GetCurrentThreadId())<span class="comment">//线程id，填0表示勾所有</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(g_hhk==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        AfxMessageBox(_T<span class="string">&quot;下钩子失败&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调试输出工具，输出调试字符串，方便调试:DebugView</p>
+<p>DebugView 中[中显示数字]代表进程id</p>
+<p>写日志，发行后的信息记录</p>
+<p>SetWindowsHookEx全局钩子调用过程：</p>
+<p>调试的时候：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705220044433.png" alt="image-20200705220044433"></p>
+<p>只会显示到输出界面，不会显示到DebugView中。</p>
+<p>虚拟键 我们的键盘在我们的windows中用一些宏来表示</p>
+<p>VK虚拟键码,0-9的键值等同于’0’~’9’，可以跳到定义查看。</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705220725333.png" alt="image-20200705220725333"></p>
+<p>钩子类型为键盘钩子的时候，wParam存的就是虚拟键码。</p>
+<p>lParam里存有能判断是否按下各种状态键没比如alt键等等的信息。</p>
+<p>全局钩子需要一个DLL（动态链接库）</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705221146483.png" alt="image-20200705221146483"></p>
+<p>查看pe的小工具，可用于查看导出函数</p>
+<p>msvcrt.DLL中存着各种c库函数</p>
+<p>我们需要编写一个键盘钩子回调函数，编写一个dll，将hook函数放到dll中，然后让操作系统去使用该dll，让其勾住其他进程的键盘消息。</p>
+<p>要编写两个程序：dll（钩子回调函数）+exe（调用SetWindowsHookEx）</p>
+<p>dll中代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">HHOOK g_hhk;</span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">KeyboardProc</span><span class="params">(<span class="keyword">int</span> code,WPARAM wParam,LPARAM lParam)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    </span><br><span class="line">    OutputDebugStringA(<span class="string">&quot;keyboard pressed!&quot;</span>);</span><br><span class="line">    <span class="comment">//调用下一个钩子,这是个规范</span></span><br><span class="line">    <span class="keyword">return</span> CallNextHookEx(g_hhk,code,wParam,lParam);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//dll导出函数提供给其他程序使用</span></span><br><span class="line"><span class="function">BOOL <span class="title">MySetHook</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	g_hhk=SetWindowsHookEx(WH_KEYBOARD,<span class="comment">//钩子类型：键盘钩子</span></span><br><span class="line">                (HOOKPROC) KeyboardProc,<span class="comment">//回调函数</span></span><br><span class="line">                 g_hModule,<span class="comment">//在dll初始化处获得该句柄</span></span><br><span class="line">    			<span class="number">0</span>);<span class="comment">//线程id，填0表示勾所有</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(g_hhk==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        AfxMessageBox(_T(<span class="string">&quot;下钩子失败&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	 <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;	</span><br></pre></td></tr></table></figure>
+
+<p>写个导出文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LIBRARY</span><br><span class="line">EXPORTS</span><br><span class="line">	MySetHook</span><br></pre></td></tr></table></figure>
+
+<p>导出成功：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705222632266.png" alt="image-20200705222632266"></p>
+<p>exe调用：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">MySetHook</span><span class="params">()</span></span>;<span class="comment">//函数声明</span></span><br><span class="line">BOOL bRet=MySetHook();</span><br><span class="line"><span class="keyword">if</span>(!bRet)&#123;</span><br><span class="line">     AfxMessageBox(_T(<span class="string">&quot;下钩子失败&quot;</span>));</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705222819636.png" alt="image-20200705222819636"></p>
+<p>链接时候出错，因此要告诉程序dll所在位置：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib,<span class="meta-string">&quot;../../bin/KeyHook.lib&quot;</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>最终结果，有的时候能勾住，有的时候勾不住，一般而言，大部分都能勾住，但是由于微软api的原因，有部分勾不到，比如说qq的账号密码就勾不到。</p>
+<h2 id="作业：-1"><a href="#作业：-1" class="headerlink" title="作业："></a>作业：</h2><p>客户端按下某键盘，传送到服务端记录</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705224557331.png" alt="image-20200705224557331"></p>
+<p>最简单的跨进程通信方式：发送消息WM_COPYDATA</p>
+<p><img src="C:\Users\Administrator\Desktop\image-20200705225703780.png" alt="image-20200705225703780"></p>
+<p>winMain 有界面的程序的入口函数</p>
+<p>创建一个结构体，用于将数据传输:</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705230842481.png" alt="image-20200705230842481"></p>
+<p>dll中发送消息的函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SendMessage(g_hwnd,<span class="comment">//向目标窗口发送消息</span></span><br><span class="line">			WM_COPYDATA,</span><br><span class="line">			(WPARAM)g_hwnd,<span class="comment">//当前自己的窗口</span></span><br><span class="line">            (LPARAM)&amp;cds <span class="comment">//创建一个结构体，用于将数据传输</span></span><br><span class="line">			)</span><br></pre></td></tr></table></figure>
+
+<p>客户端的处理:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PCOPYDATASTRUCT pcds=(PCOPYDATASTRUCT)lParam;</span><br><span class="line"><span class="comment">//lParam.lpData表示我们需要的数据</span></span><br></pre></td></tr></table></figure>
+
+<p>先做：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200705231803595.png" alt="image-20200705231803595"></p>
+<p>作业注意点：</p>
+<ol>
+<li>把dll拷到exe目录或者环境设置目录。用于解决找不到dll，无法执行程序弹框</li>
+</ol>
+<p>MFC的自定义消息不会！</p>
+<h2 id="消息及粘包处理"><a href="#消息及粘包处理" class="headerlink" title="消息及粘包处理"></a>消息及粘包处理</h2><p>1)动态库发送数据给客户端：</p>
+<p>windows消息机制</p>
+<p>WM_COPYDATA消息</p>
+<p>创建一个窗口是需要有一定的步骤</p>
+<ol>
+<li>注册窗口类</li>
+<li>创建窗口</li>
+<li>消息循环（消息机制）（windows解决做什么和什么时候做的事情）解耦合，高内聚，低耦合</li>
+<li>窗口回调函数</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">WM_COPYDATA <span class="title">OnCopyData</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+
+<p>消息比较多，所以消息会排队—-消息队列</p>
+<p>钩子和消息的关系：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//消息循环</span></span><br><span class="line"><span class="keyword">while</span>（<span class="literal">true</span>）&#123;</span><br><span class="line">	<span class="comment">//从消息队列中取消息</span></span><br><span class="line">	GetMessage WM_KEYDOWN</span><br><span class="line">	<span class="comment">//派发消息</span></span><br><span class="line">	DispatchMessage</span><br><span class="line">	<span class="comment">//派发之前先去查找窗口</span></span><br><span class="line">	<span class="comment">//判别有没有消息钩子，如果有则先调用</span></span><br><span class="line">	<span class="comment">//分发消息给消息回调函数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2)客户端将数据发送给服务端</p>
+<p>需要处理粘包问题（结构体要注意字节对齐问题）</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200706224314705.png" alt="image-20200706224314705"></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200706225404931.png" alt="image-20200706225404931"></p>
+<p>上方的data[1]实际上就是个指针</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200706225517899.png" alt="image-20200706225517899"></p>
+<p>发包：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200706225931768.png" alt="image-20200706225931768"></p>
+<p>收包处理的时候：要自己完善，并没有处理粘包和断包的问题</p>
+<p>需要封装一个函数，收取指定字节大小的数据，先收8字节长度的头部，再根据头部中的长度，收取后面的字节数。recv函数你写要收多少，但实际上他并不能收到那么多个字节。</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200706230522339.png" alt="image-20200706230522339"></p>
+<p>3)C++中map 哈希表：（空间换时间）</p>
+<p>键           键值</p>
+<p>key——–value</p>
+<p>VK_F1     “VK_F1”</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//头文件：#include &lt;map&gt;</span></span><br><span class="line">std::map&lt;<span class="keyword">int</span>,std::string&gt; m;</span><br><span class="line">m.<span class="built_in">insert</span>(std::pair&lt;<span class="keyword">int</span>,std::string&gt;(VK_F1,<span class="string">&quot;F1&quot;</span>));</span><br><span class="line">m.<span class="built_in">insert</span>(std::pair&lt;<span class="keyword">int</span>,std::string&gt;(VK_F2,<span class="string">&quot;F2&quot;</span>));</span><br><span class="line">m.<span class="built_in">insert</span>(std::pair&lt;<span class="keyword">int</span>,std::string&gt;(VK_F3,<span class="string">&quot;F3&quot;</span>));</span><br><span class="line">std::cout&lt;&lt;m[VK_F1].<span class="built_in">c_str</span>()&lt;&lt;std::endl;</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>一般有的窗口对全局钩子没有反应是句柄的问题：dll被加载的时候写这个代码：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200706222750126.png" alt="image-20200706222750126"></p>
+<p>作业：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200706231402383.png" alt="image-20200706231402383"></p>
+<p>出bug点：试图用strcat来拼接结构体。。</p>
+<h1 id="GIT代码管理"><a href="#GIT代码管理" class="headerlink" title="GIT代码管理"></a>GIT代码管理</h1><p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708212230973.png" alt="image-20200708212230973"></p>
+<p>设置系统环境变量（也可以不需要）</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708212503703.png" alt="image-20200708212503703"></p>
+<p>cmd中到代码文件夹路径打git clone 代码网址（从github等git仓中下载源文件到本地）</p>
+<p>进到根目录项目名称文件夹下用git status查看当前被管理的工程文件状态（变红表示变红文件被修改了）</p>
+<p>git add .表示将修改的文件添加进来，方便下次提交（.表示所有文件）</p>
+<p>记录这个代码谁提交的</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708213526235.png" alt="image-20200708213526235"></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708213554905.png" alt="image-20200708213554905"></p>
+<p>提交了以后就会进到一个vi编辑器，按冒号键，打q！，回车强制退出</p>
+<p>git commit -m “注释内容”将文件保存起来，将我们的文件交给git保存，但仅仅是保存在本机，还没传到github（类似于做了一个备份）</p>
+<p>git push提交给github服务器（git push -f强制推送）</p>
+<p>有一个.git文件夹表示.git所在文件夹已被git接管</p>
+<p>每次push代码前点击.def文件清一下数据，尤其是类似.db这种比较大的文件</p>
+<p>结果：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708213858036.png" alt="image-20200708213858036"></p>
+<p>右键项目，点git gui here能看到你的操作记录</p>
+<p>FORK代表完全拷贝别人代码的</p>
+<p>国内的coding腾讯的也可以。</p>
+<h1 id="程序规范"><a href="#程序规范" class="headerlink" title="程序规范"></a>程序规范</h1><p>程序的引入库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#ifdef _DEBUG</span><br><span class="line">#pragma comment(lib,&quot;..\debug\..&quot;)</span><br><span class="line">#else</span><br><span class="line">#pragma comment(lib,&quot;..\release\..&quot;)</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+<p>lib只需要编译时候指定的，而dll是跑程序的时候要用的</p>
+<p>mfc：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708222249636.png" alt="image-20200708222249636"></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200709145317675.png" alt="image-20200709145317675"></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200709152845052.png" alt="image-20200709152845052"></p>
+<p>注意：msdn中methon后缀的就是mfc的方法</p>
+<p>要装两个东西，msdn和git</p>
+<p>线程过程函数直接放到类里面静态函数，为了封装性</p>
+<p>服务器线程中不断的accept</p>
+<p>会话结构体</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708225159793.png" alt="image-20200708225159793"></p>
+<p>每创建了一个会话后的处理（还）</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708225630542.png" alt="image-20200708225630542"></p>
+<p>因为这个map会被很多线程访问，所以要互斥体上锁</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708225859588.png" alt="image-20200708225859588"></p>
+<p>完善：（还要完善）</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708230605872.png" alt="image-20200708230605872"></p>
+<p>还需要创建线程来接收数据</p>
+<p>这种线程创建方式可以使用外界的变量</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708230851498.png" alt="image-20200708230851498"></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708231112490.png" alt="image-20200708231112490"></p>
+<p>这个写法出作用域的话会析构对象，就相当于析构了锁对象</p>
+<p>常规的锁是这样写的：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708231153005.png" alt="image-20200708231153005"></p>
+<p>插入行</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708231818426.png" alt="image-20200708231818426"></p>
+<p>上面的inet_ntoa是char版，所以会乱码</p>
+<p>宽窄字符转换方式：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708232251247.png" alt="image-20200708232251247"></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200708232355053.png" alt="image-20200708232355053"></p>
+<p>监听ip和端口号可以做成配置文件</p>
+<h1 id="粘包-屏幕查看功能"><a href="#粘包-屏幕查看功能" class="headerlink" title="粘包+屏幕查看功能"></a>粘包+屏幕查看功能</h1><h2 id="屏幕功能"><a href="#屏幕功能" class="headerlink" title="屏幕功能"></a>屏幕功能</h2><p>客户端：不断地截图</p>
+<p>服务端：不断地接收截图并显示</p>
+<p>第一步先做win项目本地截图显示到程序中进行测试。</p>
+<p>GDI api</p>
+<h3 id="涉及到的api及基本概念"><a href="#涉及到的api及基本概念" class="headerlink" title="涉及到的api及基本概念"></a>涉及到的api及基本概念</h3><h4 id="窗口-—-窗口句柄"><a href="#窗口-—-窗口句柄" class="headerlink" title="窗口 — 窗口句柄"></a>窗口 — 窗口句柄</h4><p>windows操作系统全都是窗口，桌面也是窗口</p>
+<p>窗口句柄：32位的数据（64位系统也一样），操作系统用来表示窗口的数据</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取桌面窗口句柄的api:</span></span><br><span class="line">HWND hDesktopWnd=<span class="built_in">GetDesktopWindow</span>();</span><br></pre></td></tr></table></figure>
+
+<h4 id="DC-—-设备上下文："><a href="#DC-—-设备上下文：" class="headerlink" title="DC — 设备上下文："></a>DC — 设备上下文：</h4><p>就是windows对显示设备的一种封装，想要把东西显示出来就需要创建一个dc</p>
+<p>DC句柄：表示我们创建的dc</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取桌面的窗口句柄：</span></span><br><span class="line">HDC hDeskDC=<span class="built_in">GetDC</span>(hDesktopWnd);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个兼容所有设备的桌面的dc（也叫内存dc）的api：</span></span><br><span class="line">HDC hMemDC=<span class="built_in">CreateCompatibleDC</span>(hDeskDC);</span><br></pre></td></tr></table></figure>
+
+<p>dc的理解：用现实中的例子来理解可能更容易些。如果你喜欢画画，你得先准备了画布，画笔，颜料……画画的环境搭建好了，你就可以画画了。这个画画的环境，就是DC。</p>
+<p>p.s.兼容dc（内存dc）：兼容所有设备的dc，是一个虚拟的内存设备上下文,我们对它进行绘图等操作,不会显示在屏幕或打印机上,而我们可以在它完成之后,拷贝到屏幕上或打印机上来输出,这样我们可以避免因为操作而给屏幕带来的闪烁(其实就相当于开了一个自己的画布，并且画布的数据还能通过内存dc取出来)</p>
+<p>用现实中的例子来理解可能更容易些。如果你喜欢画画，你得先准备了画布，画笔，颜料……画画的环境搭建好了，你就可以画画了。这个画画的环境，就是DC。</p>
+<p>也就是GDI是画在DC上的,DC再显示在屏幕上，DC为GDI基础。通过GDI绘制出来时看不到的也就是不显示的,只在内存上的一副图片,这幅图可以通过DC绘制在设备上</p>
+<p>// 所谓的双缓冲就是把所有的绘制工作都做在一个内存DC上。<br>// 最后一次拷到屏幕DC上，只能有一次</p>
+<p>p.s.这里所强调的“一次”；是不要连续将几个内存DC的内容都拷到屏幕DC上，这样没有起到双缓冲的效果。如果你搞了很多个内存DC,想把这些东西都显示出来，那你应该先把这多个内存DC的内容同时拷到另外一个内存DC上，再把这个内存DC的内容拷到屏幕DC上。</p>
+<p>准备好画布以后，还要准备如下：</p>
+<h4 id="画笔，画刷，位图等等6种GDI对象"><a href="#画笔，画刷，位图等等6种GDI对象" class="headerlink" title="画笔，画刷，位图等等6种GDI对象"></a>画笔，画刷，位图等等6种GDI对象</h4><p>位图：描述了整张图片的每个像素点对应rgb颜色，</p>
+<p>R： 255种颜色=8位2进制=2位16进制=1个字节  每个像素点的颜色信息要占4个字节，因为还有透明度</p>
+<p>因此一张全屏幕位图多大：1920*1080*4字节=8100KB=大概7.91MB(实际上位图并不是每个点都存，有优化方式可以节省空间)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取当前桌面分辨率(通过该函数可以拿到系统的某些属性，函数名翻译为：获取系统指标)</span></span><br><span class="line"><span class="keyword">int</span> nWidth=<span class="built_in">GetSystemMetrics</span>(SM_CXFULLSCREEN);</span><br><span class="line"><span class="keyword">int</span> nHeight=<span class="built_in">GetSystemMetrics</span>(SM_CYFULLSCREEN);</span><br><span class="line"><span class="comment">//我们需要将我们的桌面有关的图片存放在hMenDC的位图中</span></span><br><span class="line"><span class="comment">//创建一个和桌面有关的内存位图：</span></span><br><span class="line">HBITMAP hBitMap=<span class="built_in">CreateCompatibleBitmap</span>(hDeskDC,nWidth,nHeight);</span><br><span class="line"><span class="comment">//将我们的内存dc与位图相关联</span></span><br><span class="line"><span class="built_in">SelectObject</span>(hMemDC,hBitMap);</span><br><span class="line"><span class="comment">//将当前桌面DC的具体数据拷贝给内存DC（桌面DC瞬间万变的，拷贝某一瞬间的所有信息，按位拷贝）</span></span><br><span class="line">BOOL bRet = <span class="built_in">BitBlt</span>(</span><br><span class="line">		hMemDC,<span class="comment">//拷贝到内存dc中</span></span><br><span class="line">		<span class="number">0</span>,<span class="comment">//拷贝到内存dc中哪里，左上角x坐标</span></span><br><span class="line">		<span class="number">0</span>,<span class="comment">//拷贝到内存dc中哪里，左上角y坐标</span></span><br><span class="line">		nWidth,<span class="comment">//拷贝多宽</span></span><br><span class="line">		nHeight,<span class="comment">//拷贝多高</span></span><br><span class="line">		hDeskDC,<span class="comment">//从哪拷贝，源头dc</span></span><br><span class="line">		<span class="number">0</span>,<span class="comment">//拷贝源头dc的哪里，左上角x坐标</span></span><br><span class="line">		<span class="number">0</span>,<span class="comment">//拷贝源头dc的哪里，左上角y坐标</span></span><br><span class="line">		SRCCOPY<span class="comment">//按字节拷贝模式</span></span><br><span class="line">		);</span><br><span class="line"><span class="keyword">int</span> nBufSize = nWidth*nHeight * <span class="number">4</span>;<span class="comment">//位图的所需字节空间</span></span><br><span class="line"><span class="keyword">char</span>* pBitMapBuf = <span class="keyword">new</span> <span class="keyword">char</span>[nBufSize];<span class="comment">//开辟那么大的内存空间用于存位图数据</span></span><br><span class="line"><span class="comment">//从内存DC中获取位图数据</span></span><br><span class="line">LONG nBitSize=<span class="built_in">GetBitmapBits</span>(hBitMap,<span class="comment">//位图</span></span><br><span class="line">					 nBufSize,<span class="comment">//取多少</span></span><br><span class="line">					 pBitMapBuf);<span class="comment">//取出来的数据</span></span><br></pre></td></tr></table></figure>
+
+<p>p.s. 上诉过程的理解：物理HDC 设备底层会拥有显存等资源,但是兼容DC并没有给图像像素提供内存空间,因此兼容DC总是和BITMAP配合使用,这样一来,兼容DC就利用BITMAP的图像像素数据空间给自己提供类似于显存的内存空间.这样有很多好处,以来我们可以在加载图片后,在图片上利用DC的各种绘图功能.兼容DC在建立之初,只有1*1像素的尺寸,SelectObject选择bitmap以后才可以进行绘图。兼容DC，也就是用HANDLE memdc = CreateCompatibleDC所创建的，它没有资源或者说是存储空间，所以就把BITMAP扯了进来，你在memdc区域绘图的时候，需要一个位图结构来存储这些数据。就是用SelectObject将hBitmap选入到memdc连联起来，将hBitmap作来memdc的存储空间。HBITMAP不能从直接从屏幕设备描述表那里获得数据，它需要经过内存DC来将屏幕设备描述表中的数据读出来，并拷贝到HBITMAP中。</p>
+<p>加上异常处理后：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//显示桌面的数据</span></span><br><span class="line"><span class="function">BOOL <span class="title">GetMyCapture</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	HWND hDesktopWnd=<span class="literal">NULL</span>;</span><br><span class="line">	HDC hDeskDC = <span class="literal">NULL</span>;</span><br><span class="line">	HDC hMemDC = <span class="literal">NULL</span>;</span><br><span class="line">	HBITMAP hBitMap = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">char</span>* pBitMapBuf = <span class="literal">NULL</span>;</span><br><span class="line">	BOOL bResult = TRUE;</span><br><span class="line">	<span class="keyword">try</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//获取桌面的窗口句柄</span></span><br><span class="line">		hDesktopWnd = <span class="built_in">GetDesktopWindow</span>();</span><br><span class="line">		<span class="comment">//创建一个桌面dc</span></span><br><span class="line">		hDeskDC = <span class="built_in">GetDC</span>(hDesktopWnd);</span><br><span class="line">		<span class="keyword">if</span> (hDeskDC == <span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="string">&quot;error&quot;</span>;<span class="comment">//抛异常</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//创建一个桌面的内存dc</span></span><br><span class="line">		hMemDC = <span class="built_in">CreateCompatibleDC</span>(hDeskDC);</span><br><span class="line">		<span class="keyword">if</span> (hMemDC == <span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="string">&quot;error&quot;</span>;<span class="comment">//抛异常</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//获取当前桌面分辨率(通过该函数可以拿到系统的某些属性，函数名翻译为：获取系统指标)</span></span><br><span class="line">		<span class="keyword">int</span> nWidth = <span class="built_in">GetSystemMetrics</span>(SM_CXFULLSCREEN);</span><br><span class="line">		<span class="keyword">int</span> nHeight = <span class="built_in">GetSystemMetrics</span>(SM_CYFULLSCREEN);</span><br><span class="line">		<span class="comment">//我们需要将我们的桌面有关的图片存放在hMenDC的位图中</span></span><br><span class="line">		<span class="comment">//创建一个和桌面有关的内存位图：</span></span><br><span class="line">		hBitMap = <span class="built_in">CreateCompatibleBitmap</span>(hDeskDC, nWidth, nHeight);</span><br><span class="line">		<span class="keyword">if</span> (hBitMap==<span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="string">&quot;error&quot;</span>;<span class="comment">//抛异常</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//将我们的内存dc与位图相关联</span></span><br><span class="line">		<span class="built_in">SelectObject</span>(hMemDC, hBitMap);</span><br><span class="line">		BOOL bRet = <span class="built_in">BitBlt</span>(</span><br><span class="line">			hMemDC,<span class="comment">//拷贝到内存dc中</span></span><br><span class="line">			<span class="number">0</span>,<span class="comment">//拷贝到内存dc中哪里，左上角x坐标</span></span><br><span class="line">			<span class="number">0</span>,<span class="comment">//拷贝到内存dc中哪里，左上角y坐标</span></span><br><span class="line">			nWidth,<span class="comment">//拷贝多宽</span></span><br><span class="line">			nHeight,<span class="comment">//拷贝多高</span></span><br><span class="line">			hDeskDC,<span class="comment">//从哪拷贝，源头dc</span></span><br><span class="line">			<span class="number">0</span>,<span class="comment">//拷贝源头dc的哪里，左上角x坐标</span></span><br><span class="line">			<span class="number">0</span>,<span class="comment">//拷贝源头dc的哪里，左上角y坐标</span></span><br><span class="line">			SRCCOPY<span class="comment">//按字节拷贝模式</span></span><br><span class="line">			);</span><br><span class="line">		<span class="keyword">if</span> (!bRet)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> nBufSize = nWidth*nHeight * <span class="number">4</span>;<span class="comment">//位图的所需字节空间</span></span><br><span class="line">		pBitMapBuf = <span class="keyword">new</span> <span class="keyword">char</span>[nBufSize];<span class="comment">//开辟那么大的内存空间用于存位图数据</span></span><br><span class="line">		<span class="keyword">if</span> (pBitMapBuf == <span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//从内存DC中获取位图数据</span></span><br><span class="line">		LONG nBitSize=<span class="built_in">GetBitmapBits</span>(hBitMap,<span class="comment">//位图</span></span><br><span class="line">					 nBufSize,<span class="comment">//取多少</span></span><br><span class="line">					 pBitMapBuf);<span class="comment">//取出来的数据</span></span><br><span class="line">		<span class="keyword">if</span> (nBitSize==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//到这里表示拿到了数据</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in"><span class="keyword">catch</span></span> (...)</span><br><span class="line">	&#123;</span><br><span class="line">		bResult = FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//很重要，一定要写,用于释放资源，防止内存泄露，不处理相当于不断申请内存不释放，电脑越来越卡</span></span><br><span class="line">	<span class="keyword">if</span> (hDeskDC != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">ReleaseDC</span>(hDesktopWnd, hDeskDC);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (hMemDC != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">DeleteDC</span>(hMemDC);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (hBitMap != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">DeleteObject</span>(hBitMap);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (pBitMapBuf != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">delete</span>[] pBitMapBuf;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//成功就返回true，失败就返回false</span></span><br><span class="line">	<span class="keyword">return</span> bResult;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>MFC添加右键菜单的代码:(要添加菜单资源)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CteamviewerServerDlg::OnNMRClickList1</span><span class="params">(NMHDR *pNMHDR, LRESULT *pResult)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	LPNMITEMACTIVATE pNMItemActivate = <span class="keyword">reinterpret_cast</span>&lt;LPNMITEMACTIVATE&gt;(pNMHDR);</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加控件通知处理程序代码</span></span><br><span class="line">	<span class="comment">//用户右键菜单显示效果</span></span><br><span class="line">	CMenu mn;</span><br><span class="line">	<span class="comment">//加载菜单资源</span></span><br><span class="line">	mn.<span class="built_in">LoadMenu</span>(IDR_MENU1);<span class="comment">//这里虽然划红线，但实际没有错误就很迷</span></span><br><span class="line">	<span class="comment">//获取子菜单</span></span><br><span class="line">	CMenu* pSubMenu = mn.<span class="built_in">GetSubMenu</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="comment">//获取鼠标当前的位置</span></span><br><span class="line">	CPoint pt;</span><br><span class="line">	<span class="built_in">GetCursorPos</span>(&amp;pt);</span><br><span class="line">	<span class="comment">//判断是否选中列表控件的一行，否则不能弹出右键菜单栏</span></span><br><span class="line">	<span class="keyword">if</span> (m_lst.<span class="built_in">GetSelectedCount</span>() &gt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//设置菜单显示的风格，和显示的位置当前鼠标位置，和窗口并进行显示</span></span><br><span class="line">		pSubMenu-&gt;<span class="built_in">TrackPopupMenu</span>(TPM_LEFTALIGN, pt.x, pt.y, <span class="keyword">this</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	*pResult = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="单机测试内存DC-位图gdi对象实现的截图功能："><a href="#单机测试内存DC-位图gdi对象实现的截图功能：" class="headerlink" title="单机测试内存DC+位图gdi对象实现的截图功能："></a>单机测试内存DC+位图gdi对象实现的截图功能：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">HWND hDesktopWnd = NULL;</span><br><span class="line">	HDC hDeskDC = NULL;</span><br><span class="line">	HDC hMemDC = NULL;</span><br><span class="line">	HBITMAP hBitMap = NULL;</span><br><span class="line">	char* pBitMapBuf = NULL;</span><br><span class="line">	BOOL bResult = TRUE;</span><br><span class="line">	try</span><br><span class="line">	&#123;</span><br><span class="line">		//获取桌面的窗口句柄</span><br><span class="line">		hDesktopWnd = ::GetDesktopWindow();</span><br><span class="line">		//创建一个桌面dc</span><br><span class="line">		hDeskDC = ::GetDC(hDesktopWnd);</span><br><span class="line">		if (hDeskDC == NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			throw &quot;error&quot;;//抛异常</span><br><span class="line">		&#125;</span><br><span class="line">		//创建一个桌面的内存dc</span><br><span class="line">		hMemDC = ::CreateCompatibleDC(hDeskDC);</span><br><span class="line">		if (hMemDC == NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			throw &quot;error&quot;;//抛异常</span><br><span class="line">		&#125;</span><br><span class="line">		//获取当前桌面分辨率(通过该函数可以拿到系统的某些属性，函数名翻译为：获取系统指标)</span><br><span class="line">		int nWidth = GetSystemMetrics(SM_CXFULLSCREEN);</span><br><span class="line">		int nHeight = GetSystemMetrics(SM_CYFULLSCREEN);</span><br><span class="line">		//我们需要将我们的桌面有关的图片存放在hMenDC的位图中</span><br><span class="line">		//创建一个和桌面有关的内存位图：</span><br><span class="line">		hBitMap = CreateCompatibleBitmap(hDeskDC, nWidth, nHeight);</span><br><span class="line">		if (hBitMap == NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			throw &quot;error&quot;;//抛异常</span><br><span class="line">		&#125;</span><br><span class="line">		//将我们的内存dc与位图相关联</span><br><span class="line">		SelectObject(hMemDC, hBitMap);</span><br><span class="line">		BOOL bRet = BitBlt(</span><br><span class="line">			hMemDC,//拷贝到内存dc中</span><br><span class="line">			0,//拷贝到内存dc中哪里，左上角x坐标</span><br><span class="line">			0,//拷贝到内存dc中哪里，左上角y坐标</span><br><span class="line">			nWidth,//拷贝多宽</span><br><span class="line">			nHeight,//拷贝多高</span><br><span class="line">			hDeskDC,//从哪拷贝，源头dc</span><br><span class="line">			0,//拷贝源头dc的哪里，左上角x坐标</span><br><span class="line">			0,//拷贝源头dc的哪里，左上角y坐标</span><br><span class="line">			SRCCOPY//按字节拷贝模式</span><br><span class="line">			);</span><br><span class="line">		if (!bRet)</span><br><span class="line">		&#123;</span><br><span class="line">			throw &quot;error&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		//这里额外前8位用于存取屏幕的宽和高，以便服务端接收</span><br><span class="line">		int nBufSize = nWidth*nHeight * 4 + 8;//位图的所需字节空间</span><br><span class="line">		pBitMapBuf = new char[nBufSize];//开辟那么大的内存空间用于存位图数据</span><br><span class="line">		if (pBitMapBuf == NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			throw &quot;error&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		//将图像的前8个字节的位置用于存放我们的长宽</span><br><span class="line">		tagScreenData* pScreenData = (tagScreenData*)pBitMapBuf;</span><br><span class="line">		pScreenData-&gt;nWidth = nWidth;</span><br><span class="line">		pScreenData-&gt;nHeight = nHeight;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		//从内存DC中获取位图数据</span><br><span class="line">		LONG nBitSize = GetBitmapBits(hBitMap,//位图</span><br><span class="line">			nBufSize - 8,//取多少</span><br><span class="line">			pBitMapBuf + 8);//取出来的数据</span><br><span class="line">		if (nBitSize == 0)</span><br><span class="line">		&#123;</span><br><span class="line">			throw &quot;error&quot;;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		//到这里表示拿到了数据,把位图数据发送到我们的服务端</span><br><span class="line">		</span><br><span class="line">		CDC memDC;//创建一个内存dc</span><br><span class="line">		CBitmap bitMap;//创建一个兼容位图</span><br><span class="line">		memDC.CreateCompatibleDC(GetDC());</span><br><span class="line">		bitMap.CreateCompatibleBitmap(GetDC(), pScreenData-&gt;nWidth, pScreenData-&gt;nHeight);</span><br><span class="line">		memDC.SelectObject(bitMap);</span><br><span class="line">		//将获取到的数据直接写入到内存dc的bitmap中</span><br><span class="line">		bitMap.SetBitmapBits(nBufSize - 8, pBitMapBuf + 8);</span><br><span class="line">		//数据已经到了内存dc中,接下来将内存dc中的数据拷贝到屏幕dc</span><br><span class="line">		GetDC()-&gt;BitBlt(0, 0, pScreenData-&gt;nWidth, pScreenData-&gt;nHeight, &amp;memDC, 0, 0, SRCCOPY);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	catch (...)</span><br><span class="line">	&#123;</span><br><span class="line">		bResult = FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	//很重要，一定要写,用于释放资源，防止内存泄露，不处理相当于不断申请内存不释放，电脑越来越卡</span><br><span class="line">	if (hDeskDC != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		::ReleaseDC(hDesktopWnd, hDeskDC);</span><br><span class="line">	&#125;</span><br><span class="line">	if (hMemDC != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		::DeleteDC(hMemDC);</span><br><span class="line">	&#125;</span><br><span class="line">	if (hBitMap != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		::DeleteObject(hBitMap);</span><br><span class="line">	&#125;</span><br><span class="line">	if (pBitMapBuf != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		delete[] pBitMapBuf;</span><br><span class="line">	&#125;</span><br><span class="line">	return;</span><br></pre></td></tr></table></figure>
+
+<h4 id="断线重连（心跳包）"><a href="#断线重连（心跳包）" class="headerlink" title="断线重连（心跳包）"></a>断线重连（心跳包）</h4><p>p.s.利用网络封包分析工具Wireshark来分析</p>
+<p>tcp可靠的前提是tcp不断，在十分恶劣的情况下tcp也可能断开连接</p>
+<p>1.找到一种方法能够判断何时掉线</p>
+<p>从TCP协议角度来看，一个已建立的TCP连接有两种关闭方式，一种是正常关闭，即四次挥手关闭连接；还有一种则是异常关闭，我们通常称之为连接重置（RESET)。</p>
+<p> recv的返回值，成功收到的时候会返回收到的字节数，如果tcp优雅地四次挥手断开的话，recv会返回0，如果意外断开，recv返回SOCKET_ERROR( 即-1)，并且可以通过调用WSAGetLastError获得一个错误码</p>
+<p>系统发现软件被强制关闭了但tcp还在连接中的时候，只要TCP栈的读缓冲里还有未读取（read）数据，则调用close时会直接向对端默认发一个RST包，告知对方表示意外断开。</p>
+<p>p.s.优雅地四次挥手断开是通过调用closesocket(s);这个api来实现,此时双端的recv都会收到0</p>
+<p>除了以上的两种情况，还有一种情况是网线断了，这种情况下recv不会返回任何结果。</p>
+<p>针对网线断了或者网络堵车等情况的处理方式就是心跳包超时机制，超时就干掉，节省资源，即周期性检测对方是否在线？（询问对方是否在线）</p>
+<p>p.s.tcp本身其实是有超时检测的，但是它本身的超时时间非常长，如果开启tcp自带的心跳检测是半个小时一次，时间太长了</p>
+<p>心跳包，只要一边发一边收就可以了，但双方都可以做超时处理，由客户端来发心跳包比较好，因为服务端要发的话还要遍历发，压力很大，服务端每收到一个心跳包回一个心跳包，并且检测客户端最后心跳包时间看是否超时，若超时，调用closesocket（s）强行关闭socket，这时候，堵塞的recv会不阻塞了，返回-1</p>
+<hr>
+<p>  理论解读：</p>
+<p>首先说一下正常关闭时四次挥手的状态变迁，关闭连接的主动方状态变迁是FIN_WAIT_1-&gt;FIN_WAIT_2-&gt;TIME_WAIT，而关闭连接的被对方的状态变迁是CLOSE_WAIT-&gt;LAST_ACK-&gt;TIME_WAIT。在四次挥手过程中ACK包都是协议栈自动完成的，而FIN包则必须由应用层通过closesocket或shutdown主动发送，通常连接正常关闭后，recv会得到返回值0，send会得到错误码10058。</p>
+<p>​    除此之外，在我们的日常应用中，连接异常关闭的情况也很多。比如应用程序被强行关闭、本地网络突然中断(禁用网卡、网线拔出)、程序处理不当等都会导致连接重置，连接重置时将会产生RST包，同时网络络缓冲区中未接收（发送）的数据都将丢失。连接重置后，本方send或recv会得到错误码10053(closesocket时是10038)，对方recv会得到错误码10054，send则得到错误码10053(closesocket时是10054)。</p>
+<p>​    操作系统为我们提供了两个函数来关闭一个TCP连接，分别是closesocket和shutdown。通常情况下，closesocket会向对方发送一个FIN包，但是也有例外。比如有一个工作线程正在调用recv接收数据，此时外部调用closesocket，会导致连接重置，同时向对方发送一个RST包，这个RST包是由本方主动产生的。</p>
+<p>​    shutdown可以用来关闭指定方向的连接，该函数接收两个参数，一个是套接字，另一个是关闭的方向，可用值为SD_SEND,SD_RECEIVE和SD_BOTH。方向取值为SD_SEND时，无论socket处于什么状态(recv阻塞，或空闲状态)，都会向对方发送一个FIN包，注意这点与closesocket的区别。此时本方进入FIN_WAIT_2状态，对方进入CLOSE_WAIT状态，本方依然可以调用recv接收数据；方向取值为SD_RECEIVE时，双发连接状态没有改变，依然处于ESTABLISHED状态，本方依然可以send数据，但是，如果对方再调用send方法，连接会被立即重置，同时向对方发送一个RST包，这个RST包是被动产生的，这点注意与closesocket的区别。</p>
+<hr>
+<p>p.s.检测网络环境也可以</p>
+<p>通过这个选项可以设定是动态链接，还是静态链接</p>
+<p><img src="https://img-blog.csdn.net/20160908212141364" alt="这里写图片描述"></p>
+<p>MT选项：链接LIB版的C和C++运行库。在链接时就会在将C和C++运行时库集成到程序中成为程序中的代码，程序体积会变大。<br>MTd选项：LIB的调试版。<br>MD选项：使用DLL版的C和C++运行库，这样在程序运行时会动态的加载对应的DLL，程序体积会减小，缺点是在系统没有对应DLL时程序无法运行。<br>MDd选项：表示使用DLL的调试版。</p>
+<p>心跳包实现：</p>
+<p>发包需要将发送的数据放到队列中，然后由一个单独的线程读取队列发送</p>
+<p>p.s.事件相关api：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用事件来处理当前的断线状态</span></span><br><span class="line">HANDLE hEvent = INVALID_HANDLE_VALUE;</span><br><span class="line"><span class="built_in">CreateEvent</span>(<span class="literal">NULL</span>,<span class="comment">//安全属性不用给</span></span><br><span class="line">		   FALSE,<span class="comment">//表示自动处理事件的状态,有信号也只会让通过一次就变回无信号，如果为TRUE的话需要手动ReSetEvent()函数来恢复无信号</span></span><br><span class="line">		   FALSE,<span class="comment">//表示初始时没有信号的状态</span></span><br><span class="line">		   <span class="literal">NULL</span><span class="comment">//名字不用给</span></span><br><span class="line">	       );</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//给我们的事件一个状态，表示有信号了</span></span><br><span class="line"><span class="built_in">SetEvent</span>(hEvent);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//表示等待事件信号的来临，INFINITE表示等待无限时间,没有SetEvent就是没有信号就会类似于死循环阻塞在此</span></span><br><span class="line"><span class="built_in">WaitForSingleObject</span>(hEvent,INFINITE);</span><br></pre></td></tr></table></figure>
+
+<p>P.S.一关就崩溃，肯定是线程循环没退出，线程资源没释放</p>
+<h4 id="BUG修复以及待改进点："><a href="#BUG修复以及待改进点：" class="headerlink" title="BUG修复以及待改进点："></a>BUG修复以及待改进点：</h4><p>1.崩溃问题要解决，尾部有数据才新建，尾部没数据的话，不新建，却尝试释放，因此崩溃，解决方案是每次清理数据的时候，将开辟堆空间的指针置空，然后判断指针不为空才施放（重点，开辟空间和释放的时候都应该养成习惯套这个指针置空以及判断指针不为空才释放防止出问题）</p>
+<p>2.图片压缩一下，省空间。压缩算法有很多，zlib文件压缩，lz4字符串压缩</p>
+<p>3.屏幕划分为小模块，哪个模块动了就传输哪个模块，不动的保持不变，节省带宽</p>
+<p>4.防止发包冲突，应该专门有一个线程进行发包，一个队列作为发包缓冲</p>
+<p>5.频繁的开辟和释放空间效率不好而且不稳定，应该开辟一个足够大的空间作为缓冲空间来使用，不频繁开辟释放空间</p>
+<p>p.s.一个好的程序一定是让线程自己退出的，比如说可以设置个标志位</p>
+<h2 id="进程-DLL查看器TestProcess"><a href="#进程-DLL查看器TestProcess" class="headerlink" title="进程/DLL查看器TestProcess"></a>进程/DLL查看器TestProcess</h2><p>相关api：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200903150113297.png" alt="image-20200903150113297"></p>
+<p>P.S.vs没有函数提示，说明头文件没有include进来</p>
+<p>查看进程模块信息代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建快照的函数，第一个参数选择可用于看模块，线程，进程，堆等，第二个参数当第一个参数选择的不是查看进程的时候，第二个参数表示进程id。( 不支持A版本函数)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Tlhelp32.h&gt;</span></span></span><br><span class="line">HANDLE hSnap=<span class="built_in">CreateToolhelp32Snapshot</span>(TH32CS_SNAPPROCESS,<span class="number">0</span>);</span><br><span class="line">PROCESSENTRY32 pe32=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">pe32.dwSize=<span class="built_in"><span class="keyword">sizeof</span></span>(PROCESSENTRY32);</span><br><span class="line"><span class="comment">//首先查看第一个进程</span></span><br><span class="line">BOOL bRet=<span class="built_in">Process32Fitst</span>(hSnap,&amp;pe32);</span><br><span class="line"><span class="comment">/*wprintf(pe32.szExeFile);</span></span><br><span class="line"><span class="comment">wprintf(L&quot;\r\n&quot;);</span></span><br><span class="line"><span class="comment">if(wcscmp(pe32.szExeFile,L&quot;procexp.exe&quot;)==0)</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">     dwPID=pe32.th32ProcessID;</span></span><br><span class="line"><span class="comment">     break;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"><span class="keyword">while</span>(bRet)&#123;</span><br><span class="line">	<span class="comment">//开始查看后面的进程</span></span><br><span class="line">    bRet=<span class="built_in">Process32Next</span>(hSnap,&amp;pe32);</span><br><span class="line">    <span class="comment">//wprintf(pe32.szExeFile);</span></span><br><span class="line">    <span class="comment">//wprintf(L&quot;\r\n&quot;)</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">wcscmp</span>(pe32.szExeFile,<span class="string">L&quot;procexp.exe&quot;</span>)==<span class="number">0</span>)&#123;</span><br><span class="line">        dwPID=pe32.th32ProcessID;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//遍历模块信息</span></span><br><span class="line">hSnap=<span class="built_in">CreateToolhelp32Snapshot</span>(TH32CS_SNAPMODULE,dwPID);</span><br><span class="line">MODULEENTRY32 me32=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">ME32.dwSize=<span class="built_in"><span class="keyword">sizeof</span></span>(MODULEENTRY32);</span><br><span class="line"><span class="comment">//首先查看第一个模块</span></span><br><span class="line">BOOL bRet=<span class="built_in">Module32Fitst</span>(hSnap,&amp;me32);</span><br><span class="line"><span class="built_in">wprintf</span>(me32.szExeFile);</span><br><span class="line"><span class="built_in">wprintf</span>(<span class="string">L&quot;\r\n&quot;</span>);</span><br><span class="line"><span class="keyword">while</span>(bRet)&#123;</span><br><span class="line">	<span class="comment">//开始查看后面的模块</span></span><br><span class="line">    <span class="comment">//me32中hModule：拥有过程中模块的句柄 szModule：模块名称  szExePath：模块路径。</span></span><br><span class="line">    bRet=<span class="built_in">Module32Next</span>(hSnap,&amp;me32);</span><br><span class="line">    std::wstring wstr=me32.szExePath;</span><br><span class="line">    <span class="keyword">if</span>(wstr.<span class="built_in">find</span>(<span class="string">L&quot;KERNEL32&quot;</span>)!=std::wstring::npos)</span><br><span class="line">    &#123;</span><br><span class="line">        HMODULE hDestModule=me32.modBaseAddr;<span class="comment">//找到模块地址</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">wprintf</span>(me32.szExeFile);</span><br><span class="line">    <span class="built_in">wprintf</span>(<span class="string">L&quot;\r\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>p.s.以下是一个监测读取文件操作的监视器</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200903150831035.png" alt="image-20200903150831035"></p>
+<p>//能看到进程和进程的父子关系</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200903151002842.png" alt="image-20200903151002842"></p>
+<p>结束进程的api：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//打开某一个进程，获取对应的进程句柄</span></span><br><span class="line">HANDLE hProcess=<span class="built_in">OpenProcess</span>(PROCESS_ALL_ACCESS,FALSE,dwPID);</span><br><span class="line"><span class="comment">//强制结束进程（关闭正常程序可以，但关闭进0环的恶意程序用什么都关不掉）</span></span><br><span class="line"><span class="built_in">TerminateProcess</span>(hProcess,<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="注入DLL"><a href="#注入DLL" class="headerlink" title="注入DLL"></a>注入DLL</h2><h3 id="动态库的显式调用我们的dll中的函数："><a href="#动态库的显式调用我们的dll中的函数：" class="headerlink" title="动态库的显式调用我们的dll中的函数："></a>动态库的显式调用我们的dll中的函数：</h3><p>WinHex软件可以直接复制c语言格式，右键选择edit后继续</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200903184510234.png" alt="image-20200903184510234"></p>
+<p>粘贴出来的效果，这就是代码的二进制形式</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200903184738008.png" alt="image-20200903184738008"></p>
+<p>这些代码现在以shellcode形式存在程序的全局区</p>
+<p>两种办法解决：</p>
+<p>用这个软件修改节</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200903185802722.png" alt="image-20200903185802722"></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200903185922805.png" alt="image-20200903185922805"></p>
+<p>手动调成可执行，意思就是要求代码所在的内存属性是可读可执行的。</p>
+<p>除了手动调节之外，还有办法是在当前程序申请一块可读可写可执行的内存区域存代码，api如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//申请内存，返回值为申请到的地址</span></span><br><span class="line">LPVOID lpAddr=<span class="built_in">VirtualAlloc</span>(<span class="literal">NULL</span>,<span class="comment">//表示申请内存在任意地址即可，随机分配内存</span></span><br><span class="line">            <span class="number">1</span>,<span class="comment">//内存通常是以分页为单位来给空间的 1页=4k 4096</span></span><br><span class="line">            MEM_COMMIT,<span class="comment">//告诉操作系统给分配一块内存 MEM_RESERVE告诉操作系统预定一块空间</span></span><br><span class="line">            PAGE_EXECUTE_READWRITE);<span class="comment">//申请的内存的权限属性</span></span><br><span class="line"><span class="keyword">if</span>(lpAddr==<span class="literal">NULL</span>)&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Alloc error!&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//到这里表示能够成功的分配内存（系统帮你申请会同时自动帮你把内存置零），将shellcode拷贝到目标内存(data是shellcode的char数组名)</span></span><br><span class="line"><span class="built_in">memcpy</span>(lpAddr,data,<span class="built_in"><span class="keyword">sizeof</span></span>(data));</span><br><span class="line"><span class="comment">//自己定义的函数指针类型PFN_FOO</span></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*PFN_FOO)</span><span class="params">()</span></span>;<span class="comment">//定义函数指针类型</span></span><br><span class="line">PFN_FOO f=(PFN_FOO)(<span class="keyword">void</span>*)lpAddr;</span><br><span class="line"><span class="built_in">f</span>();</span><br><span class="line"><span class="comment">//释放内存空间</span></span><br><span class="line"><span class="built_in">VirtualFree</span>(lpAddr,</span><br><span class="line">            <span class="number">1</span>,<span class="comment">//释放多大的页</span></span><br><span class="line">            MEM_DECOMMIT);</span><br></pre></td></tr></table></figure>
+
+<p>理解：</p>
+<p>c语言–&gt;编译成obj文件（二进制），多个obj链接成–&gt;exe(可执行文件)</p>
+<p>为什么c语言要编译，因为cpu只认识指令集( 机器码)（e.g.intel阵营的8086指令集，ARM阵营的RISC指令集）</p>
+<p>至于汇编，只是一种帮助人直观认识的助记符</p>
+<p>程序的执行通常会对当前程序有依赖，想要二进制代码有效，必须处理相关的依赖，比如相关的函数地址，字符串地址，自己处理了即进行了重定位。<br>$$<br>shellcode：一段与地址无关的代码<br>$$<br>把shellcode注入到目标进程里，首先要给目标进程开辟空间</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//VirtualAlloc只能给自己申请，而VirtualAllocEx可以给别人开辟空间</span></span><br><span class="line"><span class="comment">//通过进程id获取进程句柄</span></span><br><span class="line">HANDLE hProcess=<span class="built_in">OpenProcess</span>(PROCESS_ALL_ACCESS,FALSE,dwPID);</span><br><span class="line"><span class="comment">//申请内存，返回值为申请到的地址</span></span><br><span class="line">LPVOID lpAddr=<span class="built_in">VirtualAllocEx</span>(</span><br><span class="line">    	    hProcess,<span class="comment">//目标进程句柄</span></span><br><span class="line">    	    <span class="literal">NULL</span>,<span class="comment">//表示申请内存在任意地址即可，随机分配内存</span></span><br><span class="line">            <span class="number">1</span>,<span class="comment">//内存通常是以分页为单位来给空间的 1页=4k 4096</span></span><br><span class="line">            MEM_COMMIT,<span class="comment">//告诉操作系统给分配一块内存 MEM_RESERVE告诉操作系统预定一块空间</span></span><br><span class="line">            PAGE_EXECUTE_READWRITE);<span class="comment">//申请的内存的权限属性</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//给任何一个进程写内存</span></span><br><span class="line">DWORD dwWritedBytes=<span class="number">0</span>;<span class="comment">//用于接收下面api成功写入的字节数</span></span><br><span class="line"><span class="keyword">bool</span> bRet=<span class="built_in">WriteProcessMemory</span>(hProcess,<span class="comment">//目标进程</span></span><br><span class="line">                  lpAddr,<span class="comment">//目标地址 在目标进程中</span></span><br><span class="line">                  data,<span class="comment">//源数据 在当前基础中</span></span><br><span class="line">                  <span class="built_in"><span class="keyword">sizeof</span></span>(data),<span class="comment">//写多大内容</span></span><br><span class="line">                  &amp;dwWritedBytes);<span class="comment">//成功写入的字节数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!bRet)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//释放内存空间</span></span><br><span class="line">	<span class="built_in">VirtualFreeEx</span>(hProcess,<span class="comment">//目标进程句柄</span></span><br><span class="line">    	    lpAddr,</span><br><span class="line">            <span class="number">1</span>,<span class="comment">//释放多大的页</span></span><br><span class="line">            MEM_DECOMMIT);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//向目标程序调用一个线程，创建远程线程api</span></span><br><span class="line">HANDLE hRemoteThread=<span class="built_in">CreateRemoteThread</span>(hProcess,<span class="comment">//目标进程</span></span><br><span class="line">                   <span class="literal">NULL</span>,</span><br><span class="line">                  <span class="number">0</span>,</span><br><span class="line">                   (LPTHREAD_START_ROUTINE)lpAddr,<span class="comment">//目标进程的回调函数</span></span><br><span class="line">                   <span class="number">0</span>,</span><br><span class="line">                   <span class="literal">NULL</span>,</span><br><span class="line">                  <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="comment">//释放内存空间(这里不能马上释放，因为马上释放的话，线程可能还没执行完就释放掉了)</span></span><br><span class="line">	<span class="comment">//VirtualFreeEx(hProcess,lpAddr,1,MEM_DECOMMIT);                </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>远程注入代码并执行 的伪代码：</p>
+<p>1.向目标进程中申请内存</p>
+<p>2.向目标进程内存中写入shellcode（没有特征，但编码比较麻烦）</p>
+<p>3.创建远程线程执行shellcode</p>
+<p>P.S.让被注入的代码更加容易编写，最好的方式就是使用DLL来编写</p>
+<p>能不能直接放入dll，能，但我们就需要自己加载DLL</p>
+<h6 id="DLL的加载的两种方式："><a href="#DLL的加载的两种方式：" class="headerlink" title="DLL的加载的两种方式："></a>DLL的加载的两种方式：</h6><ol>
+<li>静态调用：通过在我们的程序中添加头文件，以及lib文件来完成调用（键盘钩子）</li>
+<li>动态调用：仅仅只需要一个dll即可完成</li>
+</ol>
+<p>注意：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//除了前面介绍过的def文件导出函数的方式，以下展示另一种函数导出方式</span></span><br><span class="line">__declspec(dllexport) <span class="function"><span class="keyword">void</span> <span class="title">Test</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">MessageBox</span>(<span class="literal">NULL</span>,<span class="literal">NULL</span>,<span class="literal">NULL</span>,<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样也能导出函数，但这种方式会对Test进行名称粉碎，名称粉碎：如下图的名称多余部分是由C++编译器添加的</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200904135213693.png" alt="image-20200904135213693"></p>
+<p>因此为了让名称合理，我们需要告诉编译器，使用c语言的方式来命名函数，正确方式如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不写调用约定，那么就导出的名称为Test，写调用约定的话，导出名称规则下面有写</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span>&#123;</span><br><span class="line">    __declspec(dllexport) <span class="function"><span class="keyword">void</span> <span class="title">Test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">		<span class="built_in">MessageBox</span>(<span class="literal">NULL</span>,<span class="literal">NULL</span>,<span class="literal">NULL</span>,<span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200904140334505.png" alt="image-20200904140334505"></p>
+<p>一般最好把调用约定也指定上</p>
+<h6 id="常见的调用约定"><a href="#常见的调用约定" class="headerlink" title="常见的调用约定"></a>常见的调用约定</h6><ol>
+<li><p>__stdcall 标准调用约定  栈传参，函数内部（被调用者）平栈，大部分的Windows api都是这种，也有少部分不是，比如wsprintf不是，因为该函数的参数数量不确定，函数内部并不知道传进的参数是几个，所以也就不能函数内部平栈</p>
+</li>
+<li><p>__cdecl c调用约定  栈传参，函数外部（调用者）平栈 C/C++默认的函数调用协议。</p>
+</li>
+<li><p>__fastcall 快速调用约定 前两个参数由<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AF%84%E5%AD%98%E5%99%A8">寄存器</a>ecx和edx来传递，其余参数还是通过<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%A0%86%E6%A0%88">堆栈</a>传递（从右到左）。函数内部（被调用者）平栈。适用于对性能要求较高的场合。</p>
+</li>
+<li><p>__thiscall    类的调用约定      栈传递  使用ecx寄存器来传递this指针</p>
+<p>p.s.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="number">1.</span> C语言编译器函数名称修饰规则</span><br><span class="line">   <span class="number">2.</span> <span class="number">1.</span> __stdcall：编译后，函数名被修饰为“_functionname@number”。</span><br><span class="line">      <span class="number">2.</span> __cdecl：编译后，函数名被修饰为“_functionname”。</span><br><span class="line">      <span class="number">3.</span> __fastcall：编译后，函数名给修饰为“@functionname@nmuber”。</span><br><span class="line">      <span class="number">4.</span> 注：“functionname”为函数名，“number”为参数字节数。</span><br><span class="line">      <span class="number">5.</span> 注：函数实现和函数定义时如果使用了不同的函数调用协议，则无法实现函数调用。</span><br><span class="line">   <span class="number">3.</span> C++语言编译器函数名称修饰规则</span><br><span class="line">   <span class="number">4.</span> <span class="number">1.</span> __stdcall：编译后，函数名被修饰为“?functionname@@YG******@Z”。</span><br><span class="line">      <span class="number">2.</span> __cdecl：编译后，函数名被修饰为“?functionname@@YA******@Z”。</span><br><span class="line">      <span class="number">3.</span> __fastcall：编译后，函数名被修饰为“?functionname@@YI******@Z”。</span><br><span class="line">      <span class="number">4.</span> 注：“******”为函数返回值类型和参数类型表。</span><br><span class="line">      <span class="number">5.</span> 注：函数实现和函数定义时如果使用了不同的函数调用协议，则无法实现函数调用。</span><br><span class="line">      <span class="number">6.</span> C语言和C++语言间如果不进行特殊处理，也无法实现函数的互相调用。</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h6 id="动态库的显式调用中的函数的步骤"><a href="#动态库的显式调用中的函数的步骤" class="headerlink" title="动态库的显式调用中的函数的步骤"></a>动态库的显式调用中的函数的步骤</h6><p>动态加载dll的意思是不需要lib和头文件，仅仅需要一个dll</p>
+<ol>
+<li><p>将目标dll加载到我们的进程中 dll在linux和安卓里叫so文件</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HMODULE hDll=<span class="built_in">LoadLibraryA</span>(<span class="string">&quot;C:/xxx/xxx/xxx.dll&quot;</span>);</span><br><span class="line"><span class="comment">//返回值是模块句柄，也就是当前的dll在当前进程中的首地址</span></span><br><span class="line"><span class="comment">//加载的过程由我们的操作系统来完成的（包括各节的扩展分配内存，重定位等等）</span></span><br><span class="line"><span class="comment">//这个函数也可以自己写替代LoadLibraryA，自己写的我们叫内存加载，这种写法是病毒常用的写法</span></span><br></pre></td></tr></table></figure></li>
+<li><p>计算函数的位置（如下图函数在dll中的偏移）</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200904145357478.png" alt="image-20200904145357478"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*PFN_FOO)</span><span class="params">()</span></span>;<span class="comment">//定义函数指针类型</span></span><br><span class="line"><span class="comment">//计算函数的位置，计算出dll的对应导出函数的地址在哪里，即位置,转成函数指针即可直接调用</span></span><br><span class="line">PFN_FOO lpFoo=(PFN_FOO)<span class="built_in">GetProcAddress</span>(hDll,<span class="string">&quot;Test&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>调用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">lpFoo</span>();</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>p.s. c++的原始字符串写法：R”(\t\r\n)”</p>
+<p>忽略掉\本身的转义效果，括号内的所有东西视为原始字符串</p>
+<p>理解：（隐式链接和显示链接的区别）</p>
+<p>隐式链接指将DLL的函数符号输出库LIB链接，在执行文件中IMPORT段加入一系列函数的入口点！程序在加载启动时自动加载这些DLL，并查找函数入口点！像普通的SDK程序要加入KERNEL32。LIB链接就是！这样的方法是当使用DLL多时，程序启动很慢、！   动态链接指显式加载DLL，利用LoadLibrary，GetProcAddress取得函数入口点，执行再释放，这种方法是程序简洁，快速！但是不利于输出太多函数的DLL使用！代码量太大！</p>
+<p>进一步理解：</p>
+<p>调用方式说完了，但最重要的问题依然是要想办法把dll注入进去</p>
+<h6 id="远线程注入"><a href="#远线程注入" class="headerlink" title="远线程注入"></a>远线程注入</h6><p>我们的目标程序只要有kernel32.dll，就有LoadLibrary函数</p>
+<p>ntdll.dll和kernel32.dll是程序里最基本的dll</p>
+<p>原理：创建远线程的函数的线程函数正好和LoadLibrary是同样的函数原型</p>
+<p>步骤：</p>
+<ol>
+<li>先去找目标进程中的kernel32.dll的位置（遍历找到该模块句柄）</li>
+<li> 在该dll中找到LoadLibrary的地址（GetProcAddress）</li>
+<li>创建远线程给目标进程创建一个远线程，跑上一步找到的LoadLibrary的地址</li>
+<li>创建远线程传的参数，即dll路径必须在目标进程内，因此，远程开辟空间，将路径远程内存拷贝过去目标进程的内存中，使目标进程中我们创建的远线程中可以正常的参数调用LoadLibrary将我们的dll导入进去</li>
+</ol>
+<p>疑问：通过GetProcAddress获取到的LoadLibrary地址在每个进程都一样吗？</p>
+<p>kernel32.dll是第一个加载进进程的，因此地址固定</p>
+<hr>
+<p>目录中，进程/DLL查看器那里有代码可获得目标进程的kernel32的基地址</p>
+<p>但是无法调用GetProcAddress获取LoadLibrary的地址，因为GetProcAddress我们只能获取到本地进程的LoadLibrary的地址。</p>
+<p>由于大家都是公用同一个kernel32.dll，所以LoadLibrary的函数偏移是不变的。<br>$$<br>目标进程的LoadLibrary地址-目标进程kernel32的基地址==当前进程的LoadLibrary地址-当前进程kernel32的基地址<br>$$<br>所以我们首先计算出当前程序中的kernel32的LoadLibrary的偏移，然后加上目标。</p>
+<p>步骤如下：</p>
+<ol>
+<li><p>首先获取本进程的kernel32地址</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HMODULE hKernel32= <span class="built_in">GetModuleHandleA</span>(<span class="string">&quot;kernel32.dll&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>计算函数的位置，计算出dll的对应函数的地址在哪里，即位置(这里LoadLibrary用A或则W版，则写内存的时候要写对应版本的路径)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PFN_FOO lpLoadLibrary=(PFN_FOO)<span class="built_in">GetProcAddress</span>(hKernel32,<span class="string">&quot;LoadLibraryA&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>计算LoadLibrary在kernel32.dll中的偏移地址(hDestModule是在进程查看器中得到的目标进程中的kernel32.dll的地址),以偏移地址加上hDestModule就得到了我们要的目标进程中的LoadLibrary地址</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LPVOID lpDestAddr=(<span class="keyword">char</span>*)lpLoadLibrary-(<span class="keyword">char</span>*)hKernel32+(<span class="keyword">char</span>*)hDestModule;</span><br></pre></td></tr></table></figure>
+
+<p>红圈表示得到的本进程的两个地址(本进程中的kernel32的模块地址和LoadLibrary地址 )，会发现，kernel32的dll在本进程和目标进程中地址是一样的</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200904200111380.png" alt="image-20200904200111380"></p>
+<p>p.s.kernel32.dll和ntdll.dll加载时间比较早，因此他们的位置相对比较固定</p>
+<p>接下来就是CreateRemoteThread，线程函数是目标进程中LoadLibrary中的地址；线程函数的参数，即dll的路径要写目标进程中的字符串，因此要开辟目标进程中的内存地址，然后用WriteProcessMemory给目标进程该地址写入dll的路径，然后该申请的地址为线程函数的参数。</p>
+<blockquote>
+<p><strong>注意点</strong>：DLL自带的switch部分中，不要写同步相关的代码，因为它本身自带同步，否则加载dll会卡死</p>
+</blockquote>
+<p>注入成功后，目标进程中的我们注入的模块地址可以通过线程的退出码来查看，因为我们把LoadLibrary当做线程函数来处理，因此线程返回的时候的退出码就是LoadLibrary的返回值。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DWORD dwRetCode;</span><br><span class="line"><span class="comment">//获取远程线程的退出值存进dwRetCode，即LoadLibrary的返回值，即目标进程中注入dll的地址</span></span><br><span class="line"><span class="built_in">GetExitCodeThread</span>(hRemoteThread,&amp;dwRetCode);</span><br></pre></td></tr></table></figure>
+
+<p>接下来，我们只需要用偏移值就可以把dll作为一个导出函数的库，用CreateRemoteThread调用dll中的任何和LoadLibrary相同类型的函数</p>
+<p><code>远线程注入，虽然很老了，但是英雄联盟可以成功注入，但是有失败概率，因此写个循环反复注入，总能成功</code></p>
+<hr>
+<p>p.s.</p>
+<h6 id="vs错误讲解：（如下图）"><a href="#vs错误讲解：（如下图）" class="headerlink" title="vs错误讲解：（如下图）"></a>vs错误讲解：（如下图）</h6><p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200906163427470.png" alt="image-20200906163427470"></p>
+<p>异常：0xC0000005    读写内存发生错误，一般是某个堆或者栈不存在，你强行去读取或者写入他，因此触发异常，要留意定位到的行的指针。</p>
+<p>C++要求我们自己去管理资源（内存，文件，临界区,互斥体等等需要自己申请和释放的东西）</p>
+<p>解决方案</p>
+<ol>
+<li>装死，装自己看不见这个异常，即通过异常处理来解决</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	<span class="comment">//可能出错的代码段</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in"><span class="keyword">catch</span></span>(...)<span class="comment">//三个点表示所有异常</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//接收到异常后的处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200906191901389.png" alt="1"></p>
+<p>照上图设置后才能真正靠…接住所有异常，包含我们的C++异常，也包含windows自带的SEH异常</p>
+<ol start="2">
+<li><p>修改代码，把bug修复好</p>
+</li>
+<li><p>我们可以使用智能指针来帮助我们释放资源,将指针放入到智能指针的对象中，然后离开作用域时会自动释放</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//C++11标准</span></span><br><span class="line">std::shared_ptr&lt;<span class="keyword">int</span>&gt;  pInt=<span class="keyword">new</span> <span class="built_in"><span class="keyword">int</span></span>(<span class="number">3</span>);</span><br><span class="line"><span class="comment">//std::shared_ptr&lt;int&gt;  pInt(new int);</span></span><br><span class="line"><span class="comment">//使用智能指针就像普通的指针一样，只是只管申请，不管释放</span></span><br></pre></td></tr></table></figure>
+
+<p>需要学习：C++的新标准语法。</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/%E5%BC%80%E5%8F%91/" rel="tag"># 开发</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2022/05/05/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/" rel="prev" title="进程与线程">
+      <i class="fa fa-chevron-left"></i> 进程与线程
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%A1%E9%81%93%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0CMD"><span class="nav-number">1.</span> <span class="nav-text">管道实现本地CMD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E4%B8%9A"><span class="nav-number">1.0.1.</span> <span class="nav-text">作业</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91%E5%88%9D%E6%AD%A5"><span class="nav-number">2.</span> <span class="nav-text">网络编程开发初步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B2%A1%E6%9C%89%E5%85%AC%E7%BD%91ip%E6%80%8E%E4%B9%88%E5%8A%9E%E5%91%A2%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">没有公网ip怎么办呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1%E7%9A%84api"><span class="nav-number">2.2.</span> <span class="nav-text">通信的api</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8tcp%E9%80%9A%E4%BF%A1%EF%BC%9A"><span class="nav-number">2.3.</span> <span class="nav-text">使用tcp通信：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8tcp%E9%80%9A%E4%BF%A1%EF%BC%9A-1"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">使用tcp通信：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Server%E7%AB%AF%E4%B8%BB%E4%BD%93api"><span class="nav-number">2.3.0.1.1.</span> <span class="nav-text">Server端主体api</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Client%E7%AB%AF%E4%B8%BB%E4%BD%93api"><span class="nav-number">2.3.0.1.2.</span> <span class="nav-text">Client端主体api</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%AB%E9%80%9A%E4%BF%A1%E7%9B%B8%E5%85%B3%E7%9A%84%E5%A4%B4%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="nav-number">2.3.0.2.</span> <span class="nav-text">包含通信相关的头文件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%AB%E9%80%9A%E4%BF%A1%E7%9B%B8%E5%85%B3%E7%9A%84%E5%BA%93%E6%96%87%E4%BB%B6%EF%BC%9A-%E5%91%8A%E8%AF%89%E8%BF%9E%E6%8E%A5%E5%99%A8%E8%BF%9E%E6%8E%A5%E7%9A%84%E6%97%B6%E5%80%99%E8%A6%81%E6%89%BEws2-32-lib%EF%BC%8C%E8%BF%99%E6%A0%B7%E4%BD%A0%E5%B0%B1%E4%B8%8D%E7%94%A8%E5%9C%A8linker%E7%9A%84lib%E8%AE%BE%E7%BD%AE%E9%87%8C%E6%8C%87%E5%AE%9A%E8%BF%99%E4%B8%AAlib%E4%BA%86%E3%80%82"><span class="nav-number">2.3.0.3.</span> <span class="nav-text">包含通信相关的库文件：(告诉连接器连接的时候要找ws2_32.lib，这样你就不用在linker的lib设置里指定这个lib了。)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%EF%BC%9A"><span class="nav-number">2.3.1.</span> <span class="nav-text">服务端：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%9A"><span class="nav-number">2.3.2.</span> <span class="nav-text">客户端：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E4%B8%9A%EF%BC%9A"><span class="nav-number">2.3.3.</span> <span class="nav-text">作业：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tcp%E5%8E%9F%E7%90%86"><span class="nav-number">2.3.4.</span> <span class="nav-text">tcp原理:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cmd%E4%B8%8E%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E7%BB%93%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">cmd与网络通信结合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%94%AE%E7%9B%98%E8%AE%B0%E5%BD%95%E5%99%A8%EF%BC%88%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">键盘记录器（键盘钩子）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hook-%E9%92%A9%E5%AD%90"><span class="nav-number">4.1.</span> <span class="nav-text">Hook 钩子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SetWindowsHookEx"><span class="nav-number">4.2.</span> <span class="nav-text">SetWindowsHookEx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E4%B8%9A%EF%BC%9A-1"><span class="nav-number">4.3.</span> <span class="nav-text">作业：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E5%8F%8A%E7%B2%98%E5%8C%85%E5%A4%84%E7%90%86"><span class="nav-number">4.4.</span> <span class="nav-text">消息及粘包处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GIT%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">GIT代码管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%A7%84%E8%8C%83"><span class="nav-number">6.</span> <span class="nav-text">程序规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B2%98%E5%8C%85-%E5%B1%8F%E5%B9%95%E6%9F%A5%E7%9C%8B%E5%8A%9F%E8%83%BD"><span class="nav-number">7.</span> <span class="nav-text">粘包+屏幕查看功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%8F%E5%B9%95%E5%8A%9F%E8%83%BD"><span class="nav-number">7.1.</span> <span class="nav-text">屏幕功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84api%E5%8F%8A%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">7.1.1.</span> <span class="nav-text">涉及到的api及基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3-%E2%80%94-%E7%AA%97%E5%8F%A3%E5%8F%A5%E6%9F%84"><span class="nav-number">7.1.1.1.</span> <span class="nav-text">窗口 — 窗口句柄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DC-%E2%80%94-%E8%AE%BE%E5%A4%87%E4%B8%8A%E4%B8%8B%E6%96%87%EF%BC%9A"><span class="nav-number">7.1.1.2.</span> <span class="nav-text">DC — 设备上下文：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%BB%E7%AC%94%EF%BC%8C%E7%94%BB%E5%88%B7%EF%BC%8C%E4%BD%8D%E5%9B%BE%E7%AD%89%E7%AD%896%E7%A7%8DGDI%E5%AF%B9%E8%B1%A1"><span class="nav-number">7.1.1.3.</span> <span class="nav-text">画笔，画刷，位图等等6种GDI对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E6%9C%BA%E6%B5%8B%E8%AF%95%E5%86%85%E5%AD%98DC-%E4%BD%8D%E5%9B%BEgdi%E5%AF%B9%E8%B1%A1%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%88%AA%E5%9B%BE%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="nav-number">7.1.1.4.</span> <span class="nav-text">单机测试内存DC+位图gdi对象实现的截图功能：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%AD%E7%BA%BF%E9%87%8D%E8%BF%9E%EF%BC%88%E5%BF%83%E8%B7%B3%E5%8C%85%EF%BC%89"><span class="nav-number">7.1.1.5.</span> <span class="nav-text">断线重连（心跳包）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BUG%E4%BF%AE%E5%A4%8D%E4%BB%A5%E5%8F%8A%E5%BE%85%E6%94%B9%E8%BF%9B%E7%82%B9%EF%BC%9A"><span class="nav-number">7.1.1.6.</span> <span class="nav-text">BUG修复以及待改进点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B-DLL%E6%9F%A5%E7%9C%8B%E5%99%A8TestProcess"><span class="nav-number">7.2.</span> <span class="nav-text">进程&#x2F;DLL查看器TestProcess</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5DLL"><span class="nav-number">7.3.</span> <span class="nav-text">注入DLL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93%E7%9A%84%E6%98%BE%E5%BC%8F%E8%B0%83%E7%94%A8%E6%88%91%E4%BB%AC%E7%9A%84dll%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">7.3.1.</span> <span class="nav-text">动态库的显式调用我们的dll中的函数：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#DLL%E7%9A%84%E5%8A%A0%E8%BD%BD%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-number">7.3.1.0.0.1.</span> <span class="nav-text">DLL的加载的两种方式：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="nav-number">7.3.1.0.0.2.</span> <span class="nav-text">常见的调用约定</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93%E7%9A%84%E6%98%BE%E5%BC%8F%E8%B0%83%E7%94%A8%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">7.3.1.0.0.3.</span> <span class="nav-text">动态库的显式调用中的函数的步骤</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%BF%9C%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5"><span class="nav-number">7.3.1.0.0.4.</span> <span class="nav-text">远线程注入</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#vs%E9%94%99%E8%AF%AF%E8%AE%B2%E8%A7%A3%EF%BC%9A%EF%BC%88%E5%A6%82%E4%B8%8B%E5%9B%BE%EF%BC%89"><span class="nav-number">7.3.1.0.0.5.</span> <span class="nav-text">vs错误讲解：（如下图）</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZEROKO14</p>
+  <div class="site-description" itemprop="description">你好，欢迎来到ZEROKO14的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZEROKO14</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+  <script defer src="/blog/lib/three/three.min.js"></script>
+    <script defer src="/blog/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

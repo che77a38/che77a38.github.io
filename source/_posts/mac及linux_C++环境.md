@@ -32,7 +32,7 @@ Linux属于：多用户，多任务
 | ---------------------------------- | ------------------- |
 | 转到文件                           | command+p           |
 | 命令面板                           | F1                  |
-| 打开/跳转到终端                    | ctrl+·              |
+| 打开/跳转到终端                    | ctrl+`              |
 | 变量统一重命名                     | F2                  |
 | 开关侧边栏                         | command+b           |
 | 转到定义处                         | F12                 |
@@ -65,7 +65,7 @@ apt-get install openssh-server #远程连接工具
 apt-get install vim #编辑工具
 ```
 
-安装好开发环境后，当输入make命令时，会在当前目录下找makefile文件来执行。
+安装好开发环境后，当输入make命令时，会在当前目录下找makefile或Makefile文件来执行。
 
 **为什么要学习makefile**
 
@@ -157,6 +157,8 @@ ar -crv libmylib.a mylib.o
 
   Windows系统中，常用的集成开发环境（IDE),如VS,VC等，它们内部已经嵌套了相应的调试器
 
+GDB调试器只适合单线程程序调试,多线程调试,还是使用日志打印方式更靠谱
+
 ### GDB主要功能
 
 - 设置断点（断点可以是条件表达式）
@@ -228,10 +230,139 @@ $(gdb)set follow-fork-mode child#Makefile项目管理：选择跟踪父子进程
 
 Tips:
 
-1. 编译程序时需要加上-g，之后才能用gdb进行调试：`gcc -g main.c -o main`
+1. 编译程序时需要加上`-g`，之后才能用gdb进行调试：`gcc -g main.c -o main`
+
+   如果不加-g,将看不见程序的函数名,变量名,所代替的全是运行时的内存地址
+
 2. 回车键：重复上一命令
 
+#### list显示代码命令详解
+
+简写: `l`
+
+- `list linenum`：打印第linenum行的上下文内容.
+
+- `list function`：显示函数名为function的函数的源程序。
+
+- `list`： 显示当前行后面的源程序。
+
+- `list -`：显示当前文件开始处的源程序。
+
+- `list file:linenum`: 显示file文件下第n行
+
+- `list file:function`: 显示file文件的函数名为function的函数的源程序
+
+  一般是打印当前行的上5行和下5行, 如果显示函数是是上2行下8行, 默认是10行, 当然, 你也可以定制显示的范围, 使用下面命令可以设置一次显示源程序的行数。
+
+- `set listsize count`：设置一次显示源代码的行数。         
+
+- `show listsize`：   查看当前listsize的设置。
+
+#### break设置断点命令详解
+
+简写: `b`
+
+##### 简单断点--当前文件
+
+- `b 10` 在源程序第10行设置断点
+- `b func` 设置断点,在func函数入口处
+
+##### 多文件设置断点
+
+- `b filename:linenum` 在源文件filename的linenum行处停止
+- `b filename:function` 在源文件filename的function函数的入口处停止
+
+##### 查询所有断点
+
+`info break`  (info可简写为 `i`)    所以可以直接写 `i b`
+
+##### 条件断点
+
+if关键词,后跟断点条件.如: `b test.c:8 if intValue == 5`
+
+##### 维护断点
+
+- `delete [range...]` 删除指定的断点, 其简写命令为`d`。
+
+  - 如果不指定断点号, 则表示删除所有的断点。range表示断点号的范围（如：3-7）。
+    - 删除某个断点: `delete num`
+    - 删除多个断点: `delete num1 num2  ...`
+    - 删除连续的多个断点: `delete m-n`
+    - 删除所有断点: `delete`
+  - 比删除更好的一种方法是disable停止点, disable了的停止点, GDB不会删除, 当你还需要时, enable即可, 就好像回收站一样。
+
+- `disable [range...]` 使指定断点无效, 简写命令是`dis`。
+
+  如果什么都不指定, 表示disable所有的停止点。
+
+  - 使一个断点无效/有效: `disable num`
+  - 使多个断点无效有效: `disable num1 num2 ...`
+  - 使多个连续的断点无效有效: `disable m-n`
+  - 使所有断点无效有效: `disable`
+
+- `enable [range...]` 使无效断点生效, 简写命令是`ena`。如果什么都不指定, 表示enable所有的停止点。
+
+  - 使一个断点无效/有效: `enable num`
+  - 使多个断点无效有效: `enable num1 num2 ...`
+  - 使多个连续的断点无效有效: `enable m-n`
+  - 使所有断点无效有效: `disable/enable`
+
+##### 调试代码
+
+- `run/r` 运行程序   `start`运行程序,停在第一行执行语句
+- `next/n` 单步步过
+- `step/s` 单步步入
+- `finish` 退出进入的函数
+- `until/u` 在一个循环体内单步跟踪时,该命令可以运行程序直到退出循环体
+- `continue/c` 继续运行程序(若有断点,则跳到下一个断点)
+
+##### 显示运行中信息
+
+- `print/p  变量名/&变量(变量的地址)` 查看运行时变量的值
+
+**自动显示变量的值**
+
+你可以设置一些自动显示的变量, 当程序停住时, 或是在你单步跟踪时, 这些变量会自动显示。相关的GDB命令是display。
+
+- **display** 变量名
+- `info display` -- 查看display设置的自动显示的信息。
+- `undisplay num`（info display时显示的编号）
+- `delete display dnums …` 或 `undisplay dnums …`  -- 删除自动显示, dnums意为所设置好了的自动显式的编号。如果要同时删除几个, 编号可以用空格分隔, 如果要删除一个范围内的编号, 可以用减号表示（如：2-5）
+  - 删除某个自动显示: `undisplay num` 或者`delete display num`
+  - 删除多个: `delete display num1 num2`
+  - 删除一个范围: `delete display m-n`
+- `disable display dnums…`
+  - 使一个自动显示无效: `disable display num`
+  - 使多个自动显示无效: `delete display num1 num2`
+  - 使一个范围的自动显示无效: `delete display m-n`
+- `enable display dnums…`
+  - 使一个自动显示有效: `enable display num`
+  - 使多个自动显示有效: `enable display num1 num2`
+  - 使一个范围的自动显示有效: `enable display m-n`
+- disable和enalbe不删除自动显示的设置, 而只是让其失效和恢复。
+
+**查看变量的类型**
+
+- `ptype width` --查看变量width的类型
+
+  type = double
+
+**改变变量的值**
+
+可以使用 `set var` 命令来告诉GDB,width不是你GDB的参数,而是程序的变量名,如: `set var width = 47`
+
+在你改变程序变量取值时,最好都使用`set var` 格式的GDB命令
+
 ## makefile基本格式
+
+```c
+目标: 依赖
+(tab)命令//必须是tab,不能是空格
+```
+
+- 目标:要生成的目标
+- 依赖:目标文件由哪些文件生成
+- 命令:通过执行该命令由依赖文件生成目标
 
 ```makefile
 目标...: 依赖...
@@ -259,6 +390,8 @@ first_make:first_make.cpp second.cpp #目标文件：依赖文件
 
 ![image-20211224202502589](https://raw.githubusercontent.com/che77a38/blogImage/main/202112242025323.png)
 
+![捕获](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206051153723.jpeg)
+
 **makefile文件主要包含了5部分内容**：
 
 1. **显示规则**。说明了如何生成一个或多个目标文件。由makefile文件的创作者指出，包括要生成的文件，文件的依赖文件，生成的命令
@@ -269,6 +402,14 @@ first_make:first_make.cpp second.cpp #目标文件：依赖文件
 
 ## makefile中的变量
 
+类似于C语言的宏定义
+
+```C
+如:下面是变量的定义和使用
+foo = abc			// 定义变量并赋值
+bar = $(foo)		// 使用变量, $(变量名)
+```
+
 主要有以下4种
 
 1. 系统自带变量
@@ -278,7 +419,7 @@ first_make:first_make.cpp second.cpp #目标文件：依赖文件
 
 GUN的make很强大，它可以自动推导文件以及文件依赖关系后面的命令，于是我们就没必要去在每一个[.o]文件后都写上类似的命令，因为，我们的make会自动识别，并自己推导命令。只要make看到一个[.o]文件，它就会自动的把[.c]文件加在依赖关系中，**如果make找到一个whatever.o，那么whatever.c，就会是whatever.o的依赖文件。并且gcc -c whatever.c也会被推导出来**
 
-正是因为强大的自动推导功能，因此依赖项写成.o文件后，就可以一条命令搞定整个编译过程
+**正是因为强大的[自动推导功能]，因此依赖项写成.o文件后，就可以一条命令搞定整个编译过程**
 
 **makefile中常见预定义变量**
 
@@ -286,7 +427,11 @@ GUN的make很强大，它可以自动推导文件以及文件依赖关系后面�
 
 p.s.CXXFLAGS=-I../inc		表示头文件的路径在当前源文件的父文件夹中的inc文件夹中
 
-**在makefile中变量的用法**：$(变量名)
+**在makefile中变量的用法**：`$(变量名)`
+
+**自动变量**
+
+**自动变量**(下面表格的变量)只能在规则中的命令使用
 
 ![image-20211224204554371](https://raw.githubusercontent.com/che77a38/blogImage/main/202112242045930.png)
 
@@ -373,7 +518,41 @@ clean:
 
 有没有一劳永逸的方法，不需要修改makefile就能适应呢。
 
+## 模式规则
+
+要求至少在规则的目标定义中要包含'%','%'表示一个或多个,在依赖条件中同样可以使用'%',依赖条件中的取值取决于其目标:
+
+如下:
+
+![捕获](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206051342850.jpeg)
+
+## makefile的清理操作
+
+用途:清除编译生成的中间.o文件和最终目标文件
+
+`make clean` 命令 同于执行此操作
+
+但是如果当前目录下有同名clean文件,则不执行clean对应的命令,解决方案是 **伪目标声明**
+
+`.PHONY:clean` 声明目标为伪目标之后,makefile将不会检查该目标是否存在或者该目标是否需要更新,不检查直接调用对应的命令.
+
+`rm -f` 强制执行,比如若要删除的文件不存在,使用 `-f` 不会报错
+
+## makefile命令中的特殊符号
+
+-  `-` 表示即使此条命令出错,make也会继续执行后续的命令.  如: `-rm main.o`
+-  `@`不显示命令本身,只显示结果.  如:`@echo clean done`
+
+**\[注意]**: `~/`这样的路径在makefile的命令中不可使用,取而代之可以这样: `$(HOME)/`
+
+## make命令的参数
+
+- `make` **默认执行第一个出现的目标**,可通过 `make dest(dest表示其他目标)`指定要执行的目标
+- `make -f 文件名`制定一个makefile文件来执行  如:`make -f mainmak`指定要执行的makefile文件名为mainmak
+
 ## makefile的常见函数
+
+所有函数都有返回值
 
 - wildcard函数    当前目录下匹配模式的文件    例如：src=$(wildcard *.c)
 
@@ -381,7 +560,7 @@ clean:
 
 - patsubst函数    模式匹配替换    例如：$(patsubst%.c,%.o,$src)
 
-  ​    等价于$(src:.c=.o)
+  ​    等价于$(src:.c=.o)  意思是把src的所有.c后缀的文件名换成.o后缀文件
 
 - shell函数    执行shell命令    例如$(shell ls -d */)
 
