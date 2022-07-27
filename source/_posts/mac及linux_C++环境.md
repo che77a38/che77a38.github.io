@@ -1134,7 +1134,7 @@ git push -u 自己取的名字 master（-u可以省略）
 ### git版本细节
 
 - branch：分支，默认分支叫master
-- HEAD：当下的版本位置
+- HEAD：当下的本地版本位置
 - origin：默认远程储存库
 - 回到某个版本内容：git  checkout commit编号
 - 返回最新的版本：git checkout master(分支名称)
