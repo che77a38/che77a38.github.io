@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="fps辅助整体分析  FPS游戏特性导致的，需要非常高的实时性，不能过度的网络验证 绘制部分可以使用透明窗口覆盖在游戏上，非常难以检测 自瞄部分，捕捉准星数据，准星路径曲线不规则或有中断（不能平滑，人类操作鼠标非常不圆滑） 连续爆头的行为检测行为数据异常等等  相关基础角度计算 tan，cos，sin函数，参数为弧度，弧度为π表示180度。 atan2，acos2，asin2，返回值为弧度。">
+  <meta name="description" content="fps辅助整体分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FPS逆向">
 <meta property="og:url" content="http://zeroko14.gitee.io/blog/2022/07/27/FPS%E9%80%86%E5%90%91%E9%9A%8F%E7%AC%94/index.html">
 <meta property="og:site_name" content="ZEROKO14的个人博客">
-<meta property="og:description" content="fps辅助整体分析  FPS游戏特性导致的，需要非常高的实时性，不能过度的网络验证 绘制部分可以使用透明窗口覆盖在游戏上，非常难以检测 自瞄部分，捕捉准星数据，准星路径曲线不规则或有中断（不能平滑，人类操作鼠标非常不圆滑） 连续爆头的行为检测行为数据异常等等  相关基础角度计算 tan，cos，sin函数，参数为弧度，弧度为π表示180度。 atan2，acos2，asin2，返回值为弧度。">
+<meta property="og:description" content="fps辅助整体分析">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201221330618.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201221928872.png">
@@ -61,7 +61,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202203311927800.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202204171641184.jpeg">
 <meta property="article:published_time" content="2022-07-27T03:16:59.168Z">
-<meta property="article:modified_time" content="2022-07-27T03:16:59.168Z">
+<meta property="article:modified_time" content="2022-07-27T04:06:51.718Z">
 <meta property="article:author" content="ZEROKO14">
 <meta property="article:tag" content="FPS">
 <meta name="twitter:card" content="summary">
@@ -218,8 +218,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-07-27 11:16:59" itemprop="dateCreated datePublished" datetime="2022-07-27T11:16:59+08:00">2022-07-27</time>
+              <time title="创建时间：2022-07-27 11:16:59 / 修改时间：12:06:51" itemprop="dateCreated datePublished" datetime="2022-07-27T11:16:59+08:00">2022-07-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,9 +250,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <span id="more"></span>
+        <p>fps辅助整体分析</p>
+<span id="more"></span>
 
-<p>fps辅助整体分析</p>
 <ul>
 <li>FPS游戏特性导致的，需要非常高的实时性，不能过度的网络验证</li>
 <li>绘制部分可以使用透明窗口覆盖在游戏上，非常难以检测</li>
