@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/anv39-idkev.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210419163151486.png">
 <meta property="article:published_time" content="2022-05-05T07:29:14.956Z">
-<meta property="article:modified_time" content="2022-05-05T07:29:14.959Z">
+<meta property="article:modified_time" content="2022-08-30T07:35:37.245Z">
 <meta property="article:author" content="ZEROKO14">
 <meta property="article:tag" content="开发">
 <meta name="twitter:card" content="summary">
@@ -204,6 +204,13 @@
 
               <time title="创建时间：2022-05-05 15:29:14" itemprop="dateCreated datePublished" datetime="2022-05-05T15:29:14+08:00">2022-05-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-30 15:35:37" itemprop="dateModified" datetime="2022-08-30T15:35:37+08:00">2022-08-30</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -402,6 +409,7 @@
 
 <h5 id="vector插入和删除操作"><a href="#vector插入和删除操作" class="headerlink" title="vector插入和删除操作"></a>vector插入和删除操作</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">insert</span>(const_iterator pos, <span class="keyword">int</span> count,ele);<span class="comment">//迭代器指向位置pos插入count个元素ele.</span></span><br><span class="line"><span class="built_in">push_back</span>(ele); <span class="comment">//尾部插入元素ele</span></span><br><span class="line"><span class="built_in">pop_back</span>();<span class="comment">//删除最后一个元素</span></span><br><span class="line"><span class="built_in">erase</span>(const_iterator start, const_iterator end);<span class="comment">//删除迭代器从start到end之间的元素</span></span><br><span class="line"><span class="built_in">erase</span>(const_iterator pos);<span class="comment">//删除迭代器指向的元素</span></span><br><span class="line"><span class="built_in">clear</span>();<span class="comment">//删除容器中所有元素</span></span><br></pre></td></tr></table></figure>
 
+<p>vector判断元素不存在可以通过find函数来判断:<code>find(v.begin(),v.end())==v.end()</code></p>
 <h5 id="vector小案例"><a href="#vector小案例" class="headerlink" title="vector小案例"></a>vector小案例</h5><h6 id="巧用swap，收缩内存空间（重点）"><a href="#巧用swap，收缩内存空间（重点）" class="headerlink" title="巧用swap，收缩内存空间（重点）"></a>巧用swap，收缩内存空间（重点）</h6><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	vector&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>;i ++)&#123;</span><br><span class="line">		v.<span class="built_in">push_back</span>(i);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;capacity:&quot;</span> &lt;&lt; v.<span class="built_in">capacity</span>() &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;size:&quot;</span> &lt;&lt; v.<span class="built_in">size</span>() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//此时 通过resize改变容器有效的元素个数</span></span><br><span class="line">	v.<span class="built_in">resize</span>(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;capacity:&quot;</span> &lt;&lt; v.<span class="built_in">capacity</span>() &lt;&lt; endl;<span class="comment">//但容量并没有改变</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;size:&quot;</span> &lt;&lt; v.<span class="built_in">size</span>() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//！！！！！！！！！！！！！！！！重点重点重点！！！！！！！！！！！！！！！！！！！</span></span><br><span class="line">	vector&lt;<span class="keyword">int</span>&gt;(v).<span class="built_in">swap</span>(v);<span class="comment">//类型+小括号表示创建一个匿名对象，只是用v来初始化，他会按照v当时的size来开辟这个匿名对象的size和capacity（所以输出图里size和capacity都是3），然后用这个匿名对象和v进行交换（就是指针互换），然后匿名对象的特点是当前行执行完后，自动调用析构函数释放掉匿名对象，到此完成整个流程</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;capacity:&quot;</span> &lt;&lt; v.<span class="built_in">capacity</span>() &lt;&lt; endl;<span class="comment">//容量改变了</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;size:&quot;</span> &lt;&lt; v.<span class="built_in">size</span>() &lt;&lt; endl;</span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210318152428357.png" alt="image-20210318152428357"></p>
@@ -499,13 +507,21 @@
 <p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/wps93.png" alt="img"></p>
 <p>二叉搜索树，是指二叉树中的节点按照一定的规则进行排序，使得对二叉树中元素访问更加高效。二叉搜索树的放置规则是：任何节点的元素值一定大于其左子树中的每一个节点的元素值，并且小于其右子树的值。因此从根节点一直向左走，一直到无路可走，即得到最小值，一直向右走，直至无路可走，可得到最大值。那么在儿茶搜索树中找到最大元素和最小元素是非常简单的事情。下图为二叉搜索树：</p>
 <p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/wps137.jpg" alt="img"></p>
-<p><strong>平衡二叉树：任意节点左、右子树高度差不超过1</strong></p>
+<p><strong>平衡二叉树(AVL)：任意节点左、右子树高度差(平衡因子  )不超过1</strong></p>
+<p>最先发明的<strong>自平衡二叉查找树</strong></p>
 <p>上面我们介绍了二叉搜索树，那么当一个二叉搜索树的左子树和右子树不平衡的时候，那么搜索依据上图表示，搜索9所花费的时间要比搜索17所花费的时间要多，由于我们的输入或者经过我们插入或者删除操作，二叉树失去平衡，造成搜索效率降低。</p>
 <p>所以我们有了一个平衡二叉树的概念，所谓的平衡不是指的完全平衡。</p>
 <p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/wps162.jpg" alt="img"></p>
-<p>RB-tree(红黑树)为自平衡的二叉查找树。</p>
+<p>平衡与否的区别</p>
+<ul>
+<li><p>上图图(b)中是二叉树最糟糕的情况,刚好退化成链表<br>$$<br>h(层数)=n<br>\<br>\<br>ASL(平均查找长度)=\frac{n+1}{2}<br>$$</p>
+</li>
+<li><p>上图图(a)中为平衡二叉树<br>$$<br>h(层数) = \lfloor log_2n \rfloor +1<br>\<br>\<br>ASL(平均查找长度) = \lfloor log_2n \rfloor +1<br>$$</p>
+</li>
+</ul>
+<p>RB-tree(红黑树)也为自平衡的二叉查找树,但比AVL要调整次数更少,因此如果插入删除很频繁则应该使用红黑树.</p>
 <p><strong>【红黑树逻辑意义如下】</strong></p>
-<p>线性查找性能低—&gt;二叉树—&gt;二查叉树会出现退化成链表的问题（如上图b）—&gt;出现平衡二叉树—&gt;数据变化有频繁更新节点问题—&gt;出现红黑树（自平衡）</p>
+<p><strong>线性查找性能低—&gt;二叉树—&gt;二叉树会出现退化成链表的问题（如上图b）—&gt;出现平衡二叉树—&gt;数据变化有频繁更新节点问题—&gt;出现红黑树（自平衡）</strong></p>
 <h5 id="红黑树定义和性质"><a href="#红黑树定义和性质" class="headerlink" title="红黑树定义和性质"></a>红黑树定义和性质</h5><p>红黑树是一种含有红黑结点并能自平衡的二叉查找树。它必须满足下面性质：</p>
 <ol>
 <li>每个节点要么是黑色，要么是红色。</li>
@@ -881,7 +897,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -894,7 +910,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
