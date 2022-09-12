@@ -511,6 +511,8 @@ $$
 
 man文档中函数后头写了POSIX.1,表示符合POSIX.1这个标准,即linux也可以用,unix也可以用
 
+`POSIX` 表示 可移植操作系统接口（Portable Operating System Interface of UNIX，缩写为 POSIX ），POSIX标准定义了操作系统应该为应用程序提供的接口标准.
+
 ## 用户权限,用户和用户组相关命令
 
 ### chmod命令
@@ -525,15 +527,20 @@ linux是通过权限对文件进行控制的,通过使用chmod命令可以修改
 
 例子:`chmod ug+wr file.txt`  给文件file.txt的所有者和所属组添加读写权限
 
-- 操作对象[who]
+- 操作对象[who]  
+  
+  **[注意]** 如果chmod未设置ugo的话,此时默认设置为a,此设置受[umask](https://blog.csdn.net/yangzhengquan19/article/details/83055686)限制影响
+  
   - u -- 用户(user)
   - g -- 同组用户(group)
   - o -- 其他用户(other)
   - a -- 所有用户(all) [默认]
+  
 - 操作符[+|-|=]
   - `+`  添加权限
   - `-`  取消权限
   - `=`  赋予给定权限并取消其他权限
+  
 - 权限[mode]
   - r -- 读权限
   - w -- 写权限
@@ -877,7 +884,7 @@ linux绝大多数命令都有对应的函数,例如
 
 kill 终止（杀死）进程，有十几种控制进程的方法，下面是一些常用的方法:
 
-- `kill -l` 查看系统有哪些信号
+- `kill -l` 查看系统有哪些信号   
 
   ![信号图](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206231654467.jpeg)
 
@@ -888,6 +895,33 @@ kill 终止（杀死）进程，有十几种控制进程的方法，下面是一
 - `kill -KILL [pid]/kill -9 [pid]` 发送SIGKILL (9)强迫进程立即停止，并且不实施清理操作。
 
 SIGKILL 和 SIGSTOP 信号不能被捕捉、封锁或者忽略，但是，其它的信号可以。所以这是你的终极武器。
+
+## [linux脚本](https://blog.csdn.net/weixin_43705953/article/details/119137570)
+
+[点击跳转](https://blog.csdn.net/weixin_43705953/article/details/119137570)
+
+## linux定时任务
+
+linux系统,通过修改 `/etc/crontab`文件(系统任务调度)添加定时任务.
+
+![](https://raw.githubusercontent.com/che77a38/blogImage2/main/202208151816868.png)
+
+例子:
+
+```python
+30 21 * * * /usr/local/etc/rc.d/lighttpd restart       #每晚的21:30重启apache。
+45 4 1,10,22 * * /usr/local/etc/rc.d/lighttpd restart  #每月1、10、22日的4 : 45重启apache。
+10 1 * * 6,0 /usr/local/etc/rc.d/lighttpd restart      #每周六、周日的1 : 10重启apache
+0,30 18-23 * * * /usr/local/etc/rc.d/lighttpd restart  #每天18 : 00至23 : 00之间每隔30分钟重启apache。
+0 23 * * 6 /usr/local/etc/rc.d/lighttpd restart        #每星期六的11 : 00 pm重启apache。
+* */1 * * * /usr/local/etc/rc.d/lighttpd restart       #每一小时重启apache
+* 23-7/1 * * * /usr/local/etc/rc.d/lighttpd restart    #晚上11点到早上7点之间，每隔一小时重启apache
+0 11 4 * mon-wed /usr/local/etc/rc.d/lighttpd restart  #每月的4号与每周一到周三的11点重启apache
+0 4 1 jan * /usr/local/etc/rc.d/lighttpd restart       #一月一号的4点重启apache
+*/30 * * * * /usr/sbin/ntpdate 210.72.145.44           #每半小时同步一下时间
+```
+
+
 
 ## 其他命令盘点
 
@@ -1554,6 +1588,11 @@ ssize_t read(int fd, void *buf, size_t count);
   - `0`：文件读取完毕
   - `-1`： 出错，并设置errno
 
+1. [read函数的默认堵塞状况详细跳转](#阻塞和非阻塞)
+2. [管道read的详细堵塞状况详细跳转](#管道的读写行为)
+
+当read读文件描述符为非阻塞状态的时候, 若对方没有发送数据, 会立刻返回, errno设置为`EAGAIN`, 这个错误我们要忽略.
+
 **write函数**
 
 向打开的设备或文件中写数据
@@ -1612,6 +1651,8 @@ write(fd, “a”, 1);	// 数据随便写
 
 errno是一个**全局变量**(需要头文件 `#include<errno.h>`,可以使用命令 `man errno`查询 ),当系统调用后若出错会对errno进行设置,perror可以将errno对应的错误描述信息打印出来.
 
+errno宏:在 `/usr/include/asm-generic/errno.h`包含了errno所有的宏和对应的错误描述信息
+
 如: `perror("open");`  打印出来的结果为:  `open:(空格)错误信息`
 
 ### 阻塞和非阻塞
@@ -1623,7 +1664,7 @@ errno是一个**全局变量**(需要头文件 `#include<errno.h>`,可以使用�
 - 终端设备：如 /dev/tty
   - 默认阻塞
 - 管道和套接字
-  - 默认阻塞
+  - [默认阻塞(点击跳转详解)](管道的读写行为)
 
 `STDIN_FILENO,STDOUT_FILENO,STDERR_FILENO`三个已经默认打开的文件描述符的宏,可以直接拿来使用,无需`open函数`
 
@@ -1911,7 +1952,7 @@ int dup2(int oldfd, int newfd);
   - 成功: 将oldfd复制给newfd, 两个文件描述符指向同一个文件
   - 失败: 返回-1, 设置errno值
 - 假设newfd已经指向了一个文件，**首先close原来打开的文件**(无需自己手动close)，然后newfd指向oldfd指向的文件.
-- 若newfd没有被占用，**newfd指向oldfd指向的文件**.
+- 若newfd没有被占用，**newfd指向oldfd指向的文件**.(newfd重定向到oldfd)
 
 **dup2实现标准输出重定向到文件案例**
 
@@ -1931,6 +1972,8 @@ int main(int argc,char** argv)
     return 0;
 }
 ```
+
+标准输入 : `dup2(xxxfd,STDIN_FILENO);`标准输入重定向后,依然需要写标准输入函数来供用户输入,输入的内容重定向到xxxfd
 
 #### fcntl函数
 
@@ -2093,6 +2136,10 @@ fork代码案例(箭头标识执行时机)
 **fork注意点**:**如果在循环中fork一定要注意避免未预期的递归fork情况.**
 
 ### 进程相关函数
+
+#### exit()函数
+
+退出整个进程,包括所有进程下线程.但不影响子进程与父进程.
 
 #### getpid和getppid
 
@@ -2265,6 +2312,8 @@ int main(int argc,char** argv)
 如何找到defunct僵尸进程: `ps -ef |grep defunct_process_pid`
 
 [进程回收相关函数跳转](#进程回收函数)
+
+完善的进程回收案例应该参考[此处](#使用SIGCHLD信号完成对子进程的回收案例)
 
 ### **进程间通信**
 
@@ -3074,7 +3123,7 @@ struct sigaction {
 
 ##### 信号直接结束当前阻塞
 
-**[重点]**  阻塞函数遇到信号都会被中断,信号处理完后继续执行后续命令.
+**[重点]**  **阻塞函数遇到信号都会被中断,信号处理完后继续执行后续命令**.
 
 ```c
 int main(int argc,char** argv)
@@ -3088,14 +3137,6 @@ int main(int argc,char** argv)
 ```
 
 <img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207181155330.jpeg" alt="截屏2022-07-18 11.52.44" style="zoom:33%;" />
-
-
-
-
-
-
-
-
 
 ##### SIGCHLD信号
 
@@ -3112,14 +3153,14 @@ int main(int argc,char** argv)
 子进程退出后，内核会给它的父进程发送SIGCHLD信号，父进程收到这个信号后可以对子进程进行回收(回收函数`wait/waitpid`只有真正子进程结束之后才能回收,所以`SIGSTOP`和`SIGCONT`信号导致的产生`SIGCHLD`可以忽视)。
 	使用SIGCHLD信号完成对子进程的回收可以避免父进程阻塞等待而不能执行其他操作，只有当父进程收到SIGCHLD信号之后才去调用信号捕捉函数完成对子进程的回收，未收到SIGCHLD信号之前可以处理其他操作。
 
-**使用SIGCHLD信号完成对子进程的回收案例**
+###### 使用SIGCHLD信号完成对子进程的回收案例
 
 父进程创建三个子进程，然后让父进程捕获SIGCHLD信号完成对子进程的回收。
 
 **[注意点]**
 
 - 可能还未完成信号处理函数的注册三个子进程都退出了。
-  - 解决办法：可以在fork之前先将SIGCHLD信号阻塞，当完成信号处理函数的注册后在解除阻塞。
+  - 解决办法：可以在fork之前先将SIGCHLD信号阻塞，当完成信号处理函数的注册后再解除阻塞。
 - 当SIGCHLD信号函数处理期间, SIGCHLD信号若再次产生是被阻塞的,而且若产生了多次, 则该信号只会被处理一次, 这样可能会产生僵尸进程。(根本原因是信号不支持排队)
   - 解决办法: 可以在信号处理函数里面使用while(1)循环回收, 这样就有可能出现捕获一次SIGCHLD信号但是回收了多个子进程的情况，从而可以避免产生僵尸进程。
 
@@ -3382,8 +3423,6 @@ int main(int argc,char** argv)
 
 一个进程空间对应一个pid,同一个进程空间的线程有同一个pid,但是他们各自有各自的线程id
 
-在Linux操作系统下：
-
 - **线程**：最小的执行单位
 - **进程**：最小分配资源单位，可看成是只有一个线程的进程。
 
@@ -3398,7 +3437,7 @@ int main(int argc,char** argv)
 
 ![image-20220719153308706](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207191533978.png)
 
-察看指定进程的所有的LWP号： `ps –Lf pid`
+查看指定进程的所有的LWP号： `ps –Lf pid`
 
 ![截屏2022-07-20 11.24.10](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207201125224.jpeg)
 
@@ -3418,7 +3457,7 @@ NLWP表示线程数,STAT表示线程状态,LWP表示线程号(不同于线程id,
 - 线程id
 - 处理器现场和栈指针(内核栈)
 - 独立的栈空间(用户空间栈)
-- errno变量(多线程编程中,不应该用`perror()`,应该改用`strerror(errno)`函数)
+- errno变量(多线程编程中,不应该用`perror()`,应该改用`strerror(errno)`函数,因为`perror`是调用进程的全局错误号，不适合单独线程的错误分析，所以只能使用`strerror`。)
 - 信号屏蔽字
 - 调度优先级
 
@@ -3428,7 +3467,7 @@ NLWP表示线程数,STAT表示线程状态,LWP表示线程号(不同于线程id,
 
 p.s. 线程之间（包含主线程和子线程）可以共享同一变量，包含全局变量或者非全局变量（但是非全局变量必须在其有效的生存期内）
 
-- 文件描述符
+- **文件描述符**
 - 每种信号的处理方式
 - 当前工作目录
 - 用户ID和组ID
@@ -3449,6 +3488,12 @@ p.s. 线程之间（包含主线程和子线程）可以共享同一变量，包
 优点相对突出，缺点均不是硬伤。Linux下由于实现方法导致进程、线程差别不是很大。
 
 一般来说,业务处理,数据库操作用进程操作,网络通信用线程操作.
+
+#### windows和linux线程的函数比较
+
+![img](https://raw.githubusercontent.com/che77a38/blogImage2/main/202208211822664.jpeg)
+
+linux也有Semaphore信号量(上图有误)
 
 ### 线程相关函数
 
@@ -3479,7 +3524,7 @@ int pthread_create(pthread_t *thread, //可以理解为传出线程操作的标�
 函数参数：
 
 - `pthread_t`：传出参数，保存系统为我们分配好的线程ID
-  - 当前Linux中可理解为：**`typedef unsigned long int pthread_t`**。
+  - 当前Linux中可理解为：**`typedef unsigned long int pthread_t`**。(在mac中,理解成`typedef int64_t  pthread_t`)
 - `attr`：通常传NULL，表示使用线程默认属性。若想使用具体属性也可以修改该参数。
 - `start_routine`：函数指针，指向线程主函数(线程体)，该函数运行结束，则线程结束。
 - `arg`：线程主函数执行期间所使用的参数。
@@ -3545,6 +3590,8 @@ void pthread_exit(void *retval);
 **参数**:  `retval`表示线程退出状态,传出参数，通常传NULL
 
 **注意**: `pthread_exit`或者`return`返回的指针所指向的内存单元必须是全局的或者是用malloc分配的(但不一定要返回指针,也可以直接返回常数)，不能在线程函数的栈上分配，因为当其它线程得到这个返回指针时线程函数已经退出了，栈空间就会被回收。
+
+在子线程中，当执行结束， `return` 和 `pthread_exit()` 都可以给返回值到主线程，主线程中的 `pthread_join()` 函数都可以接收到线程的返回值。
 
 如果直接在多线程环境中使用`pthread_exit`退出主线程,那么剩下的线程会成为**僵尸线程**,如何避免僵尸线程,用[`pthread_join`](#pthread_join函数)函数
 
@@ -3692,8 +3739,6 @@ int main(int argc,char** argv)
 
 把`pthread_testcancel`加到子线程回调中,就不会阻塞了,子线程将被成功释放.
 
-<img src="/Users/zeroko/Desktop/%E6%88%AA%E5%B1%8F2022-07-20%2014.07.04.jpg" alt="截屏2022-07-20 14.07.04" style="zoom:33%;" />
-
 #### pthread_equal函数
 
 比较两个线程ID是否相等。
@@ -3836,7 +3881,11 @@ Linux中提供一把互斥锁mutex（也称之为互斥量）。每个线程在�
 
 使用互斥锁之后，两个线程由**并行操作变成了串行操作**，**效率降低了，但是数据不一致的问题得到解决了。**
 
-#### 互斥锁相关函数
+[windows和linux线程相关函数比较跳转](#windows和linux线程的函数比较)
+
+#### 互斥锁
+
+##### 互斥锁相关函数
 
 **pthread_mutex_t 类型**
 
@@ -3849,8 +3898,7 @@ Linux中提供一把互斥锁mutex（也称之为互斥量）。每个线程在�
 初始化一个互斥锁(互斥量) ---> 初值可看作1
 
 ```c
-int pthread_mutex_init(pthread_mutex_t *restrict mutex, 
-						        const pthread_mutexattr_t *restrict attr);
+int pthread_mutex_init(pthread_mutex_t *restrict mutex, const pthread_mutexattr_t *restrict attr);
 ```
 
 **函数参数**
@@ -3938,7 +3986,7 @@ int pthread_mutex_trylock(pthread_mutex_t *mutex);
 - `0`          成功
 - 不为0   失败,并且设置错误号
 
-#### 加锁和解锁
+##### 加锁和解锁
 
 - lock尝试加锁，如果加锁不成功，线程阻塞，阻塞到持有该互斥量的其他线程解锁为止。
 - unlock主动解锁函数，同时将阻塞在该锁上的所有线程全部唤醒，至于哪个线程先被唤醒，取决于优先级、调度。默认：先阻塞、先唤醒。
@@ -4013,8 +4061,189 @@ int main(int argc,char** argv)
 
 - 读写锁是“写模式加锁”时，解锁前，所有对该锁加锁的线程都会被阻塞。
 - 读写锁是“读模式加锁”时，如果线程以读模式对其加锁会成功；如果线程以写模式加锁会阻塞。
-- 读写锁是“读模式加锁”时， 既有试图以写模式加锁的线程，也有试图以读模式加锁的线程。那么读写锁会阻塞随后的读模式锁请求。**优先满足写模式锁。读锁、写锁并行阻塞，写锁优先级高**
+- 读写锁是“读模式加锁”时， 既有试图以写模式加锁的线程，也有试图以读模式加锁的线程。那么**读写锁会阻塞随后的读模式锁请求**。**优先满足写模式锁。读锁、写锁并行阻塞，写锁优先级高**
 
 **读写锁总结**
 
 **读并行，写独占，当读写同时等待锁的时候写的优先级高**
+
+##### 读写锁主要函数
+
+- 定义一把读写锁 
+
+  `pthread_rwlock_t rwlock;`
+
+- 初始化读写锁 
+
+  ```c
+  int pthread_rwlock_init(pthread_rwlock_t *restrict rwlock,const pthread_rwlockattr_t *restrict attr);
+  ```
+
+  函数参数:
+
+  - rwlock-读写锁
+  - attr-读写锁属性，传`NULL`为默认属性
+
+- 销毁读写锁  
+
+  `int pthread_rwlock_destroy(pthread_rwlock_t *rwlock);`        
+
+- 加读锁
+  `int pthread_rwlock_rdlock(pthread_rwlock_t *rwlock);`              
+
+- 尝试加读锁
+  `int pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock);`
+
+- 加写锁
+  `int pthread_rwlock_wrlock(pthread_rwlock_t *rwlock);`
+
+- 尝试加写锁
+  `int pthread_rwlock_trywrlock(pthread_rwlock_t *rwlock);`
+
+- 解锁
+  `int pthread_rwlock_unlock(&pthread_rwlock_t *rwlock);`
+
+#### 条件变量
+
+条件本身**不是锁**！但它也可以造成线程阻塞。**通常与互斥锁配合使用**。给多线程提供一个会合的场所。
+
+- 使用互斥量保护共享数据;
+- 使用条件变量可以使线程阻塞, 等待某个条件的发生, 当条件满足的时候解除阻塞.
+
+条件变量的两个动作:
+
+- 条件不满足, 阻塞线程
+- 条件满足, 通知阻塞的线程解除阻塞, 开始工作.
+
+##### 条件变量相关函数
+
+条件变量类型  `pthread_cond_t  cond;`
+
+###### pthread_cond_init
+
+初始化条件变量
+
+`int pthread_cond_init(pthread_cond_t *restrict cond,const pthread_condattr_t *restrict attr);`
+
+函数参数: 
+		`cond`: 条件变量
+		`attr`: 条件变量属性, 通常传NULL
+函数返回值:成功返回0, 失败返回错误号
+
+###### pthread_cond_destroy
+
+销毁条件变量
+
+```c
+int pthread_cond_destroy(pthread_cond_t *cond);
+```
+
+函数参数: 条件变量
+返回值: 成功返回0, 失败返回错误号
+
+###### pthread_cond_wait
+
+- 条件不满足, 引起线程阻塞并解锁;
+- 条件满足, 解除线程阻塞, 并加锁
+
+```c
+int pthread_cond_wait(pthread_cond_t *restrict cond,pthread_mutex_t *restrict mutex);
+```
+
+函数参数:
+		`cond`: 条件变量
+		`mutex`: **互斥锁变量**
+函数返回值: 成功返回0, 失败返回错误号
+
+###### pthread_cond_signal
+
+唤醒至少一个阻塞在该条件变量上的线程
+
+```c
+int pthread_cond_signal(pthread_cond_t *cond);
+```
+
+函数参数: 条件变量
+函数返回值: 成功返回0, 失败返回错误号
+
+**案例**
+
+![](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207281613821.png)![](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207281613562.png)
+
+生产者线程调用pthread_cond_signal函数会使消费者线程在pthread_cond_wait处解除阻塞。
+
+#### 信号量
+
+信号量相当于多把锁, 可以理解为是加强版的互斥锁
+
+前面的锁同一时间都只能有一个单位持有锁,信号量允许多个单位持有同一把锁.
+
+![image-20220729141523246](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207291415036.png)
+
+可以如上图理解成多部车进同一个车库
+
+##### 信号量相关函数
+
+定义信号量 `sem_t sem;`
+
+######  sem_init函数
+
+初始化信号量
+
+```c
+int sem_init(sem_t *sem, int pshared, unsigned int value);
+```
+
+函数参数:
+	`sem`: 信号量变量
+	`pshared`: 0表示线程同步, 1表示进程同步
+	`value`: **最多有几个线程操作共享数据**
+函数返回值:成功返回0, 失败返回-1, 并设置errno值
+
+###### sem_wait函数
+
+调用该函数一次, 相当于sem--, 当**sem为0的时候, 引起阻塞**
+
+```c
+int sem_wait(sem_t *sem);
+```
+
+函数参数: 信号量变量
+函数返回值: 成功返回0, 失败返回-1, 并设置errno值
+
+###### sem_post函数
+
+调用一次, 相当于sem++
+
+```c
+int sem_post(sem_t *sem);
+```
+
+函数参数: 信号量变量
+函数返回值: 成功返回0, 失败返回-1, 并设置errno值
+
+######  sem_trywait函数
+
+尝试加锁, 若失败直接返回, 不阻塞
+
+```c
+int sem_trywait(sem_t *sem);
+```
+
+函数参数: 信号量变量
+函数返回值: 成功返回0, 失败返回-1, 并设置errno值
+
+###### sem_destroy函数
+
+销毁信号量
+
+```c
+int sem_destroy(sem_t *sem);
+```
+
+函数参数: 信号量变量
+函数返回值: 成功返回0, 失败返回-1, 并设置errno值
+
+**案例**
+
+![image-20220729142150009](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207291421675.png)![image-20220729142154726](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207291421450.png)
