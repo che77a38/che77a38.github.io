@@ -549,6 +549,7 @@ clean:
 
 - `make` **默认执行第一个出现的目标**,可通过 `make dest(dest表示其他目标)`指定要执行的目标
 - `make -f 文件名`制定一个makefile文件来执行  如:`make -f mainmak`指定要执行的makefile文件名为mainmak
+- 在**测试makefile时**，应先使用`-n`参数，检查无误再执行。(只显示命令,但不真正执行)
 
 ## makefile的常见函数
 
@@ -570,12 +571,12 @@ TARGET=main
 #可以设定CXX(库可以直接加在这句中，如下list库，-g表示调试也可以加在这句中)
 #CXX=g++ -g -llist
 #依赖文件.o(自己写的)
-SRCS=$(WILDCARD *.cpp)
+SRCS=$(wildcard *.cpp)
 #上面与下面同理
 #SRCS=$(shell ls *.cpp)
 #下面的可以遍历所有子目录中的.cpp
 #SRCS=$(shell find ./ -name '*.cpp')
-OBJS=$(SRC:.cpp=.o)
+OBJS=$(SRCS:.cpp=.o)
 #依赖文件，加入的头文件
 LIBS=-lpthread
 #头文件所在目录
@@ -1015,7 +1016,7 @@ endif (OPENCV_FOUND)
 | del     | rm          | 删除文件                   |
 | cls     | clear       | 清除画面上的显示           |
 
-
+[win部分特殊终端命令](#win终端命令相关)
 
 ## homebrew常用命令
 
@@ -1038,6 +1039,223 @@ endif (OPENCV_FOUND)
 ![image-20211207151102904](https://raw.githubusercontent.com/che77a38/blogImage/main/202112071511344.png)
 
 [git学习网站]: https://learngitbranching.js.org/?locale=zh_CN
+
+# git详解
+
+## Git与svn对比
+
+**SVN（Subversion）**是集中式版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器哪里得到最新的版本，然后干活，干完后，需要把自己做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网还可以，带宽够大，速度够快，如果在互联网下，如果网速慢的话，就郁闷了。
+下图就是标准的集中式版本控制工具管理方式：
+
+![image-20230103162133191](https://raw.githubusercontent.com/che77a38/blogImage2/main/202301031621539.png)
+
+集中管理方式在一定程度上看到其他开发人员在干什么，而管理员也可以很轻松掌握每个人的开发权限。
+但是相较于其优点而言，集中式版本控制工具缺点很明显：
+
+- 服务器单点故障
+- 容错性差
+
+**Git**
+
+Git是分布式版本控制系统，那么它就没有中央服务器的，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己的电脑上。既然每个人的电脑都有一个完整的版本库，那多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。
+下图就是分布式版本控制工具管理方式：
+
+![image-20230103162249584](https://raw.githubusercontent.com/che77a38/blogImage2/main/202301031623438.png)
+
+## git工作流程
+
+1. 从远程仓库中克隆 Git 资源作为本地仓库。
+2. 从本地仓库中checkout代码然后进行代码修改
+3. 在提交前先将代码提交到暂存区。
+4. 提交修改。提交到本地仓库。本地仓库中保存修改的各个历史版本。
+5. 在修改完成后，需要和团队成员共享代码时，可以将代码push到远程仓库。
+
+下图展示了 Git 的工作流程：
+
+![image-20230104113924564](https://raw.githubusercontent.com/che77a38/blogImage2/main/202301041139883.png)
+
+## Git安装
+
+下载地址：https://git-scm.com/download
+
+## 关键词理解
+
+> 在初始化git版本库之后会生成一个隐藏的文件 .git ，可以将该文件理解为 git 的版本库 `repository`，而我们自己建立的项目文件夹即工作区 `working directory` , 在 `.git` 文件夹里面还有很多文件，其中有一个 `index` 文 件 就是暂存区也可以叫做 `stage` , git 还为我们自动生成了一个分支 `master` 以及指向该分支的指针`head` ,如下图
+
+![image-20230112111626807](https://raw.githubusercontent.com/che77a38/blogImage2/main/202301121117166.png)
+
+- **工作区**: 存储项目文件的目录, 版本库需要创建到工作区中
+
+- **版本库**: 创建出的隐藏目录 `.git`
+
+  - **`stage`** - 暂存区
+     当往工作区中添加了新文件之后, 需要将工作区文件添加到暂存区
+
+  - **`master`** - 主分支
+
+    默认只有这一个, 进行版本管理
+    `HEAD` - 操作master分支的指针
+
+  - 暂存区和分支的关系
+
+    当暂存区的文件内容发送变化, 需要将其提交的master分支
+    只有提交之后才会形成一个节点(一个版本)
+
+## 使用git管理文件
+
+### 创建版本库
+
+什么是版本库呢？版本库又名仓库，英文名`repository`，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。由于git是分布式版本管理工具，所以git在不需要联网的情况下也具有完整的版本管理能力。
+
+在要使用git管理的目录中点击右键中选择Git Bash来启动,创建仓库执行命令：**`git init`**
+
+版本库创建成功，会在此目录下创建一个`.git`的隐藏目录
+
+- **版本库**：`.git`目录就是版本库，将来文件都需要保存到版本库中。
+- **工作目录**：包含`.git`目录的目录，也就是.git目录的上一级目录就是工作目录。只有工作目录中的文件才能保存到版本库中。
+
+### 添加暂存区并提交
+
+添加新文件到暂存区并提交
+
+1. 添加改动到暂存区  `git add .`(`.`表示所有变动)
+2. 暂存区提交到分支  `git commit -m '注释'`
+
+### 还原修改
+
+还原的本质 :  **将工作区中修改的文件还原成想要的提交的版本**
+
+还原有三种情况
+
+- 只是修改了文件，没有任何 git 操作
+
+  ```shell
+  git checkout -- aaa.html // 指定还原`aaa.html`文件
+  
+  git checkout -- * // 还原所有文件
+  ```
+
+- 修改了文件，并提交到暂存区（即：编辑之后，进行`git add` 但没有 `git commit -m "留言xxx"`）
+
+  ```shell
+  git log --oneline            // 可以省略
+  
+  git reset HEAD               // 回退到当前版本
+  
+  git checkout -- aaa.html
+  ```
+
+- 修改了文件，并提交到仓库区（即：编辑之后，进行`git add` 并且 `git commit -m "留言xxx"`）
+
+  ```shell
+  git log --oneline    // 可以省略
+  
+  git reset HEAD^     // 回退到上一个版本，注意看HEAD后面有个^ HEAD^是回退到上个版本 HEAD^^是回退到上上个版本HEAD~数字 是回退到数字个版本
+  
+  git checkout -- aaa.html
+  ```
+
+前两种情况使用了还原功能后,修改内容就丢失了,无法找回.原因是真正保存下来的其实是每次提交的状态
+
+### 查看修改内容
+
+- [未暂存的修改](#查看未暂存修改)
+- [已暂存的修改](#查看已暂存的修改)
+
+**git diff的重点**
+
+> 文件的流转方向是由工作区创建，`add`进入暂存区，`commit`进入仓库。
+
+- **`git diff`** 比较暂存区与工作区文件的区别。
+- **`git diff --cached`** 比较仓库(版本库)与暂存区文件的区别。
+
+
+
+#### 查看未暂存修改
+
+此时比较的是: **已暂存（`staged`）和 已追踪未暂存（`modified`） 之间的修改部分。**
+此时执行 **`git status`** 查看文件状态,**`git diff`**,显示内容如下
+
+```bash
+#此时 hello.txt 中已经有一行内容了，内容为hello world，我们将其改为了hello
+$ git status
+On branch master
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   .gitignore
+        new file:   hello.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   hello.txt
+
+
+$ git diff
+diff --git a/hello.txt b/hello.txt
+index 95d09f2..b6fc4c6 100644
+--- a/hello.txt
++++ b/hello.txt
+@@ -1 +1 @@
+-hello world
+ No newline at end of file
++hello
+ No newline at end of file
+```
+
+#### 查看已暂存修改
+
+此时比较的是: **提交至仓库的版本 和 暂存区文件 之间的修改部分**。
+
+**`git diff --cached`** 命令
+
+> 注意：`--staged` 和 `--cached` 是同义词
+> `git diff --cached` 等于 `git diff --staged`
+
+```bash
+#hello.txt 的内容为 hello。此时我们修改内容为 hi
+$ git add hello.txt
+
+$ git diff --cached
+diff --git a/hello.txt b/hello.txt
+index b6fc4c6..32f95c0 100644
+--- a/hello.txt
++++ b/hello.txt
+@@ -1 +1 @@
+-hello
+ No newline at end of file
++hi
+ No newline at end of file
+```
+
+### 添加忽略列表
+
+有些文件或文件夹不需要git追踪,因此可以将他们添加到忽略列表
+
+> 一般库文件和可执行文件,不需要git追踪
+
+需要在项目根目录新建**`.gitignore`**文件（也就是与.git文件夹同级）
+文件中写上忽悠的文件或文件夹，例如：
+
+```txt
+.vs
+npoi.fast/bin
+npoi.fast/obj
+npoi.fast.test/bin
+npoi.fast.test/obj
+```
+
+如果要忽略的文件或文件夹**已提交过**，请使用命令`git rm -r --cached filename   `   (其中filename换成文件或文件夹名，如上述`.vs`或`npoi.fast/bin`)
+
+
+
+
+
+
+
+
 
 # git常用指令
 
@@ -1251,5 +1469,142 @@ SourceTree
 
 
 
+# win终端命令相关
 
+[基本指令参考](#终端指令学习)
 
+## 终端命令重命名
+
+终端输入`$profile`查对应终端的配置文件所在,没有就自行新建
+
+打开文件输入,格式:
+
+```js
+function 别名 { 需要替代的命令，可以包含空格 }
+或者
+function 名称 { 需要替代的命令，可以包含空格 }
+Set-Alias 别名 名称
+```
+
+如:
+
+```js
+function sshLinux{
+	ssh 'kylin@192.168.10.88' $args
+}
+Set-Alias sshlinux sshLinux
+```
+
+保存后重启power shell就可以使用别名了
+
+## powershell新建文件命令
+
+powershell基本指令大多与linux一致,但无touch命令
+
+```powershell
+ fsutil file creatnew 新建文件名 0
+```
+
+# 工具命令
+
+##  ssh
+
+ssh远程连接   `ssh 用户名@ip地址或域名`  
+
+## scp
+
+从服务器上下载文件   `scp username@servername:/path/filename /var/www/local_dir（本地目录）`
+
+例如`scp root@192.168.0.101:/var/www/test.txt`  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）
+
+ 上传本地文件到服务器  `scp /path/filename username@servername:/path   `
+
+例如`scp /var/www/test.php  root@192.168.0.101:/var/www/`  把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中
+
+如果上传下载的是整个目录,`scp`后加 `-r` 
+
+**sftp**
+
+使用和scp类似,但功能更多
+
+比如:SFTP支持断点续传，SCP则不能
+
+# vscode开发tips
+
+## vscode远程开发
+
+Vscode 安装 `remote development`插件
+
+安装后打开远程资源管理器,设置为ssh target,点击+号键,添加ssh目标.
+
+右键ssh目标选择连接,输入密码,开始远程开发
+
+## code runner配置
+
+Code Runner默认运行是在输出端，是不能进行编辑输入的，所以我们要将其改到终端运行，打开VS Code设置，找到Run In Terminal配置处，将其勾选住，也可在设置的配置文件settings.json文件里添加"code-runner.runInTerminal": true配置，保存，我们再通过Code Runner运行，就可以在终端中运行了，可以在上面进行输入了。
+
+## windows下的vscode终端乱码
+
+windows下默认的终端编码为GBK,因此需要配置vscode终端为utf-8编码
+
+```json
+"terminal.integrated.profiles.windows": {
+    "Command Prompt": {
+        "path": "C:\\Windows\\System32\\cmd.exe",
+        "args": ["-NoExit", "/K", "chcp 65001"]
+    },
+    "PowerShell": {
+        "source": "PowerShell",
+        "args": ["-NoExit", "/C", "chcp 65001"]
+    }
+},
+"terminal.integrated.defaultProfile.windows": "Command Prompt"
+```
+
+将以上配置添加在settings.json里最外层的{}里即可(注意！！！，如果{}里之前有内容记得要在最后一行加上一个英文逗号，之后再把配置复制进去)
+
+## vscode的配置文件
+
+launch.json参考如下:
+
+```json
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "g++ - 生成和调试活动文件",// 配置名称，将会在启动配置的下拉菜单中显示
+            "type": "cppdbg",// 配置类型，这里只能为cppdbg
+            "request": "launch",// 请求配置类型，可以为launch（启动）或attach（附加）
+            "program": "/home/hewei/桌面/课程七讲_源码/Class_7/build/my_cmake_exe",// 将要进行调试的程序的路径
+            "args": [],// 程序调试时传递给程序的命令行参数，一般设为空即可
+            "stopAtEntry": false, // 设为true时程序将暂停在程序入口处，我一般设置为true
+            "cwd": "${fileDirname}",// 调试程序时的工作目录
+            "environment": [],// （环境变量？）
+            "externalConsole": false,// 调试时是否显示控制台窗口，一般设置为true显示控制台
+            "MIMode": "gdb",// 指定连接的调试器，可以为gdb或lldb。但目前lldb在windows下没有预编译好的版本。
+            // 用处未知，模板如此
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "将反汇编风格设置为 Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            // 调试会话开始前执行的任务，一般为编译程序。与tasks.json的label相对应
+            //"preLaunchTask": "C/C++: g++ bulid active file",
+            "miDebuggerPath": "/usr/bin/gdb"// 调试器路径，Windows下后缀不能省略，Linux下则去掉
+        }
+    ]
+}
+```
+
+[vscode其他配置文件细节参考跳转](https://blog.csdn.net/weixin_43687811/article/details/122744673)
+
+[参考2](https://lzyws739307453.blog.csdn.net/article/details/123605259)

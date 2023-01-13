@@ -19,6 +19,8 @@ categories: 技术
 
 <!-- more -->
 
+[linux详细查询跳转外部网址](http://c.biancheng.net/linux_tutorial/)
+
 ## 命令解释器
 
 - shell就是命令解释器
@@ -837,7 +839,7 @@ linux绝大多数命令都有对应的函数,例如
 
 - 常用用法
 
-  - `ps -ef`   
+  - `ps -ef`    相对 aux 来说, 显示内容较少.主要用来结合管道查找进程 ID.
 
   - `ps aux | grep "xxx"`   最常用的方法是`ps -aux`,然后再利用一个管道符号导向到grep去查找特定的进程,然后再对特定的进程进行操作。
 
@@ -923,11 +925,28 @@ linux系统,通过修改 `/etc/crontab`文件(系统任务调度)添加定时任
 
 
 
-## 其他命令盘点
+## 其他常用命令盘点
 
-`alias`  起别名(不加任何东西是查看所有别名)    E.g.  `alias psj='ps -ef |grep jenkins'`
+更多网络相关命令参考网络编程页面
 
-`unalias` 取消别名   E.g. `unalias psj`
+- `alias`  起别名(不加任何东西是查看所有别名)    E.g.  `alias psj='ps -ef |grep jenkins'``
+
+  ``unalias` 取消别名   E.g. `unalias psj`
+
+- `free`命令 显示当前系统未使用的和已使用的内存大小，还可以显示被内核使用的内存缓冲区   [详细跳转](https://blog.csdn.net/weixin_43083491/article/details/120746362)`
+
+- `top`命令  实时动态地查看系统的整体运行情况，是一个综合了多方信息监测系统性能和运行信息的实用工具。通过top命令可以有效的发现系统的缺陷出在哪里，如内存不够、CPU处理能力不够、IO读写过高等。通过top命令所提供的互动式界面，用热键可以管理。  参考free的详细跳转地址
+
+- `nm`命令    文本分析工具,来源于name的简写,该命令用来列出指定文件中的符号（如常用的函数名、变量等，以及这些符号存储的区域）。它显示指定文件中的符号信息，文件可以是对象文件、可执行文件或对象文件库。如果文件中没有包含符号信息，nm报告该情况，单不把他解释为出错。nm缺省情况下报告十进制符号表示法下的数字值。
+
+- `wget`命令   开源的下载文件工具
+
+  例如临时代理下载http文件下载链接,可用如下命令 
+  `wget -c -r -np -k -L -p -e "http_proxy=http://127.0.0.1:9090" 下载链接`
+
+- `curl`命令    用来请求 Web 服务器的工具.发出网络请求,然后获取数据,显示在标准输出(stdout)上面
+
+- `ifconfig -a`命令   查看网络接口信息,可查看ip地址
 
 # vim
 
@@ -959,6 +978,13 @@ Vi有三种基本工作模式: 命令模式、文本输入模式、末行模式�
 | :----- | ------------ |
 | gg=G   | 代码的格式化 |
 
+vim下写代码超实用代码格式整理命令，仅需四步
+
+1. 先使用 `gg` 命令使光标回到第一行
+2. `shift+v` 进入可视模式
+3. `shift+g` 全选
+4. 按下 `=` 即可
+
 #### 光标移动
 
 | 快捷键 | 操作                                    |
@@ -986,6 +1012,7 @@ Vi有三种基本工作模式: 命令模式、文本输入模式、末行模式�
 | dd        | 删除光标所在行(本质其实是剪切)                               |
 | ndd       | 从光标当前行向下删除指定的行数,如:15dd                       |
 | v/ctrl+v  | 使用h,j,k,l移动选择内容,然后按d删除(其中ctrl+v是列模式,v为非列模式) |
+| dG        | 全部删除  ,当前所选行之下的全部删除,可以先gg到文件头,再用此命令全部删除 |
 
 #### 撤销和反撤销命令
 
@@ -1004,11 +1031,16 @@ Vi有三种基本工作模式: 命令模式、文本输入模式、末行模式�
 | P        | 在光标所在位置向上开辟一行,粘贴                              |
 | 剪切操作 | 按dd或ndd山删除,将删除的行保存到剪贴板中,然后按p/P就可以粘贴了 |
 
+这里的复制粘贴均仅能在vim中自身使用,并非复制到系统剪贴板
+
 #### 可视模式
 
 | 快捷键   | 操作                                                         |
 | :------- | ------------------------------------------------------------ |
 | v/ctrl+v | 使用h、j、k、l移动选择内容;使用d删除;使用y复制,使用p粘贴到光标的后面;使用P粘贴到光标的前面 |
+
+- `v`是可视**行**模式
+- `ctrl+v`是可视**块**模式
 
 #### 替换操作
 
@@ -1789,13 +1821,24 @@ else if(S_ISDIR(sb.st_mode))
 - stat函数获取链接文件属性,获取到的是链接文件**指向的文件的属性**
 - lstat函数获取链接文件属性,获取到的是链接文件**本身的属性**
 
+判断文件是否存在代码:
+
+```c
+struct stat st;
+if(stat(fileName,&st)<0)
+{
+   printf("文件不存在\n");
+}
+```
+
 ### 目录操作
 
 主要函数如下:
 
-- 打开目录  `opendir`
-- 读目录  `readdir`
-- 关闭目录 `closedir`
+- 打开目录 [ `opendir`](#opendir函数)
+- 读目录   [`readdir`](#readdir函数)
+- 关闭目录  [`closedir`](#closedir函数)
+- 目录子项过滤与排序  [`scandir`](#函数)
 
 ```c
 DIR *pDir = opendir("dir");  //打开目录
@@ -1879,6 +1922,46 @@ d_type的取值:
 
 - 函数返回值: 成功返回0, 失败返回-1
 - 函数参数: opendir函数的返回值
+
+#### scandir函数
+
+目录子项过滤与排序
+
+```c
+int scandir(
+  const char *dirname,
+  struct dirent ***namelist,
+  int (*select)(const struct dirent *),
+  int (*compar)(const struct dirent **,const struct dirent **));
+```
+
+- `dirname` 目录路径
+- `namelist` 输出目录的子项信息,dirent结构体三级指针
+- `select` 过滤某些文件的回调函数,NULL表示不过滤
+- `compar` 排序回调函数   自带的回调函数有`alphasort`(依字母顺序排序目录结构)和`versionsort`,可以直接使用.NULL表示不排序
+
+返回值:失败返回`-1` ;成功返回过滤后的目录子项数
+
+**[注意]** 由于scandir内部是malloc申请的空间,因此记得要释放
+
+**例子**
+
+```c
+//dirPath为目录路径
+struct dirent **namelist;
+int n = scandir(dirPath,&namelist,NULL,alphasort);
+if(n<0)
+	perror("scandir");
+else
+{
+  while(n--)
+  {
+    printf("%s\n",namelist[n]->d_name);
+    free(namelist[n]);//由于scandir内部是malloc申请的空间,因此记得要释放
+	}
+  free(namelist);
+}
+```
 
 #### **案例实现代码**
 
@@ -2809,6 +2892,8 @@ sighandler_t signal(int signum, sighandler_t handler);
 - `handler`：信号处理函数
 
   ​	信号处理函数格式: `void 自定义信号处理函数名称(int signo)`
+  
+  ​	也可赋值为`SIG_IGN`表忽略 或 `SIG_DFL`表执行默认动作
 
 ###### kill函数/命令
 
@@ -3068,6 +3153,8 @@ int main(int argc,char** argv)
 [signal函数跳转](#signal函数)
 
 ###### sigaction函数
+
+相较于`signal`,`sigaction`跨平台支持更好
 
 注册一个信号处理函数
 
@@ -4105,7 +4192,7 @@ int main(int argc,char** argv)
 
 #### 条件变量
 
-条件本身**不是锁**！但它也可以造成线程阻塞。**通常与互斥锁配合使用**。给多线程提供一个会合的场所。
+条件变量本身**不是锁**！但它也可以造成线程阻塞。**通常与互斥锁配合使用**。给多线程提供一个会合的场所。
 
 - 使用互斥量保护共享数据;
 - 使用条件变量可以使线程阻塞, 等待某个条件的发生, 当条件满足的时候解除阻塞.
@@ -4143,7 +4230,7 @@ int pthread_cond_destroy(pthread_cond_t *cond);
 
 ###### pthread_cond_wait
 
-- 条件不满足, 引起线程阻塞并解锁;
+- 条件不满足, 引起线程阻塞并解锁
 - 条件满足, 解除线程阻塞, 并加锁
 
 ```c
@@ -4161,6 +4248,17 @@ int pthread_cond_wait(pthread_cond_t *restrict cond,pthread_mutex_t *restrict mu
 
 ```c
 int pthread_cond_signal(pthread_cond_t *cond);
+```
+
+函数参数: 条件变量
+函数返回值: 成功返回0, 失败返回错误号
+
+###### pthread_cond_boardcast
+
+唤醒所有条件变量
+
+```c
+int pthread_cond_boardcast(pthread_cond_t *cond);
 ```
 
 函数参数: 条件变量
@@ -4247,3 +4345,65 @@ int sem_destroy(sem_t *sem);
 **案例**
 
 ![image-20220729142150009](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207291421675.png)![image-20220729142154726](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207291421450.png)
+
+# linux下设置代理
+
+## 无ui linux非docker设置代理
+
+1. 使用wget下载,到[此链接](https://github.com/Dreamacro/clash/releases)找`clash-linux-amd64-v1.12.0.gz`下载链接,下载后解压
+
+2. 节点转订阅[链接](https://v2rayse.com/v2ray-clash),该链接会显示节点转换好的文本,新建`config.yaml`文件,将文本拷贝进该文件
+
+3. 将`clash-linux-amd64-v1.12.0`改名为`clash`放到/opt/clash目录下,方便调用
+
+4. `clash -f 上面的config.yaml`尝试启动,并查看代理端口信息
+
+5. 接下来将clash设置为系统服务,在`/etc/systemd/system/`下新建`clash.service`文件,输入下面内容
+
+   ```shell
+   [Unit]
+   Description=clash-core
+   [Service]
+   Type=simple
+   ExecStart=/opt/clash/clash -f /opt/clash/config.yaml                      
+   ```
+
+6. 设置完成后需要` systemctl daemon-reload` 重新加载一下,然后就可以通过 `systemctl start clash`启动clash服务;通过 `systemctl status clash`查看clash服务输出信息
+
+7. 至此,代理设置完毕
+
+终端设置http和https代理:`export http_proxy=http://127.0.0.1:7890`和`export https_proxy=http://127.0.0.1:7890`可以在`~/.bashrc`通过别名设置一个宏
+
+```shell
+#开启终端代理
+alias proxy="export https_proxy=http://127.0.0.1:7890;export https_proxy=http://127.0.0.1:7890"
+#关闭终端代理
+alias unproxy="unset http_proxy;unset https_proxy"
+```
+
+## 给代理设置前端UI界面
+
+[此链接](github.com/Dreamacro/clash-dashboard/tree/gh-pages)下载界面相关文件(假设下到`/opt/clash/ui`文件夹)
+
+在`config.yaml`中添加 external -ui: /opt/clash/ui
+
+重启系统服务后,可在本机`127.0.0.1:9090/ui`查看前端页面
+
+## docker版clash
+
+直接下载如下命令启用就可以了
+
+```shell
+docker run -d --name clash -p 7890:7890 -p 7891:7891 -p 9090:9090 -v /opt/clash/config.yaml:/root/.config/clash/config.yaml -v /opt/clash/ui:/opt/clash/ui clash的docker镜像名
+```
+
+参数含义
+
+- `-d`    后台运行
+- `-p 7890:7890`    端口映射:`-p 主机端口:容器端口`
+- `-v`    文件映射:`-v 主机文件路径:容器内部路径`
+
+`docker ps -a`   查看全部容器信息
+
+`docker logs -f 容器名`  查看容器输出
+

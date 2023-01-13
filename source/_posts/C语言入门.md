@@ -1510,8 +1510,6 @@ char *str3 = "hi";						//常量，只读
 //str3中存的是常量地址
 ```
 
-
-
 ## 字符串处理函数 #include <string.h> 
 
 ### strcpy()
@@ -1562,8 +1560,6 @@ char *strchr(const char *s, int c);
 //	失败：NULL
 ```
 
-
-
 ### strstr()
 
 ```c
@@ -1577,8 +1573,6 @@ char *strstr(const char *haystack, const char *needle);
 //	成功：返回第一次出现的needle地址
 //	失败：NULL
 ```
-
-
 
 ### strtok()
 
@@ -1596,9 +1590,7 @@ char *strtok(char *str, const char *delim);
 
   > strtok函数会破坏被分解字符串的完整，调用前和调用后的s已经不一样了。如果要保持原字符串的完整，可以使用strchr和sscanf的组合等。
 
-**???待理解点**： strtok是一个线程不安全的函数，因为它使用了静态分配的空间来存储被分割的字符串位置,[线程安全](https://baike.baidu.com/item/线程安全)的函数叫strtok_r,ca
-
-
+ strtok是一个线程不安全的函数，因为它使用了静态分配的空间来存储被分割的字符串位置,[线程安全](https://baike.baidu.com/item/线程安全)的函数叫strtok_r,ca
 
 ## 字符串处理函数 \#include <stdio.h>
 

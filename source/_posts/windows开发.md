@@ -1363,6 +1363,35 @@ HWND是窗口的句柄
 
 桌面的窗口句柄是NULL。
 
+获取窗口句柄的方法有三种
+
+- 使用FindWindow函数获取指定窗口句柄
+- 获取所有顶层窗口以及它们的子窗口
+  - 使用`EnumWindows`和`EnumChildWindows`函数以及相对的回调函数`EnumWindowsProc`和`EnumChildWindowsProc`获取所有顶层窗口以及它们的子窗口
+  - 使用`GetDesktopWindow`和`GetNextWindow`函数得到所有的子窗口
+
+获取窗口句柄代码如下:
+
+```c
+HWND findWindowOneByOne(char* windowName)
+{
+	HWND hd = GetDesktopWindow();        //得到桌面窗口
+	hd = GetWindow(hd, GW_CHILD);        //得到屏幕上第一个子窗口
+	char s[200] = { 0 };
+	int num = 1;
+	while (hd != NULL)                    //循环得到所有的子窗口
+	{
+		memset(s, 0, 200);
+		GetWindowText(hd, s, 200);
+		//cout << num++ << ": " << s <<": "<<hd << endl;//遍历打印所有标题和窗口句柄
+		if (strcmp(s, windowName) == 0)
+			return hd;
+		hd = GetNextWindow(hd, GW_HWNDNEXT);
+	}
+	return 0;
+}
+```
+
 ## GDI  图形设备接口
 
 Graphics Device Interface
@@ -4614,7 +4643,7 @@ PostMessage(
 
 ## SendInput()
 
-SendInput函数也可以模拟全局键盘事件。SendInput可以直接把一条消息插入到消息队列中，算是比较底层的了
+[SendInput函数](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-sendinput)也可以模拟全局键盘事件。SendInput可以直接把一条消息插入到消息队列中，算是比较底层的了
 
 ## 钩子模拟键鼠操作
 

@@ -158,6 +158,170 @@ bool 世界坐标转屏幕坐标_非矩阵(坐标结构& 屏幕坐标,float 水�
 
 这种方式得到的坐标绘制多多少少有误差,下面用到矩阵的方式无误差
 
+### 相关代码截取
+
+```c
+struct Point2D
+{
+	float X, Y;
+};
+
+struct  Vector4 
+{
+	float x;
+	float y;
+	float z;
+	float w;
+};
+
+class Paint
+{
+public:
+	HWND m_hWnd;//窗口句柄
+	RECT m_wndRect;//窗口尺寸信息
+	int m_resolutionWidth;//分辨率宽
+	int m_resolutionHeight;//分辨率高
+	RECT m_outsideWnd;//外窗口尺寸信息
+	int m_outsideWndWidth;//外窗口分辨率宽
+	int m_outsideWndHeight;//外窗口分辨率高
+	float m_viewMatrix[16];//视角矩阵
+	DWORD m_matrixAddr32;//32位矩阵地址
+	DWORD64 m_matrixAddr64;//64位矩阵地址
+
+	//取窗口信息
+	void getWndInfo();
+public:
+	Paint(HWND hWnd,DWORD matrixAddr=NULL, COLORREF brushColor=RGB(255,0,0), COLORREF penColor=RGB(255,0,0));
+	//64位非矩阵绘制未完善
+	Paint(HWND hWnd, DWORD64 matrixAddr, COLORREF brushColor = RGB(255, 0, 0), COLORREF penColor = RGB(255, 0, 0));
+	Paint();
+	~Paint();
+	HDC hdc;//画板句柄
+	HBRUSH hBrush;//画刷句柄
+	HFONT hfont;//字体句柄
+	HPEN hPen;//画笔
+	//HDC hOldDc;//老的画板句柄
+	//HBRUSH hOldBrush;//老的画刷句柄
+	//HPEN hOldPen;//老的画笔
+	//世界坐标转屏幕坐标(无矩阵)
+	bool worldPointToScreenPointWithoutMatrix(Point2D& screenPoint,const Orientation& angleDiff);
+	//世界坐标转屏幕坐标
+	bool worldPointToScreenPoint(Point2D& screenPoint, const Point3D& targetWorldPoint);
+	//世界坐标转屏幕坐标64位
+	bool worldPointToScreenPoint64(Point2D& screenPoint, const Point3D& targetWorldPoint);
+	//画线(从屏幕下方中间出发到(x,y))
+	void paintLine(int x, int y);
+	//两点画线
+	void paintLine(int x, int y, int xTo, int yTo);
+	//画框
+	void paintFrame(int x, int y, int w, int h, int thick);
+	//针对头脚坐标画框
+	void paintFrameByFootAndHead(Point2D footPoiny,Point2D headPoint,int thick);
+	//画矩形
+	void paintRect(int x,int y,int w,int h);
+	//写字
+	void paintText(int x,int y,COLORREF color,const char* text);
+	//绘制
+	void beginPaint();
+	//更换画刷
+	void changeBrush(COLORREF brushColor);
+	//更换画笔
+	void changePen(int penStyle,int penWidth,COLORREF penColor);
+	bool 世界坐标转屏幕坐标_非矩阵(Point2D& 屏幕坐标, FLOAT  水平角度差, FLOAT 高低角度差);
+};
+
+float angleToRadian(float angle)
+{
+	return (FLOAT)(angle*PI / 180);
+}
+float radianToAngle(float radian)
+{
+	return (FLOAT)(radian * 180 / PI);
+}
+void Paint::getWndInfo()
+{
+	//获得窗口信息
+	GetClientRect(m_hWnd,&m_wndRect);
+	m_resolutionWidth = m_wndRect.right - m_wndRect.left;
+	m_resolutionHeight = m_wndRect.bottom - m_wndRect.top;
+	GetWindowRect(m_hWnd, &m_outsideWnd);  //含有边框及全屏幕坐标
+	m_outsideWndWidth = m_outsideWnd.right - m_outsideWnd.left;
+	m_outsideWndHeight = m_outsideWnd.bottom - m_outsideWnd.top;
+}
+
+bool Paint::世界坐标转屏幕坐标_非矩阵(Point2D& 屏幕坐标, FLOAT  水平角度差, FLOAT 高低角度差)
+{
+
+	getWndInfo();
+	FLOAT 高低可视角度 = (FLOAT)((double)atan2(m_resolutionHeight, m_resolutionWidth) * 180 / 3.1415);
+	if (fabs(水平角度差) > 45 || fabs(高低角度差) > 高低可视角度)
+	{
+		return false;// 不在屏幕范围内
+	}
+	int 水平差 = (int)(tan(水平角度差 * 3.1416 / 180) * ((m_resolutionWidth) / 2));
+	屏幕坐标.X = (float)(m_resolutionHeight / 2 + 水平差);
+
+	int 高度差 = (int)(tan(高低角度差 * 3.1416 / 180) * ((m_resolutionWidth) / 2));
+	屏幕坐标.Y = (float)(m_resolutionHeight / 2 + 高度差);
+
+	return true;
+}
+
+//计算朝向函数参考
+void EntityAround::calOrientation(Point3D& targetLoc,Orientation& targetAngle,Orientation& angleDiff)
+{
+	FLOAT fov_X = *(FLOAT*)((DWORD)GetModuleHandleA("hl.exe") + 0x195fe58);
+	FLOAT fov_Y = *(FLOAT*)((DWORD)GetModuleHandleA("hl.exe") + 0x195fe5c);
+	FLOAT fov_Z = *(FLOAT*)((DWORD)GetModuleHandleA("hl.exe") + 0x195fe60);
+	FLOAT fov_horizon= *(FLOAT*)((DWORD)GetModuleHandleA("hl.exe") + 0x19E10C8);
+	FLOAT fov_vertical = *(FLOAT*)((DWORD)GetModuleHandleA("hl.exe") + 0x19E10C4);
+	//水平朝向确定
+	if (targetLoc.X >= fov_X&&targetLoc.Y >= fov_Y)
+	{
+		//第一象限
+		targetAngle.horizon= radianToAngle(atan2(targetLoc.Y - fov_Y, targetLoc.X - fov_X));
+	}
+	else if (targetLoc.X <= fov_X&&targetLoc.Y >= fov_Y)
+	{
+		//第二象限
+		targetAngle.horizon = 180- radianToAngle(atan2(targetLoc.Y - fov_Y, fov_X - targetLoc.X));
+	}
+	else if (targetLoc.X <= fov_X&&targetLoc.Y <= fov_Y)
+	{
+		//第三象限
+		targetAngle.horizon = 180+ radianToAngle(atan2(fov_Y - targetLoc.Y, fov_X - targetLoc.X));
+	}
+	else if (targetLoc.X >= fov_X&&targetLoc.Y <= fov_Y)
+	{
+		//第四象限
+		targetAngle.horizon = 360 - radianToAngle(atan2(fov_Y - targetLoc.Y, targetLoc.X - fov_X));
+	}
+	//垂直朝向确定
+	FLOAT distance = sqrt((targetLoc.X - fov_X)*(targetLoc.X - fov_X) + (targetLoc.Y - fov_Y)*(targetLoc.Y - fov_Y));
+	if (targetLoc.Z >= fov_Z)
+	{
+		//上方
+		targetAngle.vertical = -radianToAngle(atan2(targetLoc.Z - fov_Z, distance));//必须加负数,因为游戏逆向朝上转视角是负数
+	}
+	else
+	{
+		//下方
+		targetAngle.vertical = radianToAngle(atan2(fov_Z - targetLoc.Z, distance));
+	}
+	//计算朝向目标头部和自己准星朝向的角度差(顺时针为正,逆时针为负)
+	angleDiff.horizon = fov_horizon - targetAngle.horizon;
+	if (angleDiff.horizon<=-180)//跨0轴的两种情况,防止超出水平转向区间
+	{
+		angleDiff.horizon += 360;
+	}
+	if (angleDiff.horizon>180)
+	{
+		angleDiff.horizon -= 360;
+	}
+	angleDiff.vertical = targetAngle.vertical - fov_vertical;
+}
+```
+
 ## 需要矩阵
 
 [上帝视角看gpu系列(有助于理解矩阵算法)]: https://space.bilibili.com/2055684362/channel/collectiondetail?sid=318149
@@ -375,6 +539,143 @@ $$
 目标点的屏幕坐标y=\frac{分辨率高}{2}-\frac{目标点的NDC坐标y\times分辨率高}{2}
 $$
 坐标点A和坐标点B均适用,说明四象限全适用.
+
+### 相关代码截取
+
+```c
+struct Point2D
+{
+	float X, Y;
+};
+
+struct  Vector4 
+{
+	float x;
+	float y;
+	float z;
+	float w;
+};
+
+class Paint
+{
+public:
+	HWND m_hWnd;//窗口句柄
+	RECT m_wndRect;//窗口尺寸信息
+	int m_resolutionWidth;//分辨率宽
+	int m_resolutionHeight;//分辨率高
+	RECT m_outsideWnd;//外窗口尺寸信息
+	int m_outsideWndWidth;//外窗口分辨率宽
+	int m_outsideWndHeight;//外窗口分辨率高
+	float m_viewMatrix[16];//视角矩阵
+	DWORD m_matrixAddr32;//32位矩阵地址
+	DWORD64 m_matrixAddr64;//64位矩阵地址
+
+	//取窗口信息
+	void getWndInfo();
+public:
+	Paint(HWND hWnd,DWORD matrixAddr=NULL, COLORREF brushColor=RGB(255,0,0), COLORREF penColor=RGB(255,0,0));
+	//64位非矩阵绘制未完善
+	Paint(HWND hWnd, DWORD64 matrixAddr, COLORREF brushColor = RGB(255, 0, 0), COLORREF penColor = RGB(255, 0, 0));
+	Paint();
+	~Paint();
+	HDC hdc;//画板句柄
+	HBRUSH hBrush;//画刷句柄
+	HFONT hfont;//字体句柄
+	HPEN hPen;//画笔
+	//HDC hOldDc;//老的画板句柄
+	//HBRUSH hOldBrush;//老的画刷句柄
+	//HPEN hOldPen;//老的画笔
+	//世界坐标转屏幕坐标(无矩阵)
+	bool worldPointToScreenPointWithoutMatrix(Point2D& screenPoint,const Orientation& angleDiff);
+	//世界坐标转屏幕坐标
+	bool worldPointToScreenPoint(Point2D& screenPoint, const Point3D& targetWorldPoint);
+	//世界坐标转屏幕坐标64位
+	bool worldPointToScreenPoint64(Point2D& screenPoint, const Point3D& targetWorldPoint);
+	//画线(从屏幕下方中间出发到(x,y))
+	void paintLine(int x, int y);
+	//两点画线
+	void paintLine(int x, int y, int xTo, int yTo);
+	//画框
+	void paintFrame(int x, int y, int w, int h, int thick);
+	//针对头脚坐标画框
+	void paintFrameByFootAndHead(Point2D footPoiny,Point2D headPoint,int thick);
+	//画矩形
+	void paintRect(int x,int y,int w,int h);
+	//写字
+	void paintText(int x,int y,COLORREF color,const char* text);
+	//绘制
+	void beginPaint();
+	//更换画刷
+	void changeBrush(COLORREF brushColor);
+	//更换画笔
+	void changePen(int penStyle,int penWidth,COLORREF penColor);
+	bool 世界坐标转屏幕坐标_非矩阵(Point2D& 屏幕坐标, FLOAT  水平角度差, FLOAT 高低角度差);
+};
+
+void Paint::getWndInfo()
+{
+	//获得窗口信息
+	GetClientRect(m_hWnd,&m_wndRect);
+	m_resolutionWidth = m_wndRect.right - m_wndRect.left;
+	m_resolutionHeight = m_wndRect.bottom - m_wndRect.top;
+	GetWindowRect(m_hWnd, &m_outsideWnd);  //含有边框及全屏幕坐标
+	m_outsideWndWidth = m_outsideWnd.right - m_outsideWnd.left;
+	m_outsideWndHeight = m_outsideWnd.bottom - m_outsideWnd.top;
+}
+
+Vector4 RowVecTimesMatrix(const Vector4& rowVec, float matrix[16])
+{
+	Vector4 retVec;
+	retVec.x = rowVec.x*matrix[0] + rowVec.y*matrix[4] + rowVec.z*matrix[8] + rowVec.w*matrix[12];
+	retVec.y = rowVec.x*matrix[1] + rowVec.y*matrix[5] + rowVec.z*matrix[9] + rowVec.w*matrix[13];
+	retVec.z = rowVec.x*matrix[2] + rowVec.y*matrix[6] + rowVec.z*matrix[10] + rowVec.w*matrix[14];
+	retVec.w = rowVec.x*matrix[3] + rowVec.y*matrix[7] + rowVec.z*matrix[11] + rowVec.w*matrix[15];
+	return retVec;
+}
+
+//世界坐标转屏幕坐标32位
+bool Paint::worldPointToScreenPoint(Point2D & screenPoint,const Point3D& targetWorldPoint)
+{
+	getWndInfo();
+	//刷新矩阵
+	memcpy(&m_viewMatrix, (PVOID)m_matrixAddr32, sizeof(m_viewMatrix));
+	Vector4 worldLocation = { targetWorldPoint.X,targetWorldPoint.Y,targetWorldPoint.Z,1};//世界坐标
+	//世界坐标配合矩阵算出裁剪坐标(目前只考虑了列主序,还需要考虑行主序的情况)
+	Vector4 cutLocation= RowVecTimesMatrix(worldLocation, m_viewMatrix);
+	if (cutLocation.w<0.0)//剪辑坐标w如果小于0,表示在屏幕外
+	{
+		return false;
+	}
+	Point2D NDC;//ndc坐标
+	NDC.X = cutLocation.x / cutLocation.w;
+	NDC.Y = cutLocation.y / cutLocation.w;
+	screenPoint.X = (NDC.X*m_resolutionWidth + m_resolutionWidth) / 2;
+	screenPoint.Y = (m_resolutionHeight - m_resolutionHeight*NDC.Y) / 2;
+	return true;
+}
+//世界坐标转屏幕坐标64位
+bool Paint::worldPointToScreenPoint64(Point2D & screenPoint, const Point3D& targetWorldPoint)
+{
+	getWndInfo();
+	//刷新矩阵
+	memcpy(&m_viewMatrix, (DWORD64*)m_matrixAddr64, sizeof(m_viewMatrix));
+	Vector4 worldLocation = { targetWorldPoint.X,targetWorldPoint.Y,targetWorldPoint.Z,1 };//世界坐标
+																						   //世界坐标配合矩阵算出裁剪坐标(目前只考虑了列主序,还需要考虑行主序的情况)
+	Vector4 cutLocation = RowVecTimesMatrix(worldLocation, m_viewMatrix);
+	if (cutLocation.w < 0.0f)//剪辑坐标w如果小于0,表示在屏幕外
+	{
+		return false;
+	}
+	Point2D NDC;//ndc坐标
+	NDC.X = cutLocation.x / cutLocation.w;
+	NDC.Y = cutLocation.y / cutLocation.w;
+	screenPoint.X = (NDC.X*m_resolutionWidth + m_resolutionWidth) / 2;
+	screenPoint.Y = (m_resolutionHeight - m_resolutionHeight*NDC.Y) / 2;
+	return true;
+}
+```
+
+
 
 ## 朝向（准星）
 
@@ -983,6 +1284,1135 @@ rbx有两个值,均到CE中搜索,发现其中一个有存放他的地址离对�
 
 其中24D08的来源涉及非常复杂的加密流程,但是他是不变的.
 
+# 上面项目代码盘点
+
+- [entityAround.h](#entityAround.h)
+- [paint.h](#paint.h)
+- [stdafx.h](#stdafx.h)
+- [dllmain.cpp](#dllmain.cpp)
+- [entityAround.cpp](#entityAround.cpp)
+- [paint.cpp](#paint.cpp)
+
+## entityAround.h
+
+[回到目录](#上面项目代码盘点)         [跳转到源文件](#entityAround.cpp)
+
+```c
+#pragma once
+#include <windows.h>
+
+//三维坐标结构
+struct Point3D
+{
+    float X;
+    float Y;
+    float Z;
+};
+//朝向结构
+struct Orientation
+{
+    /* data */
+    float horizon;
+    float vertical;
+};
+
+struct Entity
+{
+    /* data */
+    Point3D headPoint;
+    Point3D footPoint;
+    int hp;
+    BYTE isDeath;//死亡标志位
+    bool isFriend;//友方单位标志位
+	//无矩阵方式为:获取人物与目标的世界坐标高度差和世界水平距离来得到人物和目标的夹角,
+	//再通过人物准星减去目标夹角(或反过来)来确定准星偏转角度差, 通过准星偏转角度差来和游戏宽高分辨率来转换为屏幕坐标进行绘图
+	//(无矩阵画框因为头和脚的差填入的是手动填入的固定值,并且画框的时候,目标框体的宽高比也是固定值等等,因此会有诸多问题)
+    Orientation headAngle;//朝向对象的头部角度(以x正轴为底)
+    Orientation footAngle;//朝向对象的脚部角度(以x正轴为底)
+    Orientation headAngleDifference;//朝向目标头部和自己准星朝向的角度差(顺时针为正,逆时针为负)
+    Orientation footAngleDifference;//朝向目标脚部和自己准星朝向的角度差
+	bool isNotNull=true;
+};
+
+
+#define PI 3.1415926
+
+class EntityAround{
+public:
+    Entity entity[0x100];
+    unsigned int entityNum;
+	Entity closeToFrontSizeEntity ;//最靠近准星的对象
+    void flashEntityAround_cs();//CS1.6
+	void flashEntityAround_koudaixiyou();//口袋西游
+	void flashEntityAround_tuxi();//突袭
+	void flashEntityAround_chijimoniqi();//吃鸡模拟器
+
+	//计算朝向
+    void calOrientation(Point3D& targetLoc,Orientation& targetAngle,Orientation& angleDiff);
+};
+
+float radianToAngle(float radian);
+
+float angleToRadian(float angle);
+
+//调试工具
+void myOutPutDebug(const char* pszFormat, ...);
+```
+
+## paint.h
+
+[回到目录](#上面项目代码盘点)          [跳转到源文件](#paint.cpp)
+
+```c
+#pragma once
+#include "entityAround.h"
+struct Point2D
+{
+	float X, Y;
+};
+
+struct  Vector4 
+{
+	float x;
+	float y;
+	float z;
+	float w;
+};
+
+class Paint
+{
+public:
+	HWND m_hWnd;//窗口句柄
+	RECT m_wndRect;//窗口尺寸信息
+	int m_resolutionWidth;//分辨率宽
+	int m_resolutionHeight;//分辨率高
+	RECT m_outsideWnd;//外窗口尺寸信息
+	int m_outsideWndWidth;//外窗口分辨率宽
+	int m_outsideWndHeight;//外窗口分辨率高
+	float m_viewMatrix[16];//视角矩阵
+	DWORD m_matrixAddr32;//32位矩阵地址
+	DWORD64 m_matrixAddr64;//64位矩阵地址
+
+	//取窗口信息
+	void getWndInfo();
+public:
+	Paint(HWND hWnd,DWORD matrixAddr=NULL, COLORREF brushColor=RGB(255,0,0), COLORREF penColor=RGB(255,0,0));
+	//64位非矩阵绘制未完善
+	Paint(HWND hWnd, DWORD64 matrixAddr, COLORREF brushColor = RGB(255, 0, 0), COLORREF penColor = RGB(255, 0, 0));
+	Paint();
+	~Paint();
+	HDC hdc;//画板句柄
+	HBRUSH hBrush;//画刷句柄
+	HFONT hfont;//字体句柄
+	HPEN hPen;//画笔
+	//HDC hOldDc;//老的画板句柄
+	//HBRUSH hOldBrush;//老的画刷句柄
+	//HPEN hOldPen;//老的画笔
+	//世界坐标转屏幕坐标(无矩阵)
+	bool worldPointToScreenPointWithoutMatrix(Point2D& screenPoint,const Orientation& angleDiff);
+	//世界坐标转屏幕坐标
+	bool worldPointToScreenPoint(Point2D& screenPoint, const Point3D& targetWorldPoint);
+	//世界坐标转屏幕坐标64位
+	bool worldPointToScreenPoint64(Point2D& screenPoint, const Point3D& targetWorldPoint);
+	//画线(从屏幕下方中间出发到(x,y))
+	void paintLine(int x, int y);
+	//两点画线
+	void paintLine(int x, int y, int xTo, int yTo);
+	//画框
+	void paintFrame(int x, int y, int w, int h, int thick);
+	//针对头脚坐标画框
+	void paintFrameByFootAndHead(Point2D footPoiny,Point2D headPoint,int thick);
+	//画矩形
+	void paintRect(int x,int y,int w,int h);
+	//写字
+	void paintText(int x,int y,COLORREF color,const char* text);
+	//绘制
+	void beginPaint();
+	//更换画刷
+	void changeBrush(COLORREF brushColor);
+	//更换画笔
+	void changePen(int penStyle,int penWidth,COLORREF penColor);
+	bool 世界坐标转屏幕坐标_非矩阵(Point2D& 屏幕坐标, FLOAT  水平角度差, FLOAT 高低角度差);
+};
+
+
+//横向量乘矩阵函数
+Vector4 RowVecTimesMatrix(const Vector4& rowVec, float matrix[16]);
+
+//创建窗口
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd);
+
+LRESULT CALLBACK windowProc(HWND hMyWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
+//需要针对游戏进行修正,只支持32位,64位需要进行修改
+void  drawTransparentWnd();
+```
+
+## stdafx.h
+
+[回到目录](#上面项目代码盘点)         
+
+```c
+// stdafx.h : 标准系统包含文件的包含文件，
+// 或是经常使用但不常更改的
+// 特定于项目的包含文件
+//
+
+#pragma once
+
+#include "targetver.h"
+
+#define WIN32_LEAN_AND_MEAN             // 从 Windows 头中排除极少使用的资料
+// Windows 头文件: 
+#include <windows.h>
+
+
+
+// TODO:  在此处引用程序需要的其他头文件
+#include "string"
+using namespace std;
+```
+
+## dllmain.cpp
+
+[回到目录](#上面项目代码盘点)             [跳转到头文件](#dllmain.h)
+
+```c
+// dllmain.cpp : 定义 DLL 应用程序的入口点。
+#include "stdafx.h"
+#include "paint.h"
+#include "entityAround.h"
+
+
+void mainThread()
+{
+//	//无矩阵绘制流程
+//	Paint paint(FindWindow(NULL,L"Counter-Strike"),0x2C20100);
+//	EntityAround entityAround;
+//	entityAround.flashEntityAround_cs();
+//	//调试展示信息
+//	char tmp2[999];
+//	sprintf(tmp2, "cs1.6 g_baseAroundLoc:%X  g_baseAroundInfo:%X ", (DWORD)GetModuleHandleA("hl.exe") + 0x1B5A5C4, (DWORD)GetModuleHandleA("hl.exe") + 0x62565C);
+//	OutputDebugStringA(tmp2);
+//	//刷新数据后显示来看看
+//	for (int i = 1; i < entityAround.entityNum; i++)//从1开始遍历跳过自己
+//	{
+//		char tmp[999];
+//		sprintf(tmp, "cs1.6 No.%d hp:%d foot(%f,%f,%f) head(%f,%f,%f) isFriend:%d isDeath:%d",i+1, entityAround.entity[i].hp
+//			, entityAround.entity[i].footPoint.X
+//			, entityAround.entity[i].footPoint.Y
+//			, entityAround.entity[i].footPoint.Z
+//			, entityAround.entity[i].headPoint.X
+//			, entityAround.entity[i].headPoint.Y
+//			, entityAround.entity[i].headPoint.Z
+//			, entityAround.entity[i].isFriend
+//			, entityAround.entity[i].isDeath);
+//		
+//		OutputDebugStringA(tmp);
+//	}
+//
+//	OutputDebugStringA("==========================================");
+//
+//	//死循环,不断绘制的过程
+//	while (true)
+//	{
+//		entityAround.flashEntityAround_cs();
+//		Point2D entityFootPoint2d, entityHeadPoint2d;
+//		for (int i = 0; i < entityAround.entityNum; i++)//从1开始遍历跳过自己
+//		{
+//			if (entityAround.entity[i].isDeath)
+//			{
+//				continue;//死亡的跳过绘制流程
+//			}
+////是否使用矩阵方式
+//#if 0
+//			//矩阵方式!!!!!!!!!!!!!!!!!!
+//			//脚坐标是否能转换成屏幕坐标(该函数内部避免了在角色身后绘制的情况),能转换成屏幕坐标的才绘制
+//			if (!paint.worldPointToScreenPoint(entityFootPoint2d, entityAround.entity[i].footPoint))
+//			{
+//				continue;
+//			}
+//			//头坐标是否能转换成屏幕坐标(该函数内部避免了在角色身后绘制的情况),能转换成屏幕坐标的才绘制
+//			if (!paint.worldPointToScreenPoint(entityHeadPoint2d, entityAround.entity[i].headPoint))
+//			{
+//				continue;
+//			}
+//#else
+//			//非矩阵方式!!!!!!!!!!!!!!!!!!
+//			//脚坐标是否能转换成屏幕坐标(该函数内部避免了在角色身后绘制的情况),能转换成屏幕坐标的才绘制
+//			if (!paint.worldPointToScreenPointWithoutMatrix(entityFootPoint2d, entityAround.entity[i].footAngleDifference))
+//			{
+//				continue;
+//			}
+//			//头坐标是否能转换成屏幕坐标(该函数内部避免了在角色身后绘制的情况),能转换成屏幕坐标的才绘制
+//			if (!paint.worldPointToScreenPointWithoutMatrix(entityHeadPoint2d, entityAround.entity[i].headAngleDifference))
+//			{
+//				continue;
+//			}
+//#endif 
+//			//头和脚都在屏幕范围内才绘制
+//			if (entityAround.entity[i].isFriend)//是朋友不绘制
+//			{
+//				continue;
+//			}
+//			//画框
+//			if (GetKeyState(VK_F3) & 1)//按下F3开关绘制
+//			{
+//				float entityHeight = entityFootPoint2d.Y - entityHeadPoint2d.Y;
+//				//myOutPutDebug("height:%f", entityHeight);
+//				paint.paintFrame(entityHeadPoint2d.X - entityHeight / 4, entityHeadPoint2d.Y, entityHeight / 2, entityHeight, 1);
+//				//paint.paintText(entityFootPoint2d.X, entityFootPoint2d.Y, RGB(255, 0, 0), "foot");
+//				//paint.paintText(entityHeadPoint2d.X, entityHeadPoint2d.Y, RGB(255, 0, 0), "head");
+//				//float head =  entityHeadPoint2d.Y - entityFootPoint2d.Y;
+//				//float width = head / 2;
+//				//float center = width / -2;
+//				//float extra = head / -6;
+//				//FPS_绘制.画框((int)(屏幕坐标_j.x + center), (int)屏幕坐标_j.y, (int)width, (int)(head - extra), 1);
+//				//paint.paintFrame(entityFootPoint2d.X + center, entityFootPoint2d.Y, width, head - extra, 1);
+//
+//			}
+//			//myOutPutDebug("cs1.6 第%d号  foot(%f,%f)  head(%f,%f)", i + 1, entityFootPoint2d.X, entityFootPoint2d.Y, entityHeadPoint2d.X, entityHeadPoint2d.Y);
+//			
+//		}
+//
+//			if (entityAround.closeToFrontSizeEntity.isNotNull)
+//			{
+//				if (GetAsyncKeyState(VK_RBUTTON) )//按下右键
+//				{
+//					//校准
+//					Point3D targetPoint = entityAround.closeToFrontSizeEntity.footPoint;
+//					targetPoint.Z += 56;//刚好指到头
+//					Orientation targetAngle, targetAngleDiffer;
+//					entityAround.calOrientation(targetPoint, targetAngle, targetAngleDiffer);
+//					//修改内存准星数据(非矩阵有问题!!!!!)
+//					*(FLOAT*)((DWORD)GetModuleHandleA("hl.exe") + 0x19E10C4) = targetAngle.vertical;
+//					*(FLOAT*)((DWORD)GetModuleHandleA("hl.exe") + 0x19E10C8) = targetAngle.horizon;
+//					//SetCursorPos(entityHeadPoint2d.X, entityHeadPoint2d.Y);//不行
+//				}
+//				
+//			}
+//
+//		
+//		if (GetKeyState(VK_F2)&1)//按下F2彻底退出
+//		{
+//			break;
+//		}
+//		Sleep(1);
+//	}
+	
+	
+	//口袋西游
+	//DWORD matrixAddr = (*(DWORD*)0xD2E5D0) + 0xE8;
+	//Paint paint(FindWindow(NULL, L"口袋西游"), matrixAddr);
+	//EntityAround entityAround; 
+	//while (true)
+	//{
+	//	entityAround.flashEntityAround_koudaixiyou();
+	//	for (int i = 0; i < entityAround.entityNum; i++)
+	//	{
+	//		Point2D entityFootPoint2d, entityHeadPoint2d;
+	//		if (!paint.worldPointToScreenPoint(entityFootPoint2d, entityAround.entity[i].footPoint))
+	//		{
+	//			continue;
+	//		}
+	//		if (!paint.worldPointToScreenPoint(entityHeadPoint2d, entityAround.entity[i].headPoint))
+	//		{
+	//			continue;
+	//		}
+	//		if (GetKeyState(VK_F3) & 1)//按下F3开关绘制
+	//		{
+	//			paint.paintText(entityFootPoint2d.X, entityFootPoint2d.Y, RGB(255, 0, 0), "foot");
+	//			paint.paintText(entityHeadPoint2d.X, entityHeadPoint2d.Y, RGB(255, 0, 0), "head");
+	//		}
+	//	}
+	//	Sleep(1);
+	//	if (GetKeyState(VK_F2) & 1)//按下F2彻底退出
+	//	{
+	//		break;
+	//	}
+	//}
+
+	//突袭
+	//Paint paint(FindWindow(NULL, L"AssaultCube"), 0x57AFE0);
+	//EntityAround entityAround;
+	//while (true)
+	//{
+	//	entityAround.flashEntityAround_tuxi();
+	//	for (int i = 0; i < entityAround.entityNum; i++)
+	//	{
+	//		Point2D entityFootPoint2d, entityHeadPoint2d;
+	//		if (!paint.worldPointToScreenPoint(entityFootPoint2d, entityAround.entity[i].footPoint))
+	//		{
+	//			continue;
+	//		}
+	//		if (!paint.worldPointToScreenPoint(entityHeadPoint2d, entityAround.entity[i].headPoint))
+	//		{
+	//			continue;
+	//		}
+	//		if (entityAround.entity[i].isDeath)
+	//		{
+	//			continue;
+	//		}
+	//		if (GetKeyState(VK_F3) & 1)//按下F3开关绘制
+	//		{
+	//			paint.paintText(entityFootPoint2d.X, entityFootPoint2d.Y, RGB(255, 0, 0), "foot");
+	//			paint.paintText(entityHeadPoint2d.X, entityHeadPoint2d.Y, RGB(255, 0, 0), "head");
+	//		}
+	//	}
+	//	Sleep(1);
+	//	if (GetKeyState(VK_F2) & 1)//按下F2彻底退出
+	//	{
+	//		break;
+	//	}
+	//}
+
+
+	//吃鸡模拟器绘制
+	DWORD64 matrixAddr = *(DWORD64*)(*(DWORD64*)((DWORD64)GetModuleHandleA("BattleRoyaleTrainer-Win64-Shipping.exe") + 0x2ADA268) + 0x24D08 * 8 + 8) + 0x280;
+	myOutPutDebug("matrix: %llx", matrixAddr);
+	Paint paint(FindWindow(L"UnrealWindow", 0), matrixAddr);
+	EntityAround entityArround;
+	while (true)
+	{
+		entityArround.flashEntityAround_chijimoniqi();
+		for (int i = 0; i < (int)entityArround.entityNum; i++)
+		{
+			//if (entityArround.entity[i].isFriend || entityArround.entity[i].isDeath)//排除死的和友军的
+			//{
+			//	continue;
+			//}
+			Point2D screenFootPoint, screenHeadPoint;
+			float footTmp = entityArround.entity[i].footPoint.Z;
+			entityArround.entity[i].headPoint.X = entityArround.entity[i].footPoint.X;
+			entityArround.entity[i].headPoint.Y = entityArround.entity[i].footPoint.Y;
+			entityArround.entity[i].headPoint.Z = entityArround.entity[i].footPoint.Z+60;
+			entityArround.entity[i].footPoint.Z = footTmp -100;
+			if (paint.worldPointToScreenPoint64(screenFootPoint, entityArround.entity[i].footPoint))
+			{
+				if (paint.worldPointToScreenPoint64(screenHeadPoint, entityArround.entity[i].headPoint))
+				{
+					if (GetKeyState(VK_F3) & 1)//按下F3开关绘制
+					{
+						paint.paintFrameByFootAndHead(screenFootPoint, screenHeadPoint, 1);
+						//paint.paintText(screenFootPoint.X, screenFootPoint.Y, RGB(255, 0, 0), "foot");
+					}
+				}
+			}
+		}
+
+			Sleep(1);
+			if (GetKeyState(VK_F2) & 1)//按下F2彻底退出
+			{
+				break;
+			}
+	}
+}
+
+
+HWND hMyWnd;//用于储存自建窗口的句柄
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
+{
+	//测试hdc的释放
+	//while (1)
+	//{
+	//	Paint paintTest(FindWindow(L"Valve001", 0), (DWORD)GetModuleHandleA("hl.exe") + 0x1820100);
+	//	ReleaseDC(paintTest.m_hWnd, paintTest.hdc);
+	//	paintTest.hdc = GetDC(paintTest.m_hWnd);
+	//	ReleaseDC(paintTest.m_hWnd, paintTest.hdc);
+	//	if (GetKeyState(VK_F3) & 1)//按下F3退出消息循环
+	//	{
+	//		myOutPutDebug("test quit");
+	//		return 0;
+	//	}
+	//	Sleep(10);
+	//}
+	myOutPutDebug("begin");
+	::WNDCLASSEXA winClass;
+	winClass.lpszClassName = "zijiandialog";
+	winClass.cbSize = sizeof(::WNDCLASSEX);
+	winClass.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC | CS_DBLCLKS;
+	winClass.lpfnWndProc = windowProc;//回调函数
+	winClass.hInstance = hInstance;
+	winClass.hIcon = 0;
+	winClass.hIconSm = 0;
+	winClass.hCursor = LoadCursor(NULL, IDC_ARROW);
+	winClass.hbrBackground = NULL;//(HBRUSH)(BLACK_BRUSH); // 背景颜色
+	winClass.lpszMenuName = NULL;
+	winClass.cbClsExtra = 0;
+	winClass.cbWndExtra = 0;
+
+	RegisterClassExA(&winClass);//注册窗口类
+
+								//创建窗口
+	hMyWnd = CreateWindowExA(
+		128 | 32 | 8 | WS_EX_LAYERED,// 扩展风格  透明窗口 WS_EX_LAYERED
+		"zijiandialog",//类名指针
+		"自建窗口",//窗口名指针
+		WS_EX_LAYERED | 0 | 0x10000 | 0x20000 | 0x2000000 | WS_POPUP,//窗口的风格 
+		100,//初始水平位置
+		100,//初始垂直位置
+		GetSystemMetrics(SM_CXSCREEN) * 640 / 1920,//宽度   游戏水平窗口分辨率/屏幕水平分辨率   由于此两项是初始位置,所以写什么都行,反正下面会实时修正
+		GetSystemMetrics(SM_CYSCREEN) * 480 / 1080,//高度   游戏窗口垂直分辨率/屏幕垂直分辨率  
+		0,
+		0,
+		hInstance,//应用程序实例的句柄  
+		0//用户自定义的变量
+		);
+	myOutPutDebug("hMyWnd: %d   error: %d", hMyWnd, GetLastError());
+	SetWindowPos(hMyWnd, (HWND)-1, 100, 100, 0, 0, 19);
+	ShowWindow(hMyWnd, SW_NORMAL);//显示窗口
+	UpdateWindow(hMyWnd);//更新窗口
+	SetWindowLongA(hMyWnd, -20, 589992);
+	SetLayeredWindowAttributes(hMyWnd, 0, 1, 2);
+	SetLayeredWindowAttributes(hMyWnd, 0, 0, 1);
+
+	//window 消息循环
+	MSG msg = { 0 };
+	while (true)
+	{
+		//置顶窗口
+		::SetWindowPos(hMyWnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
+		//读取当前的主框架的style
+		DWORD dwStyle = ::GetWindowLong(hMyWnd, GWL_EXSTYLE);
+		if (!((dwStyle & WS_EX_TOPMOST) == WS_EX_TOPMOST))
+		{
+			//保证主框架前置，然后再恢复到正常状态
+			SetWindowPos(hMyWnd, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
+		}
+
+		if (msg.message == WM_ERASEBKGND)
+		{
+			break;
+		}
+
+		if (msg.message == WM_DESTROY || msg.message == WM_CLOSE || msg.message == WM_QUIT)
+		{
+			break;
+		}
+		if (PeekMessage(&msg, hMyWnd, 0, 0, PM_REMOVE))
+		{
+			DispatchMessage((&msg));//分发消息
+			TranslateMessage(&msg);//解释消息	
+		}
+		Sleep(10);
+		if (GetKeyState(VK_F3) & 1)//按下F3退出消息循环
+		{
+			myOutPutDebug("quit");
+			break;
+		}
+	}
+	return 0;
+}
+
+
+
+//回调函数
+LRESULT CALLBACK windowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+	switch (msg)
+	{
+	case WM_PAINT:
+		drawTransparentWnd();//针对每款游戏提供!!!!!!!!!
+		return 0;
+	case WM_SIZE:
+		break;
+	case WM_CLOSE:
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		break;
+	default:
+		break;
+	}
+	return DefWindowProc(hWnd, msg, wParam, lParam);
+}
+
+
+
+EntityAround entityAround;//全局工具
+
+HBRUSH hBrush;
+HDC hdc;
+Point2D screenFootPoint, screenHeadPoint;
+
+//透明窗口绘制(针对每款游戏实现)!!!!!!!!!
+void  drawTransparentWnd()
+{
+	RECT myWnd;
+	GetClientRect(hMyWnd, &myWnd);//获取自己的窗口的宽高位置信息
+								  //InvalidateRect(hMyWnd, &myWnd, TRUE);
+								  //UpdateWindow(hMyWnd);//更新窗口 
+
+	//这里是为了清空上一次的绘制
+	hdc = GetDC(hMyWnd);
+	hBrush = CreateSolidBrush(RGB(0, 0, 0));
+	FillRect(hdc, &myWnd, hBrush);//绘制矩形
+
+	DeleteObject(hBrush);
+	//区别似乎只有下面这个类...
+	Paint paintMyWnd(FindWindow(L"Valve001", 0), (DWORD)GetModuleHandleA("hl.exe") + 0x1820100);//针对32位
+	paintMyWnd.getWndInfo();
+	//不断地跟我们的窗口重合
+	MoveWindow(hMyWnd, paintMyWnd.m_outsideWnd.left + (paintMyWnd.m_outsideWndWidth - paintMyWnd.m_resolutionWidth) / 2, paintMyWnd.m_outsideWnd.top + (paintMyWnd.m_outsideWndHeight - paintMyWnd.m_resolutionHeight - (paintMyWnd.m_outsideWndWidth - paintMyWnd.m_resolutionWidth) / 2), paintMyWnd.m_outsideWnd.right- paintMyWnd.m_outsideWnd.left, paintMyWnd.m_outsideWnd.bottom- paintMyWnd.m_outsideWnd.top, 1);
+
+	entityAround.flashEntityAround_cs();
+	//myOutPutDebug("前hMyWnd: %d   hdc: %d", (DWORD)hMyWnd, (DWORD)paintMyWnd.hdc);
+	ReleaseDC(paintMyWnd.m_hWnd, paintMyWnd.hdc);//清除原有hdc
+	paintMyWnd.m_hWnd = hMyWnd;
+	paintMyWnd.hdc = hdc;//绘画前更新绘画目标为新建窗口对应的hdc
+	//myOutPutDebug("后hMyWnd: %d   hdc: %d", (DWORD)hMyWnd, (DWORD)paintMyWnd.hdc);
+	paintMyWnd.paintText(paintMyWnd.m_resolutionWidth / 2, paintMyWnd.m_resolutionHeight / 2, RGB(255, 0, 0), "准星");//绘制准星
+
+	for (int i = 0; i < (int)entityAround.entityNum; i++)
+	{
+		if (entityAround.entity[i].isDeath)
+		{
+			continue;
+		}
+		if (entityAround.entity[i].isFriend)
+		{
+			continue;
+		}
+		Point3D footPoint = { entityAround.entity[i].footPoint.X ,entityAround.entity[i].footPoint.Y ,entityAround.entity[i].footPoint.Z };
+
+		if (paintMyWnd.worldPointToScreenPoint(screenFootPoint, footPoint))
+		{
+			Point3D headPoint = { entityAround.entity[i].headPoint.X ,entityAround.entity[i].headPoint.Y ,entityAround.entity[i].headPoint.Z };
+			if (paintMyWnd.worldPointToScreenPoint(screenHeadPoint, headPoint))
+			{
+				float head = (float)screenHeadPoint.Y - (float)screenFootPoint.Y;//  负数高度
+				float width = head / 2;   //  负数宽度
+				float center = width / -2;  //  一半宽度
+				float extra = head / -6;   //  三分之一 宽度
+
+				paintMyWnd.paintFrame((int)(screenFootPoint.X + center), (int)screenFootPoint.Y, (int)width, (int)(head - extra), 1);
+
+				//DeleteObject(hBrush);
+
+				char healthChar[255];
+				sprintf_s(healthChar, sizeof(healthChar), "%d", entityAround.entity[i].hp);
+				paintMyWnd.paintText((int)screenFootPoint.X, (int)screenFootPoint.Y, RGB(255, 0, 0), healthChar);
+				if (GetKeyState(VK_F4) & 1)//按下F2打开射线绘制
+				{
+					//下面的画线有问题
+					paintMyWnd.paintLine((int)screenFootPoint.X, (int)screenFootPoint.Y);
+				}
+
+			}
+		}
+	}
+	//ReleaseDC(hMyWnd, hdc);
+
+}
+
+BOOL APIENTRY DllMain( HMODULE hModule,
+                       DWORD  ul_reason_for_call,
+                       LPVOID lpReserved
+					 )
+{
+	switch (ul_reason_for_call)
+	{
+	case DLL_PROCESS_ATTACH:
+		//禁用指定动态链接库 (DLL) 的 DLL_THREAD_ATTACH 和 DLL_THREAD_DETACH 通知
+		DisableThreadLibraryCalls(hModule);
+		//CreateThread(0, 0, (LPTHREAD_START_ROUTINE)mainThread, 0, 0, 0);
+		CreateThread(0, 0, (LPTHREAD_START_ROUTINE)WinMain, 0, 0, 0);//自建窗口
+		break;
+	case DLL_THREAD_ATTACH:
+	case DLL_THREAD_DETACH:
+	case DLL_PROCESS_DETACH:
+		break;
+	}
+	return TRUE;
+}
+```
+
+## entityAround.cpp
+
+[回到目录](#上面项目代码盘点)            [跳转到头文件](#entityAround.h)
+
+```c
+#include "entityAround.h"
+#include <windows.h>
+#include <iostream>
+using namespace std;
+DWORD g_baseAroundLoc = (DWORD)GetModuleHandleA("hl.exe")+0x1B5A5C4;
+DWORD g_baseAroundInfo = (DWORD)GetModuleHandleA("hl.exe") + 0x62565C;
+
+//初始化值(未判断离得远的敌人的框体消除)
+void EntityAround::flashEntityAround_cs()
+{
+	//读取自己的阵营
+	BYTE myCam = *(BYTE*)(g_baseAroundInfo + 0x68 * 0 + 0x4E);//0号位置是自己
+	entityNum = 0;
+	closeToFrontSizeEntity.isNotNull = 0;
+	//最小角度差和初始值
+	float theMiniAngleDiffSum = 999;
+    for (int i = 1; i < 32; i++)//从1开始遍历,跳过自己
+    {
+    	if (*(DWORD*)g_baseAroundLoc+0x24C*i==0)//遍历到了真正的边界直接结束
+    	{
+			break;
+    	}
+		if (*(DWORD*)g_baseAroundLoc + 0x24C * i+0x190 == 0)//跳过无用的数组项
+		{
+			continue;
+		}
+		//真正是entity
+		entity[entityNum].footPoint.X = *(FLOAT*)(g_baseAroundLoc + 0x24C * i + 0x188);
+		entity[entityNum].footPoint.Y = *(FLOAT*)(g_baseAroundLoc + 0x24C * i + 0x18C);
+		entity[entityNum].footPoint.Z = *(FLOAT*)(g_baseAroundLoc + 0x24C * i + 0x190)-52 ;
+		entity[entityNum].headPoint.X = *(FLOAT*)(g_baseAroundLoc + 0x24C * i + 0x188);
+		entity[entityNum].headPoint.Y = *(FLOAT*)(g_baseAroundLoc + 0x24C * i + 0x18C);
+		entity[entityNum].headPoint.Z = *(FLOAT*)(g_baseAroundLoc + 0x24C * i + 0x190)+10 ;
+		if (myCam== *(BYTE*)(g_baseAroundInfo + 0x68 * i + 0x4E))
+		{
+			entity[entityNum].isFriend = true;
+		}
+		else
+		{
+			entity[entityNum].isFriend = false;
+		}
+		entity[entityNum].isDeath = *(BYTE*)(g_baseAroundInfo + 0x68 * i + 0x60);
+		entity[entityNum].hp= *(DWORD*)(g_baseAroundInfo + 0x68 * i + 0x68);
+		//计算朝向
+		calOrientation(entity[entityNum].footPoint, entity[entityNum].footAngle, entity[entityNum].footAngleDifference);
+		calOrientation(entity[entityNum].headPoint, entity[entityNum].headAngle, entity[entityNum].headAngleDifference);
+		
+		//获取离准星最近的对象(用于自瞄)
+		if (fabs(entity[entityNum].headAngleDifference.horizon)<45&&fabs(entity[entityNum].headAngleDifference.vertical)<35&&!entity[entityNum].isFriend&&!entity[entityNum].isDeath)
+		{
+			// 是没死的敌人,并且在我们的自瞄范围中
+			float tmp = fabs(entity[entityNum].headAngleDifference.horizon) + fabs(entity[entityNum].headAngleDifference.vertical);
+			if (tmp < theMiniAngleDiffSum)
+			{
+				theMiniAngleDiffSum = tmp;
+				closeToFrontSizeEntity = entity[entityNum];//获取离准星最近的对象
+			}
+		}
+
+		entityNum++;
+	}
+}
+
+
+void EntityAround::flashEntityAround_koudaixiyou()
+{
+	DWORD temp = *(DWORD*)((*(DWORD*)((*(DWORD*)((*(DWORD*)0xD0DF1C) + 0x1C)) + 0x8)) + 0x20);
+	entityNum = *(DWORD*)(temp + 0x5C);
+	DWORD entityBase = *(DWORD*)(temp + 0x58);
+	for (int i = 0; i < (int)entityNum; i++)
+	{
+		entity[i].footPoint.X = *(FLOAT*)(*(DWORD*)(entityBase + 0x4 * i) + 0x2DC);
+		entity[i].footPoint.Y = *(FLOAT*)(*(DWORD*)(entityBase + 0x4 * i) + 0x2E0);
+		entity[i].footPoint.Z = *(FLOAT*)(*(DWORD*)(entityBase + 0x4 * i) + 0x2E4);
+		entity[i].headPoint.X = *(FLOAT*)(*(DWORD*)(entityBase + 0x4 * i) + 0x2E8);
+		entity[i].headPoint.Y = *(FLOAT*)(*(DWORD*)(entityBase + 0x4 * i) + 0x2EC);
+		entity[i].headPoint.Z = *(FLOAT*)(*(DWORD*)(entityBase + 0x4 * i) + 0x2F0);
+		entity[i].isFriend = 0;
+		entity[i].hp= *(DWORD*)(*(DWORD*)(entityBase + 0x4 * i) + 0x138);//未攻击的血量为0
+		entity[i].isDeath = *(BYTE*)(*(DWORD*)(entityBase + 0x4 * i) + 0xED);
+	}
+	//自己的人物也加进去,因为游戏是第三人称,人物本身也是在游戏中的.
+	entityNum++;
+	entity[entityNum - 1].footPoint.X = *(FLOAT*)((*(DWORD*)((*(DWORD*)((*(DWORD*)0xD0DF1C) + 0x1C)) + 0x28)) + 0x578);
+	entity[entityNum - 1].footPoint.Y = *(FLOAT*)((*(DWORD*)((*(DWORD*)((*(DWORD*)0xD0DF1C) + 0x1C)) + 0x28)) + 0x57C);
+	entity[entityNum - 1].footPoint.Z = *(FLOAT*)((*(DWORD*)((*(DWORD*)((*(DWORD*)0xD0DF1C) + 0x1C)) + 0x28)) + 0x580);
+	entity[entityNum - 1].headPoint.X = *(FLOAT*)((*(DWORD*)((*(DWORD*)((*(DWORD*)0xD0DF1C) + 0x1C)) + 0x28)) + 0x584);
+	entity[entityNum - 1].headPoint.Y = *(FLOAT*)((*(DWORD*)((*(DWORD*)((*(DWORD*)0xD0DF1C) + 0x1C)) + 0x28)) + 0x588);
+	entity[entityNum - 1].headPoint.Z = *(FLOAT*)((*(DWORD*)((*(DWORD*)((*(DWORD*)0xD0DF1C) + 0x1C)) + 0x28)) + 0x58C);
+	entity[entityNum - 1].isFriend = 0;
+	entity[entityNum - 1].hp = *(DWORD*)((*(DWORD*)((*(DWORD*)((*(DWORD*)0xD0DF1C) + 0x1C)) + 0x28)) + 0x288);
+	entity[entityNum - 1].isDeath = 0;
+
+
+
+}
+
+void EntityAround::flashEntityAround_tuxi()
+{
+	entityNum = *(DWORD*)0x587C18;
+	DWORD entityBase = *(DWORD*)0x587C10;
+	for (int i = 1; i < (int)entityNum; i++)//从1开始遍历跳过无效数据
+	{
+		entity[i].footPoint.X = *(FLOAT*)(*(DWORD*)(entityBase + 0x4 * i) + 0x28);
+		entity[i].footPoint.Y = *(FLOAT*)(*(DWORD*)(entityBase + 0x4 * i) + 0x2C);
+		entity[i].footPoint.Z = *(FLOAT*)(*(DWORD*)(entityBase + 0x4 * i) + 0x30);
+		entity[i].headPoint.X = *(FLOAT*)(*(DWORD*)(entityBase + 0x4 * i) + 0x4);
+		entity[i].headPoint.Y = *(FLOAT*)(*(DWORD*)(entityBase + 0x4 * i) + 0x8);
+		entity[i].headPoint.Z = *(FLOAT*)(*(DWORD*)(entityBase + 0x4 * i) + 0xC);
+		entity[i].isFriend = 0;
+		entity[i].hp = *(DWORD*)(*(DWORD*)(entityBase + 0x4 * i) + 0xEC);
+		if (entity[i].hp<=0)
+		{
+			entity[i].isDeath = 1;
+		}
+		else
+		{
+			entity[i].isDeath = 0;
+		}
+		
+	}
+}
+
+//吃鸡模拟器遍历
+DWORD64 worldAddress = (DWORD64)GetModuleHandleA("BattleRoyaleTrainer-Win64-Shipping.exe") + 0x2AF0FB8;
+DWORD64 humanVirtualTableFlag = (DWORD64)GetModuleHandleA("BattleRoyaleTrainer-Win64-Shipping.exe") + 0x1D45740;
+void EntityAround::flashEntityAround_chijimoniqi()
+{
+	__try
+	{
+		DWORD worldCount = *(DWORD*)(*(DWORD64*)(*(DWORD64*)worldAddress + 0x30) + 0xB8);
+		DWORD64 worldArrayAddr = *(DWORD64*)(*(DWORD64*)(*(DWORD64*)worldAddress + 0x30) + 0xB0);
+		//myOutPutDebug("世界数组: %x  %llx", worldCount, worldArrayAddr);
+		int realNo = 0;//真实的对象数量
+		for (int i = 0; i < (int)worldCount; i++)
+		{
+			DWORD64 object = *(DWORD64*)(worldArrayAddr + i * 8);
+			if (IsBadReadPtr((DWORD64*)object,8))//排除不可以访问的指针
+			{
+				continue;
+			}
+			if (*(DWORD64*)object!= humanVirtualTableFlag )//不符合人物特征,同时排除了作废对象
+			{
+				continue;
+			}
+			entity[realNo].hp = (DWORD)*(FLOAT*)(object + 0x7CC);
+			if (entity[realNo].hp<=0)//排除死亡人物
+			{
+				continue;
+			}
+			entity[realNo].footPoint.X = *(FLOAT*)(*(DWORD64*)(object + 0x158) + 0x190);
+			entity[realNo].footPoint.Y = *(FLOAT*)(*(DWORD64*)(object + 0x158) + 0x194);
+			entity[realNo].footPoint.Z = *(FLOAT*)(*(DWORD64*)(object + 0x158) + 0x198);
+			entity[realNo].isFriend = 0;
+			entity[realNo].isDeath = 0;//只有未死亡的才记录了,所以默认都是未死亡
+			realNo++;
+		}
+		entityNum = realNo;
+		myOutPutDebug("数量:%d", realNo);
+
+	}
+	__except (1)
+	{
+		myOutPutDebug("something wrong1");
+	}
+
+}
+
+void EntityAround::calOrientation(Point3D& targetLoc,Orientation& targetAngle,Orientation& angleDiff)
+{
+	FLOAT fov_X = *(FLOAT*)((DWORD)GetModuleHandleA("hl.exe") + 0x195fe58);
+	FLOAT fov_Y = *(FLOAT*)((DWORD)GetModuleHandleA("hl.exe") + 0x195fe5c);
+	FLOAT fov_Z = *(FLOAT*)((DWORD)GetModuleHandleA("hl.exe") + 0x195fe60);
+	FLOAT fov_horizon= *(FLOAT*)((DWORD)GetModuleHandleA("hl.exe") + 0x19E10C8);
+	FLOAT fov_vertical = *(FLOAT*)((DWORD)GetModuleHandleA("hl.exe") + 0x19E10C4);
+	//水平朝向确定
+	if (targetLoc.X >= fov_X&&targetLoc.Y >= fov_Y)
+	{
+		//第一象限
+		targetAngle.horizon= radianToAngle(atan2(targetLoc.Y - fov_Y, targetLoc.X - fov_X));
+	}
+	else if (targetLoc.X <= fov_X&&targetLoc.Y >= fov_Y)
+	{
+		//第二象限
+		targetAngle.horizon = 180- radianToAngle(atan2(targetLoc.Y - fov_Y, fov_X - targetLoc.X));
+	}
+	else if (targetLoc.X <= fov_X&&targetLoc.Y <= fov_Y)
+	{
+		//第三象限
+		targetAngle.horizon = 180+ radianToAngle(atan2(fov_Y - targetLoc.Y, fov_X - targetLoc.X));
+	}
+	else if (targetLoc.X >= fov_X&&targetLoc.Y <= fov_Y)
+	{
+		//第四象限
+		targetAngle.horizon = 360 - radianToAngle(atan2(fov_Y - targetLoc.Y, targetLoc.X - fov_X));
+	}
+	//垂直朝向确定
+	FLOAT distance = sqrt((targetLoc.X - fov_X)*(targetLoc.X - fov_X) + (targetLoc.Y - fov_Y)*(targetLoc.Y - fov_Y));
+	if (targetLoc.Z >= fov_Z)
+	{
+		//上方
+		targetAngle.vertical = -radianToAngle(atan2(targetLoc.Z - fov_Z, distance));//必须加负数,因为游戏逆向朝上转视角是负数
+	}
+	else
+	{
+		//下方
+		targetAngle.vertical = radianToAngle(atan2(fov_Z - targetLoc.Z, distance));
+	}
+	//计算朝向目标头部和自己准星朝向的角度差(顺时针为正,逆时针为负)
+	angleDiff.horizon = fov_horizon - targetAngle.horizon;
+	if (angleDiff.horizon<=-180)//跨0轴的两种情况,防止超出水平转向区间
+	{
+		angleDiff.horizon += 360;
+	}
+	if (angleDiff.horizon>180)
+	{
+		angleDiff.horizon -= 360;
+	}
+	angleDiff.vertical = targetAngle.vertical - fov_vertical;
+
+}
+
+
+
+
+
+float angleToRadian(float angle)
+{
+	return (FLOAT)(angle*PI / 180);
+}
+
+void myOutPutDebug(const char* pszFormat, ...)
+{
+	char szbufFormat[0x1000];
+	char szbufFormat_Game[0x1100] = "";
+	va_list argList;
+	va_start(argList, pszFormat);
+	vsprintf_s(szbufFormat, pszFormat, argList);
+	strcat_s(szbufFormat_Game, "FPS ");// 加上输出头特征
+	strcat_s(szbufFormat_Game, szbufFormat);
+	OutputDebugStringA(szbufFormat_Game);// 编码转换
+	va_end(argList);
+}
+
+
+float radianToAngle(float radian)
+{
+	return (FLOAT)(radian * 180 / PI);
+}
+```
+
+## paint.cpp
+
+[回到目录](#上面项目代码盘点)                [跳转到头文件](#paint.h)
+
+```c
+#include "paint.h"
+#include <math.h>
+#include <stdio.h>
+#include <windows.h>
+
+
+
+void Paint::getWndInfo()
+{
+	//获得窗口信息
+	GetClientRect(m_hWnd,&m_wndRect);
+	m_resolutionWidth = m_wndRect.right - m_wndRect.left;
+	m_resolutionHeight = m_wndRect.bottom - m_wndRect.top;
+	GetWindowRect(m_hWnd, &m_outsideWnd);  //含有边框及全屏幕坐标
+	m_outsideWndWidth = m_outsideWnd.right - m_outsideWnd.left;
+	m_outsideWndHeight = m_outsideWnd.bottom - m_outsideWnd.top;
+}
+
+Paint::Paint(HWND hWnd, DWORD matrixAddr,COLORREF brushColor,COLORREF penColor)
+{
+	m_hWnd = hWnd;
+	m_matrixAddr32 = matrixAddr;
+	if (matrixAddr!=NULL)
+	{
+		memcpy(&m_viewMatrix, (VOID*)m_matrixAddr32, sizeof(m_viewMatrix));
+	}
+	getWndInfo();
+	hdc = GetDC(hWnd);
+	hBrush = CreateSolidBrush(brushColor);
+	hPen = CreatePen(PS_SOLID, 1, penColor);
+	DeleteObject(SelectObject(hdc,hBrush));
+	DeleteObject(SelectObject(hdc, hPen));
+}
+
+Paint::Paint(HWND hWnd, DWORD64 matrixAddr64, COLORREF brushColor, COLORREF penColor)
+{
+	m_hWnd = hWnd;
+	m_matrixAddr64 = matrixAddr64;
+	if (matrixAddr64 != NULL)
+	{
+		memcpy(&m_viewMatrix, (VOID*)m_matrixAddr64, sizeof(m_viewMatrix));
+	}
+	getWndInfo();
+	hdc = GetDC(hWnd);
+	hBrush = CreateSolidBrush(brushColor);
+	hPen = CreatePen(PS_SOLID, 1, penColor);
+	DeleteObject(SelectObject(hdc, hBrush)) ;//删除原来的句柄
+	DeleteObject(SelectObject(hdc, hPen));
+}
+
+Paint::Paint()
+{
+	
+}
+
+
+Paint::~Paint()
+{
+	if (hdc)
+	{
+		ReleaseDC(m_hWnd,hdc);
+	}
+	if (hBrush)
+	{
+		DeleteObject(hBrush);
+	}
+	if (hPen)
+	{
+		DeleteObject(hPen);
+	}
+}
+
+bool Paint::worldPointToScreenPointWithoutMatrix(Point2D & screenPoint, const Orientation& angleDiff)
+{
+	getWndInfo();
+	//最大
+	float maxVerticalViewAngle = radianToAngle(atan2(m_resolutionHeight, m_resolutionWidth));
+	if (fabs(angleDiff.horizon) > 45 || fabs(angleDiff.vertical) > maxVerticalViewAngle)
+	{
+		return false;//不在屏幕范围内
+	}
+	int horizonDiff = (int)(tan(angleToRadian(angleDiff.horizon))*((m_resolutionWidth) / 2));
+	screenPoint.X = (float)(m_resolutionWidth / 2 + horizonDiff);
+
+	int verticalDiff = (int)(tan(angleToRadian(angleDiff.vertical))*((m_resolutionWidth) / 2));
+	screenPoint.Y = (float)(m_resolutionHeight / 2 + verticalDiff);
+	return TRUE;
+}
+void Paint::changeBrush(COLORREF brushColor)
+{
+	hBrush = CreateSolidBrush(brushColor);
+	if (hdc&&hBrush)
+	{
+		DeleteObject(SelectObject(hdc, hBrush));
+	}
+}
+void Paint::changePen(int penStyle, int penWidth, COLORREF penColor)
+{
+	hPen = CreatePen(penStyle, penWidth, penColor);
+	if (hdc&&hPen)
+	{
+		DeleteObject(SelectObject(hdc, hPen) );
+	}
+}
+bool Paint::世界坐标转屏幕坐标_非矩阵(Point2D& 屏幕坐标, FLOAT  水平角度差, FLOAT 高低角度差)
+{
+
+	getWndInfo();
+	FLOAT 高低可视角度 = (FLOAT)((double)atan2(m_resolutionHeight, m_resolutionWidth) * 180 / 3.1415);
+	if (fabs(水平角度差) > 45 || fabs(高低角度差) > 高低可视角度)
+	{
+		return false;// 不在屏幕范围内
+	}
+	int 水平差 = (int)(tan(水平角度差 * 3.1416 / 180) * ((m_resolutionWidth) / 2));
+	屏幕坐标.X = (float)(m_resolutionHeight / 2 + 水平差);
+
+	int 高度差 = (int)(tan(高低角度差 * 3.1416 / 180) * ((m_resolutionWidth) / 2));
+	屏幕坐标.Y = (float)(m_resolutionHeight / 2 + 高度差);
+
+	return true;
+}
+
+bool Paint::worldPointToScreenPoint(Point2D & screenPoint,const Point3D& targetWorldPoint)
+{
+	getWndInfo();
+	//刷新矩阵
+	memcpy(&m_viewMatrix, (PVOID)m_matrixAddr32, sizeof(m_viewMatrix));
+	Vector4 worldLocation = { targetWorldPoint.X,targetWorldPoint.Y,targetWorldPoint.Z,1};//世界坐标
+	//世界坐标配合矩阵算出裁剪坐标(目前只考虑了列主序,还需要考虑行主序的情况)
+	Vector4 cutLocation= RowVecTimesMatrix(worldLocation, m_viewMatrix);
+	if (cutLocation.w<0.0)//剪辑坐标w如果小于0,表示在屏幕外
+	{
+		return false;
+	}
+	Point2D NDC;//ndc坐标
+	NDC.X = cutLocation.x / cutLocation.w;
+	NDC.Y = cutLocation.y / cutLocation.w;
+	screenPoint.X = (NDC.X*m_resolutionWidth + m_resolutionWidth) / 2;
+	screenPoint.Y = (m_resolutionHeight - m_resolutionHeight*NDC.Y) / 2;
+	return true;
+}
+
+bool Paint::worldPointToScreenPoint64(Point2D & screenPoint, const Point3D& targetWorldPoint)
+{
+	getWndInfo();
+	//刷新矩阵
+	memcpy(&m_viewMatrix, (DWORD64*)m_matrixAddr64, sizeof(m_viewMatrix));
+	Vector4 worldLocation = { targetWorldPoint.X,targetWorldPoint.Y,targetWorldPoint.Z,1 };//世界坐标
+																						   //世界坐标配合矩阵算出裁剪坐标(目前只考虑了列主序,还需要考虑行主序的情况)
+	Vector4 cutLocation = RowVecTimesMatrix(worldLocation, m_viewMatrix);
+	if (cutLocation.w < 0.0f)//剪辑坐标w如果小于0,表示在屏幕外
+	{
+		return false;
+	}
+	Point2D NDC;//ndc坐标
+	NDC.X = cutLocation.x / cutLocation.w;
+	NDC.Y = cutLocation.y / cutLocation.w;
+	screenPoint.X = (NDC.X*m_resolutionWidth + m_resolutionWidth) / 2;
+	screenPoint.Y = (m_resolutionHeight - m_resolutionHeight*NDC.Y) / 2;
+	return true;
+}
+
+void Paint::paintLine(int x,int y)
+{
+	getWndInfo();
+	//从屏幕下方中间点开始画
+	MoveToEx(hdc, m_resolutionWidth / 2, m_resolutionHeight, 0);
+	LineTo(hdc, x, y);
+}
+
+void Paint::paintLine(int x, int y, int xTo, int yTo)
+{
+	MoveToEx(hdc,x, y, 0);
+	LineTo(hdc, xTo, yTo);
+}
+
+void Paint::paintFrame(int x,int y,int w,int h,int thick)
+{
+	//顶边
+	paintRect(x, y, w, thick);
+	//左边
+	paintRect(x, y+thick, thick, h-thick);
+	//右边
+	paintRect(x+w-thick, y+thick, thick, h-thick);
+	//底边
+	paintRect(x+thick, y+h-thick, w-2*thick, thick);
+}
+
+void Paint::paintFrameByFootAndHead(Point2D footPoiny, Point2D headPoint, int thick)
+{
+	float head = headPoint.Y - footPoiny.Y;	//负数高度
+	float width = head / 2;	//负数宽度
+	float center = width / -2;	//一半宽度
+	float extra = head / -6;	//三分之一宽度
+	paintFrame((int)(footPoiny.X + center), (int)footPoiny.Y, (int)width, (int)(head - extra), thick);
+}
+
+void Paint::paintRect(int x, int y, int w, int h)
+{
+	RECT rect = { x,y,x + w,y + h };
+	FillRect(hdc, &rect, hBrush);
+}
+
+void Paint::paintText(int x, int y, COLORREF color, const char * text)
+{
+	SetTextAlign(hdc, TA_CENTER | TA_NOUPDATECP);
+	SetBkColor(hdc, RGB(0, 0, 0));
+	SetBkMode(hdc, TRANSPARENT);
+	SetTextColor(hdc, color);
+	DeleteObject(SelectObject(hdc, hfont));//删除原来的字体句柄
+	TextOutA(hdc, x, y, text, strlen(text));
+	DeleteObject(hfont);
+}
+
+Vector4 RowVecTimesMatrix(const Vector4& rowVec, float matrix[16])
+{
+	Vector4 retVec;
+	retVec.x = rowVec.x*matrix[0] + rowVec.y*matrix[4] + rowVec.z*matrix[8] + rowVec.w*matrix[12];
+	retVec.y = rowVec.x*matrix[1] + rowVec.y*matrix[5] + rowVec.z*matrix[9] + rowVec.w*matrix[13];
+	retVec.z = rowVec.x*matrix[2] + rowVec.y*matrix[6] + rowVec.z*matrix[10] + rowVec.w*matrix[14];
+	retVec.w = rowVec.x*matrix[3] + rowVec.y*matrix[7] + rowVec.z*matrix[11] + rowVec.w*matrix[15];
+	return retVec;
+}
+```
+
 # Unity逆向
 
 Unity一切基于GameObjects对象,他们可以有各种属性(unity中叫做components组件),有像transform的属性,其包含位置,旋转和比例等这样的数据.
@@ -1104,6 +2534,297 @@ hook  glbegin函数,在hook中利用glDisable函数关闭我们不想让他显�
 框架代码参考 `/Desktop/FPS/csDLL`
 
 窗口特征枚举检测,截图检测( 可以使用`SetWindowDisplayAffinity`防止自己的外部窗口被截图)
+
+### 相关代码
+
+配置:
+
+- 属性-VC++目录-包含目录:选中D3D9库根目录DirectSDK下的include文件夹
+- 属性-VC++目录-引用目录:选中D3D9库根目录DirectSDK下的`Lib\x86`或`Lib\x64`文件夹
+- 属性-VC++目录-库目录:选中D3D9库根目录DirectSDK下的`Lib\x86`或`Lib\x64`文件夹
+
+#### 预编译.h
+
+```c
+#pragma once
+ 
+#include <d3d9.h>
+#include <d3dx9.h>
+#pragma comment(lib, "d3d9.lib")
+#pragma comment(lib, "d3dx9.lib")
+#include <dwmapi.h>
+#pragma comment(lib, "dwmapi.lib")
+ 
+#include <iostream>
+#include<Windows.h>
+ 
+using namespace std;
+```
+
+#### D3D绘制.h
+
+```c
+#pragma once
+#include"预编译.h"
+/*
+D3D相关的一些东西
+如果不想用static变量用全局变量的话，千万别再头文件声明，在cpp文件声明后
+再在头文件extern 类型名 变量名
+*/
+static MARGINS Margin;
+static LPDIRECT3D9              g_pD3D = NULL;
+static LPDIRECT3DDEVICE9        g_pd3dDevice = NULL;
+static D3DPRESENT_PARAMETERS    g_d3dpp = {};
+static ID3DXLine* pLine = 0;
+static ID3DXFont* Font;
+ 
+static HWND 辅助窗口句柄, GameHwnd;
+static RECT 窗口矩形;
+static int 窗口宽, 窗口高;
+ 
+//注册窗口需要用到的窗口类
+static WNDCLASSEX wClass;
+ 
+ 
+//画矩形，文字之类的单独放在这个函数里
+typedef void(*Draw)();
+static Draw Render;
+ 
+ 
+//窗口消息处理函数
+LRESULT WinProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
+ 
+bool 初始化D3D();
+ 
+void 创建透明窗口(HWND 游戏窗口句柄, Draw 绘制函数);
+ 
+void 窗口消息循环();
+ 
+void 画线(D3DCOLOR Color, float X1, float Y1, float X2, float Y2, float Width);
+ 
+void 绘制文字(float X, float Y, const char* Str, D3DCOLOR Color);
+ 
+void 画框(float X, float Y, float W, float H, float Width, D3DCOLOR Color);
+ 
+void 绘制开始();
+ 
+void 绘制结束();
+```
+
+#### D3D绘制.cpp
+
+```c
+#include "D3D绘制.h"
+ 
+bool 初始化D3D()
+{
+	if ((g_pD3D = Direct3DCreate9(D3D_SDK_VERSION)) == NULL)
+		return false;
+ 
+	// 创建D3D设备
+	ZeroMemory(&g_d3dpp, sizeof(g_d3dpp));
+	g_d3dpp.Windowed = TRUE;
+	g_d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
+	g_d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
+	g_d3dpp.EnableAutoDepthStencil = TRUE;
+	g_d3dpp.AutoDepthStencilFormat = D3DFMT_D16;
+	g_d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_ONE;
+	if (g_pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, 辅助窗口句柄, D3DCREATE_HARDWARE_VERTEXPROCESSING, &g_d3dpp, &g_pd3dDevice) < 0)
+		return false;
+ 
+	if (pLine == NULL)
+		D3DXCreateLine(g_pd3dDevice, &pLine);
+ 
+	//创建D3D字体
+	D3DXCreateFontW(g_pd3dDevice, 16, 0, FW_DONTCARE, D3DX_DEFAULT, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, DEFAULT_QUALITY, FF_DONTCARE, L"Vernada", &Font);
+ 
+	return true;
+}
+ 
+void 创建透明窗口(HWND 游戏窗口句柄, Draw 绘制函数)
+{
+	if (绘制函数 == NULL || 游戏窗口句柄 == 0) return;
+ 
+	GameHwnd = 游戏窗口句柄;
+	Render = 绘制函数;
+ 
+	//初始化窗口类
+	wClass.cbClsExtra = NULL;
+	wClass.cbSize = sizeof(WNDCLASSEX);
+	wClass.cbWndExtra = NULL;
+	wClass.hbrBackground = (HBRUSH)CreateSolidBrush(RGB(0, 0, 0));
+	wClass.hCursor = LoadCursor(0, IDC_ARROW);
+	wClass.hIcon = LoadIcon(0, IDI_APPLICATION);
+	wClass.hIconSm = LoadIcon(0, IDI_APPLICATION);
+	wClass.hInstance = GetModuleHandle(NULL);
+	wClass.lpfnWndProc = (WNDPROC)WinProc;
+	wClass.lpszClassName = L" ";
+	wClass.lpszMenuName = L" ";
+	wClass.style = CS_VREDRAW | CS_HREDRAW;
+ 
+	//注册窗口
+	if (RegisterClassEx(&wClass) == 0)
+	{
+		MessageBox(NULL, L"创建窗口出错！", L"提示！", 0);
+		exit(1);
+	}
+ 
+	//创建窗口
+	GetWindowRect(GameHwnd, &窗口矩形);
+	窗口宽 = 窗口矩形.right - 窗口矩形.left;
+	窗口高 = 窗口矩形.bottom - 窗口矩形.top;
+	辅助窗口句柄 = CreateWindowEx(WS_EX_TOPMOST | WS_EX_TRANSPARENT | WS_EX_LAYERED, L" ", L" ", WS_POPUP, 1, 1, 窗口宽, 窗口高, 0, 0, 0, 0);
+ 
+	//显示窗口
+	SetLayeredWindowAttributes(辅助窗口句柄, 0, RGB(0, 0, 0), LWA_COLORKEY);
+	ShowWindow(辅助窗口句柄, SW_SHOW);
+ 
+	初始化D3D();
+}
+ 
+void 窗口消息循环()
+{
+	while (1)
+	{
+		//使辅助窗口一直盖在游戏窗口上
+		if (GameHwnd)
+		{
+			GetWindowRect(GameHwnd, &窗口矩形);
+			窗口宽 = 窗口矩形.right - 窗口矩形.left;
+			窗口高 = 窗口矩形.bottom - 窗口矩形.top;
+			DWORD dwStyle = GetWindowLong(GameHwnd, GWL_STYLE);
+			if (dwStyle & WS_BORDER)
+			{
+				窗口矩形.top += 23;
+				窗口高 -= 23;
+			}
+			MoveWindow(辅助窗口句柄, 窗口矩形.left, 窗口矩形.top, 窗口宽, 窗口高, true);
+		}
+ 
+		//处理窗口消息
+		MSG Message;
+		ZeroMemory(&Message, sizeof(Message));
+		if (PeekMessage(&Message, 0, 0, 0, PM_REMOVE))
+		{
+			DispatchMessage(&Message);
+			TranslateMessage(&Message);
+		}
+ 
+		Sleep(1);
+	}
+ 
+ 
+	if (g_pd3dDevice) { g_pd3dDevice->Release(); g_pd3dDevice = NULL; }
+	if (g_pD3D) { g_pD3D->Release(); g_pD3D = NULL; }
+	CloseWindow(辅助窗口句柄);
+ 
+	::UnregisterClass(wClass.lpszClassName, wClass.hInstance);
+}
+ 
+LRESULT WinProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
+{
+	switch (Message)
+	{
+	case WM_PAINT:
+		if(g_pd3dDevice)Render();//就是这里调用了我们的画框画线之类的函数
+		break;
+ 
+	case WM_CREATE:
+		DwmExtendFrameIntoClientArea(hWnd, &Margin);
+		break;
+ 
+	case WM_DESTROY:
+	{
+		g_pD3D->Release();
+		g_pd3dDevice->Release();
+		exit(1);
+		return 0;
+	}
+	default:
+		return DefWindowProc(hWnd, Message, wParam, lParam);
+		break;
+	}
+	return 0;
+}
+ 
+void 画线(D3DCOLOR Color, float X1, float Y1, float X2, float Y2, float Width)
+{
+	D3DXVECTOR2 Vertex[2] = { {X1,Y1},{X2,Y2} };
+	pLine->SetWidth(Width);
+	pLine->Draw(Vertex, 2, Color);
+}
+ 
+void 绘制文字(float X, float Y, const char* Str, D3DCOLOR Color)
+{
+	RECT Rect = { (LONG)X,(LONG)Y };
+	Font->DrawTextA(NULL, Str, -1, &Rect, DT_CALCRECT, Color);
+	Font->DrawTextA(NULL, Str, -1, &Rect, DT_LEFT, Color);
+}
+ 
+void 画框(float X, float Y, float W, float H, float Width, D3DCOLOR Color)
+{
+	D3DXVECTOR2 Vertex[5] = { {X,Y},{X + W,Y},{X + W,Y + H},{X,Y + H},{X,Y} };
+	pLine->SetWidth(Width);
+	pLine->Draw(Vertex, 5, Color);
+}
+ 
+void 绘制开始()
+{
+	g_pd3dDevice->Clear(0, 0, D3DCLEAR_TARGET, 0, 1.0f, 0);
+	g_pd3dDevice->BeginScene();
+}
+ 
+void 绘制结束()
+{
+	g_pd3dDevice->EndScene();
+	g_pd3dDevice->Present(0, 0, 0, 0);
+}
+```
+
+#### 调用例子
+
+```c
+#include"D3D绘制.h"
+ 
+int 线粗 = 2;
+D3DCOLOR 红色 = D3DCOLOR_ARGB(255, 255, 255, 255);
+ 
+void 绘制()
+{
+	绘制开始();
+	画线(D3DCOLOR_ARGB(255, 0, 0, 255), 20, 20, 66, 66,线粗);
+	画框(100, 100, 100, 100, 线粗, D3DCOLOR_ARGB(255, 255, 255, 0));
+	绘制文字(200, 200, "吾无法无天", D3DCOLOR_ARGB(255, 255, 0, 255));
+	绘制结束();
+}
+ 
+HWND 游戏窗口 = (HWND)0x50A00;
+void 开始()
+{
+	创建透明窗口(游戏窗口, 绘制);
+	窗口消息循环();
+}
+ 
+int main()
+{
+	CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)开始, NULL, 0, NULL);
+ 
+	while (1)
+	{
+		cout << "输入233关闭:" << endl;
+		int a=0;
+		cin >> a;
+		if (a == 233)
+		{
+			return 0;
+		}
+	}
+ 
+	return 0;
+}
+```
+
+
 
 ## GDI泄露
 
