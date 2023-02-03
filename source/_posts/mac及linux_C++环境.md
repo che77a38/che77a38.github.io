@@ -1101,7 +1101,11 @@ Git是分布式版本控制系统，那么它就没有中央服务器的，每�
     当暂存区的文件内容发送变化, 需要将其提交的master分支
     只有提交之后才会形成一个节点(一个版本)
 
+> 可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。
+
 ## 使用git管理文件
+
+使用`git help git关键词`可以查询git关键词的作用
 
 ### 创建版本库
 
@@ -1119,7 +1123,9 @@ Git是分布式版本控制系统，那么它就没有中央服务器的，每�
 添加新文件到暂存区并提交
 
 1. 添加改动到暂存区  `git add .`(`.`表示所有变动)
-2. 暂存区提交到分支  `git commit -m '注释'`
+2. 暂存区提交到分支  `git commit -m '注释'`  
+
+第一次使用git执行commit之前需要设定个人资料,[点击跳转参考](#设定个人资料)
 
 ### 还原修改
 
@@ -1138,7 +1144,7 @@ Git是分布式版本控制系统，那么它就没有中央服务器的，每�
 - 修改了文件，并提交到暂存区（即：编辑之后，进行`git add` 但没有 `git commit -m "留言xxx"`）
 
   ```shell
-  git log --oneline            // 可以省略
+  git log --oneline            #只显示提交ID和提交信息的第一行,可省略
   
   git reset HEAD               // 回退到当前版本
   
@@ -1148,7 +1154,7 @@ Git是分布式版本控制系统，那么它就没有中央服务器的，每�
 - 修改了文件，并提交到仓库区（即：编辑之后，进行`git add` 并且 `git commit -m "留言xxx"`）
 
   ```shell
-  git log --oneline    // 可以省略
+  git log --oneline    #只显示提交ID和提交信息的第一行,可省略
   
   git reset HEAD^     // 回退到上一个版本，注意看HEAD后面有个^ HEAD^是回退到上个版本 HEAD^^是回退到上上个版本HEAD~数字 是回退到数字个版本
   
@@ -1157,7 +1163,21 @@ Git是分布式版本控制系统，那么它就没有中央服务器的，每�
 
 前两种情况使用了还原功能后,修改内容就丢失了,无法找回.原因是真正保存下来的其实是每次提交的状态
 
-### 查看修改内容
+**另外有一种更常用的还原:**
+
+**`git restore 文件名`** : 撤消工作区的修改返回到**最近一次`add`(缓存区)的版本**或者**最近一次`commit`(当前版本库)的版本**
+
+`git restore --stage <file>`和`git restore <file>`两个命令的区别
+
+- 对于`git restore <file>`命令，会撤销文件的修改，使文件恢复到暂存区或当前版本库（取决于文件在修改前的状态）；
+- 对于`git restore --staged <file>`命令，把文件从暂存区撤回到工作区，保留文件最后一次修改的内容；
+
+### 查看相关信息
+
+- **`git log`**  查看版本库中提交的各个节点信息
+- **`git status`**  查看当前状态(修改了什么,追踪了什么(暂存)还未提交)
+
+### 对比修改内容
 
 - [未暂存的修改](#查看未暂存修改)
 - [已暂存的修改](#查看已暂存的修改)
@@ -1169,9 +1189,7 @@ Git是分布式版本控制系统，那么它就没有中央服务器的，每�
 - **`git diff`** 比较暂存区与工作区文件的区别。
 - **`git diff --cached`** 比较仓库(版本库)与暂存区文件的区别。
 
-
-
-#### 查看未暂存修改
+#### 对比未暂存修改
 
 此时比较的是: **已暂存（`staged`）和 已追踪未暂存（`modified`） 之间的修改部分。**
 此时执行 **`git status`** 查看文件状态,**`git diff`**,显示内容如下
@@ -1203,9 +1221,10 @@ index 95d09f2..b6fc4c6 100644
  No newline at end of file
 +hello
  No newline at end of file
+#文件名后面 + 和 - 的数量是这个提交造成的更改中增删的项
 ```
 
-#### 查看已暂存修改
+#### 对比已暂存修改
 
 此时比较的是: **提交至仓库的版本 和 暂存区文件 之间的修改部分**。
 
@@ -1230,6 +1249,12 @@ index b6fc4c6..32f95c0 100644
  No newline at end of file
 ```
 
+#### 对比本地与远程仓库的区别
+
+**`git diff 本地仓库名 远程仓库名/远程分支名`** (远程与本地顺序可颠倒)
+
+如: `git diff master origin/master`
+
 ### 添加忽略列表
 
 有些文件或文件夹不需要git追踪,因此可以将他们添加到忽略列表
@@ -1249,13 +1274,164 @@ npoi.fast.test/obj
 
 如果要忽略的文件或文件夹**已提交过**，请使用命令`git rm -r --cached filename   `   (其中filename换成文件或文件夹名，如上述`.vs`或`npoi.fast/bin`)
 
+> 已经添加至 git 仓库的文件（`commit` 后的），是不能被 `.gitignore` 文件所影响的，需要先 `git rm --cached` 让其脱离 git 仓库。`git rm --cached` 后还需要`commit`
 
+### 删除相关 
 
+ `git rm`   等同于    `rm`  +   `git add`
 
+`git rm --cached`会保留原文件,只删除对文件的追踪状态,常用于已提交后添加忽略的情况
 
+### 与远程仓库交互
 
+在线代码托管平台:   [Github](https://github.com)    [码云](https://gitee.com)  等等
 
+![image-20211207131020235](https://raw.githubusercontent.com/che77a38/blogImage/main/202112071310206.png)
 
+#### 本地同步到远程
+
+[本地库上传到远程库参考](#上传指令)   
+
+**[注意]   上传到远程库最稳妥的方式是push之前先pull**
+
+#### 远程同步到本地
+
+远程库下载到本地库:   **`git clone ssh链接或https链接`**
+
+远程库更新到本地库:  **`git pull <远程主机名> <远程分支名>:<本地分支名>`**       (将`<远程主机名>`的`<远程分支名>`分支拉取过来，与`<本地分支名>`分支合并)
+
+> `git pull`  等同于  `git fetch` + `git merge`    (`git fetch`是把远程仓库的内容下载到本地作为一个本地的子分支)
+
+克隆`clone`和拉取`pull`的**区别**
+
+- 本地仓库还没有的时候使用克隆
+- 本地仓库已经存在了,从远程仓库下载文件使用拉取
+
+[fetch,pull,clone详解点击跳转](https://blog.csdn.net/qq_43530326/article/details/123311067)
+
+- fetch使用格式: `git fetch <repositoryUrl>` 
+- merge使用格式: `git merge <需要合并到当前分支的目标分支名>`
+
+**推送本地仓库文件到远程仓库注意**
+
+- 如果远程仓库没有任何分支,可以将本地仓库直接推送到远程仓库,不会报错;
+
+- 若远程仓库有master分支,则本地仓库推送master分支的时候会报错
+
+  **解决方法**:首先优先将远程仓库的文件"获取"(`fetch`)到本地仓库,将自动在本地仓库建立了默认名字为**`FETCH_HEAD`**的子分支,然后将该子分支合并到master主分支(可能需要[解决冲突](#解决冲突)),最后再执行推送操作(`push`)就可以了
+
+**注意: fetch指令生成的`FETCH_HEAD`子分支无法用`git branch`查看到**
+
+[rebase指令详解跳转](https://blog.csdn.net/weixin_42310154/article/details/119004977)  (不推荐使用)
+
+### SSH协议配置
+
+除了`https`协议连接,还可以使用`ssh`协议进行连接
+
+加密的方式是非对称加密,需要生成一对密钥
+
+- 客户端拿私钥
+- github服务器拿公钥
+
+#### 生成SSH协议密钥对
+
+生产秘钥对的命令:  **`ssh-keygen -t rsa`**   (rsa为非对称加密算法)
+
+也可以`ssh-keygen -t rsa -C "这里输入生成的sshkey的名称"`
+
+将生成`id_rsa`(私钥)和`id_ras.pub`(公钥)
+
+#### 公钥添加到 github 账户
+
+**github中设置公钥:**  点击`头像`-`Settings`-`SSH and GPG keys`-`New SSH keys`中起个题目并且填入`id_ras.pub`中的key,最后点击`Add SSH key`
+
+#### SSH协议私钥设置到本地
+
+```shell
+ssh-agent bash
+ssh-add ~/.ssh/id_rsa # 这里如果文件名被改过要写你自己定义的文件名  (~/.ssh/id_rsa为私钥文件路径)
+```
+
+返回如下结果表示设置成功:
+
+```shell
+Identity added: id_rsa (your_email@example.com)
+```
+
+#### 测试SSH协议连接
+
+```shell
+#输入:
+	#github
+ssh -T git@github.com
+	#码云
+ssh -T git@gitee.com
+#返回:
+The authenticity of host 'github.com (20.205.243.166)' can't be established.
+ECDSA key fingerprint is SHA256:p2QAMXNIC1TJYWeIOttrVc98/R1BUFWu3/LiyKgUfQM.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+#输入:
+yse
+#返回:
+Warning: Permanently added 'github.com,20.205.243.166' (ECDSA) to the list of known hosts.
+Hi xxxxxx You've successfully authenticated, but GitHub does not provide shell access.
+#如果 xxxxxx 是github用户名,表示ssh链接成功
+```
+
+> **配置 git的push&pull 使用 SSH协议 连接**
+>
+> 在仓库中输入`git remote -v`查看当前使用的是什么协议,如果以git开头表示SSH协议,下面是使用https协议返回的结果:
+>
+> ```shell
+> origin  https://xxxxx.git (fetch)
+> origin  https://xxxxx.git (push)
+> ```
+>
+> 输入 **`git remote set-url origin git@github.com:xxxxx.git`** 修改https协议为SSH协议,`git@github.com:xxxxx.git`取自github库
+>
+> 接下来使用push&pull就是使用的SSH协议
+
+### 分支操作
+
+git中默认只有一个分支:`master`
+
+如果创建了分支,各个分支都是独立的,互不影响的
+
+![image-20230130173124159](https://raw.githubusercontent.com/che77a38/blogImage2/main/202301301731761.png)
+
+> **当前所在的分支，其实是由 `HEAD` 决定的**
+
+| 命令名称 | 作用 |
+| --- | --- |
+| **`git branch 分支名`** | 创建本地分支 |
+| **`git branch`** | 查看本地有哪些分支 |
+| **`git branch -d 分支名`** | 删除本地分支 |
+| `git push <主机名> -d <分支名>` | 删除远程分支，主机名不填默认是origin |
+| `git branch -v` | 查看本地分支+上次提交的信息 |
+| `git branch -vv` | 查看本地分支+上次提交的信息+本地和远程分支的关系 |
+| `git branch -vv -a` | 查看本地分支+上次提交的信息+本地和远程分支的关系+远程分支（如果不想显示提交的信息，也可以去掉-vv参数） |
+| `git branch -r` | 只查看远程分支 |
+| **`git checkout 分支名`** | 切换本地分支 |
+| `git checkout -b 分支名` | 创建本地分支并切换 |
+| **`git merge 分支名`** | 把指定的分支合并到当前分支上 |
+| `git branch -m 旧分支名 新分支名` | 修改本地分支名称 |
+| `git merge --abort` | 回到解决合并冲突之前的状态 |
+
+##### 解决冲突
+
+[跳转参考解决冲突具体代码操作](#远程同步到本地)
+
+合并中有冲突的数据会显示为如下格式:
+
+```c
+<<<<<<< HEAD
+hello, git!!! master test!
+=======
+hello, git!!!hot-fix test!
+>>>>>>> hot-fix
+```
+
+上面的HEAD分支的内容和下面hot-fix分支的内容,该处有冲突,需要手动**解决冲突**后再提交
 
 # git常用指令
 
@@ -1299,7 +1475,7 @@ git config --list
 
 ## 上传指令
 
-1. 初始化git数据库：git init
+1. 初始化git数据库：`git init`
 
    文件夹中多出一个.git文件夹，表明该文件夹已经生成了git数据库了（需要显示隐藏文件才能显示出来）
 
@@ -1315,17 +1491,17 @@ git config --list
    //也可以在访答中键入command+shift+.
    ```
 
-2. 查询当前状态：git status
+2. 查询当前状态：`git status`
 
-3. 将有修改的档案加入到索引（暂存区）：git add .
+3. 将有修改的档案加入到索引（暂存区）：`git add .`
 
-4. 将索引档案变成一个更新(COMMIT):git commit -m "修改内容的描述"
+4. 将索引档案变成一个更新(COMMIT):`git commit -m "修改内容的描述"`
 
-5. 观察commit历史记录：git log
+5. 观察commit历史记录：`git log`
 
-6. 下载远程数据库：git clone 数据库网址
+6. 下载远程数据库：`git clone 数据库网址`
 
-7. 更新远程数据库：git push origin master
+7. 更新远程数据库：`git push origin master`
 
 ```c
 //上传步骤
@@ -1334,7 +1510,10 @@ git commit -m "修改内容的描述"
 git push <远程主机名> <本地分支名>:<远程分支名>
 //如果本地分支名与远程分支名相同，则可以省略冒号：
 git push <远程主机名> <本地分支名>
+git push --force <远程主机名> <本地分支名>:<远程分支名>//强制推送,不管任何事
 ```
+
+**[注意]   最好的方式是push之前先pull**
 
 ### 远程储存库操作
 
