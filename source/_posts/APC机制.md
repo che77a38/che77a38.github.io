@@ -2,7 +2,7 @@
 title: APC机制
 tags: 内核
 categories: 技术
-
+mathjax: true
 
 
 ---

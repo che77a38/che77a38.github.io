@@ -2,7 +2,7 @@
 title: C++基础
 tags: C++
 categories: 技术
-
+mathjax: true
 ---
 
 

@@ -2,7 +2,7 @@
 title: FPS逆向
 tags: FPS
 categories: 杂项
-
+mathjax: true
 ---
 
 
@@ -79,17 +79,20 @@ if(GetKeyState(VK_F1)&1)//VK_F1是键码
 ![image-20220122192831457](https://raw.githubusercontent.com/che77a38/blogImage/main/202201221928872.png)
 $$
 摄像机到准星的距离分辨率=\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}
-\\
-\\
-\tan{x差角度}=\frac{屏幕的x差分辨率}{摄像机到准星的距离分辨率}
-\\
-\\
-\tan{x差角度}=\frac{屏幕的x差分辨率}{\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}}
-\\
-\\
-屏幕的x差分辨率=\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}\times\tan{x差角度}
-\\
 $$
+$$
+\tan{x差角度}=\frac{屏幕的x差分辨率}{摄像机到准星的距离分辨率}
+$$
+
+
+$$
+\tan{x差角度}=\frac{屏幕的x差分辨率}{\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}}
+$$
+
+$$
+屏幕的x差分辨率=\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}\times\tan{x差角度}
+$$
+
 因为屏幕的左上角为(0,0)，向右为x变大，向下为y变大，因此可知：
 
 **屏幕上指向敌人的x坐标**就是:**屏幕的x差分辨率+水平分辨率/2**
@@ -97,23 +100,25 @@ $$
 ![image-20220122151558943](https://raw.githubusercontent.com/che77a38/blogImage/main/202201221515481.png)
 $$
 \frac{垂直FOV}{水平FOV}=\frac{垂直分辨率}{水平分辨率}
-\\
-\\
+$$
+$$
 屏幕的y差分辨率=\frac{\frac{屏幕垂直分辨率}{2}}{\tan{\frac{垂直FOV}{2}}}\times\tan{y差角度}
-\\
-\\
+$$
+
+$$
 屏幕的y差分辨率=\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}\times\tan{y差角度}
 $$
+
 **屏幕上指向敌人的y坐标**就是:**屏幕的y差分辨率+垂直分辨率/2**
 
 ### **总结**
 
 $$
 屏幕坐标X=\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}\times\tan{x差角度}+\frac{水平分辨率}{2}
-\\
-\\
+$$
+
+$$
 屏幕坐标Y=\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}\times\tan{y差角度}+\frac{垂直分辨率}{2}
-\\
 $$
 
 算法如下：
@@ -535,9 +540,11 @@ $$
 因此**NDC坐标--->屏幕坐标算法**计算如下:
 $$
 目标点的屏幕坐标x=\frac{目标点的NDC坐标X\times分辨率宽}{2}+\frac{分辨率宽}{2}
-\\
+$$
+$$
 目标点的屏幕坐标y=\frac{分辨率高}{2}-\frac{目标点的NDC坐标y\times分辨率高}{2}
 $$
+
 坐标点A和坐标点B均适用,说明四象限全适用.
 
 ### 相关代码截取

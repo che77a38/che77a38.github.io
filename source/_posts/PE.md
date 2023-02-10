@@ -2,7 +2,7 @@
 title: PE
 tags: PE
 categories: 技术
-
+mathjax: true
 
 ---
 

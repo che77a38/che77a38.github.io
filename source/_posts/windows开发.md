@@ -2,7 +2,7 @@
 title: windows开发
 tags: 开发
 categories: 技术
-
+mathjax: true
 
 ---
 

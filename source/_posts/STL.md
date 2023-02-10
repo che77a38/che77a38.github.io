@@ -2,7 +2,7 @@
 title: 标准模板库(STL)
 tags: 开发
 categories: 技术
-
+mathjax: true
 
 
 ---

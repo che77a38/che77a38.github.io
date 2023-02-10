@@ -2,7 +2,7 @@
 title: QT入门
 tags: QT
 categories: 技术
-
+mathjax: true
 
 
 

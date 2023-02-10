@@ -3,7 +3,7 @@ title: linux系统编程
 date: 2020-12-23 22:51:13
 tags: linux
 categories: 技术
-
+mathjax: true
 
 ---
 

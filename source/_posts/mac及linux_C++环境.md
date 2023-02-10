@@ -2,7 +2,7 @@
 title: mac及linux C++环境配置
 tags: C++
 categories: 技术
-
+mathjax: true
 
 ---
 
