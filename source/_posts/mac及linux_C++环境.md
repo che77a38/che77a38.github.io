@@ -71,7 +71,7 @@ apt-get install vim #编辑工具
 
 - linux下C/C++编程 makefile应用广泛
 - 编译移植开源项目，大部分开源项目都基于makefile，学会makefile才能够调试编译过程中的问题
-- 手写makefile太过于繁琐，自动生成的makefile不易于配置，学习本门课程便携自动化makefile，以后新项目只需要includemakefile头文件
+- 手写makefile太过于繁琐，自动生成的makefile不易于配置，学习本门课程便携自动化makefile，以后新项目只需要include makefile头文件
 - 学习makefile理解大型项目怎么分布编译的
 
 目标
@@ -1175,7 +1175,7 @@ Git是分布式版本控制系统，那么它就没有中央服务器的，每�
 ### 查看相关信息
 
 - **`git log`**  查看版本库中提交的各个节点信息
-- **`git status`**  查看当前状态(修改了什么,追踪了什么(暂存)还未提交)
+- **`git status`**  查看当前状态(修改了什么,追踪了什么(暂存)还未提交),还可以查看是否同步了远程仓库的最新内容
 
 ### 对比修改内容
 
@@ -1416,6 +1416,8 @@ git中默认只有一个分支:`master`
 | **`git merge 分支名`** | 把指定的分支合并到当前分支上 |
 | `git branch -m 旧分支名 新分支名` | 修改本地分支名称 |
 | `git merge --abort` | 回到解决合并冲突之前的状态 |
+| `git branch -f 分支名1 分支名2` | 更新分支1以指向分支2 |
+| `git branch -B 分支名1 分支名2` | 更新分支1以指向分支2并且切换到分支1 |
 
 ##### 解决冲突
 
@@ -1693,6 +1695,8 @@ ssh远程连接   `ssh 用户名@ip地址或域名`
 ## scp
 
 从服务器上下载文件   `scp username@servername:/path/filename /var/www/local_dir（本地目录）`
+
+加上 `-r` 的参数才可以传目录
 
 例如`scp root@192.168.0.101:/var/www/test.txt`  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）
 

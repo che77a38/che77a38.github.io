@@ -948,6 +948,8 @@ linux系统,通过修改 `/etc/crontab`文件(系统任务调度)添加定时任
 
 - `ifconfig -a`命令   查看网络接口信息,可查看ip地址
 
+- [`nohup`命令](https://www.zhangshengrong.com/p/bYXxq3ZL1Z/)   将程序以忽略挂起信号的方式运行起来,如果最后面加个`&`表示**后台运行程序**   注意:关闭SSH窗口会关闭运行命令的session，导致nohup对应的进程被通知需要一起shutdown。那么，我们每次运行完nohup的程序后，手动用**`exit`**命令退出，这样就能保留运行程序了
+
 # vim
 
 > vi是”visual interface”的简称, 它在Linux上的地位就仿佛Windows中的记事本一样. 它可以执行编辑、删除、查找、替换、块操作等众多文本操作, 而且用户可以根据自己的需要对其进行定制. vi是一个文本编辑程序, 没有菜单, 只有命令. 
