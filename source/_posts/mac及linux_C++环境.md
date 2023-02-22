@@ -28,29 +28,31 @@ Linux属于：多用户，多任务
 
 # vscode快捷键
 
-| 功能                               | 快捷键              |
-| ---------------------------------- | ------------------- |
-| 转到文件                           | command+p           |
-| 命令面板                           | F1                  |
-| 打开/跳转到终端                    | ctrl+`              |
-| 变量统一重命名                     | F2                  |
-| 开关侧边栏                         | command+b           |
-| 转到定义处                         | F12                 |
-| 代码格式化                         | shift+alt+f         |
-| 当前行下方插入一行                 | command+enter       |
-| 当前行上方插入一行                 | command+shift+enter |
-| 定义处缩略图(只看一眼而不跳转过去) | alt+F12             |
-| 删除当前行光标右侧所有的字符       | command+delete      |
-| 多光标同时输入                     | alt+左键            |
-| 同时选中所有匹配                   | command+shift+L     |
-| 回到上一个光标操作                 | command+U           |
-| 整个项目中查找                     | command+shift+F     |
-| 全屏                               | F11                 |
-| 字体和窗口大小调整                 | command+“+/-”       |
-| 撤销                               | command+z           |
-| 恢复撤销                           | command+shift+z     |
-| 单步步过                           | F10                 |
-| 单步步入                           | F11                 |
+| 功能                               | 快捷键                   |
+| ---------------------------------- | ------------------------ |
+| 转到文件                           | command+p                |
+| 命令面板                           | F1                       |
+| 打开/跳转到终端                    | ctrl+`                   |
+| 变量统一重命名                     | F2                       |
+| 开关侧边栏                         | command+b                |
+| 转到定义处                         | F12                      |
+| 代码格式化                         | command+K 然后 command+F |
+| 当前行下方插入一行                 | command+enter            |
+| 当前行上方插入一行                 | command+shift+enter      |
+| 定义处缩略图(只看一眼而不跳转过去) | alt+F12                  |
+| 删除当前行光标右侧所有的字符       | command+delete           |
+| 多光标同时输入                     | alt+左键                 |
+| 同时选中所有匹配                   | command+shift+L          |
+| 回到上一个光标操作                 | command+U                |
+| 整个项目中查找                     | command+shift+F          |
+| 全屏                               | F11                      |
+| 字体和窗口大小调整                 | command+“+/-”            |
+| 撤销                               | command+z                |
+| 恢复撤销                           | command+shift+z          |
+| 单步步过                           | F10                      |
+| 单步步入                           | F11                      |
+| 选中当前行                         | command+L                |
+| 返回上一个标签页                   | ctrl+"-"                 |
 
 # makeFile学习
 
@@ -162,15 +164,22 @@ GDB调试器只适合单线程程序调试,多线程调试,还是使用日志打
 ### GDB主要功能
 
 - 设置断点（断点可以是条件表达式）
+
 - 使程序在指定的代码行上暂停执行，便于观察
+
 - 单步执行程序，便于调试
+
 - 查看程序中变量值的变化
+
 - 动态改变程序的执行环境
+
 - 分析崩溃程序产生的core文件
+
+  [如何设置开启core文件的产生](https://blog.csdn.net/lichao201005/article/details/128451612)
 
 ### 常用调试命令参数
 
-调试开始：执行`gdb [exefilename]`，进入gdb调试程序，其中exefilename为要调试的可执行文件名
+调试开始：执行`gdb [exefilename]`，进入gdb调试程序，其中exefilename为要调试的可执行文件名,gdb [exefilename] [core`文件]`可以用于分析core,查看错误产生的位置等信息
 
 ```bash
 ##以下命令后括号内为命令的简化使用，比如run(r),直接输入命令r就代表命令run
@@ -1712,7 +1721,21 @@ ssh远程连接   `ssh 用户名@ip地址或域名`
 
 比如:SFTP支持断点续传，SCP则不能
 
-# vscode开发tips
+# IDE相关tips
+
+## vs开发linux项目
+
+新建项目-跨平台-Linux-空项目
+
+### VS远程开发
+
+工具-选项-跨平台-连接管理器-添加(主机名填写ip,端口22,填写用户名与密码)-连接
+
+项目属性页-配置属性-常规  中:
+
+- 远程生成计算机选择上面添加的
+- 远程生成根目录
+- 远程生成项目目录
 
 ## vscode远程开发
 
@@ -1722,19 +1745,38 @@ Vscode 安装 `remote development`插件
 
 右键ssh目标选择连接,输入密码,开始远程开发
 
+### vscode配置C++调试
+
+1. 编译的时候需要加`-g`选项,才会附带调试需要的信息
+
+2. 点击左侧菜单栏中的`运行和调试`中的创建`launch.json文件`,如下图(非红圈)
+
+   <img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302192059807.png" alt="image-20230219205902832" style="zoom:25%;" />
+
+   点击后会在项目根目录下生成`.vscode/launch.json`文件
+
+3. 
+
 ## code runner配置
 
 Code Runner默认运行是在输出端，是不能进行编辑输入的，所以我们要将其改到终端运行，打开VS Code设置，找到Run In Terminal配置处，将其勾选住，也可在设置的配置文件settings.json文件里添加"code-runner.runInTerminal": true配置，保存，我们再通过Code Runner运行，就可以在终端中运行了，可以在上面进行输入了。
 
 ## windows下的vscode终端乱码
 
-windows下默认的终端编码为GBK,因此需要配置vscode终端为utf-8编码
+VSCode 默认是 utf-8 编码，而在中国地区下的 Windows 的 cmd 默认是 GBK 编码,因此需要配置vscode终端为utf-8编码
+
+通过`chcp` 命令查看代码页编号，
+
+- `936` 对应 `GBK2312`
+- `65001` 对应 `UTF-8`
+
+文件-首选项-设置,点击右上角`打开设置(json)`,添加如下代码:
 
 ```json
 "terminal.integrated.profiles.windows": {
     "Command Prompt": {
         "path": "C:\\Windows\\System32\\cmd.exe",
-        "args": ["-NoExit", "/K", "chcp 65001"]
+        "args": ["-NoExit", "/K", "chcp 65001 > nul"]
     },
     "PowerShell": {
         "source": "PowerShell",
