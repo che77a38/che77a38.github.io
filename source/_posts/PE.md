@@ -406,6 +406,8 @@ Characteristics节的属性详解（DWORD拆分为32位,按位对应含义）
 
 如果文件对齐和内存对齐是一样的，那么直接FOA=内存地址-ImageBase。也就是FOA=RVA
 
+![image-20230411195406117](https://raw.githubusercontent.com/che77a38/blogImage2/main/202304111954493.png)
+
 # PE的空白区添加代码
 
 加壳：通常的目的就是为了隐藏程序的入口。

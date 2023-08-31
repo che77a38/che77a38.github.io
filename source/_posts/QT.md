@@ -3178,6 +3178,568 @@ bool Dialog::nativeEvent(const QByteArray &eventType, void *message, long *resul
 RC_ICONS = logo.ico//logo.ico是图标名
 ```
 
+# QT json
+
+用到的头文件
+
+```cpp
+#include <QJsonDocument>
+//磁盘上有json格式的文件 -> 读到内存(字符串) 
+//json数组/json对象 -> json文档对象 ->写入磁盘(写入的字符串)
+
+#include <QJsonArray>//解析json数组
+
+#include <QJsonObject>//解析json对象
+
+#include <QByteArray>
+
+#include <QJsonValue>//将json支持的数据类型进行了封装, 得到一个QJsonValue
+```
+
+完整案例:
+
+```cpp
+#include <QCoreApplication>
+#include <QLocale>
+#include <QTranslator>
+#include <QDebug>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QByteArray>
+#include <QJsonValue>
+#include <QFile>
+#include <iostream>
+using namespace std;
+
+//写QJsonObject到文件
+void writeJson2File(QJsonObject json,QString filePath)
+{
+    //将QJsonObject转换为QJsonDocument
+    QJsonDocument doc(json);
+    //讲QJsonDocument对象转换为QByteArray对象
+    QByteArray byteArray = doc.toJson();
+    //文件操作--将byteArray写入文件
+    QFile file(filePath);
+    file.open(QFile::WriteOnly);
+    file.write(byteArray);
+    file.close();
+}
+
+//读文件到QJsonDocument
+QJsonDocument readFile2Json(QString filePath)
+{
+    //读取json文件到解析json格式
+    QFile file;
+    file.setFileName(filePath);
+    file.open(QFile::ReadOnly);
+    QByteArray byteArrayR = file.readAll();
+    //将QByteArray转换为QJsonDocument
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(byteArrayR);
+    return jsonDoc;
+}
+
+//递归解析打印QJsonValue
+void showJsonValue(QString key,QJsonValue value)
+{
+    if(value.isArray())
+    {
+        QJsonArray array = value.toArray();
+        qDebug()<<key<<":[";
+        for(int i=0;i<array.size();i++)
+        {
+            if(array[i].isBool())
+                qDebug()<<array[i].toBool();
+            else if(array[i].isDouble())
+                qDebug()<<array[i].toDouble();
+            else if(array[i].isString())
+                qDebug()<<array[i].toString();
+        }
+        qDebug()<<"]";
+    }
+    else if(value.isBool())
+        qDebug()<<key<<":"<<value.toBool();
+    else if(value.isDouble())
+        qDebug()<<key<<":"<<value.toDouble();
+    else if(value.isString())
+        qDebug()<<key<<":"<<value.toString();
+    else if(value.isObject())
+    {
+        QJsonObject obj = value.toObject();
+        QStringList keyLists = obj.keys();
+        qDebug()<<key<<":{";
+        for(int i=0;i<keyLists.size();i++)
+        {
+            showJsonValue(keyLists[i],obj[keyLists[i]]);
+        }
+        qDebug()<<"}";
+    }
+}
+
+//打印QJsonDocument
+void showJsonDocuemnt(QJsonDocument jsonDoc)
+{
+    if(jsonDoc.isObject())
+    {
+        //将QJsonDocument对象转换为json对象
+        QJsonObject obj = jsonDoc.object();
+        QStringList keyLists = obj.keys();
+        for(int i=0;i<keyLists.size();i++)
+        {
+            QJsonValue value = obj[keyLists[i]];
+            showJsonValue(keyLists[i],value);
+        }
+
+    }
+    else if(jsonDoc.isArray())
+    {
+        QJsonArray array = jsonDoc.array();
+        qDebug()<<"[";
+        for(int i=0;i<array.size();i++)
+        {
+            qDebug()<<array[i];
+        }
+        qDebug()<<"]";
+
+    }
+}
+
+
+int main(int argc, char *argv[])
+{
+    QCoreApplication a(argc, argv);
+
+    QTranslator translator;
+    const QStringList uiLanguages = QLocale::system().uiLanguages();
+    for (const QString &locale : uiLanguages) {
+        const QString baseName = "test_" + QLocale(locale).name();
+        if (translator.load(":/i18n/" + baseName)) {
+            a.installTranslator(&translator);
+            break;
+        }
+    }
+
+    //创建一个json对象
+    QJsonObject json;
+    json.insert("name","xiaowu");
+    json.insert("age",21);
+    json.insert("sex","male");
+    //子子对象
+    QJsonObject subSubJson;
+    subSubJson.insert("hello","world");
+    //插入子对象
+    QJsonObject subJson;
+    subJson.insert("father","longji");
+    subJson.insert("sister","wangjin");
+    subJson.insert("mather","liwei");
+    subJson.insert("begin",subSubJson);
+    json.insert("family",subJson);
+    //插入数组
+    QJsonArray jsonArray;
+    jsonArray.append(10);
+    jsonArray.append("chengdu");
+    jsonArray.append(10.7);
+    jsonArray.append(true);
+    json.insert("like",jsonArray);
+    //写入磁盘
+    writeJson2File(json,"test.json");
+    //读取磁盘json文件
+    QJsonDocument jsonDoc = readFile2Json("test.json");
+    //打印jsonDoc对象
+    showJsonDocuemnt(jsonDoc);
+    return a.exec();
+}
+```
+
+
+
+# QT数据库开发
+
+## oracle数据库
+
+![image-20230420114847356](https://raw.githubusercontent.com/che77a38/blogImage2/main/202304201149758.png)
+
+使用QtCreator打开`QT根目录\Qt5.9.0\5.9\Src\qtbase\src\plugins\sqldrivers\oci\`目录下面的oci.pro
+
+修改oci.pro文件:
+
+```qt pro
+TARGET = qsqloci
+
+HEADERS += $$PWD/qsql_oci_p.h
+SOURCES += $$PWD/qsql_oci.cpp $$PWD/main.cpp
+
+#QMAKE_USE += oci
+QMAKE_LFLAGS += G:\\oracleInstall\\bin\\oci.dll
+INCLUDEPATH += G:\\oracleInstall\\oci\\include
+LIBPATH += G:\\oracleInstall\\oci\\lib\\msvc
+
+darwin:QMAKE_LFLAGS += -Wl,-flat_namespace,-U,_environ
+
+OTHER_FILES += oci.json
+
+PLUGIN_CLASS_NAME = QOCIDriverPlugin
+include(../qsqldriverbase.pri)
+```
+
+之后再重新编译，就会发现编译通过了，这时候我们在Qt安装的根目录下面去找 “:\plugins”会发现里面有一个“ sqldrivers ”文件夹，将其复制到Qt的`c:\Qt\Qt5.9.0\5.9\mingw53_32\plugins`下
+面即可
+
+## mysql开发
+
+将`libmysql.dll`库放到下面的目录下**`Qt5.12.0(QT根目录)\5.12.0\mingw73_64\bin`**
+
+头文件: **`#include <QtSql>`**
+
+qmake:`QT+=sql`
+
+**用到的头文件**
+
+```cpp
+#include <qDebug>
+//QtSql头文件包含下面头文件
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlRecord>
+#include <QSqlError>
+```
+
+### 加载数据库驱动
+
+```cpp
+QCoreApplication a(argc, argv);
+//查看QT支持的驱动
+qDebug() << QSqlDatabase::drivers();
+//输出结果为:
+//("QSQLITE", "QMYSQL", "QMYSQL3", "QOCI", "QOCI8", "QODBC", "QODBC3", "QPSQL", "QPSQL7")
+//加载数据库驱动
+QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+```
+
+### 设置账号密码
+
+```cpp
+//设置账号和密码信息使用QSqlDatabase类的成员函数:
+void setHostName(const QString &host)
+void setPassword(const QString &password)
+void setPort(int port)
+void setUserName(const QString &name)
+void setDatabaseName(const QString &name)
+//使用方法, 如下所示
+db.setHostName("192.168.10.145"); //设置mysql主机的IP地址
+db.setDatabaseName("scott"); //设置数据库名
+db.setUserName("root"); //设置用户名
+db.setPassword("123456"); //设置密码
+//其实上面这几步就类似于登录mysql数据库需要的关键信息:
+mysql -h192.168.10.145 -uroot -p123456 scott
+```
+
+### 打开数据库
+
+函数原型
+`bool QSqlDatabase::open();`
+
+```cpp
+//详情查看QT帮助手册
+//使用方法, 如下所示:
+if(!db.open())
+{
+qDebug() << "数据库操作失败";
+return;
+}
+```
+
+### 关闭数据库
+
+`db.close();`
+
+### 操作数据库
+
+数据库操作错误打印
+
+```cpp
+QSqlError lastError = query.lastError();
+qDebug() << lastError.driverText() << lastError.databaseText();
+```
+
+#### 执行select查询操作
+
+QSqlQuery类的构造函数:
+`QSqlQuery(const QString &query = QString(), QSqlDatabase db = QSqlDatabase())`
+
+该构造函数都有默认值, 构造的时候可以不指定
+
+##### 执行语句
+
+两种方法
+
+1. ```cpp
+   QSqlQuery query;
+   query.exec("select * from dept");
+   ```
+
+2. ```cpp
+   QSqlQuery query;
+   bool success;
+   query.prepare("select * from dept");
+   success = query.exec();
+   if(!success)
+   {
+   qDebug() << "查询失败";
+   return;
+   }
+   ```
+
+##### 结果集记录数和字段数
+
+###### 查询字段数
+
+字段数就是查询列数
+
+record方法
+
+先调用QSqlQuery类的record方法:
+`QSqlRecord record() const;`
+然后在调用QSqlRecord类的count方法
+`int QSqlRecord::count() const`
+
+```cpp
+QSqlRecord rec = query.record();
+qDebug() << "查询结果字段总数为：" << rec.count();
+```
+
+###### 查询记录数
+
+记录数就是查询行数
+
+size方法
+
+调用QSqlQuery类的size方法:
+`int size() const`
+
+```cpp
+qDebug() << "查询结果记录总数为" << query.size()
+```
+
+##### 遍历结果集
+
+获取每一条记录
+`bool QSqlQuery::next()`
+通过列的索引位置获取列的值---列的索引从0开始
+`QVariant QSqlQuery::value(int index) const`
+通过列名获取列的值
+`QVariant value(const QString &name) const`
+
+```cpp
+while(query.next())
+{
+//qDebug() << query.value(0).toInt() << query.value(1).toString() << query.value(2).toString();
+qDebug() << query.value("deptno").toInt() << query.value("dname").toString() <<
+query.value("loc").toString();
+}
+```
+
+移动指向结果集的位置指针:
+
+`bool QSqlQuery::seek(int index, bool relative = false)`
+
+index为编号,如`query.seek(-1);` 移动到结果集的开始位置
+
+每次next都会使记录指针移动一次, 可以使用seek函数重置指针位置,类似于文件指针
+
+#### 执行insert操作
+
+##### 直接插入
+
+```cpp
+query.prepare("insert into dept values(77, 'sports', 'xiuzheng')");
+success = query.exec();
+if(!success)
+{
+QSqlError lastError = query.lastError();
+qDebug() << "插入失败：" << lastError.driverText() << lastError.databaseText();
+return;
+}
+```
+
+直接调用exec并将sql语句作为参数也可以直接插入
+
+```cpp
+success = query.exec("insert into dept values(66, 'SALES', 'SHANGHAI')");
+if(!success)
+{
+QSqlError lastError = query.lastError();
+qDebug() << "插入失败：" << lastError.driverText() << lastError.databaseText();
+return;
+}
+```
+
+##### 占位符插入
+
+使用带有占位符的sql语句, 该语句不是一个完整的sql语句,需要调用bindValue函数给占位符设置值.
+
+```cpp
+query.prepare("insert into dept values(?, ?, ?)");
+//给字段设置值,字段位置索引从0开始
+query.bindValue(0, 99);
+query.bindValue(1, "SPORTS");
+query.bindValue(2, "BEIJING");
+success = query.exec();
+if(!success)
+{
+QSqlError lastError = query.lastError();
+qDebug() << "插入失败：" << lastError.driverText() << lastError.databaseText();
+return;
+}
+```
+
+注意占位符操作,如果bindValue函数第二个传参传单引号,不会报错,但插入的内容会变成一串数字.
+
+#### 执行update操作
+
+##### 直接update
+
+直接调用execl并将sql语句作为参数执行
+
+```cpp
+success = query.exec("update dept set loc='MEIGUO' where deptno=99");
+if(!success)
+{
+QSqlError lastError = query.lastError();
+qDebug() << "update failed" << lastError.driverText() << lastError.databaseText();
+return;
+}
+```
+
+##### 占位符update
+
+使用带有占位符占位符的sql语句
+
+```cpp
+query.prepare("update dept set loc=? where deptno=?");
+query.bindValue(0, "JAPAN");
+query.bindValue(1, 77);
+success = query.exec();
+if(!success)
+{
+QSqlError lastError = query.lastError();
+qDebug() << "update failed" << lastError.driverText() << lastError.databaseText();
+return;
+}
+```
+
+#### 执行delete操作
+
+##### 直接delete
+
+直接调用execl并将sql语句作为参数执行
+
+```cpp
+query.exec("delete from dept where deptno=99");
+```
+
+##### 占位符delete
+
+使用带有占位符的sql语句
+
+```cpp
+query.prepare("delete from dept where deptno=? or loc=?");
+query.bindValue(0, 77);
+query.bindValue(1, "SHANGHAI");
+success = query.exec();
+if(!success)
+{
+QSqlError lastError = query.lastError();
+qDebug() << "update failed" << lastError.driverText() << lastError.databaseText();
+return;
+}
+```
+
+### 事务处理
+
+- 开启事务
+
+  `query.exec("START TRANSACTION");`
+
+- 设置自动提交和手动提交---->默认情况下mysql是自动提交的
+
+  `query.exec("SET AUTOCOMMIT=0");` 手动提交
+
+  `query.exec("SET AUTOCOMMIT=1");` 自动提交
+
+- 事务的提交和回滚操作
+
+  `query.exec("COMMIT");`   提交
+  `query.exec("ROLLBACK");`  回滚
+
+**测试案例**
+
+```cpp
+//测试方法: 先开启一个新的事务, 并设置为手动提交, 然后插入数据, 最后回滚, 看数据是否已经插入到数据库中;然后在修改为提交, 查看数据是否已经插入到数据库中.
+query.exec("START TRANSACTION");
+query.exec("SET AUTOCOMMIT=0"); //手动提交
+success = query.exec("insert into dept values(99, 'SALES', 'SHANGHAI')");
+if(!success)
+{
+QSqlError lastError = query.lastError();
+qDebug() << "update failed" << lastError.driverText() << lastError.databaseText();
+//回滚事务
+query.exec("ROLLBACK");
+return;
+}
+//提交事务
+query.exec("COMMIT");
+```
+
+## sqlite开发
+
+SQLite（sql）是一款开源轻量级的数据库软件，不需要server(不支持远程连接)，可以集成在其他软件中，非常适合嵌入式系统的小型数据库。
+Qt5以上版本可以直接使用SQLite（Qt自带驱动）。
+
+qt中开发环境仅需要
+
+- 头文件就可以直接进行开发`<QtSql>`.
+- pro文件中添加`QT += sql`
+
+`navicat`可以很轻易创建出sqllite数据库,每个sqllite数据库以一个文件方式存在电脑上,连接该数据库时使用`db.setDatabaseName()`指定文件路径连接文件对应的数据库
+
+**查询案例**
+
+```cpp
+QSqlDatabase db ;
+        if(QSqlDatabase::contains("qt_sql_default_connection"))
+        {
+            db = QSqlDatabase::database("qt_sql_default_connection");
+        }
+        else {
+            db = QSqlDatabase::addDatabase("QSQLITE");
+            db.setDatabaseName("/Users/zeroko/Documents/mysqllite");
+        }
+        if(!db.open())
+        {
+        qDebug() << "数据库操作失败";
+         return -1;
+        }
+        qDebug()<<"数据库连接成功";
+        QSqlQuery sqlquery;
+        bool isSuccess =sqlquery.exec("select * from student");
+        if(!isSuccess)
+        {
+            qDebug()<<sqlquery.lastError();
+            db.close();
+            return -1;
+        }
+        while(sqlquery.next())
+        {
+            int id = sqlquery.value(1).toInt();
+            QString name = sqlquery.value(0).toString();
+            qDebug()<<QString("id:%1 name:%2").arg(id).arg(name);
+        }
+        db.close();
+```
+
+更多相关代码可参考[此处](https://www.cnblogs.com/xia-weiwen/archive/2017/05/04/6806709.html)
+
 # 打包发布
 
 1. 切成release版本进行运行

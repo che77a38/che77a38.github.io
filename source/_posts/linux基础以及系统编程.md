@@ -87,15 +87,15 @@ Linux系统的目录结构是一个倒立的树状结构,根目录用`/`表示,�
 
 ![捕获](https://raw.githubusercontent.com/che77a38/blogImage/main/202203051601037.png)
 
-- `/bin` binary,二进制文件,可执行程序,shell命令
+- `/bin` binary,二进制文件,可执行程序,shell命令,存放众多的【(一般性/系统)应用程序】目录，主要放置**一些应用软件工具的必备执行档**,**存放二进制可执行程序，里面的程序可以直接通过命令行调用，而不需要进入程序所在的文件夹。**
 
   如:ls,rm,mv,cp等常用命令
 
-- `/sbin` s是Super User的意思,这里存放的是系统管理员使用的系统管理程序
+- `/sbin` s是Super User的意思,这里存放的是系统管理员使用的系统管理程序,存放【**超级用户**的一些管理程序】目录，与`/bin`相比，此文件下的属于**超级用户(root)所有**
 
   如:ifconfig,halt,shutdown,reboot等系统命令
 
-- `/dev` device设备,在linux下一切皆文件
+- `/dev` device设备,在linux下一切皆文件,存放【所有设备文件，设备特殊文件】目录
 
   硬盘,显卡,显示器
 
@@ -103,11 +103,15 @@ Linux系统的目录结构是一个倒立的树状结构,根目录用`/`表示,�
 
   如:在input目录下执行:sudo cat mouse0,移动鼠标会显示有输入
 
-- `/lib` linux运行的时候需要加载的一些动态库
+  `/dev/null`是一个类似无底洞,写不满的设备文件,重定向数据到该设备相当于丢弃数据
+
+- `/lib` linux运行的时候需要加载的一些动态库,存放【标准程序设计库】目录，又叫【动态链接共享库】目录
 
   如:libc.so,libpthread.so等
 
-- `/mnt` 手动的挂载目录,如U盘等
+  下文介绍`/usr`中有提及与`/usr`中一些lib文件夹的关系与区别
+
+- `/mnt` 挂载**外部介质**（设备）的目录,如U盘等
 
 - `/media` 外设的自动挂载目录,如光驱等
 
@@ -116,9 +120,16 @@ Linux系统的目录结构是一个倒立的树状结构,根目录用`/`表示,�
 - `/usr` unix system resource -- 类似于Windows的programe files目录
 
   - include目录里存放头文件,如:stdio.h,stdlib.h,string.h,pthread.h
+
   - games目录下的小游戏,如:小火车游戏
 
-- `/etc` 存放系统级别的配置文件
+    > 内部的进一步划分,以及和`/lib`的关系与区别
+    >
+    > 简单说,`/lib`是内核级的,`/usr/lib`是系统级的,`/usr/local/lib`是用户级的.
+    >
+    > `/lib/` — 包含许多被 `/bin/` 和 `/sbin/` 中的程序使用的库文件。目录 `/usr/lib/` 中含有更多用于用户程序的库文件。
+
+- `/etc` 存放系统级别的配置文件,存放【系统管理和配置文件】目录，所有的配置文件几乎都在此处
 
   - `/etc/passwd`
 
@@ -132,9 +143,9 @@ Linux系统的目录结构是一个倒立的树状结构,根目录用`/`表示,�
 
     系统的配置文件,修改该文件会影响这个系统下面的所有的用户
 
-- `/opt` 安装第三方应用程序
+- `/opt` 存放**第三方软件**的目录
 
-  比如安装oracle数据库可以在这个目录下
+  但oracle，websphere等不认为是第三方软件，反而认为是linux的一员，故而放在`/usr`下
 
 - `/home` linux操作系统所有用户的家目录
 
@@ -143,6 +154,20 @@ Linux系统的目录结构是一个倒立的树状结构,根目录用`/`表示,�
 - `/tmp` 存放临时文件
 
   这个目录下的文件会在系统重启后自动清除
+  
+- `/boot`  内核和其它系统启动期间使用的文件
+
+- `/var`   存放【系统产生的经常变化文件】目录，例如：打印机，邮件，新闻等假脱机目录
+
+![1173617-20171014010929277-1576262155](https://raw.githubusercontent.com/che77a38/blogImage2/main/202306071427682.png)
+
+> - `/usr`：系统级的目录，可以理解为`C:/Windows/`，`/usr/lib`理解为`C:/Windows/System32`。
+> - `/usr/local`：用户级的程序目录，可以理解为`C:/Progrem Files/`。用户自己编译的软件默认会安装到这个目录下。
+> - `/opt`：用户级的程序目录，可以理解为`D:/Software`，opt有可选的意思，这里可以用于放置第三方大型软件（或游戏），当你不需要时，直接`rm -rf`掉即可。在硬盘容量不够时，也可将/opt单独挂载到其他磁盘上使用。
+>
+> 源码放哪里？
+> `/usr/src`：系统级的源码目录。
+> `/usr/local/src`：用户级的源码目录。
 
 ## 相对路径和绝对路径
 
@@ -400,11 +425,11 @@ cd -//切换到上一个目录cd切换过来的源目录
 
 创建软链接方式:
 
-- 创建文件软链接: `ln -s 文件名  快捷方式的名字`
+- 创建文件软链接: `ln -s 文件名  快捷方式的路径`
 
   如: `ln -s  aa  aa.soft`
 
-- 创建目录软链接: `ln -s  目录  快捷方式的名字`
+- 创建目录软链接: `ln -s  目录  快捷方式的路径`
 
   如: `ln -s  tmp  tmp.link`
 
@@ -417,13 +442,13 @@ $$
 
 #### 硬链接
 
-使用方式: `ln 文件名 硬链接的名字`          如: `ln test.log test.log.hard`
+使用方式: `ln 文件名 硬链接的路径`          如: `ln test.log test.log.hard`
 
 **[注意事项]**
 
 1. 硬链接**不能建在目录上**
 
-2. 硬链接对绝对路径没有要求
+2. **硬链接对绝对路径没有要求**
 
 3. 硬链接不能跨文件系统
 
@@ -687,7 +712,7 @@ change owner
 | -r   | 若是搜索目录必须加这个参数,可进行递归搜索 |
 | -n   | 显示该查找内容所在的行号                  |
 | -i   | 忽略大小写进行查找                        |
-| -v   | 不显示含有某字符的行                      |
+| -v   | 不显示含有某字符串的行                    |
 
 例子: `grep -r -i -n "HELLO world" ./`  搜索当前目录下包含HELLO world(忽略大小写)并且显示行号
 
@@ -794,6 +819,7 @@ change owner
 - 在ubuntu下系统下必须有deb格式的安装包
 - 软件安装: `sudo dpkg -i xxx.deb`
 - 软件卸载: `sudo dpkg -r 软件名`
+- 查看软件释放内容 `dpkg -L 软件名`
 
 dpkg == Debian package
 
@@ -949,6 +975,12 @@ linux系统,通过修改 `/etc/crontab`文件(系统任务调度)添加定时任
 - `ifconfig -a`命令   查看网络接口信息,可查看ip地址
 
 - [`nohup`命令](https://www.zhangshengrong.com/p/bYXxq3ZL1Z/)   将程序以忽略挂起信号的方式运行起来,如果最后面加个`&`表示**后台运行程序**   注意:关闭SSH窗口会关闭运行命令的session，导致nohup对应的进程被通知需要一起shutdown。那么，我们每次运行完nohup的程序后，手动用**`exit`**命令退出，这样就能保留运行程序了
+
+- [`iotop`](https://help.aliyun.com/document_detail/41224.htm?spm=a2c6h.13066369.question.23.548d7db72yrcLA)命令,需要安装使用,用于查看进程对磁盘的IO负载
+
+- **`which`** 在用户路径下定位一个程序位置
+
+- `df` 和 `du` 命令,查看文件大小,如:`du -sh 文件夹路径`查看文件夹总大小
 
 # vim
 
@@ -1294,8 +1326,14 @@ DEBUG和RELEASE版本的差异
 
 假设测试文件为main.c, 静态库文件为libtest1.a, 头文件为head.h
 
-```makefile
+```shell
 gcc -o main1 main.c -L./ -ltest1 -I./
+```
+
+若动态库和静态库文件名一样,编译的时候可以用`-static`要求使用静态库文件:
+
+```shell
+gcc foo.c -L /home/itcast/lib -static -lfoo -o foo
 ```
 
 ### [实际案例]
@@ -1388,6 +1426,28 @@ gcc main.c -I./ -L./ -ltest2 -o main2
 **使用file命令可以查看文件的类型: `file main2`**
 
 ![image-20220315141032823](https://raw.githubusercontent.com/che77a38/blogImage/main/202203151410036.png)
+
+### Linux如何查找动态库
+
+**编译和链接时**，动态库的搜索路径顺序如下（注意不会递归性地在其子目录下搜索）
+
+1. gcc编译、链接命令中的`-L`选项；
+2. gcc的环境变量的 `LIBRARY_PATH`（多个路径用冒号分割）；
+3. gcc默认动态库目录：`/lib:/usr/lib:usr/lib64:/usr/local/lib`
+
+ **运行时**，动态库的搜索路径顺序如下：
+
+1. 编译目标代码时指定的动态库搜索路径：用选项-Wl,-rpath和include指定的动态库的搜索路径，
+
+   比如`gcc -Wl,-rpath,include -L. -ldltest hello.c`，在执行文件时会搜索路径`./include`；
+
+2. 环境变量`LD_LIBRARY_PATH`（多个路径用冒号分割）；
+
+3. 修改 `/etc/ld.so.conf` 来配置文件指定的动态库绝对路径,也就是生效后的 `/etc/ld.so.cache` 文件中缓存的文件位置
+
+   （通过sudo ldconfig生效，一般是非root用户时使用）；
+
+4. 默认的搜索路径 `/lib` 和 `/usr/lib`
 
 ### **让系统找到共享库**
 
@@ -2028,11 +2088,12 @@ int dup(int oldfd);
 
 ```c
 int dup2(int oldfd, int newfd);
+//newfd重定向到oldfd
 ```
 
 - 函数参数: 
-  - oldfd-原来的文件描述符
-  - newfd-复制成的新的文件描述符
+  - oldfd- 一个已经打开的文件描述符
+  - newfd- 一个将会与oldfd指向同一个文件的新文件描述符
 - 函数返回值:
   - 成功: 将oldfd复制给newfd, 两个文件描述符指向同一个文件
   - 失败: 返回-1, 设置errno值
@@ -2109,6 +2170,12 @@ int fcntl(int fd, int cmd, ... /* arg */ );
     O_APPEND-----设置文件打开为末尾添加
     O_NONBLOCK-----设置打开的文件描述符为非阻塞
     ```
+
+### 其他文件IO函数
+
+`int unlink(const char *pathname);`  用于删除文件
+
+`int rmdir(const char *pathname);` 用于删除目录
 
 ## 进程控制
 
@@ -2270,6 +2337,7 @@ execlp函数一般是**执行系统自带的程序或者是命令**.
   - 若是成功，则不返回，不会再执行exec函数后面的代码；**若是失败，会执行exec后面的代码**，可以用perror打印错误原因。
 
 ```c
+//第二个参数的ls是用来占位的,实际上写什么都可以
 execl("/bin/ls","ls","-l",NULL);
 //上面等同于下面
 execlp("ls","ls","-l",NULL);
@@ -2289,7 +2357,7 @@ execlp("ls","ls","-l",NULL);
 
 作用:
 
-- **阻塞**并等待子进程退出 
+- **阻塞**并等待任意子进程退出 
 - 回收子进程残留资源 
 - 获取子进程结束状态(退出原因)。
 
@@ -2300,7 +2368,7 @@ pid_t wait(int *status);
 - 返回值：
   - 成功：清理掉的子进程ID；
   - 失败：-1 (没有子进程)
-- **status参数**：子进程的退出状态(**不关心可以写NULL**) -- **传出参数**
+- **status参数**：**传出参数 **-- 子进程的退出状态(**不关心可以写NULL**) 
   - `WIFEXITED(status)`：为非0        → 进程正常结束
   - `WEXITSTATUS(status)`：获取进程退出状态 
   - `WIFSIGNALED(status)`：为非0 → 进程异常终止
@@ -2401,6 +2469,8 @@ int main(int argc,char** argv)
 完善的进程回收案例应该参考[此处](#使用SIGCHLD信号完成对子进程的回收案例)
 
 ### **进程间通信**
+
+IPC(Inter-Process Communication)
 
 目标:
 
@@ -2569,7 +2639,7 @@ int main(int argc,char** argv)
 
 - 读端全部关闭
 
-  管道破裂,进程终止,内核给当前进程发SIGPIPE信号
+  管道破裂,进程终止,内核给当前进程发`SIGPIPE`信号
 
 - 读端没全部关闭
 
@@ -2601,7 +2671,7 @@ fcntl(fd[0],F_SETFL,flags);//设置为非堵塞
 #### 命名管道FIFO
 
 FIFO常被称为**命名管道**，以区分管道(pipe)。管道(pipe)只能用于“有血缘关系”的进程间通信。但通过FIFO，**不相关的进程也能交换数据**。
-FIFO是Linux基础文件类型中的一种（文件类型为p(`ls -l`第一个类型)，可通过ls -l查看文件类型）。但FIFO文件在磁盘上没有数据块，文件大小为0，仅仅用来标识内核中一条通道。进程可以打开这个文件进行read/write，实际上是在读写内核缓冲区，这样就实现了进程间通信。
+FIFO是Linux基础文件类型中的一种（文件类型为p(`ls -l`第一个类型)，可通过`ls -l`查看文件类型）。但FIFO文件在磁盘上没有数据块，文件大小为0，仅仅用来标识内核中一条通道。进程可以打开这个文件进行read/write，实际上是在读写内核缓冲区，这样就实现了进程间通信。
 
 ##### 创建FIFO管道
 
@@ -2660,7 +2730,7 @@ void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
 
 - 函数返回值：
   - 成功：返回创建的映射区首地址；
-  - 失败：MAP_FAILED宏(实际上就是`(void*)-1`)
+  - 失败：`MAP_FAILED`宏(实际上就是`(void*)-1`)
 - 参数：	
   - `addr`: 	指定映射的起始地址, **通常设为NULL**, 由系统指定
   - `length`：映射到内存的文件长度,要**>0**
@@ -2669,7 +2739,7 @@ void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
     - 写：`PROT_WRITE`
     - 读写：`PROT_READ | PROT_WRITE`
   - `flags`：	映射区的特性, 可以是
-    - `MAP_SHARED`: 写入映射区的数据**会写回文件**, 且允许其他映射该文件的进程共享。
+    - **`MAP_SHARED`**: 写入映射区的数据**会写回文件**, 且允许其他映射该文件的进程共享。
     - `MAP_PRIVATE`: 对映射区的写入操作会产生一个映射区的复制(copy-on-write), 对此区域所做的修改**不会写回原文件**。
     - `MAP_ANONYMOUS`:[匿名映射相关跳转](#匿名映射)
   - `fd`：由open返回的文件描述符, 代表要映射的文件。
@@ -2683,17 +2753,17 @@ void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
 
 - 映射区的释放与文件关闭无关，只要映射建立成功，文件可以立即关闭。
 
-- **[特别注意]当映射的目标文件大小为0时，不能创建映射区**。所以，用于映射的文件必须要有实际大小；否则会出现总线错误(bus error)(至少要写入一点东西,文件大小不能为0,不然导致下图错误)。
+- **[特别注意]当映射的目标文件大小为0时，不能创建映射区**。所以，用于映射的文件必须要有实际大小；否则会出现总线错误(bus error)(至少要写入一点东西,文件大小不能为0,不然导致错误)。
 
-  <img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207051510703.jpeg" alt="截屏2022-07-05 15.09.57" style="zoom: 33%;" /><img src="/Users/zeroko/Desktop/%E6%88%AA%E5%B1%8F2022-07-05%2015.07.15.jpg" alt="截屏2022-07-05 15.07.15" style="zoom: 33%;" />
+  <img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207051510703.jpeg" alt="截屏2022-07-05 15.09.57" style="zoom: 33%;" />
 
-  因此不可以open的时候用`O_CREAT`方式打开一个新文件来创建映射区,不然总线错误
+  因此不可以仅仅open的时候用`O_CREAT`方式打开一个新文件来创建映射区,不然总线错误
 
 - munmap传入的地址一定是mmap的返回地址。坚决杜绝指针++操作。
 
 - 文件偏移量必须为0或者4K的整数倍(否则函数失败)
 
-- mmap创建映射区出错概率非常高，**一定要检查返回值**，确保映射区建立成功再进行后续操作。
+- mmap创建映射区**出错概率非常高**，**一定要检查返回值**，确保映射区建立成功再进行后续操作。
 
 ##### munmap函数
 
@@ -2772,10 +2842,10 @@ mmap(NULL, 4096, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
 #### 信号
 
 - 了解信号中的基本概念
-- 熟练使用信号相关的函数
-- 参考文档使用信号集操作相关函数
-- 熟练使用信号捕捉函数 `signal`
-- 熟练使用信号捕捉函数 `sigaction`
+- 熟练使用[信号相关的函数](#信号相关函数)
+- 参考文档使用[信号集操作相关函数](#信号集相关函数)
+- 熟练使用信号捕捉函数 [`signal`](#signal函数)
+- 熟练使用信号捕捉函数[ `sigaction`](#sigaction函数)
 - 熟练掌握使用信号完成子进程的回收
 
 **[概念]**  信号是信息的载体，Linux/UNIX 环境下，古老、经典的通信方式， 现下依然是主要的通信手段。
@@ -2850,7 +2920,7 @@ Linux内核的进程控制块PCB是一个结构体，task_struct, 除了包含�
 几个常用到的信号:
 `SIGINT、SIGQUIT、SIGKILL、SIGSEGV、SIGUSR1、SIGUSR2、SIGPIPE、SIGALRM、SIGTERM、SIGCHLD、SIGSTOP、SIGCONT`
 
-常见信号一览
+##### 常见信号一览
 
 | 信号宏名 | 信号编号 | 说明                                                      | 系统默认处理方式   |
 | -------- | -------- | --------------------------------------------------------- | ------------------ |
@@ -2878,6 +2948,15 @@ Linux内核的进程控制块PCB是一个结构体，task_struct, 除了包含�
 - [`alarm`函数](#alarm函数)
 - [`setitimer`函数](#setitimer函数)
 
+用信号进行IPC涉及到的函数:msgctl,msgrcv,msgsnd等等
+
+###### 自定义的信号处理函数
+
+信号处理函数格式: **`void 自定义信号处理函数名称(int signo)`**
+
+- 信号处理函数中逻辑尽可能简单
+- 不要在信号处理函数中打印日志,容易出问题甚至死锁
+
 ###### signal函数
 
 注册信号捕捉函数
@@ -2891,11 +2970,9 @@ sighandler_t signal(int signum, sighandler_t handler);
 
 - `signum`：信号编号(用宏)
 
-- `handler`：信号处理函数
+- `handler`：[信号处理函数](#自定义的信号处理函数)
 
-  ​	信号处理函数格式: `void 自定义信号处理函数名称(int signo)`
-  
-  ​	也可赋值为`SIG_IGN`表忽略 或 `SIG_DFL`表执行默认动作
+  也可赋值为`SIG_IGN`表忽略 或 `SIG_DFL`表执行默认动作
 
 ###### kill函数/命令
 
@@ -2927,7 +3004,7 @@ int kill(pid_t pid, int sig);
 
 ###### abort函数
 
-给自己发送异常终止信号 6) SIGABRT，并产生core文件
+给自己发送异常终止信号 `6) SIGABRT`，并产生core文件
 
 ```
 void abort(void); 
@@ -2948,7 +3025,7 @@ int raise(int sig);
 
 ###### alarm函数
 
-设置定时器(闹钟)。在指定seconds后，内核会给当前进程发送14）SIGALRM信号。进程收到该信号，**默认动作终止**。**每个进程都有且只有唯一的一个定时器**。(弄两个的话,后一个有效,前一个被覆盖)
+设置定时器(闹钟)。在指定seconds后，内核会给当前进程发送`14）SIGALRM`信号。进程收到该信号，**默认动作终止**。**每个进程都有且只有唯一的一个定时器**。(弄两个的话,后一个有效,前一个被覆盖)
 
 ```c
 unsigned int alarm(unsigned int seconds); 
@@ -3050,8 +3127,6 @@ int main(int argc,char** argv)
 ###### 未决信号集和阻塞信号集的关系
 
 阻塞信号集是当前进程要阻塞的信号的集合，未决信号集是当前进程中还处于未决状态的信号的集合，这两个集合存储在内核的PCB中。
-
-
 
 ![image-20220715130337216](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207151303644.png)
 
@@ -3212,6 +3287,8 @@ struct sigaction {
 
 ##### 信号直接结束当前阻塞
 
+信号的优先级更高.因此:
+
 **[重点]**  **阻塞函数遇到信号都会被中断,信号处理完后继续执行后续命令**.
 
 ```c
@@ -3227,7 +3304,7 @@ int main(int argc,char** argv)
 
 <img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207181155330.jpeg" alt="截屏2022-07-18 11.52.44" style="zoom:33%;" />
 
-##### SIGCHLD信号
+##### 父进程回收子进程SIGCHLD信号
 
 主要作用: **父进程利用该信号完成对子进程的回收**
 
@@ -3271,7 +3348,6 @@ void sigFunc(int signo)
         exit(0);
     }
 }
-
 
 int main(int argc,char** argv)
 {
@@ -3371,6 +3447,231 @@ return 0;
 
 <img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207161856627.jpeg" style="zoom:25%;" />
 
+#### 共享内存
+
+共享内存的实质是将内核的一块内存映射到进程中的内存,操作本地内存就相当于操作共享内存
+
+> 共享内存允许两个或更多进程访问同一块内存，当一个进程改变了这块地址中的内容的时候，其它进程都会察觉到这个更改。
+
+使用步骤
+
+1. 获取创建共享内存需要用到的key值 -- [ftok函数](#ftok函数)
+1. 创建共享内存 -- [shmget函数](#shmget函数)
+2. 关联共享内存 -- [shmat函数](#shmat函数)
+3. 使用共享内存
+4. 断开与共享内存的关联 -- [shmdt函数](#shmdt函数)
+5. 控制共享内存,包括删除共享内存 -- [shmctl函数](#shmctl函数)
+
+##### 共享内存相关函数
+
+共享内存头文件: 
+
+```cpp
+#include <sys/ipc.h>
+#include <sys/shm.h>
+```
+
+###### shmget函数
+
+创建或打开一块共享内存区
+
+```cpp
+int shmget(key_t key, size_t size, int shmflg);
+```
+
+- 参数`key`: 一个无符号4字节整形值,表示创建出的共享内存的键值,唯一标识了一块共享内存(一般由[ftok函数](#ftok函数)生成)
+
+  一般指定的数据格式是16进制形式的
+
+- 参数`size`: 创建的共享内存的大小, 分配的时候实际大小是是4k的倍数,如果是确定打开已存在的共享内存则此处可直接填0
+
+- 参数`shmflag`: 共享内存的属性, 与创建文件相同
+
+  [`open(name, flag, mode);`](#open/close) - 与flag相同
+
+  `shmflag`的取值,如果是确定打开已存在的共享内存则此处可直接填0
+
+  - `IPC_CREAT`: 创建共享内存
+
+    创建文件并指定权限: `IPC_CREAT|0664`
+
+  - `IPC_EXCL`: 必须和`IPC_CREAT`一起使用, 检测共享内存是否存在,若存在则报错.并且errno设置为`EEXIST`  类似[open函数](#open/close)结合O_CREAT和O_EXCL一起使用
+
+返回值: 
+
+- 成功: 返回创建的共享内存的描述符, 理解为共享内存的ID, ID也是唯一的,后续操作用的都是该id值
+- 失败: 返回-1,并设置errno
+
+```cpp
+// 1. 创建一块不存在的共享内存
+// 如果检测到key值为0x12的共享内存已经存在, 该函数调用失败并设置errno为EEXIST
+shmget(0x12, 4096, IPC_CREAT|IPC_EXCL|0664)
+// 2. 打开一块已经存在的共享内存, 共享内存的key 0x12
+shmget(0x12, 0, 0)
+// 3. 操作一块内存, 存在打开, 不存在创建
+shmget(0x12, 4096, IPC_CREAT|0664)
+```
+
+###### shmat函数
+
+将当前进程和共享内存关联到一起
+
+```cpp
+void *shmat(int shmid, const void *shmaddr, int shmflg);
+```
+
+- 参数`shmid`: shmget函数的返回值
+
+- 参数`shmaddr`: 共享内存和进程关联, 指定的内存位置
+
+  赋值为NULL, 内核会自动分配
+
+- 参数`shmflg`:
+
+  - SHM_RDONLY: 对共享内存只读
+  - 0: 可以对共享内存读写
+
+返回值: 
+
+- 关联成功之后, 内核分配的可进行读写的内存块的首地址
+- 失败,返回 `(void*)-1`
+
+###### shmdt函数
+
+将共享内存和当前进程分离
+
+```cpp
+int shmdt(const void *shmaddr);
+```
+
+参数`shmaddr`: shmat函数的返回值
+返回值: 成功0, 失败-1
+
+###### shmctl函数
+
+控制共享内存,包括删除共享内存
+
+```cpp
+int shmctl(int shmid, int cmd, struct shmid_ds *buf);
+```
+
+- 参数`shmid`: shmget函数的返回值
+- 参数`cmd`:
+  - `IPC_STAT`: 获得共享内存状态信息
+  - `IPC_SET`: 设置共享内存状态
+  - `IPC_RMID`: 标记该共享内存要被删除,只有在所有进程都与该共享内存分离才会被真正删除.(共享内存状态信息中的`shm_nattch`成员为0,才真正被删除)
+- 参数`buf`:
+  - `IPC_STAT`: `buf`为传出参数, 记录共享内存信息
+  - `IPC_SET`: `buf`为传入参数
+  - `IPC_RMID`: `buf`用不到, 赋值为NULL
+
+返回值:成功返回0,失败返回-1并设置`errno`
+
+**shmid_ds结构体如下:**
+
+```cpp
+struct shmid_ds
+{
+    struct ipc_perm shm_perm; /*
+operation permissions */
+    size_t shm_segsz;         /*
+size of segment in bytes */
+    pid_t shm_lpid;           /*
+pid of last shm op */
+    pid_t shm_cpid;           /*
+pid of creator */
+    short shm_nattch;         /*
+# of current attaches */
+    time_t shm_atime;         /*
+last shmat() time*/
+    time_t shm_dtime;         /*
+last shmdt() time */
+    time_t shm_ctime;         /*
+last change by shmctl() */
+    void *shm_internal;       /*
+sysv stupidity */
+};
+```
+
+**[注意]**
+
+共享内存被删除一次之后, 如果还有进程和共享内存关联着, 共享内存的key会发生变化变成`0`,此时别的进程如果还调用shmctl函数对原本的共享内存id进行删除,会返回-1,errno返回22表示无效参数错误（EINVAL）
+
+###### ftok函数
+
+ftok函数的作用是将一个文件路径和一个字符作为输入，生成一个唯一的key值。一般用于进程间通信（IPC）中，例如消息队列、共享内存等对象的创建及操作。
+
+> 在创建IPC对象时需要一个唯一的标识符，例如消息队列和共享内存。ftok函数可以将一个磁盘上的文件路径及一个字符进行映射生成一个key值。这个key值可以作为IPC对象的标识符，保证不同IPC对象之间不会出现重复的key。
+>
+> 通常在使用ftok函数时，需要确保输入的文件路径对于每个进程来说是唯一的，否则会导致多个进程使用相同的key值，引发IPC对象创建失败。同时，ftok函数生成的key值也要保证在相同系统中是唯一的。
+
+```cpp
+key_t ftok(const char *pathname, int proj_id);
+```
+
+- `pathname`: 路径或文件名, 必须存在, 对文件的权限没有要求
+  - `/home/kevin/a.txt`
+  - `/home/kevin/hello` - 目录
+- `proj_id`: 只用到了一个字节, 取值范围: 0-255, 也可以传递一字符
+  - `88`
+  - `'a'`
+
+返回值:成功返回key值,失败返回-1并设置errno
+
+**注意**:如果pathname指向的文件或者目录被删除而且又重新创建，那么文件系统会赋予这个同名文件**新的`inode`节点信息**，于是这些进程调用的 `ftok()` 都能正常返回，但**键值key却不一定相同**了。(**相同inode节点和相同的id会生成相同的key**)
+
+##### 共享内存和内存映射的区别
+
+- 内存映射如果用于没有血缘关系的进程间通信必须使用文件,共享内存不需要
+- 共享内存比内存映射快
+- 内存映射比共享内存安全(共享内存断电全部数据丢失)
+
+#### 信号量
+
+信号量也可以用于IPC
+
+常用函数包括semget,semctl,semop等等
+
+#### IPC相关命令
+
+ipcs用法(ipc show)
+
+```cpp
+ipcs -a // 打印当前系统中所有的进程间通信方式的信息
+ipcs -m // 打印出使用共享内存进行进程间通信的信息 == 常用
+//================ 以下为了解内容 ================
+ipcs -q // 打印出使用消息队列进行进程间通信的信息
+ipcs -s // 打印出使用信号进行进程间通信的信息
+```
+
+ipcrm用法(ipc rm)
+
+```cpp
+ipcrm -M shmkey // 移除用shmkey创建的共享内存段
+ipcrm -m shmid // 移除用shmid标识的共享内存段
+//================ 以下为了解内容 ================
+ipcrm -Q msgkey // 移除用msqkey创建的消息队列
+ipcrm -q msqid // 移除用msqid标识的消息队列
+ipcrm -S semkey // 移除用semkey创建的信号
+ipcrm -s semid // 移除用semid标识的信号
+```
+
+#### 进程间通信总结
+
+- 匿名管道: 只能用于有血缘关系的进程间通信,局限于单向通信的工作方式,适用于数据量比较小的进程间通信，**效率较高**。
+- 命名管道: **效率比较低**，因为它需要操作系统在文件系统中维护一些信息。
+- 内存映射区: 创建内存映射区出错概率非常高，一定要检查返回值,**效率较高**
+- 信号: 不能携带大量信息,**效率也比较低**,进程间通信机制中唯一的异步通信机制
+- 本地socket通信: 实时性较差，但适合于通信数据量比较大的情况
+- 共享内存:**效率最高**，适合于通信数据量比较大的情况,但是由于数据访问没有加锁，所以可能存在数据一致性问题。
+
+ipc机制细分:
+
+- **`System V IPC机制特征`**：System V IPC是一种在UNIX系统中广泛使用的IPC机制，包括消息队列、信号量和共享内存三种方式。使用它需要用到特定的函数和API，例如msgget、msgsnd、msgrcv等。System V IPC机制的实现会产生一些特殊的对象，例如消息队列。这种机制的特点是高效、可靠、灵活，而且跨平台。
+- **`IPC机制特征`**：IPC机制包括管道、套接字、远程过程调用（RPC）、网络文件系统（NFS）等方式。它们的实现是跨平台的，不需要特定的函数和API，而且使用方，适用于不同的应用场景。使用IPC机制需要了解相关的通信协议和API，例如针对套接字通信的socket API等。
+
+总的来说，`System V IPC机制`和`IPC机制`是两种不同的进程间通信方式。选择哪一种方式应该根据不同的应用场景进行权衡。如果要在UNIX系统中实现进程间通信，`System V IPC`机制可能是更好的选择，而IPC机制对于**跨平台应用**来说可能更加适用。
+
 ### 守护进程
 
 - 说出守护进程的特点
@@ -3405,11 +3706,16 @@ Linux后台的一些系统服务进程，没有控制终端，不能直接和用
 - 会话
 
   - 一个会话是**一个或多个进程组的集合**。
+  
   - **[硬性规则]** **创建会话的进程不能是进程组组长**
+  
+    建立新会话时，先调用`fork`, 父进程终止，子进程调用`setsid`函数
+  
   - **创建会话的进程成为一个进程组的组长进程，同时也成为会话的会长。**
+  
   - 需要有root权限（ubuntu不需要）
+  
   - **新创建的会话丢弃原有的控制终端**
-  - 建立新会话时，先调用`fork`, 父进程终止，子进程调用`setsid`函数
 
 使用`ps ajx`来查看进程组ID和会话ID
 
@@ -3420,6 +3726,8 @@ Linux后台的一些系统服务进程，没有控制终端，不能直接和用
 1. fork子进程，父进程退出     **(必要)**
 
    子进程继承了父进程的进程组ID, 但具有一个新的进程ID,这样就保证了子进程不是一个进程组的组长ID,这对于下面要做的`setsid`函数的调用是必要的前提条件
+
+   父进程先于子进程退出,子进程将被1号进程领养
 
 2. 子进程调用`setsid`函数创建新会话   **(必要)**
 
@@ -3947,7 +4255,7 @@ int main(int argc,char** argv)
 **多线程数据混乱的原因**
 
 - 资源共享（独享资源则不会）	
-- 调度随机（线程操作共享资源的先后顺序不确定）	
+- 调度随机（线程操作共享资源的先后顺序不确定）
 - 线程间缺乏必要的同步机制。
 
 以上3点中，前两点不能改变，欲提高效率，传递数据，资源必须共享。只要共享资源，就一定会出现竞争。只要存在竞争关系，数据就很容易出现混乱。所以只能从第三点着手解决。使多个线程在访问共享资源的时候，出现**互斥**。
@@ -4348,6 +4656,34 @@ int sem_destroy(sem_t *sem);
 
 ![image-20220729142150009](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207291421675.png)![image-20220729142154726](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207291421450.png)
 
+#### 原子指令
+
+实现线程同步还可以使用**原子指令**
+
+原子指令是一种特殊的CPU指令，它可以保证在多线程环境下对某个变量进行的操作是原子的，即不可分割的。这意味着，当一个线程正在执行原子指令时，其他线程不能对该变量进行任何操作，直到原子指令完成。
+
+> 原子指令通常用于实现无锁数据结构和算法。例如，在C++中，可以使用**`<atomic>`**头文件(C++11)中定义的原子类型和原子操作函数来实现无锁队列等数据结构。这些原子类型和原子操作函数底层都是通过调用CPU提供的原子指令来实现的。
+>
+> 在C语言中为**`<stdatomic.h>`**(C11)
+
+- 使用锁
+
+  数据库中把这种叫**悲观锁**(锁住后影响别人)
+
+  适用于**冲突概率较高**的场景
+
+- 使用cas(常用的一种原子指令)
+
+  数据库中把这种叫**乐观锁**(不影响别人)
+
+  适用于**冲突概率较低**的场景，它可以**提高程序的并发性能**，但在冲突概率较高时会导致大量更新操作失败
+
+通过原子指令也可以实现互斥区(作为锁).
+
+## 其他常用函数
+
+- `getenv函数`   获取环境变量
+
 # linux下设置代理
 
 ## 无ui linux非docker设置代理
@@ -4408,4 +4744,312 @@ docker run -d --name clash -p 7890:7890 -p 7891:7891 -p 9090:9090 -v /opt/clash/
 `docker ps -a`   查看全部容器信息
 
 `docker logs -f 容器名`  查看容器输出
+
+# shell脚本
+
+一系列shell命令的集合,可以有函数,条件判断/循环语句,这样的一个文件叫做shell脚本
+
+基本格式:
+
+- 命名格式:一般使用`.sh`为后缀命名文件(这是一个约定,不是必须的)
+
+- 书写格式
+
+  ```shell
+  # - 注释
+  # 第一行的内容
+  #! /bin/bash - 解析当前脚本文件使用的命令解析器(可以省略,省略的话使用默认命令解析器)
+  #! /bin/sh
+  #bourne shell ->sh -> unix
+  #bourne again shell -> bash
+  # 第二行开始
+  shell命令 1
+  shell命令 2
+  shell命令 3
+  ......
+  ```
+
+- 脚本创建出来之后是一个普通文件 -> 没有执行权限
+
+  ```shell
+  chmod u+x xxx.sh   #赋予执行权限
+  ./xxx.sh  #最常用的执行方式
+  sh xxx.sh
+  ```
+
+## shell中的变量
+
+shell中的变量只有字符串类型
+
+### 用户自定义变量
+
+**变量定义**:      `变量名=值`
+
+**等于号前后不能有空格 **↑↑↑
+
+值中有空格,则必须要加单或双引号括起来,并且单双引号会将内部的多个连续空格视为一个
+
+**变量使用**:      `$变量名`   或   `${变量名}`
+
+**单引号和双引号的区别**:双引号会展开内部变量,单引号不会.
+
+**取命令执行后的结果**:  
+
+```shell
+ value=$(shell命令)    
+ value=`shell命令`    #注意是反引号
+```
+
+**变量计算:**  `$[ 数字/变量运算式 ]` 无法计算浮点运算
+
+`$(expr $var2 / $var1)`
+
+### 位置变量
+
+**位置变量**  --执行shell脚本时候, 传递到内部的参数
+
+- `$0` - 脚本文件的名字
+- `$1` - 第一个参数
+- `$2` - 第二个参数
+- `$3` - 第三参数
+- ...
+
+### 环境变量
+
+将普通变量设置为环境变量: `export 变量名=值`
+
+### 特殊变量
+
+- `$#`: 表示参数的个数
+- `$@`: 表示全部的参数
+- `$$` : 当前进程的PID
+- `$?`: 程序执行完成之后的返回值  0表示正常返回
+
+## 条件判断语句 - if
+
+格式如下:
+
+```shell
+# 条件判断语句和[ 判断语句 ]左右必须要有空格间隔
+if[ 判断语句 ];then
+处理语句
+处理语句
+fi
+# 或者
+if[ 判断语句 ]
+then
+处理语句
+处理语句
+fi
+# 或者
+if [ 判断语句 ];then
+处理语句
+处理语句
+elif [ 判断语句 ];then
+处理语句
+处理语句
+else
+处理语句
+处理语句
+fi
+```
+
+例子如下:
+
+```shell
+var="hello"
+if [ $var="hello" ]
+then
+	echo "same"
+fi
+#会打印same
+
+hour=`date +%H`
+echo "current time is $hour"
+if [ $hour -gt 8 -a $hour -lt 12 ]
+then
+        echo "good moring"
+else
+        echo "not moring"
+fi
+#打印如下:
+current time is 17
+not moring
+
+if [ -f "a.txt" ]
+then
+	echo "a.txt is exist"
+else
+	echo "a.txt is not exist"
+fi
+#打印a.txt is not exist
+```
+
+### shell的比较符
+
+#### 文件相关
+
+| 文件状态命令    | 含义                                                         |
+| --------------- | ------------------------------------------------------------ |
+| -b ﬁlename      | 当ﬁlename 存在并且是块文件时返回真(返回0)                    |
+| -c ﬁlename      | 当ﬁlename 存在并且是字符文件时返回真                         |
+| -d pathname     | 当pathname 存在并且是一个目录时返回真                        |
+| -e pathname     | 当由pathname 指定的文件或目录存在时返回真                    |
+| -f ﬁlename      | 当ﬁlename 存在并且是正规(普通)文件时返回真                   |
+| -g pathname     | 当由pathname   指定的文件或目录存在并且设置了SGID 位时返回真 |
+| "-h/-L ﬁlename" | 当ﬁlename 存在并且是符号链接文件时返回真 (或 ﬁlename)        |
+| -k pathname     | 当由pathname   指定的文件或目录存在并且设置了"粘滞"位时返回真 |
+| -p ﬁlename      | 当ﬁlename 存在并且是命名管道时返回真                         |
+| -r pathname     | 当由pathname 指定的文件或目录存在并且可读时返回真            |
+| -s ﬁlename      | 当ﬁlename 存在并且文件大小大于0 时返回真                     |
+| -S ﬁlename      | 当ﬁlename 存在并且是socket 时返回真                          |
+| -t fd           | 当fd   是与终端设备相关联的文件描述符时返回真                |
+| -u pathname     | 当由pathname   指定的文件或目录存在并且设置了SUID 位时返回真 |
+| -w pathname     | 当由pathname 指定的文件或目录存在并且可写时返回真            |
+| -x pathname     | 当由pathname 指定的文件或目录存在并且可执行时返回真          |
+| -O pathname     | "当由pathname   存在并且被当前进程的有效用户id 的用户拥有时返回真(字母O 大写)" |
+| -G pathname     | 当由pathname   存在并且属于当前进程的有效用户id 的用户的用户组时返回真 |
+| ﬁle1 -nt   ﬁle2 | ﬁle1   比ﬁle2 新时返回真                                     |
+| ﬁle1 -ot   ﬁle2 | ﬁle1   比ﬁle2 旧时返回真                                     |
+| f1 -ef f2       | ﬁles f1   and f2 are hard links to the same ﬁle              |
+
+#### 字符串相关
+
+| 字符串比较命令 | 含义                                           |
+| -------------- | ---------------------------------------------- |
+| -z string      | 字符串string   为空串(长度为0)时返回真         |
+| -n string      | 字符串string   为非空串时返回真                |
+| str1 =   str2  | 字符串str1   和字符串str2 相等时返回真         |
+| str1 ==   str2 | 同 =                                           |
+| str1 !=   str2 | 字符串str1   和字符串str2 不相等时返回真       |
+| str1 <   str2  | 按字典顺序排序，字符串str1 在字符串str2 之前   |
+| str1 >   str2  | 按字典顺序排序，字符串str1   在字符串str2 之后 |
+
+#### 数值相关
+
+| 数值比较命令    | 含义                              |
+| --------------- | --------------------------------- |
+| nt1 -eq   int2  | 如果int1   等于int2，则返回真     |
+| int1 -ne   int2 | 如果int1   不等于int2，则返回真   |
+| int1 -lt   int2 | 如果int1   小于int2，则返回真     |
+| int1 -le   int2 | 如果int1   小于等于int2，则返回真 |
+| int1 -gt   int2 | 如果int1   大于int2，则返回真     |
+| int1 -ge   int2 | 如果int1   大于等于int2，则返回真 |
+
+#### 逻辑符
+
+| 逻辑符 | 含义                                             |
+| ------ | ------------------------------------------------ |
+| -a     | 逻辑与，操作符两边均为真，结果为真，否则为假。   |
+| -o     | 逻辑或，操作符两边一边为真，结果为真，否则为假。 |
+| !      | 逻辑否，条件为假，结果为真。                     |
+
+## 循环控制语句
+
+for和while
+
+```shell
+#for的用法:
+for var in apple pear banana
+do
+echo $var
+done
+#例2:打印当前所有的文件
+for file in `ls`
+do
+echo $file
+done
+#例3:求1-100的和
+sum=0
+for i in {1..100}
+do
+sum=$[ $sum+$i ]
+done
+echo "sum==[$sum]"
+#如果一个文件名字为: file.xxx, 想去掉.xxx得到file可以: basename file.xxx ".xxx"使用这种方法可以获得文件名字去掉扩展名后的名字: 如: `basename test.sh .sh`
+
+#while的用法:
+#案例: 求1-10的和
+sum=0
+i=1
+while [ $i -le 10 ]
+do
+sum=$[ $sum+$i ]
+i=$[ $i+1 ]
+done
+echo "sum==[$sum]"
+```
+
+## awk
+
+awk可以将文件拆分成若干行,根据指定的分隔符,再将每一行拆分成若干列,默认按照空格或tab进行拆分
+
+语法格式:
+
+```shell
+awk 参数 '条件{处理动作}' 操作的文件或数据
+awk 参数 '/正则表达式{处理动作}' 操作的文件或数据
+#如 
+awk -F ':' '{print $1}' /etc/passwd
+```
+
+指定分隔符的参数: `-F`
+
+- `-F 分隔符`  如   `-F ':'`  按照`:`来分割
+- 如果不指定分隔符, 默认是按照空格或者tab进行拆分
+
+如何使用变量取出某一列?
+
+- `$0` - 当前整一行
+- `$1` - 拆分的第一列
+- `$2` - 拆分的第二列
+- `$3` - 拆分的第三列
+- ...
+
+打印某一列的值
+
+- `print $n`
+
+## 案例
+
+通过参数提供进程名停止指定进程
+
+```shell
+i=0
+for arg in $@
+do
+PNAME=$arg
+PID=`ps -ef | grep $PNAME | grep -v grep | awk '{print $2}'`
+if [ -n "$PID" ];then
+        kill -9 $PID
+        echo "杀死进程$PNAME"
+else
+        echo "没有找到要杀死的进程$PNAME"
+fi
+done
+```
+
+# linux源码安装
+
+> **\源码安装\的安装流程:** 
+>
+> 1. **以下文件, 里边有安装步骤**
+>    1. **readme**
+>    2. **readme.md**
+>    3. **INSTALL**
+> 2. **找 可执行文件 `configure`**
+>    1. **执行这个可执行文件**
+>       1. **检测安装环境**
+>       2. **生成 makefile**
+> 3. **执行`make`命令**
+>    1. **编译源代码**
+>       1. **生成了动态库**
+>       2. **静态库**
+>       3. **可执行程序**
+> 4. **安装 `make install` (需要管理员权限)**
+>    1. **将第三步生成的动态库/动态库/可执行程序拷贝到对应的系统目录**
+
+`configure` 脚本无法确定系统的构建类型时。解决此问题的一种方法是在 `./configure` 步骤中指定 `--build` 参数。例如，对于 arm64，您可以使用 `./configure --build=aarch64-unknown-linux-gnu`，对于 x64，您可以使用 `./configure --build=x86_64-unknown-linux-gnu`
+
+
 

@@ -818,6 +818,16 @@ empty();//判断队列是否为空
 size();//返回队列的大小
 ```
 
+#### priority_queue容器
+
+优先队列
+
+头文件: `#include <queue>`
+
+
+
+
+
 ### list容器
 
 头文件:#include\<list\>

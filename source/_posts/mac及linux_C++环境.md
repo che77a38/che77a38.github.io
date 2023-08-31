@@ -147,6 +147,23 @@ ar -crv libmylib.a mylib.o
 - -v 显示过程
 - -r 创建静态库
 
+## 编译时相关文件查找顺序
+
+**头文件顺序**
+
+Linux中，以`include<”fileName.suffix“>`为例，编译时：
+
+**首先检索文件的当前路径；如果没有，再检索标准路径**
+
+1. 先搜索当前目录
+2. 然后搜索`-I`指定的目录
+3. 再搜索gcc的环境变量`CPLUS_INCLUDE_PATH`（C程序使用的是`C_INCLUDE_PATH`）
+4. 最后搜索gcc的内定目录(即上述的**标准路径**)
+
+**库文件顺序**
+
+可以查看Linux基础以及系统编程**专题中的**Linux如何查找动态库**部分
+
 ## GDB调试器
 
 - GDB（GUN Debugger）是一个用来调试C/C++程序的功能强大的调试器，是LINUX系统开发C/C++最常用的调试器
@@ -179,7 +196,7 @@ GDB调试器只适合单线程程序调试,多线程调试,还是使用日志打
 
 ### 常用调试命令参数
 
-调试开始：执行`gdb [exefilename]`，进入gdb调试程序，其中exefilename为要调试的可执行文件名,gdb [exefilename] [core`文件]`可以用于分析core,查看错误产生的位置等信息
+调试开始：执行`gdb [exefilename]`，进入gdb调试程序，其中exefilename为要调试的可执行文件名,`gdb [exefilename] [core文件]`可以用于分析core,查看错误产生的位置等信息
 
 ```bash
 ##以下命令后括号内为命令的简化使用，比如run(r),直接输入命令r就代表命令run
@@ -605,10 +622,47 @@ clean:
 
 到这里makefile中只在需要添加新的库的时候，在LIBS=-lpthread后面添加链接库
 
+**别人项目中的makefile编写参考**
+
+```makefile
+.SUFFIXES: .c .o .lo
+
+COMPILE = $(CC) -g -Wall -O -D_FILE_OFFSET_BITS=64 -DDEBUG
+INC_PATH = -I/usr/local/include
+LIB_PATH = -L/usr/local/lib -lfdfsclient -lfastcommon -lserverframe
+TARGET_PATH = $(TARGET_PREFIX)/bin
+
+#SHARED_OBJS = common_func.o dfs_func.o
+SHARED_OBJS = common_func.o dfs_func_pc.o
+
+ALL_OBJS = $(SHARED_OBJS)
+
+ALL_PRGS = gen_files test_upload test_download test_delete combine_result
+
+all: $(ALL_OBJS) $(ALL_PRGS)
+.o:
+	$(COMPILE) -o $@ $<  $(SHARED_OBJS) $(LIB_PATH) $(INC_PATH)
+.c:
+	$(COMPILE) -o $@ $<  $(SHARED_OBJS) $(LIB_PATH) $(INC_PATH)
+.c.o:
+	$(COMPILE) -c -o $@ $<  $(INC_PATH)
+.c.lo:
+	$(COMPILE) -c -fPIC -o $@ $<  $(INC_PATH)
+install:
+	mkdir -p $(TARGET_PATH)
+	cp -f $(ALL_PRGS) $(TARGET_PATH)
+clean:
+	rm -f $(ALL_OBJS) $(ALL_PRGS)
+```
+
+> 这个Makefile文件可以用来编译和链接一些测试程序，例如test_upload、test_download、test_delete等。您可以运行 `make all` 来编译所有程序，运行 `make install` 来安装所有程序，运行 `make clean` 来清理所有生成的文件。
+
 # cmake学习
 
-- CMake是一个跨平台的安装编译工具，可以用简单的语句来描述所有平台的安装(编译过程)。
-- CMake可以说已经成为大部分C++开源项目标配
+> [CMake 是一个开源的跨平台自动化构建系统，用来管理软件构建的过程，不依赖于某特定编译器，可以支持多层目录、多个应用程序和多个函数库。它用配置文件控制构建过程（build process）的方式和 Unix 的 make 相似，只是 CMake 的配置文件取名为 CMakeLists.txt。CMake 并不直接构建出最终的软件，而是产生标准的构建文件（如 Unix 的 Makefile 或 Windows Visual C++ 的 projects/workspaces），然后再依一般的构建方式使用](https://zhuanlan.zhihu.com/p/149337776)
+
+- CMake是一个**跨平台**的安装编译工具，可以用简单的语句来描述所有平台的安装(编译过程)。
+- CMake可以说已经成为大部分C++开源项目标配(事实标准)
 
 ## 语法特性介绍
 
@@ -658,7 +712,9 @@ ADD_EXECUTABLE(hello main.cpp ${HELLO})
 
 - **`Include_directories`**==向工程添加多个特定的**头文件搜索路径**---》相当于指定g++编译器的-I参数
 
-  语法：include_directories([AFTER | BEFORE] [SYSTEM] dir1 dir2 ...)
+  要放在add_executable前面
+
+  语法：`include_directories([AFTER | BEFORE] [SYSTEM] dir1 dir2 ...)`
 
   ```cmake
   将/usr/include/myincludefolder 和 ./include 添加到头文件搜索路径
@@ -667,11 +723,14 @@ ADD_EXECUTABLE(hello main.cpp ${HELLO})
 
 - **`Link_directories`**==向工程添加多个特定的**库文件搜索路径**---》相当于指定g++编译器的-L参数
 
-  语法：link_directories(dir1 dir2 ...)
+  要放在add_executable前面
+
+  语法：`link_directories(dir1 dir2 ...)`
 
   ```cmake
   #将/usr/lib/mylibfolder 和 ./lib 添加到库文件搜索路径
   link_directories(/usr/lib/mylibfolder ./lib)
+  #windows下会自动解析路径下的Debug或Release目录
   ```
 
 - **`add_library`**==**生成库文件**
@@ -704,11 +763,14 @@ ADD_EXECUTABLE(hello main.cpp ${HELLO})
 
 - **`Target_link_libraries`**==为target**添加需要链接的共享库**---》相当于指定g++编译器-l参数
 
-  语法：target_link_libraries(target library1<debug | optimized> library2...)
+  放在add_executable后面
+
+  语法：`target_link_libraries(target library1<debug | optimized> library2...)`
 
   ```cmake
   #将hello动态库文件链接到可执行文件main
   target_link_libraries(main hello)
+  #此处无论是linux，mac，windows中，hello不需要写前面的lib和后面的后缀
   ```
 
 - **`add_subdirectory`**==向当前工程添加存放源文件的子目录，并可以**指定中间二进制和目标二进制存放的位置**
@@ -720,15 +782,31 @@ ADD_EXECUTABLE(hello main.cpp ${HELLO})
   add_subdirectory(src)
   ```
 
-- **`Aux_source_directory`**==发现一个目录下**所有的源代码文件并将列表存储在一个变量中**，这个指令临时被用来自动构建源文件列表
+- **`Aux_source_directory`**==发现一个目录下**所有的源文件并将列表存储在一个变量中**，这个指令临时被用来自动构建源文件列表(多个该指令可以**累加**找到的源文件到变量中)
 
-  语法：aux_source_directory(dir VARIABLE)
+  语法：`aux_source_directory(dir VARIABLE)`
 
   ```cmake
   #定义SRC变量，其值为当前目录下所有的源代码文件
   aux_source_directory(. SRC)
   #编译SRC变量所代表的的源代码文件，生成main可执行文件
   add_executable(main ${SRC})
+  ```
+  
+  自动查找头文件可以通过下面命令实现
+  
+  `FILE (GLOB H_FILE "${INCLUDE_PATH}/*.h*")`
+  
+  含义为将`${INCLUDE_PATH}/*.h*`匹配的文件放到H_FILE变量中
+  
+- add_definitions
+
+  用于向 C/C++ 编译器添加预处理器定义
+
+  语法:`add_definitions("-DDEFINITION1 -DDEFINITION2")`
+  
+  ```cmake
+  add_definitions(-Dxlog_STATIC) #传递宏给项目,宏的默认值为1
   ```
 
 ## CMake常用变量
@@ -772,6 +850,10 @@ ADD_EXECUTABLE(hello main.cpp ${HELLO})
 
 - `LIBRARY_OUTPUT_PATH`  库文件输出的存放路径
 
+- `CMAKE_VERBOSE_MAKEFILE` 开关显示详细的生成指令  ON/OFF
+
+- `CMAKE_CURRENT_LIST_DIR`当前正在执行的CMakeLists.txt文件所在的目录的路径
+
 ## CMAKE编译工程
 
 CMake目录结构：项目主目录存在一个CMakeLists.txt文件
@@ -789,7 +871,7 @@ CMake目录结构：项目主目录存在一个CMakeLists.txt文件
 
 p.s.  vs code有一个叫cmake的拓展，可以支持智能补全cmake指令与直接生成CMakeLists.txt模板文件
 
-cmake tools是让vs code支持cmake的插件
+`cmake tools`是让vs code支持cmake的插件
 
 ### 两种构建方式
 
@@ -1008,6 +1090,20 @@ endif (OPENCV_FOUND)
 ```
 
 [cmake更全面详细的说法]: https://blog.csdn.net/samxx8/article/details/108332076
+
+## 现代CMAKE
+
+现代cmake的完全体:cmake版本3.15及以上
+
+
+
+
+
+
+
+
+
+
 
 # 终端指令学习
 
@@ -1715,6 +1811,8 @@ ssh远程连接   `ssh 用户名@ip地址或域名`
 
 如果上传下载的是整个目录,`scp`后加 `-r` 
 
+某些较新的系统scp命令默认使用SFTP协议来传输文件,但老系统却不支持sftp,此时使用`-O`使得scp变回传统传输行为
+
 **sftp**
 
 使用和scp类似,但功能更多
@@ -1809,6 +1907,53 @@ VSCode 默认是 utf-8 编码，而在中国地区下的 Windows 的 cmd 默认�
 
 ## vscode的配置文件
 
+安装并配置好C/C++插件后
+
+- 编译的话配置`tasks.json`
+- 【调试】启动的话配置`launch.json`
+
+### tasks.json
+
+**终端-配置任务**  生成tasks.json文件
+
+下面为用clang++配置的任务,也可以改成调用make,cmake等构建工具
+
+```cpp
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "m1Mac单文件生成任务",
+			"command": "/usr/bin/clang++",
+			"args": [
+				"-std=c++17",
+				"-fcolor-diagnostics",
+				"-fansi-escape-codes",
+				"-g",
+				"${file}",//此处为需要编译的源文件
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "编译器: /usr/bin/clang++"
+		}
+	]
+}
+```
+
+配置好以后使用 **终端-运行生成任务** 来调用该tasks.json配置的任务
+
+### launch.json
+
+**运行-添加配置**  生成launch.json文件(生成的launch文件中可以进一步点击`添加配置`按钮生成小模版)
+
 launch.json参考如下:
 
 ```json
@@ -1852,3 +1997,78 @@ launch.json参考如下:
 [vscode其他配置文件细节参考跳转](https://blog.csdn.net/weixin_43687811/article/details/122744673)
 
 [参考2](https://lzyws739307453.blog.csdn.net/article/details/123605259)
+
+#### 案例
+
+m1 mac上的launch.json案例
+
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(lldb) 启动",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": ["-std=c++17"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb"
+        }
+
+    ]
+}
+```
+
+设置好后,点击调试按钮进行调试
+
+# 代理相关
+
+## 代理模式
+
+- 系统代理
+
+  将数据交给本地http/socks服务的系统代理,GFW可以判断得到是vpn链接发起请求,由于其处于灰色地带,正规途径有需要,因此会放行,但特殊时期可能阻断
+
+  问题:并非所有软件都遵循系统代理,除去浏览器,绝大部分软件都不会走系统代理,甚至连设置代理的地方都没有,行为完全取决于软件开发者.并且系统代理一般都是http代理而非socks5,http代理不支持udp,游戏等流量无法代理
+
+- TUN/TAP代理(最常用)
+
+  使用虚拟网卡接管系统全局流量的tun/tap代理
+
+  主流模式,手机默认就是这种模式,软路由接管全家科学上网也是同样的原理(称为透明代理)
+
+  问题:我们使用的ss,vmess,trojan等主流的翻墙协议都无法封装网络层的数据包,比如tun模式,ping谷歌的话,返回假延迟,因为上述协议无法代理网络层的icmp协议
+
+- 真VPN代理
+
+  能封装网络层数据包,只有能封装网络层数据包,才能实现异地组网,内网穿透,才能称为真正的VPN
+  
+  软件一般是用WireGuard,可以正常ping外网地址
+  
+  问题:并非为翻墙而生,只是对数据进行加密顺便实现了翻墙功能,他的流量清晰明了地写着它就是VPN的流量.而且vpn分流很不方便.因此不推荐用来科学上网
+  
+  ![image-20230722105912700](https://raw.githubusercontent.com/che77a38/blogImage2/main/202307221059694.png)
+
+SS协议  --减少GFW重放攻击->  SSR协议(带伪装插件的SS协议)
+
+SSR协议
+
+> DNS泄露:clsh使用了ip规则进行分流的情况下,访问谷歌之前必须先得到谷歌的ip地址,于是clash发起dns请求,dns如果是明文的,那么当你要到谷歌ip的时候,马上给其他服务器发了一堆加密数据,该行为特征,鬼都知道你在干啥.再比如:网飞客户端偷偷发一个dns请求,权威dns服务器记载的这个dns请求的上游dns服务器所在地就会和代理服务器的上游dns服务器所在地不是一个地区,以此判定你在使用vpn工具
+>
+> DNS泄露的本质原因:在代理的情况下,本地发出了dns请求,而这可能仅仅是为了获得ip匹配clash规则中的ip分流规则,实际上真正的dns解析依旧会在远程代理服务器上进行.
+>
+> 解决方案:fake-ip模式:[当我们使用Fake-IP模式时（openclash运行在路由器上），浏览器请求dns解析，dns解析请求被clash截获，clash立刻返回一个Fake IP给浏览器，浏览器根据ip发起连接，请求被clash拦截，clash根据fake ip在自己的映射表中反查出域名，再用域名去走代理，代理服务器解析dns。](https://www.hughh.top/posts/soft-routing-guide-3/)[3](https://www.hughh.top/posts/soft-routing-guide-3/)[ 这样客户端响应速度加快，浏览体验更加顺畅，减轻网页加载时间过长的情况。](https://github.com/vernesong/OpenClash/wiki/常规设置)[4](https://github.com/vernesong/OpenClash/wiki/常规设置)
+
+
+
+软件层面  v2rayN -> shadowsocks -> 
+
+## DNS分流
+
+
+
+## UDP穿透篇

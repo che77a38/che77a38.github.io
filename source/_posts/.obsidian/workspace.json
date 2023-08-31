@@ -1,0 +1,164 @@
+{
+  "main": {
+    "id": "6dc051915628a7e6",
+    "type": "split",
+    "children": [
+      {
+        "id": "11c78061a79b2d37",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d238d69325d9d893",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "32位逆向.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5649e54fe225963d",
+    "type": "split",
+    "children": [
+      {
+        "id": "54573e4471b66b8f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2a843da66f758fcc",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b2b00d311a174d2d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "96950f2c83f21bf7",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "fa966a412bb44f4c",
+    "type": "split",
+    "children": [
+      {
+        "id": "4f8b8762a5365e00",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "78bdd96a59fae3b2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "32位逆向.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "d84501160ceccfd4",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "32位逆向.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "af7fc8947e5573d4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "6590be686eb99abc",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "32位逆向.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "d238d69325d9d893",
+  "lastOpenFiles": [
+    "[0F84B74]+410+8.md",
+    "[17EA2B0]+30]+4+0c*0+4.md",
+    "32位逆向.md",
+    "进程与线程.md",
+    "64位逆向.md",
+    "算法.md",
+    "句柄表.md",
+    "驱动开发.md",
+    "系统调用.md",
+    "保护模式.md",
+    "事件等待.md",
+    "数据库.md"
+  ]
+}
