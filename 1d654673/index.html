@@ -23,7 +23,7 @@
   <meta name="description" content="fps辅助整体分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FPS逆向">
-<meta property="og:url" content="http://zeroko14.gitee.io/blog/1d654673/index.html">
+<meta property="og:url" content="http://zeroko14.gitee.io/1d654673/index.html">
 <meta property="og:site_name" content="ZEROKO14的个人博客">
 <meta property="og:description" content="fps辅助整体分析">
 <meta property="og:locale" content="zh_CN">
@@ -54,7 +54,6 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202204041754643.jpeg">
 <meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202204051047668.jpeg">
 <meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202204061736996.jpeg">
-<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202204091405305.JPG">
 <meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202204091415645.jpeg">
 <meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202204091425024.jpeg">
 <meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202204091521692.jpeg">
@@ -67,7 +66,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201221330618.png">
 
-<link rel="canonical" href="http://zeroko14.gitee.io/blog/1d654673/">
+<link rel="canonical" href="http://zeroko14.gitee.io/1d654673/">
 
 
 <script id="page-configurations">
@@ -224,7 +223,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/1d654673/">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/1d654673/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/avatar.gif">
@@ -612,7 +611,7 @@ $$
 <p>黄标的是骨骼相对人物参考点坐标的偏移坐标;黄标上一行应该是骨骼的朝向信息,上图也可以看出这个骨骼的结构是个数组,每个re数组项占0x30字节.因此外围还存在数组地址和数组数量</p>
 <p><strong>[找的过程]</strong>    找到相对骨骼坐标地址后访问断往上追,追到下面地址处:</p>
 <p>00007FF7A1EB25D9地址截图:</p>
-<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202204091405305.JPG" alt="捕获"></p>
+<p>null</p>
 <p>追到此处继续往上追发现非常难追了,尝试用ce分析.      <a href="#dbg%E9%85%8D%E5%90%88ce%E6%89%BE%E4%B8%8B%E5%B1%9E%E5%81%8F%E7%A7%BB%E7%9A%84%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7">此处用到的找偏移的理论方法</a></p>
 <p>rbx有两个值,均到CE中搜索,发现其中一个有存放他的地址离对象首地址非常近.</p>
 <p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202204091415645.jpeg" alt="捕获"></p>
