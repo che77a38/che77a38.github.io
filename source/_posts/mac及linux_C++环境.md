@@ -3,7 +3,7 @@ title: mac及linux C++环境配置
 tags: C++
 categories: 技术
 mathjax: true
-
+abbrlink: b15ef99d
 ---
 
 mac及linux C++环境配置
@@ -162,8 +162,7 @@ Linux中，以`include<”fileName.suffix“>`为例，编译时：
 
 **库文件顺序**
 
-可以查看Linux基础以及系统编程**专题中的**Linux如何查找动态库**部分
-
+可以查看[[linux基础以及系统编程#Linux如何查找动态库|linux基础以及系统编程页面中的Linux如何查找动态库部分]]
 ## GDB调试器
 
 - GDB（GUN Debugger）是一个用来调试C/C++程序的功能强大的调试器，是LINUX系统开发C/C++最常用的调试器
@@ -1733,8 +1732,8 @@ git branch -f main HEAD~3
 
 ### 热门远程储存库
 
-- **Github**：拥有GitHube Pages功能，可拥有私人数据库，免费方案是3人以下
-- **Bitbucket**：可拥有私人数据库，免费方案是五人以下团队
+- **Github**：拥有GitHube Pages功能，可拥有私人[[数据库]]，免费方案是3人以下
+- **Bitbucket**：可拥有私人[[数据库]]，免费方案是五人以下团队
 - **GitLab**：自架Git服务器，有提供web视觉化管理界面，常用语企业内部开发
 
 

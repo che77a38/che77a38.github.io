@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="mac及linux C++环境配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mac及linux C++环境配置">
+<meta property="og:url" content="http://zeroko14.gitee.io/b15ef99d/index.html">
+<meta property="og:site_name" content="ZEROKO14的个人博客">
+<meta property="og:description" content="mac及linux C++环境配置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202112242025323.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202206051153723.jpeg">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202112241646051.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202112242045930.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202206051342850.jpeg">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201171534397.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201171551365.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201171621715.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201171622366.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201171625167.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201191633093.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201192013927.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202201192012644.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202112071513124.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202112071511344.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202301031621539.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202301031623438.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202301041139883.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202301121117166.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202112071310206.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202301301731761.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202112071310206.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202112092007970.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202112092021609.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202112101443772.jpeg">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202112101512015.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202112101519242.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202112071856448.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302192059807.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202307221059694.png">
+<meta property="article:published_time" content="2022-05-05T07:29:14.960Z">
+<meta property="article:modified_time" content="2023-09-04T05:31:11.702Z">
+<meta property="article:author" content="ZEROKO14">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202112242025323.png">
+
+<link rel="canonical" href="http://zeroko14.gitee.io/b15ef99d/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>mac及linux C++环境配置 | ZEROKO14的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ZEROKO14的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">zeroko14's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/b15ef99d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="ZEROKO14">
+      <meta itemprop="description" content="你好，欢迎来到ZEROKO14的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZEROKO14的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mac及linux C++环境配置
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-05 15:29:14" itemprop="dateCreated datePublished" datetime="2022-05-05T15:29:14+08:00">2022-05-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-04 13:31:11" itemprop="dateModified" datetime="2023-09-04T13:31:11+08:00">2023-09-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>mac及linux C++环境配置</p>
+<span id="more"></span>
+
+<p><strong>linux系统介绍</strong></p>
+<ul>
+<li>什么是linux系统？</li>
+<li>linux是开源的操作系统</li>
+</ul>
+<p><strong>多用户多任务</strong></p>
+<p>windows属于：单用户，多任务。</p>
+<p>Linux属于：多用户，多任务</p>
+<h1 id="vscode快捷键"><a href="#vscode快捷键" class="headerlink" title="vscode快捷键"></a>vscode快捷键</h1><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>转到文件</td>
+<td>command+p</td>
+</tr>
+<tr>
+<td>命令面板</td>
+<td>F1</td>
+</tr>
+<tr>
+<td>打开&#x2F;跳转到终端</td>
+<td>ctrl+&#96;</td>
+</tr>
+<tr>
+<td>变量统一重命名</td>
+<td>F2</td>
+</tr>
+<tr>
+<td>开关侧边栏</td>
+<td>command+b</td>
+</tr>
+<tr>
+<td>转到定义处</td>
+<td>F12</td>
+</tr>
+<tr>
+<td>代码格式化</td>
+<td>command+K 然后 command+F</td>
+</tr>
+<tr>
+<td>当前行下方插入一行</td>
+<td>command+enter</td>
+</tr>
+<tr>
+<td>当前行上方插入一行</td>
+<td>command+shift+enter</td>
+</tr>
+<tr>
+<td>定义处缩略图(只看一眼而不跳转过去)</td>
+<td>alt+F12</td>
+</tr>
+<tr>
+<td>删除当前行光标右侧所有的字符</td>
+<td>command+delete</td>
+</tr>
+<tr>
+<td>多光标同时输入</td>
+<td>alt+左键</td>
+</tr>
+<tr>
+<td>同时选中所有匹配</td>
+<td>command+shift+L</td>
+</tr>
+<tr>
+<td>回到上一个光标操作</td>
+<td>command+U</td>
+</tr>
+<tr>
+<td>整个项目中查找</td>
+<td>command+shift+F</td>
+</tr>
+<tr>
+<td>全屏</td>
+<td>F11</td>
+</tr>
+<tr>
+<td>字体和窗口大小调整</td>
+<td>command+“+&#x2F;-”</td>
+</tr>
+<tr>
+<td>撤销</td>
+<td>command+z</td>
+</tr>
+<tr>
+<td>恢复撤销</td>
+<td>command+shift+z</td>
+</tr>
+<tr>
+<td>单步步过</td>
+<td>F10</td>
+</tr>
+<tr>
+<td>单步步入</td>
+<td>F11</td>
+</tr>
+<tr>
+<td>选中当前行</td>
+<td>command+L</td>
+</tr>
+<tr>
+<td>返回上一个标签页</td>
+<td>ctrl+”-“</td>
+</tr>
+</tbody></table>
+<h1 id="makeFile学习"><a href="#makeFile学习" class="headerlink" title="makeFile学习"></a>makeFile学习</h1><p>ubuntu下的开发环境安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apt-get update #更新安装源</span><br><span class="line">apt-get install g++ #安装gcc和c++的开发库</span><br><span class="line">apt-get install gdb #安装调试工具</span><br><span class="line">apt-get install make</span><br><span class="line">apt-get install openssh-server #远程连接工具</span><br><span class="line">apt-get install vim #编辑工具</span><br></pre></td></tr></table></figure>
+
+<p>安装好开发环境后，当输入make命令时，会在当前目录下找makefile或Makefile文件来执行。</p>
+<p><strong>为什么要学习makefile</strong></p>
+<ul>
+<li>linux下C&#x2F;C++编程 makefile应用广泛</li>
+<li>编译移植开源项目，大部分开源项目都基于makefile，学会makefile才能够调试编译过程中的问题</li>
+<li>手写makefile太过于繁琐，自动生成的makefile不易于配置，学习本门课程便携自动化makefile，以后新项目只需要include makefile头文件</li>
+<li>学习makefile理解大型项目怎么分布编译的</li>
+</ul>
+<p>目标</p>
+<ol>
+<li>从零开始学会写第一个makefile编译Linux项目</li>
+<li>能够掌握makefile原理，能够灵活应用</li>
+<li>学会makefile变量，函数，shell实战方法</li>
+<li>学会便携执行程序，动态库，静态库的makefile</li>
+<li>学会通过一个makefile编译所有的项目</li>
+<li>学会编写安装和卸载makefile</li>
+<li>学会使用makefile自动生成启动和停止脚本</li>
+</ol>
+<h2 id="编译器相关"><a href="#编译器相关" class="headerlink" title="编译器相关"></a>编译器相关</h2><p><strong>什么是编译器</strong></p>
+<p>是一个根据源代码生成机器码的程序。</p>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>C</th>
+<th>C++</th>
+<th>Fortran</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GNU</td>
+<td>gcc</td>
+<td>g++</td>
+<td>gfortran</td>
+</tr>
+<tr>
+<td>LLVM</td>
+<td>clang</td>
+<td>clang++</td>
+<td>flang</td>
+</tr>
+</tbody></table>
+<p><strong>一个源代码经过</strong></p>
+<ol>
+<li>预处理  Preprocessing</li>
+<li>编译 Compilation（源码生成汇编语言，针对的是单文件）</li>
+<li>汇编 Assembly（汇编语言生成二进制代码，针对的是单文件）</li>
+<li>链接 Linking（多文件之间的关系整合起来，找不到就会报错）</li>
+<li>运行</li>
+</ol>
+<ul>
+<li>在windows下，链接是找的lib文件，运行时找的dll文件</li>
+<li>在linux下，链接和运行找的都是so文件</li>
+</ul>
+<p><strong>gcc常用选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-c</td>
+<td>仅对源文件进行编译，不链接生成可执行文件。在对源文件进行查错时，或只需产生目标文件时可以使用该选项</td>
+</tr>
+<tr>
+<td>-g[gdb]</td>
+<td>生成调试信息，在可执行文件中加入调试信息，方便进行程序的调试。如果使用中括号中的选项，表示加入gdb拓展的调试信息，方便使用gdb来进行调试</td>
+</tr>
+<tr>
+<td>-o[0或1或2或3或]</td>
+<td>对生成的代码使用优化，中括号中的部分为优化级别，缺省的情况为2级优化，0为不进行优化。注意，采用更高级的优化并不一定得到效率更高的代码。</td>
+</tr>
+<tr>
+<td>-Idir</td>
+<td>（dir表示具体的路径）在编译源程序时增加一个<strong>搜素头文件的额外目录</strong>–dir，即include增加一个搜索的额外目录（可以设置多个）</td>
+</tr>
+<tr>
+<td>-Ldir</td>
+<td>（dir表示具体的路径）在编译源文件时增加一个<strong>搜索库文件(动态库或静态库)的额外目录</strong>–dir（可以设置多个）</td>
+</tr>
+<tr>
+<td>-llibrary</td>
+<td>（library表示具体库的名字）在编译链接文件时，增加一个额外的库，库名为liblibrary.so(即此处写的名字是要去前缀和后缀的)</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>禁止所有警告</td>
+</tr>
+<tr>
+<td>-Wwarning</td>
+<td>（warning表示具体的取值）允许产生warning类型的警告，warning可以是：main，unused等很多取值，最常用是-Wall，表示产生所有警告。如果warning取值为error，其含义是将所有警告作为错误（error)，即出现警告就停止编译。</td>
+</tr>
+</tbody></table>
+<p><strong>gcc编译动态链接库</strong></p>
+<ul>
+<li>-fPIC 编译选项  产生位置无关代码(PIC),一般创建共享库时用到。在x86上，PIC的代码的符号引用都是通过ebx进行操作的</li>
+<li>-shared 产生动态链接库</li>
+</ul>
+<p>例如</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -shared -fPIC mylib.cpp -o libmylib.so#编译动态链接库</span><br><span class="line">g++ test.cpp -Imylib -L/root/cpp</span><br></pre></td></tr></table></figure>
+
+<p><strong>静态库编译</strong></p>
+<p>linux中的静态库是.a后缀</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ar -crv libmylib.a mylib.o</span><br></pre></td></tr></table></figure>
+
+<p>参数讲解：</p>
+<ul>
+<li>-c 不显示创建</li>
+<li>-v 显示过程</li>
+<li>-r 创建静态库</li>
+</ul>
+<h2 id="编译时相关文件查找顺序"><a href="#编译时相关文件查找顺序" class="headerlink" title="编译时相关文件查找顺序"></a>编译时相关文件查找顺序</h2><p><strong>头文件顺序</strong></p>
+<p>Linux中，以<code>include&lt;”fileName.suffix“&gt;</code>为例，编译时：</p>
+<p><strong>首先检索文件的当前路径；如果没有，再检索标准路径</strong></p>
+<ol>
+<li>先搜索当前目录</li>
+<li>然后搜索<code>-I</code>指定的目录</li>
+<li>再搜索gcc的环境变量<code>CPLUS_INCLUDE_PATH</code>（C程序使用的是<code>C_INCLUDE_PATH</code>）</li>
+<li>最后搜索gcc的内定目录(即上述的<strong>标准路径</strong>)</li>
+</ol>
+<p><strong>库文件顺序</strong></p>
+<p>可以查看<a href="/blog/5c231afa#Linux%E5%A6%82%E4%BD%95%E6%9F%A5%E6%89%BE%E5%8A%A8%E6%80%81%E5%BA%93" onclick="event.preventDefault(); window.location.href=this.href.replace(//#/, '#');" data-pjax-state target="_Blank" >linux基础以及系统编程页面中的Linux如何查找动态库部分</a></p>
+<h2 id="GDB调试器"><a href="#GDB调试器" class="headerlink" title="GDB调试器"></a>GDB调试器</h2><ul>
+<li><p>GDB（GUN Debugger）是一个用来调试C&#x2F;C++程序的功能强大的调试器，是LINUX系统开发C&#x2F;C++最常用的调试器</p>
+</li>
+<li><p>程序员可以使用GDB来跟踪程序中的错误，从而减少程序员的工作量</p>
+</li>
+<li><p>Linux开发C&#x2F;C++一定要熟悉GDB</p>
+</li>
+<li><p>VSCode是通过调用GDB调试器来实现C&#x2F;C++的调试工作的</p>
+<p>Windows系统中，常用的集成开发环境（IDE),如VS,VC等，它们内部已经嵌套了相应的调试器</p>
+</li>
+</ul>
+<p>GDB调试器只适合单线程程序调试,多线程调试,还是使用日志打印方式更靠谱</p>
+<h3 id="GDB主要功能"><a href="#GDB主要功能" class="headerlink" title="GDB主要功能"></a>GDB主要功能</h3><ul>
+<li><p>设置断点（断点可以是条件表达式）</p>
+</li>
+<li><p>使程序在指定的代码行上暂停执行，便于观察</p>
+</li>
+<li><p>单步执行程序，便于调试</p>
+</li>
+<li><p>查看程序中变量值的变化</p>
+</li>
+<li><p>动态改变程序的执行环境</p>
+</li>
+<li><p>分析崩溃程序产生的core文件</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lichao201005/article/details/128451612">如何设置开启core文件的产生</a></p>
+</li>
+</ul>
+<h3 id="常用调试命令参数"><a href="#常用调试命令参数" class="headerlink" title="常用调试命令参数"></a>常用调试命令参数</h3><p>调试开始：执行<code>gdb [exefilename]</code>，进入gdb调试程序，其中exefilename为要调试的可执行文件名,<code>gdb [exefilename] [core文件]</code>可以用于分析core,查看错误产生的位置等信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##以下命令后括号内为命令的简化使用，比如run(r),直接输入命令r就代表命令run</span></span><br><span class="line"></span><br><span class="line">$(gdb)<span class="built_in">help</span>(h)		<span class="comment">#查看命令帮助，具体命令查询在gdb中输入help+命令</span></span><br><span class="line"></span><br><span class="line">$(gdb)run(r)		<span class="comment">#重新开始运行文件 (run-text:加载文本文件，run-bin:加载二进制文件)</span></span><br><span class="line"></span><br><span class="line">$(gdb)start		  <span class="comment">#单步执行，运行程序，停在第一行执行语句</span></span><br><span class="line"></span><br><span class="line">$(gdb)list(l)		<span class="comment">#查看源代码(list，查看当前断下位置附近的代码 list-n，从第n行开始查看代码，list+函数名：查看具体函数)</span></span><br><span class="line"></span><br><span class="line">$(gdb)<span class="built_in">set</span>				<span class="comment">#设置变量的值</span></span><br><span class="line"></span><br><span class="line">$(gdb)next(n)		<span class="comment">#单步调试（逐过程，函数直接执行）</span></span><br><span class="line"></span><br><span class="line">$(gdb)step(s)		<span class="comment">#单步调试（逐语句，跳入自定义函数内部执行）</span></span><br><span class="line"></span><br><span class="line">$(gdb)backtrace(bt)   <span class="comment">#查看函数的调用的栈帧和层级关系</span></span><br><span class="line"></span><br><span class="line">$(gdb)frame(f)	<span class="comment">#切换函数的栈帧</span></span><br><span class="line"></span><br><span class="line">$(gdb)info(i)   <span class="comment">#查看函数内部局部变量的数值</span></span><br><span class="line"></span><br><span class="line">$(gdb)finish		<span class="comment">#结束当前函数，返回到函数调用点</span></span><br><span class="line"></span><br><span class="line">$(gdb)<span class="built_in">continue</span>(c)		  <span class="comment">#继续运行</span></span><br><span class="line"></span><br><span class="line">$(gdb)<span class="built_in">print</span>(p)	<span class="comment">#打印值及地址(例如p x  表示打印名为x的变量)</span></span><br><span class="line"></span><br><span class="line">$(gdb)quit(q)		<span class="comment">#退出gdb</span></span><br><span class="line"></span><br><span class="line">$(gdb)<span class="built_in">break</span>+num(b)		<span class="comment">#在第num行设置断点</span></span><br><span class="line"></span><br><span class="line">$(gdb)info breakpoints(i b) <span class="comment">#查看当前设置的所有断点</span></span><br><span class="line"></span><br><span class="line">$(gdb)delete breakpoints num(d)	<span class="comment">#删除第num个断点</span></span><br><span class="line"></span><br><span class="line">$(gdb)display		<span class="comment">#追踪查看具体变量值</span></span><br><span class="line"></span><br><span class="line">$(gdb)undisplay <span class="comment">#取消追踪观察变量</span></span><br><span class="line"></span><br><span class="line">$(gdb)watch			<span class="comment">#被设置观察点的变量发生修改时，打印显示</span></span><br><span class="line"></span><br><span class="line">$(gdb)i watch		<span class="comment">#显示观察点</span></span><br><span class="line"></span><br><span class="line">$(gdb)<span class="built_in">enable</span> breakpoints  <span class="comment">#启用断点</span></span><br><span class="line"></span><br><span class="line">$(gdb)<span class="built_in">disable</span> breakpoints <span class="comment">#禁用断点</span></span><br><span class="line"></span><br><span class="line">$(gdb)x					<span class="comment">#查看内存x/20xw 显示20个单元，16进制，4字节每单元</span></span><br><span class="line"></span><br><span class="line">$(gdb)run argv[1] argv[2]  <span class="comment">#调试时命令行传参</span></span><br><span class="line"></span><br><span class="line">$(gdb)<span class="built_in">set</span> follow-fork-mode child<span class="comment">#Makefile项目管理：选择跟踪父子进程（fork（））</span></span><br></pre></td></tr></table></figure>
+
+<p>Tips:</p>
+<ol>
+<li><p>编译程序时需要加上<code>-g</code>，之后才能用gdb进行调试：<code>gcc -g main.c -o main</code></p>
+<p>如果不加-g,将看不见程序的函数名,变量名,所代替的全是运行时的内存地址</p>
+</li>
+<li><p>回车键：重复上一命令</p>
+</li>
+</ol>
+<h4 id="list显示代码命令详解"><a href="#list显示代码命令详解" class="headerlink" title="list显示代码命令详解"></a>list显示代码命令详解</h4><p>简写: <code>l</code></p>
+<ul>
+<li><p><code>list linenum</code>：打印第linenum行的上下文内容.</p>
+</li>
+<li><p><code>list function</code>：显示函数名为function的函数的源程序。</p>
+</li>
+<li><p><code>list</code>： 显示当前行后面的源程序。</p>
+</li>
+<li><p><code>list -</code>：显示当前文件开始处的源程序。</p>
+</li>
+<li><p><code>list file:linenum</code>: 显示file文件下第n行</p>
+</li>
+<li><p><code>list file:function</code>: 显示file文件的函数名为function的函数的源程序</p>
+<p>一般是打印当前行的上5行和下5行, 如果显示函数是是上2行下8行, 默认是10行, 当然, 你也可以定制显示的范围, 使用下面命令可以设置一次显示源程序的行数。</p>
+</li>
+<li><p><code>set listsize count</code>：设置一次显示源代码的行数。         </p>
+</li>
+<li><p><code>show listsize</code>：   查看当前listsize的设置。</p>
+</li>
+</ul>
+<h4 id="break设置断点命令详解"><a href="#break设置断点命令详解" class="headerlink" title="break设置断点命令详解"></a>break设置断点命令详解</h4><p>简写: <code>b</code></p>
+<h5 id="简单断点–当前文件"><a href="#简单断点–当前文件" class="headerlink" title="简单断点–当前文件"></a>简单断点–当前文件</h5><ul>
+<li><code>b 10</code> 在源程序第10行设置断点</li>
+<li><code>b func</code> 设置断点,在func函数入口处</li>
+</ul>
+<h5 id="多文件设置断点"><a href="#多文件设置断点" class="headerlink" title="多文件设置断点"></a>多文件设置断点</h5><ul>
+<li><code>b filename:linenum</code> 在源文件filename的linenum行处停止</li>
+<li><code>b filename:function</code> 在源文件filename的function函数的入口处停止</li>
+</ul>
+<h5 id="查询所有断点"><a href="#查询所有断点" class="headerlink" title="查询所有断点"></a>查询所有断点</h5><p><code>info break</code>  (info可简写为 <code>i</code>)    所以可以直接写 <code>i b</code></p>
+<h5 id="条件断点"><a href="#条件断点" class="headerlink" title="条件断点"></a>条件断点</h5><p>if关键词,后跟断点条件.如: <code>b test.c:8 if intValue == 5</code></p>
+<h5 id="维护断点"><a href="#维护断点" class="headerlink" title="维护断点"></a>维护断点</h5><ul>
+<li><p><code>delete [range...]</code> 删除指定的断点, 其简写命令为<code>d</code>。</p>
+<ul>
+<li>如果不指定断点号, 则表示删除所有的断点。range表示断点号的范围（如：3-7）。<ul>
+<li>删除某个断点: <code>delete num</code></li>
+<li>删除多个断点: <code>delete num1 num2  ...</code></li>
+<li>删除连续的多个断点: <code>delete m-n</code></li>
+<li>删除所有断点: <code>delete</code></li>
+</ul>
+</li>
+<li>比删除更好的一种方法是disable停止点, disable了的停止点, GDB不会删除, 当你还需要时, enable即可, 就好像回收站一样。</li>
+</ul>
+</li>
+<li><p><code>disable [range...]</code> 使指定断点无效, 简写命令是<code>dis</code>。</p>
+<p>如果什么都不指定, 表示disable所有的停止点。</p>
+<ul>
+<li>使一个断点无效&#x2F;有效: <code>disable num</code></li>
+<li>使多个断点无效有效: <code>disable num1 num2 ...</code></li>
+<li>使多个连续的断点无效有效: <code>disable m-n</code></li>
+<li>使所有断点无效有效: <code>disable</code></li>
+</ul>
+</li>
+<li><p><code>enable [range...]</code> 使无效断点生效, 简写命令是<code>ena</code>。如果什么都不指定, 表示enable所有的停止点。</p>
+<ul>
+<li>使一个断点无效&#x2F;有效: <code>enable num</code></li>
+<li>使多个断点无效有效: <code>enable num1 num2 ...</code></li>
+<li>使多个连续的断点无效有效: <code>enable m-n</code></li>
+<li>使所有断点无效有效: <code>disable/enable</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="调试代码"><a href="#调试代码" class="headerlink" title="调试代码"></a>调试代码</h5><ul>
+<li><code>run/r</code> 运行程序   <code>start</code>运行程序,停在第一行执行语句</li>
+<li><code>next/n</code> 单步步过</li>
+<li><code>step/s</code> 单步步入</li>
+<li><code>finish</code> 退出进入的函数</li>
+<li><code>until/u</code> 在一个循环体内单步跟踪时,该命令可以运行程序直到退出循环体</li>
+<li><code>continue/c</code> 继续运行程序(若有断点,则跳到下一个断点)</li>
+</ul>
+<h5 id="显示运行中信息"><a href="#显示运行中信息" class="headerlink" title="显示运行中信息"></a>显示运行中信息</h5><ul>
+<li><code>print/p  变量名/&amp;变量(变量的地址)</code> 查看运行时变量的值</li>
+</ul>
+<p><strong>自动显示变量的值</strong></p>
+<p>你可以设置一些自动显示的变量, 当程序停住时, 或是在你单步跟踪时, 这些变量会自动显示。相关的GDB命令是display。</p>
+<ul>
+<li><strong>display</strong> 变量名</li>
+<li><code>info display</code> – 查看display设置的自动显示的信息。</li>
+<li><code>undisplay num</code>（info display时显示的编号）</li>
+<li><code>delete display dnums …</code> 或 <code>undisplay dnums …</code>  – 删除自动显示, dnums意为所设置好了的自动显式的编号。如果要同时删除几个, 编号可以用空格分隔, 如果要删除一个范围内的编号, 可以用减号表示（如：2-5）<ul>
+<li>删除某个自动显示: <code>undisplay num</code> 或者<code>delete display num</code></li>
+<li>删除多个: <code>delete display num1 num2</code></li>
+<li>删除一个范围: <code>delete display m-n</code></li>
+</ul>
+</li>
+<li><code>disable display dnums…</code><ul>
+<li>使一个自动显示无效: <code>disable display num</code></li>
+<li>使多个自动显示无效: <code>delete display num1 num2</code></li>
+<li>使一个范围的自动显示无效: <code>delete display m-n</code></li>
+</ul>
+</li>
+<li><code>enable display dnums…</code><ul>
+<li>使一个自动显示有效: <code>enable display num</code></li>
+<li>使多个自动显示有效: <code>enable display num1 num2</code></li>
+<li>使一个范围的自动显示有效: <code>enable display m-n</code></li>
+</ul>
+</li>
+<li>disable和enalbe不删除自动显示的设置, 而只是让其失效和恢复。</li>
+</ul>
+<p><strong>查看变量的类型</strong></p>
+<ul>
+<li><p><code>ptype width</code> –查看变量width的类型</p>
+<p>type &#x3D; double</p>
+</li>
+</ul>
+<p><strong>改变变量的值</strong></p>
+<p>可以使用 <code>set var</code> 命令来告诉GDB,width不是你GDB的参数,而是程序的变量名,如: <code>set var width = 47</code></p>
+<p>在你改变程序变量取值时,最好都使用<code>set var</code> 格式的GDB命令</p>
+<h2 id="makefile基本格式"><a href="#makefile基本格式" class="headerlink" title="makefile基本格式"></a>makefile基本格式</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">目标: 依赖</span><br><span class="line">(tab)命令<span class="comment">//必须是tab,不能是空格</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>目标:要生成的目标</li>
+<li>依赖:目标文件由哪些文件生成</li>
+<li>命令:通过执行该命令由依赖文件生成目标</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">目标...: 依赖...</span></span><br><span class="line">    命令1<span class="comment">#注意每条命令前必须有且仅有一个 tab 保持缩进，这是语法要求（此处要注意vscode编写的话要把tab键切换成4空格给关掉）</span></span><br><span class="line">    命令2</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>Makefile 文件默认只生成第一个目标文件即完成编译，但是我们可以通过 “ALL” 指定需要生成的目标文件。通常会把ALL也设置为伪目标</p>
+<p><strong>makefile文件中tab开头的表示他是命令，命令开头有一些可选项可填入</strong>：</p>
+<ul>
+<li>开头加上@，表示该命令执行的时候，不显示命令本身</li>
+<li>开头加上-，表示该命令执行失败也依然会执行后续命令。</li>
+</ul>
+<p><strong>最基础的makefile文件</strong></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#当前目录下有first_make.cpp;second.cpp;second.h</span></span><br><span class="line"><span class="section">first_make:first_make.cpp second.cpp #目标文件：依赖文件</span></span><br><span class="line">	g++ first_make.cpp second.cpp -o first_make -lpthread<span class="comment">#-l表示添加某个库，因为使用到了pthread库</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>makefile工作流程</strong></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112242025323.png" alt="image-20211224202502589"></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202206051153723.jpeg" alt="捕获"></p>
+<p><strong>makefile文件主要包含了5部分内容</strong>：</p>
+<ol>
+<li><strong>显示规则</strong>。说明了如何生成一个或多个目标文件。由makefile文件的创作者指出，包括要生成的文件，文件的依赖文件，生成的命令</li>
+<li><strong>隐式规则</strong>。由于make有自动推导的功能，所以隐式的规则可以比较粗糙地简略书写makefile文件，这是由make所支持的。</li>
+<li><strong>变量定义</strong>。在makefile文件中要定义一系列的变量，变量一般都是字符串，这与C语言中的宏有些类似。当makefile文件执行时，其中的变量都会扩展到相应的引用上。</li>
+<li><strong>文件指示</strong>。其中包含3个部分，（1）在一个makefile文件中引用另一个makefile文件；（2）根据某些情况指定makefile文件中的有效部分；（3）定义一个多行的命令</li>
+<li><strong>注释</strong>。makefile文件中只有行注释，其注释用“#”字符。如果要在makefile文件中使用“#”字符，可以用反斜框进行转义，如:”\#”</li>
+</ol>
+<h2 id="makefile中的变量"><a href="#makefile中的变量" class="headerlink" title="makefile中的变量"></a>makefile中的变量</h2><p>类似于C语言的宏定义</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如:下面是变量的定义和使用</span><br><span class="line">foo = abc			<span class="comment">// 定义变量并赋值</span></span><br><span class="line">bar = $(foo)		<span class="comment">// 使用变量, $(变量名)</span></span><br></pre></td></tr></table></figure>
+
+<p>主要有以下4种</p>
+<ol>
+<li>系统自带变量</li>
+<li>手动定义变量</li>
+<li>make传递变量</li>
+<li>自动推理参数设置</li>
+</ol>
+<p>GUN的make很强大，它可以自动推导文件以及文件依赖关系后面的命令，于是我们就没必要去在每一个[.o]文件后都写上类似的命令，因为，我们的make会自动识别，并自己推导命令。只要make看到一个[.o]文件，它就会自动的把[.c]文件加在依赖关系中，<strong>如果make找到一个whatever.o，那么whatever.c，就会是whatever.o的依赖文件。并且gcc -c whatever.c也会被推导出来</strong></p>
+<p><strong>正是因为强大的[自动推导功能]，因此依赖项写成.o文件后，就可以一条命令搞定整个编译过程</strong></p>
+<p><strong>makefile中常见预定义变量</strong></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112241646051.png" alt="image-20211224164553549"></p>
+<p>p.s.CXXFLAGS&#x3D;-I..&#x2F;inc		表示头文件的路径在当前源文件的父文件夹中的inc文件夹中</p>
+<p><strong>在makefile中变量的用法</strong>：<code>$(变量名)</code></p>
+<p><strong>自动变量</strong></p>
+<p><strong>自动变量</strong>(下面表格的变量)只能在规则中的命令使用</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112242045930.png" alt="image-20211224204554371"></p>
+<p>$(@D)是目标文件的目录，$(@F)是目标文件，</p>
+<p><strong>手动定义变量</strong>的方法：<br>$$<br>变量名&#x3D;存的值（仅第一次有效）<br>$$</p>
+<p>$$<br>变量名：&#x3D;存的值（已经定义了变量，修改用这个）<br>$$</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成的目标文件名</span></span><br><span class="line">TARGET=main</span><br><span class="line"><span class="comment">#依赖文件.o(自己写的)</span></span><br><span class="line">OBJS=test.o main.o</span><br><span class="line"><span class="comment">#依赖文件，加入的头文件</span></span><br><span class="line">LIBS=-lpthread</span><br><span class="line"><span class="comment">#头文件所在目录</span></span><br><span class="line">CXXFLAGS:=-I../inc</span><br><span class="line"><span class="comment">#目标项：依赖项</span></span><br><span class="line"><span class="variable">$(TARGET)</span>:<span class="variable">$(OBJS)</span></span><br><span class="line">	<span class="variable">$(CXX)</span> <span class="variable">$^</span> -o <span class="variable">$@</span> <span class="variable">$(LIBS)</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">#目标项clean</span></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	<span class="variable">$(RM)</span> <span class="variable">$(TARGET)</span> <span class="variable">$(OBJS)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#标识伪目标</span></span><br><span class="line"><span class="meta"><span class="keyword">.PHONY</span>:clean</span></span><br></pre></td></tr></table></figure>
+
+<p>生成动态库</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成的目标文件名</span></span><br><span class="line">TARGET=libfunc.so</span><br><span class="line"><span class="comment">#依赖文件.o(自己写的)</span></span><br><span class="line">OBJS=func.o</span><br><span class="line"><span class="comment">#依赖文件，加入的头文件</span></span><br><span class="line">LIBS=-lpthread</span><br><span class="line"><span class="comment">#头文件所在目录</span></span><br><span class="line">CXXFLAGS=-I../inc -fPIC</span><br><span class="line"><span class="variable">$(TARGET)</span>:<span class="variable">$(OBJS)</span></span><br><span class="line">	<span class="variable">$(CXX)</span> -shared <span class="variable">$^</span> -o <span class="variable">$@</span> <span class="variable">$(LIBS)</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">#目标项clean</span></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	<span class="variable">$(RM)</span> <span class="variable">$(TARGET)</span> <span class="variable">$(OBJS)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#标识伪目标</span></span><br><span class="line"><span class="meta"><span class="keyword">.PHONY</span>:clean</span></span><br></pre></td></tr></table></figure>
+
+<p>联合动态库编译文件test</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生成的目标文件名</span></span><br><span class="line">TARGET=test</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">依赖文件.o(自己写的)</span></span><br><span class="line">OBJS=test.o</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">头文件所在目录</span></span><br><span class="line">CXXFLAGS=-I../inc</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">库文件所在路径</span></span><br><span class="line">LDFLAGS=-L../lib</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">具体引用了哪些库</span></span><br><span class="line">LIBS=-lmylib -lpthread</span><br><span class="line"><span class="meta prompt_">$</span><span class="language-bash">(TARGET):$(OBJS)</span></span><br><span class="line"><span class="meta prompt_">	$</span><span class="language-bash">(CXX) -shared $^ -o <span class="variable">$@</span> $(LIBS)</span></span><br><span class="line"><span class="meta prompt_">	</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">目标项clean</span></span><br><span class="line">clean:</span><br><span class="line"><span class="meta prompt_">	$</span><span class="language-bash">(RM) $(TARGET) $(OBJS)</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">标识伪目标</span></span><br><span class="line">.PHONY:clean</span><br></pre></td></tr></table></figure>
+
+<p>上面所有案例都有个问题：一旦新增源文件,就要修改OBJS&#x3D;……</p>
+<p>有没有一劳永逸的方法，不需要修改makefile就能适应呢。</p>
+<h2 id="模式规则"><a href="#模式规则" class="headerlink" title="模式规则"></a>模式规则</h2><p>要求至少在规则的目标定义中要包含’%’,’%’表示一个或多个,在依赖条件中同样可以使用’%’,依赖条件中的取值取决于其目标:</p>
+<p>如下:</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202206051342850.jpeg" alt="捕获"></p>
+<h2 id="makefile的清理操作"><a href="#makefile的清理操作" class="headerlink" title="makefile的清理操作"></a>makefile的清理操作</h2><p>用途:清除编译生成的中间.o文件和最终目标文件</p>
+<p><code>make clean</code> 命令 同于执行此操作</p>
+<p>但是如果当前目录下有同名clean文件,则不执行clean对应的命令,解决方案是 <strong>伪目标声明</strong></p>
+<p><code>.PHONY:clean</code> 声明目标为伪目标之后,makefile将不会检查该目标是否存在或者该目标是否需要更新,不检查直接调用对应的命令.</p>
+<p><code>rm -f</code> 强制执行,比如若要删除的文件不存在,使用 <code>-f</code> 不会报错</p>
+<h2 id="makefile命令中的特殊符号"><a href="#makefile命令中的特殊符号" class="headerlink" title="makefile命令中的特殊符号"></a>makefile命令中的特殊符号</h2><ul>
+<li><code>-</code> 表示即使此条命令出错,make也会继续执行后续的命令.  如: <code>-rm main.o</code></li>
+<li><code>@</code>不显示命令本身,只显示结果.  如:<code>@echo clean done</code></li>
+</ul>
+<p><strong>[注意]</strong>: <code>~/</code>这样的路径在makefile的命令中不可使用,取而代之可以这样: <code>$(HOME)/</code></p>
+<h2 id="make命令的参数"><a href="#make命令的参数" class="headerlink" title="make命令的参数"></a>make命令的参数</h2><ul>
+<li><code>make</code> <strong>默认执行第一个出现的目标</strong>,可通过 <code>make dest(dest表示其他目标)</code>指定要执行的目标</li>
+<li><code>make -f 文件名</code>制定一个makefile文件来执行  如:<code>make -f mainmak</code>指定要执行的makefile文件名为mainmak</li>
+<li>在<strong>测试makefile时</strong>，应先使用<code>-n</code>参数，检查无误再执行。(只显示命令,但不真正执行)</li>
+</ul>
+<h2 id="makefile的常见函数"><a href="#makefile的常见函数" class="headerlink" title="makefile的常见函数"></a>makefile的常见函数</h2><p>所有函数都有返回值</p>
+<ul>
+<li><p>wildcard函数    当前目录下匹配模式的文件    例如：src&#x3D;$(wildcard *.c)</p>
+</li>
+<li><p>notdir函数    去除路径    例如：$(notdir $src)</p>
+</li>
+<li><p>patsubst函数    模式匹配替换    例如：$(patsubst%.c,%.o,$src)</p>
+<p>​    等价于$(src:.c&#x3D;.o)  意思是把src的所有.c后缀的文件名换成.o后缀文件</p>
+</li>
+<li><p>shell函数    执行shell命令    例如$(shell ls -d *&#x2F;)</p>
+</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成的目标文件名</span></span><br><span class="line">TARGET=main</span><br><span class="line"><span class="comment">#可以设定CXX(库可以直接加在这句中，如下list库，-g表示调试也可以加在这句中)</span></span><br><span class="line"><span class="comment">#CXX=g++ -g -llist</span></span><br><span class="line"><span class="comment">#依赖文件.o(自己写的)</span></span><br><span class="line">SRCS=<span class="variable">$(<span class="built_in">wildcard</span> *.cpp)</span></span><br><span class="line"><span class="comment">#上面与下面同理</span></span><br><span class="line"><span class="comment">#SRCS=$(shell ls *.cpp)</span></span><br><span class="line"><span class="comment">#下面的可以遍历所有子目录中的.cpp</span></span><br><span class="line"><span class="comment">#SRCS=$(shell find ./ -name &#x27;*.cpp&#x27;)</span></span><br><span class="line">OBJS=$(SRCS:.cpp=.o)</span><br><span class="line"><span class="comment">#依赖文件，加入的头文件</span></span><br><span class="line">LIBS=-lpthread</span><br><span class="line"><span class="comment">#头文件所在目录</span></span><br><span class="line">CXXFLAGS:=-I../inc</span><br><span class="line"><span class="comment">#目标项：依赖项</span></span><br><span class="line"><span class="variable">$(TARGET)</span>:<span class="variable">$(OBJS)</span></span><br><span class="line">	<span class="variable">$(CXX)</span> <span class="variable">$^</span> -o <span class="variable">$@</span> <span class="variable">$(LIBS)</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">#目标项clean</span></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	<span class="variable">$(RM)</span> <span class="variable">$(TARGET)</span> <span class="variable">$(OBJS)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#标识伪目标</span></span><br><span class="line"><span class="meta"><span class="keyword">.PHONY</span>:clean</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>到这里makefile中只在需要添加新的库的时候，在LIBS&#x3D;-lpthread后面添加链接库</p>
+<p><strong>别人项目中的makefile编写参考</strong></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">.SUFFIXES: .c .o .lo</span></span><br><span class="line"></span><br><span class="line">COMPILE = <span class="variable">$(CC)</span> -g -Wall -O -D_FILE_OFFSET_BITS=64 -DDEBUG</span><br><span class="line">INC_PATH = -I/usr/local/<span class="keyword">include</span></span><br><span class="line">LIB_PATH = -L/usr/local/lib -lfdfsclient -lfastcommon -lserverframe</span><br><span class="line">TARGET_PATH = <span class="variable">$(TARGET_PREFIX)</span>/bin</span><br><span class="line"></span><br><span class="line"><span class="comment">#SHARED_OBJS = common_func.o dfs_func.o</span></span><br><span class="line">SHARED_OBJS = common_func.o dfs_func_pc.o</span><br><span class="line"></span><br><span class="line">ALL_OBJS = <span class="variable">$(SHARED_OBJS)</span></span><br><span class="line"></span><br><span class="line">ALL_PRGS = gen_files test_upload test_download test_delete combine_result</span><br><span class="line"></span><br><span class="line"><span class="section">all: <span class="variable">$(ALL_OBJS)</span> <span class="variable">$(ALL_PRGS)</span></span></span><br><span class="line"><span class="section">.o:</span></span><br><span class="line">	<span class="variable">$(COMPILE)</span> -o <span class="variable">$@</span> <span class="variable">$&lt;</span>  <span class="variable">$(SHARED_OBJS)</span> <span class="variable">$(LIB_PATH)</span> <span class="variable">$(INC_PATH)</span></span><br><span class="line"><span class="section">.c:</span></span><br><span class="line">	<span class="variable">$(COMPILE)</span> -o <span class="variable">$@</span> <span class="variable">$&lt;</span>  <span class="variable">$(SHARED_OBJS)</span> <span class="variable">$(LIB_PATH)</span> <span class="variable">$(INC_PATH)</span></span><br><span class="line"><span class="section">.c.o:</span></span><br><span class="line">	<span class="variable">$(COMPILE)</span> -c -o <span class="variable">$@</span> <span class="variable">$&lt;</span>  <span class="variable">$(INC_PATH)</span></span><br><span class="line"><span class="section">.c.lo:</span></span><br><span class="line">	<span class="variable">$(COMPILE)</span> -c -fPIC -o <span class="variable">$@</span> <span class="variable">$&lt;</span>  <span class="variable">$(INC_PATH)</span></span><br><span class="line"><span class="section">install:</span></span><br><span class="line">	mkdir -p <span class="variable">$(TARGET_PATH)</span></span><br><span class="line">	cp -f <span class="variable">$(ALL_PRGS)</span> <span class="variable">$(TARGET_PATH)</span></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm -f <span class="variable">$(ALL_OBJS)</span> <span class="variable">$(ALL_PRGS)</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这个Makefile文件可以用来编译和链接一些测试程序，例如test_upload、test_download、test_delete等。您可以运行 <code>make all</code> 来编译所有程序，运行 <code>make install</code> 来安装所有程序，运行 <code>make clean</code> 来清理所有生成的文件。</p>
+</blockquote>
+<h1 id="cmake学习"><a href="#cmake学习" class="headerlink" title="cmake学习"></a>cmake学习</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149337776">CMake 是一个开源的跨平台自动化构建系统，用来管理软件构建的过程，不依赖于某特定编译器，可以支持多层目录、多个应用程序和多个函数库。它用配置文件控制构建过程（build process）的方式和 Unix 的 make 相似，只是 CMake 的配置文件取名为 CMakeLists.txt。CMake 并不直接构建出最终的软件，而是产生标准的构建文件（如 Unix 的 Makefile 或 Windows Visual C++ 的 projects&#x2F;workspaces），然后再依一般的构建方式使用</a></p>
+</blockquote>
+<ul>
+<li>CMake是一个<strong>跨平台</strong>的安装编译工具，可以用简单的语句来描述所有平台的安装(编译过程)。</li>
+<li>CMake可以说已经成为大部分C++开源项目标配(事实标准)</li>
+</ul>
+<h2 id="语法特性介绍"><a href="#语法特性介绍" class="headerlink" title="语法特性介绍"></a>语法特性介绍</h2><p><strong>基本语法格式：指令(参数1 参数2…)</strong></p>
+<ul>
+<li>参数使用括弧括起</li>
+<li>参数之间使用<strong>空格</strong>或<strong>分号</strong>分开</li>
+</ul>
+<p><strong>指令是大小写无关的，参数和变量是大小写相关的</strong></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(HELLO hello.cpp)</span><br><span class="line"><span class="keyword">add_executable</span>(hello main.cpp hello.cpp)</span><br><span class="line"><span class="keyword">ADD_EXECUTABLE</span>(hello main.cpp <span class="variable">$&#123;HELLO&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>变量使用 ${}方式取值，但是在IF控制语句中是直接使用变量名</strong></p>
+<h2 id="重要指令"><a href="#重要指令" class="headerlink" title="重要指令"></a>重要指令</h2><ul>
+<li><p><strong><code>cmake_minimum_required</code></strong>&#x3D;&#x3D;指定CMake的<strong>最小版本要求</strong></p>
+<p>语法：cmake_minimum_required(VERSION versionNumber [FATAL_ERROR])</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#CMakezz最小版本要求为2.8.3</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">2.8</span>.<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>project</code></strong>&#x3D;&#x3D;<strong>定义工程名称</strong>，并可指定工程支持的语言</p>
+<p>语法：project(projectname [CXX] [C] [Java])</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#指定工程名为HELLOWORLD </span></span><br><span class="line"><span class="keyword">project</span>(HELLOWORLD)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>set</code></strong>&#x3D;&#x3D;显式的<strong>定义变量</strong></p>
+<p>语法：set(VAR [VALUE] [CACHE TYPE DOCSTRING [FORCE]])</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义SRC变量，其值为main.cpp hello.cpp</span></span><br><span class="line"><span class="keyword">set</span>(SRC sayhello.cpp hello.cpp)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>Include_directories</code></strong>&#x3D;&#x3D;向工程添加多个特定的<strong>头文件搜索路径</strong>—》相当于指定g++编译器的-I参数</p>
+<p>要放在add_executable前面</p>
+<p>语法：<code>include_directories([AFTER | BEFORE] [SYSTEM] dir1 dir2 ...)</code></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">将/usr/<span class="keyword">include</span>/myincludefolder 和 ./<span class="keyword">include</span> 添加到头文件搜索路径</span><br><span class="line"><span class="keyword">include_directories</span>(/usr/<span class="keyword">include</span>/myincludefolder ./<span class="keyword">include</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>Link_directories</code></strong>&#x3D;&#x3D;向工程添加多个特定的<strong>库文件搜索路径</strong>—》相当于指定g++编译器的-L参数</p>
+<p>要放在add_executable前面</p>
+<p>语法：<code>link_directories(dir1 dir2 ...)</code></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将/usr/lib/mylibfolder 和 ./lib 添加到库文件搜索路径</span></span><br><span class="line"><span class="keyword">link_directories</span>(/usr/lib/mylibfolder ./lib)</span><br><span class="line"><span class="comment">#windows下会自动解析路径下的Debug或Release目录</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>add_library</code></strong>&#x3D;&#x3D;<strong>生成库文件</strong></p>
+<p>语法：add_library(libname [SHARED | STATIC | MODULE] [EXCLUDE_FROM_ALL]  source1 source2 … sourceN)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#通过变量SRC生成libhello.so共享库</span></span><br><span class="line"><span class="keyword">add_library</span>(hello SHARED <span class="variable">$&#123;SRC&#125;</span>)</span><br><span class="line"><span class="comment">#SHARED表示动态库，STATIC表示静态库</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>Add_compile_options</code></strong>&#x3D;&#x3D;<strong>添加编译参数</strong></p>
+<p>语法：add_compile_options(<option> …)’</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#添加编译参数 -Wall -std=c++11 -o2</span></span><br><span class="line"><span class="keyword">add_compile_options</span>(-Wall -std=c++<span class="number">11</span> -o2)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>Add_executable</code></strong>&#x3D;&#x3D;<strong>生成可执行文件</strong></p>
+<p>语法：add_library(exename source1 source2 … sourceN)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#编译main.cpp生成可执行文件main</span></span><br><span class="line"><span class="keyword">add_executable</span>(main main.cpp)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>Target_link_libraries</code></strong>&#x3D;&#x3D;为target<strong>添加需要链接的共享库</strong>—》相当于指定g++编译器-l参数</p>
+<p>放在add_executable后面</p>
+<p>语法：<code>target_link_libraries(target library1&lt;debug | optimized&gt; library2...)</code></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将hello动态库文件链接到可执行文件main</span></span><br><span class="line"><span class="keyword">target_link_libraries</span>(main hello)</span><br><span class="line"><span class="comment">#此处无论是linux，mac，windows中，hello不需要写前面的lib和后面的后缀</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>add_subdirectory</code></strong>&#x3D;&#x3D;向当前工程添加存放源文件的子目录，并可以<strong>指定中间二进制和目标二进制存放的位置</strong></p>
+<p>语法：add_subdirectory(source_dir [binary_dir] [EXCLUDE_FROM_ALL])</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#添加src子目录，src中需有一个CMakeLists.txt</span></span><br><span class="line"><span class="keyword">add_subdirectory</span>(src)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>Aux_source_directory</code></strong>&#x3D;&#x3D;发现一个目录下<strong>所有的源文件并将列表存储在一个变量中</strong>，这个指令临时被用来自动构建源文件列表(多个该指令可以<strong>累加</strong>找到的源文件到变量中)</p>
+<p>语法：<code>aux_source_directory(dir VARIABLE)</code></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义SRC变量，其值为当前目录下所有的源代码文件</span></span><br><span class="line"><span class="keyword">aux_source_directory</span>(. SRC)</span><br><span class="line"><span class="comment">#编译SRC变量所代表的的源代码文件，生成main可执行文件</span></span><br><span class="line"><span class="keyword">add_executable</span>(main <span class="variable">$&#123;SRC&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>自动查找头文件可以通过下面命令实现</p>
+<p><code>FILE (GLOB H_FILE &quot;$&#123;INCLUDE_PATH&#125;/*.h*&quot;)</code></p>
+<p>含义为将<code>$&#123;INCLUDE_PATH&#125;/*.h*</code>匹配的文件放到H_FILE变量中</p>
+</li>
+<li><p>add_definitions</p>
+<p>用于向 C&#x2F;C++ 编译器添加预处理器定义</p>
+<p>语法:<code>add_definitions(&quot;-DDEFINITION1 -DDEFINITION2&quot;)</code></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_definitions</span>(-Dxlog_STATIC) <span class="comment">#传递宏给项目,宏的默认值为1</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="CMake常用变量"><a href="#CMake常用变量" class="headerlink" title="CMake常用变量"></a>CMake常用变量</h2><ul>
+<li><p><code>CMAKE_C_FLAGS</code>  gcc编译选项</p>
+</li>
+<li><p><code>CMAKE_CXX_FLAGS</code>  g++编译选项</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在CMAKE_CXX_FLAGS编译选项后追加-std=c++11</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_FLAGS <span class="string">&quot;$&#123;CMAKE_CXX_FLAGS&#125; -std=c++11&quot;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>CMAKE_BUILD_TYPE</code>  编译类型（Debug，Release）</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设定编译类型为debug，调试时需要选择debug</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_BUILD_TYPE Debug)</span><br><span class="line"><span class="comment">#设定编译类型为release，调试时需要选择release</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_BUILD_TYPE Release)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>CMAKE_BINARY_DIR</code> &#x2F; <code>PROJECT_BINARY_DIR</code> &#x2F; <code>&lt;projectname&gt;_BINARY_DIR</code></p>
+<ol>
+<li>这三个变量指代的内容是一致的</li>
+<li>如果是in source build，指的就是工程顶层目录</li>
+<li>如果是Out-of-source编译，指的是工程编译发生的目录</li>
+<li>PROJECT_BINARY_DIR跟其他指令稍有区别，不过现在，你可以理解为他们是一致的</li>
+</ol>
+</li>
+<li><p><code>CMAKE_SOURCE_DIR</code> &#x2F; <code>PROJECT_SOURCE_DIR</code> &#x2F; <code>&lt;projectname&gt;_SOURCE_DIR</code></p>
+<ol>
+<li>这三个变量指代的内容是一致的，不论采用何种编译方式，都是工程顶层目录</li>
+<li>也就是在in source build时，他跟CMAKE_BINARY_DIR等变量一致</li>
+<li>PROJECT_SOURCE_DIR跟其他指令稍有区别，不过现在，你可以理解为他们是一致的</li>
+</ol>
+</li>
+<li><p><code>CMAKE_C_COMPILER</code>  指定C编译器</p>
+</li>
+<li><p><code>CMAKE_CXX_COMPILER</code>  指定C++编译器</p>
+</li>
+<li><p><code>EXECUTABLE_OUTPUT_PATH</code>  可执行文件输出的存放路径</p>
+</li>
+<li><p><code>LIBRARY_OUTPUT_PATH</code>  库文件输出的存放路径</p>
+</li>
+<li><p><code>CMAKE_VERBOSE_MAKEFILE</code> 开关显示详细的生成指令  ON&#x2F;OFF</p>
+</li>
+<li><p><code>CMAKE_CURRENT_LIST_DIR</code>当前正在执行的CMakeLists.txt文件所在的目录的路径</p>
+</li>
+</ul>
+<h2 id="CMAKE编译工程"><a href="#CMAKE编译工程" class="headerlink" title="CMAKE编译工程"></a>CMAKE编译工程</h2><p>CMake目录结构：项目主目录存在一个CMakeLists.txt文件</p>
+<h3 id="两种方式设置编译规则"><a href="#两种方式设置编译规则" class="headerlink" title="两种方式设置编译规则"></a>两种方式设置编译规则</h3><ol>
+<li>包含源文件的子文件夹<strong>包含</strong>CMakeLists.txt文件，主目录的CMakeLists.txt通过add_subdirectory添加子目录即可</li>
+<li>包含源文件的子文件夹<strong>未包含</strong>CMakeLists.txt文件，子目录编译规则体现在主目录的CMakeLists.txt中</li>
+</ol>
+<h3 id="编译流程"><a href="#编译流程" class="headerlink" title="编译流程"></a>编译流程</h3><ol>
+<li>手动编写CMakeLists.txt</li>
+<li>执行命令<code>cmake PATH</code>生成Makefile(PATH是顶层CMakeLists.txt所在的目录)</li>
+<li>执行命令<code>make</code>进行编译</li>
+</ol>
+<p>p.s.  vs code有一个叫cmake的拓展，可以支持智能补全cmake指令与直接生成CMakeLists.txt模板文件</p>
+<p><code>cmake tools</code>是让vs code支持cmake的插件</p>
+<h3 id="两种构建方式"><a href="#两种构建方式" class="headerlink" title="两种构建方式"></a>两种构建方式</h3><ul>
+<li><p><strong>内部构建</strong>(in_source build):不推荐使用</p>
+<p>内部构建会在同级目录下产生一大堆中间文件，这些中间文件并不是我们最终所需要的，和工程源文件放在一起会显得杂乱无章</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##内部构建</span></span><br><span class="line"><span class="comment">#在当前目录下，编译本目录的CMakeLists.txt，生成Makefile和其他文件</span></span><br><span class="line">cmake .</span><br><span class="line"><span class="comment">#执行make命令，生成target</span></span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>外部构建</strong>(out_of_source build):推荐使用</p>
+<p>将编译输出文件与源文件放到不同目录中</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##外部构建</span></span><br><span class="line"><span class="comment"># 1. 在当前目录下，创建build文件夹</span></span><br><span class="line">mkdir build</span><br><span class="line"><span class="comment"># 2. 进入到build文件夹（一般默认该文件夹都叫build）</span></span><br><span class="line">cd build</span><br><span class="line"><span class="comment"># 3. 编译上级目录的CMakeLists.txt，生成Makefile和其他文件。也可以在上级目录的情况下，直接cmake -B ./build</span></span><br><span class="line">cmake ..</span><br><span class="line"><span class="comment"># 4. 执行make命令，生成target</span></span><br><span class="line">make </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="【实战】CMake代码实践"><a href="#【实战】CMake代码实践" class="headerlink" title="【实战】CMake代码实践"></a>【实战】CMake代码实践</h2><h3 id="最小的CMake工程"><a href="#最小的CMake工程" class="headerlink" title="最小的CMake工程"></a>最小的CMake工程</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>)</span><br><span class="line"><span class="keyword">project</span>(HELLOWORLD)</span><br><span class="line"><span class="keyword">add_executable</span>(helloWorld_cmake helloworld.cpp)</span><br></pre></td></tr></table></figure>
+
+<p>内部构建后（还未执行<code>make</code>）如图：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202201171534397.png" alt="image-20220117153415398"></p>
+<p>红色框中是原有的文件，紫色框中的是内部构建生成的,可以看到非常乱</p>
+<p>外部构建后（还未执行<code>make</code>）如图：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202201171551365.png" alt="image-20220117155157081"></p>
+<p>cmake的产物都放到build文件夹下了，整洁了很多 ，如果之后执行<code>make</code>，生成的可执行文件也会在build文件夹下</p>
+<h3 id="多目录工程-直接编译"><a href="#多目录工程-直接编译" class="headerlink" title="多目录工程-直接编译"></a>多目录工程-直接编译</h3><p>项目结构如下：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202201171621715.png" alt="image-20220117162108450"></p>
+<p>CMakeLists.txt如下：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span>(TESTCMAKE)</span><br><span class="line"></span><br><span class="line"><span class="keyword">INCLUDE_DIRECTORIES</span>(<span class="keyword">include</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(main_cmake main.cpp src/tool.cpp)</span><br></pre></td></tr></table></figure>
+
+<p>操作如下：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202201171622366.png" alt="image-20220117162245705"></p>
+<p><code>make</code>后结构如下：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202201171625167.png" alt="image-20220117162516558"></p>
+<p>下面两个等同于<code>cd build;cmake .</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">在build上级目录</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">配置项目</span></span><br><span class="line">cmake -S . -B build</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">构建项目</span></span><br><span class="line">cmake --build build</span><br></pre></td></tr></table></figure>
+
+<h2 id="vscode配合cmake进行调试"><a href="#vscode配合cmake进行调试" class="headerlink" title="vscode配合cmake进行调试"></a>vscode配合cmake进行调试</h2><ol>
+<li>合理设置项目目录</li>
+<li>编写项目源文件</li>
+<li>编写CMakeLists.txt构建项目编译规则</li>
+<li>使用外部构建，手动编译CMake项目</li>
+<li>配置VSCode的json文件并调试项目</li>
+</ol>
+<p>CMakeLists.txt编写如下：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span>(TESTCMAKE)</span><br><span class="line"></span><br><span class="line"><span class="comment">##添加C++11支持及其他选项</span></span><br><span class="line"><span class="comment">#set(CMAKE_CXX_FLAGS &quot;$&#123;CMAKE_CXX_FLAGS&#125; -g -O2 -Wall&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#调成debug模式</span></span><br><span class="line"><span class="comment">#set(CMAKE_BUILD_TYPE &quot;DEBUG&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">INCLUDE_DIRECTORIES</span>(<span class="variable">$&#123;CMAKE_SOURCE_DIR&#125;</span>/<span class="keyword">include</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#add_compile_options(-g)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">aux_source_directory</span>(./src SRC)</span><br><span class="line"></span><br><span class="line"><span class="keyword">aux_source_directory</span>(. SRC_MAIN)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(main_cmake <span class="variable">$&#123;SRC_MAIN&#125;</span> <span class="variable">$&#123;SRC&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-Wall    选项意思是编译后显示所有警告。</li>
+<li>-O2    在这一级别GCC将会提供所有支持的优化，但这其中并不包括以空间换时间的优化手段，例如编译器不会使用循环展开和函数内联。和-O相比，该选项进一步加快了编译时间和生成代码的性能。</li>
+</ul>
+<p>点击下面图片位置，创建json文件</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202201191633093.png" alt="image-20220119163310314"></p>
+<p><strong>【超级重点】：必须在编辑框显示源文件的情况下点击这个按钮</strong></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202201192013927.png" alt="image-20220119201327676"></p>
+<p><strong>CodeLLDB（用来debug，解决Catalina不支持lldb调试问题）</strong></p>
+<p><strong>Mac在更新到Catalina后不再支持lldb调试</strong>,即C++(GDB&#x2F;LLDB)无效，因此下载CodeLLDB插件，也因此上图选择LLDB按钮。</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202201192012644.png" alt="image-20220119201249218"></p>
+<p><strong>红框中设置为生成的可执行文件的路径</strong></p>
+<p>然后直接按F5就可以调试运行</p>
+<p>如果想每次调试前自动编译项目，可以配合cmake，在.vscode文件夹下新建tasks.json文件，将下面json复制进去：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;options&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;/build&quot;</span> </span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;tasks&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmake&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmake&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;..&quot;</span></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line">                </span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;make&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;group&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;kind&quot;</span><span class="punctuation">:</span> <span class="string">&quot;build&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;isDefault&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;make&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line"></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Build&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;dependsOrder&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sequence&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;dependsOn&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;cmake&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;make&quot;</span></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面json文件就相当于每次调试前执行如下代码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">相当于在这个<span class="variable">$&#123;workspaceFolder&#125;</span>/build路径下执行如下代码</span></span><br><span class="line">cmake ..</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>这样的好处在于每次调试前保证调试的是最新的可执行文件。</p>
+<h2 id="cmake进阶"><a href="#cmake进阶" class="headerlink" title="cmake进阶"></a>cmake进阶</h2><p>在使用CMake组织工程时，如果我们需要依赖某个库文件，需要完成以下步骤：</p>
+<ol>
+<li>查找库文件（find_package命令）</li>
+<li>判断是否找到库文件（XXX_FOUND标记），并包含头文件（include_directories命令）</li>
+<li>链接库文件到目标（target_link_libraries命令）</li>
+</ol>
+<p>例如：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查找OpenCV是否安装</span></span><br><span class="line"><span class="keyword">find_package</span>(OpenCV REQUIRED core highgui imgproc imgcodecs)</span><br><span class="line"><span class="keyword">if</span> (OPENCV_FOUND)</span><br><span class="line">    <span class="keyword">message</span>(STATUS <span class="string">&quot;找到OpenCV:\&quot;$&#123;OpenCV_INCLUDE_DIRS&#125;\&quot;,ENABLE_OPENCV宏已打开&quot;</span>)</span><br><span class="line">    <span class="keyword">message</span>(STATUS <span class="string">&quot;找到OpenCV:\&quot;$&#123;OpenCV_LIBS&#125;\&quot;&quot;</span>)</span><br><span class="line">    <span class="keyword">include_directories</span>(<span class="variable">$&#123;OpenCV_INCLUDE_DIRS&#125;</span>)</span><br><span class="line">    <span class="keyword">add_definitions</span>(-DENABLE_OPENCV)</span><br><span class="line">    <span class="keyword">list</span>(APPEND LINK_LIB_LIST <span class="variable">$&#123;OpenCV_LIBS&#125;</span>)</span><br><span class="line"><span class="keyword">endif</span> (OPENCV_FOUND)</span><br></pre></td></tr></table></figure>
+
+<h2 id="现代CMAKE"><a href="#现代CMAKE" class="headerlink" title="现代CMAKE"></a>现代CMAKE</h2><p>现代cmake的完全体:cmake版本3.15及以上</p>
+<h1 id="终端指令学习"><a href="#终端指令学习" class="headerlink" title="终端指令学习"></a>终端指令学习</h1><h2 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h2><table>
+<thead>
+<tr>
+<th>Windows</th>
+<th>Macos&#x2F;linux</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cd</td>
+<td>cd</td>
+<td align="left">前往文件夹</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>pwd</td>
+<td align="left">取得目前所在路径</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>ls</td>
+<td align="left">查看当前目录的文件和文件夹</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>mkdir</td>
+<td align="left">新建文件夹</td>
+</tr>
+<tr>
+<td>无指令</td>
+<td>touch</td>
+<td align="left">新建文件</td>
+</tr>
+<tr>
+<td>copy</td>
+<td>cp</td>
+<td align="left">复制文件</td>
+</tr>
+<tr>
+<td>move</td>
+<td>mv</td>
+<td align="left">移动文件</td>
+</tr>
+<tr>
+<td>del</td>
+<td>rm</td>
+<td align="left">删除文件</td>
+</tr>
+<tr>
+<td>cls</td>
+<td>clear</td>
+<td align="left">清除画面上的显示</td>
+</tr>
+</tbody></table>
+<p><a href="#win%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E7%9B%B8%E5%85%B3">win部分特殊终端命令</a></p>
+<h2 id="homebrew常用命令"><a href="#homebrew常用命令" class="headerlink" title="homebrew常用命令"></a>homebrew常用命令</h2><p>安装软件：<code>brew install xxx</code><br>卸载软件：<code>brew uninstall xxx</code><br>搜索软件：<code>brew search xxx</code><br>更新软件：<code>brew upgrade xxx</code><br>查看列表：<code>brew list</code><br>更新brew：<code>brew update</code><br>清理所有包的旧版本：<code>brew cleanup</code><br>清理指定包的旧版本：<code>brew cleanup $FORMULA</code><br>查看可清理的旧版本包，不执行实际操作：<code>brew cleanup -n</code></p>
+<h1 id="git一图流"><a href="#git一图流" class="headerlink" title="git一图流"></a>git一图流</h1><p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112071513124.png"></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112071511344.png" alt="image-20211207151102904"></p>
+<h1 id="git详解"><a href="#git详解" class="headerlink" title="git详解"></a>git详解</h1><h2 id="Git与svn对比"><a href="#Git与svn对比" class="headerlink" title="Git与svn对比"></a>Git与svn对比</h2><p><strong>SVN（Subversion）</strong>是集中式版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器哪里得到最新的版本，然后干活，干完后，需要把自己做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网还可以，带宽够大，速度够快，如果在互联网下，如果网速慢的话，就郁闷了。<br>下图就是标准的集中式版本控制工具管理方式：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202301031621539.png" alt="image-20230103162133191"></p>
+<p>集中管理方式在一定程度上看到其他开发人员在干什么，而管理员也可以很轻松掌握每个人的开发权限。<br>但是相较于其优点而言，集中式版本控制工具缺点很明显：</p>
+<ul>
+<li>服务器单点故障</li>
+<li>容错性差</li>
+</ul>
+<p><strong>Git</strong></p>
+<p>Git是分布式版本控制系统，那么它就没有中央服务器的，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己的电脑上。既然每个人的电脑都有一个完整的版本库，那多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。<br>下图就是分布式版本控制工具管理方式：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202301031623438.png" alt="image-20230103162249584"></p>
+<h2 id="git工作流程"><a href="#git工作流程" class="headerlink" title="git工作流程"></a>git工作流程</h2><ol>
+<li>从远程仓库中克隆 Git 资源作为本地仓库。</li>
+<li>从本地仓库中checkout代码然后进行代码修改</li>
+<li>在提交前先将代码提交到暂存区。</li>
+<li>提交修改。提交到本地仓库。本地仓库中保存修改的各个历史版本。</li>
+<li>在修改完成后，需要和团队成员共享代码时，可以将代码push到远程仓库。</li>
+</ol>
+<p>下图展示了 Git 的工作流程：</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202301041139883.png" alt="image-20230104113924564"></p>
+<h2 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h2><p>下载地址：<a target="_blank" rel="noopener" href="https://git-scm.com/download">https://git-scm.com/download</a></p>
+<h2 id="关键词理解"><a href="#关键词理解" class="headerlink" title="关键词理解"></a>关键词理解</h2><blockquote>
+<p>在初始化git版本库之后会生成一个隐藏的文件 .git ，可以将该文件理解为 git 的版本库 <code>repository</code>，而我们自己建立的项目文件夹即工作区 <code>working directory</code> , 在 <code>.git</code> 文件夹里面还有很多文件，其中有一个 <code>index</code> 文 件 就是暂存区也可以叫做 <code>stage</code> , git 还为我们自动生成了一个分支 <code>master</code> 以及指向该分支的指针<code>head</code> ,如下图</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202301121117166.png" alt="image-20230112111626807"></p>
+<ul>
+<li><p><strong>工作区</strong>: 存储项目文件的目录, 版本库需要创建到工作区中</p>
+</li>
+<li><p><strong>版本库</strong>: 创建出的隐藏目录 <code>.git</code></p>
+<ul>
+<li><p><strong><code>stage</code></strong> - 暂存区<br> 当往工作区中添加了新文件之后, 需要将工作区文件添加到暂存区</p>
+</li>
+<li><p><strong><code>master</code></strong> - 主分支</p>
+<p>默认只有这一个, 进行版本管理<br><code>HEAD</code> - 操作master分支的指针</p>
+</li>
+<li><p>暂存区和分支的关系</p>
+<p>当暂存区的文件内容发送变化, 需要将其提交的master分支<br>只有提交之后才会形成一个节点(一个版本)</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。</p>
+</blockquote>
+<h2 id="使用git管理文件"><a href="#使用git管理文件" class="headerlink" title="使用git管理文件"></a>使用git管理文件</h2><p>使用<code>git help git关键词</code>可以查询git关键词的作用</p>
+<h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><p>什么是版本库呢？版本库又名仓库，英文名<code>repository</code>，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。由于git是分布式版本管理工具，所以git在不需要联网的情况下也具有完整的版本管理能力。</p>
+<p>在要使用git管理的目录中点击右键中选择Git Bash来启动,创建仓库执行命令：**<code>git init</code>**</p>
+<p>版本库创建成功，会在此目录下创建一个<code>.git</code>的隐藏目录</p>
+<ul>
+<li><strong>版本库</strong>：<code>.git</code>目录就是版本库，将来文件都需要保存到版本库中。</li>
+<li><strong>工作目录</strong>：包含<code>.git</code>目录的目录，也就是.git目录的上一级目录就是工作目录。只有工作目录中的文件才能保存到版本库中。</li>
+</ul>
+<h3 id="添加暂存区并提交"><a href="#添加暂存区并提交" class="headerlink" title="添加暂存区并提交"></a>添加暂存区并提交</h3><p>添加新文件到暂存区并提交</p>
+<ol>
+<li>添加改动到暂存区  <code>git add .</code>(<code>.</code>表示所有变动)</li>
+<li>暂存区提交到分支  <code>git commit -m &#39;注释&#39;</code></li>
+</ol>
+<p>第一次使用git执行commit之前需要设定个人资料,<a href="#%E8%AE%BE%E5%AE%9A%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99">点击跳转参考</a></p>
+<h3 id="还原修改"><a href="#还原修改" class="headerlink" title="还原修改"></a>还原修改</h3><p>还原的本质 :  <strong>将工作区中修改的文件还原成想要的提交的版本</strong></p>
+<p>还原有三种情况</p>
+<ul>
+<li><p>只是修改了文件，没有任何 git 操作</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- aaa.html // 指定还原`aaa.html`文件</span><br><span class="line"></span><br><span class="line">git checkout -- * // 还原所有文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改了文件，并提交到暂存区（即：编辑之后，进行<code>git add</code> 但没有 <code>git commit -m &quot;留言xxx&quot;</code>）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git log --oneline            #只显示提交ID和提交信息的第一行,可省略</span><br><span class="line"></span><br><span class="line">git reset HEAD               // 回退到当前版本</span><br><span class="line"></span><br><span class="line">git checkout -- aaa.html</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改了文件，并提交到仓库区（即：编辑之后，进行<code>git add</code> 并且 <code>git commit -m &quot;留言xxx&quot;</code>）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git log --oneline    #只显示提交ID和提交信息的第一行,可省略</span><br><span class="line"></span><br><span class="line">git reset HEAD^     // 回退到上一个版本，注意看HEAD后面有个^ HEAD^是回退到上个版本 HEAD^^是回退到上上个版本HEAD~数字 是回退到数字个版本</span><br><span class="line"></span><br><span class="line">git checkout -- aaa.html</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>前两种情况使用了还原功能后,修改内容就丢失了,无法找回.原因是真正保存下来的其实是每次提交的状态</p>
+<p><strong>另外有一种更常用的还原:</strong></p>
+<p><strong><code>git restore 文件名</code></strong> : 撤消工作区的修改返回到<strong>最近一次<code>add</code>(缓存区)的版本</strong>或者<strong>最近一次<code>commit</code>(当前版本库)的版本</strong></p>
+<p><code>git restore --stage &lt;file&gt;</code>和<code>git restore &lt;file&gt;</code>两个命令的区别</p>
+<ul>
+<li>对于<code>git restore &lt;file&gt;</code>命令，会撤销文件的修改，使文件恢复到暂存区或当前版本库（取决于文件在修改前的状态）；</li>
+<li>对于<code>git restore --staged &lt;file&gt;</code>命令，把文件从暂存区撤回到工作区，保留文件最后一次修改的内容；</li>
+</ul>
+<h3 id="查看相关信息"><a href="#查看相关信息" class="headerlink" title="查看相关信息"></a>查看相关信息</h3><ul>
+<li><strong><code>git log</code></strong>  查看版本库中提交的各个节点信息</li>
+<li><strong><code>git status</code></strong>  查看当前状态(修改了什么,追踪了什么(暂存)还未提交),还可以查看是否同步了远程仓库的最新内容</li>
+</ul>
+<h3 id="对比修改内容"><a href="#对比修改内容" class="headerlink" title="对比修改内容"></a>对比修改内容</h3><ul>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E6%9C%AA%E6%9A%82%E5%AD%98%E4%BF%AE%E6%94%B9">未暂存的修改</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E5%B7%B2%E6%9A%82%E5%AD%98%E7%9A%84%E4%BF%AE%E6%94%B9">已暂存的修改</a></li>
+</ul>
+<p><strong>git diff的重点</strong></p>
+<blockquote>
+<p>文件的流转方向是由工作区创建，<code>add</code>进入暂存区，<code>commit</code>进入仓库。</p>
+</blockquote>
+<ul>
+<li><strong><code>git diff</code></strong> 比较暂存区与工作区文件的区别。</li>
+<li><strong><code>git diff --cached</code></strong> 比较仓库(版本库)与暂存区文件的区别。</li>
+</ul>
+<h4 id="对比未暂存修改"><a href="#对比未暂存修改" class="headerlink" title="对比未暂存修改"></a>对比未暂存修改</h4><p>此时比较的是: <strong>已暂存（<code>staged</code>）和 已追踪未暂存（<code>modified</code>） 之间的修改部分。</strong><br>此时执行 <strong><code>git status</code></strong> 查看文件状态,<strong><code>git diff</code></strong>,显示内容如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#此时 hello.txt 中已经有一行内容了，内容为hello world，我们将其改为了hello</span></span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">&quot;git rm --cached &lt;file&gt;...&quot;</span> to unstage)</span><br><span class="line">        new file:   .gitignore</span><br><span class="line">        new file:   hello.txt</span><br><span class="line"></span><br><span class="line">Changes not staged <span class="keyword">for</span> commit:</span><br><span class="line">  (use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed)</span><br><span class="line">  (use <span class="string">&quot;git restore &lt;file&gt;...&quot;</span> to discard changes <span class="keyword">in</span> working directory)</span><br><span class="line">        modified:   hello.txt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ git diff</span><br><span class="line">diff --git a/hello.txt b/hello.txt</span><br><span class="line">index 95d09f2..b6fc4c6 100644</span><br><span class="line">--- a/hello.txt</span><br><span class="line">+++ b/hello.txt</span><br><span class="line">@@ -1 +1 @@</span><br><span class="line">-hello world</span><br><span class="line"> No newline at end of file</span><br><span class="line">+hello</span><br><span class="line"> No newline at end of file</span><br><span class="line"><span class="comment">#文件名后面 + 和 - 的数量是这个提交造成的更改中增删的项</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="对比已暂存修改"><a href="#对比已暂存修改" class="headerlink" title="对比已暂存修改"></a>对比已暂存修改</h4><p>此时比较的是: <strong>提交至仓库的版本 和 暂存区文件 之间的修改部分</strong>。</p>
+<p><strong><code>git diff --cached</code></strong> 命令</p>
+<blockquote>
+<p>注意：<code>--staged</code> 和 <code>--cached</code> 是同义词<br><code>git diff --cached</code> 等于 <code>git diff --staged</code></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#hello.txt 的内容为 hello。此时我们修改内容为 hi</span></span><br><span class="line">$ git add hello.txt</span><br><span class="line"></span><br><span class="line">$ git diff --cached</span><br><span class="line">diff --git a/hello.txt b/hello.txt</span><br><span class="line">index b6fc4c6..32f95c0 100644</span><br><span class="line">--- a/hello.txt</span><br><span class="line">+++ b/hello.txt</span><br><span class="line">@@ -1 +1 @@</span><br><span class="line">-hello</span><br><span class="line"> No newline at end of file</span><br><span class="line">+hi</span><br><span class="line"> No newline at end of file</span><br></pre></td></tr></table></figure>
+
+<h4 id="对比本地与远程仓库的区别"><a href="#对比本地与远程仓库的区别" class="headerlink" title="对比本地与远程仓库的区别"></a>对比本地与远程仓库的区别</h4><p><strong><code>git diff 本地仓库名 远程仓库名/远程分支名</code></strong> (远程与本地顺序可颠倒)</p>
+<p>如: <code>git diff master origin/master</code></p>
+<h3 id="添加忽略列表"><a href="#添加忽略列表" class="headerlink" title="添加忽略列表"></a>添加忽略列表</h3><p>有些文件或文件夹不需要git追踪,因此可以将他们添加到忽略列表</p>
+<blockquote>
+<p>一般库文件和可执行文件,不需要git追踪</p>
+</blockquote>
+<p>需要在项目根目录新建**<code>.gitignore</code>**文件（也就是与.git文件夹同级）<br>文件中写上忽悠的文件或文件夹，例如：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.vs</span><br><span class="line">npoi.fast/bin</span><br><span class="line">npoi.fast/obj</span><br><span class="line">npoi.fast.test/bin</span><br><span class="line">npoi.fast.test/obj</span><br></pre></td></tr></table></figure>
+
+<p>如果要忽略的文件或文件夹<strong>已提交过</strong>，请使用命令<code>git rm -r --cached filename   </code>   (其中filename换成文件或文件夹名，如上述<code>.vs</code>或<code>npoi.fast/bin</code>)</p>
+<blockquote>
+<p>已经添加至 git 仓库的文件（<code>commit</code> 后的），是不能被 <code>.gitignore</code> 文件所影响的，需要先 <code>git rm --cached</code> 让其脱离 git 仓库。<code>git rm --cached</code> 后还需要<code>commit</code></p>
+</blockquote>
+<h3 id="删除相关"><a href="#删除相关" class="headerlink" title="删除相关"></a>删除相关</h3><p> <code>git rm</code>   等同于    <code>rm</code>  +   <code>git add</code></p>
+<p><code>git rm --cached</code>会保留原文件,只删除对文件的追踪状态,常用于已提交后添加忽略的情况</p>
+<h3 id="与远程仓库交互"><a href="#与远程仓库交互" class="headerlink" title="与远程仓库交互"></a>与远程仓库交互</h3><p>在线代码托管平台:   <a target="_blank" rel="noopener" href="https://github.com/">Github</a>    <a target="_blank" rel="noopener" href="https://gitee.com/">码云</a>  等等</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112071310206.png" alt="image-20211207131020235"></p>
+<h4 id="本地同步到远程"><a href="#本地同步到远程" class="headerlink" title="本地同步到远程"></a>本地同步到远程</h4><p><a href="#%E4%B8%8A%E4%BC%A0%E6%8C%87%E4%BB%A4">本地库上传到远程库参考</a>   </p>
+<p><strong>[注意]   上传到远程库最稳妥的方式是push之前先pull</strong></p>
+<h4 id="远程同步到本地"><a href="#远程同步到本地" class="headerlink" title="远程同步到本地"></a>远程同步到本地</h4><p>远程库下载到本地库:   <strong><code>git clone ssh链接或https链接</code></strong></p>
+<p>远程库更新到本地库:  <strong><code>git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</code></strong>       (将<code>&lt;远程主机名&gt;</code>的<code>&lt;远程分支名&gt;</code>分支拉取过来，与<code>&lt;本地分支名&gt;</code>分支合并)</p>
+<blockquote>
+<p><code>git pull</code>  等同于  <code>git fetch</code> + <code>git merge</code>    (<code>git fetch</code>是把远程仓库的内容下载到本地作为一个本地的子分支)</p>
+</blockquote>
+<p>克隆<code>clone</code>和拉取<code>pull</code>的<strong>区别</strong></p>
+<ul>
+<li>本地仓库还没有的时候使用克隆</li>
+<li>本地仓库已经存在了,从远程仓库下载文件使用拉取</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43530326/article/details/123311067">fetch,pull,clone详解点击跳转</a></p>
+<ul>
+<li>fetch使用格式: <code>git fetch &lt;repositoryUrl&gt;</code> </li>
+<li>merge使用格式: <code>git merge &lt;需要合并到当前分支的目标分支名&gt;</code></li>
+</ul>
+<p><strong>推送本地仓库文件到远程仓库注意</strong></p>
+<ul>
+<li><p>如果远程仓库没有任何分支,可以将本地仓库直接推送到远程仓库,不会报错;</p>
+</li>
+<li><p>若远程仓库有master分支,则本地仓库推送master分支的时候会报错</p>
+<p><strong>解决方法</strong>:首先优先将远程仓库的文件”获取”(<code>fetch</code>)到本地仓库,将自动在本地仓库建立了默认名字为**<code>FETCH_HEAD</code>**的子分支,然后将该子分支合并到master主分支(可能需要<a href="#%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81">解决冲突</a>),最后再执行推送操作(<code>push</code>)就可以了</p>
+</li>
+</ul>
+<p><strong>注意: fetch指令生成的<code>FETCH_HEAD</code>子分支无法用<code>git branch</code>查看到</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42310154/article/details/119004977">rebase指令详解跳转</a>  (不推荐使用)</p>
+<h3 id="SSH协议配置"><a href="#SSH协议配置" class="headerlink" title="SSH协议配置"></a>SSH协议配置</h3><p>除了<code>https</code>协议连接,还可以使用<code>ssh</code>协议进行连接</p>
+<p>加密的方式是非对称加密,需要生成一对密钥</p>
+<ul>
+<li>客户端拿私钥</li>
+<li>github服务器拿公钥</li>
+</ul>
+<h4 id="生成SSH协议密钥对"><a href="#生成SSH协议密钥对" class="headerlink" title="生成SSH协议密钥对"></a>生成SSH协议密钥对</h4><p>生产秘钥对的命令:  <strong><code>ssh-keygen -t rsa</code></strong>   (rsa为非对称加密算法)</p>
+<p>也可以<code>ssh-keygen -t rsa -C &quot;这里输入生成的sshkey的名称&quot;</code></p>
+<p>将生成<code>id_rsa</code>(私钥)和<code>id_ras.pub</code>(公钥)</p>
+<h4 id="公钥添加到-github-账户"><a href="#公钥添加到-github-账户" class="headerlink" title="公钥添加到 github 账户"></a>公钥添加到 github 账户</h4><p><strong>github中设置公钥:</strong>  点击<code>头像</code>-<code>Settings</code>-<code>SSH and GPG keys</code>-<code>New SSH keys</code>中起个题目并且填入<code>id_ras.pub</code>中的key,最后点击<code>Add SSH key</code></p>
+<h4 id="SSH协议私钥设置到本地"><a href="#SSH协议私钥设置到本地" class="headerlink" title="SSH协议私钥设置到本地"></a>SSH协议私钥设置到本地</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-agent bash</span><br><span class="line">ssh-add ~/.ssh/id_rsa # 这里如果文件名被改过要写你自己定义的文件名  (~/.ssh/id_rsa为私钥文件路径)</span><br></pre></td></tr></table></figure>
+
+<p>返回如下结果表示设置成功:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Identity added: id_rsa (your_email@example.com)</span><br></pre></td></tr></table></figure>
+
+<h4 id="测试SSH协议连接"><a href="#测试SSH协议连接" class="headerlink" title="测试SSH协议连接"></a>测试SSH协议连接</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">输入:</span></span><br><span class="line"><span class="meta prompt_">	#</span><span class="language-bash">github</span></span><br><span class="line">ssh -T git@github.com</span><br><span class="line"><span class="meta prompt_">	#</span><span class="language-bash">码云</span></span><br><span class="line">ssh -T git@gitee.com</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">返回:</span></span><br><span class="line">The authenticity of host &#x27;github.com (20.205.243.166)&#x27; can&#x27;t be established.</span><br><span class="line">ECDSA key fingerprint is SHA256:p2QAMXNIC1TJYWeIOttrVc98/R1BUFWu3/LiyKgUfQM.</span><br><span class="line">Are you sure you want to continue connecting (yes/no/[fingerprint])?</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">输入:</span></span><br><span class="line">yse</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">返回:</span></span><br><span class="line">Warning: Permanently added &#x27;github.com,20.205.243.166&#x27; (ECDSA) to the list of known hosts.</span><br><span class="line">Hi xxxxxx You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">如果 xxxxxx 是github用户名,表示ssh链接成功</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>配置 git的push&amp;pull 使用 SSH协议 连接</strong></p>
+<p>在仓库中输入<code>git remote -v</code>查看当前使用的是什么协议,如果以git开头表示SSH协议,下面是使用https协议返回的结果:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">origin  https://xxxxx.git (fetch)</span><br><span class="line">origin  https://xxxxx.git (push)</span><br></pre></td></tr></table></figure>
+
+<p>输入 <strong><code>git remote set-url origin git@github.com:xxxxx.git</code></strong> 修改https协议为SSH协议,<code>git@github.com:xxxxx.git</code>取自github库</p>
+<p>接下来使用push&amp;pull就是使用的SSH协议</p>
+</blockquote>
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><p>git中默认只有一个分支:<code>master</code></p>
+<p>如果创建了分支,各个分支都是独立的,互不影响的</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202301301731761.png" alt="image-20230130173124159"></p>
+<blockquote>
+<p><strong>当前所在的分支，其实是由 <code>HEAD</code> 决定的</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>命令名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong><code>git branch 分支名</code></strong></td>
+<td>创建本地分支</td>
+</tr>
+<tr>
+<td><strong><code>git branch</code></strong></td>
+<td>查看本地有哪些分支</td>
+</tr>
+<tr>
+<td><strong><code>git branch -d 分支名</code></strong></td>
+<td>删除本地分支</td>
+</tr>
+<tr>
+<td><code>git push &lt;主机名&gt; -d &lt;分支名&gt;</code></td>
+<td>删除远程分支，主机名不填默认是origin</td>
+</tr>
+<tr>
+<td><code>git branch -v</code></td>
+<td>查看本地分支+上次提交的信息</td>
+</tr>
+<tr>
+<td><code>git branch -vv</code></td>
+<td>查看本地分支+上次提交的信息+本地和远程分支的关系</td>
+</tr>
+<tr>
+<td><code>git branch -vv -a</code></td>
+<td>查看本地分支+上次提交的信息+本地和远程分支的关系+远程分支（如果不想显示提交的信息，也可以去掉-vv参数）</td>
+</tr>
+<tr>
+<td><code>git branch -r</code></td>
+<td>只查看远程分支</td>
+</tr>
+<tr>
+<td><strong><code>git checkout 分支名</code></strong></td>
+<td>切换本地分支</td>
+</tr>
+<tr>
+<td><code>git checkout -b 分支名</code></td>
+<td>创建本地分支并切换</td>
+</tr>
+<tr>
+<td><strong><code>git merge 分支名</code></strong></td>
+<td>把指定的分支合并到当前分支上</td>
+</tr>
+<tr>
+<td><code>git branch -m 旧分支名 新分支名</code></td>
+<td>修改本地分支名称</td>
+</tr>
+<tr>
+<td><code>git merge --abort</code></td>
+<td>回到解决合并冲突之前的状态</td>
+</tr>
+<tr>
+<td><code>git branch -f 分支名1 分支名2</code></td>
+<td>更新分支1以指向分支2</td>
+</tr>
+<tr>
+<td><code>git branch -B 分支名1 分支名2</code></td>
+<td>更新分支1以指向分支2并且切换到分支1</td>
+</tr>
+</tbody></table>
+<h5 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h5><p><a href="#%E8%BF%9C%E7%A8%8B%E5%90%8C%E6%AD%A5%E5%88%B0%E6%9C%AC%E5%9C%B0">跳转参考解决冲突具体代码操作</a></p>
+<p>合并中有冲突的数据会显示为如下格式:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">hello, git!!! master test!</span><br><span class="line">=======</span><br><span class="line">hello, git!!!hot-fix test!</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; hot-fix</span><br></pre></td></tr></table></figure>
+
+<p>上面的HEAD分支的内容和下面hot-fix分支的内容,该处有冲突,需要手动<strong>解决冲突</strong>后再提交</p>
+<h1 id="git常用指令"><a href="#git常用指令" class="headerlink" title="git常用指令"></a>git常用指令</h1><h2 id="常用环境设定"><a href="#常用环境设定" class="headerlink" title="常用环境设定"></a>常用环境设定</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//编辑器更换：</span><br><span class="line">git config --global core.editor &quot;code --wait&quot;</span><br><span class="line">//git缩写：</span><br><span class="line">git config --global alias.co checkout</span><br><span class="line">git config --global alias.br branch</span><br><span class="line">git config --global alias.st status</span><br><span class="line">git config --global alias.ci commit</span><br></pre></td></tr></table></figure>
+
+<p>查看所有config的设定</p>
+<ul>
+<li>Mac：~&#x2F;.gitconfig</li>
+<li>Win:C:\Users\$USER</li>
+</ul>
+<h3 id="git版本查看"><a href="#git版本查看" class="headerlink" title="git版本查看"></a>git版本查看</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<h3 id="设定个人资料"><a href="#设定个人资料" class="headerlink" title="设定个人资料"></a>设定个人资料</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入姓名</span></span><br><span class="line">git config --global user.name <span class="string">&quot;gon&quot;</span></span><br><span class="line"><span class="comment">//输入个人的email</span></span><br><span class="line">git config --global user.email <span class="string">&quot;gonsakon@gmail.com&quot;</span></span><br><span class="line"><span class="comment">//查询git设定内容</span></span><br><span class="line">git config --<span class="built_in">list</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="基本指令架构"><a href="#基本指令架构" class="headerlink" title="基本指令架构"></a>基本指令架构</h2><p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112071310206.png" alt="image-20211207131020235"></p>
+<h2 id="上传指令"><a href="#上传指令" class="headerlink" title="上传指令"></a>上传指令</h2><ol>
+<li><p>初始化git数据库：<code>git init</code></p>
+<p>文件夹中多出一个.git文件夹，表明该文件夹已经生成了git数据库了（需要显示隐藏文件才能显示出来）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//macOS下打开隐藏文件显示</span></span><br><span class="line">defaults write com.apple.finder AppleShowAllFiles TRUE</span><br><span class="line"><span class="comment">// 默认显示苹果所有文件 true</span></span><br><span class="line">killall Finder<span class="comment">// 这一步相当于确定</span></span><br><span class="line"><span class="comment">//关闭隐藏文件显示</span></span><br><span class="line">defaults write com.apple.finder AppleShowAllFiles FALSE</span><br><span class="line">killall Finder <span class="comment">// 这样就恢复成初始状态了</span></span><br><span class="line">  </span><br><span class="line"><span class="comment">//也可以在访答中键入command+shift+.</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询当前状态：<code>git status</code></p>
+</li>
+<li><p>将有修改的档案加入到索引（暂存区）：<code>git add .</code></p>
+</li>
+<li><p>将索引档案变成一个更新(COMMIT):<code>git commit -m &quot;修改内容的描述&quot;</code></p>
+</li>
+<li><p>观察commit历史记录：<code>git log</code></p>
+</li>
+<li><p>下载远程数据库：<code>git clone 数据库网址</code></p>
+</li>
+<li><p>更新远程数据库：<code>git push origin master</code></p>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上传步骤</span></span><br><span class="line">git add .<span class="comment">//添加当前目录的所有文件到暂存区</span></span><br><span class="line">git commit -m <span class="string">&quot;修改内容的描述&quot;</span></span><br><span class="line">git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br><span class="line"><span class="comment">//如果本地分支名与远程分支名相同，则可以省略冒号：</span></span><br><span class="line">git push &lt;远程主机名&gt; &lt;本地分支名&gt;</span><br><span class="line">git push --force &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;<span class="comment">//强制推送,不管任何事</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>[注意]   最好的方式是push之前先pull</strong></p>
+<h3 id="远程储存库操作"><a href="#远程储存库操作" class="headerlink" title="远程储存库操作"></a>远程储存库操作</h3><ul>
+<li>注册远程储存库origins名称对应远程储存库网址：git remote add origin 远程储存库网址（origin是自己取的远程储存库名字，怎么取都可以）</li>
+<li>更新资料到远程master分支：git push -u origin master（-u可以省略）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上传到已经存在的远程储存库</span></span><br><span class="line">git remote add 自己取的名字 远程数据库的git的url<span class="comment">//注册远程储存库名称对应远程储存库网址</span></span><br><span class="line">git push -u 自己取的名字 master（-u可以省略）</span><br></pre></td></tr></table></figure>
+
+<h2 id="git版本控制"><a href="#git版本控制" class="headerlink" title="git版本控制"></a>git版本控制</h2><h3 id="git版本细节"><a href="#git版本细节" class="headerlink" title="git版本细节"></a>git版本细节</h3><ul>
+<li>branch：分支，默认分支叫master</li>
+<li>HEAD：当下的本地版本位置</li>
+<li>origin：默认远程储存库</li>
+<li>回到某个版本内容：git  checkout commit编号</li>
+<li>返回最新的版本：git checkout master(分支名称)</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span><span class="comment">//查看当前所有的commit编号</span></span><br><span class="line">git checkout 想回到的commit节点的哈希值<span class="comment">//返回到指定哈希值的commit节点</span></span><br><span class="line"><span class="comment">//Git 对哈希的处理很智能。你只需要提供能够唯一标识提交记录节点的前几个字符即可</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112092007970.png" alt="image-20211209200758510"></p>
+<p>commit编号就是个哈希值</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112092021609.png" alt="image-20211209202104826"></p>
+<p>git checkout commit编号与直接在上图左侧双击commit行均为使得文件恢复到与commit时的样子，二者效果一致。</p>
+<h3 id="还原技巧"><a href="#还原技巧" class="headerlink" title="还原技巧"></a>还原技巧</h3><p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112101443772.jpeg" alt="src=http___upload-images.jianshu.io_upload_images_4311354-6a4562939fec66c0.png&amp;refer=http___upload-images.jianshu"></p>
+<p><strong>Untracked:表示未跟踪的</strong></p>
+<h4 id="未跟踪情况下"><a href="#未跟踪情况下" class="headerlink" title="未跟踪情况下"></a>未跟踪情况下</h4><p>新建文件的时候，清空未跟踪的内容：</p>
+<ul>
+<li>显示此次清除的未跟踪内容：git clean -n</li>
+<li>强制清除未跟踪内容：git clean -f</li>
+</ul>
+<p>还原工作目录上已更改的内容：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- &lt;file文件名&gt;<span class="comment">//将该文件已更改的内容还原</span></span><br><span class="line">git checkout .<span class="comment">//所有更改内容还原</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="已跟踪情况下"><a href="#已跟踪情况下" class="headerlink" title="已跟踪情况下"></a>已跟踪情况下</h4><p><code>git reset</code> 通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。<code>git reset</code> 向上移动分支，原来指向的提交记录就跟从来没有提交过一样。</p>
+<p>已经加入到暂存区的改动，退回到未加入缓存区状态：<strong>git reset HEAD</strong></p>
+<p>git reset head^^,两个^表示返回两个commit记录的节点转为未跟踪状态，多少^表示多少个commit记录节点。</p>
+<p><code>git reset</code> 很方便，但是这种“改写历史”的方法对大家一起使用的<strong>远程分支是无效</strong>的,取而代之的是git revert xxx</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112101512015.png" alt="image-20211210151213508"><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112101519242.png" alt="image-20211210151908657"></p>
+<h3 id="Git分支-branch"><a href="#Git分支-branch" class="headerlink" title="Git分支(branch)"></a>Git分支(branch)</h3><p><strong>为什么要用分支？</strong></p>
+<ul>
+<li>多人协作时，不可能都在master</li>
+<li>可以让master都是正式版资料，可以开分支来做测试或开发，让这些流程不影响正式主机分支</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名<span class="comment">//新建分支</span></span><br><span class="line">git branch<span class="comment">//查看当前有多少个分支</span></span><br><span class="line">git checkout 分支名<span class="comment">//切换到别的分支</span></span><br><span class="line">git branch -d <span class="string">&quot;分支名称&quot;</span><span class="comment">//删除分支，-D是强制删除</span></span><br><span class="line"><span class="comment">//如果你想创建一个新的分支同时切换到新创建的分支的话，可以通过 git checkout -b &lt;your-branch-name&gt; 来实现。</span></span><br><span class="line">git merge 合并的分支名<span class="comment">//提交新节点为合并分支，快转</span></span><br><span class="line">git merge 要合并的分支名 --no-ff <span class="comment">//合并分支，非快转</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p> <strong>相对移动</strong></p>
+<ul>
+<li>使用<code>^</code>向上移动1个提交记录</li>
+<li>使用<code>~&lt;num&gt;</code>向上移动多个提交记录，如<code>~3</code></li>
+</ul>
+<p>可以直接使用 <code>-f</code> 选项让分支指向另一个提交。例如:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -f main HEAD~3</span><br></pre></td></tr></table></figure>
+
+<p>上面的命令会将 main 分支强制指向 HEAD 的第 3 级父提交。</p>
+<h1 id="git和github"><a href="#git和github" class="headerlink" title="git和github"></a>git和github</h1><ul>
+<li><strong>Git</strong>：一个分散式版本控制软件，可以由它产生一个储存库（git Repository）</li>
+<li><strong>Github</strong>：支持git程序编程存取和远程托管储存库的平台服务</li>
+</ul>
+<h3 id="热门远程储存库"><a href="#热门远程储存库" class="headerlink" title="热门远程储存库"></a>热门远程储存库</h3><ul>
+<li><strong>Github</strong>：拥有GitHube Pages功能，可拥有私人<a href="/blog/0"  data-pjax-state target="_Blank" >数据库</a>，免费方案是3人以下</li>
+<li><strong>Bitbucket</strong>：可拥有私人<a href="/blog/0"  data-pjax-state target="_Blank" >数据库</a>，免费方案是五人以下团队</li>
+<li><strong>GitLab</strong>：自架Git服务器，有提供web视觉化管理界面，常用语企业内部开发</li>
+</ul>
+<h1 id="图形化git管理软件"><a href="#图形化git管理软件" class="headerlink" title="图形化git管理软件"></a>图形化git管理软件</h1><p>SourceTree</p>
+<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112071856448.png" alt="image-20211207185614938" style="zoom:25%;" />
+
+<p>新建-创建本地仓库的意思就是 git init</p>
+<p>新建-添加已经存在的本地仓库：已经git init的文件夹添加进SourceTree</p>
+<h1 id="win终端命令相关"><a href="#win终端命令相关" class="headerlink" title="win终端命令相关"></a>win终端命令相关</h1><p><a href="#%E7%BB%88%E7%AB%AF%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0">基本指令参考</a></p>
+<h2 id="终端命令重命名"><a href="#终端命令重命名" class="headerlink" title="终端命令重命名"></a>终端命令重命名</h2><p>终端输入<code>$profile</code>查对应终端的配置文件所在,没有就自行新建</p>
+<p>打开文件输入,格式:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> 别名 &#123; 需要替代的命令，可以包含空格 &#125;</span><br><span class="line">或者</span><br><span class="line"><span class="keyword">function</span> 名称 &#123; 需要替代的命令，可以包含空格 &#125;</span><br><span class="line"><span class="title class_">Set</span>-<span class="title class_">Alias</span> 别名 名称</span><br></pre></td></tr></table></figure>
+
+<p>如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> sshLinux&#123;</span><br><span class="line">	ssh <span class="string">&#x27;kylin@192.168.10.88&#x27;</span> $args</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Set</span>-<span class="title class_">Alias</span> sshlinux sshLinux</span><br></pre></td></tr></table></figure>
+
+<p>保存后重启power shell就可以使用别名了</p>
+<h2 id="powershell新建文件命令"><a href="#powershell新建文件命令" class="headerlink" title="powershell新建文件命令"></a>powershell新建文件命令</h2><p>powershell基本指令大多与linux一致,但无touch命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fsutil file creatnew 新建文件名 <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="工具命令"><a href="#工具命令" class="headerlink" title="工具命令"></a>工具命令</h1><h2 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h2><p>ssh远程连接   <code>ssh 用户名@ip地址或域名</code>  </p>
+<h2 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h2><p>从服务器上下载文件   <code>scp username@servername:/path/filename /var/www/local_dir（本地目录）</code></p>
+<p>加上 <code>-r</code> 的参数才可以传目录</p>
+<p>例如<code>scp root@192.168.0.101:/var/www/test.txt</code>  把192.168.0.101上的&#x2F;var&#x2F;www&#x2F;test.txt 的文件下载到&#x2F;var&#x2F;www&#x2F;local_dir（本地目录）</p>
+<p> 上传本地文件到服务器  <code>scp /path/filename username@servername:/path   </code></p>
+<p>例如<code>scp /var/www/test.php  root@192.168.0.101:/var/www/</code>  把本机&#x2F;var&#x2F;www&#x2F;目录下的test.php文件上传到192.168.0.101这台服务器上的&#x2F;var&#x2F;www&#x2F;目录中</p>
+<p>如果上传下载的是整个目录,<code>scp</code>后加 <code>-r</code> </p>
+<p>某些较新的系统scp命令默认使用SFTP协议来传输文件,但老系统却不支持sftp,此时使用<code>-O</code>使得scp变回传统传输行为</p>
+<p><strong>sftp</strong></p>
+<p>使用和scp类似,但功能更多</p>
+<p>比如:SFTP支持断点续传，SCP则不能</p>
+<h1 id="代码调试"><a href="#代码调试" class="headerlink" title="代码调试"></a>代码调试</h1><p> <strong><code>打断点</code></strong></p>
+<ul>
+<li>集成开发环境IDE </li>
+<li>gdb</li>
+</ul>
+<p><strong><code>printf</code></strong>    适用于有调试终端的情况</p>
+<p> <strong><code>写log日志</code></strong>    当应用程序没有终端的时候</p>
+<ul>
+<li><p>应用程序发布了, 通过日志文件记录程序的工作状态</p>
+<p>​	写日志有级别<br>​			级别越低写的日志越多<br>​			级别越高写的日志越少</p>
+</li>
+</ul>
+<h1 id="IDE相关tips"><a href="#IDE相关tips" class="headerlink" title="IDE相关tips"></a>IDE相关tips</h1><p>在用vs调试的时候: 若看到<strong>无法解析的外部符号</strong>就是没有函数的实现, 应该是没有连接到库</p>
+<h2 id="vs开发linux项目"><a href="#vs开发linux项目" class="headerlink" title="vs开发linux项目"></a>vs开发linux项目</h2><p>新建项目-跨平台-Linux-空项目</p>
+<h3 id="VS远程开发"><a href="#VS远程开发" class="headerlink" title="VS远程开发"></a>VS远程开发</h3><p>工具-选项-跨平台-连接管理器-添加(主机名填写ip,端口22,填写用户名与密码)-连接</p>
+<p>项目属性页-配置属性-常规  中:</p>
+<ul>
+<li>远程生成计算机选择上面添加的</li>
+<li>远程生成根目录</li>
+<li>远程生成项目目录</li>
+</ul>
+<h2 id="vscode远程开发"><a href="#vscode远程开发" class="headerlink" title="vscode远程开发"></a>vscode远程开发</h2><p>Vscode 安装 <code>remote development</code>插件</p>
+<p>安装后打开远程资源管理器,设置为ssh target,点击+号键,添加ssh目标.</p>
+<p>右键ssh目标选择连接,输入密码,开始远程开发</p>
+<h3 id="vscode配置C-调试"><a href="#vscode配置C-调试" class="headerlink" title="vscode配置C++调试"></a>vscode配置C++调试</h3><ol>
+<li><p>编译的时候需要加<code>-g</code>选项,才会附带调试需要的信息</p>
+</li>
+<li><p>点击左侧菜单栏中的<code>运行和调试</code>中的创建<code>launch.json文件</code>,如下图(非红圈)</p>
+<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302192059807.png" alt="image-20230219205902832" style="zoom:25%;" />
+
+<p>点击后会在项目根目录下生成<code>.vscode/launch.json</code>文件</p>
+</li>
+<li></li>
+</ol>
+<h2 id="code-runner配置"><a href="#code-runner配置" class="headerlink" title="code runner配置"></a>code runner配置</h2><p>Code Runner默认运行是在输出端，是不能进行编辑输入的，所以我们要将其改到终端运行，打开VS Code设置，找到Run In Terminal配置处，将其勾选住，也可在设置的配置文件settings.json文件里添加”code-runner.runInTerminal”: true配置，保存，我们再通过Code Runner运行，就可以在终端中运行了，可以在上面进行输入了。</p>
+<h2 id="windows下的vscode终端乱码"><a href="#windows下的vscode终端乱码" class="headerlink" title="windows下的vscode终端乱码"></a>windows下的vscode终端乱码</h2><p>VSCode 默认是 utf-8 编码，而在中国地区下的 Windows 的 cmd 默认是 GBK 编码,因此需要配置vscode终端为utf-8编码</p>
+<p>通过<code>chcp</code> 命令查看代码页编号，</p>
+<ul>
+<li><code>936</code> 对应 <code>GBK2312</code></li>
+<li><code>65001</code> 对应 <code>UTF-8</code></li>
+</ul>
+<p>文件-首选项-设置,点击右上角<code>打开设置(json)</code>,添加如下代码:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;terminal.integrated.profiles.windows&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Command Prompt&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Windows\\System32\\cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;-NoExit&quot;</span><span class="punctuation">,</span> <span class="string">&quot;/K&quot;</span><span class="punctuation">,</span> <span class="string">&quot;chcp 65001 &gt; nul&quot;</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;PowerShell&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;-NoExit&quot;</span><span class="punctuation">,</span> <span class="string">&quot;/C&quot;</span><span class="punctuation">,</span> <span class="string">&quot;chcp 65001&quot;</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;terminal.integrated.defaultProfile.windows&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Command Prompt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>将以上配置添加在settings.json里最外层的{}里即可(注意！！！，如果{}里之前有内容记得要在最后一行加上一个英文逗号，之后再把配置复制进去)</p>
+<h2 id="vscode的配置文件"><a href="#vscode的配置文件" class="headerlink" title="vscode的配置文件"></a>vscode的配置文件</h2><p>安装并配置好C&#x2F;C++插件后</p>
+<ul>
+<li>编译的话配置<code>tasks.json</code></li>
+<li>【调试】启动的话配置<code>launch.json</code></li>
+</ul>
+<h3 id="tasks-json"><a href="#tasks-json" class="headerlink" title="tasks.json"></a>tasks.json</h3><p><strong>终端-配置任务</strong>  生成tasks.json文件</p>
+<p>下面为用clang++配置的任务,也可以改成调用make,cmake等构建工具</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">&quot;version&quot;</span>: <span class="string">&quot;2.0.0&quot;</span>,</span><br><span class="line">	<span class="string">&quot;tasks&quot;</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">&quot;type&quot;</span>: <span class="string">&quot;cppbuild&quot;</span>,</span><br><span class="line">			<span class="string">&quot;label&quot;</span>: <span class="string">&quot;m1Mac单文件生成任务&quot;</span>,</span><br><span class="line">			<span class="string">&quot;command&quot;</span>: <span class="string">&quot;/usr/bin/clang++&quot;</span>,</span><br><span class="line">			<span class="string">&quot;args&quot;</span>: [</span><br><span class="line">				<span class="string">&quot;-std=c++17&quot;</span>,</span><br><span class="line">				<span class="string">&quot;-fcolor-diagnostics&quot;</span>,</span><br><span class="line">				<span class="string">&quot;-fansi-escape-codes&quot;</span>,</span><br><span class="line">				<span class="string">&quot;-g&quot;</span>,</span><br><span class="line">				<span class="string">&quot;$&#123;file&#125;&quot;</span>,<span class="comment">//此处为需要编译的源文件</span></span><br><span class="line">				<span class="string">&quot;-o&quot;</span>,</span><br><span class="line">				<span class="string">&quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;&quot;</span></span><br><span class="line">			],</span><br><span class="line">			<span class="string">&quot;options&quot;</span>: &#123;</span><br><span class="line">				<span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;$&#123;fileDirname&#125;&quot;</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="string">&quot;problemMatcher&quot;</span>: [</span><br><span class="line">				<span class="string">&quot;$gcc&quot;</span></span><br><span class="line">			],</span><br><span class="line">			<span class="string">&quot;group&quot;</span>: <span class="string">&quot;build&quot;</span>,</span><br><span class="line">			<span class="string">&quot;detail&quot;</span>: <span class="string">&quot;编译器: /usr/bin/clang++&quot;</span></span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置好以后使用 <strong>终端-运行生成任务</strong> 来调用该tasks.json配置的任务</p>
+<h3 id="launch-json"><a href="#launch-json" class="headerlink" title="launch.json"></a>launch.json</h3><p><strong>运行-添加配置</strong>  生成launch.json文件(生成的launch文件中可以进一步点击<code>添加配置</code>按钮生成小模版)</p>
+<p>launch.json参考如下:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="comment">// 使用 IntelliSense 了解相关属性。 </span></span><br><span class="line">    <span class="comment">// 悬停以查看现有属性的描述。</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;g++ - 生成和调试活动文件&quot;</span><span class="punctuation">,</span><span class="comment">// 配置名称，将会在启动配置的下拉菜单中显示</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cppdbg&quot;</span><span class="punctuation">,</span><span class="comment">// 配置类型，这里只能为cppdbg</span></span><br><span class="line">            <span class="attr">&quot;request&quot;</span><span class="punctuation">:</span> <span class="string">&quot;launch&quot;</span><span class="punctuation">,</span><span class="comment">// 请求配置类型，可以为launch（启动）或attach（附加）</span></span><br><span class="line">            <span class="attr">&quot;program&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/home/hewei/桌面/课程七讲_源码/Class_7/build/my_cmake_exe&quot;</span><span class="punctuation">,</span><span class="comment">// 将要进行调试的程序的路径</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="comment">// 程序调试时传递给程序的命令行参数，一般设为空即可</span></span><br><span class="line">            <span class="attr">&quot;stopAtEntry&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> <span class="comment">// 设为true时程序将暂停在程序入口处，我一般设置为true</span></span><br><span class="line">            <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;fileDirname&#125;&quot;</span><span class="punctuation">,</span><span class="comment">// 调试程序时的工作目录</span></span><br><span class="line">            <span class="attr">&quot;environment&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span><span class="comment">// （环境变量？）</span></span><br><span class="line">            <span class="attr">&quot;externalConsole&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span><span class="comment">// 调试时是否显示控制台窗口，一般设置为true显示控制台</span></span><br><span class="line">            <span class="attr">&quot;MIMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gdb&quot;</span><span class="punctuation">,</span><span class="comment">// 指定连接的调试器，可以为gdb或lldb。但目前lldb在windows下没有预编译好的版本。</span></span><br><span class="line">            <span class="comment">// 用处未知，模板如此</span></span><br><span class="line">            <span class="attr">&quot;setupCommands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;为 gdb 启用整齐打印&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;-enable-pretty-printing&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;ignoreFailures&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;将反汇编风格设置为 Intel&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;-gdb-set disassembly-flavor intel&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;ignoreFailures&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="comment">// 调试会话开始前执行的任务，一般为编译程序。与tasks.json的label相对应</span></span><br><span class="line">            <span class="comment">//&quot;preLaunchTask&quot;: &quot;C/C++: g++ bulid active file&quot;,</span></span><br><span class="line">            <span class="attr">&quot;miDebuggerPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/usr/bin/gdb&quot;</span><span class="comment">// 调试器路径，Windows下后缀不能省略，Linux下则去掉</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43687811/article/details/122744673">vscode其他配置文件细节参考跳转</a></p>
+<p><a target="_blank" rel="noopener" href="https://lzyws739307453.blog.csdn.net/article/details/123605259">参考2</a></p>
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><p>m1 mac上的launch.json案例</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;(lldb) 启动&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cppdbg&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;request&quot;</span><span class="punctuation">:</span> <span class="string">&quot;launch&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;program&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;-std=c++17&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;stopAtEntry&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;fileDirname&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;environment&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;externalConsole&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;MIMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lldb&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>设置好后,点击调试按钮进行调试</p>
+<h1 id="代理相关"><a href="#代理相关" class="headerlink" title="代理相关"></a>代理相关</h1><h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><ul>
+<li><p>系统代理</p>
+<p>将数据交给本地http&#x2F;socks服务的系统代理,GFW可以判断得到是vpn链接发起请求,由于其处于灰色地带,正规途径有需要,因此会放行,但特殊时期可能阻断</p>
+<p>问题:并非所有软件都遵循系统代理,除去浏览器,绝大部分软件都不会走系统代理,甚至连设置代理的地方都没有,行为完全取决于软件开发者.并且系统代理一般都是http代理而非socks5,http代理不支持udp,游戏等流量无法代理</p>
+</li>
+<li><p>TUN&#x2F;TAP代理(最常用)</p>
+<p>使用虚拟网卡接管系统全局流量的tun&#x2F;tap代理</p>
+<p>主流模式,手机默认就是这种模式,软路由接管全家科学上网也是同样的原理(称为透明代理)</p>
+<p>问题:我们使用的ss,vmess,trojan等主流的翻墙协议都无法封装网络层的数据包,比如tun模式,ping谷歌的话,返回假延迟,因为上述协议无法代理网络层的icmp协议</p>
+</li>
+<li><p>真VPN代理</p>
+<p>能封装网络层数据包,只有能封装网络层数据包,才能实现异地组网,内网穿透,才能称为真正的VPN</p>
+<p>软件一般是用WireGuard,可以正常ping外网地址</p>
+<p>问题:并非为翻墙而生,只是对数据进行加密顺便实现了翻墙功能,他的流量清晰明了地写着它就是VPN的流量.而且vpn分流很不方便.因此不推荐用来科学上网</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202307221059694.png" alt="image-20230722105912700"></p>
+</li>
+</ul>
+<p>SS协议  –减少GFW重放攻击-&gt;  SSR协议(带伪装插件的SS协议)</p>
+<p>SSR协议</p>
+<blockquote>
+<p>DNS泄露:clsh使用了ip规则进行分流的情况下,访问谷歌之前必须先得到谷歌的ip地址,于是clash发起dns请求,dns如果是明文的,那么当你要到谷歌ip的时候,马上给其他服务器发了一堆加密数据,该行为特征,鬼都知道你在干啥.再比如:网飞客户端偷偷发一个dns请求,权威dns服务器记载的这个dns请求的上游dns服务器所在地就会和代理服务器的上游dns服务器所在地不是一个地区,以此判定你在使用vpn工具</p>
+<p>DNS泄露的本质原因:在代理的情况下,本地发出了dns请求,而这可能仅仅是为了获得ip匹配clash规则中的ip分流规则,实际上真正的dns解析依旧会在远程代理服务器上进行.</p>
+<p>解决方案:fake-ip模式:<a target="_blank" rel="noopener" href="https://www.hughh.top/posts/soft-routing-guide-3/">当我们使用Fake-IP模式时（openclash运行在路由器上），浏览器请求dns解析，dns解析请求被clash截获，clash立刻返回一个Fake IP给浏览器，浏览器根据ip发起连接，请求被clash拦截，clash根据fake ip在自己的映射表中反查出域名，再用域名去走代理，代理服务器解析dns。</a><a target="_blank" rel="noopener" href="https://www.hughh.top/posts/soft-routing-guide-3/">3</a><a target="_blank" rel="noopener" href="https://github.com/vernesong/OpenClash/wiki/%E5%B8%B8%E8%A7%84%E8%AE%BE%E7%BD%AE"> 这样客户端响应速度加快，浏览体验更加顺畅，减轻网页加载时间过长的情况。</a><a target="_blank" rel="noopener" href="https://github.com/vernesong/OpenClash/wiki/%E5%B8%B8%E8%A7%84%E8%AE%BE%E7%BD%AE">4</a></p>
+</blockquote>
+<p>软件层面  v2rayN -&gt; shadowsocks -&gt; </p>
+<h2 id="DNS分流"><a href="#DNS分流" class="headerlink" title="DNS分流"></a>DNS分流</h2><h2 id="UDP穿透篇"><a href="#UDP穿透篇" class="headerlink" title="UDP穿透篇"></a>UDP穿透篇</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/74483b98/" rel="prev" title="标准模板库(STL)">
+      <i class="fa fa-chevron-left"></i> 标准模板库(STL)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/b458259c/" rel="next" title="nas方案">
+      nas方案 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vscode%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.</span> <span class="nav-text">vscode快捷键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#makeFile%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">makeFile学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%99%A8%E7%9B%B8%E5%85%B3"><span class="nav-number">2.1.</span> <span class="nav-text">编译器相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%97%B6%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE%E9%A1%BA%E5%BA%8F"><span class="nav-number">2.2.</span> <span class="nav-text">编译时相关文件查找顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GDB%E8%B0%83%E8%AF%95%E5%99%A8"><span class="nav-number">2.3.</span> <span class="nav-text">GDB调试器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GDB%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="nav-number">2.3.1.</span> <span class="nav-text">GDB主要功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E8%B0%83%E8%AF%95%E5%91%BD%E4%BB%A4%E5%8F%82%E6%95%B0"><span class="nav-number">2.3.2.</span> <span class="nav-text">常用调试命令参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#list%E6%98%BE%E7%A4%BA%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">list显示代码命令详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#break%E8%AE%BE%E7%BD%AE%E6%96%AD%E7%82%B9%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">break设置断点命令详解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E6%96%AD%E7%82%B9%E2%80%93%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.2.2.1.</span> <span class="nav-text">简单断点–当前文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%9A%E6%96%87%E4%BB%B6%E8%AE%BE%E7%BD%AE%E6%96%AD%E7%82%B9"><span class="nav-number">2.3.2.2.2.</span> <span class="nav-text">多文件设置断点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89%E6%96%AD%E7%82%B9"><span class="nav-number">2.3.2.2.3.</span> <span class="nav-text">查询所有断点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%96%AD%E7%82%B9"><span class="nav-number">2.3.2.2.4.</span> <span class="nav-text">条件断点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%B4%E6%8A%A4%E6%96%AD%E7%82%B9"><span class="nav-number">2.3.2.2.5.</span> <span class="nav-text">维护断点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="nav-number">2.3.2.2.6.</span> <span class="nav-text">调试代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E8%BF%90%E8%A1%8C%E4%B8%AD%E4%BF%A1%E6%81%AF"><span class="nav-number">2.3.2.2.7.</span> <span class="nav-text">显示运行中信息</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#makefile%E5%9F%BA%E6%9C%AC%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.4.</span> <span class="nav-text">makefile基本格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#makefile%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F"><span class="nav-number">2.5.</span> <span class="nav-text">makefile中的变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%BC%8F%E8%A7%84%E5%88%99"><span class="nav-number">2.6.</span> <span class="nav-text">模式规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#makefile%E7%9A%84%E6%B8%85%E7%90%86%E6%93%8D%E4%BD%9C"><span class="nav-number">2.7.</span> <span class="nav-text">makefile的清理操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#makefile%E5%91%BD%E4%BB%A4%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7"><span class="nav-number">2.8.</span> <span class="nav-text">makefile命令中的特殊符号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#make%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">2.9.</span> <span class="nav-text">make命令的参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#makefile%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0"><span class="nav-number">2.10.</span> <span class="nav-text">makefile的常见函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cmake%E5%AD%A6%E4%B9%A0"><span class="nav-number">3.</span> <span class="nav-text">cmake学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E7%89%B9%E6%80%A7%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.1.</span> <span class="nav-text">语法特性介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E8%A6%81%E6%8C%87%E4%BB%A4"><span class="nav-number">3.2.</span> <span class="nav-text">重要指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake%E5%B8%B8%E7%94%A8%E5%8F%98%E9%87%8F"><span class="nav-number">3.3.</span> <span class="nav-text">CMake常用变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMAKE%E7%BC%96%E8%AF%91%E5%B7%A5%E7%A8%8B"><span class="nav-number">3.4.</span> <span class="nav-text">CMAKE编译工程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%E8%AE%BE%E7%BD%AE%E7%BC%96%E8%AF%91%E8%A7%84%E5%88%99"><span class="nav-number">3.4.1.</span> <span class="nav-text">两种方式设置编译规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%B5%81%E7%A8%8B"><span class="nav-number">3.4.2.</span> <span class="nav-text">编译流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E6%9E%84%E5%BB%BA%E6%96%B9%E5%BC%8F"><span class="nav-number">3.4.3.</span> <span class="nav-text">两种构建方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%90%E5%AE%9E%E6%88%98%E3%80%91CMake%E4%BB%A3%E7%A0%81%E5%AE%9E%E8%B7%B5"><span class="nav-number">3.5.</span> <span class="nav-text">【实战】CMake代码实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E7%9A%84CMake%E5%B7%A5%E7%A8%8B"><span class="nav-number">3.5.1.</span> <span class="nav-text">最小的CMake工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%9B%AE%E5%BD%95%E5%B7%A5%E7%A8%8B-%E7%9B%B4%E6%8E%A5%E7%BC%96%E8%AF%91"><span class="nav-number">3.5.2.</span> <span class="nav-text">多目录工程-直接编译</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vscode%E9%85%8D%E5%90%88cmake%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95"><span class="nav-number">3.6.</span> <span class="nav-text">vscode配合cmake进行调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cmake%E8%BF%9B%E9%98%B6"><span class="nav-number">3.7.</span> <span class="nav-text">cmake进阶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%B0%E4%BB%A3CMAKE"><span class="nav-number">3.8.</span> <span class="nav-text">现代CMAKE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0"><span class="nav-number">4.</span> <span class="nav-text">终端指令学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4"><span class="nav-number">4.1.</span> <span class="nav-text">基本指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#homebrew%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">4.2.</span> <span class="nav-text">homebrew常用命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git%E4%B8%80%E5%9B%BE%E6%B5%81"><span class="nav-number">5.</span> <span class="nav-text">git一图流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git%E8%AF%A6%E8%A7%A3"><span class="nav-number">6.</span> <span class="nav-text">git详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git%E4%B8%8Esvn%E5%AF%B9%E6%AF%94"><span class="nav-number">6.1.</span> <span class="nav-text">Git与svn对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">6.2.</span> <span class="nav-text">git工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git%E5%AE%89%E8%A3%85"><span class="nav-number">6.3.</span> <span class="nav-text">Git安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E8%AF%8D%E7%90%86%E8%A7%A3"><span class="nav-number">6.4.</span> <span class="nav-text">关键词理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8git%E7%AE%A1%E7%90%86%E6%96%87%E4%BB%B6"><span class="nav-number">6.5.</span> <span class="nav-text">使用git管理文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%89%88%E6%9C%AC%E5%BA%93"><span class="nav-number">6.5.1.</span> <span class="nav-text">创建版本库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%9A%82%E5%AD%98%E5%8C%BA%E5%B9%B6%E6%8F%90%E4%BA%A4"><span class="nav-number">6.5.2.</span> <span class="nav-text">添加暂存区并提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%98%E5%8E%9F%E4%BF%AE%E6%94%B9"><span class="nav-number">6.5.3.</span> <span class="nav-text">还原修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="nav-number">6.5.4.</span> <span class="nav-text">查看相关信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%BF%AE%E6%94%B9%E5%86%85%E5%AE%B9"><span class="nav-number">6.5.5.</span> <span class="nav-text">对比修改内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E6%9C%AA%E6%9A%82%E5%AD%98%E4%BF%AE%E6%94%B9"><span class="nav-number">6.5.5.1.</span> <span class="nav-text">对比未暂存修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E5%B7%B2%E6%9A%82%E5%AD%98%E4%BF%AE%E6%94%B9"><span class="nav-number">6.5.5.2.</span> <span class="nav-text">对比已暂存修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E6%9C%AC%E5%9C%B0%E4%B8%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">6.5.5.3.</span> <span class="nav-text">对比本地与远程仓库的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%BF%BD%E7%95%A5%E5%88%97%E8%A1%A8"><span class="nav-number">6.5.6.</span> <span class="nav-text">添加忽略列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%9B%B8%E5%85%B3"><span class="nav-number">6.5.7.</span> <span class="nav-text">删除相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%BA%A4%E4%BA%92"><span class="nav-number">6.5.8.</span> <span class="nav-text">与远程仓库交互</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E5%90%8C%E6%AD%A5%E5%88%B0%E8%BF%9C%E7%A8%8B"><span class="nav-number">6.5.8.1.</span> <span class="nav-text">本地同步到远程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E5%90%8C%E6%AD%A5%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="nav-number">6.5.8.2.</span> <span class="nav-text">远程同步到本地</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH%E5%8D%8F%E8%AE%AE%E9%85%8D%E7%BD%AE"><span class="nav-number">6.5.9.</span> <span class="nav-text">SSH协议配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90SSH%E5%8D%8F%E8%AE%AE%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">6.5.9.1.</span> <span class="nav-text">生成SSH协议密钥对</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AC%E9%92%A5%E6%B7%BB%E5%8A%A0%E5%88%B0-github-%E8%B4%A6%E6%88%B7"><span class="nav-number">6.5.9.2.</span> <span class="nav-text">公钥添加到 github 账户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SSH%E5%8D%8F%E8%AE%AE%E7%A7%81%E9%92%A5%E8%AE%BE%E7%BD%AE%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="nav-number">6.5.9.3.</span> <span class="nav-text">SSH协议私钥设置到本地</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95SSH%E5%8D%8F%E8%AE%AE%E8%BF%9E%E6%8E%A5"><span class="nav-number">6.5.9.4.</span> <span class="nav-text">测试SSH协议连接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="nav-number">6.5.10.</span> <span class="nav-text">分支操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81"><span class="nav-number">6.5.10.0.1.</span> <span class="nav-text">解决冲突</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">git常用指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%8E%AF%E5%A2%83%E8%AE%BE%E5%AE%9A"><span class="nav-number">7.1.</span> <span class="nav-text">常用环境设定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git%E7%89%88%E6%9C%AC%E6%9F%A5%E7%9C%8B"><span class="nav-number">7.1.1.</span> <span class="nav-text">git版本查看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E5%AE%9A%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99"><span class="nav-number">7.1.2.</span> <span class="nav-text">设定个人资料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4%E6%9E%B6%E6%9E%84"><span class="nav-number">7.2.</span> <span class="nav-text">基本指令架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E6%8C%87%E4%BB%A4"><span class="nav-number">7.3.</span> <span class="nav-text">上传指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E5%82%A8%E5%AD%98%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-number">7.3.1.</span> <span class="nav-text">远程储存库操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="nav-number">7.4.</span> <span class="nav-text">git版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git%E7%89%88%E6%9C%AC%E7%BB%86%E8%8A%82"><span class="nav-number">7.4.1.</span> <span class="nav-text">git版本细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%98%E5%8E%9F%E6%8A%80%E5%B7%A7"><span class="nav-number">7.4.2.</span> <span class="nav-text">还原技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AA%E8%B7%9F%E8%B8%AA%E6%83%85%E5%86%B5%E4%B8%8B"><span class="nav-number">7.4.2.1.</span> <span class="nav-text">未跟踪情况下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%B2%E8%B7%9F%E8%B8%AA%E6%83%85%E5%86%B5%E4%B8%8B"><span class="nav-number">7.4.2.2.</span> <span class="nav-text">已跟踪情况下</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git%E5%88%86%E6%94%AF-branch"><span class="nav-number">7.4.3.</span> <span class="nav-text">Git分支(branch)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git%E5%92%8Cgithub"><span class="nav-number">8.</span> <span class="nav-text">git和github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%83%AD%E9%97%A8%E8%BF%9C%E7%A8%8B%E5%82%A8%E5%AD%98%E5%BA%93"><span class="nav-number">8.0.1.</span> <span class="nav-text">热门远程储存库</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2%E5%8C%96git%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6"><span class="nav-number">9.</span> <span class="nav-text">图形化git管理软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#win%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E7%9B%B8%E5%85%B3"><span class="nav-number">10.</span> <span class="nav-text">win终端命令相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E9%87%8D%E5%91%BD%E5%90%8D"><span class="nav-number">10.1.</span> <span class="nav-text">终端命令重命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#powershell%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4"><span class="nav-number">10.2.</span> <span class="nav-text">powershell新建文件命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4"><span class="nav-number">11.</span> <span class="nav-text">工具命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh"><span class="nav-number">11.1.</span> <span class="nav-text">ssh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scp"><span class="nav-number">11.2.</span> <span class="nav-text">scp</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95"><span class="nav-number">12.</span> <span class="nav-text">代码调试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IDE%E7%9B%B8%E5%85%B3tips"><span class="nav-number">13.</span> <span class="nav-text">IDE相关tips</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vs%E5%BC%80%E5%8F%91linux%E9%A1%B9%E7%9B%AE"><span class="nav-number">13.1.</span> <span class="nav-text">vs开发linux项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VS%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91"><span class="nav-number">13.1.1.</span> <span class="nav-text">VS远程开发</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vscode%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91"><span class="nav-number">13.2.</span> <span class="nav-text">vscode远程开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vscode%E9%85%8D%E7%BD%AEC-%E8%B0%83%E8%AF%95"><span class="nav-number">13.2.1.</span> <span class="nav-text">vscode配置C++调试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code-runner%E9%85%8D%E7%BD%AE"><span class="nav-number">13.3.</span> <span class="nav-text">code runner配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windows%E4%B8%8B%E7%9A%84vscode%E7%BB%88%E7%AB%AF%E4%B9%B1%E7%A0%81"><span class="nav-number">13.4.</span> <span class="nav-text">windows下的vscode终端乱码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vscode%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">13.5.</span> <span class="nav-text">vscode的配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tasks-json"><span class="nav-number">13.5.1.</span> <span class="nav-text">tasks.json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#launch-json"><span class="nav-number">13.5.2.</span> <span class="nav-text">launch.json</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-number">13.5.2.1.</span> <span class="nav-text">案例</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E7%9B%B8%E5%85%B3"><span class="nav-number">14.</span> <span class="nav-text">代理相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F"><span class="nav-number">14.1.</span> <span class="nav-text">代理模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS%E5%88%86%E6%B5%81"><span class="nav-number">14.2.</span> <span class="nav-text">DNS分流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDP%E7%A9%BF%E9%80%8F%E7%AF%87"><span class="nav-number">14.3.</span> <span class="nav-text">UDP穿透篇</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZEROKO14</p>
+  <div class="site-description" itemprop="description">你好，欢迎来到ZEROKO14的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZEROKO14</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+  <script defer src="/blog/lib/three/three.min.js"></script>
+    <script defer src="/blog/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

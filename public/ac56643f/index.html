@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="加解密相关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="加密与解密">
+<meta property="og:url" content="http://zeroko14.gitee.io/ac56643f/index.html">
+<meta property="og:site_name" content="ZEROKO14的个人博客">
+<meta property="og:description" content="加解密相关">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202212241530981.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202212311521546.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202212311525657.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202212311543694.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202212311543177.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302021804138.jpeg">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302021804660.jpeg">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302221517723.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302221520297.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302231408999.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302231409550.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302231420018.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302231557592.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302231855096.jpeg">
+<meta property="article:published_time" content="2023-02-02T09:58:02.688Z">
+<meta property="article:modified_time" content="2023-09-03T15:03:13.943Z">
+<meta property="article:author" content="ZEROKO14">
+<meta property="article:tag" content="加解密">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202212241530981.png">
+
+<link rel="canonical" href="http://zeroko14.gitee.io/ac56643f/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>加密与解密 | ZEROKO14的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ZEROKO14的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">zeroko14's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/ac56643f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="ZEROKO14">
+      <meta itemprop="description" content="你好，欢迎来到ZEROKO14的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZEROKO14的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          加密与解密
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-02-02 17:58:02" itemprop="dateCreated datePublished" datetime="2023-02-02T17:58:02+08:00">2023-02-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-03 23:03:13" itemprop="dateModified" datetime="2023-09-03T23:03:13+08:00">2023-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="加解密相关"><a href="#加解密相关" class="headerlink" title="加解密相关"></a>加解密相关</h1><span id="more"></span>
+
+<p>涉及到网络数据传输的且对传输的数据有安全性需求的,就需要传输数据之前对数据进行加密操作,常用的网络通信方式有</p>
+<ul>
+<li>socket通信 —- 如 socket API编程</li>
+<li>http协议通信 —- 如B&#x2F;S模式</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202212241530981.png" alt="image-20221224153050288"></p>
+<p>为保证网络通信时数据的安全,就需要对数据进行加密</p>
+<h2 id="常用的加密的方式"><a href="#常用的加密的方式" class="headerlink" title="常用的加密的方式"></a>常用的加密的方式</h2><h3 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h3><p>加密和解密使用的是同一个秘钥</p>
+<ul>
+<li>秘钥分发困难</li>
+<li>加密效率高</li>
+<li>安全级别低(相对与非对称加密)</li>
+</ul>
+<p>AEAD解密方式</p>
+<h3 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h3><p>加密和解密所使用的秘钥不同,是一个秘钥对,包含:</p>
+<ul>
+<li>公钥 — 可以公开的秘钥</li>
+<li>私钥 — 不能公开的秘钥</li>
+</ul>
+<p>传输的数据对谁更重要,谁就拿私钥</p>
+<p>加密的过程:使用公钥加密,必须使用私钥解密;使用私钥加密,必须使用公钥解密</p>
+<ul>
+<li>秘钥分发简单</li>
+<li>加密效率低</li>
+<li>安全级别高</li>
+</ul>
+<p>加密需要实现:</p>
+<ul>
+<li>秘钥生成,秘钥校验</li>
+<li>秘钥生成模块应该与实际使用该模块的项目关联程度要低,耦合度要低,一个模块的修改不要影响其他模块</li>
+</ul>
+<h2 id="常用安全算法"><a href="#常用安全算法" class="headerlink" title="常用安全算法"></a>常用安全算法</h2><h3 id="对称加密-1"><a href="#对称加密-1" class="headerlink" title="对称加密"></a>对称加密</h3><h4 id="DES-x2F-3DES"><a href="#DES-x2F-3DES" class="headerlink" title="DES&#x2F;3DES"></a>DES&#x2F;3DES</h4><p>DES-已经被破解</p>
+<ul>
+<li>要求秘钥长度8字节</li>
+<li>在对数据进行加密之前先对数据按每组8个字节进行分组,然后分段进行加密,最后再将每一段加密的数据进行组合</li>
+</ul>
+<p>3DES-效率低</p>
+<ul>
+<li>秘钥长度24字节,内部会将秘钥分成3份</li>
+<li>同样,需要加密的数据先按每组8个字节进行分组,然后分别使用三份秘钥进行加密—&gt;解密—&gt;加密;</li>
+<li>若三份秘钥都相同,其实就是DES加密方式</li>
+</ul>
+<h4 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h4><p><strong>使用最广泛</strong>的对称加密算法,<a href="#AES%E7%AE%97%E6%B3%95">详解</a></p>
+<p>秘钥要求:</p>
+<ul>
+<li>16字节,24字节,32字节</li>
+<li>秘钥长度越大,加密效率越低,但安全性越高</li>
+</ul>
+<h4 id="其他对称加密算法"><a href="#其他对称加密算法" class="headerlink" title="其他对称加密算法"></a>其他对称加密算法</h4><ul>
+<li>TDEA</li>
+<li>Blowfish</li>
+<li>RC2&#x2F;RC4&#x2F;RC5</li>
+<li>IDEA</li>
+<li>SKIPJACK</li>
+</ul>
+<h3 id="非对称加密-1"><a href="#非对称加密-1" class="headerlink" title="非对称加密"></a>非对称加密</h3><ul>
+<li><a href="#RSA%E7%AE%97%E6%B3%95">RSA</a>(数字签名和密钥交换)</li>
+<li>ECC(椭圆曲线加密算法)</li>
+<li>Diffie-Hellman(DH,密钥交换)</li>
+<li>El Gamal(数字签名)</li>
+<li>DSA(数字签名)</li>
+</ul>
+<h3 id="Hash算法"><a href="#Hash算法" class="headerlink" title="Hash算法"></a>Hash算法</h3><p><a href="#%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0"><strong>Hash算法</strong></a>  –&gt;  单向散列函数 —- Hash算法不是用于加密的,只能<strong>单向转换</strong></p>
+<ul>
+<li>将任意长度的数据生成一个固定长度的字符串</li>
+<li>MD4&#x2F;MD5 <ul>
+<li>散列值长度16字节</li>
+</ul>
+</li>
+<li>SHA-1<ul>
+<li>散列值长度20字节</li>
+</ul>
+</li>
+<li>SHA-2<ul>
+<li>SHA224&#x2F;SHA256&#x2F;SHA384&#x2F;SHA512</li>
+<li>sha224<ul>
+<li>散列值长度:224&#x2F;8&#x3D;28字节</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SHA3-224&#x2F;SHA3-256&#x2F;SHA3-384&#x2F;SHA3-512</li>
+<li>HMAC</li>
+</ul>
+<p>注意:Hash算法由于不能逆,所以不能得到原始数据,不能用于加密,多用于数据校验</p>
+<h3 id="消息认证码"><a href="#消息认证码" class="headerlink" title="消息认证码"></a>消息认证码</h3><p>消息认证码(message authentication code)是一种确认完整性并进行认证的技术,取三个单词的首字母,简称为MAC.</p>
+<p>消息认证码的输入包括任意长度的消息和一个发送者与接受者之间共享的密钥,它可以输出固定长度的数据,这个数据称为MAC值.</p>
+<p>根据任意长度的消息输出固定长度的数据,这一点和单向散列函数很类似.但是单向散列函数中计算散列值时不需要密钥,而消息认证码中则需要使用发送者与接受这之间共享的密钥.</p>
+<p>上面的hmac就属于消息认证码</p>
+<h3 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h3><h2 id="openssl"><a href="#openssl" class="headerlink" title="openssl"></a>openssl</h2><p>OpenSSL 是一个安全套接字层密码库(由C语言实现的)，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。</p>
+<p>SSL是Secure Sockets Layer（安全套接层协议）的缩写，可以在Internet上提供秘密性传输。Netscape公司在推出第一个Web浏览器的同时，提出了SSL协议标准。其目标是保证两个应用间通信的保密性和可靠性,可在服务器端和用户端同时实现支持。已经成为Internet上保密通讯的工业标准.https协议就用到了SSL,HTTPS协议是由SSL+HTTP协议构建的可进行加密传输,身份认证的网络协议,比http协议安全</p>
+<p>OpenSSL既可以在windows平台下使用,也可以在linux平台下使用,是跨平台的一套加密库</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="win下安装"><a href="#win下安装" class="headerlink" title="win下安装"></a>win下安装</h4><p><a target="_blank" rel="noopener" href="http://slproweb.com/products/Win32OpenSSL.html">OpenSSL win版安装路径</a></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202212311521546.png" alt="image-20221231152119110"></p>
+<h4 id="win下使用openssl"><a href="#win下使用openssl" class="headerlink" title="win下使用openssl"></a>win下使用openssl</h4><p>设置项目属性,将openssl的头文件目录和库目录添加到当前项目中</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202212311525657.png" alt="image-20221231152435770"></p>
+<ul>
+<li><strong>包含目录</strong>设置为openssl安装目录下的include目录</li>
+<li><strong>库目录</strong>设置为openssl安装目录下的lib目录</li>
+</ul>
+<p>VS中的附加依赖项设置:</p>
+<p><strong>项目属性 -&gt; 链接器 -&gt; 输入 -&gt; 附加依赖项</strong></p>
+<ul>
+<li><strong>libssl.lib</strong></li>
+<li><strong>libcrypto.lib</strong></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202212311543694.png" alt="image-20221231154325461"></p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202212311543177.png" alt="image-20221231154349203"></p>
+<p>将openssl安装目录<code>/bin</code>目录下的两个动态库拷贝到工作目录下: </p>
+<ul>
+<li><strong><code>libcrypto-1_1-x64.dll</code></strong></li>
+<li><strong><code>libssl-1_1-x64.dll</code></strong></li>
+</ul>
+<p><strong>测试代码:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#define _CRT_SECURE_NO_WARNINGS</span><br><span class="line">#include &lt;openssl/md5.h&gt;    // md5 头文件</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">void getMD5(const char* str, char* result)</span><br><span class="line">&#123;</span><br><span class="line">  MD5_CTX ctx;</span><br><span class="line">  // 初始化</span><br><span class="line">  MD5_Init(&amp;ctx);</span><br><span class="line">  // 添加数据</span><br><span class="line">  MD5_Update(&amp;ctx, str, strlen(str));</span><br><span class="line">  // 计算结果</span><br><span class="line">  unsigned char md[16] = &#123; 0 &#125;;</span><br><span class="line">  MD5_Final(md, &amp;ctx);</span><br><span class="line">  for (int i = 0; i &lt; 16; ++i)</span><br><span class="line">  &#123;</span><br><span class="line">    sprintf(&amp;result[i * 2], &quot;%02x&quot;, md[i]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  char result[33] = &#123; 0 &#125;;</span><br><span class="line">  getMD5(&quot;hello, md5&quot;, result);</span><br><span class="line">  printf(&quot;md5 value: %s\n&quot;, result);</span><br><span class="line">  system(&quot;pause&quot;);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输出结果: </span><br><span class="line">  md5 value: 33b3bc8e05b4fcc16bd531dd9adac166</span><br></pre></td></tr></table></figure>
+
+<h4 id="Linux下安装"><a href="#Linux下安装" class="headerlink" title="Linux下安装"></a><strong>Linux下安装</strong></h4><p><strong><a target="_blank" rel="noopener" href="https://github.com/openssl/openssl/tree/OpenSSL_1_1_1-stable">OpenSSL linux版下载</a></strong></p>
+<p> <strong><code>git clone https://github.com/openssl/openssl.git</code></strong></p>
+<p><strong>进入根目录,安装:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./config</span><br><span class="line">make</span><br><span class="line">make test    (可选)</span><br><span class="line">make install   (使用管理员权限执行该命令)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>参考<a href="/blog/5c231afa#linux%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85" onclick="event.preventDefault(); window.location.href=this.href.replace(//#/, '#');" data-pjax-state target="_Blank" >linux源码安装</a>中的安装流程:</strong> </p>
+<ol>
+<li><strong>以下文件, 里边有安装步骤</strong><ol>
+<li><strong>readme</strong></li>
+<li><strong>readme.md</strong></li>
+<li><strong>INSTALL</strong></li>
+</ol>
+</li>
+<li><strong>找 可执行文件 <code>configure</code></strong><ol>
+<li><strong>执行这个可执行文件</strong><ol>
+<li><strong>检测安装环境</strong></li>
+<li><strong>生成 makefile</strong></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong>执行<code>make</code>命令</strong><ol>
+<li><strong>编译源代码</strong><ol>
+<li><strong>生成了动态库</strong></li>
+<li><strong>静态库</strong></li>
+<li><strong>可执行程序</strong></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong>安装 <code>make install</code> (需要管理员权限)</strong><ol>
+<li><strong>将第三步生成的动态库&#x2F;动态库&#x2F;可执行程序拷贝到对应的系统目录</strong></li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<p><strong>验证是否安装成功</strong></p>
+<p><strong><code>openssl version -a</code></strong></p>
+<h4 id="Linux下使用openssl"><a href="#Linux下使用openssl" class="headerlink" title="Linux下使用openssl"></a><strong>Linux下使用openssl</strong></h4><p><strong>使用的代码与<a href="#win%E4%B8%8B%E4%BD%BF%E7%94%A8openssl">此处代码</a>一样</strong></p>
+<p><strong>通过gcc编译源文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gcc md5_test.c -o md5 -lssl -lcrypto</span><br><span class="line">执行该命令, 需要加载openssl的两个动态库    </span><br><span class="line">- libssl.so    </span><br><span class="line">- libcrypto.so</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看生成的可执行程序 md5 运行时需要加载的动态库:</strong></p>
+<p><strong><code>ldd md5</code></strong></p>
+<p><strong>如果找不到,可以使用定位libcrypto.so   <code>locate libcrypto.so</code>  或者 <code>find / -name &quot;libcrypto.so&quot;</code>等语句找到动态库所在目录</strong></p>
+<p><strong>将找到的动态库绝对路径添加到  <code>/etc/ls.so.conf</code>  文件夹中,并使用管理员权限执行命令  <code>ldconfig</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ld.so.conf</span><br><span class="line">将 找到的动态库绝对路径 添加到文件末尾, 保存退出配置文件</span><br><span class="line">更新配置:</span><br><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
+
+<h1 id="常见的加密算法的逆向特征"><a href="#常见的加密算法的逆向特征" class="headerlink" title="常见的加密算法的逆向特征"></a>常见的加密算法的逆向特征</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/320ff95dff2d">参考网址跳转</a></p>
+<h2 id="取盐算法"><a href="#取盐算法" class="headerlink" title="取盐算法"></a>取盐算法</h2><blockquote>
+<p>取盐 算法，也叫 摘要算法，是对数据进行一系列运算后，截取一部分关键值进行校验。因此运算过程 不可逆，无法还原出加密前的 初始文本。取盐算法得到的结果长度一般是固定的，无论输入的消息有多长，计算出来的消息摘要的长度总是固定的。一般地，只要输入的文本不同，对其进行摘要以后产生的摘要消息也必不相同，但相同的文本输入必会产生相同的输出。</p>
+</blockquote>
+<p>在密码学中，<code>盐（Salt）</code>是指通过在密码任意固定位置插入特定的字符串，让散列后的结果和使用原始密码的散列结果不相符，这种过程称之为“加盐”。这样可以增加破解难度，提高密码安全性。</p>
+<p><strong>取盐算法</strong>是指如何选择盐</p>
+<h3 id="MD5逆向特征"><a href="#MD5逆向特征" class="headerlink" title="MD5逆向特征"></a>MD5逆向特征</h3><ul>
+<li><p>字符串为 16 进制，即数字英文组合，而且 英文最大是字母 <code>f</code> 。</p>
+</li>
+<li><p>位数为 16、32。</p>
+</li>
+<li><p>搜索关键字：</p>
+<p>– 关键词：md5、MD5</p>
+<p>– 默认的 key 值：0123456789abcdef、0123456789ABCDEF</p>
+<p>– 原始MD5的魔法值（16进制）：0x67452301、0xefcdab89、0x98badcfe、0x10325476</p>
+<p>– 原始MD5的魔法值（10进制）：1732584193、271733879、1732584194、271733878</p>
+</li>
+<li><p>123456 计算结果值：</p>
+</li>
+<li><p>16 位，结果值 49 开头。</p>
+<p>– 16位小写计算结果：49ba59abbe56e057</p>
+<p>– 16位大写计算结果：49BA59ABBE56E057</p>
+</li>
+<li><p>32 位，结果值 e10、E10 开头。</p>
+<p>– 32位小写计算结果：e10adc3949ba59abbe56e057f20f883e</p>
+<p>– 32位小写计算结果：E10ADC3949BA59ABBE56E057F20F883E</p>
+</li>
+</ul>
+<p>注意：16位 的结果值是 32位 的结果值的一部分。</p>
+<h3 id="SHA逆向特征"><a href="#SHA逆向特征" class="headerlink" title="SHA逆向特征"></a>SHA逆向特征</h3><ul>
+<li>字符串为 16 进制，即数字英文组合，而且 英文最大是字母 f </li>
+<li>位数为 40、64、96、128 等，位数均是 8 的倍数。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//123456 计算结果值：</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//SHA1：40 位：</span></span><br><span class="line"><span class="number">7</span>c4a8d09ca3762af61e59520943dc26494f8941b</span><br><span class="line"></span><br><span class="line"><span class="comment">//SHA256：64 位：</span></span><br><span class="line"><span class="number">8</span>d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92</span><br><span class="line"></span><br><span class="line"><span class="comment">//SHA384：96 位：</span></span><br><span class="line"><span class="number">0</span>a989ebc4a77b56a6e2bb7b19d995d185ce44090c13e2984b7ecc6d446d4b61ea9991b76a4c2f04b1b4d244841449454</span><br><span class="line"></span><br><span class="line"><span class="comment">//SHA512：128 位：</span></span><br><span class="line">ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413</span><br></pre></td></tr></table></figure>
+
+<h2 id="可还原加密算法"><a href="#可还原加密算法" class="headerlink" title="可还原加密算法"></a>可还原加密算法</h2><p>特征：</p>
+<ol>
+<li>字符串为 16 进制，即数字英文组合，而且 英文最大是字母 f 。</li>
+<li>字符串为 base64 编码形式，由数字 <code>0-9</code>、小写字母 <code>a-z</code>、大写字母 <code>A-Z</code> 以及字符 +、_、&#x3D; 组成，且最后一个或最后两个字符为 <code>=</code>。通常而言 Base64 的识别特征为索引表，当我们能找到 <code>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/</code> 这样索引表，再经过简单的分析基本就能判定是 Base64 编码。</li>
+</ol>
+<h3 id="RSA逆向特征"><a href="#RSA逆向特征" class="headerlink" title="RSA逆向特征"></a>RSA逆向特征</h3><blockquote>
+<p>RSA 是典型的 非对称加密，拥有一个公钥和一个私钥。</p>
+</blockquote>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">其中：</span><br><span class="line">-- 客户端（浏览器）拥有公钥，服务器同时拥有公钥和私钥。</span><br><span class="line">-- 同一个明文可以生成不同的密文。</span><br><span class="line">-- 必须先 <span class="keyword">new</span> JSEncrypt 加密对象，然后 setPublicKey。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>加密后的数据长度不可能是 8 的倍数。</li>
+<li>搜索关键词：<code>new JSEncrypt</code>、<code>setpublickey</code>、<code>ABCDEFG</code>、<code>abcdefg</code>。</li>
+</ul>
+<h3 id="AES逆向特征"><a href="#AES逆向特征" class="headerlink" title="AES逆向特征"></a>AES逆向特征</h3><p>AES 是 对称加密 的一种。</p>
+<ul>
+<li>一般AES加密出来的数据是128 或 256 的整倍数。</li>
+<li>搜索关键词：cryptojs.aes、encryptedString、010001（或类似二进制模值）。</li>
+</ul>
+<h3 id="DES逆向特征"><a href="#DES逆向特征" class="headerlink" title="DES逆向特征"></a>DES逆向特征</h3><p>搜索关键词：<code>cryptojs.des.encrypt</code>。</p>
+<h2 id="其他编码算法"><a href="#其他编码算法" class="headerlink" title="其他编码算法"></a>其他编码算法</h2><h3 id="Base64-逆向特征"><a href="#Base64-逆向特征" class="headerlink" title="Base64 逆向特征"></a>Base64 逆向特征</h3><ul>
+<li>字符串的长度为4的整数倍。</li>
+<li>字符串的符号取值只能在 <code>A-Z</code>, <code>a-z</code>, <code>0-9</code>, <code>+</code>, <code>/</code>, <code>=</code> 共计65个字符中，且 <code>=</code> 如果出现就必须在结尾出现。</li>
+</ul>
+<h1 id="RSA算法"><a href="#RSA算法" class="headerlink" title="RSA算法"></a>RSA算法</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41619796/article/details/118604950">数学原理参考1</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html">数学原理参考阮一峰</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV154411L7VT/?spm_id_from=333.1007.top_right_bar_window_history.content.click">视频</a></p>
+<p>明文,密文转化过程如图:</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302021804138.jpeg" alt="161675332249_.pic"></p>
+<p>公钥,私钥生成规则:</p>
+<p><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302021804660.jpeg" alt="171675332251_.pic"></p>
+<p>RSA算法往往是用于传输对称加密使用的密钥.</p>
+<h1 id="AES算法"><a href="#AES算法" class="headerlink" title="AES算法"></a>AES算法</h1><blockquote>
+<p>AES是一套对称密钥的密码术，目前已广泛使用，用于替代已经不够安全的DES算法。所谓对称密钥，就是说加密和解密用的是同一个密钥，消息的发送方和接收方在消息传递前需要享有这个密钥。和非对称密钥体系不同，这里的密钥是双方保密的，不会让任何第三方知道。</p>
+</blockquote>
+<p>对称密钥加密法主要<strong>基于块加密</strong>，选取固定长度的密钥，去加密明文中固定长度的块，生成的密文块,与明文块长度一样。显然密钥长度十分重要，块的长度也很重要。如果太短，则很容易枚举出所有的明文-<br>密文映射；如果太长，性能则会急剧下降。AES中规定块长度为128 bit，而密钥长度可以选择128,192或256 bit 。暴力破解密钥需要万亿年，这保证了AES的安全性。</p>
+<h2 id="OpenSSL中的API"><a href="#OpenSSL中的API" class="headerlink" title="OpenSSL中的API"></a>OpenSSL中的API</h2><p>头文件: <strong><code>&lt;openssl/aes.h&gt;</code></strong></p>
+<h3 id="生成加密-x2F-解密的Key"><a href="#生成加密-x2F-解密的Key" class="headerlink" title="生成加密&#x2F;解密的Key"></a>生成加密&#x2F;解密的Key</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="keyword">define</span> AES_BLOCK_SIZE 16 <span class="comment">// 明文分组的大小</span></span></span><br><span class="line"><span class="comment">// 加密的时候调用</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">AES_set_encrypt_key</span><span class="params">(<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span> *userKey, <span class="type">const</span> <span class="type">int</span> bits, AES_KEY *key)</span></span>;</span><br><span class="line"><span class="comment">//- 参数userKey: 数据加密使用的原始秘钥(字符串)</span></span><br><span class="line"><span class="comment">//- 参数bits: 秘钥字符串占的位数</span></span><br><span class="line"><span class="comment">//- 参数key: 传出参数, 供后续AES api加密使用的秘钥类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解密时候使用</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">AES_set_decrypt_key</span><span class="params">(<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span> *userKey, <span class="type">const</span> <span class="type">int</span> bits, AES_KEY *key)</span></span>;</span><br><span class="line"><span class="comment">//- 参数userKey: 数据解码密使用的原始秘钥(字符串)</span></span><br><span class="line"><span class="comment">//- 参数bits: 秘钥字符串占的位数</span></span><br><span class="line"><span class="comment">//- 参数key: 传出参数, 供后续AES api解密使用的秘钥类型</span></span><br><span class="line"><span class="comment">//同上,成功返回0,失败返回1</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>userKey</td>
+<td>16字节&#x2F;24字节&#x2F;32字节</td>
+</tr>
+<tr>
+<td>bits</td>
+<td>128bit&#x2F;192bit&#x2F;256bit</td>
+</tr>
+<tr>
+<td>key</td>
+<td>传出, 后续加解密API需要用到</td>
+</tr>
+</tbody></table>
+<h3 id="加解密函数"><a href="#加解密函数" class="headerlink" title="加解密函数"></a>加解密函数</h3><p>下面使用的其实就是<strong>ECB分组模式</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 要求使用以下两个api时候参数in必须是16的整数倍, 如果不是需要将最后一组补足16字节</span></span><br><span class="line"><span class="comment">// 解密的时候需要将最后一个分组添加的末尾字节删除</span></span><br><span class="line"><span class="comment">// 加密函数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">AES_encrypt</span><span class="params">(<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span> *in, <span class="type">unsigned</span> <span class="type">char</span> *out, <span class="type">const</span> AES_KEY *key)</span></span>;</span><br><span class="line"><span class="comment">//- 参数in: 要加密的原始数据 - 明文</span></span><br><span class="line"><span class="comment">//- 参数out: 传出, 加密之后 对数据 - 密文</span></span><br><span class="line"><span class="comment">//- 参数key: 通过AES_set_encrypt_key得到的key值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解密函数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">AES_decrypt</span><span class="params">(<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span> *in, <span class="type">unsigned</span> <span class="type">char</span> *out, <span class="type">const</span> AES_KEY *key)</span></span>;</span><br><span class="line"><span class="comment">//- 参数in: 要被解密的密文</span></span><br><span class="line"><span class="comment">//- 参数out: 解密后得到明文</span></span><br><span class="line"><span class="comment">//- 参数key: AES_set_decrypt_key得到的key值</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="案例"><a href="#案例" class="headerlink" title="案例"></a><strong>案例</strong></h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> len = <span class="built_in">strlen</span>(data); <span class="comment">// 已经是16的整数倍</span></span><br><span class="line"><span class="type">int</span> tmpLen = <span class="number">0</span>;</span><br><span class="line"><span class="type">char</span>* intbuf = data;</span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> outbuf[<span class="number">1024</span>];</span><br><span class="line"><span class="keyword">while</span>(tmpLen &lt; len)</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">AES_encrypt</span>(inbuf, &amp;outbuf, key);</span><br><span class="line">inbuf += <span class="number">16</span>;</span><br><span class="line">outbuf += <span class="number">16</span>;</span><br><span class="line">tmpLen += <span class="number">16</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//若不是16的整数倍, 则需要在末尾进行补齐, 如何补齐呢? 在补齐的时候, 缺几个就补几, 如:</span></span><br><span class="line"><span class="comment">//最后的一组, 缺7个字节, 则最后都补7, xxxxxxx7777777</span></span><br><span class="line"><span class="comment">//如果正好是16的整数倍, 则最后需要补上16个字节(如补上一个P), 解码之后再删掉就可以了.</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="ECB方式加密"><a href="#ECB方式加密" class="headerlink" title="ECB方式加密"></a>ECB方式加密</h4><p><strong>电子密码本模式</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">AES_ecb_encrypt</span><span class="params">(<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span> *in, <span class="type">unsigned</span> <span class="type">char</span> *out,<span class="type">const</span> AES_KEY *key, <span class="type">const</span> <span class="type">int</span> enc)</span></span>;</span><br><span class="line"><span class="comment">//- 参数in: 要加密/解密的数据, 长度在8字节范围就就可以</span></span><br><span class="line"><span class="comment">//- 参数out: 传出参数, 得到的明文/密文</span></span><br><span class="line"><span class="comment">//- 参数key:</span></span><br><span class="line"><span class="comment">//- 参数enc: 指定进行加密或者解密</span></span><br><span class="line">	<span class="comment">//- # define AES_ENCRYPT 1</span></span><br><span class="line">	<span class="comment">//- # define AES_DECRYPT 0</span></span><br></pre></td></tr></table></figure>
+
+<p>函数的使用方式</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这个函数调用一次只能处理8字节</span></span><br><span class="line"><span class="keyword">while</span>(条件)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">AES_ecb_encrypt</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="CBC方式加密"><a href="#CBC方式加密" class="headerlink" title="CBC方式加密"></a>CBC方式加密</h4><p><strong>密码分组链接模式</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">AES_cbc_encrypt</span><span class="params">(<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span> *in, <span class="type">unsigned</span> <span class="type">char</span> *out,<span class="type">size_t</span> length, <span class="type">const</span> AES_KEY *key,<span class="type">unsigned</span> <span class="type">char</span> *ivec, <span class="type">const</span> <span class="type">int</span> enc)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>参数**<code>in</code>**: 要加密&#x2F;解密的数据</p>
+</li>
+<li><p>参数**<code>out</code>**: 通过加密得到的密文&#x2F;通过解密得到的明文</p>
+</li>
+<li><p>参数**<code>Length</code>**: 修饰的是in参数</p>
+<ul>
+<li><p>如果in长度(需要加上<code>&#39;\0&#39;</code>长度)是16的整数倍, 那么length就等于该长度</p>
+<p><code>length = strlen(in)+1;</code>   (1就是尾部的’\0’)</p>
+</li>
+<li><p>in的长度(需要加上<code>&#39;\0&#39;</code>长度)不是16的整数倍, 需要将其变成16的整数倍</p>
+<p>计算当前有多少个分组 <code>gourp = (strlen(in)+1) / 16;</code></p>
+<p>将最后不满16字节的分组添加进来并将其字节数填充到16字节</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">group=group+1</span><br><span class="line">length = group * 16</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>参数**<code>key</code>**: 通过AES_set_encrypt_key得到的key值&#x2F; AES_set_decrypt_key得到的key值</p>
+</li>
+<li><p>参数**<code>ivec</code>**:</p>
+<ul>
+<li>随机字符串, 长度和明文分组长度相同.</li>
+<li>参与加解密的初始化向量的值必须相同</li>
+</ul>
+</li>
+<li><p>参数**<code>enc</code>**:</p>
+<ul>
+<li><code># define AES_ENCRYPT 1</code></li>
+<li><code># define AES_DECRYPT 0</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span>* mykey = <span class="string">&quot;0123456789abcdef&quot;</span>;</span><br><span class="line">AES_KEY key;</span><br><span class="line"><span class="built_in">AES_set_encrypt_key</span>((<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span>*)mykey,<span class="number">128</span>,&amp;key);</span><br><span class="line"><span class="comment">//需要加密的字符串</span></span><br><span class="line"><span class="type">int</span> length;</span><br><span class="line"><span class="type">char</span> *mystr = <span class="string">&quot;hello world,hao are you, i am fine, thank you&quot;</span>;</span><br><span class="line"><span class="comment">//计算第三个参数length的长度,包含了字符串末尾的\0</span></span><br><span class="line"><span class="keyword">if</span>((<span class="built_in">strlen</span>(mystr) + <span class="number">1</span>)%<span class="number">16</span> == <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//长度刚好合适</span></span><br><span class="line">    length = <span class="built_in">strlen</span>(mystr)+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    length = ((<span class="built_in">strlen</span>(mystr) + <span class="number">1</span>)/<span class="number">16</span> +<span class="number">1</span>)*<span class="number">16</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span>* encrypt = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">calloc</span>(length,<span class="number">1</span>);</span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> iv[<span class="number">16</span>];</span><br><span class="line"><span class="built_in">memset</span>(iv,<span class="string">&#x27;a&#x27;</span>,<span class="built_in">sizeof</span>(iv));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">16</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    std::cout&lt;&lt;<span class="string">&quot;iv[&quot;</span>&lt;&lt;i&lt;&lt;<span class="string">&quot;]==[&quot;</span>&lt;&lt;iv[i]&lt;&lt;<span class="string">&quot;]&quot;</span>&lt;&lt;std::endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">AES_cbc_encrypt</span>((<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span>*)mystr,encrypt,length,&amp;key,iv,AES_ENCRYPT);</span><br><span class="line">std::cout&lt;&lt;<span class="string">&quot;====================&quot;</span>&lt;&lt;std::endl;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">16</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    std::cout&lt;&lt;<span class="string">&quot;iv[&quot;</span>&lt;&lt;i&lt;&lt;<span class="string">&quot;]==[&quot;</span>&lt;&lt;iv[i]&lt;&lt;<span class="string">&quot;]&quot;</span>&lt;&lt;std::endl;</span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;<span class="string">&quot;加密后内容为:&quot;</span>&lt;&lt;encrypt&lt;&lt;endl;</span><br><span class="line">std::cout&lt;&lt;<span class="string">&quot;====================&quot;</span>&lt;&lt;std::endl;</span><br><span class="line">std::cout&lt;&lt;<span class="string">&quot;下面是解密&quot;</span>&lt;&lt;std::endl;</span><br><span class="line">std::cout&lt;&lt;<span class="string">&quot;====================&quot;</span>&lt;&lt;std::endl;</span><br><span class="line"><span class="built_in">AES_set_decrypt_key</span>((<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span>*)mykey,<span class="number">128</span>,&amp;key);</span><br><span class="line"><span class="built_in">memset</span>(iv,<span class="string">&#x27;a&#x27;</span>,<span class="built_in">sizeof</span>(iv));</span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> *decrypt = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">calloc</span>(length,<span class="number">1</span>);</span><br><span class="line"><span class="built_in">AES_cbc_encrypt</span>(encrypt,decrypt,length,&amp;key,iv,AES_DECRYPT);</span><br><span class="line"> <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">16</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    std::cout&lt;&lt;<span class="string">&quot;iv[&quot;</span>&lt;&lt;i&lt;&lt;<span class="string">&quot;]==[&quot;</span>&lt;&lt;iv[i]&lt;&lt;<span class="string">&quot;]&quot;</span>&lt;&lt;std::endl;</span><br><span class="line">&#125;</span><br><span class="line">std::cout&lt;&lt;<span class="string">&quot;解密后的内容为:&quot;</span>&lt;&lt;decrypt&lt;&lt;std::endl;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>输出为:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">iv[0]==[a]</span><br><span class="line">iv[1]==[a]</span><br><span class="line">iv[2]==[a]</span><br><span class="line">iv[3]==[a]</span><br><span class="line">iv[4]==[a]</span><br><span class="line">iv[5]==[a]</span><br><span class="line">iv[6]==[a]</span><br><span class="line">iv[7]==[a]</span><br><span class="line">iv[8]==[a]</span><br><span class="line">iv[9]==[a]</span><br><span class="line">iv[10]==[a]</span><br><span class="line">iv[11]==[a]</span><br><span class="line">iv[12]==[a]</span><br><span class="line">iv[13]==[a]</span><br><span class="line">iv[14]==[a]</span><br><span class="line">iv[15]==[a]</span><br><span class="line">====================</span><br><span class="line">iv[0]==[r]</span><br><span class="line">iv[1]==[8]</span><br><span class="line">iv[2]==[V]</span><br><span class="line">iv[3]==[]</span><br><span class="line">iv[4]==[]</span><br><span class="line">iv[5]==[�]</span><br><span class="line">iv[6]==[�]</span><br><span class="line">iv[7]==[a]</span><br><span class="line">iv[8]==[_]</span><br><span class="line">iv[9]==[~]</span><br><span class="line">iv[10]==[�]</span><br><span class="line">iv[11]==[�]</span><br><span class="line">iv[12]==[]</span><br><span class="line">iv[13]==[�]</span><br><span class="line">iv[14]==[]]</span><br><span class="line">iv[15]==[�]</span><br><span class="line">加密后内容为:T��h�u�f�&#123;&amp;y�]&amp;�7�h���(���</span><br><span class="line">                                       n�pr8V��a_~���]�</span><br><span class="line">====================</span><br><span class="line">下面是解密</span><br><span class="line">====================</span><br><span class="line">iv[0]==[r]</span><br><span class="line">iv[1]==[8]</span><br><span class="line">iv[2]==[V]</span><br><span class="line">iv[3]==[]</span><br><span class="line">iv[4]==[]</span><br><span class="line">iv[5]==[�]</span><br><span class="line">iv[6]==[�]</span><br><span class="line">iv[7]==[a]</span><br><span class="line">iv[8]==[_]</span><br><span class="line">iv[9]==[~]</span><br><span class="line">iv[10]==[�]</span><br><span class="line">iv[11]==[�]</span><br><span class="line">iv[12]==[]</span><br><span class="line">iv[13]==[�]</span><br><span class="line">iv[14]==[]]</span><br><span class="line">iv[15]==[�]</span><br><span class="line">解密后的内容为:hello world,hao are you, i am fine, thank you</span><br></pre></td></tr></table></figure>
+
+<h1 id="单向散列函数"><a href="#单向散列函数" class="headerlink" title="单向散列函数"></a>单向散列函数</h1><p>用于获取消息的**”指纹”**</p>
+<blockquote>
+<p>单向散列函数（one-wayftnction）有一个输入和一个输出，其中输入称为<strong>消息</strong>（message），输出称为<strong>散列值</strong>（hashvalue）。单向散列函数可以根据消息的内容计算出散列值，而散列值就可以被用来检查消息的完整性。</p>
+</blockquote>
+<ul>
+<li>单向散列函数也称为<strong>消息摘要函数</strong>（message digest function）、<strong>哈希函数</strong>或者<strong>杂凑函数</strong>。</li>
+<li>单向散列函数输出的散列值也称为<strong>消息摘要</strong>（message digest）或者<strong>指纹</strong>（fifingerprint）。</li>
+<li>完整性也称为一致性。</li>
+</ul>
+<h2 id="哈希函数特点"><a href="#哈希函数特点" class="headerlink" title="哈希函数特点"></a>哈希函数特点</h2><ul>
+<li><p><strong>压缩性</strong> :  任意长度的数据，算出的值长度都是固定的</p>
+<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302221517723.png" alt="image-20230222151732365" style="zoom: 33%;" />
+</li>
+<li><p><strong>容易计算</strong> : 计算散列值所花费的时间必须要短。尽管消息越长，计算散列值的时间也会越长，但如果不能在现实的<br>时间内完成计算就没有意义了。</p>
+</li>
+<li><p><strong>抗修改性</strong> : 对原数据进行任何改动，哪怕只修改1个字节，所得到的值都有很大区别</p>
+<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302221520297.png" alt="image-20230222152018854" style="zoom: 50%;" />
+</li>
+<li><p>强抗碰撞性 : 已知原数据和其哈希值，想找到一个具有相同哈希值的数据（即伪造数据）是非常困难的</p>
+<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302231408999.png" alt="image-20230223140813788" style="zoom: 50%;" />
+</li>
+<li><p>单向性（不可逆）</p>
+<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302231409550.png" alt="image-20230223140857182" style="zoom:50%;" /></li>
+</ul>
+<h2 id="哈希函数的应用"><a href="#哈希函数的应用" class="headerlink" title="哈希函数的应用"></a>哈希函数的应用</h2><h3 id="检测软件是否被篡改"><a href="#检测软件是否被篡改" class="headerlink" title="检测软件是否被篡改"></a>检测软件是否被篡改</h3><blockquote>
+<p>我们可以使用单向散列函数来确认自己下载的软件是否被篡改。很多软件，尤其是安全相关的软件都会把通过单向散列函数计算出的散列值公布在自己的官方网站上。用户在下载到软件之后，可以自行计算散列值，然后与官方网站上公布的散列值进行对比。通过散列<br>值，用户可以确认自己所下载到的文件与软件作者所提供的文件是否一致。这样的方法，在可以通过多种途径得到软件的情况下非常有用。为了减轻服务器的压力，很多软件作者都会借助多个网站（镜像站点）来发布软件，在这种情况下，单向散列函数就会在检测软件是否被篡改方面发挥重要作用。</p>
+</blockquote>
+<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302231420018.png" alt="image-20230223141955553" style="zoom: 50%;" />
+
+<h3 id="消息认证码-1"><a href="#消息认证码-1" class="headerlink" title="消息认证码"></a>消息认证码</h3><blockquote>
+<p>使用单向散列函数可以构造消息认证码。<br>消息认证码是将“发送者和接收者之间的共享密钥”和“消息，进行混合后计算出的散列值。使用消息认证码可以检测并防止通信过程中的错误、篡改以及伪装</p>
+</blockquote>
+<p>对于发送端:</p>
+<ul>
+<li>将要发送的数据进行哈希运算, 参与运算的数据是: 原始数据+秘钥, 可以得到一个散列值</li>
+<li>将散列值与原始数据进行拼接, 一起发送给对方;</li>
+</ul>
+<p>对于接收端:</p>
+<ul>
+<li>接收对方发来的数据, 并将原始数据和散列值拆分开, 得到散列值和原始数据</li>
+<li>对原始数据进行哈希运算: 参与运算的数据也是:原始数据+秘钥, 可以得到一个散列值</li>
+<li>将计算得到的散列值与接受到的散列值进行比较, 相同则认为没有被篡改, 否则认为被篡改了.</li>
+</ul>
+<p>注意: 发送方和接受方使用的秘钥是<strong>同一个秘钥</strong>(<strong>对称秘钥</strong>,秘钥分发困难), 这个秘钥只有发送方和接受方知道,<br>若这个秘钥被第三方知道了, 就没有办法保证数据的是安全的了</p>
+<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302231557592.png" alt="image-20230223155717235" style="zoom:50%;" />
+
+<h3 id="数字签名-1"><a href="#数字签名-1" class="headerlink" title="数字签名"></a>数字签名</h3><blockquote>
+<p>在进行数字签名时也会使用单向散列函数。<br>数字签名是现实社会中的签名（sign）和盖章这样的行为在数字世界中的实现。数字签名的处理过程非常耗时，因此一般不会对整个消息内容直接施加数字签名，而是先通过单向散列函数计算出消息的散列值，然后再对这个散列值施加数字签名。</p>
+</blockquote>
+<p>使用的是非对称加密, 有公钥和私钥</p>
+<p>数字签名流程: </p>
+<ol>
+<li>A将明文进行哈希运算得到一个散列值, 并且用私钥对哈希值进行加密, 然后将明文和加了密的哈希值一起发送给B;</li>
+<li>B收到之后, 使用公钥对哈希值进行解密, 得到原始的哈希值, 并且对明文进行哈希运算也得到一个哈希值, 最后对自己生成的哈希值和A发送过来的哈希值进行比较, 如果一样, 则认为没有被篡改.</li>
+</ol>
+<p>使用数字签名的目的是为了<strong>不可抵赖性</strong>.(表明拿私钥的一方发送的数据, 是不可抵赖的)</p>
+<h3 id="一次性口令或登录验证"><a href="#一次性口令或登录验证" class="headerlink" title="一次性口令或登录验证"></a>一次性口令或登录验证</h3><p><strong>一次性口令</strong></p>
+<p>使用单向散列函数可以构造一次性口令（one-time password）。<br>一次性口令经常被用于服务器对客户端的合法性认证。在这种方式中，通过使用单向散列函数可以<strong>保证口令只在通信链路上传送一次（one-time）</strong>，因此即使窃听者窃取了口令，也无法使用。</p>
+<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302231855096.jpeg" alt="v2-905cef8c0aca6a43e1529f4a14901d56_r" style="zoom:50%;" />
+
+<p><strong>登录验证</strong></p>
+<p>当用户登录的时候, 需要输入密码, 这个密码会经过加密运算, 经过运算之后的值再与服务器中保存的密码进行比较, 若相同则输入密码正确, 允许登录.<br>若用户忘记密码, 则只能重置密码, 服务端并不知道用户原来的明文, 只能是重新设置</p>
+<h2 id="常用的哈希函数"><a href="#常用的哈希函数" class="headerlink" title="常用的哈希函数"></a>常用的哈希函数</h2><h3 id="Md4-x2F-Md5"><a href="#Md4-x2F-Md5" class="headerlink" title="Md4&#x2F;Md5"></a>Md4&#x2F;Md5</h3><blockquote>
+<p>MD4是由Rivest于1990年设计的单向散列函数，能够产生&#x3D;&#x3D;128比特&#x3D;&#x3D;的散列值（RFC1186，修订版RFC1320）。不过，随着Dobbertin提出寻找MD4散列碰撞的方法，因此现在它已经不安全了。<br>MD5是由Rwest于1991年设计的单项散列函数，能够产生&#x3D;&#x3D;128比特&#x3D;&#x3D;的散列值（RFC1321）。<br>MD5的强抗碰撞性已经被攻破，也就是说，现在已经能够产生具备相同散列值的两条不同的消息，因此它也已经不安全了。<br>MD4和MD5中的MD是消息摘要（Message Digest）的缩写。</p>
+</blockquote>
+<h3 id="SHA-1-x2F-SHA-256-x2F-SHA-384-x2F-SHA-512"><a href="#SHA-1-x2F-SHA-256-x2F-SHA-384-x2F-SHA-512" class="headerlink" title="SHA-1&#x2F;SHA-256&#x2F;SHA-384&#x2F;SHA-512"></a>SHA-1&#x2F;SHA-256&#x2F;SHA-384&#x2F;SHA-512</h3><blockquote>
+<p>SHA-1是由NIST（National Institute Of Standardsand Technology，美国国家标准技术研究所）设计的一种能够产生&#x3D;&#x3D;160比特&#x3D;&#x3D;的散列值的单向散列函数。1993年被作为美国联邦信息处理标准规格（FIPS PUB 180）发布的是SHA,1995年发布的修订版FIPS PUB 180-1称为SHA-1。<br>SHA-1的消息长度存在上限，但这个值接近于2^64^比特，是个非常巨大的数值，因此在实际应用中没<br>有问题。<br>SHA-256、SHA-384和SHA-512都是由NIST设计的单向散列函数，它们的散列值长度分别为&#x3D;&#x3D;256比特&#x3D;&#x3D;、&#x3D;&#x3D;384&#x3D;&#x3D;比特和&#x3D;&#x3D;512比特&#x3D;&#x3D;。这些单向散列函数合起来统称SHA-2，它们的消息长度也存在上限（SHA-256的上限接近于 2^64^ 比特，SHA-384 和 SHA-512的上限接近于 2^128^ 比特）。这些单向散列函数是于2002年和 SHA-1 一起作为 FIPS PUB 180-2发布的 SHA-1 的强抗碰撞性已于2005年被攻破, 也就是说，现在已经能够产生具备相同散列值的两条不同的消息。不过，SHA-2还尚未被攻破</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>哈希函数</th>
+<th>散列值长度(bit)</th>
+<th>散列值长度(byte)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Md4&#x2F;Md5</td>
+<td>128bit</td>
+<td>16byte</td>
+</tr>
+<tr>
+<td>SHA-1</td>
+<td>160bit</td>
+<td>20byte</td>
+</tr>
+<tr>
+<td>SHA-224</td>
+<td>224bit</td>
+<td>28byte</td>
+</tr>
+<tr>
+<td>SHA-256</td>
+<td>256bit</td>
+<td>32byte</td>
+</tr>
+<tr>
+<td>SHA-384</td>
+<td>384bit</td>
+<td>48byte</td>
+</tr>
+<tr>
+<td>SHA-512</td>
+<td>512bit</td>
+<td>64byte</td>
+</tr>
+</tbody></table>
+<p>  最终需要对得到的散列值做转换, 以16进制格式的字符串表</p>
+<h2 id="openssl库中哈希函数用法"><a href="#openssl库中哈希函数用法" class="headerlink" title="openssl库中哈希函数用法"></a>openssl库中哈希函数用法</h2><p>头文件位置(<code>-I</code>)    <code>openssl根目录/include/openssl/</code></p>
+<p>库文件位置(<code>-L</code>)   <code>openssl根目录/lib</code></p>
+<p>win下添加<strong>附加依赖项</strong>:<code>libcrypto.lib</code>和<code>libssl.lib</code> (无法解析的外部符号报错)</p>
+<p>linux下添加附加依赖项: <code>-lssl  -lcrypto</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种方式(第二种方式为第一种方式的封装)</span></span><br><span class="line"><span class="comment">// 初始化一个MD5_CTX类型的变量</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">MD5_Init</span><span class="params">(MD5_CTX *c)</span>;</span><br><span class="line">- c: 传出</span><br><span class="line"><span class="comment">// 给哈希函数添加要运算的数据</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">MD5_Update</span><span class="params">(MD5_CTX *c, <span class="type">const</span> <span class="type">void</span> *data, <span class="type">size_t</span> len)</span>;</span><br><span class="line">- C: 传入</span><br><span class="line">- data: 传入, 要进行哈希运算的数据</span><br><span class="line">- len: data参数的长度</span><br><span class="line">文件<span class="number">1</span>G</span><br><span class="line"><span class="title function_">while</span><span class="params">(read(fd, buf, len))</span></span><br><span class="line">&#123;</span><br><span class="line">MD5_Update(c, buf, buflen);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 计算结果</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">MD5_Final</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span> *md, MD5_CTX *c)</span>;</span><br><span class="line">- md传出参数, 需要将计算出的散列值保存到md中</span><br><span class="line">- c: 出入</span><br><span class="line"><span class="comment">//=========================================</span></span><br><span class="line"><span class="comment">// 第二种方式</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> *<span class="title function_">MD5</span><span class="params">(<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span> *d, <span class="type">size_t</span> n, <span class="type">unsigned</span> <span class="type">char</span> *md)</span>;</span><br><span class="line">- d: 要进行哈希运算的字符串</span><br><span class="line">- n: 第一个参数的长度</span><br><span class="line">- md: 计算出的散列值</span><br><span class="line">返回值:</span><br><span class="line">得到的散列值</span><br><span class="line"><span class="comment">//===========================================================================</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">SHA1_Init</span><span class="params">(SHA_CTX *c)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">SHA1_Update</span><span class="params">(SHA_CTX *c, <span class="type">const</span> <span class="type">void</span> *data, <span class="type">size_t</span> len)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">SHA1_Final</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span> *md, SHA_CTX *c)</span>;</span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> *<span class="title function_">SHA1</span><span class="params">(<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span> *d, <span class="type">size_t</span> n, <span class="type">unsigned</span> <span class="type">char</span> *md)</span>;</span><br><span class="line"><span class="comment">//上述几个函数的用法同md5的几个函数.</span></span><br></pre></td></tr></table></figure>
+
+<p>相关的函数说明可以在openssl安装目录中去查看:</p>
+<ul>
+<li><code>C:\OpenSSL-Win32\include\openssl</code>, 如<code>md5.h</code>和<code>sha.h</code></li>
+<li>能够用到的库名: <code>libssl.lib libcrypto.lib</code></li>
+<li>使用到的库所在的路径: <code>C:\OpenSSL-Win32\lib</code></li>
+<li>使用到的头文件所在的路径: <code>C:\OpenSSL-Win32\include</code></li>
+</ul>
+<p>注意: 在使用vs进行项目开发的时候, 需要指定头文件所在路径和库文件所在路径</p>
+<p>可以用诸如<code>md5sum+文件路径</code>命令(<code>xxxsum</code>)直接计算得出md5值</p>
+<h3 id="sha1简单案例"><a href="#sha1简单案例" class="headerlink" title="sha1简单案例"></a>sha1简单案例</h3><p>下面案例为vs下,需指定头文件所在路径和库文件所在路径以及添加依赖项</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;openssl/sha.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">		<span class="type">unsigned</span> <span class="type">char</span> md[SHA_DIGEST_LENGTH];</span><br><span class="line">		<span class="type">unsigned</span> <span class="type">char</span> md1[SHA_DIGEST_LENGTH*<span class="number">2</span>+<span class="number">1</span>];</span><br><span class="line">		<span class="type">const</span> <span class="type">char</span>* p = <span class="string">&quot;你好, 世界&quot;</span>;</span><br><span class="line">		<span class="built_in">SHA1</span>((<span class="type">unsigned</span> <span class="type">char</span>*)p, <span class="built_in">strlen</span>(p) + <span class="number">1</span>, md);</span><br><span class="line">		<span class="comment">//cout &lt;&lt; &quot;sha1: &quot; &lt;&lt; md &lt;&lt; endl; //若有不可见或者		是二进制数据, 使用cout会出现bug</span></span><br><span class="line">		<span class="comment">// 将散列值转换为16进制格式的字符串</span></span><br><span class="line">		<span class="comment">// base64</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; SHA_DIGEST_LENGTH; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">				<span class="comment">// 将每个字符格式化010203</span></span><br><span class="line">				<span class="built_in">sprintf</span>((<span class="type">char</span>*)&amp;md1[i*<span class="number">2</span>], <span class="string">&quot;%02x&quot;</span>, md[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;sha1: &quot;</span> &lt;&lt; md1 &lt;&lt; endl;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="hmac简单案例"><a href="#hmac简单案例" class="headerlink" title="hmac简单案例"></a>hmac简单案例</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下面例子其实也是使用sha1的单向散列方式</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;openssl/hmac.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;openssl/sha.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    HMAC_CTX *ctx = <span class="built_in">HMAC_CTX_new</span>();</span><br><span class="line">    <span class="type">char</span> key[] = <span class="string">&quot;&quot;</span>;<span class="comment">//密钥</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> data[] = <span class="string">&quot;&quot;</span>;<span class="comment">//要单向散列的数据</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> md[SHA_DIGEST_LENGTH];<span class="comment">//单向散列输出的结果</span></span><br><span class="line">    <span class="type">char</span> mdBuf[SHA_DIGEST_LENGTH * <span class="number">2</span> + <span class="number">1</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 一个字节用两个字符来表示,因此乘2,该变量用于打印</span></span><br><span class="line">    <span class="comment">//HMAC_Init(ctx, key, strlen(key), EVP_sha1());//这个也可以代替下面那行</span></span><br><span class="line">    <span class="built_in">HMAC_Init_ex</span>(ctx, key, <span class="built_in">strlen</span>(key), <span class="built_in">EVP_sha1</span>(),<span class="literal">NULL</span>);<span class="comment">//设置sha1单向散列函数</span></span><br><span class="line">    <span class="built_in">HMAC_Update</span>(ctx, data, <span class="built_in">strlen</span>((<span class="type">const</span> <span class="type">char</span> *)data));</span><br><span class="line">    <span class="type">int</span> len = SHA_DIGEST_LENGTH;</span><br><span class="line">    <span class="built_in">HMAC_Final</span>(ctx, md, (<span class="type">unsigned</span> <span class="type">int</span> *)&amp;len); <span class="comment">// 哈希结果输出到md中</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; SHA_DIGEST_LENGTH; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">sprintf</span>(&amp;mdBuf[i * <span class="number">2</span>], <span class="string">&quot;%02x&quot;</span>, md[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; mdBuf &lt;&lt; std::endl;</span><br><span class="line">    <span class="comment">// 下面是第二种方式</span></span><br><span class="line">    <span class="built_in">memset</span>(md, <span class="number">0</span>, <span class="built_in">sizeof</span>(md));</span><br><span class="line">    <span class="comment">// 一行代码生成结果</span></span><br><span class="line">    <span class="built_in">HMAC</span>(<span class="built_in">EVP_sha1</span>(), key, <span class="built_in">strlen</span>(key), data, <span class="built_in">strlen</span>((<span class="type">const</span> <span class="type">char</span> *)data), md, (<span class="type">unsigned</span> <span class="type">int</span> *)&amp;len);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; SHA_DIGEST_LENGTH; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">sprintf</span>(&amp;mdBuf[i * <span class="number">2</span>], <span class="string">&quot;%02x&quot;</span>, md[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; mdBuf &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="安全传输"><a href="#安全传输" class="headerlink" title="安全传输"></a>安全传输</h1><h2 id="密钥协商"><a href="#密钥协商" class="headerlink" title="密钥协商"></a>密钥协商</h2><h3 id="客户端协商流程"><a href="#客户端协商流程" class="headerlink" title="客户端协商流程"></a>客户端协商流程</h3><ol>
+<li><p>客户端生成一个随机数r1,同时使用openssl中哈希函数对r1进行哈希运算,得到一个哈希值</p>
+</li>
+<li><p>将要发送的数据进行编码</p>
+</li>
+<li><p>发送数据给服务端(包含r1)</p>
+</li>
+<li><p>客户端等待接受服务端的应答</p>
+</li>
+<li><p><a href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8D%8F%E5%95%86%E6%B5%81%E7%A8%8B">{服务端协商流程操作}</a></p>
+</li>
+<li><p>对接收到的数据进行解码</p>
+</li>
+<li><p>判断rv的值,若rv为-1表示生成密钥失败</p>
+</li>
+<li><p>如果成功;rv &#x3D; 0;</p>
+<p>获得服务端发来的随机字符串r2,将r2和r1进行拼接进行哈希运算得到一个新的**<code>seckey1</code>**</p>
+</li>
+<li><p>客户端将密钥信息写入共享内存</p>
+</li>
+</ol>
+<h3 id="服务端协商流程"><a href="#服务端协商流程" class="headerlink" title="服务端协商流程"></a>服务端协商流程</h3><ol>
+<li><p>收到请求数据之后,首先解码</p>
+</li>
+<li><p>根据客户端ID+服务端ID查询数据库,校验客户端是否合法,如不合法直接拒绝服务</p>
+</li>
+<li><p>服务端校验r1消息认证码</p>
+<p>使用和客户端相同的算法生成哈希值,然后将这个哈希值与接收到的哈希值做比较</p>
+<p>如果不一样,则拒绝服务,如果一样,则继续后续操作</p>
+</li>
+<li><p>服务端也生成随机数r2</p>
+</li>
+<li><p>服务端将r1和r2进行拼接,然后使用与客户端相同的哈希算法进行哈希运算,得到一个哈希值,这个哈希值就当做新的密钥**<code>seckey2</code>**</p>
+</li>
+<li><p>将新的密钥信息写入共享内存和数据库</p>
+</li>
+<li><p>服务端发送应答信息给客户端;</p>
+</li>
+</ol>
+<h2 id="密钥校验"><a href="#密钥校验" class="headerlink" title="密钥校验"></a>密钥校验</h2><p>客户端</p>
+<ol>
+<li>客户端将密钥进行哈希运算,得到一个哈希值</li>
+<li>将哈希值发送给服务端</li>
+</ol>
+<p>服务端</p>
+<ol>
+<li>收到哈希值,自己也生成一个哈希值</li>
+<li>将两个哈希值进行比较,相同则密钥协商成功,否则秘钥协商失败</li>
+</ol>
+<h2 id="密钥注销"><a href="#密钥注销" class="headerlink" title="密钥注销"></a>密钥注销</h2><p>客户端</p>
+<ol>
+<li>将clientID,serverID和密钥ID发送给服务端</li>
+</ol>
+<p>服务端</p>
+<ol>
+<li>服务端收到请求之后,将共享内存和数据库中的密钥的状态修改为不可用状态</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" rel="tag"># 加解密</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/0/" rel="prev" title="数据库">
+      <i class="fa fa-chevron-left"></i> 数据库
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%9B%B8%E5%85%B3"><span class="nav-number">1.</span> <span class="nav-text">加解密相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8A%A0%E5%AF%86%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">常用的加密的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">1.1.1.</span> <span class="nav-text">对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">1.1.2.</span> <span class="nav-text">非对称加密</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%AE%89%E5%85%A8%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">常用安全算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">对称加密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DES-x2F-3DES"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">DES&#x2F;3DES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AES"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">AES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">其他对称加密算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.3.</span> <span class="nav-text">Hash算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81"><span class="nav-number">1.2.4.</span> <span class="nav-text">消息认证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="nav-number">1.2.5.</span> <span class="nav-text">数字签名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl"><span class="nav-number">1.3.</span> <span class="nav-text">openssl</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#win%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">win下安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#win%E4%B8%8B%E4%BD%BF%E7%94%A8openssl"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">win下使用openssl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">Linux下安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E4%B8%8B%E4%BD%BF%E7%94%A8openssl"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">Linux下使用openssl</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.</span> <span class="nav-text">常见的加密算法的逆向特征</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96%E7%9B%90%E7%AE%97%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">取盐算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MD5%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.1.1.</span> <span class="nav-text">MD5逆向特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SHA%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.1.2.</span> <span class="nav-text">SHA逆向特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E8%BF%98%E5%8E%9F%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">可还原加密算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RSA%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.2.1.</span> <span class="nav-text">RSA逆向特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AES%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.2.2.</span> <span class="nav-text">AES逆向特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DES%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.2.3.</span> <span class="nav-text">DES逆向特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%BC%96%E7%A0%81%E7%AE%97%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">其他编码算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Base64-%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.3.1.</span> <span class="nav-text">Base64 逆向特征</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RSA%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">RSA算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AES%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">AES算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenSSL%E4%B8%AD%E7%9A%84API"><span class="nav-number">4.1.</span> <span class="nav-text">OpenSSL中的API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%8A%A0%E5%AF%86-x2F-%E8%A7%A3%E5%AF%86%E7%9A%84Key"><span class="nav-number">4.1.1.</span> <span class="nav-text">生成加密&#x2F;解密的Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.2.</span> <span class="nav-text">加解密函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-number">4.1.2.0.1.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ECB%E6%96%B9%E5%BC%8F%E5%8A%A0%E5%AF%86"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">ECB方式加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CBC%E6%96%B9%E5%BC%8F%E5%8A%A0%E5%AF%86"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">CBC方式加密</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B-1"><span class="nav-number">4.1.2.2.1.</span> <span class="nav-text">案例</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">单向散列函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%89%B9%E7%82%B9"><span class="nav-number">5.1.</span> <span class="nav-text">哈希函数特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">5.2.</span> <span class="nav-text">哈希函数的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%90%A6%E8%A2%AB%E7%AF%A1%E6%94%B9"><span class="nav-number">5.2.1.</span> <span class="nav-text">检测软件是否被篡改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81-1"><span class="nav-number">5.2.2.</span> <span class="nav-text">消息认证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D-1"><span class="nav-number">5.2.3.</span> <span class="nav-text">数字签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%AC%A1%E6%80%A7%E5%8F%A3%E4%BB%A4%E6%88%96%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81"><span class="nav-number">5.2.4.</span> <span class="nav-text">一次性口令或登录验证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="nav-number">5.3.</span> <span class="nav-text">常用的哈希函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Md4-x2F-Md5"><span class="nav-number">5.3.1.</span> <span class="nav-text">Md4&#x2F;Md5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SHA-1-x2F-SHA-256-x2F-SHA-384-x2F-SHA-512"><span class="nav-number">5.3.2.</span> <span class="nav-text">SHA-1&#x2F;SHA-256&#x2F;SHA-384&#x2F;SHA-512</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl%E5%BA%93%E4%B8%AD%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%94%A8%E6%B3%95"><span class="nav-number">5.4.</span> <span class="nav-text">openssl库中哈希函数用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sha1%E7%AE%80%E5%8D%95%E6%A1%88%E4%BE%8B"><span class="nav-number">5.4.1.</span> <span class="nav-text">sha1简单案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hmac%E7%AE%80%E5%8D%95%E6%A1%88%E4%BE%8B"><span class="nav-number">5.4.2.</span> <span class="nav-text">hmac简单案例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93"><span class="nav-number">6.</span> <span class="nav-text">安全传输</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86"><span class="nav-number">6.1.</span> <span class="nav-text">密钥协商</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8D%8F%E5%95%86%E6%B5%81%E7%A8%8B"><span class="nav-number">6.1.1.</span> <span class="nav-text">客户端协商流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8D%8F%E5%95%86%E6%B5%81%E7%A8%8B"><span class="nav-number">6.1.2.</span> <span class="nav-text">服务端协商流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E6%A0%A1%E9%AA%8C"><span class="nav-number">6.2.</span> <span class="nav-text">密钥校验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E6%B3%A8%E9%94%80"><span class="nav-number">6.3.</span> <span class="nav-text">密钥注销</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZEROKO14</p>
+  <div class="site-description" itemprop="description">你好，欢迎来到ZEROKO14的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZEROKO14</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+  <script defer src="/blog/lib/three/three.min.js"></script>
+    <script defer src="/blog/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

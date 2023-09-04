@@ -3,9 +3,7 @@ title: QT入门
 tags: QT
 categories: 技术
 mathjax: true
-
-
-
+abbrlink: '2e306159'
 ---
 
 # Qt概述
@@ -632,7 +630,7 @@ C++11中的Lambda表达式**用于定义并创建匿名的函数对象**，以�
 }
 ```
 
-[函数对象参数](操作符重载函数参数)mutable ->返回值{函数体}
+`[函数对象参数](操作符重载函数参数)mutable ->返回值{函数体}`
 
 ① 函数对象参数；
 
@@ -2552,7 +2550,7 @@ this->setGeometry(chooseScene->geometry());//设置到前一个场景的同一�
 
 ## 简述
 
-在GUI开发中，往往需要在界面中存储一些有用的数据，这些数据可以来自配置文件、注册表、数据库、或者是Server。
+在GUI开发中，往往需要在界面中存储一些有用的数据，这些数据可以来自配置文件、注册表、[[数据库]]、或者是Server。
 
 无论来自哪里，这些数据对于用户来说都是至关重要的，它们在交互过程中大部分都会被用到，例如：单击一个用户头像，显示该用户的详细信息（等级、昵称、姓名、个人说明）。
 
@@ -3356,6 +3354,8 @@ int main(int argc, char *argv[])
 # QT数据库开发
 
 ## oracle数据库
+
+[[数据库#oracle|oracle数据笔记跳转]]
 
 ![image-20230420114847356](https://raw.githubusercontent.com/che77a38/blogImage2/main/202304201149758.png)
 

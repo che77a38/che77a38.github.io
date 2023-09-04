@@ -3,8 +3,7 @@ title: APC机制
 tags: 内核
 categories: 技术
 mathjax: true
-
-
+abbrlink: d7701509
 ---
 
 # APC机制
@@ -76,7 +75,7 @@ nt!_KAPC
 
 - **KiServiceExit**函数：
 
-  ​	这个函数是**系统调用，异常或中断返回用户空间的必经之路**。
+  ​	这个函数是**[[系统调用]]，异常或中断返回用户空间的必经之路**。
 
 - **KiDeliverApc**函数：
 
@@ -645,7 +644,7 @@ KiDeliverApc //执行内核APC函数
 
 即从内核返回用户空间的途中
 
-**_KiServiceExit**是系统调用，中断或异常**回三环的时候必须要走的函数**。
+**_KiServiceExit**是[[系统调用]]，中断或异常**回三环的时候必须要走的函数**。
 
 **该执行点先执行内核APC，再执行用户APC**
 
@@ -729,7 +728,7 @@ KiDeliverApc //执行内核APC函数
 
 ## 用户APC执行流程
 
-当产生系统调用，中断或者异常，线程在返回用户空间前都会调用\_KiServiceExit函数，在\_KiServiceExit会判断是否有要执行的用户APC，如果有则调用KiDeliverApc函数(第一个参数为1)进行处理
+当产生[[系统调用]]，中断或者异常，线程在返回用户空间前都会调用\_KiServiceExit函数，在\_KiServiceExit会判断是否有要执行的用户APC，如果有则调用KiDeliverApc函数(第一个参数为1)进行处理
 
 ![image-20211023221626174](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211023221626174.png)
 
@@ -883,5 +882,5 @@ nt!_CONTEXT
 ### 总结
 
 1. 内核APC在线程切换时执行，不需要换栈，比较简单，一个循环执行完毕。
-2. 用户APC在系统调用，中断或异常返回3环前会进行判断，如果有要执行的用户APC，再执行。
+2. 用户APC在[[系统调用]]，中断或异常返回3环前会进行判断，如果有要执行的用户APC，再执行。
 3. 用户APC执行前会先执行内核APC

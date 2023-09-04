@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "11c78061a79b2d37",
+        "id": "ed5d9754aee04968",
         "type": "tabs",
         "children": [
           {
-            "id": "d238d69325d9d893",
+            "id": "69815426eb0ec5cc",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "32位逆向.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -65,11 +61,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "fa966a412bb44f4c",
@@ -85,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "32位逆向.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,9 +98,8 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "32位逆向.md",
                 "linksCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               }
             }
           },
@@ -124,9 +119,15 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "32位逆向.md"
-              }
+              "state": {}
+            }
+          },
+          {
+            "id": "2d5f47379a456673",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {}
             }
           }
         ],
@@ -134,7 +135,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 416.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -146,19 +147,38 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "d238d69325d9d893",
+  "active": "69815426eb0ec5cc",
   "lastOpenFiles": [
-    "[0F84B74]+410+8.md",
-    "[17EA2B0]+30]+4+0c*0+4.md",
-    "32位逆向.md",
-    "进程与线程.md",
+    "windows开发.md",
     "64位逆向.md",
-    "算法.md",
+    "hello-world.md",
+    "问题汇总.md",
     "句柄表.md",
-    "驱动开发.md",
+    "STL.md",
+    "算法.md",
+    "QT.md",
+    "PE.md",
+    "C语言入门.md",
+    "nas方案.md",
+    "MFC.md",
+    "mac及linux_C++环境.md",
+    "linux基础以及系统编程.md",
+    "FPS逆向随笔.md",
+    "C++基础.md",
+    "APC机制.md",
+    "硬编码.md",
     "系统调用.md",
-    "保护模式.md",
+    "网络编程.md",
+    "数据库.md",
+    "数据结构.md",
+    "视频效果.md",
     "事件等待.md",
-    "数据库.md"
+    "驱动开发.md",
+    "屏幕监控（未完成）.md",
+    "github.com/Dreamacro/clash-dashboard/tree",
+    "github.com/Dreamacro/clash-dashboard",
+    "github.com/Dreamacro",
+    "github.com",
+    "[[["
   ]
 }

@@ -1,10 +1,10 @@
 ---
 title: linux系统编程
-date: 2020-12-23 22:51:13
 tags: linux
 categories: 技术
 mathjax: true
-
+abbrlink: 5c231afa
+date: 2020-12-23 22:51:13
 ---
 
 # linux基础
@@ -526,7 +526,7 @@ $$
 **参数**
 
 - 1是普通的命令
-- 2是系统调用,如open,write之类的(通过这个，至少可以很方便的查到调用这个函数，需要加什么头文件)
+- 2是[[系统调用]],如open,write之类的(通过这个，至少可以很方便的查到调用这个函数，需要加什么头文件)
 - 3是库函数,如printf,fread
 - 4是特殊文件,也就是/dev下的各种设备文件
 - 5是指文件的格式,比如passwd,就会说明这个文件中各个字段的含义
@@ -887,7 +887,7 @@ linux绝大多数命令都有对应的函数,例如
   - `R` 运行    Runnable (on run queue)            正在运行或在运行队列中等待。
   - `S` 睡眠    Sleeping                休眠中, 受阻, 在等待某个条件的形成或接受到信号。
   - `I` 空闲    Idle
-  - `Z` 僵死    Zombie（a defunct process)        进程已终止, 但进程描述符存在, 直到父进程调用wait4()系统调用后释放。
+  - `Z` 僵死    Zombie（a defunct process)        进程已终止, 但进程描述符存在, 直到父进程调用wait4()[[系统调用]]后释放。
   - `D` 不可中断    Uninterruptible sleep (ususally IO)    收到信号不唤醒和不可运行, 进程必须等待直到有中断发生。
   - `T` 终止    Terminate                进程收到SIGSTOP, SIGSTP, SIGTIN, 
   - `SIGTOU`信号后停止运行运行。
@@ -953,7 +953,7 @@ linux系统,通过修改 `/etc/crontab`文件(系统任务调度)添加定时任
 
 ## 其他常用命令盘点
 
-更多网络相关命令参考网络编程页面
+更多网络相关命令参考[[网络编程]]页面
 
 - `alias`  起别名(不加任何东西是查看所有别名)    E.g.  `alias psj='ps -ef |grep jenkins'``
 
@@ -1421,7 +1421,7 @@ gcc main.c -I./ -L./ -ltest2 -o main2
 
 ![image-20220315141518461](https://raw.githubusercontent.com/che77a38/blogImage/main/202203151415703.png)
 
-对于elf格式(windows可执行程序是pe格式的)的可执行程序，是由**ld-linux.so**来完成的, 它先后搜索elf文件的 DT_RPATH段 — 环境变量LD_LIBRARY_PATH — /etc/ld.so.cache文件列表 — /lib/, /usr/lib目录找到库文件后将其载入内存。
+对于elf格式(windows可执行程序是[[pe]]格式的)的可执行程序，是由**ld-linux.so**来完成的, 它先后搜索elf文件的 DT_RPATH段 — 环境变量LD_LIBRARY_PATH — /etc/ld.so.cache文件列表 — /lib/, /usr/lib目录找到库文件后将其载入内存。
 
 **使用file命令可以查看文件的类型: `file main2`**
 
@@ -1758,7 +1758,7 @@ errno宏:在 `/usr/include/asm-generic/errno.h`包含了errno所有的宏和对�
 - 终端设备：如 /dev/tty
   - 默认阻塞
 - 管道和套接字
-  - [默认阻塞(点击跳转详解)](管道的读写行为)
+  - [默认阻塞(点击跳转详解)](#管道的读写行为)
 
 `STDIN_FILENO,STDOUT_FILENO,STDERR_FILENO`三个已经默认打开的文件描述符的宏,可以直接拿来使用,无需`open函数`
 
@@ -3077,7 +3077,7 @@ int setitimer(int which, const struct itimerval *new_value, struct itimerval *ol
 
   - **自然定时**：`ITIMER_REAL` → 14）SIGALRM计算自然时间**(最常用)**
   - **虚拟空间计时(用户空间)**：`ITIMER_VIRTUAL` → 26）SIGVTALRM  只计算进程占用cpu的时间
-  - **运行时计时(用户+内核)**：`ITIMER_PROF` → 27）SIGPROF计算占用cpu及执行系统调用的时间
+  - **运行时计时(用户+内核)**：`ITIMER_PROF` → 27）SIGPROF计算占用cpu及执行[[系统调用]]的时间
 
 - `new_value`：`struct itimerval`结构, 负责设定timeout时间。
 
@@ -3884,7 +3884,7 @@ p.s. 线程之间（包含主线程和子线程）可以共享同一变量，包
 
 优点相对突出，缺点均不是硬伤。Linux下由于实现方法导致进程、线程差别不是很大。
 
-一般来说,业务处理,数据库操作用进程操作,网络通信用线程操作.
+一般来说,业务处理,[[数据库]]操作用进程操作,网络通信用线程操作.
 
 #### windows和linux线程的函数比较
 
@@ -4086,7 +4086,7 @@ int pthread_cancel(pthread_t thread);
 
 **【注意】** 线程的取消并**不是实时的**，而**有一定的延时**。需要等待线程到达某个**取消点**(检查点)。
 
-**取消点**：是线程检查是否被取消，并按请求进行动作的一个位置。通常是一些系**统调用**`creat，open，pause，close，read，write.....` 执行命令`man 7 pthreads`可以查看具备这些取消点的系统调用列表。可粗略认为一个系统调用(进入内核)即为一个取消点。还以通过调用`pthread_testcancel`函数设置一个取消点。
+**取消点**：是线程检查是否被取消，并按请求进行动作的一个位置。通常是一些系**统调用**`creat，open，pause，close，read，write.....` 执行命令`man 7 pthreads`可以查看具备这些取消点的系统调用列表。可粗略认为一个[[系统调用]](进入内核)即为一个取消点。还以通过调用`pthread_testcancel`函数设置一个取消点。
 
 ```c
 //设置一个取消点函数,是用于要被取消的线程的回调中,如果有系统调用就不必写这个了
@@ -4452,7 +4452,7 @@ int main(int argc,char** argv)
 读写锁也叫`共享-独占锁`。当读写锁以**读模式**锁住时，它是以**共享模式**锁住的；当它以**写模式**锁住时，它是以**独占模式**锁住的。**[写独占、读共享]**。
 
 读写锁**使用场合**:
-读写锁非常**适合于对数据结构读的次数远大于写的情况**。
+读写锁非常**适合于对[[数据结构]]读的次数远大于写的情况**。
 
 **读写锁特性**
 
@@ -4668,13 +4668,13 @@ int sem_destroy(sem_t *sem);
 
 - 使用锁
 
-  数据库中把这种叫**悲观锁**(锁住后影响别人)
+  [[数据库]]中把这种叫**悲观锁**(锁住后影响别人)
 
   适用于**冲突概率较高**的场景
 
 - 使用cas(常用的一种原子指令)
 
-  数据库中把这种叫**乐观锁**(不影响别人)
+  [[数据库]]中把这种叫**乐观锁**(不影响别人)
 
   适用于**冲突概率较低**的场景，它可以**提高程序的并发性能**，但在冲突概率较高时会导致大量更新操作失败
 
@@ -4721,7 +4721,7 @@ alias unproxy="unset http_proxy;unset https_proxy"
 
 ## 给代理设置前端UI界面
 
-[此链接](github.com/Dreamacro/clash-dashboard/tree/gh-pages)下载界面相关文件(假设下到`/opt/clash/ui`文件夹)
+[此链接](https://github.com/Dreamacro/clash-dashboard/tree/gh-pages)下载界面相关文件(假设下到`/opt/clash/ui`文件夹)
 
 在`config.yaml`中添加 external -ui: /opt/clash/ui
 

@@ -1,0 +1,10 @@
+{
+	"id": "link-info-server",
+	"name": "Link Server",
+	"version": "1.0.1",
+	"minAppVersion": "1.0.1",
+	"description": "This plugin will open a reverse proxy server at port 3333 to get wikiLink information Obsidian API.",
+	"author": "moelody",
+	"authorUrl": "https://www.moelody.com",
+	"isDesktopOnly": true
+}
