@@ -24,7 +24,7 @@ c语言入门学习
 
 <!-- more -->
 
-![image-20200909140723886](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200909140723886.png)
+![image-20200909140723886](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20200909140723886.png)
 
 
 
@@ -188,7 +188,7 @@ gcc编译4步骤：【重点】
 		3）库引入
 ```
 
- ![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8714.png)
+ ![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%8714.png)
 
 ```
 预处理：gcc -E hello.c -o hello.i
@@ -217,7 +217,7 @@ gcc编译4步骤：【重点】
 
 #### ***文件包含处理***
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8721.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%8721.png)
 
 ***#incude<>和#include******""******区别***
 
@@ -267,7 +267,7 @@ gcc编译4步骤：【重点】
 
 #### 条件编译
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8722.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%8722.png)
 
 ```c
 //防止头文件被重复包含引用
@@ -386,7 +386,7 @@ VS建议采用带_s的函数，如scanf_s、strcpy_s，但这些并不是标准C
 
 ##  数据类型
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8713.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%8713.png)
 
 既能读又能写的内存对象，称为**变量**；
 
@@ -588,7 +588,7 @@ ASCII 码大致由以下两部分组成：
 
 2进制与十进制转换图
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8711.png)![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8712.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%8711.png)![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%8712.png)
 
 #### C语言如何表示相应进制数
 
@@ -675,7 +675,7 @@ i = 32
 
 ## 字符串常量
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%876.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%876.png)
 
 每个字符串的结尾，编译器会自动的添加一个结束标志位'\0'，即 "a" 包含两个字符'a'和’\0’。
 
@@ -711,7 +711,7 @@ printf附加格式：
 | 0(数字0)          | 将输出的前面补上0直到占满指定列宽为止不可以搭配使用-         |
 | m.n(代表一个整数) | m指域宽，即对应的输出项在输出设备上所占的字符数。n指精度，用于说明输出的实型数的小数位数。对数值型的来说，未指定n时，隐含的精度为n=6位。 |
 
-![image-20200922183129000](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200922183129000.png)
+![image-20200922183129000](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20200922183129000.png)
 
 ## scanf函数与getchar函数
 
@@ -1032,7 +1032,7 @@ void test(){
 
 出错显示：
 
-![image-20200925162410473](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200925162410473.png)
+![image-20200925162410473](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20200925162410473.png)
 
 ## 野指针,空指针,哑指针，垂悬指针
 
@@ -1046,7 +1046,7 @@ void test(){
 
 往空指针里塞东西：报错如下：
 
-![image-20200921222715218](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20200921222715218.png)
+![image-20200921222715218](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20200921222715218.png)
 
 往野指针里塞东西也是报上图错误，仅红线部分不为0地址而已
 
@@ -1793,7 +1793,7 @@ C代码经过预处理、编译、汇编、链接4步后生成一个可执行程
 
 在 Windows 下，程序是一个普通的可执行文件，以下列出一个二进制可执行文件的基本情况：
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%872.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%872.png)
 
 > 通过上图可以得知，在没有运行程序前，也就是说程序没有加载到内存前，可执行程序内部已经分好3段信息，分别为代码区（text）、数据区（data）和未初始化数据区（bss）3 个部分（**有些人直接把data和bss合起来叫做静态区或全局区**）。
 
@@ -1811,9 +1811,9 @@ C代码经过预处理、编译、汇编、链接4步后生成一个可执行程
 
 程序在加载到内存前，代码区和全局区(data和bss)的大小就是固定的，程序运行期间不能改变。然后，运行可执行程序，系统把程序加载到内存，除了根据可执行程序的信息分出代码区（text）、数据区（data）和未初始化数据区（bss）之外，还额外增加了栈区、堆区。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%871.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%871.png)
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%874.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%874.png)
 
 - .text 　　代码段
 - .rodata  存储字符串常量
@@ -1855,9 +1855,9 @@ void test(){
 
 栈是一种先进后出的内存结构，由编译器自动分配释放，存放函数的参数值、返回值、局部变量等。在程序运行过程中实时加载和释放，因此，局部变量的生存周期为申请到释放该段栈空间。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%873.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%873.png)
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%875.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%875.png)
 
 如图为：内存生长方向(小端模式)
 
@@ -1911,7 +1911,7 @@ void test(){
 | register变量   | 一对{}内     | 当前函数       | 运行时存储在CPU寄存器           |
 | 字符串常量     | 当前文件     | 整个程序运行期 | data段                          |
 
-![1568374636_120805](https://raw.githubusercontent.com/che77a38/blogImage/main/1568374636_120805.jpg)
+![1568374636_120805](https://cdn.jsdelivr.net/gh/che77a38/blogImage/1568374636_120805.jpg)
 
 ## 内存操作函数
 
@@ -2025,7 +2025,7 @@ void *realloc(void *ptr, size_t size);
 - 在声明类型的同时定义变量
 - 直接定义结构体类型变量（无类型名）
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8710.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%8710.png)
 
 ```c
 struct test{
@@ -2070,7 +2070,7 @@ struct Person p3 = {"Edward",33}; //通过类型直接定义
 
 **堆创建并释放带指针的结构体数组的案例：**（要求如下图：）
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%8715.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%8715.png)
 
 ```c
 struct Person {
@@ -2131,7 +2131,7 @@ struct Person {
 #pragma pack(show)
 ```
 
-![image-20201010154522488](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201010154522488.png)
+![image-20201010154522488](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20201010154522488.png)
 
 **案例如下：**
 
@@ -2170,7 +2170,7 @@ int main(int argc, char *argv[])
 
 stu1内存占用如下：
 
-![image-20201010164139876](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201010164139876.png)
+![image-20201010164139876](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20201010164139876.png)
 
 其他字节对齐命令：
 
@@ -2397,7 +2397,7 @@ FILE是系统使用typedef定义出来的有关文件信息的一种结构体类
 
 声明FILE结构体类型的信息包含在头文件“stdio.h”中，一般设置一个指向FILE类型变量的指针变量，然后通过它来引用这些FILE类型变量。通过文件指针就可对它所指的文件进行各种操作。 
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%879.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%879.png)
 
 **C语言中有三个特殊的文件指针由系统默认打开**，用户无需定义即可直接使用:
 
@@ -2419,7 +2419,7 @@ ANSI C标准采用“缓冲文件系统”处理数据文件。
 
 ![img](http://images.51cto.com/files/uploadimg/20090731/162655699.jpg)
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%878.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%878.png)
 
 - 磁盘文件，一般保存在硬盘、U盘等掉电不丢失的磁盘设备中，在需要时调入内存
 - 在内存中对文件进行编辑处理后，保存到磁盘中
@@ -2763,7 +2763,7 @@ void rewind(FILE *stream);
 
 负数移动光标：
 
-![image-20201010182023642](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201010182023642.png)
+![image-20201010182023642](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20201010182023642.png)
 
 ### Windows和Linux文本文件区别
 
@@ -3027,7 +3027,7 @@ fun @2
 
 如果是VS平台，必须要在连接器中添加.def文件
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/1.WEBP)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/1.WEBP)
 
 2. __declspec(dllexport) 关键字
 
@@ -3098,7 +3098,7 @@ int main() {
 
 # 技术层次
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/%E5%9B%BE%E7%89%877.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E5%9B%BE%E7%89%877.png)
 
 里奇最早的C语言是K&R  C
 

@@ -26,15 +26,15 @@ date: 2020-12-23 22:51:13
 - shell就是命令解释器
 - 作用:对用户输入到终端的命令进行解析,调用对应的执行程序
 
-![1212121212](https://raw.githubusercontent.com/che77a38/blogImage/main/202203051532095.png)
+![1212121212](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051532095.png)
 
 用户在终端输入命令,由shell命令解释器对命令进行解析(按照$PATH环境变量搜索命令),解析成内核能够识别的指令,然后有内核执行命令,最后由终端显示命令执行的结果给用户
 
 shell在寻找命令的时候是按照$PATH环境变量去查找的,如果找到了就执行对应的命令,若找不到就报错,执行`echo $PATH`可以查看PATH环境变量的值
 
-![image-20220305153637492](https://raw.githubusercontent.com/che77a38/blogImage/main/202203051536768.png)
+![image-20220305153637492](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051536768.png)
 
-![1212121212](https://raw.githubusercontent.com/che77a38/blogImage/main/202203051541990.png)
+![1212121212](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051541990.png)
 
 常见的命令解析器:
 
@@ -43,11 +43,11 @@ shell在寻找命令的时候是按照$PATH环境变量去查找的,如果找到
 
 查看当前电脑有几个命令解析器:`cat /etc/shells`
 
-![image-20220305154519666](https://raw.githubusercontent.com/che77a38/blogImage/main/202203051545251.png)
+![image-20220305154519666](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051545251.png)
 
 查看当前系统使用的shell:`echo $SHELL`
 
-![image-20220305154621265](https://raw.githubusercontent.com/che77a38/blogImage/main/202203051546536.png)
+![image-20220305154621265](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051546536.png)
 
 ## Linux下常用快捷键
 
@@ -85,7 +85,7 @@ shell在寻找命令的时候是按照$PATH环境变量去查找的,如果找到
 
 Linux系统的目录结构是一个倒立的树状结构,根目录用`/`表示,对比Windows目录结构理解Linux的目录结构
 
-![捕获](https://raw.githubusercontent.com/che77a38/blogImage/main/202203051601037.png)
+![捕获](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051601037.png)
 
 - `/bin` binary,二进制文件,可执行程序,shell命令,存放众多的【(一般性/系统)应用程序】目录，主要放置**一些应用软件工具的必备执行档**,**存放二进制可执行程序，里面的程序可以直接通过命令行调用，而不需要进入程序所在的文件夹。**
 
@@ -159,7 +159,7 @@ Linux系统的目录结构是一个倒立的树状结构,根目录用`/`表示,�
 
 - `/var`   存放【系统产生的经常变化文件】目录，例如：打印机，邮件，新闻等假脱机目录
 
-![1173617-20171014010929277-1576262155](https://raw.githubusercontent.com/che77a38/blogImage2/main/202306071427682.png)
+![1173617-20171014010929277-1576262155](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202306071427682.png)
 
 > - `/usr`：系统级的目录，可以理解为`C:/Windows/`，`/usr/lib`理解为`C:/Windows/System32`。
 > - `/usr/local`：用户级的程序目录，可以理解为`C:/Progrem Files/`。用户自己编译的软件默认会安装到这个目录下。
@@ -232,13 +232,13 @@ ls 目录或文件名//显示指定目录下文件信息
 
 -a所有文件包含:隐藏文件(以.开头的文件名和普通文件和.还有..)
 
-![image-20220305170027550](https://raw.githubusercontent.com/che77a38/blogImage/main/202203051700028.png)
+![image-20220305170027550](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051700028.png)
 
 -l列出的详细信息包含7部分内容
 
-![图片1](https://raw.githubusercontent.com/che77a38/blogImage/main/202203051716573.png)
+![图片1](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051716573.png)
 
-![image-20220305165430053](https://raw.githubusercontent.com/che77a38/blogImage/main/202203051654788.png)
+![image-20220305165430053](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051654788.png)
 
 - 文件类型(第1个字符)
 
@@ -260,7 +260,7 @@ ls 目录或文件名//显示指定目录下文件信息
 
   - 其他人对文件的操作权限(第8,9,10字符)
 
-    ![捕获](https://raw.githubusercontent.com/che77a38/blogImage/main/202203051713214.png)
+    ![捕获](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051713214.png)
 
 - 硬链接计数
 
@@ -415,7 +415,7 @@ cd -//切换到上一个目录cd切换过来的源目录
 
 一个比较重要的应用:显示日志: `tail -f test.log` (`-f` 是阻塞的意思,表示堵塞实时显示文件内容)
 
-![截屏2022-03-07 16.59.55](https://raw.githubusercontent.com/che77a38/blogImage/main/202203071702227.jpeg)
+![截屏2022-03-07 16.59.55](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203071702227.jpeg)
 
 ### 链接相关命令
 
@@ -460,15 +460,15 @@ $$
 
 查看文件的i节点(inode): `ls -i 文件名` 
 
-![image-20220306101335367](https://raw.githubusercontent.com/che77a38/blogImage/main/202203061013559.png)
+![image-20220306101335367](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203061013559.png)
 
 查看i节点信息: `stat 文件名`
 
-![image-20220306101354149](https://raw.githubusercontent.com/che77a38/blogImage/main/202203061013391.png)
+![image-20220306101354149](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203061013391.png)
 
 如下图,file.hard是file的硬链接,这两个文件指向了同一个inode,同一个inode指向了相同的数据块(文件内容)
 
-![捕获](https://raw.githubusercontent.com/che77a38/blogImage/main/202203061016986.png)
+![捕获](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203061016986.png)
 
 - 当新创建了一个文件,硬链接计数为1
 - 给文件创建一个硬链接后,硬链接计数加1
@@ -485,7 +485,7 @@ $$
 
   删除文件的时候,只要硬链接计数不为0,不会真正被删除,起到保护文件的作用
 
-![捕获](https://raw.githubusercontent.com/che77a38/blogImage/main/202203061051478.png)
+![捕获](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203061051478.png)
 
 只有删除这4个文件,文件才会真正被删除
 
@@ -500,13 +500,13 @@ $$
 - `wc -w file` 显示文件的总单词数
 - `wc file` 显示文件的总行数,单词数和总字节数
 
-![image-20220306112350129](https://raw.githubusercontent.com/che77a38/blogImage/main/202203061123384.png)
+![image-20220306112350129](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203061123384.png)
 
 ### whoami命令
 
 显示当前登录的用户名
 
-![image-20220306112431190](https://raw.githubusercontent.com/che77a38/blogImage/main/202203061124397.png)
+![image-20220306112431190](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203061124397.png)
 
 ### man命令
 
@@ -618,7 +618,15 @@ change owner
 
 ### id命令
 
-用于查看id相关信息,组id,用户id等等
+用于查看用户的id相关信息,组id,用户id等等
+
+如: `id root`:查看root用户的相关信息
+
+### 其他权限命令
+
+查看所有用户列表: `cut -d: -f1 /etc/passwd`
+
+查看特定用户的特权级别和允许执行的命令: `sudo -l -U <用户名>`
 
 ## find命令
 
@@ -914,7 +922,7 @@ kill 终止（杀死）进程，有十几种控制进程的方法，下面是一
 
 - `kill -l` 查看系统有哪些信号   
 
-  ![信号图](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206231654467.jpeg)
+  ![信号图](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206231654467.jpeg)
 
 - `kill -STOP [pid]` 发送SIGSTOP (17,19,23)停止一个进程，而并不消灭这个进程。
 
@@ -932,7 +940,7 @@ SIGKILL 和 SIGSTOP 信号不能被捕捉、封锁或者忽略，但是，其它
 
 linux系统,通过修改 `/etc/crontab`文件(系统任务调度)添加定时任务.
 
-![](https://raw.githubusercontent.com/che77a38/blogImage2/main/202208151816868.png)
+![](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202208151816868.png)
 
 例子:
 
@@ -949,7 +957,23 @@ linux系统,通过修改 `/etc/crontab`文件(系统任务调度)添加定时任
 */30 * * * * /usr/sbin/ntpdate 210.72.145.44           #每半小时同步一下时间
 ```
 
+## 系统服务
 
+> `systemctl` 是一个用于管理系统服务（systemd units）的命令行工具。systemd是Linux系统中的一个初始化系统和服务管理器，它负责启动和管理系统上运行的各种服务和进程
+
+`systemctl` 命令可以让您启动、停止、重启、重载和查询系统服务的状态。它还可以管理系统的引导过程，设置服务的自动启动和禁用等。
+
+以下是一些常见的 `systemctl` 命令：
+
+- `systemctl start <unit>`：启动指定的服务。
+- `systemctl stop <unit>`：停止指定的服务。
+- `systemctl restart <unit>`：重启指定的服务。
+- `systemctl reload <unit>`：重新加载指定的服务配置文件。
+- `systemctl status <unit>`：查看指定的服务状态。
+- `systemctl enable <unit>`：设置指定的服务在系统启动时自动启动。
+- `systemctl disable <unit>`：禁止指定的服务在系统启动时自动启动。
+
+在上述命令中，`<unit>` 是指代服务的名称或者服务配置文件的路径。`systemctl` 命令还支持通配符和正则表达式，以便同时操作多个服务。
 
 ## 其他常用命令盘点
 
@@ -994,7 +1018,7 @@ linux系统,通过修改 `/etc/crontab`文件(系统任务调度)添加定时任
 
 Vi有三种基本工作模式: 命令模式、文本输入模式、末行模式。
 
-![image-20220310134131345](https://raw.githubusercontent.com/che77a38/blogImage/main/202203101341712.png)
+![image-20220310134131345](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203101341712.png)
 
 ### 命令模式下的操作
 
@@ -1065,8 +1089,8 @@ vim下写代码超实用代码格式整理命令，仅需四步
 | P        | 在光标所在位置向上开辟一行,粘贴                              |
 | 剪切操作 | 按dd或ndd山删除,将删除的行保存到剪贴板中,然后按p/P就可以粘贴了 |
 
-这里的复制粘贴均仅能在vim中自身使用,并非复制到系统剪贴板
-
+这里的复制粘贴均仅能在 vim 中自身使用,并非复制到系统剪贴板
+[想要实现关联系统剪贴板参考该博客](https://www.cnblogs.com/Biiigwang/p/12086514.html)
 #### 可视模式
 
 | 快捷键   | 操作                                                         |
@@ -1205,11 +1229,11 @@ vim下写代码超实用代码格式整理命令，仅需四步
 
 gcc编译器将c源文件到生成一个可执行程序，中间一共经历了四个步骤：
 
-![image-20220310145713407](https://raw.githubusercontent.com/che77a38/blogImage/main/202203101457076.png)
+![image-20220310145713407](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203101457076.png)
 
 四个步骤并不是gcc独立完成的，而是在内部调用了其他工具，从而完成了整个工作流程, 其中编译最耗时, 因为要逐行检查语法.
 
-![image-20220310145857517](https://raw.githubusercontent.com/che77a38/blogImage/main/202203101458023.png)
+![image-20220310145857517](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203101458023.png)
 
 ```makefile
 #下面以test.c为例介绍gcc的四个步骤:
@@ -1312,7 +1336,7 @@ DEBUG和RELEASE版本的差异
   ar rcs libtest1.a fun1.o fun2.o
   ```
 
-  ![image-20220315110819829](https://raw.githubusercontent.com/che77a38/blogImage/main/202203151108150.png)
+  ![image-20220315110819829](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151108150.png)
 
 ### **静态库的使用**
 
@@ -1338,15 +1362,15 @@ gcc foo.c -L /home/itcast/lib -static -lfoo -o foo
 
 ### [实际案例]
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203151556250.jpeg" alt="截屏2022-03-15 15.51.09" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151556250.jpeg" alt="截屏2022-03-15 15.51.09" style="zoom: 50%;" />
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203151552248.png" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151552248.png" style="zoom: 50%;" />
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203151557180.jpeg" alt="截屏2022-03-15 15.53.27" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151557180.jpeg" alt="截屏2022-03-15 15.53.27" style="zoom: 50%;" />
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203151556430.jpeg" alt="截屏2022-03-15 15.55.14" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151556430.jpeg" alt="截屏2022-03-15 15.55.14" style="zoom: 50%;" />
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203151559245.jpeg" alt="截屏2022-03-15 15.58.57" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151559245.jpeg" alt="截屏2022-03-15 15.58.57" style="zoom:50%;" />
 
 ### 静态库的优缺点
 
@@ -1362,7 +1386,7 @@ gcc foo.c -L /home/itcast/lib -static -lfoo -o foo
 
 消耗系统资源较大, 每个进程使用静态库都要复制一份, 无端浪费内存。
 
-![image-20220315113303414](https://raw.githubusercontent.com/che77a38/blogImage/main/202203151133735.png)
+![image-20220315113303414](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151133735.png)
 
 静态库会给程序的更新、部署和发布带来麻烦。如果静态库libxxx.a更新了，所有使用它的应用程序都需要重新编译、发布给用户（对于玩家来说，可能是一个很小的改动，却导致整个程序重新下载）。
 
@@ -1378,7 +1402,7 @@ gcc foo.c -L /home/itcast/lib -static -lfoo -o foo
 
 所以最终的静态库的名字应该为：libtest.so
 
-![image-20220315135210177](https://raw.githubusercontent.com/che77a38/blogImage/main/202203151352511.png)
+![image-20220315135210177](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151352511.png)
 
 ### **共享库的制作**
 
@@ -1411,7 +1435,7 @@ gcc main.c -I./ -L./ -ltest2 -o main2
 
 然后运行：`./main2`，发现竟然报错了.
 
-![image-20220315140737562](https://raw.githubusercontent.com/che77a38/blogImage/main/202203151407768.png)
+![image-20220315140737562](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151407768.png)
 
 **分析为什么在执行的时候找不到libtest2.so库**
 
@@ -1419,13 +1443,13 @@ gcc main.c -I./ -L./ -ltest2 -o main2
 
 **ldd**命令可以查看可执行文件依赖的库文件, 执行`ldd main2`,可以发现libtest2.so找不到.
 
-![image-20220315141518461](https://raw.githubusercontent.com/che77a38/blogImage/main/202203151415703.png)
+![image-20220315141518461](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151415703.png)
 
 对于elf格式(windows可执行程序是[[pe]]格式的)的可执行程序，是由**ld-linux.so**来完成的, 它先后搜索elf文件的 DT_RPATH段 — 环境变量LD_LIBRARY_PATH — /etc/ld.so.cache文件列表 — /lib/, /usr/lib目录找到库文件后将其载入内存。
 
 **使用file命令可以查看文件的类型: `file main2`**
 
-![image-20220315141032823](https://raw.githubusercontent.com/che77a38/blogImage/main/202203151410036.png)
+![image-20220315141032823](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151410036.png)
 
 ### Linux如何查找动态库
 
@@ -1445,7 +1469,7 @@ gcc main.c -I./ -L./ -ltest2 -o main2
 
 3. 修改 `/etc/ld.so.conf` 来配置文件指定的动态库绝对路径,也就是生效后的 `/etc/ld.so.cache` 文件中缓存的文件位置
 
-   （通过sudo ldconfig生效，一般是非root用户时使用）；
+   （通过 `sudo ldconfig` 生效，一般是非 root 用户时使用）；
 
 4. 默认的搜索路径 `/lib` 和 `/usr/lib`
 
@@ -1467,13 +1491,13 @@ gcc main.c -I./ -L./ -ltest2 -o main2
 
   - 退出当前终端,然后再次登录也可以使配置文件生效
 
-    <img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203181010547.jpg" alt="截屏2022-03-18 10.07.53" style="zoom:50%;" />
+    <img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203181010547.jpg" alt="截屏2022-03-18 10.07.53" style="zoom:50%;" />
 
-    <img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203181021902.jpg" alt="截屏2022-03-18 10.09.34" style="zoom:50%;" />
+    <img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203181021902.jpg" alt="截屏2022-03-18 10.09.34" style="zoom:50%;" />
 
-    <img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203181021952.jpeg" alt="截屏2022-03-18 10.08.09" style="zoom:50%;" />
+    <img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203181021952.jpeg" alt="截屏2022-03-18 10.08.09" style="zoom:50%;" />
 
-    <img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203181022007.jpeg" alt="截屏2022-03-18 10.22.35" style="zoom: 50%;" />
+    <img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203181022007.jpeg" alt="截屏2022-03-18 10.22.35" style="zoom: 50%;" />
 
 - 永久设置,把`export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:库路径`设置到`/etc/profile`文件中
 
@@ -1484,15 +1508,15 @@ gcc main.c -I./ -L./ -ltest2 -o main2
 
 ### [实际案例]
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203151556250.jpeg" alt="截屏2022-03-15 15.51.09" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151556250.jpeg" alt="截屏2022-03-15 15.51.09" style="zoom: 50%;" />
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203151628263.jpeg" alt="截屏2022-03-15 16.25.11" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151628263.jpeg" alt="截屏2022-03-15 16.25.11" style="zoom:50%;" />
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203151627052.jpeg" alt="截屏2022-03-15 16.25.30" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151627052.jpeg" alt="截屏2022-03-15 16.25.30" style="zoom:50%;" />
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203151628443.jpeg" alt="截屏2022-03-15 16.25.46" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151628443.jpeg" alt="截屏2022-03-15 16.25.46" style="zoom:50%;" />
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202203151629202.jpeg" alt="截屏2022-03-15 16.26.34" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203151629202.jpeg" alt="截屏2022-03-15 16.26.34" style="zoom:50%;" />
 
 ### mac下环境初始化顺序
 
@@ -1551,9 +1575,9 @@ gcc main.c -I./ -L./ -ltest2 -o main2
 
 ## C库IO理解
 
-![1](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206061447162.jpeg)exit函数会自动刷新flush
+![1](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206061447162.jpeg)exit函数会自动刷新flush
 
-![2](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206061447137.jpeg)
+![2](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206061447137.jpeg)
 
 c语言操作文件相关问题:
 使用fopen函数打开一个文件, 返回一个FILE* fp, 这个指针指向的结构体有三个重要的成员.
@@ -1569,7 +1593,7 @@ c语言操作文件相关问题:
 
 ## 库函数与系统函数的关系
 
-![1.jpg](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206061507063.jpeg)
+![1.jpg](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206061507063.jpeg)
 
 FD是file descriptor文件描述符,唯一指向文件块.(类似于windows的句柄)
 
@@ -1580,7 +1604,7 @@ FD是file descriptor文件描述符,唯一指向文件块.(类似于windows的�
 
 ## 虚拟地址空间
 
-![1](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206061718536.jpeg)
+![1](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206061718536.jpeg)
 
 读写受保护的地址会导致Segmentation fault.
 
@@ -1590,7 +1614,7 @@ PCB中有文件描述符表, 文件描述符表中存放着打开的文件描述
 
 ## PCB和文件描述符表
 
-![1](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206061728121.jpeg)
+![1](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206061728121.jpeg)
 
 备注: 
 pcb：结构体:`task_stuct`, 该结构体在:
@@ -1608,11 +1632,11 @@ pcb：结构体:`task_stuct`, 该结构体在:
 
 ## 文件IO函数
 
-![1](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206081601488.jpeg)
+![1](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206081601488.jpeg)
 
 每一个FILE文件流（标准C库函数）都有一个缓冲区buffer，默认大小8192Byte。Linux系统的IO函数默认是没有缓冲区.
 
-![2](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206061447137.jpeg)
+![2](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206061447137.jpeg)
 
 需要的头文件用 `man 2 函数名`来查询
 
@@ -1935,7 +1959,7 @@ struct dirent *readdir(DIR *dirp);
 
 记录目录项信息
 
-![无标题](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206121613690.jpeg)
+![无标题](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206121613690.jpeg)
 
 
 ```c
@@ -2061,11 +2085,11 @@ int main(int argc,char** argv)
 }
 ```
 
-![截屏2022-06-12 15.49.25](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206121550194.jpeg)
+![截屏2022-06-12 15.49.25](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206121550194.jpeg)
 
 ### dup/dup2/fcntl
 
-![无标题](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206181305314.jpeg)
+![无标题](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206181305314.jpeg)
 
 当调用dup函数之后,newfd和fd都指向了同一个文件,内核会在内部维护一个计数,此时计数为2,当close一个文件描述符之后,这个计数变为1,**只有当计数为0时,文件才会被真正关闭**
 
@@ -2197,11 +2221,11 @@ int fcntl(int fd, int cmd, ... /* arg */ );
 
 - **并发**:在一个时间段内,是在同一个cpu上,运行多个进程
 
-  ![无标题](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206211417434.jpeg)
+  ![无标题](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206211417434.jpeg)
 
 - **并行**:多个程序在同一时刻发生(需要有多颗cpu)
 
-  ![无标题](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206211418742.jpeg)
+  ![无标题](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206211418742.jpeg)
 
 ### PCB详解
 
@@ -2237,7 +2261,7 @@ pcb记录了如下信息:
 
   - `ulimit -a`
 
-    ![截屏2022-06-21 14.31.56](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206211433823.jpeg)
+    ![截屏2022-06-21 14.31.56](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206211433823.jpeg)
 
 ### 进程状态
 
@@ -2249,7 +2273,7 @@ pcb记录了如下信息:
 - 挂起态
 - 终止态
 
-![无标题](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206211525270.jpeg)
+![无标题](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206211525270.jpeg)
 
 SIGSTOP是个信号
 
@@ -2270,11 +2294,11 @@ pid_t fork(void);
 
 fork代码案例(箭头标识执行时机)
 
-![无标题](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206211528595.jpeg)
+![无标题](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206211528595.jpeg)
 
 子进程从fork函数后一句开始执行.(因为,fork出来的子进程与父进程用户区是复制出来的,因此fork出来的子进程开始的变量与调用fork函数后的父进程此时变量完全一样)
 
-![无标题](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206211529165.jpeg)
+![无标题](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206211529165.jpeg)
 
 - linux提供了函数供子进程获取其父进程,但父进程要获取子进程pid只能在创建的时候获取.
 - 父子进程谁先抢到cpu时间片,谁先执行.
@@ -2345,7 +2369,7 @@ execlp("ls","ls","-l",NULL);
 
 ##### exec函数族原理
 
-![无标题](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206231907967.jpeg)
+![无标题](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206231907967.jpeg)
 
 **[注意]**当execl和execlp函数执行成功后，**不返回**，并且**不会执行execl后面的代码逻辑，原因是调用execl函数成功以后，exec函数指定的代码段已经将原有的代码段替换了**。
 
@@ -2460,7 +2484,7 @@ int main(int argc,char** argv)
 
 `ps -ef`中CMD属性后有`<defunct>`,表示该进程是僵尸进程
 
-![截屏2022-06-24 13.34.06](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206241336368.jpeg)
+![截屏2022-06-24 13.34.06](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206241336368.jpeg)
 
 如何找到defunct僵尸进程: `ps -ef |grep defunct_process_pid`
 
@@ -2482,7 +2506,7 @@ IPC(Inter-Process Communication)
 
 > Linux环境下，进程地址空间相互独立，每个进程各自有不同的用户地址空间。任何一个进程的全局变量在另一个进程中都看不到，所以进程和进程之间不能相互访问，要交换数据必须通过内核，在内核中开辟一块缓冲区，进程1把数据从用户空间拷到内核缓冲区，进程2再从内核缓冲区把数据读走，内核提供的这种机制称为**进程间通信**（**IPC**，InterProcess Communication）。
 >
-> ![image-20220703154459626](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207031544810.png)
+> ![image-20220703154459626](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207031544810.png)
 
 在进程间完成数据传递需要借助操作系统提供特殊的方法，如：文件、管道、信号、共享内存、消息队列、套接字、命名管道等。随着计算机的蓬勃发展，一些方法由于自身设计缺陷被淘汰或者弃用。现今常用的进程间通信方式有：
 
@@ -2495,7 +2519,7 @@ IPC(Inter-Process Communication)
 
 管道pipe是一种最基本的IPC机制,也称为**匿名管道**,应用于有血缘关系的进程之间,完成数据传递.调用pipe函数即可创建一个管道.
 
-![image-20220704102905251](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207041029498.png)
+![image-20220704102905251](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207041029498.png)
 
 **有如下特质：**
 
@@ -2556,15 +2580,15 @@ int pipe(int fd[2]);
 
 1. 父进程创建管道
 
-   ![image-20220704114315454](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207041143653.png)
+   ![image-20220704114315454](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207041143653.png)
 
 2. 父进程fork出子进程
 
-   ![image-20220704125814879](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207041258197.png)
+   ![image-20220704125814879](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207041258197.png)
 
 3. 父进程关闭fd[0]，子进程关闭fd[1]
 
-   ![image-20220704125938674](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207041259218.png)
+   ![image-20220704125938674](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207041259218.png)
 
 4. 进行通信(父进程可以向管道中写入数据，子进程将管道中的数据读出)
 
@@ -2696,7 +2720,7 @@ FIFO严格遵循**先进先出（first in first out）**，对FIFO的读总是�
 
 **两个进程间FIFO通信思路**
 
-![image-20220704185821340](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207041858586.png)
+![image-20220704185821340](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207041858586.png)
 
 进程A：
 
@@ -2718,7 +2742,7 @@ FIFO严格遵循**先进先出（first in first out）**，对FIFO的读总是�
 ​	存储映射I/O (Memory-mapped I/O) 使一个磁盘文件与存储空间中的一个缓冲区相映射。从内存缓冲区中取数据，就相当于读文件中的相应字节；将数据写入内存缓冲区，则会将数据写入文件。这样，就可在不使用read和write函数的情况下，使用地址（指针）完成I/O操作。
 使用存储映射这种方法，首先应通知内核，将一个指定文件映射到存储区域中。这个映射工作可以通过**mmap**函数来实现。
 
-![image-20220705121725756](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207051217507.png)
+![image-20220705121725756](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207051217507.png)
 
 ##### mmap函数
 
@@ -2755,7 +2779,7 @@ void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
 
 - **[特别注意]当映射的目标文件大小为0时，不能创建映射区**。所以，用于映射的文件必须要有实际大小；否则会出现总线错误(bus error)(至少要写入一点东西,文件大小不能为0,不然导致错误)。
 
-  <img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207051510703.jpeg" alt="截屏2022-07-05 15.09.57" style="zoom: 33%;" />
+  <img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207051510703.jpeg" alt="截屏2022-07-05 15.09.57" style="zoom: 33%;" />
 
   因此不可以仅仅open的时候用`O_CREAT`方式打开一个新文件来创建映射区,不然总线错误
 
@@ -2782,7 +2806,7 @@ int munmap(void *addr, size_t length);
 
 ##### 父子进程间通信
 
-![image-20220705174939006](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207051749198.png)
+![image-20220705174939006](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207051749198.png)
 
 - 调用mmap函数创建存储映射区，返回映射区首地址ptr
 - 调用fork函数创建子进程，子进程也拥有了映射区首地址
@@ -2862,7 +2886,7 @@ mmap(NULL, 4096, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
 
 每个进程收到的所有信号，都是由内核负责发送的。
 
-![image-20220713161342554](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207131704167.png)
+![image-20220713161342554](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207131704167.png)
 
 ###### 信号的状态
 
@@ -3033,7 +3057,7 @@ unsigned int alarm(unsigned int seconds);
 
 函数返回值：返回0或剩余的秒数，无失败。例如：
 
-![image-20220714150216760](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207141503278.png)
+![image-20220714150216760](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207141503278.png)
 
 常用操作:**取消定时器** `alarm(0)`,返回旧闹钟余下秒数.
 
@@ -3045,7 +3069,7 @@ alarm使用的是自然定时法,与进程状态无关,就绪,运行,挂起(阻�
 time ./main     //执行./main可执行程序并且最后打印时间结果
 ```
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207151104023.jpeg" style="zoom:33%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207151104023.jpeg" style="zoom:33%;" />
 $$
 实际执行时间(total/real) = 系统时间(system) + 用户时间(user) + 损耗时间
 $$
@@ -3128,7 +3152,7 @@ int main(int argc,char** argv)
 
 阻塞信号集是当前进程要阻塞的信号的集合，未决信号集是当前进程中还处于未决状态的信号的集合，这两个集合存储在内核的PCB中。
 
-![image-20220715130337216](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207151303644.png)
+![image-20220715130337216](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207151303644.png)
 
 > 下面以SIGINT为例说明信号未决信号集和阻塞信号集的关系：
 >
@@ -3223,7 +3247,7 @@ int main(int argc,char** argv)
 }
 ```
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207151512599.jpeg" style="zoom:25%;" /><img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202206231654467.jpeg" alt="信号图" style="zoom: 25%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207151512599.jpeg" style="zoom:25%;" /><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206231654467.jpeg" alt="信号图" style="zoom: 25%;" />
 
 ##### 信号捕捉函数
 
@@ -3281,7 +3305,7 @@ struct sigaction {
 5. sighandler函数返回后自动执行特殊的系统调用sigreturn再次进入内核态。
 6. 如果没有新的信号要递达，这次再返回用户态就是恢复main函数的上下文继续执行了。
 
-![image-20220716100353613](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207161004027.png)
+![image-20220716100353613](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207161004027.png)
 
 执行信号处理函数后,`errno`会被设置为`EINTR`.但如果执行信号处理函数后,发起信号的线程处于**另一个sleep**中(如果仅一个sleep延续至今则依旧导致`EINTR`,并且会打断当前堵塞),则会导致 `ETIMEDOUT`错误
 
@@ -3302,7 +3326,7 @@ int main(int argc,char** argv)
 }
 ```
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207181155330.jpeg" alt="截屏2022-07-18 11.52.44" style="zoom:33%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207181155330.jpeg" alt="截屏2022-07-18 11.52.44" style="zoom:33%;" />
 
 ##### 父进程回收子进程SIGCHLD信号
 
@@ -3385,7 +3409,7 @@ return 0;
 }
 ```
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207161343792.jpeg" style="zoom: 25%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207161343792.jpeg" style="zoom: 25%;" />
 
 **信号实现进程间通信案例**
 
@@ -3445,7 +3469,7 @@ return 0;
 }
 ```
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207161856627.jpeg" style="zoom:25%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207161856627.jpeg" style="zoom:25%;" />
 
 #### 共享内存
 
@@ -3719,7 +3743,7 @@ Linux后台的一些系统服务进程，没有控制终端，不能直接和用
 
 使用`ps ajx`来查看进程组ID和会话ID
 
-![image-20220718141339967](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207181413469.png)
+![image-20220718141339967](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207181413469.png)
 
 #### 创建守护进程模型
 
@@ -3816,7 +3840,7 @@ int main(int argc,char** argv)
 - 进程：拥有独立的地址空间，拥有PCB，相当于独居。
 - 线程：有PCB，但没有独立的地址空间，多个线程共享进程空间，相当于合租。
 
-![image-20220719150101951](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207191501937.png)
+![image-20220719150101951](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207191501937.png)
 
 一个进程空间对应一个pid,同一个进程空间的线程有同一个pid,但是他们各自有各自的线程id
 
@@ -3832,11 +3856,11 @@ int main(int argc,char** argv)
 - 在linux下，线程最是小的执行单位；进程是最小的分配资源单位
 - **主线程退出，整个进程空间都会被回收，子线程没有了生存空间，所以也就得不到执行。**
 
-![image-20220719153308706](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207191533978.png)
+![image-20220719153308706](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207191533978.png)
 
 查看指定进程的所有的LWP号： `ps –Lf pid`
 
-![截屏2022-07-20 11.24.10](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207201125224.jpeg)
+![截屏2022-07-20 11.24.10](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207201125224.jpeg)
 
 NLWP表示线程数,STAT表示线程状态,LWP表示线程号(不同于线程id,线程id是给程序员看的)
 
@@ -3888,7 +3912,7 @@ p.s. 线程之间（包含主线程和子线程）可以共享同一变量，包
 
 #### windows和linux线程的函数比较
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage2/main/202208211822664.jpeg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202208211822664.jpeg)
 
 linux也有Semaphore信号量(上图有误)
 
@@ -3926,7 +3950,7 @@ int pthread_create(pthread_t *thread, //可以理解为传出线程操作的标�
 - `start_routine`：函数指针，指向线程主函数(线程体)，该函数运行结束，则线程结束。
 - `arg`：线程主函数执行期间所使用的参数。
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207201055606.jpeg" alt="截屏2022-07-20 10.53.32" style="zoom: 33%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207201055606.jpeg" alt="截屏2022-07-20 10.53.32" style="zoom: 33%;" />
 
 注意:
 
@@ -3964,7 +3988,7 @@ int main(int argc,char** argv)
 }
 ```
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207201059397.jpeg" alt="截屏2022-07-20 10.59.36" style="zoom:25%;" />![image-20220720110017321](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207201100698.png)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207201059397.jpeg" alt="截屏2022-07-20 10.59.36" style="zoom:25%;" />![image-20220720110017321](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207201100698.png)
 
 > **为什么打印出来的值是5**:
 >
@@ -4049,7 +4073,7 @@ int main(int argc,char** argv)
 
 `pthread_self`函数用于获取自身线程id
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207201311701.jpeg" alt="截屏2022-07-20 13.10.44" style="zoom: 33%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207201311701.jpeg" alt="截屏2022-07-20 13.10.44" style="zoom: 33%;" />
 
 #### pthread_detach函数
 
@@ -4130,7 +4154,7 @@ int main(int argc,char** argv)
 
 上面案例阻塞,如下图:
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207201405870.jpeg" alt="截屏2022-07-20 14.04.24" style="zoom:25%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207201405870.jpeg" alt="截屏2022-07-20 14.04.24" style="zoom:25%;" />
 
 原因是子线程没有取消点,所以在 `pthread_join`函数处阻塞住了.
 
@@ -4246,7 +4270,7 @@ int main(int argc,char** argv)
 
 **案例效果为:子线程设置为分离线程后,子线程虽然还未结束,但`pthread_join`也不会阻塞.**
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207201629974.jpeg" alt="截屏2022-07-20 16.27.48" style="zoom: 33%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207201629974.jpeg" alt="截屏2022-07-20 16.27.48" style="zoom: 33%;" />
 
 ### 线程同步
 
@@ -4272,7 +4296,7 @@ Linux中提供一把互斥锁mutex（也称之为互斥量）。每个线程在�
 
 资源还是共享的，线程间也还是竞争的，但**通过“锁”就将资源的访问变成互斥操作**，而后与时间有关的错误也不会再产生了。
 
-![image-20220721114209334](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207211142513.png)
+![image-20220721114209334](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207211142513.png)
 
 线程1访问共享资源的时候要先判断锁是否锁着，如果锁着就阻塞等待；若锁是解开的就将这把锁加锁，此时可以访问共享资源，访问完成后释放锁，这样其他线程就有机会获得锁。
 
@@ -4426,7 +4450,7 @@ int main(int argc,char** argv)
 }
 ```
 
-未加锁之前:<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202207211347215.jpeg" alt="截屏2022-07-21 13.36.00" style="zoom:25%;" />,加锁之后,输出到`2000000`
+未加锁之前:<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207211347215.jpeg" alt="截屏2022-07-21 13.36.00" style="zoom:25%;" />,加锁之后,输出到`2000000`
 
 #### 死锁
 
@@ -4435,11 +4459,11 @@ int main(int argc,char** argv)
 
 1. 自己锁自己，如下图代码片段
 
-   ![image-20220726133100008](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207261331774.png)
+   ![image-20220726133100008](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207261331774.png)
 
 2. 线程A拥有A锁，请求获得B锁；线程B拥有B锁，请求获得A锁，这样造成线程A和线程B都不释放自己的锁，而且还想得到对方的锁，从而产生死锁，如下图所示：
 
-   ![image-20220726133159681](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207261332625.png)
+   ![image-20220726133159681](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207261332625.png)
 
 **[如何解决死锁]**：
 
@@ -4576,7 +4600,7 @@ int pthread_cond_boardcast(pthread_cond_t *cond);
 
 **案例**
 
-![](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207281613821.png)![](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207281613562.png)
+![](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207281613821.png)![](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207281613562.png)
 
 生产者线程调用pthread_cond_signal函数会使消费者线程在pthread_cond_wait处解除阻塞。
 
@@ -4586,7 +4610,7 @@ int pthread_cond_boardcast(pthread_cond_t *cond);
 
 前面的锁同一时间都只能有一个单位持有锁,信号量允许多个单位持有同一把锁.
 
-![image-20220729141523246](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207291415036.png)
+![image-20220729141523246](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207291415036.png)
 
 可以如上图理解成多部车进同一个车库
 
@@ -4654,7 +4678,7 @@ int sem_destroy(sem_t *sem);
 
 **案例**
 
-![image-20220729142150009](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207291421675.png)![image-20220729142154726](https://raw.githubusercontent.com/che77a38/blogImage2/main/202207291421450.png)
+![image-20220729142150009](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207291421675.png)![image-20220729142154726](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207291421450.png)
 
 #### 原子指令
 

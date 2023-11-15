@@ -1,6 +1,11 @@
 {
   "accentColor": "",
-  "theme": "system",
-  "cssTheme": "Typewriter",
-  "translucency": true
+  "theme": "moonstone",
+  "cssTheme": "Minimal",
+  "translucency": true,
+  "showViewHeader": true,
+  "nativeMenus": true,
+  "baseFontSize": 16,
+  "textFontFamily": "",
+  "monospaceFontFamily": "Noto Sans Mono CJK SC"
 }

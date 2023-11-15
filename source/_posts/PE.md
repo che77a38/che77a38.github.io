@@ -32,13 +32,13 @@ abbrlink: fdd4fab4
 
    UE二进制方式打开文件，前两个字节是4D 5A表示得字符是MZ，然后0x3c的地址处如果说是E0 00 00 00，就到000000E0地址处查看前两个字节是不是50 45，表示得字符是PE，如果上述的都满足，就说明这个文件是PE文件。
 
-   ![image-20210604121004126](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210604121004126.png)
+   ![image-20210604121004126](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210604121004126.png)
 
 2. 不要仅仅通过文件名的后缀名来认定PE文件（因为后缀名是可以改的）
 
 PE文件结构
 
-![image-20210604134303017](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210604134303017.png)
+![image-20210604134303017](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210604134303017.png)
 
 1. DOS部分是历史遗留问题，以前是DOS系统
 2. PE文件头是给windows用的
@@ -47,13 +47,13 @@ PE文件结构
 
 WINNT.H的文件中定义了PE文件需要用到的结构体
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/pe%E7%BB%93%E6%9E%84%E5%9B%BE.JPG" alt="pe结构图"  />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/pe%E7%BB%93%E6%9E%84%E5%9B%BE.JPG" alt="pe结构图"  />
 
 详细的结构体信息参考**pe结构.pdf**
 
 PE在文件中结构参考
 
-![image-20211127210012444](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211127210012444.png)
+![image-20211127210012444](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20211127210012444.png)
 
 # 主要结构体
 
@@ -63,7 +63,7 @@ PE在文件中结构参考
 
 DOS MZ文件头，固定为64个字节
 
-![image-20210604141102723](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210604141102723.png)
+![image-20210604141102723](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210604141102723.png)
 
 ```cpp
 //这个结构体都是给16位程序看的，所以都是无用的，只有e_magic和e_lfanew有用，是例外
@@ -160,7 +160,7 @@ OD原版是默认识别224位拓展pe头的。
 
 **Characteristics字段含义**：
 
-![image-20210604180109514](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210604180109514.png)
+![image-20210604180109514](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210604180109514.png)
 
 32位notepad.exe比如0x0102，展开成二进制为0000 0001 0000 0010，意思是第1位和第8位是1，所以对照上图，文件是可执行的并且只在32位平台运行
 
@@ -238,7 +238,7 @@ OD原版的分析功能，参考了这个SizeOfCode字段来确定读入的代�
 
 DllCharacteristics详细选项（WORD拆分为16位,按位对应含义）
 
-![image-20210604210332119](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210604210332119.png)
+![image-20210604210332119](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210604210332119.png)
 
 ```cpp
 //64位的拓展PE头结构
@@ -342,7 +342,7 @@ typedef struct _IMAGE_SECTION_HEADER {
 
 Characteristics节的属性详解（DWORD拆分为32位,按位对应含义）
 
-![image-20210604220050538](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210604220050538.png)
+![image-20210604220050538](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210604220050538.png)
 
 *比如Characteristics中二进制1100 0000 0000 0000 0000 0000 0100 0000*
 
@@ -365,7 +365,7 @@ Characteristics节的属性详解（DWORD拆分为32位,按位对应含义）
 
 上述所有结构都是针对PE在硬盘文件中的状态
 
-![image-20210604162826452](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210604162826452.png)
+![image-20210604162826452](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210604162826452.png)
 
 如图，PE文件在内存是按照SectionAlignment内存对齐，如果SectionAlignment和FileAlignment一样的话，那么PE在磁盘文件和在内存中就是一样的
 
@@ -373,9 +373,9 @@ Characteristics节的属性详解（DWORD拆分为32位,按位对应含义）
 
 通过WinHex图示按钮可以查看exe在内存中的视图
 
-![image-20210604163038120](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210604163038120.png)
+![image-20210604163038120](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210604163038120.png)
 
-![tempsnip](https://raw.githubusercontent.com/che77a38/blogImage/main/tempsnip.png)
+![tempsnip](https://cdn.jsdelivr.net/gh/che77a38/blogImage/tempsnip.png)
 
 **在内存中节的大小按照拓展PE头中的SectionAlignment字段进行的内存对齐，而不是文件对齐**
 
@@ -407,7 +407,7 @@ Characteristics节的属性详解（DWORD拆分为32位,按位对应含义）
 
 如果文件对齐和内存对齐是一样的，那么直接FOA=内存地址-ImageBase。也就是FOA=RVA
 
-![image-20230411195406117](https://raw.githubusercontent.com/che77a38/blogImage2/main/202304111954493.png)
+![image-20230411195406117](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202304111954493.png)
 
 # PE的空白区添加代码
 
@@ -443,7 +443,7 @@ Characteristics节的属性详解（DWORD拆分为32位,按位对应含义）
 
 1.分配一块新的空间，大小为S（直接增加内存对齐的倍数省事）
 
-![image-20210605145444540](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210605145444540.png)
+![image-20210605145444540](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210605145444540.png)
 
 2. 将最后一个节的SizeOfRawData和VirtualSize改为N（看谁大）
 
@@ -471,15 +471,15 @@ Characteristics节的属性详解（DWORD拆分为32位,按位对应含义）
 6. 在原有数据的最后，新增一个节的数据（内存对齐的整数倍）
 7. 修正新增节表的属性
 
-![image-20210606121703626](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210606121703626.png)
+![image-20210606121703626](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210606121703626.png)
 
 新增节前：
 
-![image-20210606115603452](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210606115603452.png)
+![image-20210606115603452](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210606115603452.png)
 
 新增节后：（.tttt为新增节的名称）
 
-![image-20210606115642621](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210606115642621.png)
+![image-20210606115642621](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210606115642621.png)
 
 ## 合并节
 
@@ -571,7 +571,7 @@ Characteristics节的属性详解（DWORD拆分为32位,按位对应含义）
 
 修正后：
 
-![image-20210406133806124](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210406133806124.png)
+![image-20210406133806124](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210406133806124.png)
 
 #### 修正后面的节
 
@@ -668,11 +668,11 @@ NumberOfFunctions为5是因为序号断档也会算进去，12,13,14,15,16刚好
 
 ### 函数地址表
 
-![image-20210607121906024](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607121906024.png)
+![image-20210607121906024](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210607121906024.png)
 
 ### 函数名称表
 
-![image-20210607122444890](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607122444890.png)
+![image-20210607122444890](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210607122444890.png)
 
 **函数名称表是按照字母排序的**
 
@@ -684,7 +684,7 @@ NumberOfFunctions为5是因为序号断档也会算进去，12,13,14,15,16刚好
 
 **序号表是为函数名称表找函数地址表服务的**
 
-![image-20210607123144789](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607123144789.png)
+![image-20210607123144789](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210607123144789.png)
 
 里面的内容表示的是函数名称表中的项在函数地址表中的位置
 
@@ -747,9 +747,9 @@ typedef struct _IMAGE_IMPORT_DESCRIPTOR {
 
 下图是PE文件加载到内存前在文件中的结构
 
-![image-20210607132251965](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607132251965.png)
+![image-20210607132251965](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210607132251965.png)
 
-![image-20210708142928288](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210708142928288.png)
+![image-20210708142928288](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210708142928288.png)
 
 - INT：import name table导入名称表
 - IAT：import address table导入地址表
@@ -783,7 +783,7 @@ typedef struct _IMAGE_THUNK_DATA64 {
 
 _IMAGE_THUNK_DATA32中内容的判断方式
 
-![image-20210607134402552](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607134402552.png)
+![image-20210607134402552](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210607134402552.png)
 
 1. 判断最高位是否1，若是，那么除去最高位的值就是函数的导出序号
 2. 若不是，那么这个值是一个RVA指向IMAGE_IMPORT_BY_NAME
@@ -803,11 +803,11 @@ typedef struct _IMAGE_IMPORT_BY_NAME {
 
 下面的call是一个间接call，只要我们用的是其他dll中的函数，那么我们这个call生成的都是这种间接call
 
-![image-20210607140823333](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607140823333.png)
+![image-20210607140823333](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210607140823333.png)
 
 这个call的地址指向的内容是
 
-![image-20210607141338756](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607141338756.png)
+![image-20210607141338756](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210607141338756.png)
 
 直接指向的是函数地址
 
@@ -815,15 +815,15 @@ typedef struct _IMAGE_IMPORT_BY_NAME {
 
 在文件中：
 
-![20131007225555312](https://raw.githubusercontent.com/che77a38/blogImage/main/20131007225555312.jpg)
+![20131007225555312](https://cdn.jsdelivr.net/gh/che77a38/blogImage/20131007225555312.jpg)
 
 加载到内存后：
 
-![20131007225859203](https://raw.githubusercontent.com/che77a38/blogImage/main/20131007225859203.jpg)
+![20131007225859203](https://cdn.jsdelivr.net/gh/che77a38/blogImage/20131007225859203.jpg)
 
 此时FirstThunk指向的不再是OriginalFirstThunk指向的结构
 
-![image-20210607141808212](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607141808212.png)
+![image-20210607141808212](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210607141808212.png)
 
 FirstThunk而是指向直接的函数地址（IAT）。加载到内存的时候，由操作系统根据函数名称或导出表中的索引到对应dll的导出表去找内存地址填入FirstThunk指向的数组
 
@@ -833,7 +833,7 @@ FirstThunk而是指向直接的函数地址（IAT）。加载到内存的时候�
 
 举个例子，未初始化的全局变量的虚拟地址不是RVA，而是以固定的虚拟地址写死在汇编中（如下图，x是未初始化的全局变量）。所以在加载到内存中之后如果不是加载到对应的PE文件的imageBase的话会出问题。（xp系统以后都是动态加载,原因就是因为有重定位表）
 
-![image-20210607151337405](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607151337405.png)
+![image-20210607151337405](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210607151337405.png)
 
 所以重定位表就是为了解决这个问题的
 
@@ -856,13 +856,13 @@ typedef struct _IMAGE_BASE_RELOCATION {
 
 下图一个格子表示一个字节，X为VirtualAddress，Y为SizeOfBlock
 
-![image-20210607163327446](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607163327446.png)
+![image-20210607163327446](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210607163327446.png)
 
 重定位表到连续8个字节为0表示到头了（也就是VirtualAddress和SizeOfBlock都为0表示到头了）。
 
 **IMAGE_BASE_RELOCATION结构和后面紧跟的若干个Typeoffset组成了一个块，其大小为结构体中的SizeOfBlock**
 
-![image-20210607164617022](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210607164617022.png)
+![image-20210607164617022](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210607164617022.png)
 
 重定位块是按照上图红色部分这样两个字节存一个要修改的地址
 
@@ -915,7 +915,7 @@ exe编译出的debug版是带重定位表的，浮动基址的exe都带有重定
 4. 修改新内核系统服务表（老SSDT函数地址-老内核基址+新内核基址=新SSDT函数地址）
 5. HOOK KiFastCallEntry(HOOK原内核的KiFastCallEntry,如果是目标进程则将跳转改为新内核的系统服务表。)
 
-![image-20211125115210958](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20211125115210958.png)
+![image-20211125115210958](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20211125115210958.png)
 
 重载内核的**弊端**：太容易被发现了，随便搜一个内核函数的特征码都能搜索出来两份。
 

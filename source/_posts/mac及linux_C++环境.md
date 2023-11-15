@@ -413,9 +413,9 @@ first_make:first_make.cpp second.cpp #目标文件：依赖文件
 
 **makefile工作流程**
 
-![image-20211224202502589](https://raw.githubusercontent.com/che77a38/blogImage/main/202112242025323.png)
+![image-20211224202502589](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112242025323.png)
 
-![捕获](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206051153723.jpeg)
+![捕获](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206051153723.jpeg)
 
 **makefile文件主要包含了5部分内容**：
 
@@ -448,7 +448,7 @@ GUN的make很强大，它可以自动推导文件以及文件依赖关系后面�
 
 **makefile中常见预定义变量**
 
-![image-20211224164553549](https://raw.githubusercontent.com/che77a38/blogImage/main/202112241646051.png)
+![image-20211224164553549](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112241646051.png)
 
 p.s.CXXFLAGS=-I../inc		表示头文件的路径在当前源文件的父文件夹中的inc文件夹中
 
@@ -458,7 +458,7 @@ p.s.CXXFLAGS=-I../inc		表示头文件的路径在当前源文件的父文件夹
 
 **自动变量**(下面表格的变量)只能在规则中的命令使用
 
-![image-20211224204554371](https://raw.githubusercontent.com/che77a38/blogImage/main/202112242045930.png)
+![image-20211224204554371](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112242045930.png)
 
 $(@D)是目标文件的目录，$(@F)是目标文件，
 
@@ -549,7 +549,7 @@ clean:
 
 如下:
 
-![捕获](https://raw.githubusercontent.com/che77a38/blogImage2/main/202206051342850.jpeg)
+![捕获](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206051342850.jpeg)
 
 ## makefile的清理操作
 
@@ -916,13 +916,13 @@ add_executable(helloWorld_cmake helloworld.cpp)
 
 内部构建后（还未执行`make`）如图：
 
-![image-20220117153415398](https://raw.githubusercontent.com/che77a38/blogImage/main/202201171534397.png)
+![image-20220117153415398](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171534397.png)
 
 红色框中是原有的文件，紫色框中的是内部构建生成的,可以看到非常乱
 
 外部构建后（还未执行`make`）如图：
 
-![image-20220117155157081](https://raw.githubusercontent.com/che77a38/blogImage/main/202201171551365.png)
+![image-20220117155157081](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171551365.png)
 
 cmake的产物都放到build文件夹下了，整洁了很多 ，如果之后执行`make`，生成的可执行文件也会在build文件夹下
 
@@ -930,7 +930,7 @@ cmake的产物都放到build文件夹下了，整洁了很多 ，如果之后执
 
 项目结构如下：
 
-![image-20220117162108450](https://raw.githubusercontent.com/che77a38/blogImage/main/202201171621715.png)
+![image-20220117162108450](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171621715.png)
 
 CMakeLists.txt如下：
 
@@ -946,11 +946,11 @@ add_executable(main_cmake main.cpp src/tool.cpp)
 
 操作如下：
 
-![image-20220117162245705](https://raw.githubusercontent.com/che77a38/blogImage/main/202201171622366.png)
+![image-20220117162245705](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171622366.png)
 
 `make`后结构如下：
 
-![image-20220117162516558](https://raw.githubusercontent.com/che77a38/blogImage/main/202201171625167.png)
+![image-20220117162516558](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171625167.png)
 
 下面两个等同于`cd build;cmake .`
 
@@ -999,17 +999,17 @@ add_executable(main_cmake ${SRC_MAIN} ${SRC})
 
 点击下面图片位置，创建json文件
 
-![image-20220119163310314](https://raw.githubusercontent.com/che77a38/blogImage/main/202201191633093.png)
+![image-20220119163310314](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201191633093.png)
 
 **【超级重点】：必须在编辑框显示源文件的情况下点击这个按钮**
 
-![image-20220119201327676](https://raw.githubusercontent.com/che77a38/blogImage/main/202201192013927.png)
+![image-20220119201327676](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201192013927.png)
 
 **CodeLLDB（用来debug，解决Catalina不支持lldb调试问题）**
 
 **Mac在更新到Catalina后不再支持lldb调试**,即C++(GDB/LLDB)无效，因此下载CodeLLDB插件，也因此上图选择LLDB按钮。
 
-![image-20220119201249218](https://raw.githubusercontent.com/che77a38/blogImage/main/202201192012644.png)
+![image-20220119201249218](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201192012644.png)
 
 **红框中设置为生成的可执行文件的路径**
 
@@ -1133,14 +1133,19 @@ endif (OPENCV_FOUND)
 清理所有包的旧版本：`brew cleanup`
 清理指定包的旧版本：`brew cleanup $FORMULA`
 查看可清理的旧版本包，不执行实际操作：`brew cleanup -n`
+查看包的详细信息：`brew info xxx`
+检查brew所有服务状态：`brew services list`
+启动xxx服务：`brew services start xxx`
+停止xxx服务：`brew services stop xxx`
+重启xxx服务：`brew services restart xxx`
 
 [更详细的命令]: https://blog.csdn.net/weixin_44280688/article/details/93391279
 
 # git一图流
 
-![](https://raw.githubusercontent.com/che77a38/blogImage/main/202112071513124.png)
+![](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071513124.png)
 
-![image-20211207151102904](https://raw.githubusercontent.com/che77a38/blogImage/main/202112071511344.png)
+![image-20211207151102904](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071511344.png)
 
 [git学习网站]: https://learngitbranching.js.org/?locale=zh_CN
 
@@ -1151,7 +1156,7 @@ endif (OPENCV_FOUND)
 **SVN（Subversion）**是集中式版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器哪里得到最新的版本，然后干活，干完后，需要把自己做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网还可以，带宽够大，速度够快，如果在互联网下，如果网速慢的话，就郁闷了。
 下图就是标准的集中式版本控制工具管理方式：
 
-![image-20230103162133191](https://raw.githubusercontent.com/che77a38/blogImage2/main/202301031621539.png)
+![image-20230103162133191](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301031621539.png)
 
 集中管理方式在一定程度上看到其他开发人员在干什么，而管理员也可以很轻松掌握每个人的开发权限。
 但是相较于其优点而言，集中式版本控制工具缺点很明显：
@@ -1164,7 +1169,7 @@ endif (OPENCV_FOUND)
 Git是分布式版本控制系统，那么它就没有中央服务器的，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己的电脑上。既然每个人的电脑都有一个完整的版本库，那多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。
 下图就是分布式版本控制工具管理方式：
 
-![image-20230103162249584](https://raw.githubusercontent.com/che77a38/blogImage2/main/202301031623438.png)
+![image-20230103162249584](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301031623438.png)
 
 ## git工作流程
 
@@ -1176,7 +1181,7 @@ Git是分布式版本控制系统，那么它就没有中央服务器的，每�
 
 下图展示了 Git 的工作流程：
 
-![image-20230104113924564](https://raw.githubusercontent.com/che77a38/blogImage2/main/202301041139883.png)
+![image-20230104113924564](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301041139883.png)
 
 ## Git安装
 
@@ -1186,7 +1191,7 @@ Git是分布式版本控制系统，那么它就没有中央服务器的，每�
 
 > 在初始化git版本库之后会生成一个隐藏的文件 .git ，可以将该文件理解为 git 的版本库 `repository`，而我们自己建立的项目文件夹即工作区 `working directory` , 在 `.git` 文件夹里面还有很多文件，其中有一个 `index` 文 件 就是暂存区也可以叫做 `stage` , git 还为我们自动生成了一个分支 `master` 以及指向该分支的指针`head` ,如下图
 
-![image-20230112111626807](https://raw.githubusercontent.com/che77a38/blogImage2/main/202301121117166.png)
+![image-20230112111626807](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301121117166.png)
 
 - **工作区**: 存储项目文件的目录, 版本库需要创建到工作区中
 
@@ -1390,7 +1395,7 @@ npoi.fast.test/obj
 
 在线代码托管平台:   [Github](https://github.com)    [码云](https://gitee.com)  等等
 
-![image-20211207131020235](https://raw.githubusercontent.com/che77a38/blogImage/main/202112071310206.png)
+![image-20211207131020235](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071310206.png)
 
 #### 本地同步到远程
 
@@ -1501,7 +1506,7 @@ git中默认只有一个分支:`master`
 
 如果创建了分支,各个分支都是独立的,互不影响的
 
-![image-20230130173124159](https://raw.githubusercontent.com/che77a38/blogImage2/main/202301301731761.png)
+![image-20230130173124159](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301301731761.png)
 
 > **当前所在的分支，其实是由 `HEAD` 决定的**
 
@@ -1577,7 +1582,7 @@ git config --list
 
 ## 基本指令架构
 
-![image-20211207131020235](https://raw.githubusercontent.com/che77a38/blogImage/main/202112071310206.png)
+![image-20211207131020235](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071310206.png)
 
 ## 上传指令
 
@@ -1648,17 +1653,17 @@ git checkout 想回到的commit节点的哈希值//返回到指定哈希值的co
 //Git 对哈希的处理很智能。你只需要提供能够唯一标识提交记录节点的前几个字符即可
 ```
 
-![image-20211209200758510](https://raw.githubusercontent.com/che77a38/blogImage/main/202112092007970.png)
+![image-20211209200758510](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112092007970.png)
 
 commit编号就是个哈希值
 
-![image-20211209202104826](https://raw.githubusercontent.com/che77a38/blogImage/main/202112092021609.png)
+![image-20211209202104826](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112092021609.png)
 
 git checkout commit编号与直接在上图左侧双击commit行均为使得文件恢复到与commit时的样子，二者效果一致。
 
 ### 还原技巧
 
-![src=http___upload-images.jianshu.io_upload_images_4311354-6a4562939fec66c0.png&refer=http___upload-images.jianshu](https://raw.githubusercontent.com/che77a38/blogImage/main/202112101443772.jpeg)
+![src=http___upload-images.jianshu.io_upload_images_4311354-6a4562939fec66c0.png&refer=http___upload-images.jianshu](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112101443772.jpeg)
 
 **Untracked:表示未跟踪的**
 
@@ -1686,7 +1691,7 @@ git reset head^^,两个^表示返回两个commit记录的节点转为未跟踪�
 
 `git reset` 很方便，但是这种“改写历史”的方法对大家一起使用的**远程分支是无效**的,取而代之的是git revert xxx
 
-![image-20211210151213508](https://raw.githubusercontent.com/che77a38/blogImage/main/202112101512015.png)![image-20211210151908657](https://raw.githubusercontent.com/che77a38/blogImage/main/202112101519242.png)
+![image-20211210151213508](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112101512015.png)![image-20211210151908657](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112101519242.png)
 
 ### Git分支(branch)
 
@@ -1721,9 +1726,25 @@ git branch -f main HEAD~3
 
 上面的命令会将 main 分支强制指向 HEAD 的第 3 级父提交。
 
+### git切换节点面临的问题
 
+Git不允许切换分支时覆盖未提交的更改，以避免意外丢失工作
 
+切换节点后,切换的节点又产生了改动,想要切换原节点会报错:下面三种方法解决:
 
+1. 提交更改：如果您希望保留当前分支上的更改，请先使用`git add`命令将更改添加到暂存区，然后使用`git commit`命令提交更改。提交后，您就可以使用`git checkout 原节点`切换到原节点了。
+
+2. 存储更改：如果您不想提交当前分支上的更改，而是暂时保存它们以便稍后使用，请使用`git stash`命令将更改存储起来。运行`git stash`将存储更改并将工作目录恢复到干净的状态，然后您就可以使用`git checkout 原节点`切换到原节点了。在需要恢复更改时，可以使用`git stash apply`命令将存储的更改重新应用到工作目录。
+
+3. 如果您不想保留当前分支上的更改,
+
+   使用强制切换：您可以使用`-f`或`--force`选项来强制切换分支，忽略未提交的更改。运行以下命令将当前分支切换到原节点，并丢弃未提交的更改：
+
+   ```
+   git checkout -f 原节点
+   ```
+
+   请注意，这将不可逆地丢弃当前分支上的所有未提交更改，请确保您不再需要这些更改。
 
 # git和github
 
@@ -1746,7 +1767,7 @@ git branch -f main HEAD~3
 
 SourceTree
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/202112071856448.png" alt="image-20211207185614938" style="zoom:25%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071856448.png" alt="image-20211207185614938" style="zoom:25%;" />
 
 新建-创建本地仓库的意思就是 git init
 
@@ -1867,7 +1888,7 @@ Vscode 安装 `remote development`插件
 
 2. 点击左侧菜单栏中的`运行和调试`中的创建`launch.json文件`,如下图(非红圈)
 
-   <img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302192059807.png" alt="image-20230219205902832" style="zoom:25%;" />
+   <img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302192059807.png" alt="image-20230219205902832" style="zoom:25%;" />
 
    点击后会在项目根目录下生成`.vscode/launch.json`文件
 
@@ -2050,7 +2071,7 @@ m1 mac上的launch.json案例
   
   问题:并非为翻墙而生,只是对数据进行加密顺便实现了翻墙功能,他的流量清晰明了地写着它就是VPN的流量.而且vpn分流很不方便.因此不推荐用来科学上网
   
-  ![image-20230722105912700](https://raw.githubusercontent.com/che77a38/blogImage2/main/202307221059694.png)
+  ![image-20230722105912700](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202307221059694.png)
 
 SS协议  --减少GFW重放攻击->  SSR协议(带伪装插件的SS协议)
 

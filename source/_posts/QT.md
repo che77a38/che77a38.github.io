@@ -8,13 +8,13 @@ abbrlink: '2e306159'
 
 # Qt概述
 
-## 1.1 什么是Qt
+## 什么是Qt
 
 Qt是一个**跨平台**的C++**图形用户界面应用程序框架**。它为应用程序开发者提供建立艺术级图形界面所需的所有功能。它是完全面向对象的，很容易扩展，并且允许真正的组件编程。
 
 <!-- more -->
 
-## 1.2 Qt的发展史
+## Qt的发展史
 
 1991年 Qt最早由奇趣科技开发
 
@@ -28,7 +28,7 @@ Qt是一个**跨平台**的C++**图形用户界面应用程序框架**。它为�
 
 当前Qt最新版本为 5.9.0(现在已经不是了)
 
-## 1.3 支持的平台
+## 支持的平台
 
 -   Windows -- XP、Vista、Win7、Win8、Win2008、Win10
 
@@ -38,7 +38,7 @@ Qt是一个**跨平台**的C++**图形用户界面应用程序框架**。它为�
 
 -   Embedded -- 有帧缓冲支持的嵌入式Linux平台，Windows CE
 
-## 1.4 Qt版本
+## Qt版本
 
 Qt按照不同的版本发行，分为商业版和开源版
 
@@ -50,7 +50,7 @@ Qt按照不同的版本发行，分为商业版和开源版
 
 > 为了开发自有而设计的开放源码软件，它提供了和商业版本同样的功能，在GNU通用公共许可下，它是免费的。
 
-## 1.5 Qt的下载与安装
+## Qt的下载与安装
 
 ### 下载地址：
 
@@ -97,7 +97,7 @@ Qt按照不同的版本发行，分为商业版和开源版
 -   Qt对不同的平台提供了不同版本的安装包，可根据实际情况自行下载安装，本文档使用**qt-opensource-windows-x86-mingw482_opengl-5.3.1** 版本进行讲解(mingw482
     ：UTF-8编码，中文不会乱码)
 
-## 1.6 Qt的优点
+## Qt的优点
 
 -   跨平台，几乎支持所有的平台
 
@@ -111,7 +111,7 @@ Qt按照不同的版本发行，分为商业版和开源版
 
 -   可以进行嵌入式开发。
 
-## 1.7 成功案例
+## 成功案例
 
 -   Linux桌面环境KDE
 
@@ -129,31 +129,31 @@ Qt按照不同的版本发行，分为商业版和开源版
 
 # 创建Qt项目
 
-## 2.1 使用向导创建
+## 使用向导创建
 
 打开Qt Creator 界面选择 New Project或者选择菜单栏 【文件】-【新建文件或项目】菜单项
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps37.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps37.jpg)
 
 弹出New Project对话框，选择Qt Widgets Application，
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps56.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps56.jpg)
 
 选择【Choose】按钮，弹出如下对话框
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps82.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps82.jpg)
 
 设置项目名称和路径，按照向导进行下一步，
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps125.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps125.jpg)
 
 选择编译套件
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps145.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps145.jpg)
 
 向导会默认添加一个继承自CMainWindow的类，可以在此修改类的名字和基类。默认的基类有QMainWindow、QWidget以及QDialog三个，我们可以选择QWidget（类似于空窗口），这里我们可以先创建一个不带UI的界面，继续下一步
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps169.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps169.jpg)
 
 系统会默认给我们添加main.cpp、mywidget.cpp、 mywidget.h和一个.pro项目文件，点击完成，即可创建出一个Qt桌面程序。
 
@@ -161,15 +161,15 @@ Qt按照不同的版本发行，分为商业版和开源版
 
 添加一个空项目
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps188.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps188.jpg)
 
 选择【choose】进行下一步。设置项目名称和路径 ---> 选择编译套件 --> 修改类信息 --> 完成（步骤同上），生成一个空项目。在空项目中添加文件：在项目名称上单击鼠标右键弹出右键菜单，选择【添加新文件】
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps201.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps201.jpg)
 
 弹出新建文件对话框
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps235.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps235.jpg)
 
 在此对话框中选择要添加的类或者文件，根据向导完成文件的添加。
 
@@ -241,7 +241,7 @@ HEADERS += mywidget.h
 
   *这条语句的含义是，如果QT_MAJOR_VERSION大于4（也就是当前使用的Qt5及更高版本）需要增加widgets模块。如果项目仅需支持Qt5，也可以直接添加"QT += widgets"一句。不过为了保持代码兼容，最好还是按照QtCreator生成的语句编写。**
 
-  ![Qt5 模块](https://raw.githubusercontent.com/che77a38/blogImage/main/Qt5 模块.png)
+  ![Qt5 模块](https://cdn.jsdelivr.net/gh/che77a38/blogImage/Qt5 模块.png)
 
 - #配置信息
 
@@ -269,7 +269,7 @@ int main(int argc, char *argv[])
 }
 ```
 
-![捕获](https://raw.githubusercontent.com/che77a38/blogImage/main/%E6%8D%95%E8%8E%B7.PNG)
+![捕获](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E6%8D%95%E8%8E%B7.PNG)
 
 解释：
 
@@ -291,13 +291,13 @@ int main(int argc, char *argv[])
 
 # 命名规范和QT的快捷键
 
-![image-20210425133943997](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210425133943997.png)
+![image-20210425133943997](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210425133943997.png)
 
 - `alt +enter` // 自动创建类的定义
 
-# 3 第一个QT（对象模型和坐标系）
+# 第一个QT（对象模型和坐标系）
 
-## 3.1 按钮的创建
+## 按钮的创建
 
 在Qt程序中，最常用的控件之一就是按钮了，首先我们来看下如何创建一个按钮
 
@@ -330,7 +330,7 @@ this->setFixedSize(600,400);
 
 对于窗口而言，我们可以修改左上角窗口的标题setWindowTitle，重新指定窗口大小：resize，或者设置固定的窗口大小setFixedSize；
 
-## 3.2 对象模型（对象树）
+## 对象模型（对象树）
 
 在Qt中创建对象的时候会提供一个Parent对象指针，下面来解释这个parent到底是干什么的。
 
@@ -389,7 +389,7 @@ QT对象树的意义：**简化了内存回收机制**
 
 其**构造与析构顺序**如下图（重难点）（析构函数内代码与真正析构释放过程相反）
 
-![Qt对象树](https://raw.githubusercontent.com/che77a38/blogImage/main/Qt%E5%AF%B9%E8%B1%A1%E6%A0%91.png)
+![Qt对象树](https://cdn.jsdelivr.net/gh/che77a38/blogImage/Qt%E5%AF%B9%E8%B1%A1%E6%A0%91.png)
 
 **【注意】**widget和继承于QPushButton的mypushbutton类的析构中分别添加输出
 
@@ -433,29 +433,29 @@ mypushbutton::~mypushbutton()
 
 输出如下：
 
-![image-20210425210702298](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210425210702298.png)
+![image-20210425210702298](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210425210702298.png)
 
 **【重点】**由此可知：**析构函数内代码的运行，是由上至下，而真正的析构释放过程是由下至上的。**
 
-## 3.3 Qt窗口坐标体系
+## Qt窗口坐标体系
 
 坐标体系：
 
 以左上角为原点（0,0），X向右增加，Y向下增加。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps16.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps16.jpg)
 
 对于嵌套窗口，其坐标是**相对于父窗口**来说的。
 
-# 4 信号和槽机制
+# 信号和槽机制
 
 信号槽是 Qt 框架引以为豪的机制之一。所谓信号槽，实际就是观察者模式。**当某个事件发生之后**，比如，按钮检测到自己被点击了一下，**它就会发出一个信号（signal）**。这种发出是没有目的的，类似广播。**如果有对象对这个信号感兴趣，它就会使用连接（connect）函数**，意思是，**将想要处理的信号和自己的一个函数（称为槽（slot））绑定来处理这个信号**。也就是说，**当信号发出时，被连接的槽函数会自动被回调**。这就类似观察者模式：当发生了感兴趣的事件，某一个操作就会被自动触发。
 
 一图流：
 
-![Qt信号和槽 ](https://raw.githubusercontent.com/che77a38/blogImage/main/Qt%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%A7%BD%20.png)
+![Qt信号和槽 ](https://cdn.jsdelivr.net/gh/che77a38/blogImage/Qt%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%A7%BD%20.png)
 
-## 4.1 系统自带的信号和槽
+## 系统自带的信号和槽
 
 下面我们完成一个小功能，上面我们已经学习了按钮的创建，但是还没有体现出按钮的功能，按钮最大的功能也就是点击后触发一些事情，比如我们点击按钮，就把当前的窗口给关闭掉，那么在Qt中，这样的功能如何实现呢？
 
@@ -484,11 +484,11 @@ $$
 
 那么系统自带的信号和槽通常如何查找呢，这个就需要利用帮助文档了，在帮助文档中比如我们上面的按钮的点击信号，在帮助文档中输入QPushButton，首先我们可以在Contents中寻找关键字 signals，信号的意思，但是我们发现并没有找到，这时候我们应该想到也许这个信号的被父类继承下来的，因此我们去他的父类QAbstractButton中就可以找到该关键字，点击signals索引到系统自带的信号有如下几个
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps39.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps39.jpg)
 
 这里的clicked就是我们要找到，槽函数的寻找方式和信号一样，只不过他的关键字是slot。
 
-## 4.2 自定义信号和槽
+## 自定义信号和槽
 
 使用connect()可以让我们连接系统提供的信号和槽。但是，Qt 的信号槽机制并不仅仅是使用系统提供的那部分，还会允许我们自己设计自己的信号和槽。
 
@@ -552,7 +552,7 @@ connect(teacher,teacherSingal,student,studentSlot);
 
 -   **如果信号和槽的参数不一致，允许的情况是，槽函数的参数可以比信号的少，即便如此，槽函数存在的那些参数的顺序也必须和信号的前面几个一致起来。这是因为，你可以在槽函数中选择忽略信号传来的数据（也就是槽函数的参数比信号的少）。**
 
-## 4.3信号槽的拓展
+## 信号槽的拓展
 
 -   一个信号可以和多个槽相连
 
@@ -604,7 +604,7 @@ qRegisterMetaType<QMap<QString,QMap<QString,QString>>>("QMap<QString,QMap<QStrin
 
 
 
-## 4.4 Qt4版本的信号槽写法
+## Qt4版本的信号槽写法
 
 ```cpp
 connect(zt,SIGNAL(hungry(QString)),st,SLOT(treat(QString)));
@@ -619,7 +619,7 @@ QT4写法
 
 Qt5在语法上完全兼容Qt4，而反之是不可以的。
 
-## 4.5 Lambda表达式 
+## Lambda表达式 
 
 C++11中的Lambda表达式**用于定义并创建匿名的函数对象**，以简化编程工作。首先看一下Lambda表达式的基本构成：
 
@@ -685,13 +685,13 @@ qDebug() << m;
 1. 当进行信号和槽连接的时候，控件内部会进入一个**锁的状态**，因此不可以用Lambda表达式的引用传递来调用已连接的组件，而应该用Lambda表达式的**值传递**
 2. connect函数中，如果槽函数用的是lambda表达式，那么**信号的接受者可以省略**
 
-# 5 QMainWindow
+# QMainWindow
 
 QMainWindow是一个为用户提供主窗口程序的类，包含一个菜单栏（menu bar）、多个工具栏(tool bars)、多个锚接部件(dock widgets)、一个状态栏(status bar)及一个中心部件(central widget)，是许多应用程序的基础，如文本编辑器，图片编辑器等。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps72.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps72.jpg)
 
-## 5.1 菜单栏
+## 菜单栏
 
 一个主窗口最多只有一个菜单栏。位于主窗口顶部、主窗口标题栏下面。
 
@@ -745,9 +745,9 @@ void MainWindow::on_treeWidget_salaryDistribution_customContextMenuRequested(con
 }
 ```
 
-[右键菜单]: https://www.cnblogs.com/lingluotianya/p/3642605.html
+[右键菜单点击跳转](https://www.cnblogs.com/lingluotianya/p/3642605.html)
 
-## 5.2 工具栏
+## 工具栏
 
 主窗口的工具栏上可以有多个工具条，通常采用一个菜单对应一个工具条的的方式，也可根据需要进行工具条的划分。
 
@@ -777,7 +777,7 @@ void MainWindow::on_treeWidget_salaryDistribution_customContextMenuRequested(con
 
 ​	setMoveable（false）//工具条不可移动, 只能停靠在初始化的位置上（即不能操作位置）
 
-## 5.3 状态栏
+## 状态栏
 
 -   派生自QWidget类，使用方法与QWidget类似，QStatusBar类常用成员函数：
 -   状态栏也只能最多有一个
@@ -793,7 +793,7 @@ int insertWidget(int index, QWidget * widget, int stretch = 0)
 void removeWidget(QWidget * widget)
 ```
 
-## 5.4 铆接部件
+## 铆接部件
 
 铆接部件 QDockWidget，也称浮动窗口，可以有多个。
 
@@ -803,7 +803,7 @@ addDockWidget(Qt::LeftDockWidgetArea,dock);
 dock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea | Qt::TopDockWidgetArea); //设置区域范围(他的位置是相对核心部件而言的)
 ```
 
-## 5.5 核心部件（中心部件）
+## 核心部件（中心部件）
 
 除了以上几个部件，中心显示的部件都可以作为核心部件，例如一个记事本文件，可以利用QTextEdit做核心部件
 
@@ -812,25 +812,25 @@ QTextEdit * edit = new QTextEdit(this);
 setCentralWidget(edit);
 ```
 
-## 5.6 资源文件
+## 资源文件
 
 Qt 资源系统是一个跨平台的资源机制，用于将程序运行时所需要的资源以二进制的形式存储于可执行文件内部。如果你的程序需要加载特定的资源（图标、文本翻译等），那么，将其放置在资源文件中，就再也不需要担心这些文件的丢失。也就是说，如果你将资源以资源文件形式存储，它是会编译到可执行文件内部。
 
 使用 Qt Creator 可以很方便地创建资源文件。我们可以在工程上点右键，选择"添加新文件..."，可以在 Qt 分类下找到"Qt 资源文件"：
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps91.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps91.jpg)
 
 点击"选择..."按钮，打开"新建 Qt 资源文件"对话框。在这里我们输入资源文件的名字和路径：
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps110.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps110.jpg)
 
 点击下一步，选择所需要的版本控制系统，然后直接选择完成。我们可以在 Qt Creator 的左侧文件列表中看到"资源文件"一项，也就是我们新创建的资源文件。右键res.qrc，点击用编辑的方式打开。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps150.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps150.jpg)
 
 右侧的编辑区有个"添加"，我们首先需要添加前缀，比如我们将前缀取名为 images。然后选中这个前缀，继续点击添加文件，可以找到我们所需添加的文件。这里，我们选择 document-open.png 文件。当我们完成操作之后，Qt Creator 应该是这样子的：
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps219.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps219.jpg)
 
 接下来，我们还可以添加另外的前缀或者另外的文件。这取决于你的需要。当我们添加完成之后，我们可以像前面一章讲解的那样，通过使用 : 开头的路径来找到这个文件。比如，我们的前缀是 /images，文件是 document-open.png，那么就可以使用:/images/document-open.png找到这个文件。
 $$
@@ -838,7 +838,7 @@ $$
 $$
 这么做带来的一个问题是，如果以后我们要更改文件名，比如将 docuemnt-open.png 改成 docopen.png，那么，所有使用了这个名字的路径都需要修改。所以，更好的办法是，我们给这个文件去一个"别名"，以后就以这个别名来引用这个文件。具体做法是，选中这个文件，添加别名信息：
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps237.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps237.jpg)
 
 这样，我们可以直接使用:/images/doc-open引用到这个资源，无需关心图片的真实文件名。
 
@@ -857,9 +857,9 @@ $$
 
 我们可以对比一下，看看 Qt Creator 帮我们生成的是怎样的 qrc 文件。当我们编译工程之后，我们可以在构建目录中找到 qrc_res.cpp 文件，这就是 Qt 将我们的资源编译成了 C++ 代码。
 
-# 6 对话框QDialog
+# 对话框QDialog
 
-## 6.1 基本概念
+## 基本概念
 
 对话框是 GUI 程序中不可或缺的组成部分。很多不能或者不适合放入主窗口的功能组件都必须放在对话框中设置。对话框通常会是一个顶层窗口，出现在程序最上层，用于实现短期任务或者简洁的用户交互。
 
@@ -873,7 +873,7 @@ Qt 中使用QDialog类实现对话框。就像主窗口一样，我们通常会�
 
 -   与此相反的是非模态对话框，例如查找对话框，我们可以在显示着查找对话框的同时，继续对记事本的内容进行编辑。
 
-## 6.2 标准对话框
+## 标准对话框
 
 所谓标准对话框，是 Qt 内置的一系列对话框，用于简化开发。事实上，有很多对话框都是通用的，比如打开文件、设置颜色、打印设置等。这些对话框在所有程序中几乎相同，因此没有必要在每一个程序中都自己实现这么一个对话框。
 
@@ -897,7 +897,7 @@ Qt 的内置对话框大致分为以下几类：
 
 -   QProgressDialog： 显示操作过程。
 
-## 6.3 自定义对话框
+## 自定义对话框
 
 Qt 支持模态对话框和非模态对话框。
 
@@ -964,7 +964,7 @@ dialog->show();
 
 **setAttribute()函数设置对话框关闭时，自动销毁对话框。**
 
-## 6.4 消息对话框
+## 消息对话框
 
 QMessageBox用于显示消息提示。我们一般会使用其提供的几个 static 函数：
 
@@ -1066,7 +1066,7 @@ switch (ret)
 
 msgBox 是一个建立在栈上的QMessageBox实例。我们设置其主要文本信息为"The document has been modified."，informativeText 则是会在对话框中显示的简单说明文字。下面我们使用了一个detailedText，也就是详细信息，当我们点击了详细信息按钮时，对话框可以自动显示更多信息。我们自己定义的对话框的按钮有三个：保存、丢弃和取消。然后我们使用了exec()是其成为一个模态对话框，根据其返回值进行相应的操作。
 
-## 6.5 标准文件对话框
+## 标准文件对话框
 
 QFileDialog，也就是文件对话框。在本节中，我们将尝试编写一个简单的文本文件编辑器，我们将使用QFileDialog来打开一个文本文件，并将修改过的文件保存到硬盘。
 
@@ -1177,14 +1177,14 @@ QString getOpenFileName(QWidget * parent = 0,const QString & caption = QString()
 
 在saveFile()中使用的QFileDialog::getSaveFileName()也是类似的。使用这种静态函数，在 Windows、Mac OS 上面都是直接调用本地对话框，但是 Linux 上则是QFileDialog自己的模拟。这暗示了，如果你不使用这些静态函数，而是直接使用QFileDialog进行设置，那么得到的对话框很可能与系统对话框的外观不一致。这一点是需要注意的。
 
-## 6.6标准颜色对话框
+## 标准颜色对话框
 
 ```cpp
 QColor color=QColorDialog::getColor(QT::red);//默认选择红色
 qDebug() << color.red() << color.green() << color.blue();
 ```
 
-## 6.7标准字体对话框
+## 标准字体对话框
 
 ```cpp
 QFont font=QFontDialog::getFont(&flag,QFont("华文彩云",36));//flag返回是否获取成功
@@ -1193,7 +1193,7 @@ qDebug()<<"字体:"<<font.family().toUtf8().data()<<" 字号:"<<font.pointSize()
 
 p.s.QT在工具-选项-文本编辑器-行为中，设置了文本编码的默认编码为UTF-8。在工具-选项-文本编辑器-显示勾选了Display file encoding，在编码区域右上角会显示文件编码格式。此时qdebug输出中文信息，用F5调试输出框会乱码，但用ctrl+F5直接运行则不会，不会影响程序发布
 
-# 7 布局管理器
+# 布局管理器
 
 所谓 GUI 界面，归根结底，就是一堆组件的叠加。我们创建一个窗口，把按钮放上面，把图标放上面，这样就成了一个界面。在放置时，组件的位置尤其重要。我们必须要指定组件放在哪里，以便窗口能够按照我们需要的方式进行渲染。这就涉及到组件定位的机制。
 
@@ -1215,29 +1215,29 @@ Qt 提供的布局中以下三种是我们最常用的：
 
 -   QGridLayout：在一个网格中进行布局，类似于 HTML 的 table；
 
-## 7.1 系统提供的布局控件
+## 系统提供的布局控件
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps61.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps61.jpg)
 
 这4个为系统给我们提供的布局的控件，但是使用起来不是非常的灵活，这里就不详细介绍了。
 
-## 7.2 利用widget做布局
+## 利用widget做布局
 
 第二种布局方式是利用控件里的widget来做布局，在Containers中
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps78.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps78.jpg)
 
 在widget中的控件可以进行水平、垂直、栅格布局等操作，比较灵活。
 
 再布局的同时我们需要灵活运用**弹簧**的特性让我们的布局更加的美观，下面是一个登陆窗口，利用widget可以搭建出如下登陆界面：
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps101.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps101.jpg)
 
-# 8 常用控件
+# 常用控件
 
 Qt为我们应用程序界面开发提供的一系列的控件，下面我们介绍两种最常用一些控件，所有控件的使用方法我们都可以通过帮助文档获取。
 
-## 8.1 QLabel控件使用
+## QLabel控件使用
 
 QLabel是我们最常用的控件之一，其功能很强大，我们可以用来显示文本，图片和动画等。
 
@@ -1332,7 +1332,7 @@ QLabel *label = new QLabel；
 label->setMovie(movie);
 ```
 
-## 8.2 QLineEdit
+## QLineEdit
 
 Qt提供的单行文本编辑框。
 
@@ -1376,14 +1376,14 @@ void setTextMargins(int left, int top, int right, int bottom)
 
 用此函数可以指定显示的文本与输入框上下左右边界的间隔的像素数。
 
-## 8.3 QToolButton
+## QToolButton
 
 功能：工具按钮，常用于显示图片
 
 - toolButtonStyle设置显示图片和文件的模式
 - autoRaise设置透明凸起效果
 
-## 8.4 QRadioButton
+## QRadioButton
 
 功能：单选按钮
 
@@ -1391,7 +1391,7 @@ void setTextMargins(int left, int top, int right, int bottom)
 
 用Group Box区分单选区间
 
-## 8.5 QCheckBox
+## QCheckBox
 
 功能：复选按钮
 
@@ -1403,7 +1403,7 @@ void setTextMargins(int left, int top, int right, int bottom)
 2. 1---半选中
 3. 2---选中
 
-## 8.6 QListWidget
+## QListWidget
 
 功能：列表控件，按列表显示东西
 
@@ -1420,7 +1420,7 @@ list<<"锄禾日当午"<<"汗滴禾下土"<<"谁知盘中餐"<<"粒粒皆辛苦"
 ui->listWidget->additems(list);
 ```
 
-## 8.7 QTreeWidget
+## QTreeWidget
 
 功能：树控件，按树形显示东西
 
@@ -1437,7 +1437,7 @@ liItem->addChild(i1);
 //treeWidget中通过treeWidget的itemWidget来访问嵌套在treeWidget中的控件
 ```
 
-## 8.8 QTableWidget
+## QTableWidget
 
 功能：表格控件,按表格显示东西
 
@@ -1470,7 +1470,7 @@ ui->tableWidget_bankInfo->resizeColumnsToContents();
             ui->tableWidget_bankInfo->horizontalHeader()->setStretchLastSection(true);
 ```
 
-## 8.9 其他控件
+## 其他控件
 
 栈控件QStackedWidget
 
@@ -1494,7 +1494,7 @@ qDebug()<<(ui->comboBox_excelMode->itemData(ui->comboBox_excelMode->currentIndex
 
 还有许多Qt中控件的使用方法可参考Qt提供的帮助文档。
 
-## 8.10 自定义控件
+## 自定义控件
 
 在搭建Qt窗口界面的时候，在一个项目中很多窗口，或者是窗口中的某个模块会被经常性的重复使用。一般遇到这种情况我们都会将这个窗口或者模块拿出来做成一个独立的窗口类，以备以后重复使用。
 
@@ -1537,33 +1537,33 @@ SmallWidget::SmallWidget(QWidget *parent) : QWidget(parent)
 }
 ```
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps44.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps44.jpg)
 
 那么这个SmallWidget可以作为独立的窗口显示,也可以作为一个控件来使用：
 
 打开Qt的.ui文件,因为SmallWidget是派生自Qwidget类,所以需要在ui文件中先放入一个QWidget控件, 然后再上边鼠标右键
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps23.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps23.jpg)
 
 弹出提升窗口部件对话框
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps66.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps66.jpg)
 
 添加要提升的类的名字,然后选择 添加
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps85.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps85.jpg)
 
 添加之后,类名会显示到上边的列表框中,然后单击提升按钮,完成操作.
 
 我们可以看到, 这个窗口对应的类从原来的QWidget变成了SmallWidget
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps106.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps106.jpg)
 
 再次运行程序,这个widget_3中就能显示出我们自定义的窗口了.
 
-# 9 Qt消息机制和事件
+# Qt消息机制和事件
 
-## 9.1 事件（内含定时器）
+## 事件（内含定时器）
 
 事件（event）是由系统或者 Qt 本身在不同的时刻发出的。当用户按下鼠标、敲下键盘，或者是窗口需要重新绘制的时候，都会发出一个相应的事件。一些事件在对用户操作做出响应时发出，如键盘事件等；另一些事件则是由系统自动发出，如计时器事件。
 
@@ -1633,7 +1633,7 @@ QString("[%1, %2]").arg(x).arg(y);
 
 运行上面的代码，当我们点击了一下鼠标之后，label 上将显示鼠标当前坐标值。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps130.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps130.jpg)
 
 为什么要点击鼠标之后才能在mouseMoveEvent()函数中显示鼠标坐标值？
 
@@ -1706,9 +1706,9 @@ QTimer::singleShot(500,this,[=](){//this表示谁来执行
 });
 ```
 
-## 9.2 event（）事件分发器
+## event（）事件分发器
 
-![事件分发器和事件过滤器](https://raw.githubusercontent.com/che77a38/blogImage/main/%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E5%99%A8%E5%92%8C%E4%BA%8B%E4%BB%B6%E8%BF%87%E6%BB%A4%E5%99%A8.png)
+![事件分发器和事件过滤器](https://cdn.jsdelivr.net/gh/che77a38/blogImage/%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E5%99%A8%E5%92%8C%E4%BA%8B%E4%BB%B6%E8%BF%87%E6%BB%A4%E5%99%A8.png)
 
 事件对象创建完毕后，Qt 将这个事件对象传递给QObject的event()函数。event()函数并不直接处理事件，而是将这些事件对象按照它们不同的类型，分发给不同的事件处理器（event handler）。
 
@@ -1796,9 +1796,9 @@ switch (event->type()) {
 
 由此可以见，event()是一个集中处理不同类型的事件的地方。如果你不想重写一大堆事件处理器，就可以重写这个event()函数，通过QEvent::type()判断不同的事件。鉴于重写event()函数需要十分小心注意父类的同名函数的调用，一不留神就可能出现问题，所以**一般还是建议只重写事件处理器**（当然，也必须记得是不是应该调用父类的同名处理器）。这其实暗示了event()函数的另外一个作用：屏蔽掉某些不需要的事件处理器。正如我们前面的CustomTextEdit例子看到的那样，我们创建了一个只能响应 tab 键的组件。这种作用是重写事件处理器所不能实现的。
 
-## 9.3 事件过滤器
+## 事件过滤器
 
-![事件分发器和事件过滤器](https://raw.githubusercontent.com/che77a38/blogImage/main/事件分发器和事件过滤器.png)
+![事件分发器和事件过滤器](https://cdn.jsdelivr.net/gh/che77a38/blogImage/事件分发器和事件过滤器.png)
 
 有时候，对象需要查看、甚至要拦截发送到另外对象的事件。例如，对话框可能想要拦截按键事件，不让别的组件接收到；或者要修改回车键的默认处理。
 
@@ -1900,7 +1900,7 @@ bool FilterObject::eventFilter(QObject *object, QEvent *event)
 
 **事件过滤器和被安装过滤器的组件必须在同一线程，否则，过滤器将不起作用。另外，如果在安装过滤器之后，这两个组件到了不同的线程，那么，只有等到二者重新回到同一线程的时候过滤器才会有效。**
 
-## 9.4 总结
+## 总结
 
 Qt 的事件是整个 Qt 框架的核心机制之一，也比较复杂。说它复杂，更多是因为它涉及到的函数众多，而处理方法也很多，有时候让人难以选择。现在我们简单总结一下 Qt 中的事件机制。
 
@@ -1974,11 +1974,11 @@ virtual bool QCoreApplication::notify ( QObject * receiver,QEvent * event );
 
 -   重写QCoreApplication::notify()函数。这是最强大的，和全局事件过滤器一样提供完全控制，并且不受线程的限制。但是全局范围内只能有一个被使用（因为QCoreApplication是单例的）。
 
-## **9.5自定义事件**
+## **自定义事件**
 
 事件的分发既可以是同步的，又可以是异步的，而信号槽的回调总是同步的。并且事件可以使用过滤器
 
-### **9.5.1自定义事件的类型**
+### **自定义事件的类型**
 
 QT自定义事件需要继承QEvent。QEvent提供一个QEvent::Type类型的参数，作为自定义事件的类型值。
 
@@ -1990,7 +1990,7 @@ static int QEvent::registerEventType ( int hint = -1 );
 
 registerEventType函数是static的，可以使用QEvent类直接调用。函数返回值是向系统注册的新的Type类型的值。如果hint是合法的，即hint不会发生任何覆盖（系统的以及其它自定义事件的），则会直接返回这个值；否则，系统会自动分配一个合法值并返回。使用registerEventType函数即可完成type 值的指定。registerEventType函数是线程安全的，不必另外添加同步。
 
-### **9.5.2事件的发送方式**
+### **事件的发送方式**
 
 可以在自定义事件中添加所需要的数据，然后进行事件的发送。
 
@@ -2031,7 +2031,7 @@ static void QCoreApplication::sendPostedEvents(QObject *receiver,int event_type)
 
 sendPostedEvents函数的作用是将事件队列中的接收者为receiver，事件类似为event_type的所有事件立即发送给receiver进行处理。需要注意的是，来自窗口系统的事件并不由sendPostedEvents函数进行处理，而是processEvent()。
 
-### 9.5.3 自定义事件处理函数
+### 自定义事件处理函数
 
 ​    自定义事件的处理既可以定义一个自定义事件处理函数，也可以在event()函数中直接处理。
 
@@ -2054,9 +2054,9 @@ bool CustomWidget::event(QEvent *event)
 }
 ```
 
-# 10 绘图和绘图设备
+# 绘图和绘图设备
 
-## 10.1 QPainter
+## QPainter
 
 Qt 的绘图系统允许使用相同的 API 在屏幕和其它打印设备上进行绘制。整个绘图系统基于QPainter，QPainterDevice和QPaintEngine三个类。
 
@@ -2064,7 +2064,7 @@ Qt 的绘图系统允许使用相同的 API 在屏幕和其它打印设备上进
 
 下图给出了这三个类之间的层次结构:
 
-![image-20210505145620325](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210505145620325.png)
+![image-20210505145620325](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210505145620325.png)
 
 上面的示意图告诉我们，**Qt 的绘图系统实际上是，使用QPainter在QPainterDevice上进行绘制，它们之间使用QPaintEngine进行通讯（也就是翻译QPainter的指令）。**
 
@@ -2133,7 +2133,7 @@ update();
 
 这个方法是立即重绘！但是不建议经常使用，只需要在需要的特效区域调用即可。
 
-## 10.2 绘图设备
+## 绘图设备
 
 **绘图设备是指继承QPainterDevice的子类。**Qt提供了很多这样的类，例如QPixmap、QBitmap、QImage和 QPicture。其中，
 
@@ -2145,7 +2145,7 @@ update();
 
 -   QPicture则可以记录和重现QPainter的各条命令。(此QPicture并非图片，而是类似记录和还原一个绘图流程)
 
-### 10.2.1 QPixmap、QBitmap、QImage
+### QPixmap、QBitmap、QImage
 
 QPixmap继承了QPaintDevice，因此，你可以使用QPainter直接在上面绘制图形。QPixmap也可以接受一个字符串作为一个文件的路径来显示这个文件，比如你想在程序之中打开png、jpeg之类的文件，就可以使用 QPixmap。使用QPainter的drawPixmap()函数可以把这个文件绘制到一个QLabel、QPushButton或者其他的设备上面。**QPixmap是针对屏幕进行特殊优化的，因此，它与实际的底层显示设备息息相关。**注意，这里说的显示设备并不是硬件，而是操作系统提供的原生的绘图引擎。所以，在不同的操作系统平台下，QPixmap的显示可能会有所差别。
 
@@ -2170,7 +2170,7 @@ void PaintWidget::paintEvent(QPaintEvent *)
 }
 ```
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/clip_image001.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/clip_image001.png)
 
 这里我们给出了两张png图片。butterfly1.png是没有透明色的纯白背景，而butterfly.png是具有透明色的背景。我们分别使用QPixmap和QBitmap来加载它们。注意看它们的区别：白色的背景在QBitmap中消失了，而透明色在QBitmap中转换成了黑色；其他颜色则是使用点的疏密程度来体现的。
 
@@ -2200,7 +2200,7 @@ void PaintWidget::paintEvent(QPaintEvent *)
 }
 ```
 
-![image-20210505200953174](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210505200953174.png)
+![image-20210505200953174](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210505200953174.png)
 
 QImage与QPixmap的区别
 
@@ -2230,7 +2230,7 @@ QPixmap fromImage(const QImage & image,Qt::ImageConversionFlags flags = Qt::Auto
 QImage toImage() const
 ```
 
-### 10.2.2 QPicture
+### QPicture
 
 最后一个需要说明的是QPicture。**这是一个可以记录和重现QPainter命令的绘图设备。** **QPicture将QPainter的命令序列化到一个IO设备，保存为一个平台独立的文件格式。**这种格式有时候会是"元文件(meta- files)"。Qt的这种格式是二进制的，不同于某些本地的元文件，Qt的pictures文件没有内容上的限制，只要是能够被QPainter绘制的元素，不论是字体还是pixmap，或者是变换，都可以保存进一个picture中。
 
@@ -2257,11 +2257,11 @@ void PaintWidget::paintEvent(QPaintEvent *)
 }
 ```
 
-# 11 文件系统
+# 文件系统
 
 文件操作是应用程序必不可少的部分。Qt 作为一个通用开发库，提供了跨平台的文件操作能力。Qt 通过QIODevice提供了对 I/O 设备的抽象，这些设备具有读写字节块的能力。下面是 I/O 设备的类图（Qt5）：
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/clip_image002.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/clip_image002.png)
 
 -   QIODevice：所有 I/O 设备类的父类，提供了字节块读写的通用操作以及基本接口；
 
@@ -2293,7 +2293,7 @@ void PaintWidget::paintEvent(QPaintEvent *)
 
 > 可以访问任意位置任意次数，还可以使用QIODevice::seek()函数来重新定位文件访问位置指针，QFile、QTemporaryFile和QBuffer是随机访问设备，
 
-## 11.1 基本文件操作
+## 基本文件操作
 
 文件操作是应用程序必不可少的部分。Qt 作为一个通用开发库，提供了跨平台的文件操作能力。在所有的 I/O 设备中，文件 I/O 是最重要的部分之一。因为我们大多数的程序依旧需要首先访问本地文件（当然，在云计算大行其道的将来，这一观点可能改变）。**QFile提供了从文件中读取和写入数据的能力。**
 
@@ -2377,7 +2377,7 @@ QTextCodec* codec=TextCodec::codecForName("gbk");
 codec->toUnicode(array);
 ```
 
-## 11.2 二进制文件读写
+## 二进制文件读写
 
 **QDataStream**提供了基于QIODevice的二进制数据的序列化。数据流是一种二进制流，这种流**完全不依赖**于底层操作系统、CPU 或者字节顺序（大端或小端）。例如，在安装了 Windows 平台的 PC 上面写入的一个数据流，可以不经过任何处理，直接拿到运行了 Solaris 的 SPARC 机器上读取。由于数据流就是二进制流，因此我们也可以**直接读写没有编码的二进制数据，例如图像、视频、音频**等。
 
@@ -2426,11 +2426,11 @@ QString str = "the answer is 42";
 stream << str;
 ```
 
-## 11.3 文本文件读写1
+## 文本文件读写
 
 上一节我们介绍了有关二进制文件的读写。二进制文件比较小巧，却不是人可读的格式。而文本文件是一种人可读的文件。为了操作这种文件，我们需要使用QTextStream类。QTextStream和QDataStream的使用类似，只不过它是操作纯文本文件的。
 
-QTextStream会自动将 Unicode 编码同操作系统的编码进行转换，这一操作对开发人员是透明的。它也会将换行符进行转换，同样不需要自己处理。**QTextStream使用 16 位的QChar作为基础的数据存储单位，同样，它也支持 C++ 标准类型，如 int 等。实际上，这是将这种标准类型与字符串进行了相互转换。**
+QTextStream会自动将 Unicode 编码同操作系统的编码进行转换，这一操作对开发人员是透明的。它也会将换行符进行转换，同样不需要自己处理。**QTextStream使用16位的QChar作为基础的数据存储单位，同样，它也支持C++标准类型，如int等。实际上，这是将这种标准类型与字符串进行了相互转换。**
 
 QTextStream同QDataStream的使用基本一致，例如下面的代码将把"The answer is 42"写入到 file.txt 文件中：
 
@@ -2717,7 +2717,7 @@ t1->deletelater();//等同于delete t1;
 
 在下面的窗口中，点击按钮开始在子线程中数数，让后通过信号槽机制将数据传递给 UI 线程，通过 UI 线程将数据更新到窗口中。
 
-![1](https://raw.githubusercontent.com/che77a38/blogImage/main/1.gif)
+![1](https://cdn.jsdelivr.net/gh/che77a38/blogImage/1.gif)
 
 mythread.h
 
@@ -3003,7 +3003,7 @@ MainWindow::~MainWindow()
 - 当任务过多的时候，可以适当的创建一些新的工作线程
 - 当任务过少的时候，可以适当的销毁一些工作的线程
 
-![R9c00030b842edb1ae3d6a2b286e53916](https://raw.githubusercontent.com/che77a38/blogImage/main/R9c00030b842edb1ae3d6a2b286e53916.jpg)
+![R9c00030b842edb1ae3d6a2b286e53916](https://cdn.jsdelivr.net/gh/che77a38/blogImage/R9c00030b842edb1ae3d6a2b286e53916.jpg)
 
 ### QRunnable
 
@@ -3175,8 +3175,8 @@ bool Dialog::nativeEvent(const QByteArray &eventType, void *message, long *resul
 ```makefile
 RC_ICONS = logo.ico//logo.ico是图标名
 ```
-
-# QT json
+# QT编码
+## QT json
 
 用到的头文件
 
@@ -3349,6 +3349,35 @@ int main(int argc, char *argv[])
 }
 ```
 
+## QT的base64编码
+
+[[加解密相关#base64编码|何为base64编码]]
+
+使用 QByteArray 类
+
++ **编码**
+ `QByteArray QByteArray::toBase64() const`
++ **解码**
+ ` QByteArray QByteArray::fromBase64(const QByteArray &base64);`   
+  - `base64`: 要解码的字符串
+
+# QT中的类型转换
+
+```cpp
+//QString -> QByteArray
+QByteArray QString::toLatin1() const; //西欧编码 iso-8859-1,不支持中文
+QByteArray QString::toLocal8Bit() const; //编码格式跟随操作系统
+QByteArray QString::toUtf8() const; //utf8编码
+//QByteArray->QString
+QString::QString(const QByteArray &ba);
+//char*->QByteArray
+QByteArray::QByteArray(const char* data,int size=-1);
+//QByteArray -> char*
+char* QByteArray::data()
+//QString-> char*
+不能直接转
+通过QString->QByteArray->char* 
+```
 
 
 # QT数据库开发
@@ -3357,7 +3386,7 @@ int main(int argc, char *argv[])
 
 [[数据库#oracle|oracle数据笔记跳转]]
 
-![image-20230420114847356](https://raw.githubusercontent.com/che77a38/blogImage2/main/202304201149758.png)
+![image-20230420114847356](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202304201149758.png)
 
 使用QtCreator打开`QT根目录\Qt5.9.0\5.9\Src\qtbase\src\plugins\sqldrivers\oci\`目录下面的oci.pro
 
@@ -3740,9 +3769,113 @@ QSqlDatabase db ;
 
 更多相关代码可参考[此处](https://www.cnblogs.com/xia-weiwen/archive/2017/05/04/6806709.html)
 
+# QT中的http
+
+涉及到三个主要的类
+
+- [**`QNetworkAccessManager`**](#QNetworkAccessManager)
+- [**`QNetworkRequest`**](#QNetworkRequest)
+- [**`QNetworkReply`**](#QNetworkReply)
+
+> - **`QNetworkAccessManager`**类允许应用程序发送网络请求和接受网络应答
+>
+>   Network Access API都是围绕着一个QNetworkAccessManager对象构造的,这个对象包含着发送请求的一些通用配置和设置.它包含着代理和缓存的配置,以及和这些事物相关的一些信号,并且应答信号可以作为我们检测一个网络操作的进度.
+>
+>   一个QNetworkAccessManager对于一整个Qt应用程序来说已经足够了
+>
+> - **`QNetworkRequest`**类是Network Access API的一部分,这个类包含着在网络上发送请求的必要信息.
+>
+> - 一旦一个QNetworkAccessManager对象被创建了,那么应用程序就可以使用它在网络上发送请求.它提供了一组标准的函数,可以承载网络请求和一些可选的数据,并且每一个请求返回一个**`QNetworkReply`**对象.该返回的对象包含着返回的请求应带的所有数据.
+
+## Qt中http的使用
+
+```qmake
+QT += network
+```
+
+### QNetworkAccessManager
+
+使用这个类进行请求的发送:get/post
+
+```cpp
+// --- get ---
+QNetworkReply *QNetworkAccessManager::get(const QNetworkRequest &request);
+//	-	request:连接服务器相关的信息
+//	-	返回值:通过QNetworkReply类接受服务器发送回来的数据
+
+// --- post ---
+QNetworkReply *QNetworkAccessManager::post(const QNetworkRequest &request, QIODevice *data)
+//	-	request:连接服务器相关的信息
+//	-	data:文件指针,需要让该指针打开一个I/O设备内的数据作为请求体传递给服务器
+//	这里的data参数是一个指向QIODevice的指针。QIODevice是QT中所有I/O设备的基类，包括文件、内存缓冲区、网络连接等。这意味着你可以使用任何从QIODevice派生的类（如QFile, QBuffer, QTcpSocket等）作为数据源。当你调用这个版本的post函数时，QNetworkAccessManager会从提供的QIODevice读取数据，并将这些数据作为HTTP POST请求的主体发送到服务器。这对于发送大量数据或者从网络流中直接读取数据非常有用
+QNetworkReply *QNetworkAccessManager::post(const QNetworkRequest &request, const QByteArray &data)
+//	-	request:连接服务器相关的信息
+//	-	data:作为请求体传递给服务器的数据
+//	在QT中，你可以使用QJsonDocument, QJsonObject, QJsonArray等处理json的api来创建一个JSON对象，然后使用QJsonDocument::toJson()方法将JSON对象转换为QByteArray。然后，你可以将这个QByteArray作为data参数传递给post函数
+QNetworkReply *QNetworkAccessManager::post(const QNetworkRequest &request, QHttpMultiPart *multiPart)
+//	-	request:连接服务器相关的信息
+//	-	multiPart:带分界线的数据块(对应http协议中的multipart/form-data)
+```
+
+[[网络编程#Content-Type|Content-Type中的multipart/form-data详解跳转]]
+
+### QNetworkRequest
+
+[[网络编程#http协议|跳转参考http协议详解]]
+
+储存连接服务器相关的信息,包含
+
+- 服务器ip和端口信息
+- 请求数据对应的指令
+- 指定发送的post数据块的格式
+
+```cpp
+//设置url的函数
+void QNetworkRequest::setUrl(const QUrl &url);
+//	-	url:连接,如:http://192.168.1.100:80/login/login.html
+//因为get方式提交请求,请求数据也在url中,如:http://192.168.1.100:80/login?userName=zhang3&passwd=123456
+
+//指定发送的post数据块的格式 - 标准请求头
+void QNetworkRequest::setHeader(QNetworkRequest::KnownHeaders header, const QVariant &value)
+//	-	header: 请求头的key
+//			QNetworkRequest::ContentTypeHeader  数据类型
+//			QNetworkRequest::ContentLengthHeader	数据长度
+//			QNetworkRequest::LocationHeader	重定向
+//			QNetworkRequest::UserAgentHeader  身份标识
+//			......
+//	-	value: 请求头的值
+  
+//指定发送的post数据块的格式 - 自定义请求头
+void QNetworkRequest::setRawHeader(const QByteArray &headerName, const QByteArray &headerValue)
+//基本同上
+```
+
+### QNetworkReply
+
+> 这个对象会帮助检测服务器是否有数据会发,如果有就发送信号
+>
+> 它继承自QIODevice类,使用它内部的函数对QNetworkReply即服务器返回的数据进行读写,类似于读文件,如:`QByteArray QIODevice::readAll();`
+
+相关信号:
+
+- `[signal] void QNetworkReply::finished()`
+- `[signal] void QNetworkReply::error(QNetworkReply::NetworkError code)`
+- `[signal] void QIODevice::readyRead()`
+- ...
+
+## 示例程序
+
+```cpp
+QNetworkAccessManager 
+```
+
+
+
+
+
 # 打包发布
 
-1. 切成release版本进行运行
+1.  切成release版本进行运行
 
 2. 将release版本生成的exe放在待发布文件夹中
 
@@ -3754,17 +3887,24 @@ QSqlDatabase db ;
 
 4. 发布成功，此时可通过第三方工具（例如：nis edit）再进一步封装成安装包
 
-[设置图标]: https://blog.csdn.net/u014546553/article/details/78741277
+[设置图标方法点击跳转](https://blog.csdn.net/u014546553/article/details/78741277)
+
+# QT的一些问题
+
+## 中文图片资源问题
+
+ + **报错：** `No rule to make target ‘/??. png’, needed by ‘debug/qrc_Icon. Cpp’. Stop.`
+ + **原因：** 资源文件中包含中文命名的图片文件。
+
+将含有中文命名的图片文件从资源文件中移除，执行 qmake，在重新添加有中文图片的文件，再重新编译就不会出错了。  
+注意如果添加含有中文命名的图片文件再**执行 qmake**，重新构建会报错。(即此时**必须直接构建**)
+
+## mac安装qt
+
+[参考](https://zhuanlan.zhihu.com/p/643302036)
 
 
 
 
 
-
-
-
-
-
-
-
-
+​	

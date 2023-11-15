@@ -11,8 +11,12 @@
             "id": "69815426eb0ec5cc",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "加解密相关.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -44,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "[[",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -82,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "加解密相关.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "加解密相关.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -119,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "加解密相关.md"
+              }
             }
           },
           {
@@ -128,6 +135,16 @@
             "state": {
               "type": "quiet-outline",
               "state": {}
+            }
+          },
+          {
+            "id": "03da970f32f172b3",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
+              }
             }
           }
         ],
@@ -139,6 +156,8 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "remotely-save:Remotely Save": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
@@ -149,6 +168,9 @@
   },
   "active": "69815426eb0ec5cc",
   "lastOpenFiles": [
+    "正则表达式.md",
+    "nginx.md",
+    "网络编程.md",
     "windows开发.md",
     "64位逆向.md",
     "hello-world.md",
@@ -168,13 +190,10 @@
     "APC机制.md",
     "硬编码.md",
     "系统调用.md",
-    "网络编程.md",
     "数据库.md",
     "数据结构.md",
     "视频效果.md",
     "事件等待.md",
-    "驱动开发.md",
-    "屏幕监控（未完成）.md",
     "github.com/Dreamacro/clash-dashboard/tree",
     "github.com/Dreamacro/clash-dashboard",
     "github.com/Dreamacro",

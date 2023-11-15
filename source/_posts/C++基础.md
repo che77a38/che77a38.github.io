@@ -1231,7 +1231,7 @@ int func2(int a, int b){
 2. 在类的外部(作用域范围外)，访问权限才有意义：public，private，protected
 3. 在类的外部，只有public修饰的成员才能被访问，在没有涉及继承与派生时，		private和protected是同等级的，外部不允许访问
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps45.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps45.jpg)
 
  ***[C++中struct和class的区别?]***
 
@@ -1495,7 +1495,7 @@ void main(){
 
 输出结果:
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201228113351913.png" alt="image-20201228113351913"  />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20201228113351913.png" alt="image-20201228113351913"  />
 
 ```cpp
 //3. 函数返回局部对象
@@ -1514,11 +1514,11 @@ void main(){
 
 debug下生成：
 
-![image-20201228113453490](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201228113453490.png)
+![image-20201228113453490](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20201228113453490.png)
 
 release下生成：
 
-![image-20201228113744991](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201228113744991.png)
+![image-20201228113744991](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20201228113744991.png)
 
 ***[上面结果说明:]***
 
@@ -1629,7 +1629,7 @@ int main() {
 
 输出结果为:
 
-![image-20201230151324082](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201230151324082.png)
+![image-20201230151324082](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20201230151324082.png)
 
 #### 构造函数自动生成规则
 
@@ -1649,13 +1649,13 @@ int main() {
 
 一般情况下，浅拷贝没有任何副作用，但是当类中有指针，并且指针指向动态分配的内存空间，析构函数做了动态内存释放的处理，会导致内存问题。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps1.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps1.jpg)
 
 ##### 深拷贝
 
 当类中有指针，并且此指针有动态分配空间，析构函数做了释放处理，往往需要自定义拷贝构造函数，自行给指针动态分配空间，深拷贝。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps2.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps2.jpg)
 
 ```cpp
 class Person{
@@ -1750,7 +1750,7 @@ void main() {
 
 各种情况的输出效果：
 
-![image-20201228152115809](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201228152115809.png)![image-20201228152153312](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201228152153312.png)![image-20201228152220005](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201228152220005.png)
+![image-20201228152115809](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20201228152115809.png)![image-20201228152153312](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20201228152153312.png)![image-20201228152220005](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20201228152220005.png)
 
 #### 初始化列表
 
@@ -1869,7 +1869,7 @@ void test(){
 
 输出结果:
 
-![image-20201228143347961](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201228143347961.png)
+![image-20201228143347961](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20201228143347961.png)
 
 ### 动态对象创建
 
@@ -2126,7 +2126,7 @@ void test(){
 
 那么刚才我们那段代码最大的问题在于：person指针指向的内存中到底有多少个对象，因为这个决定应该有多少个析构函数应该被调用。换句话说，person指针指向的是一个单一的对象还是一个数组对象，由于单一对象和数组对象的内存布局是不同的。更明确的说，数组所用的内存通常还包括“数组大小记录”，使得delete的时候知道应该调用几次析构函数。单一对象的话就没有这个记录。单一对象和数组对象的内存布局可理解为下图:
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps3.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps3.jpg)
 
 本图只是为了说明，编译器不一定如此实现，但是很多编译器是这样做的。
 
@@ -2328,7 +2328,7 @@ int main(){
 
 单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。**通过单例模式可以保证系统中一个类只有一个实例而且该实例易于外界访问**，从而方便对实例个数的控制并节约系统资源。如果希望在系统中某个类的对象只能存在一个，单例模式是最好的解决方案。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps1.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps1.png)
 
 Singleton（单例）：在单例类的内部实现只生成一个实例，同时它提供一个静态的getInstance()工厂方法，让客户可以访问它的唯一实例；为了防止在外部对其实例化，将其默认构造函数和拷贝构造函数设计为私有；在单例类内部定义了一个Singleton类型的静态对象，作为外部共享的唯一实例。
 
@@ -2385,7 +2385,7 @@ void test(){
 
 那么问题是：这一块代码是如何区分那个对象调用自己的呢？
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps29.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps29.jpg)
 
 c++规定，this指针是隐含在对象成员函数内的一种指针。当一个对象被创建后，它的每一个成员函数都含有一个系统自动生成的隐含参数指针this，用以传入这个对象的地址，也就是说虽然我们没有写上this指针，编译器在编译的时候也是会加上的。因此this也称为“指向本对象的指针”，this指针并不是对象的一部分，不会影响sizeof(对象)的结果。
 
@@ -2397,7 +2397,7 @@ $$
 
 ***c++编译器对普通成员函数的内部处理的理解图***
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps59.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps59.jpg)
 
 ####  this指针的使用
 
@@ -2434,7 +2434,7 @@ void main() {
 }
 ```
 
-![image-20201230145442591](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201230145442591.png)
+![image-20201230145442591](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20201230145442591.png)
 
 若将plusNum的返回值改成值传递:
 
@@ -2460,7 +2460,7 @@ void main() {
 
 结果为：
 
-![image-20201230145558329](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20201230145558329.png)
+![image-20201230145558329](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20201230145558329.png)
 
 理解：对象的值赋值就是调用拷贝构造函数,从返回**引用**改成返回**值**后，实际上调用的是拷贝构造函数来生成了一个匿名对象,该匿名对象又调用plusNum函数返回值又因为调用拷贝构造函数生成另一个匿名对象...最终实际上，t1只进行了一次plusNum(10)，后面的每次plusNum都是针对每次拷贝构造函数生成的匿名对象而非t1。
 
@@ -2648,7 +2648,7 @@ $$
 
 几乎C中所有的运算符都可以重载，但运算符重载的使用时相当受限制的。特别是**不能使用C中当前没有意义的运算符**(例如用\*\*求幂)**不能改变运算符优先级**，**不能改变运算符的参数个数**。这样的限制有意义，否则，所有这些行为产生的运算符只会混淆而不是澄清寓语意。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps32.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps32.jpg)
 
 #### 加号运算符重载
 
@@ -2717,7 +2717,7 @@ $$
 
 全局方式和成员函数方式同时存在的时候不能用t1+t2的形式调用，因为具有二义性，编译器分不清
 
-![image-20210108170757184](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210108170757184.png)
+![image-20210108170757184](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210108170757184.png)
 
 #### 左移运算符<<重载
 
@@ -2851,7 +2851,7 @@ void test(){
 
 总结：
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps53.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps53.jpg)
 
 `p.s.	T表示任意类型`
 
@@ -2875,7 +2875,7 @@ void test(){
 
 重复嵌套后置递增或递减会报错，如下图：
 
-![image-20210108172108584](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210108172108584.png)
+![image-20210108172108584](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210108172108584.png)
 
 而对于我们上面自己实现的前后置重载，后置可以嵌套多层而没有语法错误，但是从第二次开始，运算的结果就已经存在临时对象中而不影响最初的对象。因此**多次嵌套后置递增或递减也是没有意义的，要避免这样使用。**
 
@@ -3149,7 +3149,7 @@ int main(){
 
 常规建议：
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps64.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps64.jpg)
 
 ##### 附录：运算符和结合性
 
@@ -3213,7 +3213,7 @@ int main(){
 
 #### **继承基本概念**
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps27.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps27.jpg)
 
 > c++最重要的特征是**代码重用**，通过继承机制可以利用已有的数据类型来定义新的数据类型，新的类不仅拥有旧类的成员，还拥有新定义的成员。
 >
@@ -3224,7 +3224,7 @@ int main(){
 - 一类是**从基类继承**过来的，一类是**自己增加**的成员。
 - 从基类继承过过来的表现其**共性**，而新增的成员体现了其**个性**。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps55.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps55.png)
 
 ***定义格式：***
 
@@ -3251,7 +3251,7 @@ int main(){
 
 派生类的访问权限规则如下：
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps75.jpg)![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps128.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps75.jpg)![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps128.jpg)
 
 **继承中的对象模型**
 
@@ -3280,7 +3280,7 @@ int main(){
 
      
 
-  5. ![image-20210118121802527](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210118121802527.png)
+  5. ![image-20210118121802527](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210118121802527.png)
 
 
 
@@ -3292,7 +3292,7 @@ int main(){
 
 ***继承与对象嵌套混搭的构造和析构***
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps36.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps36.jpg)
 
 
 
@@ -3319,7 +3319,7 @@ int main(){
 
 我们可以从一个类继承，我们也可以能同时从多个类继承，这就是多继承。但是由于多继承是非常受争议的，从多个类继承可能会导致函数、变量等同名导致较多的歧义。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps41.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps41.jpg)
 
 多继承会带来一些二义性的问题， 如果两个基类中有同名的函数或者变量，那么通过派生类对象去访问这个函数或变量时就不能明确到底调用从基类1继承的版本还是从基类2继承的版本？
 
@@ -3329,7 +3329,7 @@ int main(){
 
 两个派生类继承同一个基类而又有某个类同时继承者两个派生类，这种继承被称为菱形继承，或者钻石型继承。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps63.png)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps63.png)
 
 这种继承所带来的问题：草泥马继承自动物的函数和数据**继承了两份**，其实我们应该清楚，这份数据我们**只需要一份**就可以，并且还伴随二义性问题。
 
@@ -3360,10 +3360,10 @@ class Derived : public Base1, public Base2 {};
 
 |           | 普通继承                                                     | 虚继承                                                       |
 | --------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| BigBase： | ![image-20210119112607731](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210119112607731.png) | ![image-20210119112604027](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210119112604027.png) |
-| Base1：   | ![image-20210119112457172](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210119112457172.png) | ![image-20210119112527908](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210119112527908.png) |
-| Base2：   | ![image-20210119112436034](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210119112436034.png) | ![image-20210119112410840](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210119112410840.png) |
-| Derived： | ![image-20210119112255936](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210119112255936.png) | ![image-20210119112329474](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210119112329474.png) |
+| BigBase： | ![image-20210119112607731](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210119112607731.png) | ![image-20210119112604027](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210119112604027.png) |
+| Base1：   | ![image-20210119112457172](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210119112457172.png) | ![image-20210119112527908](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210119112527908.png) |
+| Base2：   | ![image-20210119112436034](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210119112436034.png) | ![image-20210119112410840](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210119112410840.png) |
+| Derived： | ![image-20210119112255936](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210119112255936.png) | ![image-20210119112329474](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210119112329474.png) |
 
 - BigBase 菱形最顶层的类，内存布局图没有发生改变。
 - Base1和Base2通过虚继承的方式派生自BigBase,这两个对象的布局图中可以看出编译器为我们的对象中增加了一个vbptr (virtual base pointer),vbptr指向了一张表，这张表保存了当前的虚指针相对于虚基类的首地址的偏移量。
@@ -3371,11 +3371,11 @@ class Derived : public Base1, public Base2 {};
 
 当使用虚继承时，在继承体系中无论被继承多少次，**对象内存模型中均只会出现一个虚基类的子对象**（这和多继承是完全不同的）
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120153202392.png" alt="image-20210120153202392" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120153202392.png" alt="image-20210120153202392" style="zoom: 67%;" />
 
 D的存储结构：
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120153036533.png" alt="image-20210120153036533" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120153036533.png" alt="image-20210120153036533" style="zoom:50%;" />
 
 指针访问Derived类中Base2虚表中的偏移量4，代码如下:
 
@@ -3384,7 +3384,7 @@ Derived d;
 cout<<*((int*)*((int*)&d+1)+1)<<endl;
 ```
 
-![image-20210119115528168](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210119115528168.png)
+![image-20210119115528168](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210119115528168.png)
 
 虚继承只能解决具备公共祖先的多继承所带来的二义性问题，不能解决没有公共祖先的多继承的.
 
@@ -3398,7 +3398,7 @@ cout<<*((int*)*((int*)&d+1)+1)<<endl;
 
 若A是虚基类,且没有缺省构造函数，则必须如下写明A()初始化列表
 
-![image-20210120154101261](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120154101261.png)
+![image-20210120154101261](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120154101261.png)
 
 p.s.如果不是虚基类，调用父类非默认构造函数只需要传入父类，而如果祖先中有虚基类，那么初始化列表中必须有虚基类。
 
@@ -3457,17 +3457,17 @@ int main() {
 
 输出结果为：
 
-![image-20210120160100338](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120160100338.png)
+![image-20210120160100338](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120160100338.png)
 
 p.s.**虚基类构造函数永远先于非虚基类构造函数执行**
 
 d对象的内存布局图如下：
 
-![image-20210120160156859](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120160156859.png)
+![image-20210120160156859](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120160156859.png)
 
 多个虚基类案例：
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120161329374.png" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120161329374.png" style="zoom: 67%;" />
 
 ```cpp
 class A
@@ -3541,22 +3541,22 @@ int main() {
 }
 ```
 
-![image-20210120161412297](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120161412297.png)
+![image-20210120161412297](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120161412297.png)
 
 内存布局分析：
 
-![image-20210120164422842](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120164422842.png)
+![image-20210120164422842](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120164422842.png)
 
 `因开发人员命令提示工具问题，单字母类名与多同字母类名同等看待`
 
 | 类名 |                           内存布局                           |
 | :--: | :----------------------------------------------------------: |
-| AAA  | ![image-20210120164914264](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120164914264.png) |
-|  BB  | ![image-20210120164927251](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120164927251.png) |
-|  CC  | ![image-20210120164944123](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120164944123.png) |
-|  DD  | ![image-20210120165007699](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120165007699.png) |
-|  EE  | ![image-20210120165156147](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120165156147.png) |
-|  FF  | ![image-20210120165232831](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120165232831.png) |
+| AAA  | ![image-20210120164914264](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120164914264.png) |
+|  BB  | ![image-20210120164927251](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120164927251.png) |
+|  CC  | ![image-20210120164944123](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120164944123.png) |
+|  DD  | ![image-20210120165007699](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120165007699.png) |
+|  EE  | ![image-20210120165156147](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120165156147.png) |
+|  FF  | ![image-20210120165232831](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120165232831.png) |
 
 
 
@@ -3566,7 +3566,7 @@ int main() {
 
 **多态性**(polymorphism)提供**接口与具体实现之间**的另一层**隔离**
 
-![image-20210120170500049](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120170500049.png)
+![image-20210120170500049](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120170500049.png)
 
 静态多态：运算符重载和函数重载
 
@@ -3628,11 +3628,11 @@ int main() {
 }
 ```
 
-![image-20210120172342123](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120172342123.png)
+![image-20210120172342123](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120172342123.png)
 
 若把Animal类中sleep函数前的virtual去掉，结果如下：
 
-![image-20210120172425758](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120172425758.png)
+![image-20210120172425758](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120172425758.png)
 
 则不能实现运行时多态
 
@@ -3675,7 +3675,7 @@ public:
 };
 ```
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210121154910794.png" alt="image-20210121154910794" style="zoom:80%;" /><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210121155023822.png" alt="image-20210121155023822" style="zoom: 80%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210121154910794.png" alt="image-20210121154910794" style="zoom:80%;" /><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210121155023822.png" alt="image-20210121155023822" style="zoom: 80%;" />
 
 > 任何妄图使用父类指针或引用想调用子类中的未覆盖父类的成员函数的行为均被编译器视为非法，但实际上可以通过指针的方式间接访问虚函数表来达到违反C++语义的行为
 
@@ -3703,11 +3703,11 @@ public:
 
 当子类无重写基类虚函数时:
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps56.png)<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/wps58.jpg" alt="img" style="zoom:67%;" />
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps56.png)<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps58.jpg" alt="img" style="zoom:67%;" />
 
 当子类重写基类虚函数时:
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps193.png)<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/wps88.jpg" alt="img" style="zoom:67%;" />
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps193.png)<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps88.jpg" alt="img" style="zoom:67%;" />
 
 没用虚函数的情况：
 
@@ -3787,9 +3787,9 @@ void main()
 
 |  类名  |                         对象内存布局                         |
 | :----: | :----------------------------------------------------------: |
-| Animal | ![image-20210120174254340](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120174254340.png) |
-|  Cat   | ![image-20210120174344137](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120174344137.png) |
-|  Dog   | ![image-20210120174326827](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120174326827.png) |
+| Animal | ![image-20210120174254340](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120174254340.png) |
+|  Cat   | ![image-20210120174344137](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120174344137.png) |
+|  Dog   | ![image-20210120174326827](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120174326827.png) |
 
 案例中用父类指针手动调用子类函数
 
@@ -3803,9 +3803,9 @@ Animal* p = &d;
 //int (__cdecl *pFun)(int,int);
 ```
 
-![image-20210120175133996](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120175133996.png)
+![image-20210120175133996](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120175133996.png)
 
-![image-20210120175103635](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120175103635.png)
+![image-20210120175103635](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120175103635.png)
 
 ##### 单继承中虚函数
 
@@ -3841,8 +3841,8 @@ public:
 
 |  类名  |                           内存布局                           |
 | :----: | :----------------------------------------------------------: |
-| Animal | ![image-20210120222934600](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120222934600.png) |
-|  Cat   | ![image-20210120224045504](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120224045504.png) |
+| Animal | ![image-20210120222934600](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120222934600.png) |
+|  Cat   | ![image-20210120224045504](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120224045504.png) |
 
 ```cpp
 MyClass*pc=new MyClassA;
@@ -3887,11 +3887,11 @@ class MyClassC :public MyClassB, public MyClassA
 
 图解上面代码：
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120230828691.png" alt="image-20210120230828691" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120230828691.png" alt="image-20210120230828691" style="zoom:80%;" />
 
 MyClassC对象空间布局如下：
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120231043689.png" alt="image-20210120231043689" style="zoom:80%;" />![image-20210120231101348](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120231101348.png)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120231043689.png" alt="image-20210120231043689" style="zoom:80%;" />![image-20210120231101348](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120231101348.png)
 
 【重点解读】
 
@@ -3915,7 +3915,7 @@ class MyClassC:public MyClassA,public MyClassB
 
 虚继承的引入把对象的模型变得十分复杂，除了每个基类（MyClassA和MyClassB）和公共基类（MyClass）的虚函数表指针需要记录外，每个虚拟继承了MyClass的父类还需要记录一个虚基类表vbtable的指针vbptr。
 
-![image-20210120233032009](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120233032009.png)![image-20210120234600438](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210120234600438.png)
+![image-20210120233032009](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120233032009.png)![image-20210120234600438](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120234600438.png)
 
 
 
@@ -4168,7 +4168,7 @@ void main()
 
 案例如下：
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps25.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps25.jpg)
 
 ```cpp
 //抽象制作饮品
@@ -4347,7 +4347,7 @@ void test(){
 }
 ```
 
-![image-20210121171549279](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210121171549279.png)
+![image-20210121171549279](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210121171549279.png)
 
 如果类的目的不是为了实现多态，作为基类来使用，就不要声明虚析构函数，反之，则应该为类声明虚析构函数。
 
@@ -4817,7 +4817,7 @@ int main(){
 
 上述代码中如果不按照这个格式写，会报错如下：
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210128165130414.png" alt="image-20210128165130414" style="zoom: 80%;" /><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210128165515868.png" alt="image-20210128165515868" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210128165130414.png" alt="image-20210128165130414" style="zoom: 80%;" /><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210128165515868.png" alt="image-20210128165515868" style="zoom:80%;" />
 
 ##### 类模板的分文件编写
 
@@ -5723,7 +5723,7 @@ int main(){
 }
 ```
 
-![image-20210302140505545](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210302140505545.png)
+![image-20210302140505545](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210302140505545.png)
 
 ### 异常接口声明
 
@@ -5826,19 +5826,19 @@ int main() {
 
    **调用拷贝构造函数，效率低**
 
-   ![image-20210302150222651](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210302150222651.png)
+   ![image-20210302150222651](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210302150222651.png)
 
 2. 《修改位1》是throw MyException();       《修改位2》是catch(MyException& e);
 
    **只调用默认构造函数，效率高，推荐**
 
-   ![image-20210302150136700](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210302150136700.png)
+   ![image-20210302150136700](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210302150136700.png)
 
 3. 《修改位1》是throw &MyException();       《修改位2》是catch(MyException* e);
 
    **对象会提前释放掉，不能再非法操作**
 
-   ![image-20210302150025665](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210302150025665.png)
+   ![image-20210302150025665](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210302150025665.png)
 
    显然3的情况：在catch中调用e的函数会报错，因为MyException已被析构
 
@@ -5882,7 +5882,7 @@ void test()
 
 标准库中也提供了很多的异常类，它们是通过类继承组织起来的。异常类继承层级结构图如下：
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps21.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps21.jpg)
 
 `每个类所在的头文件在图下方标识出来。(颜色对应其头文件)`
 
@@ -6051,15 +6051,15 @@ C++输入输出包含以下三个方面的内容：
 
    C++编译系统提供了用于输入输出的iostream类库。iostream这个单词是由3个部 分组成的，即i-o-stream，意为输入输出流。在iostream类库中包含许多用于输入输出的 类。常用的见表
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps54.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps54.jpg)
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps86.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps86.jpg)
 
 ios是抽象基类，由它派生出istream类和ostream类，两个类名中第1个字母i和o分别代表输入(input)和输出(output)。 istream类支持输入操作，ostream类支持输出操作， iostream类支持输入输出操作。iostream类是从istream类和ostream类通过多重继承而派生的类。其继承层次见上图表示。
 
 C++对文件的输入输出需要用ifstrcam和ofstream类，两个类名中第1个字母i和o分别代表输入和输出，第2个字母f代表文件 (file)。ifstream支持对文件的输入操作， ofstream支持对文件的输出操作。类ifstream继承了类istream，类ofstream继承了类ostream，类fstream继承了 类iostream。见图 
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps117.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps117.jpg)
 
 I/O类库中还有其他一些类，但是对于一般用户来说，以上这些已能满足需要了。
 
@@ -6132,7 +6132,7 @@ clog流对象也是标准日志流，它是console log的缩写。它的作用�
 
 **缓冲区的概念:**
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps20.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps20.jpg)
 
 ### 标准输入流
 
@@ -6188,7 +6188,7 @@ int main()
 
 **【重点注意】cin.get和cin.getline的区别**
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210310173521606.png" alt="image-20210310173521606" style="zoom:80%;" /><img src="https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210310173332264.png" alt="image-20210310173332264" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210310173521606.png" alt="image-20210310173521606" style="zoom:80%;" /><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210310173332264.png" alt="image-20210310173332264" style="zoom:80%;" />
 
 - cin.get：遇换行符结束读取,**换行符遗留在缓冲区**,所以要处理。
 - cin.getline：已读取了size-1个字符或遇到了文件尾或遇到了分隔符结束读取，若遇到换行符结束读取，丢弃换行符(换行符不在缓冲区也不被buf取走，而是直接丢掉)。
@@ -6227,7 +6227,7 @@ cin.ignore(std::numeric_limits<int>::max(), '\n');//把第一个参数设置得�
 
 程序执行时有一个标志变量来标志输入的异常状态，其中有三位标志位分别用来标志三种异常信息，他们分别是：failbit，eofbit，badbit。这三个标志位在标志变量中是这样分配的：
 
-![image-20210311154555574](https://raw.githubusercontent.com/che77a38/blogImage/main/image-20210311154555574.png)
+![image-20210311154555574](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210311154555574.png)
 
 ios类定义了这四个常量badbit, eofbit, failbit, goodbit，其实这四个标志常量就是取对应标志位的掩码，也即输入的四种异常情况！
 
@@ -6377,17 +6377,17 @@ void test03(){
 
 通过调用流对象cout中用于控制输出格式的成员函数来控制输出格式。用于控制输出格式的常用的成员函数如下：
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps30.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps30.jpg)
 
 流成员函数setf和控制符setiosflags括号中的参数表示格式状态，它是通过格式标志来指定的。格式标志在类ios中被定义为枚举值。因此在引用这些格式标志时要在前面加上类名ios和域运算符“::”。格式标志见表13.5。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps89.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps89.jpg)
 
 ##### 控制符格式化输出
 
 C++提供了在输入输出流中使用的控制符(有的书中称为操纵符)。(需要iomanip头文件)
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps109.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps109.jpg)
 
 ```cpp
 //通过流成员函数
@@ -6447,7 +6447,7 @@ void test02(){
 
 和文件有关系的输入输出类主要在fstream.h这个头文件中被定义，在这个头文件中主要被定义了三个类，由这三个类控制对文件的各种输入输出操作，他们分别是ifstream、ofstream、fstream，其中fstream类是由iostream类派生而来，他们之间的继承关系见下图所示：
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps24.jpg)（图中打错了，应该是fstream）
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps24.jpg)（图中打错了，应该是fstream）
 
 由于文件设备并不像显示器屏幕与键盘那样是标准默认设备，所以它在fstream头文件中是没有像cout那样预先定义的全局对象，所以我们必须自己定义一个该类的对象。ifstream类，它是从istream类派生的，用来支持从磁盘文件的输入。ofstream类，它是从ostream类派生的，用来支持向磁盘文件的输出。
 
@@ -6477,7 +6477,7 @@ fstream类，它是从iostream类派生的，用来支持对磁盘文件的输�
 
    在声明文件流类时定义了带参数的构造函数，其中包含了打开磁盘文件的功能。因此，可以在定义文件流对象时指定参数，调用文件流类的构造函数来实现打开文件的功能。
 
-![img](https://raw.githubusercontent.com/che77a38/blogImage/main/wps95.jpg)
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage/wps95.jpg)
 
 几点说明：
 
@@ -6678,7 +6678,7 @@ int main(){
 
 类（Class）封装了数据和行为，是面向对象的重要组成部分，它是具有相同属性、操作、关系的对象集合的总称。在系统中，每个类都具有一定的职责，职责指的是类要完成什么样子的功能，要承担什么样子的义务。一个类可以有多种职责，但是设计得好的类一般只有一种职责。
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302041632811.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302041632811.png" style="zoom:50%;" />
 
 - 看到该图分为三层：**最顶层的为类名，中间层的为属性，最底层的为方法。**
 - 属性的表示方式为：`【可见性】【属性名称】：【类型】={缺省值，可选}`
@@ -6687,7 +6687,7 @@ int main(){
 
 ### 关系画法总结
 
-![image-20230217164335569](https://raw.githubusercontent.com/che77a38/blogImage2/main/202302171643671.png)
+![image-20230217164335569](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302171643671.png)
 
 - [继承关系](#继承关系) --> 带空心三角形的实线
 - [关联关系](#关联关系) --> 箭头线
@@ -6701,13 +6701,13 @@ int main(){
 
 #### 普通继承关系
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302061342649.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302061342649.png" style="zoom:50%;" />
 
 #### 抽象继承关系
 
 比方说我想实现一个链表（`Link`），插入（`insert`）与删除（`remove`）动作我想让子类去实现，链表本身只实现统计链表中元素个数的动作（`count`），然后有一个子类单向链表（`OneWayLink`）去实现父类没有实现的动作，UML类图为：
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302061359977.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302061359977.png" style="zoom:50%;" />
 
 在UML中，抽象类无论类名还是抽象方法名，都以**斜体**的方式表示，因为这也是一种继承关系，所以子类与父类通过带空心三角形的实线来联系。
 
@@ -6720,19 +6720,19 @@ int main(){
 
 #### 单向关联关系
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302061403919.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302061403919.png" style="zoom:50%;" />
 
 #### 双向关联关系
 
 默认情况下的关联都是双向的，比如顾客（`Customer`）购买商品（`Product`），反之，卖出去的商品总是与某个顾客与之相关联，这就是双向关联。类图如下:
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302061403640.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302061403640.png" style="zoom:50%;" />
 
 #### 自关联关系
 
 自关联，指的就是对象中的属性为对象本身，这在链表中非常常见，单向链表Node中会维护一个它的前驱Node，双向链表Node中会维护一个它的前驱Node和一个它的后继Node。就以单向链表为例，UML类图为:
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302061403687.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302061403687.png" style="zoom:50%;" />
 
 ### 聚合关系
 
@@ -6740,7 +6740,7 @@ int main(){
 
 如汽车（`Car`）与引擎（`Engine`）、轮胎（`Wheel`）、车灯（`Light`），类图 表示为：
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302061413313.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302061413313.png" style="zoom:50%;" />
 
 代码实现聚合关系，成员对象通常以构造方法、Setter方法的方式注入到整体对象之中。
 
@@ -6750,7 +6750,7 @@ int main(){
 
 比如人的头（Head）和嘴巴（Mouth）、鼻子（Nose），嘴巴和鼻子是头的组成部分之一，一旦头没了，嘴巴也没了，因此头和嘴巴、鼻子是组合关系，类图表示为:
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302061425886.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302061425886.png" style="zoom:50%;" />
 
 代码实现组合关系，**通常在整体类的构造方法中直接实例化成员类**，因为组合关系的整体和部分是**共生关系**，如果通过外部注入，那么即使整体不存在，那么部分还是存在的，这就相当于变成了一种聚合关系了
 
@@ -6760,7 +6760,7 @@ int main(){
 
 比如，驾驶员（`Driver`）开车，Driver类的drive()方法将车（`Car`）的对象作为一个参数传递，以便在drive()方法中能够调用car的move()方法，且驾驶员的drive()方法依赖车的move()方法，因此也可以说Driver依赖Car，类图为：
 
-<img src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202302061428737.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302061428737.png" style="zoom:50%;" />
 
 依赖关系通常通过**三种方式**来实现：
 
