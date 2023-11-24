@@ -1,15 +1,15 @@
 [
   "obsidian-enhancing-export",
-  "obsidian-quiet-outline",
   "link-info-server",
   "remotely-save",
   "global-search-and-replace",
   "obsidian-image-auto-upload-plugin",
   "easy-typing-obsidian",
   "cm-typewriter-scroll-obsidian",
-  "obsidian-hider",
   "obsidian-table-generator",
   "obsidian-minimal-settings",
   "table-editor-obsidian",
-  "editing-toolbar"
+  "editing-toolbar",
+  "obsidian-quiet-outline",
+  "obsidian-hider"
 ]

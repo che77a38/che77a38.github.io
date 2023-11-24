@@ -912,7 +912,7 @@ linux绝大多数命令都有对应的函数,例如
   - `TIME`    进程使用的总cpu时间
   - `COMMAND`    正在执行的命令行命令
   - `NI`    优先级(Nice)
-  - `PRI`    进程优先级编号(Priority)
+  - `PRI`    [进程优先级](https://zhuanlan.zhihu.com/p/665100294)编号(Priority)
   - `WCHAN`    进程正在睡眠的内核函数名称；该函数的名称是从/root/system.map文件中获得的。
   - `FLAGS`    与进程相关的数字标识
 
@@ -1632,6 +1632,8 @@ pcb：结构体:`task_stuct`, 该结构体在:
 
 ## 文件IO函数
 
+统一使用头文件:`#include <fcntl.h>`
+
 ![1](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206081601488.jpeg)
 
 每一个FILE文件流（标准C库函数）都有一个缓冲区buffer，默认大小8192Byte。Linux系统的IO函数默认是没有缓冲区.
@@ -2208,9 +2210,9 @@ int fcntl(int fd, int cmd, ... /* arg */ );
 - 了解进程相关概念
 - 掌握**fork**/getpid/getppid函数的使用
 - 数量掌握ps/kill命令的使用
-- 熟练掌握execl/execlp函数的使用
+- 熟练掌握[execl/execlp](#exec函数族)函数的使用
 - 了解孤儿进程和僵尸进程
-- **wait**函数和**waitpid**函数
+- [**wait**函数和**waitpid**函数](#进程回收函数)
 
 程序和进程
 
@@ -2229,7 +2231,7 @@ int fcntl(int fd, int cmd, ... /* arg */ );
 
 ### PCB详解
 
-每个进程在内核中都有一个进程控制块（PCB）来维护进程相关的信息，Linux内核的进程控制块是task_struct结构体。
+每个进程在内核中都有一个进程控制块（PCB）来维护进程相关的信息，Linux内核的进程控制块是**`task_struct`**结构体。
 
 pcb记录了如下信息:
 
@@ -2281,6 +2283,8 @@ SIGSTOP是个信号
 
 fork函数
 
+头文件: `#include <unistd.h>`
+
 复制创建子进程([用户区内存](#虚拟地址空间)完全一样)
 
 ```c
@@ -2300,7 +2304,7 @@ fork代码案例(箭头标识执行时机)
 
 ![无标题](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206211529165.jpeg)
 
-- linux提供了函数供子进程获取其父进程,但父进程要获取子进程pid只能在创建的时候获取.
+- linux提供了函数供子进程获取其父进程,但**父进程要获取子进程pid只能在创建的时候获取**.
 - 父子进程谁先抢到cpu时间片,谁先执行.
 - 子进程的pid和父进程不一样，是新分配的。子进程的ppid会设置为父进程的pid，也就是说子进程和父进程各自的“父进程”是不一样的。
 - **[描述符表](#PCB和文件描述符表)是按进程的**，因此系统中的每个进程都可以在每个描述符表槽中打开一个不同的文件 但实际上它有点复杂。如果两个进程独立地打开一个文件，那么它们每个进程都有完全独立的文件访问权限，并且有自己的读写指针，只有当它们都写入同一个文件时才会进行交互。 但是**当进程fork的时候，父和子的描述符指向同一个文件表条目**，因此它们在文件中共享一个指针位置。这使Unix进程可以共享对输入流的访问，而无需了解这种情况。
@@ -2324,6 +2328,8 @@ fork代码案例(箭头标识执行时机)
 `pid_t getppid(void);`  获取父进程id
 
 #### exec函数族
+
+头文件: `#include <unistd.h>`
 
 需要在一个进程里面**执行其他的命令或者是用户自定义的应用程序**，此时就用到了exec函数族当中的函数。
 
@@ -2375,6 +2381,109 @@ execlp("ls","ls","-l",NULL);
 
 因此一般先fork一个子进程,在子进程中调用exec函数族.
 
+#### popen函数
+
+> 利用system函数调用shell命令，只能获取到shell命令的返回值，而不能获取shell命令的输出结果，那如果想获取输出结果怎么办呢？除了用exec函数族,也可以用popen函数实现。
+
+**格式: `FILE popen(const char* command,const char* type);`**
+
+popen()会调用fork()产生子进程，然后从子进程中调用`/bin/sh -c` 来执行参数command 的指令,然后将子进程的标准输出连接到一个管道中
+
+- **参数type** 可使用 "r"代表读取，"w"代表写入。依照此type 值，popen()会建立管道连到子进程的标准输出设备或标准输入设备，然后返回一个文件指针。
+
+**返回值**
+
+- 成功则返回文件指针(随后进程便可利用此文件指针来读取子进程的输出设备或是写入到子进程的标准输入设备中) 
+  - 所有使用文件指针(FILE*)操作的函数也都可以使用，除了fclose()以外(关闭该文件指针需要用`pclose`函数)。
+- 失败返回NULL, 错误原因存于errno 中.
+
+> popen只能阻塞执行,如果需要非阻塞执行还是需要流程如下:
+>
+> 使用fork函数创建子进程使用execl函数执行`/bin/sh -c`配合想执行的命令执行命令,并通过管道与在执行waitpid函数等待子进程结束的父进程进行通信传递命令执行结果,案例如下:
+
+```cpp
+int main(int argc, const char **argv)
+{
+    // 创建管道
+    int pipefd[2];
+    if (pipe(pipefd) == -1)
+    {
+        std::cerr << "Failed to create pipe." << std::endl;
+        return 1;
+    }
+    std::string askStr = "";
+    cout << "请输出要提问的内容:";
+    cin >> askStr;
+    std::string command = "echo " + askStr + " | bito";
+    string result = "";
+    // 创建子进程
+    pid_t pid = fork();
+
+    if (pid == -1)
+    {
+        std::cerr << "Failed to fork process." << std::endl;
+        return 1;
+    }
+    else if (pid == 0)
+    {
+        // 子进程执行命令
+        // 将标准输出重定向到管道写端
+        close(pipefd[0]);
+        dup2(pipefd[1], STDOUT_FILENO);
+        close(pipefd[1]);
+        execl("/bin/sh", "sh", "-c", command.c_str(), NULL);
+        _exit(1);
+    }
+    else
+    {
+        // 父进程继续执行其他任务
+        // ...
+        // 关闭管道写端
+        close(pipefd[1]);
+        while (1)
+        {
+            std::cout << "子进程还未结束" << std::endl;
+            sleep(1);
+            // 等待子进程结束
+            int status;
+            if (waitpid(pid, &status, WNOHANG) > 0) // 子进程正常退出或子进程异常退出
+            {
+                std::cout << "子进程已退出" << std::endl;
+                // 读取子进程的输出结果
+                char buffer[128];
+                result = "";
+                ssize_t bytesRead;
+                while ((bytesRead = read(pipefd[0], buffer, sizeof(buffer))) > 0)
+                {
+                    result += std::string(buffer, bytesRead);
+                }
+                cout << "bito回答: " << result << endl;
+                break;
+            }
+        }
+    }
+    return 0;
+}
+```
+
+返回结果为:
+
+```cpp
+请输出要提问的内容:你好,你会什么
+子进程还未结束
+子进程还未结束
+子进程还未结束
+子进程还未结束
+子进程还未结束
+子进程还未结束
+子进程还未结束
+子进程还未结束
+子进程还未结束
+子进程还未结束
+子进程已退出
+bito回答: 你好！作为一个AI助手，我可以帮助您回答各种问题，提供信息，进行翻译，进行日常对话等。请告诉我您需要什么帮助，我会尽力为您提供支持！
+```
+
 #### 进程回收函数
 
 ##### wait函数
@@ -2390,7 +2499,7 @@ pid_t wait(int *status);
 ```
 
 - 返回值：
-  - 成功：清理掉的子进程ID；
+  - 成功：清理掉的子进程ID(表示任意子进程已退出)；
   - 失败：-1 (没有子进程)
 - **status参数**：**传出参数 **-- 子进程的退出状态(**不关心可以写NULL**) 
   - `WIFEXITED(status)`：为非0        → 进程正常结束
@@ -2426,7 +2535,7 @@ pid_t waitpid(pid_t pid, int *status, in options);
 
 函数返回值
 
-- `>0`：返回回收掉的子进程ID；
+- `>0`：返回回收掉的子进程ID(表示等待子进程已退出)；
 - `-1`：无子进程(实际上官方文档中是错误返回-1,但无子进程的错误也是返回-1,没别的情况)
 - `=0`：参3为WNOHANG，且子进程正在运行。
 

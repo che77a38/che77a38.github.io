@@ -13,13 +13,38 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "加解密相关.md",
+                "file": "进程与线程.md",
                 "mode": "source",
                 "source": false
               }
             }
+          },
+          {
+            "id": "fba7f7ddcb599926",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "APC机制.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5680769976d884e4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "视频效果.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -48,7 +73,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "[[",
+                "query": "qt",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,6 +103,7 @@
       {
         "id": "4f8b8762a5365e00",
         "type": "tabs",
+        "dimension": 71.88183807439825,
         "children": [
           {
             "id": "78bdd96a59fae3b2",
@@ -85,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "加解密相关.md",
+                "file": "视频效果.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "加解密相关.md",
+                "file": "视频效果.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -120,24 +146,6 @@
             }
           },
           {
-            "id": "6590be686eb99abc",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "加解密相关.md"
-              }
-            }
-          },
-          {
-            "id": "2d5f47379a456673",
-            "type": "leaf",
-            "state": {
-              "type": "quiet-outline",
-              "state": {}
-            }
-          },
-          {
             "id": "03da970f32f172b3",
             "type": "leaf",
             "state": {
@@ -146,13 +154,73 @@
                 "sortOrder": "frequency"
               }
             }
+          },
+          {
+            "id": "92344e583527e5d9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "视频效果.md"
+              }
+            }
+          },
+          {
+            "id": "84349ea397042bce",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 5
+      },
+      {
+        "id": "f220e106e57c0c58",
+        "type": "tabs",
+        "dimension": 28.118161925601747,
+        "children": [
+          {
+            "id": "7dcf3681cb2774cf",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "视频效果.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": false,
+                  "centerStrength": 0.640445269016698,
+                  "repelStrength": 0,
+                  "linkStrength": 0,
+                  "linkDistance": 30,
+                  "scale": 0.5477069596586255,
+                  "close": true
+                }
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 416.5
+    "width": 391.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -166,34 +234,34 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "69815426eb0ec5cc",
+  "active": "5680769976d884e4",
   "lastOpenFiles": [
-    "正则表达式.md",
+    "算法.md",
+    "linux基础以及系统编程.md",
+    "FPS逆向随笔.md",
+    "C语言入门.md",
+    "C++基础.md",
+    "QT.md",
+    "进程与线程.md",
+    "数据库.md",
+    "32位逆向.md",
+    "系统调用.md",
+    "APC机制.md",
+    "屏幕监控（未完成）.md",
     "nginx.md",
-    "网络编程.md",
-    "windows开发.md",
     "64位逆向.md",
+    "正则表达式.md",
+    "网络编程.md",
     "hello-world.md",
+    "加解密相关.md",
+    "windows开发.md",
     "问题汇总.md",
     "句柄表.md",
     "STL.md",
-    "算法.md",
-    "QT.md",
     "PE.md",
-    "C语言入门.md",
     "nas方案.md",
     "MFC.md",
     "mac及linux_C++环境.md",
-    "linux基础以及系统编程.md",
-    "FPS逆向随笔.md",
-    "C++基础.md",
-    "APC机制.md",
-    "硬编码.md",
-    "系统调用.md",
-    "数据库.md",
-    "数据结构.md",
-    "视频效果.md",
-    "事件等待.md",
     "github.com/Dreamacro/clash-dashboard/tree",
     "github.com/Dreamacro/clash-dashboard",
     "github.com/Dreamacro",

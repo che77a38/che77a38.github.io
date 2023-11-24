@@ -114,18 +114,19 @@ Qt按照不同的版本发行，分为商业版和开源版
 ## 成功案例
 
 -   Linux桌面环境KDE
-
 -   WPS Office 办公软件
-
 -   Skype 网络电话
-
 -   Google Earth 谷歌地图
-
 -   VLC多媒体播放器
-
 -   VirtualBox虚拟机软件
-
 -   ...
+
+## QT中常用默认快捷键
+
+| 快捷键 | 功能           |
+| ------ | -------------- |
+| ctrl+i | 格式化选中代码 |
+|        |                |
 
 # 创建Qt项目
 
@@ -449,6 +450,8 @@ mypushbutton::~mypushbutton()
 
 # 信号和槽机制
 
+> 信号和槽是对象间的一种通信机制
+
 信号槽是 Qt 框架引以为豪的机制之一。所谓信号槽，实际就是观察者模式。**当某个事件发生之后**，比如，按钮检测到自己被点击了一下，**它就会发出一个信号（signal）**。这种发出是没有目的的，类似广播。**如果有对象对这个信号感兴趣，它就会使用连接（connect）函数**，意思是，**将想要处理的信号和自己的一个函数（称为槽（slot））绑定来处理这个信号**。也就是说，**当信号发出时，被连接的槽函数会自动被回调**。这就类似观察者模式：当发生了感兴趣的事件，某一个操作就会被自动触发。
 
 一图流：
@@ -533,24 +536,76 @@ connect(teacher,teacherSingal,student,studentSlot);
 **自定义信号槽需要注意的事项：**
 
 -   **发送者和接收者都需要是QObject的子类（当然，槽函数是全局函数、Lambda 表达式等无需接收者的时候除外）；**
-
 -   **信号和槽函数返回值是 void**
-
 -   **信号只需要声明，不需要实现**
-
 -   **槽函数需要声明也需要实现**
-
 -   **槽函数是普通的成员函数，作为成员函数，会受到 public、private、protected 的影响；**
-
 -   **使用 emit 在恰当的位置发送信号；**
-
 -   **使用connect()函数连接信号和槽。**
-
 -   **任何成员函数、static 函数、全局函数和 Lambda 表达式都可以作为槽函数（QT5以上才可以，QT4必须写到private slots:下）**
-
 -   **信号槽要求信号和槽的参数一致，所谓一致，是参数类型一致。**
-
 -   **如果信号和槽的参数不一致，允许的情况是，槽函数的参数可以比信号的少，即便如此，槽函数存在的那些参数的顺序也必须和信号的前面几个一致起来。这是因为，你可以在槽函数中选择忽略信号传来的数据（也就是槽函数的参数比信号的少）。**
+
+## 信号和槽原理
+
+本质上是在编译的时候做了其他处理
+
+```cpp
+//归根溯源
+//slots宏实际上就是空
+#define slots
+//signal宏实际上就是public
+#define signal public
+
+//QT4的connect用到的SLOT和SIGNAL宏实际上就是字符串最前面加了1或者2
+#ifndef QT_NO_DEBUG   //debug版
+#define SLOT(a) qFlagLocation("1"#a QLOCATION)
+#define SIGNAL(a) qFlagLocation("2"#a QLOCATION)
+#else   //release版
+#define SLOT(a) "1"#a
+#define SIGNAL(a) "2"#a 
+#endif
+//'#'表示字符串拼接
+		//QLOCATION宏:其实就是加了文件名和行号等一些调试信息
+		#define QLOCATION "\0" __FILE__ ":" QT_STRINGIFY(__LINE__)
+
+//Q_OBJECT是一些成员变量和函数
+#define Q_OBJECT \
+public: \
+    QT_WARNING_PUSH \
+    Q_OBJECT_NO_OVERRIDE_WARNING \
+    static const QMetaObject staticMetaObject; \
+    virtual const QMetaObject *metaObject() const; \
+    virtual void *qt_metacast(const char *); \
+    virtual int qt_metacall(QMetaObject::Call, int, void **); \
+    QT_TR_FUNCTIONS \
+private: \
+    Q_OBJECT_NO_ATTRIBUTES_WARNING \
+    Q_DECL_HIDDEN_STATIC_METACALL static void qt_static_metacall(QObject *, QMetaObject::Call, int, void **); \
+    QT_WARNING_POP \
+    struct QPrivateSignal { explicit QPrivateSignal() = default; }; \
+    QT_ANNOTATE_CLASS(qt_qobject, "")
+```
+
+![image-20231122150258584](https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311221503259.png)
+
+### QMetaObject类
+
+```cpp
+//该类中的数据部分如下:
+ struct Data { // private data
+        SuperData superdata;
+        const uint *stringdata;
+        const uint *data;
+        typedef void (*StaticMetacallFunction)(QObject *, QMetaObject::Call, int, void **);
+        StaticMetacallFunction static_metacall;
+        const SuperData *relatedMetaObjects;
+        const QtPrivate::QMetaTypeInterface *const *metaTypes;
+        void *extradata; //reserved for future use
+    } d;
+```
+
+未完待续
 
 ## 信号槽的拓展
 
@@ -602,12 +657,10 @@ qRegisterMetaType<MyStruct>("MyStruct");
 qRegisterMetaType<QMap<QString,QMap<QString,QString>>>("QMap<QString,QMap<QString,QString>>");
 ```
 
-
-
 ## Qt4版本的信号槽写法
 
 ```cpp
-connect(zt,SIGNAL(hungry(QString)),st,SLOT(treat(QString)));
+connect(zt,SIGNAL(hungury(QString)),st,SLOT(treat(QString)));
 ```
 
 这里使用了**SIGNAL和SLOT这两个宏，将两个函数名转换成了字符串**。注意到connect()函数的 signal 和 slot 都是接受字符串，一旦出现连接不成功的情况，Qt4是没有编译错误的（因为一切都是字符串，编译期是不检查字符串是否匹配），而是在运行时给出错误。这无疑会增加程序的不稳定性。
@@ -619,71 +672,23 @@ QT4写法
 
 Qt5在语法上完全兼容Qt4，而反之是不可以的。
 
-## Lambda表达式 
+## connect中的Lambda表达式
 
-C++11中的Lambda表达式**用于定义并创建匿名的函数对象**，以简化编程工作。首先看一下Lambda表达式的基本构成：
-
-```cpp
-[capture](parameters) mutable ->return-type
-{
-	statement
-}
-```
-
-`[函数对象参数](操作符重载函数参数)mutable ->返回值{函数体}`
-
-① 函数对象参数；
-
-> [\]，标识一个**Lambda的开始**，这部分必须存在，**不能省略**。函数对象参数是传递给编译器自动生成的函数对象类的构造函数的。函数对象参数只能使用那些到定义Lambda为止时Lambda所在作用范围内可见的局部变量（包括Lambda所在类的this）。函数对象参数有以下形式：
-
--   空。没有使用任何函数对象参数。
-
--   =。函数体内可以使用Lambda所在作用范围内所有可见的局部变量（包括Lambda所在类的this），并且是**值传递方式**（相当于编译器自动为我们按值传递了所有局部变量）。
-
--   &。函数体内可以使用Lambda所在作用范围内所有可见的局部变量（包括Lambda所在类的this），并且是**引用传递方式**（相当于编译器自动为我们按引用传递了所有局部变量）。
-
--   this。函数体内可以使用Lambda所在类中的成员变量。
-
--   a。将a按值进行传递。按值进行传递时，函数体内不能修改传递进来的a的拷贝，因为默认情况下函数是const的。**要修改传递进来的a的拷贝**，可以添加mutable修饰符。
-
--   &a。将a按引用进行传递。
-
--   a, &b。将a按值进行传递，b按引用进行传递。
-
--   =，&a, &b。除a和b按引用进行传递外，其他参数都按值进行传递。
-
--   &, a, b。除a和b按值进行传递外，其他参数都按引用进行传递。
-
-② 操作符重载函数参数；
-
-> 标识重载的()操作符的参数，没有参数时，这部分可以省略。参数可以通过按值（如：(a,b)）和按引用（如：(&a,&b)）两种方式进行传递。
-
-③ 可修改标示符；
-
-> mutable声明，这部分可以省略。按值传递函数对象参数时，加上mutable修饰符后，可以修改按值传递进来的拷贝（注意是能修改拷贝，而不是值本身），最终能修改到值本身
-
-```cpp
-QPushButton * myBtn = new QPushButton (this);
-QPushButton * myBtn2 = new QPushButton (this);
-myBtn2->move(100,100);
-int m = 10;
-connect(myBtn,&QPushButton::clicked,this,[m] ()mutable { m = 20; qDebug() << m; });
-connect(myBtn2,&QPushButton::clicked,this,[=] () { qDebug() << m; });
-qDebug() << m;
-```
-
-④ 函数返回值；
-
-> ->返回值类型，标识函数返回值的类型，当返回值为void，或者函数体中只有一处return的地方（此时编译器可以自动推断出返回值类型）时，这部分可以省略。
-
-⑤ 是函数体；
-
-{}，标识函数的实现，这部分不能省略，但函数体可以为空。
+[[c++基础#Lambda表达式|Lambda表达式详解跳转]]
 
  **【注意】Lambda和信号与槽（重点）**
 
 1. 当进行信号和槽连接的时候，控件内部会进入一个**锁的状态**，因此不可以用Lambda表达式的引用传递来调用已连接的组件，而应该用Lambda表达式的**值传递**
 2. connect函数中，如果槽函数用的是lambda表达式，那么**信号的接受者可以省略**
+
+### 三参数版本的信号与槽
+
+```cpp
+QObject::connect(reply, &QNetworkReply::readyRead,[=](){
+        QByteArray all = reply->readAll();
+        qDebug()<<QString(all);
+    });
+```
 
 # QMainWindow
 
@@ -3795,6 +3800,8 @@ QT += network
 
 ### QNetworkAccessManager
 
+`#include <QNetworkAccessManager>`
+
 使用这个类进行请求的发送:get/post
 
 ```cpp
@@ -3852,6 +3859,8 @@ void QNetworkRequest::setRawHeader(const QByteArray &headerName, const QByteArra
 
 ### QNetworkReply
 
+`#include <QNetworkReply>`
+
 > 这个对象会帮助检测服务器是否有数据会发,如果有就发送信号
 >
 > 它继承自QIODevice类,使用它内部的函数对QNetworkReply即服务器返回的数据进行读写,类似于读文件,如:`QByteArray QIODevice::readAll();`
@@ -3866,7 +3875,18 @@ void QNetworkRequest::setRawHeader(const QByteArray &headerName, const QByteArra
 ## 示例程序
 
 ```cpp
-QNetworkAccessManager 
+QNetworkAccessManager manager;
+    QNetworkRequest request(QUrl("http://127.0.0.1:8080"));
+    //发起请求
+    QNetworkReply *reply = manager.get(request);
+    //QNetworkReply *reply = manager.post(request,"{\"userName\":\"zhang3\",\"passwd\":\"123456\"}");
+    QObject::connect(reply, &QNetworkReply::readyRead,[=](){
+        //接收数据
+        QByteArray all = reply->readAll();
+        //根据字符串格式进行解析,得到原始数据
+        //业务上的逻辑判断
+        qDebug()<<QString(all);
+    });
 ```
 
 
