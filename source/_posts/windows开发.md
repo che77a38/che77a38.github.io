@@ -4357,7 +4357,9 @@ CRC最重要的是**模二运算**。模二运算就是不进位的运算，**�
 
 <img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/WonderFox_Video_Recording_001_001.gif" style="zoom: 100%" />
 
-[CRC原理视频详解链接]: https://www.bilibili.com/video/BV1V4411Z7VA?from=search&amp;seid=12068662759704731793
+**CRC原理视频讲解**
+
+![CRC原理视频|720x360](https://www.bilibili.com/video/BV1V4411Z7VA)
 
 实际工程中多使用CRC-16校验
 

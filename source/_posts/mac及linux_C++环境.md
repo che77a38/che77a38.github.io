@@ -10,7 +10,6 @@ mac及linux C++环境配置
 
 <!-- more -->
 
-[m1 mac电脑的vs code配置方法]: https://www.bilibili.com/read/cv13768776
 [linux命令大全]: https://www.linuxcool.com/
 
 [vs code代码片段设置]: https://blog.csdn.net/Peerless__/article/details/110386388
@@ -1231,7 +1230,7 @@ Git是分布式版本控制系统，那么它就没有中央服务器的，每�
 
 添加新文件到暂存区并提交
 
-1. 添加改动到暂存区  `git add .`(`.`表示所有变动)
+1. 添加改动到暂存区  `git add .`(`.`表示所有变动,但不包含已删除的文件 git add -A才是真正的所有改动)
 2. 暂存区提交到分支  `git commit -m '注释'`  
 
 第一次使用git执行commit之前需要设定个人资料,[点击跳转参考](#设定个人资料)
@@ -1604,7 +1603,7 @@ git config --list
 
 2. 查询当前状态：`git status`
 
-3. 将有修改的档案加入到索引（暂存区）：`git add .`
+3. 将有修改的档案加入到索引（暂存区）：`git add .` (但不包含删除改动, `git add -A`才是真正的所有改动)
 
 4. 将索引档案变成一个更新(COMMIT):`git commit -m "修改内容的描述"`
 
@@ -1753,17 +1752,55 @@ Git不允许切换分支时覆盖未提交的更改，以避免意外丢失工�
 - **Git**：一个分散式版本控制软件，可以由它产生一个储存库（git Repository）
 - **Github**：支持git程序编程存取和远程托管储存库的平台服务
 
-### 热门远程储存库
+## 热门远程储存库
 
 - **Github**：拥有GitHube Pages功能，可拥有私人[[数据库]]，免费方案是3人以下
 - **Bitbucket**：可拥有私人[[数据库]]，免费方案是五人以下团队
 - **GitLab**：自架Git服务器，有提供web视觉化管理界面，常用语企业内部开发
 
+## github上贡献代码
 
+1. [先提一个issues(可选)],然后fork对方的项目
 
+2. 将自己fork的项目git clone下来
 
+3. 安装相关依赖,确保测试案例都通过
 
+4. 进行代码编写与修改
 
+5. git branch查看对方的分支
+
+6. git checkout -b 新分支的命名(新建一个新特性的新分支)
+
+7. git add -A 添加所有改动
+
+8. git commit -m "描述改动" 
+
+9. git push --set-upstream origin 新分支的命名  (提交到远端的新分支)
+
+   > GitHub在2021年8月13日移除了对密码认证的支持。如果你在尝试推送到或从你创建的代码库中拉取，但认证失败，你可能会看到像`git@github.com: Permission denied (publickey)`或`Host key verification failed`这样的错误。
+   >
+   > 解决方案如下:
+
+   1. 登录你的GitHub账户。点击右上角的**个人资料图片**，然后选择**设置**。
+   2. 在左侧的侧边栏中，点击**开发者设置**。
+   3. 在左侧的侧边栏中，点击**个人访问令牌**。
+   4. 点击**生成新的令牌**。
+   5. 在**令牌描述**字段中，输入一个描述，例如“新的访问令牌”。
+   6. 在**选择范围**部分，选择你想要此令牌授予的权限。如果你不确定，你可以先选择所有的复选框。
+   7. 点击页面底部的**生成令牌**。
+   8. 在下一个页面中，你会看到你的新令牌。复制此令牌，因为你将无法再次查看它。
+   9. 现在当你尝试推送到你的仓库时，当Git提示你输入密码时，你应该输入你刚刚创建的个人访问令牌，而不是你的GitHub密码。
+
+10. 到fork的项目中,可以点击 Compare & pull request按钮
+
+    ![image-20231124141648973](https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311241416026.png)
+
+11. 设置推送请求,如图
+
+    <img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311241432050.png" alt="image-20231124143141499" style="zoom: 67%;" />
+
+12. 等待原作者通过
 
 # 图形化git管理软件
 

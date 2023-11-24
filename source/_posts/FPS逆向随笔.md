@@ -34,7 +34,9 @@ $$
 弧度=(角度*π)/180
 $$
 
-[3线性代数本质系列]: https://www.bilibili.com/video/BV1ys411472E?spm_id_from=333.999.0.0
+**了解线性代数:**
+
+![线性代数本质系列|720x360](https://www.bilibili.com/video/BV1ys411472E)
 
 向量内积是一个向量在另一个向量上的投影长度乘以另一个向量的长度
 
@@ -330,7 +332,7 @@ void EntityAround::calOrientation(Point3D& targetLoc,Orientation& targetAngle,Or
 
 ## 需要矩阵
 
-[上帝视角看gpu系列(有助于理解矩阵算法)]: https://space.bilibili.com/2055684362/channel/collectiondetail?sid=318149
+[上帝视角看gpu系列]: https://space.bilibili.com/2055684362/channel/collectiondetail?sid=318149
 
 矩阵分行主序与列主序,主要是d3d和openGl的区别
 
