@@ -266,7 +266,7 @@
 
 <h1 id="句柄表"><a href="#句柄表" class="headerlink" title="句柄表"></a>句柄表</h1><p>为什么要有句柄？</p>
 <p>句柄存在的目的是为了避免在应用层直接修改内核对象</p>
-<p><a href="/blog/b5b483bb#%E5%8F%A5%E6%9F%84%E8%A1%A8/" data-pjax-state target="_Blank">windows开发笔记中也有句柄表的知识</a></p>
+<p><a href="/blog/b5b483bb#%E5%8F%A5%E6%9F%84%E8%A1%A8" data-pjax-state target="_Blank">windows开发笔记中也有句柄表的知识</a></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HANDLE g_hEvent = CreateEvent(<span class="literal">NULL</span>,TRUE,FALSE,<span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure>
 
 <p>如果g_hEvent存储的就是EVENT内核对象的地址，那么就意味着我们可以在应用层修改这个地址，一旦指向了无效的内核内存地址就会蓝屏。</p>
