@@ -674,7 +674,7 @@ Qt5在语法上完全兼容Qt4，而反之是不可以的。
 
 ## connect中的Lambda表达式
 
-[[c++基础#Lambda表达式|Lambda表达式详解跳转]]
+[[c++11#Lambda表达式|Lambda表达式详解跳转]]
 
  **【注意】Lambda和信号与槽（重点）**
 
@@ -3384,6 +3384,24 @@ char* QByteArray::data()
 通过QString->QByteArray->char* 
 ```
 
+# QT中的编码转换
+
+## gbk转utf8
+
+转换 Windows 平台运行时的 gbk 编码的中文字符串为 utf-8 格式
+
+```cpp
+std::string sgbk;
+std::string sutf8 = QString::fromLocal8Bit(sgbk.data()).toUtf8().data());
+```
+
+转换 Linux 平台运行时的 gbk 编码的中文字符串为 utf-8 格式
+
+```cpp
+//如下将gbk格式的QByteArray类型对象array转换为unicode编码格式
+QTextCodec* codec=TextCodec::codecForName("gbk");
+codec->toUnicode(array);
+```
 
 # QT数据库开发
 

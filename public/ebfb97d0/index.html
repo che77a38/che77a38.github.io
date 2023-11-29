@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="有关字符编码的知识点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符编码">
+<meta property="og:url" content="http://zeroko14.gitee.io/ebfb97d0/index.html">
+<meta property="og:site_name" content="ZEROKO14的个人博客">
+<meta property="og:description" content="有关字符编码的知识点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage/4f06232eed4f93be762cd15d664b407c.jpeg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage/05d27497327d7264b74d178aaf312830.jpeg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210613135932861.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311271632096.png">
+<meta property="article:published_time" content="2023-11-27T06:53:34.265Z">
+<meta property="article:modified_time" content="2023-11-28T04:01:28.313Z">
+<meta property="article:author" content="ZEROKO14">
+<meta property="article:tag" content="开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage/4f06232eed4f93be762cd15d664b407c.jpeg">
+
+<link rel="canonical" href="http://zeroko14.gitee.io/ebfb97d0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>字符编码 | ZEROKO14的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ZEROKO14的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">zeroko14's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/ebfb97d0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="ZEROKO14">
+      <meta itemprop="description" content="你好，欢迎来到ZEROKO14的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZEROKO14的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          字符编码
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-11-27 14:53:34" itemprop="dateCreated datePublished" datetime="2023-11-27T14:53:34+08:00">2023-11-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-28 12:01:28" itemprop="dateModified" datetime="2023-11-28T12:01:28+08:00">2023-11-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>有关字符编码的知识点</p>
+<span id="more"></span>
+
+<h1 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h1><p>下面介绍多种编码方式:</p>
+<h2 id="ANSI编码"><a href="#ANSI编码" class="headerlink" title="ANSI编码"></a>ANSI编码</h2><h3 id="原始的ASCII编码"><a href="#原始的ASCII编码" class="headerlink" title="原始的ASCII编码"></a><strong>原始</strong>的ASCII编码</h3><p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/4f06232eed4f93be762cd15d664b407c.jpeg" alt="4f06232eed4f93be762cd15d664b407c"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/05d27497327d7264b74d178aaf312830.jpeg" alt="05d27497327d7264b74d178aaf312830"></p>
+<p>原始的ASCII码只占一个字节</p>
+<h3 id="ASCII编码的拓展：GB2312（GBK）或GB2312-80"><a href="#ASCII编码的拓展：GB2312（GBK）或GB2312-80" class="headerlink" title="ASCII编码的拓展：GB2312（GBK）或GB2312-80"></a>ASCII编码的拓展：GB2312（GBK）或GB2312-80</h3><p>GB2312或GB2312-80：专门用来表示中文的编码</p>
+<h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><p>把80~FF的表给占用了，由80~FF开头的两个字节拼在一起表示一个字符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">中国</span><br><span class="line">D6 D0 B9 FA</span><br></pre></td></tr></table></figure>
+
+<p>GB2312（GBK）或GB2312-80也就是ANSI编码（各国各自的编码格式统称ANSI）</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>其他象形文字国家也是采取和我国一样的策略，所以各个国家看到的同一个编码意思不一致。</p>
+<p>ANSI编码也就是GB2312（GBK）或GB2312-80，表示英文字符时用一个字节，表示中文字符时用两个或4个字节</p>
+<h2 id="UNICODE编码"><a href="#UNICODE编码" class="headerlink" title="UNICODE编码"></a>UNICODE编码</h2><p>一张包含全世界所有文字的一个编码表，Unicode的编码范围是：0~0x10FFFF，可以容纳100多万个符号！</p>
+<p>但他只是一个符号集，只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/260192496">详解参阅</a></p>
+<h3 id="UCS-2和UCS-4"><a href="#UCS-2和UCS-4" class="headerlink" title="UCS-2和UCS-4"></a>UCS-2和UCS-4</h3><p>在将UTF8和UTF16、UTF32的区别之前，再先科普两个名词：UCS-2和UCS-4。</p>
+<blockquote>
+<p>Unicode是为整合全世界的所有语言文字而诞生的。任何文字在Unicode中都对应一个值， 这个值称为<strong>代码点</strong>（code point，也称码值）。代码点的值通常写成 <code>U+ABCD</code> 的格式。而文字和代码点之间的对应关系就是<strong>UCS-2</strong>（Universal Character Set coded in 2 octets）。顾名思义，UCS-2是用两个字节来表示代码点，其取值范围为 <code>U+0000～U+FFFF</code>。</p>
+<p>为了能表示更多的文字，人们又提出了<strong>UCS-4</strong>，即用四个字节表示代码点。它的范围为 <code>U+00000000～U+7FFFFFFF</code>，其中 <code>U+00000000～U+0000FFFF</code>和UCS-2是一样的。</p>
+</blockquote>
+<p>要注意，UCS-2和UCS-4只规定了代码点和文字之间的对应关系，并没有规定代码点在计算机中如何存储。规定存储方式的称为<strong>UTF（Unicode Transformation Format）</strong>，也就是我们下面将要提到的UNICODE编码的存储方式。</p>
+<h3 id="UNICODE编码的存储方式"><a href="#UNICODE编码的存储方式" class="headerlink" title="UNICODE编码的存储方式"></a><strong>UNICODE编码的存储方式</strong></h3><h4 id="UTF-16"><a href="#UTF-16" class="headerlink" title="UTF-16"></a>UTF-16</h4><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/UTF-16">维基百科</a></p>
+<blockquote>
+<p>java、js、c#、python默认的字符串内部编码都是utf-16。</p>
+</blockquote>
+<p>UTF-16编码以16位无符号整数为单位，注意是16位为一个单位，不表示一个字符就只有16位。这个要看字符的unicode编码处于什么范围而定的，<strong>绝大部分是2个字节，极少数是4个字节(因此可以算是2字节定长编码)<strong>。</strong>现在机器上的unicode编码一般指的就是UTF-16。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UTF-16小端存储</span><br><span class="line">中国A</span><br><span class="line">2D 4E FD 56 41 00</span><br><span class="line"></span><br><span class="line">UTF-16大端存储</span><br><span class="line">中国A</span><br><span class="line">4E 2D 56 FD 00 41</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210613135932861.png" alt="image-20210613135932861"></p>
+<p>上图箭头所指的没有明确说明是哪种存储方式的Unicode<strong>实际上就是UTF-16</strong></p>
+<p>优缺点：拆分解析快，浪费空间多（尤其是网络传输,但传输汉字可能比utf8省空间,因为utf8下很多汉字要3字节）,需要区分字节序。文件保存一般有个bom头：BE-‘FEFF’、LE-‘FFFE’</p>
+<blockquote>
+<p><code>U+D800到U+DFFF</code>是没有定义unicode的，utf-16用这段来标识4字节字符。分高低位，共20个有效bit位。如果不支持非UCS-2的unicode，可以直接不认这个范围里的字符。</p>
+</blockquote>
+<h4 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h4><p>一种变长的存储方案</p>
+<p>网络传输火起来的编码格式     </p>
+<p><strong>UTF-8的编码规则：</strong></p>
+<ol>
+<li>对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此<strong>对于英语字母，UTF-8编码和ASCII码是相同的</strong>。</li>
+<li>对于n字节的符号（n&gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码</li>
+<li>UTF-8对于字节的格式有严格要求,当解析某个字符失败时,使用<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311271632096.png" alt="image-20231127163227079" style="zoom: 50%;" />代替(UTF-8编码为<code>EF BF BD</code>)</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Unicode符号集</th>
+<th>UTF-8(x表示Unicode符号集)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0~7F</td>
+<td>0xxxxxxx</td>
+</tr>
+<tr>
+<td>80~7FF</td>
+<td>110xxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>800~FFFF</td>
+<td>1110xxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>10000~10FFFF</td>
+<td>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+</tbody></table>
+<p>因此占用1~4个字节都有可能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A中</span><br><span class="line">41             	E4           	B8           	AD</span><br><span class="line">0(100 0001)    	1110 (0100)		10(11 1000)		10(10 1101)</span><br><span class="line">100 0001		0100			1110    0010	1101</span><br><span class="line">4	1			4				E		2		D</span><br><span class="line">A				中</span><br></pre></td></tr></table></figure>
+
+<p>数据大部分是英文字符的话采用UTF-8比较好，中文多的话采用UTF-16比较好</p>
+<p>优缺点：拆分解析慢，但节省空间（尤其是网络传输）</p>
+<p><strong>获取utf8字符字节数的代码</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取UTF-8单字符所占的字节数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getUTF8CharSize</span><span class="params">(<span class="type">char</span> ch)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((ch &amp; <span class="number">0xF8</span>) == <span class="number">0xF0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((ch &amp; <span class="number">0xF0</span>) == <span class="number">0xE0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((ch &amp; <span class="number">0xE0</span>) == <span class="number">0xC0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 函数用于判断是否为UTF-8字符的起始字节</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isUTF8StartByte</span><span class="params">(<span class="type">char</span> byte)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (byte &amp; <span class="number">0xC0</span>) != <span class="number">0x80</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这段代码的实现原理是使用位操作来判断一个字节是否为UTF-8字符的起始字节。</span></span><br><span class="line"><span class="comment">//UTF-8编码使用不同长度的字节来表示不同的Unicode字符。一个UTF-8字符的起始字节的最高位为0或以10开头的字节，而后续字节的最高位都为10。</span></span><br><span class="line"><span class="comment">//这段代码中的位操作`(byte &amp; 0xC0) != 0x80`用于判断一个字节的最高两位是否满足UTF-8字符的起始字节的条件。</span></span><br><span class="line"><span class="comment">//具体来说，`byte &amp; 0xC0`会将字节的最高两位保留，而其他位都置为0。然后，将结果与`0x80`进行比较，即判断最高两位是否不等于`10`。</span></span><br><span class="line"><span class="comment">//如果最高两位不等于`10`，则表示该字节是UTF-8字符的起始字节，函数返回`true`。否则，表示该字节是UTF-8字符的后续字节，函数返回`false`。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数:从一个string类型变量中删除UTF-8字符,返回要删除的字节数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">deleteUTF8Character</span><span class="params">(std::string&amp; str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (str.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> wantDelete = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 向前遍历字符串，找到要删除的字符的起始位置</span></span><br><span class="line">    <span class="type">int</span> startPos = str.<span class="built_in">length</span>() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (startPos &gt; <span class="number">0</span> &amp;&amp; !<span class="built_in">isUTF8StartByte</span>(str[startPos])) &#123;</span><br><span class="line">        startPos--;</span><br><span class="line">        wantDelete++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 删除字符</span></span><br><span class="line">    str.<span class="built_in">erase</span>(startPos);</span><br><span class="line">    <span class="keyword">return</span> wantDelete+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//计算String类型中的utf8字符数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">countUTF8Characters</span><span class="params">(<span class="type">const</span> std::string&amp; str)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> length = str.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ) &#123;</span><br><span class="line">        <span class="keyword">if</span> ((str[i] &amp; <span class="number">0xC0</span>) != <span class="number">0x80</span>) &#123;<span class="comment">//起始字节</span></span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="/blog/74483b98#string%E6%93%8D%E4%BD%9Cutf8%E6%A1%88%E4%BE%8B" data-pjax-state target="_Blank">mac上string操作utf8编写案例</a></p>
+<h4 id="UTF-32"><a href="#UTF-32" class="headerlink" title="UTF-32"></a>UTF-32</h4><p>任何元素都是4个字节为单位。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A					中</span><br><span class="line">41 00 00 00			 2D 4E 00 00 </span><br></pre></td></tr></table></figure>
+
+<h3 id="BOM字节顺序标识"><a href="#BOM字节顺序标识" class="headerlink" title="BOM字节顺序标识"></a>BOM字节顺序标识</h3><p>Byte Order Mark</p>
+<p>文本文件的起始位置存这几个字节来表示当前文件采用什么格式存储</p>
+<table>
+<thead>
+<tr>
+<th>存储格式</th>
+<th>BOM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>UTF-8</td>
+<td>EF BB BF</td>
+</tr>
+<tr>
+<td>UTF-16LE（小端存储）</td>
+<td>FF FE</td>
+</tr>
+<tr>
+<td>UTF-16BE（大端存储）</td>
+<td>FE FF</td>
+</tr>
+<tr>
+<td>UTF-32LE</td>
+<td>FF FE 00 00</td>
+</tr>
+<tr>
+<td>UTF-32BE</td>
+<td>00 00 FE FF</td>
+</tr>
+</tbody></table>
+<p>添加BOM头</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::ofstream <span class="title">ofs</span><span class="params">(<span class="string">&quot;d:\\Temp\\test.txt&quot;</span>)</span></span>; <span class="comment">//文件是utf8编码</span></span><br><span class="line"><span class="type">char</span> c1 = <span class="number">0xEF</span>;<span class="comment">// 仿utf-8 BOM头  三字节</span></span><br><span class="line"><span class="type">char</span> c2 = <span class="number">0xBB</span>;</span><br><span class="line"><span class="type">char</span> c3 = <span class="number">0xBF</span>;</span><br><span class="line">ofs &lt;&lt; c1 &lt;&lt; c2 &lt;&lt; c3;</span><br></pre></td></tr></table></figure>
+
+<p><a href="/blog/2e306159" data-pjax-state target="_Blank">QT</a>中添加BOM头提供了封装好的函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">QTextStream <span class="title">out</span><span class="params">(&amp;data)</span></span>;</span><br><span class="line">out.<span class="built_in">setCodec</span>(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">out.<span class="built_in">setGenerateByteOrderMark</span>(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>ANSI和UTF8之间的转换原理 必须通过UCS-2&#x2F;UCS-4</p>
+</blockquote>
+<h1 id="操作系统字符集"><a href="#操作系统字符集" class="headerlink" title="操作系统字符集"></a>操作系统字符集</h1><iframe width="720" height="360" src="https://player.bilibili.com/player.html?bvid=BV1TT411H7ca&high_quality=1&danmaku=0&as_wide=1&autoplay=0&" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" class="bili-iframe"> </iframe>
+
+<p>编译环境和运行环境</p>
+<ul>
+<li>编译器转换程序源代码时,所处的环境成为<strong>编译环境</strong>(translation environment);</li>
+<li>编译后程序执行时,所处的环境称为<strong>运行环境</strong>(execution environment)</li>
+</ul>
+<p>源码字符集和执行字符集</p>
+<ul>
+<li><strong>源码字符集</strong>(the source character set)   源码文件是使用何种编码保存的</li>
+<li><strong>执行字符集</strong>(the execution character set) 可执行程序内保存的是何种编码(程序执行时内存中字符编码)</li>
+</ul>
+<p><strong>操作系统字符集</strong></p>
+<blockquote>
+<p>除windows平台外大部分其他平台，编译器默认使用的编码都是UTF-8编码，最新版本的Clang编译器只支持UTF-8编码</p>
+</blockquote>
+<ul>
+<li><strong>windows</strong>中文版默认采用gbk编码</li>
+<li><strong>linux</strong>默认采用utf-8编码</li>
+</ul>
+<p>GCC编译器:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-finput-charset 指定源文件的编码 (若不指定,默认是UTF-<span class="number">8</span>)</span><br><span class="line">-fexec-charset 指定多字节字符串(const char*)常量在编译后的程序里保存的编码集(若不指定,默认是UTF-<span class="number">8</span>)</span><br><span class="line">-fwide-exec-charset 指定宽字节字符串(const wchar_t*)常量在编译后的程序里的保存的编码集</span><br><span class="line"><span class="comment">#QMAKE中为:</span></span><br><span class="line">QMAKE_CFLAGS += -finput-charset=utf-<span class="number">8</span> -fexec-charset=gbk</span><br><span class="line">QMAKE_CXXFLAGS += -finput-charset=utf-<span class="number">8</span> -fexec-charset=gbk</span><br></pre></td></tr></table></figure>
+
+<p>clang编译器:</p>
+<p>同上设置方式,但不支持设定为gbk</p>
+<p>VCC编译器:</p>
+<blockquote>
+<p><strong>VCC</strong> 是指 Visual C++ Compiler，即 Visual Studio 中的 C++ 编译器。MSVC 提供了一个完整的开发环境，包括编译器、链接器、调试器等工具，用于开发和构建 C++ 程序。VCC 是 MSVC 中的核心组件之一，负责将 C++ 代码编译成可执行文件或库。</p>
+</blockquote>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">项目的属性设置 - C/C++编译器选项 - 附加选项 中添加:/source-charset:utf-<span class="number">8</span>和/execution-charset:utf-<span class="number">8</span></span><br><span class="line"><span class="comment">#QMAKE中为:</span></span><br><span class="line">QMAKE_CXXFLAGS += /source-charset:utf-<span class="number">8</span> /execution-charset:utf-<span class="number">8</span></span><br><span class="line"><span class="comment">#CMAKE中为:</span></span><br><span class="line"><span class="keyword">add_compile_options</span>(<span class="string">&quot;$&lt;$&lt;CXX_COMPILER_ID:MSVC&gt;:/source-charset:utf-8&gt;&quot;</span>) </span><br><span class="line"><span class="keyword">add_compile_options</span>(<span class="string">&quot;$&lt;$&lt;CXX_COMPILER_ID:MSVC&gt;:/execution-charset:utf-8&gt;&quot;</span>) </span><br></pre></td></tr></table></figure>
+
+<h2 id="控制台"><a href="#控制台" class="headerlink" title="控制台"></a>控制台</h2><blockquote>
+<p>windows控制台字符编码使用的是系统默认的编码，可以通过<code>chcp</code>命令查看。如果控制台的编码不是UTF-8(对应编码：65001)，显示UTF-8字符串会出现乱码，可通过<code>chcp 65001</code>命令修改控制台的编码，从而正常显示UTF-8字符串。</p>
+</blockquote>
+<p><a href="/blog/b15ef99d#windows%E4%B8%8B%E7%9A%84vscode%E7%BB%88%E7%AB%AF%E4%B9%B1%E7%A0%81" data-pjax-state target="_Blank">windows下的vscode终端乱码解决</a></p>
+<h1 id="字符集转换"><a href="#字符集转换" class="headerlink" title="字符集转换"></a>字符集转换</h1><blockquote>
+<p>如果程序需要在多个平台编译运行，则代码必须使用UTF-8。使用UTF-8可以更容易的在多字节字符串(char*, std::string)和宽字符(wchar_t* std::wstring）直接转换，更容易避免程序乱码，中文路径错误等问题。</p>
+</blockquote>
+<p> C++11 中引入的 <code>char16_t</code> 和 <code>char32_t</code> </p>
+<p>主要使用C++11引入的wstring_convert和codecvt相结合进行转换。但似乎在C++17遭到废弃</p>
+<h2 id="windows下常用转码需求"><a href="#windows下常用转码需求" class="headerlink" title="windows下常用转码需求"></a>windows下常用转码需求</h2><blockquote>
+<p>下面的代码在windows上完美运行（linux转码需求小）。GBK在linux下的locale名可能是”zh_CN.GBK”，而windows下是”.936”），因此做跨平台的话仍然要给不同的系统做适配</p>
+</blockquote>
+<h3 id="utf8的宽窄字符转换"><a href="#utf8的宽窄字符转换" class="headerlink" title="utf8的宽窄字符转换"></a>utf8的宽窄字符转换</h3><ul>
+<li><p><strong>std::string 转为 std::wstring</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::wstring <span class="title">utf8_to_wstr</span><span class="params">(<span class="type">const</span> std::string&amp; src)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_utf8&lt;<span class="type">wchar_t</span>&gt;&gt; converter;</span><br><span class="line">    <span class="keyword">return</span> converter.<span class="built_in">from_bytes</span>(src);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：使用这个函数的时候需要求std::string的编码是utf-8，不然会抛异常。</p>
+</li>
+<li><p><strong>std::wstring转为std::string</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::string <span class="title">wstr_to_utf8</span><span class="params">(<span class="type">const</span> std::wstring&amp; src)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_utf8&lt;<span class="type">wchar_t</span>&gt;&gt; convert;</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">to_bytes</span>(src);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="utf8与gbk互转"><a href="#utf8与gbk互转" class="headerlink" title="utf8与gbk互转"></a>utf8与gbk互转</h3><p>下面utf-8和gbk互转的代码，都是先转化为<code>std::wstring</code>的，我们可以再拆分。得到std::wstring和gbk互转。</p>
+<h4 id="utf-8转gbk"><a href="#utf-8转gbk" class="headerlink" title="utf-8转gbk"></a>utf-8转gbk</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::string <span class="title">utf8_to_gbk</span><span class="params">(<span class="type">const</span> std::string&amp; str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_utf8&lt;<span class="type">wchar_t</span>&gt; &gt; conv;</span><br><span class="line">    std::wstring tmp_wstr = conv.<span class="built_in">from_bytes</span>(str);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//GBK locale name in windows</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* GBK_LOCALE_NAME = <span class="string">&quot;.936&quot;</span>;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_byname&lt;<span class="type">wchar_t</span>, <span class="type">char</span>, <span class="type">mbstate_t</span>&gt;&gt; <span class="built_in">convert</span>(<span class="keyword">new</span> std::<span class="built_in">codecvt_byname</span>&lt;<span class="type">wchar_t</span>, <span class="type">char</span>, <span class="type">mbstate_t</span>&gt;(GBK_LOCALE_NAME));</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">to_bytes</span>(tmp_wstr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="gbk转utf-8"><a href="#gbk转utf-8" class="headerlink" title="gbk转utf-8"></a>gbk转utf-8</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::string <span class="title">gbk_to_utf8</span><span class="params">(<span class="type">const</span> std::string&amp; str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//GBK locale name in windows</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* GBK_LOCALE_NAME = <span class="string">&quot;.936&quot;</span>;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_byname&lt;<span class="type">wchar_t</span>, <span class="type">char</span>, <span class="type">mbstate_t</span>&gt;&gt; <span class="built_in">convert</span>(<span class="keyword">new</span> std::<span class="built_in">codecvt_byname</span>&lt;<span class="type">wchar_t</span>, <span class="type">char</span>, <span class="type">mbstate_t</span>&gt;(GBK_LOCALE_NAME));</span><br><span class="line">    std::wstring tmp_wstr = convert.<span class="built_in">from_bytes</span>(str);</span><br><span class="line"> </span><br><span class="line">    std::wstring_convert&lt;std::codecvt_utf8&lt;<span class="type">wchar_t</span>&gt;&gt; cv2;</span><br><span class="line">    <span class="keyword">return</span> cv2.<span class="built_in">to_bytes</span>(tmp_wstr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="gbk的宽窄字符互转"><a href="#gbk的宽窄字符互转" class="headerlink" title="gbk的宽窄字符互转"></a>gbk的宽窄字符互转</h3><ul>
+<li><p><strong>std::string 转为 std::wstring</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::wstring <span class="title">gbk_to_wstr</span><span class="params">(<span class="type">const</span> std::string&amp; str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//GBK locale name in windows</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* GBK_LOCALE_NAME = <span class="string">&quot;.936&quot;</span>;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_byname&lt;<span class="type">wchar_t</span>, <span class="type">char</span>, <span class="type">mbstate_t</span>&gt;&gt; <span class="built_in">convert</span>(<span class="keyword">new</span> std::<span class="built_in">codecvt_byname</span>&lt;<span class="type">wchar_t</span>, <span class="type">char</span>, <span class="type">mbstate_t</span>&gt;(GBK_LOCALE_NAME));</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">from_bytes</span>(str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>std::wstring转为std::string</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::string <span class="title">wstr_to_gbk</span><span class="params">(<span class="type">const</span> std::wstring&amp; wstr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// GBK locale name in Windows</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* GBK_LOCALE_NAME = <span class="string">&quot;.936&quot;</span>;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_byname&lt;<span class="type">wchar_t</span>, <span class="type">char</span>, <span class="type">mbstate_t</span>&gt;&gt; <span class="built_in">convert</span>(<span class="keyword">new</span> std::<span class="built_in">codecvt_byname</span>&lt;<span class="type">wchar_t</span>, <span class="type">char</span>, <span class="type">mbstate_t</span>&gt;(GBK_LOCALE_NAME));</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">to_bytes</span>(wstr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>两个比较好的两个第三方库分别是 <a target="_blank" rel="noopener" href="http://utfcpp.sourceforge.net/">UTF8-CPP</a>以及<a target="_blank" rel="noopener" href="http://www.boost.org/doc/libs/1_51_0/libs/locale/doc/html/index.html">Boost.Locale</a>。</p>
+<h2 id="UTF8和UTF16互转"><a href="#UTF8和UTF16互转" class="headerlink" title="UTF8和UTF16互转"></a>UTF8和UTF16互转</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;codecvt&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;locale&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="function">std::u16string <span class="title">to_utf16</span><span class="params">( std::string str )</span> <span class="comment">// utf-8 to utf16</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> std::wstring_convert&lt; std::codecvt_utf8_utf16&lt;<span class="type">char16_t</span>&gt;, <span class="type">char16_t</span> &gt;&#123;&#125;.<span class="built_in">from_bytes</span>(str); &#125;</span><br><span class="line"> </span><br><span class="line"><span class="function">std::string <span class="title">to_utf8</span><span class="params">( std::u16string str16 )</span> <span class="comment">// utf-16 to utf8</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> std::wstring_convert&lt; std::codecvt_utf8_utf16&lt;<span class="type">char16_t</span>&gt;, <span class="type">char16_t</span> &gt;&#123;&#125;.<span class="built_in">to_bytes</span>(str16); &#125;</span><br></pre></td></tr></table></figure>
+
+<p>据称上面在C++17被废弃了</p>
+<p>转而:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//c++17</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;codecvt&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;locale&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">std::u16string <span class="title">to_utf16</span><span class="params">(<span class="type">const</span> std::string&amp; str)</span> <span class="comment">// UTF-8 to UTF-16</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_utf8_utf16&lt;<span class="type">char16_t</span>&gt;, <span class="type">char16_t</span>&gt; convert;</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">from_bytes</span>(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">to_utf8</span><span class="params">(<span class="type">const</span> std::u16string&amp; str16)</span> <span class="comment">// UTF-16 to UTF-8</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_utf8_utf16&lt;<span class="type">char16_t</span>&gt;, <span class="type">char16_t</span>&gt; convert;</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">to_bytes</span>(str16);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string utf8Str = <span class="string">u8&quot;Hello, 你好&quot;</span>;</span><br><span class="line">    std::u16string utf16Str = <span class="built_in">to_utf16</span>(utf8Str);</span><br><span class="line">    std::string convertedUtf8Str = <span class="built_in">to_utf8</span>(utf16Str);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Original UTF-8: &quot;</span> &lt;&lt; utf8Str &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Converted UTF-16: &quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char16_t</span> c : utf16Str) &#123;</span><br><span class="line">        std::cout &lt;&lt; std::hex &lt;&lt; <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(c) &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Converted back to UTF-8: &quot;</span> &lt;&lt; convertedUtf8Str &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="C语言中的宽字符"><a href="#C语言中的宽字符" class="headerlink" title="C语言中的宽字符"></a>C语言中的宽字符</h1><h2 id="宽字符类型"><a href="#宽字符类型" class="headerlink" title="宽字符类型"></a>宽字符类型</h2><ul>
+<li>char：多字节字符类型</li>
+<li>wchar_t：宽字符类型</li>
+</ul>
+<blockquote>
+<p><code>wchar_t</code> 在windows是 16 位，而在linux上是 32 位。这使得移植变得困难。linux平台的std::wstring就是std::u32string, wchar_t 就是char32_t (utf-32编码)</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> szStr[]=<span class="string">&quot;中国&quot;</span>;<span class="comment">//使用的是ANSI编码 D6 D0 B9 FA 00 (一个字节的零表示结尾)</span></span><br><span class="line"><span class="type">wchar_t</span> sezStr[]=<span class="string">L&quot;中国&quot;</span>;<span class="comment">//使用的是UTF-16编码 2D 4E FD 56 00 00(两个字节的0表示结尾)</span></span><br><span class="line"><span class="comment">//L的意思是让编译器存储该字符串的时候按照UTF-16来存储，也可以设置编译器选项设置默认存储格式为UTF-16，就不需要写这个L了</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="字符常用函数"><a href="#字符常用函数" class="headerlink" title="字符常用函数"></a>字符常用函数</h2><p>使用的函数版本根据编码不同也被提供了两套</p>
+<table>
+<thead>
+<tr>
+<th>多字节字符函数</th>
+<th>宽字符函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>printf</td>
+<td>wprintf</td>
+<td>打印到控制台函数</td>
+</tr>
+<tr>
+<td>strlen</td>
+<td>wcslen</td>
+<td>获取长度</td>
+</tr>
+<tr>
+<td>strcpy</td>
+<td>wcscpy</td>
+<td>字符串复制</td>
+</tr>
+<tr>
+<td>strcat</td>
+<td>wcscat</td>
+<td>字符串拼接</td>
+</tr>
+<tr>
+<td>strcmp</td>
+<td>wcscmp</td>
+<td>字符串比较</td>
+</tr>
+<tr>
+<td>strstr</td>
+<td>wcsstr</td>
+<td>字符串查找功能</td>
+</tr>
+</tbody></table>
+<p>&#x3D;&#x3D;&#x3D;</p>
+<p>下面是Windows定义的一组字符串函数，这些函数用来计算字符串长度、复制字符串、连接字符串和比较字符串：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ILength = <span class="built_in">lstrlen</span> (pString) ;</span><br><span class="line">        </span><br><span class="line">pString = <span class="built_in">lstrcpy</span> (pString1, pString2) ;</span><br><span class="line">        </span><br><span class="line">pString = <span class="built_in">lstrcpyn</span> (pString1, pString2, iCount) ;</span><br><span class="line">        </span><br><span class="line">pString = <span class="built_in">lstrcat</span> (pString1, pString2) ;</span><br><span class="line">        </span><br><span class="line">iComp = <span class="built_in">lstrcmp</span> (pString1, pString2) ;</span><br><span class="line">        </span><br><span class="line">iComp = <span class="built_in">lstrcmpi</span> (pString1, pString2) ;</span><br></pre></td></tr></table></figure>
+
+<p>这些函数与C链接库中对应的函数功能相同。如果定义了UNICODE标识符，那么这些函数将接受宽字符串，否则只接受常规字符串。宽字符串版的lstrlenW函数可在Windows 98中执行。</p>
+<h2 id="设置字面量的编码方式"><a href="#设置字面量的编码方式" class="headerlink" title="设置字面量的编码方式"></a>设置字面量的编码方式</h2><blockquote>
+<p>C++11 标准引入了原始字符串字面量（Raw String Literal）和 Unicode 字符串字面量（Unicode String Literal）的语法，其中 u”” 用于表示 Unicode 字符串字面量。这种格式允许在字符串中直接使用 Unicode 字符，而无需进行转义或使用特殊的编码方式</p>
+</blockquote>
+<p>字符串字面量（string literals）前面可以加上不同的前缀来表示不同的含义。以下是常用的字符串字面量前缀及其含义：</p>
+<ul>
+<li><code>L</code> 前缀：表示宽字符（wide character）字符串。宽字符字符串是由 wchar_t 类型表示的字符串，每个字符占用 2 个字节。例如，<code>L&quot;Hello&quot;</code> 表示一个由宽字符组成的字符串。</li>
+<li><code>u8</code> 前缀：表示 UTF-8 编码的字符串。UTF-8 是一种可变长度的 Unicode 编码，每个字符占用 1 到 4 个字节。例如，<code>u8&quot;你好&quot;</code> 表示一个由 UTF-8 编码的字符串。</li>
+<li><code>u</code> 前缀：表示 Unicode(UTF-16) 编码的字符串。Unicode 编码是一种固定长度的字符编码，每个字符占用 2或4 个字节。例如，<code>u&quot;こんにちは&quot;</code> 表示一个由 Unicode 编码的字符串。</li>
+<li><code>U</code> 前缀：表示 UTF-32 编码的字符串。UTF-32 是一种固定长度的 Unicode 编码，每个字符占用 4 个字节。例如，<code>U&quot;🌞&quot;</code> 表示一个由 UTF-32 编码的字符串。</li>
+<li><code>R</code> 前缀：表示原始字符串（raw string）。原始字符串中的特殊字符不会被转义，可以直接包含在字符串中。例如，<code>R&quot;(C:\Windows\System32)&quot;</code> 表示一个包含反斜杠的字符串，而不需要对反斜杠进行转义。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/%E5%BC%80%E5%8F%91/" rel="tag"># 开发</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/ac56643f/" rel="prev" title="加密与解密">
+      <i class="fa fa-chevron-left"></i> 加密与解密
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/dd95332/" rel="next" title="C++11">
+      C++11 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">字符编码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ANSI%E7%BC%96%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">ANSI编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E7%9A%84ASCII%E7%BC%96%E7%A0%81"><span class="nav-number">1.1.1.</span> <span class="nav-text">原始的ASCII编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASCII%E7%BC%96%E7%A0%81%E7%9A%84%E6%8B%93%E5%B1%95%EF%BC%9AGB2312%EF%BC%88GBK%EF%BC%89%E6%88%96GB2312-80"><span class="nav-number">1.1.2.</span> <span class="nav-text">ASCII编码的拓展：GB2312（GBK）或GB2312-80</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UNICODE%E7%BC%96%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">UNICODE编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UCS-2%E5%92%8CUCS-4"><span class="nav-number">1.2.1.</span> <span class="nav-text">UCS-2和UCS-4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNICODE%E7%BC%96%E7%A0%81%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">UNICODE编码的存储方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UTF-16"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">UTF-16</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UTF-8"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">UTF-8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UTF-32"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">UTF-32</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BOM%E5%AD%97%E8%8A%82%E9%A1%BA%E5%BA%8F%E6%A0%87%E8%AF%86"><span class="nav-number">1.2.3.</span> <span class="nav-text">BOM字节顺序标识</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="nav-number">2.</span> <span class="nav-text">操作系统字符集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%8F%B0"><span class="nav-number">2.1.</span> <span class="nav-text">控制台</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">字符集转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#windows%E4%B8%8B%E5%B8%B8%E7%94%A8%E8%BD%AC%E7%A0%81%E9%9C%80%E6%B1%82"><span class="nav-number">3.1.</span> <span class="nav-text">windows下常用转码需求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#utf8%E7%9A%84%E5%AE%BD%E7%AA%84%E5%AD%97%E7%AC%A6%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.1.1.</span> <span class="nav-text">utf8的宽窄字符转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#utf8%E4%B8%8Egbk%E4%BA%92%E8%BD%AC"><span class="nav-number">3.1.2.</span> <span class="nav-text">utf8与gbk互转</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#utf-8%E8%BD%ACgbk"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">utf-8转gbk</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gbk%E8%BD%ACutf-8"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">gbk转utf-8</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gbk%E7%9A%84%E5%AE%BD%E7%AA%84%E5%AD%97%E7%AC%A6%E4%BA%92%E8%BD%AC"><span class="nav-number">3.1.3.</span> <span class="nav-text">gbk的宽窄字符互转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF8%E5%92%8CUTF16%E4%BA%92%E8%BD%AC"><span class="nav-number">3.2.</span> <span class="nav-text">UTF8和UTF16互转</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%AE%BD%E5%AD%97%E7%AC%A6"><span class="nav-number">4.</span> <span class="nav-text">C语言中的宽字符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%BD%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.1.</span> <span class="nav-text">宽字符类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">4.2.</span> <span class="nav-text">字符常用函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%AD%97%E9%9D%A2%E9%87%8F%E7%9A%84%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8F"><span class="nav-number">4.3.</span> <span class="nav-text">设置字面量的编码方式</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZEROKO14</p>
+  <div class="site-description" itemprop="description">你好，欢迎来到ZEROKO14的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZEROKO14</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+  <script defer src="/blog/lib/three/three.min.js"></script>
+    <script defer src="/blog/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

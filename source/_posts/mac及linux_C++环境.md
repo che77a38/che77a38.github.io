@@ -1709,10 +1709,14 @@ git branch -d "分支名称"//删除分支，-D是强制删除
 //如果你想创建一个新的分支同时切换到新创建的分支的话，可以通过 git checkout -b <your-branch-name> 来实现。
 git merge 合并的分支名//提交新节点为合并分支，快转
 git merge 要合并的分支名 --no-ff //合并分支，非快转
-
 ```
 
+**git checkout -B master详解**:
 
+> 这个命令会创建一个新的master分支，或者如果master分支已经存在，它会**更新master分支到当前HEAD**。**注意，如果master分支已经存在并且有未提交的更改，这个命令会覆盖那些更改**。在运行这个命令之前，确保你的工作目录是干净的，或者你已经提交了所有的更改。如果你只是想创建一个新的分支指向当前提交，你可以使用`git checkout -b new_branch_name`。这将创建一个新的分支并检出到那个分支，而不会影响master分支。请根据你的需求选择合适的命令。
+
+- `git checkout -b <branch>`: 这个命令会创建一个新的分支，并且切换到这个新创建的分支。如果已经存在一个同名的分支，Git会返回一个错误。
+- `git checkout -B <branch>`: 这个命令和`-b`选项类似，但是如果存在一个同名的分支，它不会返回错误，而是将这个分支重置为当前HEAD。也就是说，如果分支已经存在，`-B`选项会将其重置为当前的HEAD，如果分支不存在，它会创建一个新的分支。
 
  **相对移动**
 
@@ -1964,6 +1968,25 @@ VSCode 默认是 utf-8 编码，而在中国地区下的 Windows 的 cmd 默认�
 
 将以上配置添加在settings.json里最外层的{}里即可(注意！！！，如果{}里之前有内容记得要在最后一行加上一个英文逗号，之后再把配置复制进去)
 
+------
+
+更好的方法是修改程序的locale变量，这个会修改C/C++的运行环境，代码如下：
+
+```
+td::locale::global(std::locale(".utf8")); 
+// 或者 
+// std::setlocale(LC_ALL, ".UTF-8");
+```
+
+因为修改locale变量修改的是C/C++的运行环境，并不会修改Windows系统函数的环境，所以如果调用系统函数`WriteConsoleOutput`函数，还是会出现乱码。 Windows上有些库（例如：spdlog）会调用`WriteConsoleOutput`函数，设置的locale还是会出现乱码，还需要设置控制台编码
+
+```cpp
+std::locale::global(std::locale(".utf8")); 
+SetConsoleOutputCP(CP_UTF8);
+```
+
+[更详细完整的说法参阅](http://www.shouxieziti.cn/128315.html)
+
 ## vscode的配置文件
 
 安装并配置好C/C++插件后
@@ -2131,3 +2154,12 @@ SSR协议
 
 
 ## UDP穿透篇
+
+
+
+
+
+
+
+
+

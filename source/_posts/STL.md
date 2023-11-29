@@ -274,6 +274,24 @@ String和c风格字符串对比：
 
   string管理char*所分配的内存。每一次string的复制，取值都由string类负责维护，不用担心复制越界和取值越界等。
 
+##### string和unicode的关系
+
+> 在C++中，`string`类型的字符串实际上是一个字节序列，每个字符占用一个字节。然而，Unicode字符（包括中文字符）通常需要多个字节来表示。这就引出了一个问题：`string`如何存储和显示Unicode字符，特别是中文字符呢？
+>
+> 实际上，`string`可以存储任何字节序列，包括表示Unicode字符的字节序列。当你通过`cin >> str`输入中文字符时，这些字符会被转换为一个字节序列，然后存储在`string`中。当你打印这个`string`时，这个字节序列会根据编码来解码并显示在屏幕上
+>
+> 在C++中，`std::string`和`std::wstring`的行为会**受到当前区域设置(locale查询)的影响**。例如，当你使用`std::cin`或`std::cout`读取或输出字符串时，这些字符串会被转换为当前区域设置中指定的字符编码
+
+##### string和wstring的区别
+
+功能上的区别:
+
+- `std::string`主要用于存储单字节的字符（ASCII字符集），但是也可以用来保存UTF-8编码的字符。`std::string`内部是char单字节字符,String 数据类型中的每个字节都可以是从 0x00 到0xFF 的任意值。
+
+- `std::wstring`主要用于UTF-16编码的字符。`std::wstring`内部是WCHAR宽字符。WString数据类型中的每个字可以是 0x0000 - 0xFFFF 之间的任意值。**即使是ASCII字符，也要占用1个字**
+
+  UTF-16编码是2个字节或4个字节表示一个字符:对于那些需要4个字节的UTF-16字符（也被称为代理对），它们会被分成两个2字节的部分，然后分别存储在`std::wstring`的两个连续的元素中
+
 #### string容器常用操作
 
 #####  string 构造函数
@@ -361,7 +379,7 @@ string& replace(int pos, int n, const string& str); //替换从pos开始n个字�
 string& replace(int pos, int n, const char* s); //替换从pos开始的n个字符为字符串s
 ```
 
-`p.s.find，rfind函数找不到就返回-1，但实际上是返回的无符号int类型，即4294967295，但依然只需要直接和-1做比较即可`
+`p.s.  find，rfind函数找不到就返回-1，但实际上是返回的无符号int类型，即4294967295，但依然只需要直接和-1做比较即可`
 
 ##### string比较操作
 
@@ -403,12 +421,197 @@ string str(s);
 
 在c++中存在一个从const char\*到string的隐式类型转换，却不存在从一个string对象到C_string的自动类型转换。对于string类型的字符串，可以通过c_str()函数返回string对象对应的C_string.(C_string就是const char\*)
 
- 通常，程序员在整个程序中应坚持使用string类对象，直到必须将内容转化为char\*时才将其转换为C_string.
+通常，程序员在整个程序中应坚持使用string类对象，直到必须将内容转化为char\*时才将其转换为C_string.
 
 ##### 大小写转换
 
 - 大写转小写toupper
 - 小写转大写tolower
+
+#### string操作utf8案例
+
+**一个mac上基于utf8和string的用户多行输入代码**(ctrl+d结束输入)
+
+```cpp
+#include <iostream>
+#include <string>
+#include <regex>
+#include <ncurses.h>
+#include <termios.h>
+#include <unistd.h>
+#include <vector>
+using namespace std;
+
+// 启用原始模式
+void enableRawMode()
+{
+    struct termios raw;
+    tcgetattr(STDIN_FILENO, &raw);
+    raw.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
+}
+
+// 禁用原始模式
+void disableRawMode()
+{
+    struct termios raw;
+    tcgetattr(STDIN_FILENO, &raw);
+    raw.c_lflag |= (ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
+}
+
+// 获取UTF-8字符的字节数
+int getUTF8CharSize(char ch)
+{
+    if ((ch & 0xF8) == 0xF0)
+    {
+        return 4;
+    }
+    else if ((ch & 0xF0) == 0xE0)
+    {
+        return 3;
+    }
+    else if ((ch & 0xE0) == 0xC0)
+    {
+        return 2;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
+// 函数用于判断是否为UTF-8字符的起始字节
+bool isUTF8StartByte(char byte)
+{
+    return (byte & 0xC0) != 0x80;
+}
+
+// 函数用于删除UTF-8字符,返回要删除的字节数
+int deleteUTF8Character(std::string &str)
+{
+    if (str.empty())
+    {
+        return 0;
+    }
+    int wantDelete = 0;
+    // 向前遍历字符串，找到要删除的字符的起始位置
+    int startPos = str.length() - 1;
+    while (startPos > 0 && !isUTF8StartByte(str[startPos]))
+    {
+        startPos--;
+        wantDelete++;
+    }
+
+    // 删除字符
+    str.erase(startPos);
+    return wantDelete + 1;
+}
+
+// 计算String类型中的utf8字符数
+int countUTF8Characters(const std::string &str)
+{
+    int count = 0;
+    int length = str.length();
+    for (int i = 0; i < length;)
+    {
+        if ((str[i] & 0xC0) != 0x80)
+        { // 起始字节
+            count++;
+        }
+        i++;
+    }
+    return count;
+}
+
+// 计算在控制台中所占列数(等宽字体)
+int countUTF8WidthInConsole(const std::string &str)
+{
+    int count = 0;
+    int length = str.length();
+    for (int i = 0; i < length;)
+    {
+        if ((str[i] & 0xC0) != 0x80)
+        { // 起始字节
+            if (getUTF8CharSize(str[i]) == 1)
+                count++;
+            else
+                count += 2;
+        }
+        i++;
+    }
+    return count;
+}
+
+// 获取多行输入,ctrl+d表示输入结束
+string getMultilineInput()
+{
+    enableRawMode(); // 启用原始模式
+    char ch;
+    vector<string> inputTexts;
+    inputTexts.push_back("");
+    int deletebytes = 0;
+    int forNo = 0; // 用于表示循环多个字节显示同一个待删除字节数
+    while ((ch = getchar()) != EOF)
+    {
+        if (ch == '\x04')
+        { // Ctrl+D 表示输入结束
+            break;
+        }
+        if (ch == '\n')
+        { // 处理换行符
+            inputTexts.back() += ch;
+            inputTexts.push_back("");
+            std::cout << ch; // 输出换行符
+        }
+        else if (ch == 127)
+        { // 处理退格键
+            if (inputTexts.back().size() > 0)
+            {
+                // 使用ANSI转义序列清空一行并重新输出字符串
+                deleteUTF8Character(inputTexts.back());
+                std::cout << "\033[2K\r" << inputTexts.back() << std::flush;
+            }
+            else if (inputTexts.back().empty() && inputTexts.size() > 1)
+            { // 如果当前行为空，且不是第一行，则删除到上一行末尾
+                inputTexts.pop_back();
+                inputTexts.back().pop_back(); // 清除上一行末尾换行符
+                // 清除当前行并回到上一行末尾
+                if (!inputTexts.back().empty()) // 避免inputText.back().size()为0的情况也会右移一格的情况
+                    std::cout << "\033[F"
+                              << "\033[" << countUTF8WidthInConsole(inputTexts.back()) << "C"; // 这里的右移是列数右移,也就是在等宽字体中为按照字符数算
+                else
+                    std::cout << "\033[F";
+            }
+        }
+        else
+        {
+            inputTexts.back() += ch;
+            std::cout << ch; // 输出字符
+        }
+    }
+    disableRawMode(); // 禁用原始模式
+    string result = "";
+    for (int i = 0; i < inputTexts.size(); i++)
+    {
+        result += inputTexts[i];
+    }
+    return result;
+}
+
+int main()
+{
+    std::cout << "请输入多行文本，按Ctrl+D结束输入：" << std::endl;
+    string inputText = getMultilineInput();
+    std::cout << endl
+              << "=======输入结束========" << std::endl;
+    std::cout << inputText << std::endl;
+    std::cout << "=======输出结束========" << std::endl;
+    return 0;
+}
+```
+
+
 
 ### vector容器
 
