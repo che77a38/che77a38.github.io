@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":{"gitalk":{"order":-2}},"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="mac及linux C++环境配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mac及linux C++环境配置">
-<meta property="og:url" content="http://zeroko14.gitee.io/b15ef99d/index.html">
+<meta property="og:url" content="http://zeroko14.gitee.io/blog/b15ef99d/index.html">
 <meta property="og:site_name" content="ZEROKO14的个人博客">
 <meta property="og:description" content="mac及linux C++环境配置">
 <meta property="og:locale" content="zh_CN">
@@ -59,14 +59,14 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071856448.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302192059807.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202307221059694.png">
-<meta property="article:published_time" content="2023-11-24T02:51:09.100Z">
-<meta property="article:modified_time" content="2023-11-24T08:09:30.083Z">
+<meta property="article:published_time" content="2023-11-24T09:33:30.023Z">
+<meta property="article:modified_time" content="2023-11-27T09:09:02.022Z">
 <meta property="article:author" content="ZEROKO14">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112242025323.png">
 
-<link rel="canonical" href="http://zeroko14.gitee.io/b15ef99d/">
+<link rel="canonical" href="http://zeroko14.gitee.io/blog/b15ef99d/">
 
 
 <script id="page-configurations">
@@ -209,6 +209,8 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -223,7 +225,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/b15ef99d/">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/b15ef99d/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/avatar.gif">
@@ -245,10 +247,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-11-24 10:51:09 / 修改时间：16:09:30" itemprop="dateCreated datePublished" datetime="2023-11-24T10:51:09+08:00">2023-11-24</time>
+              <time title="创建时间：2023-11-24 17:33:30" itemprop="dateCreated datePublished" datetime="2023-11-24T17:33:30+08:00">2023-11-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-27 17:09:02" itemprop="dateModified" datetime="2023-11-27T17:09:02+08:00">2023-11-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -266,6 +274,20 @@
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>23k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>20 分钟</span>
             </span>
 
         </div>
@@ -280,7 +302,6 @@
         <p>mac及linux C++环境配置</p>
 <span id="more"></span>
 
-<p>undefined</p>
 <p><strong>linux系统介绍</strong></p>
 <ul>
 <li>什么是linux系统？</li>
@@ -681,8 +702,8 @@
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#当前目录下有first_make.cpp;second.cpp;second.h</span></span><br><span class="line"><span class="section">first_make:first_make.cpp second.cpp #目标文件：依赖文件</span></span><br><span class="line">	g++ first_make.cpp second.cpp -o first_make -lpthread<span class="comment">#-l表示添加某个库，因为使用到了pthread库</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>makefile工作流程</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112242025323.png" alt="image-20211224202502589"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206051153723.jpeg" alt="捕获"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112242025323.png" alt="image-20211224202502589"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206051153723.jpeg" alt="捕获"></p>
 <p><strong>makefile文件主要包含了5部分内容</strong>：</p>
 <ol>
 <li><strong>显示规则</strong>。说明了如何生成一个或多个目标文件。由makefile文件的创作者指出，包括要生成的文件，文件的依赖文件，生成的命令</li>
@@ -704,12 +725,12 @@
 <p>GUN的make很强大，它可以自动推导文件以及文件依赖关系后面的命令，于是我们就没必要去在每一个[.o]文件后都写上类似的命令，因为，我们的make会自动识别，并自己推导命令。只要make看到一个[.o]文件，它就会自动的把[.c]文件加在依赖关系中，<strong>如果make找到一个whatever.o，那么whatever.c，就会是whatever.o的依赖文件。并且gcc -c whatever.c也会被推导出来</strong></p>
 <p><strong>正是因为强大的[自动推导功能]，因此依赖项写成.o文件后，就可以一条命令搞定整个编译过程</strong></p>
 <p><strong>makefile中常见预定义变量</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112241646051.png" alt="image-20211224164553549"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112241646051.png" alt="image-20211224164553549"></p>
 <p>p.s.CXXFLAGS&#x3D;-I..&#x2F;inc		表示头文件的路径在当前源文件的父文件夹中的inc文件夹中</p>
 <p><strong>在makefile中变量的用法</strong>：<code>$(变量名)</code></p>
 <p><strong>自动变量</strong></p>
 <p><strong>自动变量</strong>(下面表格的变量)只能在规则中的命令使用</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112242045930.png" alt="image-20211224204554371"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112242045930.png" alt="image-20211224204554371"></p>
 <p>$(@D)是目标文件的目录，$(@F)是目标文件，</p>
 <p><strong>手动定义变量</strong>的方法：<br>$$<br>变量名&#x3D;存的值（仅第一次有效）<br>$$</p>
 <p>$$<br>变量名：&#x3D;存的值（已经定义了变量，修改用这个）<br>$$</p>
@@ -725,7 +746,7 @@
 <p>有没有一劳永逸的方法，不需要修改makefile就能适应呢。</p>
 <h2 id="模式规则"><a href="#模式规则" class="headerlink" title="模式规则"></a>模式规则</h2><p>要求至少在规则的目标定义中要包含’%’,’%’表示一个或多个,在依赖条件中同样可以使用’%’,依赖条件中的取值取决于其目标:</p>
 <p>如下:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206051342850.jpeg" alt="捕获"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202206051342850.jpeg" alt="捕获"></p>
 <h2 id="makefile的清理操作"><a href="#makefile的清理操作" class="headerlink" title="makefile的清理操作"></a>makefile的清理操作</h2><p>用途:清除编译生成的中间.o文件和最终目标文件</p>
 <p><code>make clean</code> 命令 同于执行此操作</p>
 <p>但是如果当前目录下有同名clean文件,则不执行clean对应的命令,解决方案是 <strong>伪目标声明</strong></p>
@@ -896,20 +917,20 @@
 <h2 id="【实战】CMake代码实践"><a href="#【实战】CMake代码实践" class="headerlink" title="【实战】CMake代码实践"></a>【实战】CMake代码实践</h2><h3 id="最小的CMake工程"><a href="#最小的CMake工程" class="headerlink" title="最小的CMake工程"></a>最小的CMake工程</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>)</span><br><span class="line"><span class="keyword">project</span>(HELLOWORLD)</span><br><span class="line"><span class="keyword">add_executable</span>(helloWorld_cmake helloworld.cpp)</span><br></pre></td></tr></table></figure>
 
 <p>内部构建后（还未执行<code>make</code>）如图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171534397.png" alt="image-20220117153415398"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171534397.png" alt="image-20220117153415398"></p>
 <p>红色框中是原有的文件，紫色框中的是内部构建生成的,可以看到非常乱</p>
 <p>外部构建后（还未执行<code>make</code>）如图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171551365.png" alt="image-20220117155157081"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171551365.png" alt="image-20220117155157081"></p>
 <p>cmake的产物都放到build文件夹下了，整洁了很多 ，如果之后执行<code>make</code>，生成的可执行文件也会在build文件夹下</p>
 <h3 id="多目录工程-直接编译"><a href="#多目录工程-直接编译" class="headerlink" title="多目录工程-直接编译"></a>多目录工程-直接编译</h3><p>项目结构如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171621715.png" alt="image-20220117162108450"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171621715.png" alt="image-20220117162108450"></p>
 <p>CMakeLists.txt如下：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span>(TESTCMAKE)</span><br><span class="line"></span><br><span class="line"><span class="keyword">INCLUDE_DIRECTORIES</span>(<span class="keyword">include</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(main_cmake main.cpp src/tool.cpp)</span><br></pre></td></tr></table></figure>
 
 <p>操作如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171622366.png" alt="image-20220117162245705"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171622366.png" alt="image-20220117162245705"></p>
 <p><code>make</code>后结构如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171625167.png" alt="image-20220117162516558"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201171625167.png" alt="image-20220117162516558"></p>
 <p>下面两个等同于<code>cd build;cmake .</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">在build上级目录</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">配置项目</span></span><br><span class="line">cmake -S . -B build</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">构建项目</span></span><br><span class="line">cmake --build build</span><br></pre></td></tr></table></figure>
 
@@ -928,12 +949,12 @@
 <li>-O2    在这一级别GCC将会提供所有支持的优化，但这其中并不包括以空间换时间的优化手段，例如编译器不会使用循环展开和函数内联。和-O相比，该选项进一步加快了编译时间和生成代码的性能。</li>
 </ul>
 <p>点击下面图片位置，创建json文件</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201191633093.png" alt="image-20220119163310314"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201191633093.png" alt="image-20220119163310314"></p>
 <p><strong>【超级重点】：必须在编辑框显示源文件的情况下点击这个按钮</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201192013927.png" alt="image-20220119201327676"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201192013927.png" alt="image-20220119201327676"></p>
 <p><strong>CodeLLDB（用来debug，解决Catalina不支持lldb调试问题）</strong></p>
 <p><strong>Mac在更新到Catalina后不再支持lldb调试</strong>,即C++(GDB&#x2F;LLDB)无效，因此下载CodeLLDB插件，也因此上图选择LLDB按钮。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201192012644.png" alt="image-20220119201249218"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201192012644.png" alt="image-20220119201249218"></p>
 <p><strong>红框中设置为生成的可执行文件的路径</strong></p>
 <p>然后直接按F5就可以调试运行</p>
 <p>如果想每次调试前自动编译项目，可以配合cmake，在.vscode文件夹下新建tasks.json文件，将下面json复制进去：</p>
@@ -1009,10 +1030,10 @@
 </tbody></table>
 <p><a href="#win%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E7%9B%B8%E5%85%B3">win部分特殊终端命令</a></p>
 <h2 id="homebrew常用命令"><a href="#homebrew常用命令" class="headerlink" title="homebrew常用命令"></a>homebrew常用命令</h2><p>安装软件：<code>brew install xxx</code><br>卸载软件：<code>brew uninstall xxx</code><br>搜索软件：<code>brew search xxx</code><br>更新软件：<code>brew upgrade xxx</code><br>查看列表：<code>brew list</code><br>更新brew：<code>brew update</code><br>清理所有包的旧版本：<code>brew cleanup</code><br>清理指定包的旧版本：<code>brew cleanup $FORMULA</code><br>查看可清理的旧版本包，不执行实际操作：<code>brew cleanup -n</code><br>查看包的详细信息：<code>brew info xxx</code><br>检查brew所有服务状态：<code>brew services list</code><br>启动xxx服务：<code>brew services start xxx</code><br>停止xxx服务：<code>brew services stop xxx</code><br>重启xxx服务：<code>brew services restart xxx</code></p>
-<h1 id="git一图流"><a href="#git一图流" class="headerlink" title="git一图流"></a>git一图流</h1><p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071513124.png"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071511344.png" alt="image-20211207151102904"></p>
+<h1 id="git一图流"><a href="#git一图流" class="headerlink" title="git一图流"></a>git一图流</h1><p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071513124.png"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071511344.png" alt="image-20211207151102904"></p>
 <h1 id="git详解"><a href="#git详解" class="headerlink" title="git详解"></a>git详解</h1><h2 id="Git与svn对比"><a href="#Git与svn对比" class="headerlink" title="Git与svn对比"></a>Git与svn对比</h2><p><strong>SVN（Subversion）</strong>是集中式版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器哪里得到最新的版本，然后干活，干完后，需要把自己做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网还可以，带宽够大，速度够快，如果在互联网下，如果网速慢的话，就郁闷了。<br>下图就是标准的集中式版本控制工具管理方式：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301031621539.png" alt="image-20230103162133191"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301031621539.png" alt="image-20230103162133191"></p>
 <p>集中管理方式在一定程度上看到其他开发人员在干什么，而管理员也可以很轻松掌握每个人的开发权限。<br>但是相较于其优点而言，集中式版本控制工具缺点很明显：</p>
 <ul>
 <li>服务器单点故障</li>
@@ -1020,7 +1041,7 @@
 </ul>
 <p><strong>Git</strong></p>
 <p>Git是分布式版本控制系统，那么它就没有中央服务器的，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己的电脑上。既然每个人的电脑都有一个完整的版本库，那多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。<br>下图就是分布式版本控制工具管理方式：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301031623438.png" alt="image-20230103162249584"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301031623438.png" alt="image-20230103162249584"></p>
 <h2 id="git工作流程"><a href="#git工作流程" class="headerlink" title="git工作流程"></a>git工作流程</h2><ol>
 <li>从远程仓库中克隆 Git 资源作为本地仓库。</li>
 <li>从本地仓库中checkout代码然后进行代码修改</li>
@@ -1029,12 +1050,12 @@
 <li>在修改完成后，需要和团队成员共享代码时，可以将代码push到远程仓库。</li>
 </ol>
 <p>下图展示了 Git 的工作流程：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301041139883.png" alt="image-20230104113924564"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301041139883.png" alt="image-20230104113924564"></p>
 <h2 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h2><p>下载地址：<a target="_blank" rel="noopener" href="https://git-scm.com/download">https://git-scm.com/download</a></p>
 <h2 id="关键词理解"><a href="#关键词理解" class="headerlink" title="关键词理解"></a>关键词理解</h2><blockquote>
 <p>在初始化git版本库之后会生成一个隐藏的文件 .git ，可以将该文件理解为 git 的版本库 <code>repository</code>，而我们自己建立的项目文件夹即工作区 <code>working directory</code> , 在 <code>.git</code> 文件夹里面还有很多文件，其中有一个 <code>index</code> 文 件 就是暂存区也可以叫做 <code>stage</code> , git 还为我们自动生成了一个分支 <code>master</code> 以及指向该分支的指针<code>head</code> ,如下图</p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301121117166.png" alt="image-20230112111626807"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301121117166.png" alt="image-20230112111626807"></p>
 <ul>
 <li><p><strong>工作区</strong>: 存储项目文件的目录, 版本库需要创建到工作区中</p>
 </li>
@@ -1130,7 +1151,7 @@
 <h3 id="删除相关"><a href="#删除相关" class="headerlink" title="删除相关"></a>删除相关</h3><p> <code>git rm</code>   等同于    <code>rm</code>  +   <code>git add</code></p>
 <p><code>git rm --cached</code>会保留原文件,只删除对文件的追踪状态,常用于已提交后添加忽略的情况</p>
 <h3 id="与远程仓库交互"><a href="#与远程仓库交互" class="headerlink" title="与远程仓库交互"></a>与远程仓库交互</h3><p>在线代码托管平台:   <a target="_blank" rel="noopener" href="https://github.com/">Github</a>    <a target="_blank" rel="noopener" href="https://gitee.com/">码云</a>  等等</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071310206.png" alt="image-20211207131020235"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071310206.png" alt="image-20211207131020235"></p>
 <h4 id="本地同步到远程"><a href="#本地同步到远程" class="headerlink" title="本地同步到远程"></a>本地同步到远程</h4><p><a href="#%E4%B8%8A%E4%BC%A0%E6%8C%87%E4%BB%A4">本地库上传到远程库参考</a>   </p>
 <p><strong>[注意]   上传到远程库最稳妥的方式是push之前先pull</strong></p>
 <h4 id="远程同步到本地"><a href="#远程同步到本地" class="headerlink" title="远程同步到本地"></a>远程同步到本地</h4><p>远程库下载到本地库:   <strong><code>git clone ssh链接或https链接</code></strong></p>
@@ -1185,7 +1206,7 @@
 </blockquote>
 <h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><p>git中默认只有一个分支:<code>master</code></p>
 <p>如果创建了分支,各个分支都是独立的,互不影响的</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301301731761.png" alt="image-20230130173124159"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202301301731761.png" alt="image-20230130173124159"></p>
 <blockquote>
 <p><strong>当前所在的分支，其实是由 <code>HEAD</code> 决定的</strong></p>
 </blockquote>
@@ -1273,7 +1294,7 @@
 
 <h3 id="设定个人资料"><a href="#设定个人资料" class="headerlink" title="设定个人资料"></a>设定个人资料</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入姓名</span></span><br><span class="line">git config --global user.name <span class="string">&quot;gon&quot;</span></span><br><span class="line"><span class="comment">//输入个人的email</span></span><br><span class="line">git config --global user.email <span class="string">&quot;gonsakon@gmail.com&quot;</span></span><br><span class="line"><span class="comment">//查询git设定内容</span></span><br><span class="line">git config --<span class="built_in">list</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="基本指令架构"><a href="#基本指令架构" class="headerlink" title="基本指令架构"></a>基本指令架构</h2><p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071310206.png" alt="image-20211207131020235"></p>
+<h2 id="基本指令架构"><a href="#基本指令架构" class="headerlink" title="基本指令架构"></a>基本指令架构</h2><p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071310206.png" alt="image-20211207131020235"></p>
 <h2 id="上传指令"><a href="#上传指令" class="headerlink" title="上传指令"></a>上传指令</h2><ol>
 <li><p>初始化git数据库：<code>git init</code></p>
 <p>文件夹中多出一个.git文件夹，表明该文件夹已经生成了git数据库了（需要显示隐藏文件才能显示出来）</p>
@@ -1312,11 +1333,11 @@
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span><span class="comment">//查看当前所有的commit编号</span></span><br><span class="line">git checkout 想回到的commit节点的哈希值<span class="comment">//返回到指定哈希值的commit节点</span></span><br><span class="line"><span class="comment">//Git 对哈希的处理很智能。你只需要提供能够唯一标识提交记录节点的前几个字符即可</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112092007970.png" alt="image-20211209200758510"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112092007970.png" alt="image-20211209200758510"></p>
 <p>commit编号就是个哈希值</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112092021609.png" alt="image-20211209202104826"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112092021609.png" alt="image-20211209202104826"></p>
 <p>git checkout commit编号与直接在上图左侧双击commit行均为使得文件恢复到与commit时的样子，二者效果一致。</p>
-<h3 id="还原技巧"><a href="#还原技巧" class="headerlink" title="还原技巧"></a>还原技巧</h3><p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112101443772.jpeg" alt="src=http___upload-images.jianshu.io_upload_images_4311354-6a4562939fec66c0.png&amp;refer=http___upload-images.jianshu"></p>
+<h3 id="还原技巧"><a href="#还原技巧" class="headerlink" title="还原技巧"></a>还原技巧</h3><p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112101443772.jpeg" alt="src=http___upload-images.jianshu.io_upload_images_4311354-6a4562939fec66c0.png&amp;refer=http___upload-images.jianshu"></p>
 <p><strong>Untracked:表示未跟踪的</strong></p>
 <h4 id="未跟踪情况下"><a href="#未跟踪情况下" class="headerlink" title="未跟踪情况下"></a>未跟踪情况下</h4><p>新建文件的时候，清空未跟踪的内容：</p>
 <ul>
@@ -1330,16 +1351,22 @@
 <p>已经加入到暂存区的改动，退回到未加入缓存区状态：<strong>git reset HEAD</strong></p>
 <p>git reset head^^,两个^表示返回两个commit记录的节点转为未跟踪状态，多少^表示多少个commit记录节点。</p>
 <p><code>git reset</code> 很方便，但是这种“改写历史”的方法对大家一起使用的<strong>远程分支是无效</strong>的,取而代之的是git revert xxx</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112101512015.png" alt="image-20211210151213508"><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112101519242.png" alt="image-20211210151908657"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112101512015.png" alt="image-20211210151213508"><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112101519242.png" alt="image-20211210151908657"></p>
 <h3 id="Git分支-branch"><a href="#Git分支-branch" class="headerlink" title="Git分支(branch)"></a>Git分支(branch)</h3><p><strong>为什么要用分支？</strong></p>
 <ul>
 <li>多人协作时，不可能都在master</li>
 <li>可以让master都是正式版资料，可以开分支来做测试或开发，让这些流程不影响正式主机分支</li>
 </ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名<span class="comment">//新建分支</span></span><br><span class="line">git branch<span class="comment">//查看当前有多少个分支</span></span><br><span class="line">git checkout 分支名<span class="comment">//切换到别的分支</span></span><br><span class="line">git branch -d <span class="string">&quot;分支名称&quot;</span><span class="comment">//删除分支，-D是强制删除</span></span><br><span class="line"><span class="comment">//如果你想创建一个新的分支同时切换到新创建的分支的话，可以通过 git checkout -b &lt;your-branch-name&gt; 来实现。</span></span><br><span class="line">git merge 合并的分支名<span class="comment">//提交新节点为合并分支，快转</span></span><br><span class="line">git merge 要合并的分支名 --no-ff <span class="comment">//合并分支，非快转</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名<span class="comment">//新建分支</span></span><br><span class="line">git branch<span class="comment">//查看当前有多少个分支</span></span><br><span class="line">git checkout 分支名<span class="comment">//切换到别的分支</span></span><br><span class="line">git branch -d <span class="string">&quot;分支名称&quot;</span><span class="comment">//删除分支，-D是强制删除</span></span><br><span class="line"><span class="comment">//如果你想创建一个新的分支同时切换到新创建的分支的话，可以通过 git checkout -b &lt;your-branch-name&gt; 来实现。</span></span><br><span class="line">git merge 合并的分支名<span class="comment">//提交新节点为合并分支，快转</span></span><br><span class="line">git merge 要合并的分支名 --no-ff <span class="comment">//合并分支，非快转</span></span><br></pre></td></tr></table></figure>
 
-
-
+<p><strong>git checkout -B master详解</strong>:</p>
+<blockquote>
+<p>这个命令会创建一个新的master分支，或者如果master分支已经存在，它会<strong>更新master分支到当前HEAD</strong>。<strong>注意，如果master分支已经存在并且有未提交的更改，这个命令会覆盖那些更改</strong>。在运行这个命令之前，确保你的工作目录是干净的，或者你已经提交了所有的更改。如果你只是想创建一个新的分支指向当前提交，你可以使用<code>git checkout -b new_branch_name</code>。这将创建一个新的分支并检出到那个分支，而不会影响master分支。请根据你的需求选择合适的命令。</p>
+</blockquote>
+<ul>
+<li><code>git checkout -b &lt;branch&gt;</code>: 这个命令会创建一个新的分支，并且切换到这个新创建的分支。如果已经存在一个同名的分支，Git会返回一个错误。</li>
+<li><code>git checkout -B &lt;branch&gt;</code>: 这个命令和<code>-b</code>选项类似，但是如果存在一个同名的分支，它不会返回错误，而是将这个分支重置为当前HEAD。也就是说，如果分支已经存在，<code>-B</code>选项会将其重置为当前的HEAD，如果分支不存在，它会创建一个新的分支。</li>
+</ul>
 <p> <strong>相对移动</strong></p>
 <ul>
 <li>使用<code>^</code>向上移动1个提交记录</li>
@@ -1407,16 +1434,16 @@
 </ol>
 </li>
 <li><p>到fork的项目中,可以点击 Compare &amp; pull request按钮</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311241416026.png" alt="image-20231124141648973"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311241416026.png" alt="image-20231124141648973"></p>
 </li>
 <li><p>设置推送请求,如图</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311241432050.png" alt="image-20231124143141499" style="zoom: 67%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311241432050.png" alt="image-20231124143141499" style="zoom: 67%;" />
 </li>
 <li><p>等待原作者通过</p>
 </li>
 </ol>
 <h1 id="图形化git管理软件"><a href="#图形化git管理软件" class="headerlink" title="图形化git管理软件"></a>图形化git管理软件</h1><p>SourceTree</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071856448.png" alt="image-20211207185614938" style="zoom:25%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202112071856448.png" alt="image-20211207185614938" style="zoom:25%;" />
 
 <p>新建-创建本地仓库的意思就是 git init</p>
 <p>新建-添加已经存在的本地仓库：已经git init的文件夹添加进SourceTree</p>
@@ -1471,7 +1498,7 @@
 <li><p>编译的时候需要加<code>-g</code>选项,才会附带调试需要的信息</p>
 </li>
 <li><p>点击左侧菜单栏中的<code>运行和调试</code>中的创建<code>launch.json文件</code>,如下图(非红圈)</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302192059807.png" alt="image-20230219205902832" style="zoom:25%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302192059807.png" alt="image-20230219205902832" style="zoom:25%;" />
 
 <p>点击后会在项目根目录下生成<code>.vscode/launch.json</code>文件</p>
 </li>
@@ -1488,6 +1515,14 @@
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;terminal.integrated.profiles.windows&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Command Prompt&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Windows\\System32\\cmd.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;-NoExit&quot;</span><span class="punctuation">,</span> <span class="string">&quot;/K&quot;</span><span class="punctuation">,</span> <span class="string">&quot;chcp 65001 &gt; nul&quot;</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;PowerShell&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PowerShell&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;-NoExit&quot;</span><span class="punctuation">,</span> <span class="string">&quot;/C&quot;</span><span class="punctuation">,</span> <span class="string">&quot;chcp 65001&quot;</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;terminal.integrated.defaultProfile.windows&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Command Prompt&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>将以上配置添加在settings.json里最外层的{}里即可(注意！！！，如果{}里之前有内容记得要在最后一行加上一个英文逗号，之后再把配置复制进去)</p>
+<hr>
+<p>更好的方法是修改程序的locale变量，这个会修改C&#x2F;C++的运行环境，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">td::locale::global(std::locale(&quot;.utf8&quot;)); </span><br><span class="line">// 或者 </span><br><span class="line">// std::setlocale(LC_ALL, &quot;.UTF-8&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>因为修改locale变量修改的是C&#x2F;C++的运行环境，并不会修改Windows系统函数的环境，所以如果调用系统函数<code>WriteConsoleOutput</code>函数，还是会出现乱码。 Windows上有些库（例如：spdlog）会调用<code>WriteConsoleOutput</code>函数，设置的locale还是会出现乱码，还需要设置控制台编码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::locale::<span class="built_in">global</span>(std::<span class="built_in">locale</span>(<span class="string">&quot;.utf8&quot;</span>)); </span><br><span class="line"><span class="built_in">SetConsoleOutputCP</span>(CP_UTF8);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.shouxieziti.cn/128315.html">更详细完整的说法参阅</a></p>
 <h2 id="vscode的配置文件"><a href="#vscode的配置文件" class="headerlink" title="vscode的配置文件"></a>vscode的配置文件</h2><p>安装并配置好C&#x2F;C++插件后</p>
 <ul>
 <li>编译的话配置<code>tasks.json</code></li>
@@ -1522,7 +1557,7 @@
 <p>能封装网络层数据包,只有能封装网络层数据包,才能实现异地组网,内网穿透,才能称为真正的VPN</p>
 <p>软件一般是用WireGuard,可以正常ping外网地址</p>
 <p>问题:并非为翻墙而生,只是对数据进行加密顺便实现了翻墙功能,他的流量清晰明了地写着它就是VPN的流量.而且vpn分流很不方便.因此不推荐用来科学上网</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202307221059694.png" alt="image-20230722105912700"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202307221059694.png" alt="image-20230722105912700"></p>
 </li>
 </ul>
 <p>SS协议  –减少GFW重放攻击-&gt;  SSR协议(带伪装插件的SS协议)</p>
@@ -1539,6 +1574,23 @@
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ZEROKO14
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://zeroko14.gitee.io/blog/b15ef99d/" title="mac及linux C++环境配置">http://zeroko14.gitee.io/blog/b15ef99d/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -1551,12 +1603,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/a477be03/" rel="prev" title="nginx">
-      <i class="fa fa-chevron-left"></i> nginx
+    <a href="/blog/b5b483bb/" rel="prev" title="windows开发">
+      <i class="fa fa-chevron-left"></i> windows开发
     </a></div>
       <div class="post-nav-item">
-    <a href="/blog/f6491cfb/" rel="next" title="网络编程">
-      网络编程 <i class="fa fa-chevron-right"></i>
+    <a href="/blog/ac56643f/" rel="next" title="加密与解密">
+      加密与解密 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -1570,6 +1622,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -1630,7 +1683,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1675,11 +1728,17 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">ZEROKO14</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">513k</span>
 </div>
 
         
 <div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
@@ -1712,6 +1771,9 @@
 
   
   <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/blog/lib/velocity/velocity.min.js"></script>
   <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
@@ -1724,6 +1786,67 @@
 
 
 <script src="/blog/js/next-boot.js"></script>
+
+<script src="/blog/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
 
 
   <script defer src="/blog/lib/three/three.min.js"></script>
@@ -1748,8 +1871,22 @@
 
 
 
+<script data-pjax>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
+    <div id="pjax">
   
 
   
@@ -1809,5 +1946,26 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '67c7a42cef54843d55de',
+      clientSecret: 'ab1b9b51ee90c36803ecfaae6bc72ff75494f245',
+      repo        : 'gitalk',
+      owner       : 'che77a38',
+      admin       : ['che77a38'],
+      id          : '9be77c14ee00c94dfd9f3852f24d03a0',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
 </body>
 </html>
