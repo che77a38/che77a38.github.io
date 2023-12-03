@@ -404,7 +404,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./config</span><br><span class="line">make</span><br><span class="line">make test    (可选)</span><br><span class="line">make install   (使用管理员权限执行该命令)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><strong>参考<a href="/blog/5c231afa#linux%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85" data-pjax-state target="_Blank">linux源码安装</a>中的安装流程:</strong> </p>
+<p><strong>参考[[linux基础以及系统编程#linux源码安装]]中的安装流程:</strong> </p>
 <ol>
 <li><strong>以下文件, 里边有安装步骤</strong><ol>
 <li><strong>readme</strong></li>
@@ -749,7 +749,7 @@
 <li>把 6 位的前面补两个 0, 形成 8 位一个字节的形式</li>
 <li>如果剩下的字符不足 3 个字节, 则用 0 填充, 输出字符使用 ‘&#x3D;’ ,因此编码后输出的文本末尾可能会出现 1 个或 2 个 ‘&#x3D;’, 表示补了多少字节, 解码的时候会自动去掉</li>
 </ol>
-<p><a href="/blog/2e306159#QT%20%E7%9A%84%20base%2064%20%E7%BC%96%E7%A0%81" data-pjax-state target="_Blank">QT 的 base 64 编码</a></p>
+<p>[[QT#QT 的 base 64 编码|QT 的 base 64 编码]]</p>
 <h1 id="安全传输"><a href="#安全传输" class="headerlink" title="安全传输"></a>安全传输</h1><h2 id="密钥协商"><a href="#密钥协商" class="headerlink" title="密钥协商"></a>密钥协商</h2><h3 id="客户端协商流程"><a href="#客户端协商流程" class="headerlink" title="客户端协商流程"></a>客户端协商流程</h3><ol>
 <li><p>客户端生成一个随机数r1,同时使用openssl中哈希函数对r1进行哈希运算,得到一个哈希值</p>
 </li>
@@ -972,7 +972,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">513k</span>
+    <span title="站点总字数">516k</span>
 </div>
 
         
@@ -1136,7 +1136,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       owner       : 'che77a38',
       admin       : ['che77a38'],
       id          : 'e5fdbcec03593590908178162351484e',
-      proxy       : 'http://120.25.155.240:8080/https://github.com/login/oauth/access_token',
+      proxy       : 'https://120.25.155.240:23456/https://github.com/login/oauth/access_token',
         language: 'zh-CN',
       distractionFreeMode: true
     });

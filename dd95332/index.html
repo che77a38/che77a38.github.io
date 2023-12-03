@@ -311,7 +311,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//C++11</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __cplusplus 201103L</span></span><br><span class="line"><span class="comment">//C++98</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __cplusplus 199711L</span></span><br><span class="line"><span class="comment">//查询C++标准库</span></span><br><span class="line">cout&lt;&lt;__cplusplus&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
 
 <h1 id="可变参数模板"><a href="#可变参数模板" class="headerlink" title="可变参数模板"></a>可变参数模板</h1><p><strong>Variadic Templates</strong></p>
-<p><a href="/blog/f9a964a9#%E6%A8%A1%E6%9D%BF" data-pjax-state target="_Blank">基础模板知识点参阅</a></p>
+<p>[[C++基础#模板|基础模板知识点参阅]]</p>
 <p>关键词: <code>...</code></p>
 <p><code>...</code>就是一个所谓的pack(包)</p>
 <ul>
@@ -348,8 +348,8 @@
 
 
 <p>可变参数模版的作用:1.递归</p>
-<h1 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h1><p><a href="/blog/74483b98#%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1%EF%BC%88%E9%9A%BE%E7%82%B9%EF%BC%89" data-pjax-state target="_Blank">函数对象详解跳转</a></p>
-<p>C++11中的Lambda表达式**用于定义并创建匿名的 <a href="/blog/74483b98#%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1%EF%BC%88%E9%9A%BE%E7%82%B9%EF%BC%89" data-pjax-state target="_Blank">函数对象</a>**，以简化编程工作。首先看一下Lambda表达式的基本构成：</p>
+<h1 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h1><p>[[STL#函数对象（难点）|函数对象详解跳转]]</p>
+<p>C++11中的Lambda表达式**用于定义并创建匿名的 [[STL#函数对象（难点）|函数对象]]**，以简化编程工作。首先看一下Lambda表达式的基本构成：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[capture](parameters) <span class="keyword">mutable</span> -&gt;<span class="keyword">return</span>-type</span><br><span class="line">&#123;</span><br><span class="line">	statement</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>[函数对象参数](操作符重载函数参数)mutable -&gt;返回值&#123;函数体&#125;</code></p>
@@ -555,7 +555,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">513k</span>
+    <span title="站点总字数">516k</span>
 </div>
 
         
@@ -719,7 +719,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       owner       : 'che77a38',
       admin       : ['che77a38'],
       id          : 'c0f9479bcfb4b7d12b2018c1995b5733',
-      proxy       : 'http://120.25.155.240:8080/https://github.com/login/oauth/access_token',
+      proxy       : 'https://120.25.155.240:23456/https://github.com/login/oauth/access_token',
         language: 'zh-CN',
       distractionFreeMode: true
     });
