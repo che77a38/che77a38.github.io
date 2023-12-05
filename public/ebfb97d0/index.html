@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":{"gitalk":{"order":-2}},"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="有关字符编码的知识点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字符编码">
-<meta property="og:url" content="http://zeroko14.gitee.io/ebfb97d0/index.html">
+<meta property="og:url" content="http://zeroko14.gitee.io/blog/ebfb97d0/index.html">
 <meta property="og:site_name" content="ZEROKO14的个人博客">
 <meta property="og:description" content="有关字符编码的知识点">
 <meta property="og:locale" content="zh_CN">
@@ -38,7 +38,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage/4f06232eed4f93be762cd15d664b407c.jpeg">
 
-<link rel="canonical" href="http://zeroko14.gitee.io/ebfb97d0/">
+<link rel="canonical" href="http://zeroko14.gitee.io/blog/ebfb97d0/">
 
 
 <script id="page-configurations">
@@ -181,6 +181,8 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -195,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/ebfb97d0/">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/ebfb97d0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/avatar.gif">
@@ -244,6 +246,20 @@
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -259,8 +275,8 @@
 <span id="more"></span>
 
 <h1 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h1><p>下面介绍多种编码方式:</p>
-<h2 id="ANSI编码"><a href="#ANSI编码" class="headerlink" title="ANSI编码"></a>ANSI编码</h2><h3 id="原始的ASCII编码"><a href="#原始的ASCII编码" class="headerlink" title="原始的ASCII编码"></a><strong>原始</strong>的ASCII编码</h3><p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/4f06232eed4f93be762cd15d664b407c.jpeg" alt="4f06232eed4f93be762cd15d664b407c"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/05d27497327d7264b74d178aaf312830.jpeg" alt="05d27497327d7264b74d178aaf312830"></p>
+<h2 id="ANSI编码"><a href="#ANSI编码" class="headerlink" title="ANSI编码"></a>ANSI编码</h2><h3 id="原始的ASCII编码"><a href="#原始的ASCII编码" class="headerlink" title="原始的ASCII编码"></a><strong>原始</strong>的ASCII编码</h3><p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/4f06232eed4f93be762cd15d664b407c.jpeg" alt="4f06232eed4f93be762cd15d664b407c"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/05d27497327d7264b74d178aaf312830.jpeg" alt="05d27497327d7264b74d178aaf312830"></p>
 <p>原始的ASCII码只占一个字节</p>
 <h3 id="ASCII编码的拓展：GB2312（GBK）或GB2312-80"><a href="#ASCII编码的拓展：GB2312（GBK）或GB2312-80" class="headerlink" title="ASCII编码的拓展：GB2312（GBK）或GB2312-80"></a>ASCII编码的拓展：GB2312（GBK）或GB2312-80</h3><p>GB2312或GB2312-80：专门用来表示中文的编码</p>
 <h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><p>把80~FF的表给占用了，由80~FF开头的两个字节拼在一起表示一个字符</p>
@@ -285,7 +301,7 @@
 <p>UTF-16编码以16位无符号整数为单位，注意是16位为一个单位，不表示一个字符就只有16位。这个要看字符的unicode编码处于什么范围而定的，<strong>绝大部分是2个字节，极少数是4个字节(因此可以算是2字节定长编码)<strong>。</strong>现在机器上的unicode编码一般指的就是UTF-16。</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UTF-16小端存储</span><br><span class="line">中国A</span><br><span class="line">2D 4E FD 56 41 00</span><br><span class="line"></span><br><span class="line">UTF-16大端存储</span><br><span class="line">中国A</span><br><span class="line">4E 2D 56 FD 00 41</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210613135932861.png" alt="image-20210613135932861"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210613135932861.png" alt="image-20210613135932861"></p>
 <p>上图箭头所指的没有明确说明是哪种存储方式的Unicode<strong>实际上就是UTF-16</strong></p>
 <p>优缺点：拆分解析快，浪费空间多（尤其是网络传输,但传输汉字可能比utf8省空间,因为utf8下很多汉字要3字节）,需要区分字节序。文件保存一般有个bom头：BE-‘FEFF’、LE-‘FFFE’</p>
 <blockquote>
@@ -297,7 +313,7 @@
 <ol>
 <li>对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此<strong>对于英语字母，UTF-8编码和ASCII码是相同的</strong>。</li>
 <li>对于n字节的符号（n&gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码</li>
-<li>UTF-8对于字节的格式有严格要求,当解析某个字符失败时,使用<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311271632096.png" alt="image-20231127163227079" style="zoom: 50%;" />代替(UTF-8编码为<code>EF BF BD</code>)</li>
+<li>UTF-8对于字节的格式有严格要求,当解析某个字符失败时,使用<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311271632096.png" alt="image-20231127163227079" style="zoom: 50%;" />代替(UTF-8编码为<code>EF BF BD</code>)</li>
 </ol>
 <table>
 <thead>
@@ -516,6 +532,23 @@
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ZEROKO14
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://zeroko14.gitee.io/blog/ebfb97d0/" title="字符编码">http://zeroko14.gitee.io/blog/ebfb97d0/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -547,6 +580,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -652,6 +686,12 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">ZEROKO14</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">518k</span>
 </div>
 
         
@@ -689,6 +729,8 @@
 
   
   <script src="/blog/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/blog/lib/velocity/velocity.min.js"></script>
   <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
@@ -701,6 +743,8 @@
 
 
 <script src="/blog/js/next-boot.js"></script>
+
+<script src="/blog/js/bookmark.js"></script>
 
 
   <script defer src="/blog/lib/three/three.min.js"></script>
@@ -725,6 +769,19 @@
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   
@@ -785,6 +842,27 @@
     
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '67c7a42cef54843d55de',
+      clientSecret: 'ab1b9b51ee90c36803ecfaae6bc72ff75494f245',
+      repo        : 'gitalk',
+      owner       : 'che77a38',
+      admin       : ['che77a38'],
+      id          : '3b26c9686e15575d81a56cdf478420d2',
+      proxy       : 'https://cors-anywhere.1l1.icu/https://github.com/login/oauth/access_token',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>

@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://zeroko14.gitee.io
+url: http://zeroko14.gitee.io/blog/
 root: /blog/
 permalink: :abbrlink/
 abbrlink:
@@ -102,6 +102,7 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
+css: /css/mermaid.css
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -122,3 +123,12 @@ mermaid: ## mermaid url https://github.com/knsv/mermaid
   options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
     #startOnload: true  // default true
 
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: false
+  exclude_codeblock: true
+  awl: 4
+  wpm: 275
+  suffix: "mins."

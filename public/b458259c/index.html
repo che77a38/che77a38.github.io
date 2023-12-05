@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":{"gitalk":{"order":-2}},"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="nas方案前提：路由器要全千兆网口和网线（对应机械硬盘） 原因：数据有一定的私密性，服务不对外，外联网速达不到上云的要求 合适位置：温度可控，清洁，稳定，安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nas方案">
-<meta property="og:url" content="http://zeroko14.gitee.io/b458259c/index.html">
+<meta property="og:url" content="http://zeroko14.gitee.io/blog/b458259c/index.html">
 <meta property="og:site_name" content="ZEROKO14的个人博客">
 <meta property="og:description" content="nas方案前提：路由器要全千兆网口和网线（对应机械硬盘） 原因：数据有一定的私密性，服务不对外，外联网速达不到上云的要求 合适位置：温度可控，清洁，稳定，安全">
 <meta property="og:locale" content="zh_CN">
@@ -38,7 +38,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210407153352145.png">
 
-<link rel="canonical" href="http://zeroko14.gitee.io/b458259c/">
+<link rel="canonical" href="http://zeroko14.gitee.io/blog/b458259c/">
 
 
 <script id="page-configurations">
@@ -181,6 +181,8 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -195,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/b458259c/">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/b458259c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/avatar.gif">
@@ -237,6 +239,20 @@
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>679</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -254,8 +270,8 @@
 <span id="more"></span>
 
 <p>网线：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210407153352145.png" alt="image-20210407153352145"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210407153558825.png" alt="image-20210407153558825"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210407153352145.png" alt="image-20210407153352145"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210407153558825.png" alt="image-20210407153558825"></p>
 <p>机械硬盘：（寿命最少6年）</p>
 <ol>
 <li><p>西部数据企业盘  8T 1248 10T 1578  1678（氦气盘） 12T  1939（backblaze）</p>
@@ -276,8 +292,8 @@
 <li>威联通   TS-453Dmini（3700）</li>
 <li>microserver gen8</li>
 </ol>
-<h5 id=""><a href="#" class="headerlink" title=""></a><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210407145052565.png" alt="image-20210407145052565" style="zoom:150%;" /></h5><p><a target="_blank" rel="noopener" href="https://www.synology.cn/zh-cn/products/series/home">https://www.synology.cn/zh-cn/products/series/home</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210407145118090.png" alt="image-20210407145118090"></p>
+<h5 id=""><a href="#" class="headerlink" title=""></a><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210407145052565.png" alt="image-20210407145052565" style="zoom:150%;" /></h5><p><a target="_blank" rel="noopener" href="https://www.synology.cn/zh-cn/products/series/home">https://www.synology.cn/zh-cn/products/series/home</a></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210407145118090.png" alt="image-20210407145118090"></p>
 <p><a target="_blank" rel="noopener" href="https://www.qnap.com.cn/zh-cn/product/series/enterprise">https://www.qnap.com.cn/zh-cn/product/series/enterprise</a></p>
 <p>不间断电源：</p>
 <p><strong>BK650-CH</strong> 450左右</p>
@@ -298,6 +314,23 @@
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ZEROKO14
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://zeroko14.gitee.io/blog/b458259c/" title="nas方案">http://zeroko14.gitee.io/blog/b458259c/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -329,6 +362,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -434,6 +468,12 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">ZEROKO14</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">518k</span>
 </div>
 
         
@@ -471,6 +511,8 @@
 
   
   <script src="/blog/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/blog/lib/velocity/velocity.min.js"></script>
   <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
@@ -483,6 +525,8 @@
 
 
 <script src="/blog/js/next-boot.js"></script>
+
+<script src="/blog/js/bookmark.js"></script>
 
 
   <script defer src="/blog/lib/three/three.min.js"></script>
@@ -507,6 +551,19 @@
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   
@@ -514,6 +571,27 @@
   
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '67c7a42cef54843d55de',
+      clientSecret: 'ab1b9b51ee90c36803ecfaae6bc72ff75494f245',
+      repo        : 'gitalk',
+      owner       : 'che77a38',
+      admin       : ['che77a38'],
+      id          : 'd8f161f8a1aa8ae02194e3ce21c067c8',
+      proxy       : 'https://cors-anywhere.1l1.icu/https://github.com/login/oauth/access_token',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>

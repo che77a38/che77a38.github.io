@@ -42,3 +42,8 @@ $ hexo deploy
 
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
 
+
+
+# 记录一些hexo部署操作
+
+[gitalk的部署参考](https://cuiqingcai.com/30010.html)

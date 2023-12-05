@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":{"gitalk":{"order":-2}},"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="fps辅助整体分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FPS逆向">
-<meta property="og:url" content="http://zeroko14.gitee.io/1d654673/index.html">
+<meta property="og:url" content="http://zeroko14.gitee.io/blog/1d654673/index.html">
 <meta property="og:site_name" content="ZEROKO14的个人博客">
 <meta property="og:description" content="fps辅助整体分析">
 <meta property="og:locale" content="zh_CN">
@@ -66,7 +66,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201221330618.png">
 
-<link rel="canonical" href="http://zeroko14.gitee.io/1d654673/">
+<link rel="canonical" href="http://zeroko14.gitee.io/blog/1d654673/">
 
 
 <script id="page-configurations">
@@ -209,6 +209,8 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -223,7 +225,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/1d654673/">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/1d654673/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/avatar.gif">
@@ -265,6 +267,20 @@
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>10k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>9 分钟</span>
             </span>
 
         </div>
@@ -298,7 +314,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//比如：[1,3]和[3,0]的向量内积为：</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">3</span>]*[<span class="number">3</span>,<span class="number">0</span>]=<span class="number">3</span>+<span class="number">0</span>=<span class="number">3</span></span><br></pre></td></tr></table></figure>
 
 <p>矩阵的乘法：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201221330618.png" alt="image-20220122133019389"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201221330618.png" alt="image-20220122133019389"></p>
 <h2 id="快捷键写法"><a href="#快捷键写法" class="headerlink" title="快捷键写法"></a>快捷键写法</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(GetKeyState(VK_F1)&amp;<span class="number">1</span>)<span class="comment">//VK_F1是键码</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//按下F1执行里面的指令,再按下F1停止执行里面的指令</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="绘制的三种方法"><a href="#绘制的三种方法" class="headerlink" title="绘制的三种方法"></a>绘制的三种方法</h2><ol>
@@ -323,12 +339,12 @@
 <li>需要矩阵</li>
 <li>不需要矩阵</li>
 </ul>
-<h2 id="不需要矩阵"><a href="#不需要矩阵" class="headerlink" title="不需要矩阵"></a>不需要矩阵</h2><p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201221928872.png" alt="image-20220122192831457"><br>$$<br>摄像机到准星的距离分辨率&#x3D;\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}<br>$$<br>$$<br>\tan{x差角度}&#x3D;\frac{屏幕的x差分辨率}{摄像机到准星的距离分辨率}<br>$$</p>
+<h2 id="不需要矩阵"><a href="#不需要矩阵" class="headerlink" title="不需要矩阵"></a>不需要矩阵</h2><p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201221928872.png" alt="image-20220122192831457"><br>$$<br>摄像机到准星的距离分辨率&#x3D;\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}<br>$$<br>$$<br>\tan{x差角度}&#x3D;\frac{屏幕的x差分辨率}{摄像机到准星的距离分辨率}<br>$$</p>
 <p>$$<br>\tan{x差角度}&#x3D;\frac{屏幕的x差分辨率}{\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}}<br>$$</p>
 <p>$$<br>屏幕的x差分辨率&#x3D;\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}\times\tan{x差角度}<br>$$</p>
 <p>因为屏幕的左上角为(0,0)，向右为x变大，向下为y变大，因此可知：</p>
 <p><strong>屏幕上指向敌人的x坐标</strong>就是:<strong>屏幕的x差分辨率+水平分辨率&#x2F;2</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201221515481.png" alt="image-20220122151558943"><br>$$<br>\frac{垂直FOV}{水平FOV}&#x3D;\frac{垂直分辨率}{水平分辨率}<br>$$<br>$$<br>屏幕的y差分辨率&#x3D;\frac{\frac{屏幕垂直分辨率}{2}}{\tan{\frac{垂直FOV}{2}}}\times\tan{y差角度}<br>$$</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202201221515481.png" alt="image-20220122151558943"><br>$$<br>\frac{垂直FOV}{水平FOV}&#x3D;\frac{垂直分辨率}{水平分辨率}<br>$$<br>$$<br>屏幕的y差分辨率&#x3D;\frac{\frac{屏幕垂直分辨率}{2}}{\tan{\frac{垂直FOV}{2}}}\times\tan{y差角度}<br>$$</p>
 <p>$$<br>屏幕的y差分辨率&#x3D;\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}\times\tan{y差角度}<br>$$</p>
 <p><strong>屏幕上指向敌人的y坐标</strong>就是:<strong>屏幕的y差分辨率+垂直分辨率&#x2F;2</strong></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>$$<br>屏幕坐标X&#x3D;\frac{\frac{屏幕水平分辨率}{2}}{\tan{\frac{水平FOV}{2}}}\times\tan{x差角度}+\frac{水平分辨率}{2}<br>$$</p>
@@ -396,14 +412,14 @@
 </blockquote>
 <p><strong>NDC坐标</strong>(标准化设备坐标)</p>
 <p>就是将剪辑坐标的范围缩小至-1到1,如图:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203211338236.png" alt="img"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203211338236.png" alt="img"></p>
 <p><strong>世界坐标–&gt;剪辑坐标–&gt;NDC坐标</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//世界坐标转换为剪辑坐标(剪辑坐标和分辨率没有任何关系)</span></span><br><span class="line"><span class="comment">//世界坐标  *     矩阵</span></span><br><span class="line">                a0  a1  a2  a3</span><br><span class="line">x,y,z,w   乘以   a4  a5  a6  a7</span><br><span class="line">                a8  a9  a10 a11</span><br><span class="line">                a12 a13 a14 a15</span><br><span class="line">                  </span><br><span class="line">剪辑坐标x   =   a0*x+a4*y+a8*z+a12*w</span><br><span class="line">剪辑坐标y   =   a1*x+a5*y+a9*z+a13*w</span><br><span class="line">剪辑坐标z   =   a2*x+a6*y+a10*z+a14*w</span><br><span class="line">剪辑坐标w   =   a3*x+a7*y+a11*z+a15*w</span><br><span class="line"><span class="comment">//剪辑坐标w如果小于0表示在屏幕外!!!!!!!!!!!!!!!!!!!!!!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//剪辑坐标转换为NDC坐标</span></span><br><span class="line">NDC.x=剪辑坐标x/剪辑坐标w</span><br><span class="line">NDC.y=剪辑坐标y/剪辑坐标w</span><br><span class="line">NDC.z=剪辑坐标z/剪辑坐标w <span class="comment">//无用                 </span></span><br></pre></td></tr></table></figure>
 
 <p><strong>NDC坐标–&gt;屏幕坐标</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203211629382.png" alt="捕获"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203211629382.png" alt="捕获"></p>
 <p>实际上就是坐标系的转换,NDC坐标系转换成屏幕分辨率坐标系.</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203211712682.jpeg" alt="截屏2022-03-21 17.12.02"  />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203211712682.jpeg" alt="截屏2022-03-21 17.12.02"  />
 $$
 \frac{目标点的NDC坐标X}{2}=\frac{屏幕坐标差x}{显示器分辨率宽}
 \\
@@ -425,7 +441,7 @@ $$
 <p>需要找到x,y轴坐标对应的朝向。</p>
 <h1 id="矩阵补充"><a href="#矩阵补充" class="headerlink" title="矩阵补充"></a>矩阵补充</h1><p>通常情况下Dx9中会采用4*4的矩阵</p>
 <p>这里说的横矩阵是列主序,列矩阵是行主序</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210514115116708.png" alt="image-20210514115116708"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210514115116708.png" alt="image-20210514115116708"></p>
 <p> &#x2F;&#x2F;荒野行动横矩阵第3排，第4列的数，光标朝天看的时候是1，朝地下是-1。（此结论通用性待验证）</p>
 <p>补充一个3*4列矩阵</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X X X x</span><br><span class="line">X X X y</span><br><span class="line">X X X z</span><br><span class="line"><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> 比例</span><br><span class="line"><span class="number">3</span>*<span class="number">4</span>（列矩阵）</span><br></pre></td></tr></table></figure>
@@ -486,20 +502,20 @@ $$
 <p>无限子弹通过对子弹数下写入断就可以断到,断到的位置往上翻找子弹数减少1,修改此处可以无限子弹.往上追上层call一定会追到射击call,射击call附近应该有射速相关的参数,可能是射击间隔作为参数,也可能是别的;(老游戏每个枪可能都有一个射击call,但是往上追会追到一个通用的射击call).每个call进行屏蔽,来确定哪个是负责后坐力的,简单粗暴把负责后坐力的nop掉,将call改成<code>add esp,参数字节数</code>,就实现了没有后坐力.找无敌可以到血量下写入断点,断到的位置的call很可能就是扣血call,nop掉就不扣血了.放雷的call中,nop掉[所有可能跳过将雷的数量减一放入某地址的操作],就实现了疯狂丢雷无间隔.</p>
 <hr>
 <p>逆向注意点:下图这样的lea一个堆栈地址的情况,要这么处理</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204171641184.jpeg" alt="逆向注意点"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204171641184.jpeg" alt="逆向注意点"></p>
 <h1 id="CS1-6的逆向"><a href="#CS1-6的逆向" class="headerlink" title="CS1.6的逆向"></a>CS1.6的逆向</h1><h2 id="找内存数据"><a href="#找内存数据" class="headerlink" title="找内存数据"></a>找内存数据</h2><p>通过客户端或服务端来搜数据排查服务端的模块是哪一个</p>
 <p>找血量数据如下:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202202161531874.png" alt="00001"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202202161531874.png" alt="00001"></p>
 <p>只有蓝标数据真正可以修改目标血量,说明这个数据是服务端数据,到x32dbg中下写入断点来确定服务器模块,击中目标的瞬间断到下图位置</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202202161531371.png" alt="213213123"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202202161531371.png" alt="213213123"></p>
 <p>观察红线标记的模块,可知服务器模块应该就是mp.dll,可对其他数据进行下断确定不经过该模块.</p>
 <p>回头发现,只有鼠标经过指向目标才变回来的是个基地址,第三行数据往上追的过程中经过了mp.dll模块,因此最终确定到第二行数据才是真是数据,而不是第三行.</p>
 <p>在x32dbg中追第二行数据:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202202161600416.png" alt="999999999999"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202202161600416.png" alt="999999999999"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">得出队友血量的地址=[<span class="number">0x1A17CB8</span>]*<span class="number">0x68</span>+<span class="number">0x1A2565C</span></span><br><span class="line"><span class="comment">//可见0x1A17CB8地址存的是2(游戏中鼠标指向不同的人,下标会改变,从0开始),可能是一个下标.敌人存的血量填的是100即0x64,原因是敌人血量不可见,同时也看不到自己的血量(为0)</span></span><br><span class="line">  因此遍历实体血量:n*<span class="number">0x68</span>+<span class="number">0x1A2565C</span></span><br></pre></td></tr></table></figure>
 
 <p>比对数组项之间的差异,结构体大小为0x68(公式分析得出),-0x30的目的是因为我们找到的有可能并不是数组项的起始地址</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202202161654479.png" alt="987887"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202202161654479.png" alt="987887"></p>
 <p>0和5下标是边界外,游戏目前数据只有1~4,1,2,4是队友,3是敌人</p>
 <p>打死队友发现其对应的生命不归零,因此需要找死亡标志</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假如我们设n*0x68+0x1A2565C-0x68为起始数组项地址(-0x68是为了使后面的偏移项都是正数)</span></span><br><span class="line"><span class="comment">//n*0x68+h1.exe+0x62565C-0x68    n下标从1开始(减掉68使得下标本来&quot;从0开始&quot;变成&quot;从1开始&quot;)</span></span><br><span class="line">+<span class="number">0x4E</span> BYTE  	<span class="comment">//阵容,1表示恐怖分子,2表示反恐精英,0是观察者</span></span><br><span class="line">+<span class="number">0x60</span>	BYTE		<span class="comment">//死亡标记:1表示死亡,0表示活着,超出范围的此项也为1</span></span><br><span class="line">+<span class="number">0x68</span> DWORD  	<span class="comment">//血量,死亡不清零,敌人和自己的血量均没有意义</span></span><br></pre></td></tr></table></figure>
@@ -510,15 +526,15 @@ $$
 <p>并且在其附近发现了目标的名称</p>
 <p>下硬件访问断点开始追该地址</p>
 <p>断在的两个位置(分别是下图两次标黄)往上追都不好追,追丢了.但可以猜测出最末一层的结构体偏移为0x188</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202202162322962.png" alt="54646546"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202202162322962.png" alt="54646546"></p>
 <p>尝试不直接断坐标数据,而是断前后几个数据之一,断到的位置往上追一层偏移,放开断点后发现上一层偏移的地址中存的值变成了0,即这个地址是个临时的地址,也不能用</p>
 <p>尝试在名字下访问断,断下的位置发现有一个基地址偏移,因此大概率是可以追到数据结构的.</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202202162313907.png" alt="747474"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202202162313907.png" alt="747474"></p>
 <p>上图可知:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//遍历名字算式为:0x2F5A6C8+0x24C*N</span></span><br><span class="line"><span class="comment">//N的范围为0~31,指向为0表示遍历结束</span></span><br></pre></td></tr></table></figure>
 
 <p>确定结构体首地址:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202202162327528.png" alt="786474345"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202202162327528.png" alt="786474345"></p>
 <p>上图可知坐标比名字大0x84,前面有知道名字的末层偏移是0x188</p>
 <p>因此名字的末层偏移为0x104</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//因此结构体数组首地址为0x2F5A6C8-0x104=0x2F5A5C4</span></span><br><span class="line"><span class="comment">//所以结构体数组首地址算式为h1.exe+0x1B5A5C4+0x24C*N</span></span><br><span class="line"><span class="comment">//超出人物数量的结构体数组项全为0,加入的人物再把人物删除掉后并不会初始化该数组,但是名称最前面的一个字节会变成00</span></span><br><span class="line">+<span class="number">0x0</span>  	DWORD		<span class="comment">//等于0结束遍历(中间可能出现空坐标,但该项也一定不为空)&gt;&gt;&gt;注意遍历要跳过自己,因为自己该项也是0	</span></span><br><span class="line">+<span class="number">0x104</span>	ASCII		<span class="comment">//名称		名字为空的话,代表这个结构没有玩家,或玩家已死亡</span></span><br><span class="line">+<span class="number">0x130</span>  ASCII   <span class="comment">//人物模型字符串    比如:guerilla,leet等等等等</span></span><br><span class="line">+<span class="number">0x180</span>  FLOAT   <span class="comment">//该数值不断循环从0加到60,仅当处于本人范围内才变化,范围外不变化		可用于判断对应玩家是否处在本人坐标数据获取范围内</span></span><br><span class="line">+<span class="number">0x188</span>  FLOAT		X坐标   <span class="comment">//坐标超出范围不变化,变化说明在范围内;自己的坐标不变化</span></span><br><span class="line">+<span class="number">0x18C</span>	FLOAT		Y坐标</span><br><span class="line">+<span class="number">0x190</span>	FLOAT		Z坐标		<span class="comment">//坐标为0表示该项不存在,观察发现数组不一定是顺序存放</span></span><br></pre></td></tr></table></figure>
@@ -535,21 +551,21 @@ $$
 
 <h2 id="找矩阵"><a href="#找矩阵" class="headerlink" title="找矩阵"></a>找矩阵</h2><p>[找矩阵方法总结](# 找矩阵总结)</p>
 <p>按照上述方法找到的矩阵地址为: <code>0x2c20100</code>  &#x3D;  <code>hl.exe+1820100</code></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202203281715489.png" alt="image-20220328171548251"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202203281715489.png" alt="image-20220328171548251"></p>
 <h1 id="口袋西游逆向"><a href="#口袋西游逆向" class="headerlink" title="口袋西游逆向"></a>口袋西游逆向</h1><p>口袋西游逆向参见详见51和53课</p>
 <p>骨骼和模型不一定有绝对坐标,但是一般都有相对坐标</p>
 <h2 id="基本数据"><a href="#基本数据" class="headerlink" title="基本数据"></a>基本数据</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//人物数据</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">3</span>C    <span class="comment">//X</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">40</span>    <span class="comment">//Y</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">44</span>    <span class="comment">//Z</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">560</span>   <span class="comment">//X中心点</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">564</span>   <span class="comment">//Y中心点</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">568</span>   <span class="comment">//Z中心点</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">56</span>C   <span class="comment">//X中心点到对顶点的X差</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">570</span>   <span class="comment">//Y中心点到对顶点的Y差</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">574</span>   <span class="comment">//Z中心点到对顶点的Z差</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">578</span>   <span class="comment">//立方体下顶点X坐标(斜对角)</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">57</span>C   <span class="comment">//立方体下顶点Y坐标(斜对角)</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">580</span>   <span class="comment">//立方体下顶点Z坐标(斜对角)</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">584</span>   <span class="comment">//立方体上顶点X坐标(斜对角)</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">588</span>   <span class="comment">//立方体上顶点Y坐标(斜对角)</span></span><br><span class="line">[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">28</span>]+<span class="number">58</span>C   <span class="comment">//立方体上顶点Z坐标(斜对角)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//周围遍历    N为[0,对象数量)</span></span><br><span class="line">[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">5</span>C   <span class="comment">//对象数量</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">3</span>C   <span class="comment">//周围对象X</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">40</span>   <span class="comment">//周围对象Y</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">44</span>   <span class="comment">//周围对象Z</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+ED   <span class="comment">//死亡标志位,1为死亡(BYTE)</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">138</span>  <span class="comment">//周围对象血量(未被攻击过是0)</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">2</span>C4  <span class="comment">//X中心点</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">2</span>C8  <span class="comment">//Y中心点</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">2</span>CC  <span class="comment">//Z中心点</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">2</span>D0  <span class="comment">//X中心点到对顶点的X差</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">2</span>D4  <span class="comment">//Y中心点到对顶点的Y差</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">2</span>D8  <span class="comment">//Z中心点到对顶点的Z差</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">2</span>DC  <span class="comment">//立方体下顶点X坐标(斜对角)</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">2E0</span>  <span class="comment">//立方体下顶点Y坐标(斜对角)</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">2E4</span>  <span class="comment">//立方体下顶点Z坐标(斜对角)</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">2E8</span>  <span class="comment">//立方体上顶点X坐标(斜对角)</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">2</span>EC  <span class="comment">//立方体上顶点Y坐标(斜对角)</span></span><br><span class="line">[[[[[[[D0DF1C]+<span class="number">1</span>C]+<span class="number">8</span>]+<span class="number">20</span>]+<span class="number">58</span>]+N*<span class="number">4</span>]+<span class="number">4</span>]+<span class="number">2F</span>0  <span class="comment">//立方体上顶点Z坐标(斜对角)</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202203301720046.png" alt="image-20220330172058752"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202203301720046.png" alt="image-20220330172058752"></p>
 <h2 id="找矩阵-1"><a href="#找矩阵-1" class="headerlink" title="找矩阵"></a>找矩阵</h2><p>[找矩阵方法总结](# 找矩阵总结)</p>
 <p>矩阵头地址为:  <code>[[[ELEMENTCLIENT.EXE+0x90DF1C]+14]+8]+E8</code></p>
 <p><code>[ELEMENTCLIENT.EXE+92E5D0]+E8</code>  也可以</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202203281641926.png" alt="image-20220328164120672"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202203281641926.png" alt="image-20220328164120672"></p>
 <h1 id="突袭的逆向"><a href="#突袭的逆向" class="headerlink" title="突袭的逆向"></a>突袭的逆向</h1><h2 id="基本数据-1"><a href="#基本数据-1" class="headerlink" title="基本数据"></a>基本数据</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//目标血2  [[[587c10]+n*4]+0xEC]  n为[0,[587C18]-1]</span></span><br><span class="line"><span class="comment">//人物数据</span></span><br><span class="line">[<span class="number">587</span>C0C]+<span class="number">28</span>   <span class="comment">//X</span></span><br><span class="line">[<span class="number">587</span>C0C]+<span class="number">2</span>C   <span class="comment">//Y</span></span><br><span class="line">[<span class="number">587</span>C0C]+<span class="number">30</span>   <span class="comment">//Z</span></span><br><span class="line">[<span class="number">587</span>C0C]+<span class="number">34</span>   <span class="comment">//水平朝向顺时针递增360</span></span><br><span class="line">[<span class="number">587</span>C0C]+<span class="number">38</span>   <span class="comment">//竖直朝向-90到90,从下到上</span></span><br><span class="line">[<span class="number">587</span>C0C]+EC   <span class="comment">//角色血量(血量小于等于0为死亡)</span></span><br><span class="line">  </span><br><span class="line"><span class="comment">//周围遍历    N为[1,玩家数量)</span></span><br><span class="line"><span class="number">587</span>C18  <span class="comment">//玩家数量</span></span><br><span class="line">[[<span class="number">587</span>C10]+n*<span class="number">4</span>]+<span class="number">4</span>    <span class="comment">//头X</span></span><br><span class="line">[[<span class="number">587</span>C10]+n*<span class="number">4</span>]+<span class="number">8</span>    <span class="comment">//头Y</span></span><br><span class="line">[[<span class="number">587</span>C10]+n*<span class="number">4</span>]+C    <span class="comment">//头Z</span></span><br><span class="line">[[<span class="number">587</span>C10]+n*<span class="number">4</span>]+<span class="number">28</span>   <span class="comment">//X</span></span><br><span class="line">[[<span class="number">587</span>C10]+n*<span class="number">4</span>]+<span class="number">2</span>C   <span class="comment">//Y</span></span><br><span class="line">[[<span class="number">587</span>C10]+n*<span class="number">4</span>]+<span class="number">30</span>   <span class="comment">//Z</span></span><br><span class="line">[[<span class="number">587</span>C10]+n*<span class="number">4</span>]+<span class="number">34</span>   <span class="comment">//水平朝向顺时针递增360</span></span><br><span class="line">[[<span class="number">587</span>C10]+n*<span class="number">4</span>]+<span class="number">38</span>   <span class="comment">//竖直朝向-90到90,从下到上</span></span><br><span class="line">[[<span class="number">587</span>C10]+n*<span class="number">4</span>]+<span class="number">50</span>   <span class="comment">//身高</span></span><br><span class="line">[[<span class="number">587</span>C10]+n*<span class="number">4</span>]+EC   <span class="comment">//角色血量(血量小于等于0为死亡)</span></span><br><span class="line"><span class="comment">//未分析阵营</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="找矩阵-2"><a href="#找矩阵-2" class="headerlink" title="找矩阵"></a>找矩阵</h2><p>[找矩阵方法总结](# 找矩阵总结)</p>
 <p>矩阵头地址: <code>ac_client.exe+17AFE0</code></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202203281721643.png" alt="image-20220328172108435"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202203281721643.png" alt="image-20220328172108435"></p>
 <h1 id="UE4逆向"><a href="#UE4逆向" class="headerlink" title="UE4逆向"></a>UE4逆向</h1><h2 id="UE4引擎特点"><a href="#UE4引擎特点" class="headerlink" title="UE4引擎特点"></a>UE4引擎特点</h2><ul>
 <li>增加新对象时,即更换物品时(物品从不可见无中生有)内存几乎一直在增加</li>
 <li>世界中所有万物都在数组结构中,存在数组数量(物品从不可见无中生有的情况,数量会增加,游戏只要不退出而是当前地图重新开始,数量也会增加;只有游戏退出或更换地图重新开始,数量才会重置,同时存数组数量的地址也会发生变化)</li>
@@ -561,11 +577,11 @@ $$
 
 <p>在CE结构对比工具中,因为z后的0和x下的1被合并误识别为double类型,因此是如图:</p>
 <p>在内存中:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202203311945720.png" alt="image-20220331194527584"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202203311945720.png" alt="image-20220331194527584"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//UE4的矩阵的前面不远处都符合(不绝对):</span></span><br><span class="line"><span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line"><span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span></span><br><span class="line"><span class="number">1</span> <span class="number">0</span>(全为浮点数)</span><br><span class="line"></span><br><span class="line"><span class="comment">//1的浮点数在内存中为:0x3F800000</span></span><br><span class="line"><span class="comment">//UE4矩阵在内存中的特征码:(不绝对)</span></span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">80</span> <span class="number">3F</span> <span class="number">00</span> <span class="number">00</span> <span class="number">80</span> <span class="number">3F</span> <span class="number">00</span> <span class="number">00</span> <span class="number">80</span> <span class="number">3F</span> <span class="number">00</span> <span class="number">00</span> <span class="number">80</span> <span class="number">3F</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">80</span> <span class="number">3F</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">80</span> <span class="number">3F</span> <span class="number">00</span> <span class="number">00</span> <span class="number">80</span> <span class="number">3F</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br></pre></td></tr></table></figure>
 
 <p>UE4矩阵:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202203311927800.png" alt="image-20220331192721545"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202203311927800.png" alt="image-20220331192721545"></p>
 <ul>
 <li>上图中红框第三列0,0,0,x永远不变.(不绝对)</li>
 <li>四处走动时,最后一行除了1其他3个都变(沿着x,y走两个值改变);跳跃时,最后一行除了1和第一个,其他两个变(不绝对)</li>
@@ -573,19 +589,19 @@ $$
 <li>矩阵下方那排都是0,0,0,1?</li>
 </ul>
 <p>参考pubg矩阵:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204021406705.png" alt="image-20220402140648459"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204021406705.png" alt="image-20220402140648459"></p>
 <h2 id="Battle-Royale-Trainer逆向"><a href="#Battle-Royale-Trainer逆向" class="headerlink" title="Battle Royale Trainer逆向"></a>Battle Royale Trainer逆向</h2><p>吃鸡模拟器</p>
-<h3 id="基本数据-2"><a href="#基本数据-2" class="headerlink" title="基本数据"></a>基本数据</h3><p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204051307338.jpeg" alt="笔记图"></p>
+<h3 id="基本数据-2"><a href="#基本数据-2" class="headerlink" title="基本数据"></a>基本数据</h3><p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204051307338.jpeg" alt="笔记图"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//COUNT 世界数组的项数量(该数组中还包含所有的报废对象,要找个标志加以区分,如果要找到玩家们,还需要玩家标志)</span></span><br><span class="line">[[<span class="string">&quot;BattleRoyaleTrainer-Win64-Shipping.exe&quot;</span>+<span class="number">2</span>AF0FB8]+<span class="number">138</span>]+<span class="number">0xB8</span><span class="comment">//CE取巧</span></span><br><span class="line"><span class="comment">//x64dbg追到头为:</span></span><br><span class="line">[[[[[<span class="string">&quot;BattleRoyaleTrainer-Win64-Shipping.exe&quot;</span>+<span class="number">2</span>AD9F30]+[([<span class="string">&quot;BattleRoyaleTrainer-Win64-Shipping.exe&quot;</span>+<span class="number">2B</span>00648]+<span class="number">40</span>)]的低<span class="number">4</span>字节*<span class="number">3</span>*<span class="number">8</span>]+<span class="number">20</span>]+c0]+<span class="number">138</span>]+<span class="number">0xB8</span></span><br><span class="line">  </span><br><span class="line"><span class="comment">//COUNT地址-8就是:数组起始地址的地址:</span></span><br><span class="line">[[<span class="string">&quot;BattleRoyaleTrainer-Win64-Shipping.exe&quot;</span>+<span class="number">2</span>AF0FB8]+<span class="number">138</span>]+<span class="number">0xB0</span></span><br><span class="line"><span class="comment">//检查发现,本人对象首地址也在该世界数组中</span></span><br><span class="line">  </span><br><span class="line"><span class="comment">//世界中对象首地址:(N为[0,COUNT-1])</span></span><br><span class="line">[[[<span class="string">&quot;BattleRoyaleTrainer-Win64-Shipping.exe&quot;</span>+<span class="number">2</span>AF0FB8]+<span class="number">138</span>]+<span class="number">0xB0</span>]+N*<span class="number">8</span></span><br><span class="line">  </span><br><span class="line"><span class="comment">//坐标地址:</span></span><br><span class="line">[对象首地址+<span class="number">158</span>]+<span class="number">190</span>   X</span><br><span class="line">[对象首地址+<span class="number">158</span>]+<span class="number">194</span>   Y</span><br><span class="line">[对象首地址+<span class="number">158</span>]+<span class="number">198</span>   Z</span><br><span class="line">[[世界对象数组地址+n*<span class="number">8</span>]+<span class="number">158</span>]+<span class="number">190</span>     X</span><br><span class="line">[[世界对象数组地址+n*<span class="number">8</span>]+<span class="number">158</span>]+<span class="number">194</span>     Y</span><br><span class="line">[[世界对象数组地址+n*<span class="number">8</span>]+<span class="number">158</span>]+<span class="number">198</span>     Z</span><br><span class="line"><span class="comment">//宏观解读:</span></span><br><span class="line">  [世界对象地址+n*<span class="number">8</span>]得到的是对象结构首地址,再+<span class="number">158</span>]进入一个存放了坐标信息的结构首地址.再+<span class="number">190</span>]取到坐标x或y值</span><br><span class="line">  </span><br><span class="line"><span class="comment">//因为世界数组项非常杂乱,什么都有,因此需要找人物标志和作废对象标志</span></span><br><span class="line"><span class="comment">//找人物标志.找人物标志首先要知道人物对象首地址,可以是自己的,也可以是敌人;通过自己的数据向上追几层看看有没有多个对象存在(可以通过宏观解读去找可以断到人物的位置)</span></span><br><span class="line"><span class="comment">//通过自己的数据判断是否有访问断点往上追两层可以追到断下几个对象地址的情况(如下图),但由于该游戏x64dbg访问硬断会崩溃,因此采取CE进行访问代码扫描,在到x64dbg中依次分析,以此找到人物对象;再将人物对象和其他对象在CE中做对比分析.</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204041829938.png" alt="image-20220404182919564"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204041829938.png" alt="image-20220404182919564"></p>
 <p>此位置可以断到多个人物对象,通过查看对应坐标可确定是人物对象地址.通过上图黄标处多次断下的rcx可以得到所有人物对象地址.</p>
-<h4 id="找人物特征"><a href="#找人物特征" class="headerlink" title="找人物特征"></a>找人物特征</h4><p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204041754643.jpeg" alt="笔记图"></p>
+<h4 id="找人物特征"><a href="#找人物特征" class="headerlink" title="找人物特征"></a>找人物特征</h4><p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204041754643.jpeg" alt="笔记图"></p>
 <p>用ce比对工具如上图(前一组两列是两个人物,后一组是其他对象),黄标处那两个很可能是人物特征</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果:</span></span><br><span class="line">	[对象首地址+<span class="number">0</span>]==  BattleRoyaleTrainer-Win64-Shipping.exe + <span class="number">0x1D45740</span><span class="comment">//虚表,这个条件更稳定更靠谱</span></span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">	[对象首地址+<span class="number">0xB9</span>]==<span class="number">0x200</span>(即十进制<span class="number">512</span>)<span class="comment">//等等还有很多条件也可以,不止一种标志,比如0x50偏移等等</span></span><br><span class="line"><span class="comment">//则:</span></span><br><span class="line">	可判断是人物</span><br></pre></td></tr></table></figure>
 
 <p><strong>[ 重点 ]</strong>  <strong>对象首地址+0的位置,代表的指针往往是指向虚表的(在非虚继承的情况下，虚函数表指针是存在于类的顶部的).其一样代表表示对象具有同样的成员函数(即对象具有同样的行为模板),因此[对象首地址+0]是最好用于判断是否同类对象的偏移.</strong></p>
-<h4 id="排除做废对象"><a href="#排除做废对象" class="headerlink" title="排除做废对象"></a>排除做废对象</h4><p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204051047668.jpeg" alt="笔记图"></p>
+<h4 id="排除做废对象"><a href="#排除做废对象" class="headerlink" title="排除做废对象"></a>排除做废对象</h4><p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204051047668.jpeg" alt="笔记图"></p>
 <p>类似+0和+18和+35这样的位置都可以判断</p>
 <p>我们发现做废对象,虚表指针也会改变,因此只需要使用上面人物标志的判断方式就可以避开做废对象.</p>
 <h4 id="人物存活判断"><a href="#人物存活判断" class="headerlink" title="人物存活判断"></a>人物存活判断</h4><p>CE搜索找到自身血量的地址,然后通过上面找到的自己对象地址,通过<code>自己血量地址-自己对象首地址</code>得到血量偏移**(角色对象附近地址的属性都可以直接这样尝试定位,甚至可以到CE搜所有相同结果,找所有结果中最靠近对象地址附近的结果,然后通过 <code>所有结果中最靠近对象地址-对象首地址</code>来得到猜测的偏移.这时候直接在最靠近对象的地址下访问断,看能不能断到偏移就是猜测偏移的地址 )**</p>
@@ -603,30 +619,30 @@ $$
 <p>骨骼数据同样在人物对象下</p>
 <p>骨骼数据往往是即使人站着的位置不动,骨骼数据也会轻微晃动(人物在微微晃动)</p>
 <p>骨骼坐标数据如下:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204061736996.jpeg" alt="捕获"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204061736996.jpeg" alt="捕获"></p>
 <p>黄标的是骨骼相对人物参考点坐标的偏移坐标;黄标上一行应该是骨骼的朝向信息,上图也可以看出这个骨骼的结构是个数组,每个re数组项占0x30字节.因此外围还存在数组地址和数组数量</p>
 <p><strong>[找的过程]</strong>    找到相对骨骼坐标地址后访问断往上追,追到下面地址处:</p>
 <p>00007FF7A1EB25D9地址截图:</p>
 <p>null</p>
 <p>追到此处继续往上追发现非常难追了,尝试用ce分析.      <a href="#dbg%E9%85%8D%E5%90%88ce%E6%89%BE%E4%B8%8B%E5%B1%9E%E5%81%8F%E7%A7%BB%E7%9A%84%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7">此处用到的找偏移的理论方法</a></p>
 <p>rbx有两个值,均到CE中搜索,发现其中一个有存放他的地址离对象首地址非常近.</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204091415645.jpeg" alt="捕获"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204091415645.jpeg" alt="捕获"></p>
 <p>上图猜测偏移结果为378</p>
 <p>证实:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204091425024.jpeg" alt="捕获"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204091425024.jpeg" alt="捕获"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[[对象头地址+<span class="number">378</span>]+<span class="number">698</span>+[[对象头地址+<span class="number">378</span>]+<span class="number">6</span>DC]*<span class="number">10</span>]+n*<span class="number">30</span>+<span class="number">10</span>  <span class="comment">//偏移地址X   n为[1,0x43]</span></span><br><span class="line">[[对象头地址+<span class="number">378</span>]+<span class="number">698</span>+[[对象头地址+<span class="number">378</span>]+<span class="number">6</span>DC]*<span class="number">10</span>]+n*<span class="number">30</span>+<span class="number">14</span>  <span class="comment">//偏移地址Y   n为[1,0x43]</span></span><br><span class="line">[[对象头地址+<span class="number">378</span>]+<span class="number">698</span>+[[对象头地址+<span class="number">378</span>]+<span class="number">6</span>DC]*<span class="number">10</span>]+n*<span class="number">30</span>+<span class="number">18</span>  <span class="comment">//偏移地址Z   n为[1,0x43]</span></span><br><span class="line"><span class="comment">//[[对象头地址+378]+6DC]*10]为0或1,但发现,无论是0还是1都是一样的结果</span></span><br><span class="line"><span class="comment">//数组首地址是存在+698,因此数组数量应该也在附近,果然在+6A0位置看到了68(0x44)</span></span><br><span class="line">[对象头地址+<span class="number">378</span>]+<span class="number">6</span>A0    <span class="comment">//n的数量</span></span><br></pre></td></tr></table></figure>
 
 <p>上面找到的只是相对参考点的偏移坐标,因此需要<strong>人物参考点坐标</strong>.可以在到对象[头地址+378]下去找参考点坐标.按照逻辑猜测应该在这里</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[对象头地址+<span class="number">378</span>]+<span class="number">190</span>  <span class="comment">//骨骼基准坐标X</span></span><br><span class="line">[对象头地址+<span class="number">378</span>]+<span class="number">194</span>  <span class="comment">//骨骼基准坐标Y</span></span><br><span class="line">[对象头地址+<span class="number">378</span>]+<span class="number">198</span>  <span class="comment">//骨骼基准坐标Z</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204091521692.jpeg" alt="捕获"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204091521692.jpeg" alt="捕获"></p>
 <p>骨骼基准坐标大概率比人物位置坐标要低,一般是人物脚下的位置.还是实际到游戏中绘制一下看看是不是骨骼基准坐标最可靠.</p>
 <h3 id="找朝向"><a href="#找朝向" class="headerlink" title="找朝向"></a>找朝向</h3><p>水平朝向值有-PI到+PI,0到360,-1到+1,非常多种.但很少出现特别大的值.</p>
 <p>通过CE简单的搜索后,再通过手动修改来确定找到的是不是正确朝向</p>
 <p>断到两个点,通过目标对象首地址配合CE找到目标数据  <a href="#dbg%E9%85%8D%E5%90%88ce%E6%89%BE%E4%B8%8B%E5%B1%9E%E5%81%8F%E7%A7%BB%E7%9A%84%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7">此处用到的找偏移的理论方法</a></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[角色头地址+<span class="number">350</span>]+<span class="number">36</span>C    <span class="type">float</span>    <span class="comment">//水平朝向地址</span></span><br><span class="line"><span class="comment">//水平朝向值0~360,地图正东为0/360,顺时针递增</span></span><br><span class="line">[角色头地址+<span class="number">350</span>]+<span class="number">368</span>    <span class="type">float</span>    <span class="comment">//垂直朝向地址</span></span><br><span class="line"><span class="comment">//仰角从0~89.9   0为水平值</span></span><br><span class="line"><span class="comment">//俯角从360~270  360为水平值</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="找矩阵-3"><a href="#找矩阵-3" class="headerlink" title="找矩阵"></a>找矩阵</h3><p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202203311927800.png" alt="image-20220331192721545"></p>
+<h3 id="找矩阵-3"><a href="#找矩阵-3" class="headerlink" title="找矩阵"></a>找矩阵</h3><p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202203311927800.png" alt="image-20220331192721545"></p>
 <p>矩阵地址:   <code>[[&quot;BattleRoyaleTrainer-Win64-Shipping.exe&quot;+2ADA268]+24D08*8+8]+0x280</code>   </p>
 <p>其中24D08的来源涉及非常复杂的加密流程,但是他是不变的.</p>
 <h1 id="上面项目代码盘点"><a href="#上面项目代码盘点" class="headerlink" title="上面项目代码盘点"></a>上面项目代码盘点</h1><ul>
@@ -691,7 +707,7 @@ $$
 
 <h2 id="逃离塔科夫逆向"><a href="#逃离塔科夫逆向" class="headerlink" title="逃离塔科夫逆向"></a>逃离塔科夫逆向</h2><p>**[1]**先追人物坐标</p>
 <p>经过一个逆向注意点:下图这样的lea一个堆栈地址的情况,要如下图这么处理</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204171641184.jpeg" alt="逆向注意点"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202204171641184.jpeg" alt="逆向注意点"></p>
 <p>未能最后,但追到下面的偏移:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[[[[[rcx+<span class="number">40</span>]+<span class="number">20</span>]+<span class="number">10</span>]+<span class="number">10</span>]+<span class="number">38</span>]+<span class="number">18</span>]    <span class="comment">//角色坐标X地址</span></span><br></pre></td></tr></table></figure>
 
@@ -739,6 +755,23 @@ $$
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ZEROKO14
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://zeroko14.gitee.io/blog/1d654673/" title="FPS逆向">http://zeroko14.gitee.io/blog/1d654673/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -770,6 +803,7 @@ $$
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -875,6 +909,12 @@ $$
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">ZEROKO14</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">518k</span>
 </div>
 
         
@@ -912,6 +952,8 @@ $$
 
   
   <script src="/blog/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/blog/lib/velocity/velocity.min.js"></script>
   <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
@@ -924,6 +966,8 @@ $$
 
 
 <script src="/blog/js/next-boot.js"></script>
+
+<script src="/blog/js/bookmark.js"></script>
 
 
   <script defer src="/blog/lib/three/three.min.js"></script>
@@ -948,6 +992,19 @@ $$
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   
@@ -1008,6 +1065,27 @@ $$
     
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '67c7a42cef54843d55de',
+      clientSecret: 'ab1b9b51ee90c36803ecfaae6bc72ff75494f245',
+      repo        : 'gitalk',
+      owner       : 'che77a38',
+      admin       : ['che77a38'],
+      id          : 'e62252347b43c1efa6deef4d4cb280e7',
+      proxy       : 'https://cors-anywhere.1l1.icu/https://github.com/login/oauth/access_token',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>

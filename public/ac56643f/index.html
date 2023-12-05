@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":{"gitalk":{"order":-2}},"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="加解密相关">
 <meta property="og:type" content="article">
 <meta property="og:title" content="加密与解密">
-<meta property="og:url" content="http://zeroko14.gitee.io/ac56643f/index.html">
+<meta property="og:url" content="http://zeroko14.gitee.io/blog/ac56643f/index.html">
 <meta property="og:site_name" content="ZEROKO14的个人博客">
 <meta property="og:description" content="加解密相关">
 <meta property="og:locale" content="zh_CN">
@@ -49,7 +49,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202212241530981.png">
 
-<link rel="canonical" href="http://zeroko14.gitee.io/ac56643f/">
+<link rel="canonical" href="http://zeroko14.gitee.io/blog/ac56643f/">
 
 
 <script id="page-configurations">
@@ -192,6 +192,8 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -206,7 +208,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/ac56643f/">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/ac56643f/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/avatar.gif">
@@ -248,6 +250,20 @@
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>9.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>9 分钟</span>
             </span>
 
         </div>
@@ -266,7 +282,7 @@
 <li>socket通信 —- 如 socket API编程</li>
 <li>http协议通信 —- 如B&#x2F;S模式</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202212241530981.png" alt="image-20221224153050288"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202212241530981.png" alt="image-20221224153050288"></p>
 <p>为保证网络通信时数据的安全,就需要对数据进行加密</p>
 <h2 id="常用的加密的方式"><a href="#常用的加密的方式" class="headerlink" title="常用的加密的方式"></a>常用的加密的方式</h2><h3 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h3><p>加密和解密使用的是同一个秘钥</p>
 <ul>
@@ -292,7 +308,7 @@
 <li>秘钥生成,秘钥校验</li>
 <li>秘钥生成模块应该与实际使用该模块的项目关联程度要低,耦合度要低,一个模块的修改不要影响其他模块</li>
 </ul>
-<h2 id="常用安全算法"><a href="#常用安全算法" class="headerlink" title="常用安全算法"></a>常用安全算法</h2><h3 id="对称加密-1"><a href="#对称加密-1" class="headerlink" title="对称加密"></a>对称加密</h3><h4 id="DES-x2F-3DES"><a href="#DES-x2F-3DES" class="headerlink" title="DES&#x2F;3DES"></a>DES&#x2F;3DES</h4><p>DES-已经被破解</p>
+<h2 id="常用安全算法"><a href="#常用安全算法" class="headerlink" title="常用安全算法"></a>常用安全算法</h2><h3 id="对称加密-1"><a href="#对称加密-1" class="headerlink" title="对称加密"></a>对称加密</h3><h4 id="DES-3DES"><a href="#DES-3DES" class="headerlink" title="DES&#x2F;3DES"></a>DES&#x2F;3DES</h4><p>DES-已经被破解</p>
 <ul>
 <li>要求秘钥长度8字节</li>
 <li>在对数据进行加密之前先对数据按每组8个字节进行分组,然后分段进行加密,最后再将每一段加密的数据进行组合</li>
@@ -356,9 +372,9 @@
 <p>SSL是Secure Sockets Layer（安全套接层协议）的缩写，可以在Internet上提供秘密性传输。Netscape公司在推出第一个Web浏览器的同时，提出了SSL协议标准。其目标是保证两个应用间通信的保密性和可靠性,可在服务器端和用户端同时实现支持。已经成为Internet上保密通讯的工业标准.https协议就用到了SSL,HTTPS协议是由SSL+HTTP协议构建的可进行加密传输,身份认证的网络协议,比http协议安全</p>
 <p>OpenSSL既可以在windows平台下使用,也可以在linux平台下使用,是跨平台的一套加密库</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="win下安装"><a href="#win下安装" class="headerlink" title="win下安装"></a>win下安装</h4><p><a target="_blank" rel="noopener" href="http://slproweb.com/products/Win32OpenSSL.html">OpenSSL win版安装路径</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202212311521546.png" alt="image-20221231152119110"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202212311521546.png" alt="image-20221231152119110"></p>
 <h4 id="win下使用openssl"><a href="#win下使用openssl" class="headerlink" title="win下使用openssl"></a>win下使用openssl</h4><p>设置项目属性,将openssl的头文件目录和库目录添加到当前项目中</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202212311525657.png" alt="image-20221231152435770"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202212311525657.png" alt="image-20221231152435770"></p>
 <ul>
 <li><strong>包含目录</strong>设置为openssl安装目录下的include目录</li>
 <li><strong>库目录</strong>设置为openssl安装目录下的lib目录</li>
@@ -369,8 +385,8 @@
 <li><strong>libssl.lib</strong></li>
 <li><strong>libcrypto.lib</strong></li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202212311543694.png" alt="image-20221231154325461"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202212311543177.png" alt="image-20221231154349203"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202212311543694.png" alt="image-20221231154325461"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202212311543177.png" alt="image-20221231154349203"></p>
 <p>将openssl安装目录<code>/bin</code>目录下的两个动态库拷贝到工作目录下: </p>
 <ul>
 <li><strong><code>libcrypto-1_1-x64.dll</code></strong></li>
@@ -495,16 +511,16 @@
 <iframe width="720" height="360" src="https://player.bilibili.com/player.html?bvid=BV154411L7VT&high_quality=1&danmaku=0&as_wide=1&autoplay=0&" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" class="bili-iframe"> </iframe>
 
 <p>明文,密文转化过程如图:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302021804138.jpeg" alt="161675332249_.pic"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302021804138.jpeg" alt="161675332249_.pic"></p>
 <p>公钥,私钥生成规则:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302021804660.jpeg" alt="171675332251_.pic"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302021804660.jpeg" alt="171675332251_.pic"></p>
 <p>RSA算法往往是用于传输对称加密使用的密钥.</p>
 <h1 id="AES算法"><a href="#AES算法" class="headerlink" title="AES算法"></a>AES算法</h1><blockquote>
 <p>AES是一套对称密钥的密码术，目前已广泛使用，用于替代已经不够安全的DES算法。所谓对称密钥，就是说加密和解密用的是同一个密钥，消息的发送方和接收方在消息传递前需要享有这个密钥。和非对称密钥体系不同，这里的密钥是双方保密的，不会让任何第三方知道。</p>
 </blockquote>
 <p>对称密钥加密法主要<strong>基于块加密</strong>，选取固定长度的密钥，去加密明文中固定长度的块，生成的密文块,与明文块长度一样。显然密钥长度十分重要，块的长度也很重要。如果太短，则很容易枚举出所有的明文-<br>密文映射；如果太长，性能则会急剧下降。AES中规定块长度为128 bit，而密钥长度可以选择128,192或256 bit 。暴力破解密钥需要万亿年，这保证了AES的安全性。</p>
 <h2 id="OpenSSL中的API"><a href="#OpenSSL中的API" class="headerlink" title="OpenSSL中的API"></a>OpenSSL中的API</h2><p>头文件: <strong><code>&lt;openssl/aes.h&gt;</code></strong></p>
-<h3 id="生成加密-x2F-解密的Key"><a href="#生成加密-x2F-解密的Key" class="headerlink" title="生成加密&#x2F;解密的Key"></a>生成加密&#x2F;解密的Key</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="keyword">define</span> AES_BLOCK_SIZE 16 <span class="comment">// 明文分组的大小</span></span></span><br><span class="line"><span class="comment">// 加密的时候调用</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">AES_set_encrypt_key</span><span class="params">(<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span> *userKey, <span class="type">const</span> <span class="type">int</span> bits, AES_KEY *key)</span></span>;</span><br><span class="line"><span class="comment">//- 参数userKey: 数据加密使用的原始秘钥(字符串)</span></span><br><span class="line"><span class="comment">//- 参数bits: 秘钥字符串占的位数</span></span><br><span class="line"><span class="comment">//- 参数key: 传出参数, 供后续AES api加密使用的秘钥类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解密时候使用</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">AES_set_decrypt_key</span><span class="params">(<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span> *userKey, <span class="type">const</span> <span class="type">int</span> bits, AES_KEY *key)</span></span>;</span><br><span class="line"><span class="comment">//- 参数userKey: 数据解码密使用的原始秘钥(字符串)</span></span><br><span class="line"><span class="comment">//- 参数bits: 秘钥字符串占的位数</span></span><br><span class="line"><span class="comment">//- 参数key: 传出参数, 供后续AES api解密使用的秘钥类型</span></span><br><span class="line"><span class="comment">//同上,成功返回0,失败返回1</span></span><br></pre></td></tr></table></figure>
+<h3 id="生成加密-解密的Key"><a href="#生成加密-解密的Key" class="headerlink" title="生成加密&#x2F;解密的Key"></a>生成加密&#x2F;解密的Key</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="keyword">define</span> AES_BLOCK_SIZE 16 <span class="comment">// 明文分组的大小</span></span></span><br><span class="line"><span class="comment">// 加密的时候调用</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">AES_set_encrypt_key</span><span class="params">(<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span> *userKey, <span class="type">const</span> <span class="type">int</span> bits, AES_KEY *key)</span></span>;</span><br><span class="line"><span class="comment">//- 参数userKey: 数据加密使用的原始秘钥(字符串)</span></span><br><span class="line"><span class="comment">//- 参数bits: 秘钥字符串占的位数</span></span><br><span class="line"><span class="comment">//- 参数key: 传出参数, 供后续AES api加密使用的秘钥类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解密时候使用</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">AES_set_decrypt_key</span><span class="params">(<span class="type">const</span> <span class="type">unsigned</span> <span class="type">char</span> *userKey, <span class="type">const</span> <span class="type">int</span> bits, AES_KEY *key)</span></span>;</span><br><span class="line"><span class="comment">//- 参数userKey: 数据解码密使用的原始秘钥(字符串)</span></span><br><span class="line"><span class="comment">//- 参数bits: 秘钥字符串占的位数</span></span><br><span class="line"><span class="comment">//- 参数key: 传出参数, 供后续AES api解密使用的秘钥类型</span></span><br><span class="line"><span class="comment">//同上,成功返回0,失败返回1</span></span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -587,23 +603,23 @@
 </ul>
 <h2 id="哈希函数特点"><a href="#哈希函数特点" class="headerlink" title="哈希函数特点"></a>哈希函数特点</h2><ul>
 <li><p><strong>压缩性</strong> :  任意长度的数据，算出的值长度都是固定的</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302221517723.png" alt="image-20230222151732365" style="zoom: 33%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302221517723.png" alt="image-20230222151732365" style="zoom: 33%;" />
 </li>
 <li><p><strong>容易计算</strong> : 计算散列值所花费的时间必须要短。尽管消息越长，计算散列值的时间也会越长，但如果不能在现实的<br>时间内完成计算就没有意义了。</p>
 </li>
 <li><p><strong>抗修改性</strong> : 对原数据进行任何改动，哪怕只修改1个字节，所得到的值都有很大区别</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302221520297.png" alt="image-20230222152018854" style="zoom: 50%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302221520297.png" alt="image-20230222152018854" style="zoom: 50%;" />
 </li>
 <li><p>强抗碰撞性 : 已知原数据和其哈希值，想找到一个具有相同哈希值的数据（即伪造数据）是非常困难的</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302231408999.png" alt="image-20230223140813788" style="zoom: 50%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302231408999.png" alt="image-20230223140813788" style="zoom: 50%;" />
 </li>
 <li><p>单向性（不可逆）</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302231409550.png" alt="image-20230223140857182" style="zoom:50%;" /></li>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302231409550.png" alt="image-20230223140857182" style="zoom:50%;" /></li>
 </ul>
 <h2 id="哈希函数的应用"><a href="#哈希函数的应用" class="headerlink" title="哈希函数的应用"></a>哈希函数的应用</h2><h3 id="检测软件是否被篡改"><a href="#检测软件是否被篡改" class="headerlink" title="检测软件是否被篡改"></a>检测软件是否被篡改</h3><blockquote>
 <p>我们可以使用单向散列函数来确认自己下载的软件是否被篡改。很多软件，尤其是安全相关的软件都会把通过单向散列函数计算出的散列值公布在自己的官方网站上。用户在下载到软件之后，可以自行计算散列值，然后与官方网站上公布的散列值进行对比。通过散列<br>值，用户可以确认自己所下载到的文件与软件作者所提供的文件是否一致。这样的方法，在可以通过多种途径得到软件的情况下非常有用。为了减轻服务器的压力，很多软件作者都会借助多个网站（镜像站点）来发布软件，在这种情况下，单向散列函数就会在检测软件是否被篡改方面发挥重要作用。</p>
 </blockquote>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302231420018.png" alt="image-20230223141955553" style="zoom: 50%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302231420018.png" alt="image-20230223141955553" style="zoom: 50%;" />
 
 <h3 id="消息认证码-1"><a href="#消息认证码-1" class="headerlink" title="消息认证码"></a>消息认证码</h3><blockquote>
 <p>使用单向散列函数可以构造消息认证码。<br>消息认证码是将“发送者和接收者之间的共享密钥”和“消息，进行混合后计算出的散列值。使用消息认证码可以检测并防止通信过程中的错误、篡改以及伪装</p>
@@ -620,7 +636,7 @@
 <li>将计算得到的散列值与接受到的散列值进行比较, 相同则认为没有被篡改, 否则认为被篡改了.</li>
 </ul>
 <p>注意: 发送方和接受方使用的秘钥是<strong>同一个秘钥</strong>(<strong>对称秘钥</strong>,秘钥分发困难), 这个秘钥只有发送方和接受方知道,<br>若这个秘钥被第三方知道了, 就没有办法保证数据的是安全的了</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302231557592.png" alt="image-20230223155717235" style="zoom:50%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302231557592.png" alt="image-20230223155717235" style="zoom:50%;" />
 
 <h3 id="数字签名-1"><a href="#数字签名-1" class="headerlink" title="数字签名"></a>数字签名</h3><blockquote>
 <p>在进行数字签名时也会使用单向散列函数。<br>数字签名是现实社会中的签名（sign）和盖章这样的行为在数字世界中的实现。数字签名的处理过程非常耗时，因此一般不会对整个消息内容直接施加数字签名，而是先通过单向散列函数计算出消息的散列值，然后再对这个散列值施加数字签名。</p>
@@ -634,14 +650,14 @@
 <p>使用数字签名的目的是为了<strong>不可抵赖性</strong>.(表明拿私钥的一方发送的数据, 是不可抵赖的)</p>
 <h3 id="一次性口令或登录验证"><a href="#一次性口令或登录验证" class="headerlink" title="一次性口令或登录验证"></a>一次性口令或登录验证</h3><p><strong>一次性口令</strong></p>
 <p>使用单向散列函数可以构造一次性口令（one-time password）。<br>一次性口令经常被用于服务器对客户端的合法性认证。在这种方式中，通过使用单向散列函数可以<strong>保证口令只在通信链路上传送一次（one-time）</strong>，因此即使窃听者窃取了口令，也无法使用。</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302231855096.jpeg" alt="v2-905cef8c0aca6a43e1529f4a14901d56_r" style="zoom:50%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302231855096.jpeg" alt="v2-905cef8c0aca6a43e1529f4a14901d56_r" style="zoom:50%;" />
 
 <p><strong>登录验证</strong></p>
 <p>当用户登录的时候, 需要输入密码, 这个密码会经过加密运算, 经过运算之后的值再与服务器中保存的密码进行比较, 若相同则输入密码正确, 允许登录.<br>若用户忘记密码, 则只能重置密码, 服务端并不知道用户原来的明文, 只能是重新设置</p>
-<h2 id="常用的哈希函数"><a href="#常用的哈希函数" class="headerlink" title="常用的哈希函数"></a>常用的哈希函数</h2><h3 id="Md4-x2F-Md5"><a href="#Md4-x2F-Md5" class="headerlink" title="Md4&#x2F;Md5"></a>Md4&#x2F;Md5</h3><blockquote>
+<h2 id="常用的哈希函数"><a href="#常用的哈希函数" class="headerlink" title="常用的哈希函数"></a>常用的哈希函数</h2><h3 id="Md4-Md5"><a href="#Md4-Md5" class="headerlink" title="Md4&#x2F;Md5"></a>Md4&#x2F;Md5</h3><blockquote>
 <p>MD4是由Rivest于1990年设计的单向散列函数，能够产生&#x3D;&#x3D;128比特&#x3D;&#x3D;的散列值（RFC1186，修订版RFC1320）。不过，随着Dobbertin提出寻找MD4散列碰撞的方法，因此现在它已经不安全了。<br>MD5是由Rwest于1991年设计的单项散列函数，能够产生&#x3D;&#x3D;128比特&#x3D;&#x3D;的散列值（RFC1321）。<br>MD5的强抗碰撞性已经被攻破，也就是说，现在已经能够产生具备相同散列值的两条不同的消息，因此它也已经不安全了。<br>MD4和MD5中的MD是消息摘要（Message Digest）的缩写。</p>
 </blockquote>
-<h3 id="SHA-1-x2F-SHA-256-x2F-SHA-384-x2F-SHA-512"><a href="#SHA-1-x2F-SHA-256-x2F-SHA-384-x2F-SHA-512" class="headerlink" title="SHA-1&#x2F;SHA-256&#x2F;SHA-384&#x2F;SHA-512"></a>SHA-1&#x2F;SHA-256&#x2F;SHA-384&#x2F;SHA-512</h3><blockquote>
+<h3 id="SHA-1-SHA-256-SHA-384-SHA-512"><a href="#SHA-1-SHA-256-SHA-384-SHA-512" class="headerlink" title="SHA-1&#x2F;SHA-256&#x2F;SHA-384&#x2F;SHA-512"></a>SHA-1&#x2F;SHA-256&#x2F;SHA-384&#x2F;SHA-512</h3><blockquote>
 <p>SHA-1是由NIST（National Institute Of Standardsand Technology，美国国家标准技术研究所）设计的一种能够产生&#x3D;&#x3D;160比特&#x3D;&#x3D;的散列值的单向散列函数。1993年被作为美国联邦信息处理标准规格（FIPS PUB 180）发布的是SHA,1995年发布的修订版FIPS PUB 180-1称为SHA-1。<br>SHA-1的消息长度存在上限，但这个值接近于2^64^比特，是个非常巨大的数值，因此在实际应用中没<br>有问题。<br>SHA-256、SHA-384和SHA-512都是由NIST设计的单向散列函数，它们的散列值长度分别为&#x3D;&#x3D;256比特&#x3D;&#x3D;、&#x3D;&#x3D;384&#x3D;&#x3D;比特和&#x3D;&#x3D;512比特&#x3D;&#x3D;。这些单向散列函数合起来统称SHA-2，它们的消息长度也存在上限（SHA-256的上限接近于 2^64^ 比特，SHA-384 和 SHA-512的上限接近于 2^128^ 比特）。这些单向散列函数是于2002年和 SHA-1 一起作为 FIPS PUB 180-2发布的 SHA-1 的强抗碰撞性已于2005年被攻破, 也就是说，现在已经能够产生具备相同散列值的两条不同的消息。不过，SHA-2还尚未被攻破</p>
 </blockquote>
 <table>
@@ -708,7 +724,7 @@
 <p>Base64是一种基于64个可打印字符来表示二进制数据的表示方法.在Base64中的可打印字符包括字母<code>A-Z</code>,<code>a-z</code>,数字<code>0-9</code>,这样共有62个字符,此外两个可打印符号在不同的系统中而不同</p>
 </blockquote>
 <p>只是一种编码格式,并不用于加密,因为特征明显且易于还原</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202310071707600.png" alt="image-20231007170729078" style="zoom:50%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202310071707600.png" alt="image-20231007170729078" style="zoom:50%;" />
 
 <p>为什么要使用base64:</p>
 <blockquote>
@@ -797,6 +813,23 @@
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ZEROKO14
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://zeroko14.gitee.io/blog/ac56643f/" title="加密与解密">http://zeroko14.gitee.io/blog/ac56643f/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -828,6 +861,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -874,7 +908,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%9B%B8%E5%85%B3"><span class="nav-number">1.</span> <span class="nav-text">加解密相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8A%A0%E5%AF%86%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">常用的加密的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">1.1.1.</span> <span class="nav-text">对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">1.1.2.</span> <span class="nav-text">非对称加密</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%AE%89%E5%85%A8%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">常用安全算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">对称加密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DES-x2F-3DES"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">DES&#x2F;3DES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AES"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">AES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">其他对称加密算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">非对称加密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DH-%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">DH 算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.3.</span> <span class="nav-text">Hash算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81"><span class="nav-number">1.2.4.</span> <span class="nav-text">消息认证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="nav-number">1.2.5.</span> <span class="nav-text">数字签名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl"><span class="nav-number">1.3.</span> <span class="nav-text">openssl</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#win%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">win下安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#win%E4%B8%8B%E4%BD%BF%E7%94%A8openssl"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">win下使用openssl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">Linux下安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E4%B8%8B%E4%BD%BF%E7%94%A8openssl"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">Linux下使用openssl</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.</span> <span class="nav-text">常见的加密算法的逆向特征</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96%E7%9B%90%E7%AE%97%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">取盐算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MD5%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.1.1.</span> <span class="nav-text">MD5逆向特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SHA%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.1.2.</span> <span class="nav-text">SHA逆向特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E8%BF%98%E5%8E%9F%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">可还原加密算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RSA%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.2.1.</span> <span class="nav-text">RSA逆向特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AES%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.2.2.</span> <span class="nav-text">AES逆向特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DES%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.2.3.</span> <span class="nav-text">DES逆向特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%BC%96%E7%A0%81%E7%AE%97%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">其他编码算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Base64-%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.3.1.</span> <span class="nav-text">Base64 逆向特征</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RSA%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">RSA算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AES%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">AES算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenSSL%E4%B8%AD%E7%9A%84API"><span class="nav-number">4.1.</span> <span class="nav-text">OpenSSL中的API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%8A%A0%E5%AF%86-x2F-%E8%A7%A3%E5%AF%86%E7%9A%84Key"><span class="nav-number">4.1.1.</span> <span class="nav-text">生成加密&#x2F;解密的Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.2.</span> <span class="nav-text">加解密函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-number">4.1.2.0.1.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ECB%E6%96%B9%E5%BC%8F%E5%8A%A0%E5%AF%86"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">ECB方式加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CBC%E6%96%B9%E5%BC%8F%E5%8A%A0%E5%AF%86"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">CBC方式加密</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B-1"><span class="nav-number">4.1.2.2.1.</span> <span class="nav-text">案例</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">单向散列函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%89%B9%E7%82%B9"><span class="nav-number">5.1.</span> <span class="nav-text">哈希函数特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">5.2.</span> <span class="nav-text">哈希函数的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%90%A6%E8%A2%AB%E7%AF%A1%E6%94%B9"><span class="nav-number">5.2.1.</span> <span class="nav-text">检测软件是否被篡改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81-1"><span class="nav-number">5.2.2.</span> <span class="nav-text">消息认证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D-1"><span class="nav-number">5.2.3.</span> <span class="nav-text">数字签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%AC%A1%E6%80%A7%E5%8F%A3%E4%BB%A4%E6%88%96%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81"><span class="nav-number">5.2.4.</span> <span class="nav-text">一次性口令或登录验证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="nav-number">5.3.</span> <span class="nav-text">常用的哈希函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Md4-x2F-Md5"><span class="nav-number">5.3.1.</span> <span class="nav-text">Md4&#x2F;Md5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SHA-1-x2F-SHA-256-x2F-SHA-384-x2F-SHA-512"><span class="nav-number">5.3.2.</span> <span class="nav-text">SHA-1&#x2F;SHA-256&#x2F;SHA-384&#x2F;SHA-512</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl%E5%BA%93%E4%B8%AD%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%94%A8%E6%B3%95"><span class="nav-number">5.4.</span> <span class="nav-text">openssl库中哈希函数用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sha1%E7%AE%80%E5%8D%95%E6%A1%88%E4%BE%8B"><span class="nav-number">5.4.1.</span> <span class="nav-text">sha1简单案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hmac%E7%AE%80%E5%8D%95%E6%A1%88%E4%BE%8B"><span class="nav-number">5.4.2.</span> <span class="nav-text">hmac简单案例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#base64%E7%BC%96%E7%A0%81"><span class="nav-number">6.</span> <span class="nav-text">base64编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93"><span class="nav-number">7.</span> <span class="nav-text">安全传输</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86"><span class="nav-number">7.1.</span> <span class="nav-text">密钥协商</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8D%8F%E5%95%86%E6%B5%81%E7%A8%8B"><span class="nav-number">7.1.1.</span> <span class="nav-text">客户端协商流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8D%8F%E5%95%86%E6%B5%81%E7%A8%8B"><span class="nav-number">7.1.2.</span> <span class="nav-text">服务端协商流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E6%A0%A1%E9%AA%8C"><span class="nav-number">7.2.</span> <span class="nav-text">密钥校验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E6%B3%A8%E9%94%80"><span class="nav-number">7.3.</span> <span class="nav-text">密钥注销</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%9B%B8%E5%85%B3"><span class="nav-number">1.</span> <span class="nav-text">加解密相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8A%A0%E5%AF%86%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">常用的加密的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">1.1.1.</span> <span class="nav-text">对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">1.1.2.</span> <span class="nav-text">非对称加密</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%AE%89%E5%85%A8%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">常用安全算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">对称加密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DES-3DES"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">DES&#x2F;3DES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AES"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">AES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">其他对称加密算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">非对称加密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DH-%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">DH 算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.3.</span> <span class="nav-text">Hash算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81"><span class="nav-number">1.2.4.</span> <span class="nav-text">消息认证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="nav-number">1.2.5.</span> <span class="nav-text">数字签名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl"><span class="nav-number">1.3.</span> <span class="nav-text">openssl</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#win%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">win下安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#win%E4%B8%8B%E4%BD%BF%E7%94%A8openssl"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">win下使用openssl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">Linux下安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E4%B8%8B%E4%BD%BF%E7%94%A8openssl"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">Linux下使用openssl</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.</span> <span class="nav-text">常见的加密算法的逆向特征</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96%E7%9B%90%E7%AE%97%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">取盐算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MD5%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.1.1.</span> <span class="nav-text">MD5逆向特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SHA%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.1.2.</span> <span class="nav-text">SHA逆向特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E8%BF%98%E5%8E%9F%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">可还原加密算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RSA%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.2.1.</span> <span class="nav-text">RSA逆向特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AES%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.2.2.</span> <span class="nav-text">AES逆向特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DES%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.2.3.</span> <span class="nav-text">DES逆向特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%BC%96%E7%A0%81%E7%AE%97%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">其他编码算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Base64-%E9%80%86%E5%90%91%E7%89%B9%E5%BE%81"><span class="nav-number">2.3.1.</span> <span class="nav-text">Base64 逆向特征</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RSA%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">RSA算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AES%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">AES算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenSSL%E4%B8%AD%E7%9A%84API"><span class="nav-number">4.1.</span> <span class="nav-text">OpenSSL中的API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%8A%A0%E5%AF%86-%E8%A7%A3%E5%AF%86%E7%9A%84Key"><span class="nav-number">4.1.1.</span> <span class="nav-text">生成加密&#x2F;解密的Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.2.</span> <span class="nav-text">加解密函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-number">4.1.2.0.1.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ECB%E6%96%B9%E5%BC%8F%E5%8A%A0%E5%AF%86"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">ECB方式加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CBC%E6%96%B9%E5%BC%8F%E5%8A%A0%E5%AF%86"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">CBC方式加密</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B-1"><span class="nav-number">4.1.2.2.1.</span> <span class="nav-text">案例</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">单向散列函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%89%B9%E7%82%B9"><span class="nav-number">5.1.</span> <span class="nav-text">哈希函数特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">5.2.</span> <span class="nav-text">哈希函数的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%90%A6%E8%A2%AB%E7%AF%A1%E6%94%B9"><span class="nav-number">5.2.1.</span> <span class="nav-text">检测软件是否被篡改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81-1"><span class="nav-number">5.2.2.</span> <span class="nav-text">消息认证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D-1"><span class="nav-number">5.2.3.</span> <span class="nav-text">数字签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%AC%A1%E6%80%A7%E5%8F%A3%E4%BB%A4%E6%88%96%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81"><span class="nav-number">5.2.4.</span> <span class="nav-text">一次性口令或登录验证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="nav-number">5.3.</span> <span class="nav-text">常用的哈希函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Md4-Md5"><span class="nav-number">5.3.1.</span> <span class="nav-text">Md4&#x2F;Md5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SHA-1-SHA-256-SHA-384-SHA-512"><span class="nav-number">5.3.2.</span> <span class="nav-text">SHA-1&#x2F;SHA-256&#x2F;SHA-384&#x2F;SHA-512</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl%E5%BA%93%E4%B8%AD%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E7%94%A8%E6%B3%95"><span class="nav-number">5.4.</span> <span class="nav-text">openssl库中哈希函数用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sha1%E7%AE%80%E5%8D%95%E6%A1%88%E4%BE%8B"><span class="nav-number">5.4.1.</span> <span class="nav-text">sha1简单案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hmac%E7%AE%80%E5%8D%95%E6%A1%88%E4%BE%8B"><span class="nav-number">5.4.2.</span> <span class="nav-text">hmac简单案例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#base64%E7%BC%96%E7%A0%81"><span class="nav-number">6.</span> <span class="nav-text">base64编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93"><span class="nav-number">7.</span> <span class="nav-text">安全传输</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86"><span class="nav-number">7.1.</span> <span class="nav-text">密钥协商</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8D%8F%E5%95%86%E6%B5%81%E7%A8%8B"><span class="nav-number">7.1.1.</span> <span class="nav-text">客户端协商流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8D%8F%E5%95%86%E6%B5%81%E7%A8%8B"><span class="nav-number">7.1.2.</span> <span class="nav-text">服务端协商流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E6%A0%A1%E9%AA%8C"><span class="nav-number">7.2.</span> <span class="nav-text">密钥校验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E6%B3%A8%E9%94%80"><span class="nav-number">7.3.</span> <span class="nav-text">密钥注销</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -933,6 +967,12 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">ZEROKO14</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">518k</span>
 </div>
 
         
@@ -970,6 +1010,8 @@
 
   
   <script src="/blog/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/blog/lib/velocity/velocity.min.js"></script>
   <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
@@ -982,6 +1024,8 @@
 
 
 <script src="/blog/js/next-boot.js"></script>
+
+<script src="/blog/js/bookmark.js"></script>
 
 
   <script defer src="/blog/lib/three/three.min.js"></script>
@@ -1006,6 +1050,19 @@
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   
@@ -1066,6 +1123,27 @@
     
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '67c7a42cef54843d55de',
+      clientSecret: 'ab1b9b51ee90c36803ecfaae6bc72ff75494f245',
+      repo        : 'gitalk',
+      owner       : 'che77a38',
+      admin       : ['che77a38'],
+      id          : 'e5fdbcec03593590908178162351484e',
+      proxy       : 'https://cors-anywhere.1l1.icu/https://github.com/login/oauth/access_token',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>

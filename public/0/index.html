@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":{"gitalk":{"order":-2}},"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="数据库是为了实现一定的目的按某种规则组织起来的数据的集合, 简单的说,数据库就是存储数据的库.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库">
-<meta property="og:url" content="http://zeroko14.gitee.io/0/index.html">
+<meta property="og:url" content="http://zeroko14.gitee.io/blog/0/index.html">
 <meta property="og:site_name" content="ZEROKO14的个人博客">
 <meta property="og:description" content="数据库是为了实现一定的目的按某种规则组织起来的数据的集合, 简单的说,数据库就是存储数据的库.">
 <meta property="og:locale" content="zh_CN">
@@ -81,7 +81,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210121542288.png">
 
-<link rel="canonical" href="http://zeroko14.gitee.io/0/">
+<link rel="canonical" href="http://zeroko14.gitee.io/blog/0/">
 
 
 <script id="page-configurations">
@@ -224,6 +224,8 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -238,7 +240,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/0/">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/avatar.gif">
@@ -280,6 +282,20 @@
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>39k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>35 分钟</span>
             </span>
 
         </div>
@@ -303,16 +319,16 @@
 <p>2008年1月16日 收购bea，目的是为了得到weblogic（web服务器的框架，免费的对应的tomcat）。<br>2008年1月16日 sun公司收购了mysql 。<br>2009年4月20日 oracle收购了sun 。</p>
 <p><a target="_blank" rel="noopener" href="https://www.oracle.com/database/technologies/oracle-database-software-downloads.html">官网安装路径</a></p>
 <p><strong>Oracle服务器</strong>：是一个<strong>数据管理系统(RDBMS)<strong>，它提供开放的, 全面的, 近乎完整的信息管理。由</strong>1个数据库和一个（或多个）实例(可以简单理解成就是进程)组成</strong>。数据库位于硬盘上，实例位于内存中。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210121542288.png" alt="image-20221012154245368"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210121542288.png" alt="image-20221012154245368"></p>
 <p>oracle非常耗费内存</p>
 <p><strong>表空间和数据文件</strong></p>
 <p>逻辑概念：表空间是由多个数据文件组成，位于实例上，在内存中。<br>物理概念：数据文件，在磁盘上（&#x2F;home&#x2F;oracle_11&#x2F;app&#x2F;oradata&#x2F;orcl目录中的.DBF文件）；<br>          一个表空间包含一个或者多个数据文件。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210151419807.png" alt="image-20221015141839715"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210151419807.png" alt="image-20221015141839715"></p>
 <p>段存在于表空间中，段是区的集合，区是数据块的集合，数据块会被映射到磁盘块。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210151421976.png" alt="image-20221015142120134"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210151421152.png" alt="image-20221015142151286"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210151421976.png" alt="image-20221015142120134"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210151421152.png" alt="image-20221015142151286"></p>
 <h2 id="DBA"><a href="#DBA" class="headerlink" title="DBA"></a>DBA</h2><p>数据库管理员（Database Administrator，简称DBA），是从事管理和维护数据库管理系统(DBMS)的相关工作人员的统称，属于运维工程师的一个分支，主要负责业务数据库从设计、测试到部署交付的全生命周期管理。DBA的核心目标是保证数据库管理系统的稳定性、安全性、完整性和高性能。从时间开销上看：安装占用6%，创建和配置占用12%，装载和存档数据占6%, 软件维护占6%，管理数据库系统占55%，可见，管理数据库系统占用了大部分的时间开销。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210151428318.png" alt="image-20221015142827073"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210151428318.png" alt="image-20221015142827073"></p>
 <h2 id="启动数据库服务"><a href="#启动数据库服务" class="headerlink" title="启动数据库服务"></a>启动数据库服务</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>windows下创建数据库参考<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_11682417/5792643">此处</a>(注意,安装过程中主机名不要修改,默认的是对的,吃过亏了)</p>
 <p>Windows启动oracle数据库服务：<br>启动服务：services.msc，找到下列两个服务，并启动。</p>
 <ul>
@@ -457,14 +473,14 @@
 
 <p><code>default</code>的作用是, 当向表中插入数据的时候, 没有指定时间的时候, 使用默认值<code>sysdate</code>。</p>
 <p>创建表时，列所使用的数据类型：	</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210261717113.png" alt="image-20221026171754801"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210261717113.png" alt="image-20221026171754801"></p>
 <ul>
 <li><p><code>varchar2(size)</code>中的<code>size</code>表示可变长的最大值</p>
 </li>
 <li><p><code>number(p,s)</code>中的p表示数值的总长度,s表示小数点长度(6200.00,p为6,s为2)</p>
 </li>
 <li><p><code>rowid</code>：行地址 ——伪列<br><code>select rowid, empno, deptno from emp;</code><br>看到该列存储的是一系列的地址(指针), 创建索引用.</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210261732808.png" alt="image-20221026173208069" style="zoom:67%;" /></li>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210261732808.png" alt="image-20221026173208069" style="zoom:67%;" /></li>
 </ul>
 <p><strong>[ [注意] ]</strong> <code>create table as select子句</code>的格式中,后面select后的<strong>表达式要取别名(语法要求)</strong></p>
 <p><a href="#%E6%89%B9%E5%A4%84%E7%90%86">相关语法参考批处理标题</a></p>
@@ -725,7 +741,7 @@
 <li><strong>delete可以回滚rollback, truncate不可以回滚rollback。</strong></li>
 </ol>
 <h1 id="sql查询相关"><a href="#sql查询相关" class="headerlink" title="sql查询相关"></a>sql查询相关</h1><h2 id="基本select语句"><a href="#基本select语句" class="headerlink" title="基本select语句"></a>基本select语句</h2><p>下面所有说法均以此图为案例</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210151722300.png" alt="image-20221015172212283"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210151722300.png" alt="image-20221015172212283"></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span>语句的整体形式：</span><br><span class="line"><span class="keyword">select</span> col1, col2…  </span><br><span class="line"><span class="keyword">from</span> table_name</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">condition</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> col…</span><br><span class="line"><span class="keyword">having</span> condtion</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> col…</span><br></pre></td></tr></table></figure>
 
 <p>p.s.  oracle中sql关键字不区分大小写</p>
@@ -740,13 +756,13 @@
 <h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><p>select后可以接列名或表达式</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select empno,ename,sal,comm,sal*<span class="number">12</span> 年薪,sal*<span class="number">12</span>+nvl 年收入 from emp;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210151735254.png" alt="image-20221015173450512"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210151735254.png" alt="image-20221015173450512"></p>
 <p><strong>包含NULL值的表达式都返回为空</strong>,因此所有COMM为空的,年收入也为空</p>
 <p>解决方案如下:</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> empno,ename,sal,comm,sal<span class="operator">*</span><span class="number">12</span> 年薪,sal<span class="operator">*</span><span class="number">12</span><span class="operator">+</span>nvl(comm,<span class="number">0</span>) 年收入 <span class="keyword">from</span> emp;</span><br></pre></td></tr></table></figure>
 
 <p><code>nvl(comm,0)</code>表示<code>nvl</code>如果<code>comm</code>为空,则当成0处理   <a href="#%E9%80%9A%E7%94%A8%E5%87%BD%E6%95%B0">滤空函数参考</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210151738265.png" alt="image-20221015173808216"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210151738265.png" alt="image-20221015173808216"></p>
 <h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><p>select后接的列名或表达式或from后接的表名(<a href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2">多表查询</a>)可以起别名   关键词: <code>as</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> empno,ename,sal <span class="keyword">as</span> 工资,comm 奖金,sal<span class="operator">*</span><span class="number">12</span> &quot;年 薪&quot; <span class="keyword">from</span> emp;</span><br></pre></td></tr></table></figure>
 
@@ -795,13 +811,13 @@
 <p>案例: 统计各个部门的平均工资</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> deptno,<span class="built_in">avg</span>(sal) <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> deptno;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191639980.png" alt="image-20221019163924637"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191639980.png" alt="image-20221019163924637"></p>
 <hr>
 <p>统计各个部分不同工种的平均工资</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> deptno, job, <span class="built_in">avg</span>(sal) <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> deptno, job; </span><br></pre></td></tr></table></figure>
 
 <p>按照<strong>deptno, job的组合</strong>来分组.</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191720152.png" alt="image-20221019172030679" style="zoom: 67%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191720152.png" alt="image-20221019172030679" style="zoom: 67%;" />
 
 <h3 id="分组函数过滤"><a href="#分组函数过滤" class="headerlink" title="分组函数过滤"></a>分组函数过滤</h3><p>只有使用关键词 **<code>having</code>**才能对<a href="#%E5%88%86%E7%BB%84%E5%87%BD%E6%95%B0"><strong>分组函数</strong></a>进行过滤.(不能用where)</p>
 <p><strong>[注意]</strong> </p>
@@ -857,18 +873,18 @@
 <li><code>mod(n,m)</code>:n对m取余</li>
 <li><code>ceil(n)</code>:对n向上取整;<code>floor(n)</code>:对n向下取整</li>
 </ul>
-<h3 id="转换函数"><a href="#转换函数" class="headerlink" title="转换函数"></a>转换函数</h3><p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210161727853.png" alt="image-20221016172705248"></p>
+<h3 id="转换函数"><a href="#转换函数" class="headerlink" title="转换函数"></a>转换函数</h3><p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210161727853.png" alt="image-20221016172705248"></p>
 <p><strong>显示转换</strong>：借助to_char(数据，格式)、to_number、to_date函数来完成转换。</p>
 <p><strong>[注意]</strong> 如果隐式、显示都可以使用，应该首选显示，这样可以省去oracle的解析过程。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210161727812.png" alt="image-20221016172746213"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210161727812.png" alt="image-20221016172746213"></p>
 <h4 id="to-char函数"><a href="#to-char函数" class="headerlink" title="to_char函数"></a>to_char函数</h4><p><strong>功能</strong>:将date或number类型转换成字符串类型</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191135012.png" alt="image-20221019113415897"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191135012.png" alt="image-20221019113415897"></p>
 <p>案例:</p>
 <p>查询员工的薪水: 使用2位小数, 本地货币代码, 千位符 	</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> to_char(sal, <span class="string">&#x27;L9,999.99&#x27;</span>) <span class="keyword">from</span> emp;</span><br></pre></td></tr></table></figure>
 
 <p>特别注意:’L9,999.99’之间没有空格</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191138144.png" alt="image-20221019113747079" style="zoom: 50%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191138144.png" alt="image-20221019113747079" style="zoom: 50%;" />
 
 <hr>
 <p><a href="#date%E7%9A%84%E6%A0%BC%E5%BC%8F">参考date的格式</a></p>
@@ -876,7 +892,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> to_char(sysdate, <span class="string">&#x27;yyyy-mm-dd hh24:mi:ss &quot;今天是&quot; day&#x27;</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
 
 <p><strong>说明</strong>: 在<strong>固定的格式里加入自定义的格式是可以</strong>的，必须要加<code>””</code>。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191146163.png" alt="image-20221019114539105"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191146163.png" alt="image-20221019114539105"></p>
 <h4 id="to-number函数"><a href="#to-number函数" class="headerlink" title="to_number函数"></a>to_number函数</h4><p><strong>功能</strong>:将字符串转换成number类型</p>
 <p>案例:</p>
 <p>将￥2,975.00转化成数字2975：</p>
@@ -886,7 +902,7 @@
 <p>已知字符串’2015-05-11 15:17:06 今天是 星期一’转化成日期.</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> to_date(<span class="string">&#x27;2015-05-11 15:17:06 今天是 星期一&#x27;</span>, <span class="string">&#x27;yyyy-mm-dd hh24:mi:ss &quot;今天是&quot; day&#x27;</span>) 	<span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191149773.png" alt="image-20221019114858405"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191149773.png" alt="image-20221019114858405"></p>
 <hr>
 <p>求1980年12月17日入职的员工信息</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp <span class="keyword">where</span> hiredate <span class="operator">=</span> to_date(<span class="string">&#x27;17-12月-80&#x27;</span>,<span class="string">&#x27;DD-MON-RR&#x27;</span>);</span><br></pre></td></tr></table></figure>
@@ -978,7 +994,7 @@
 <li><p><strong><code>NULLIF (expr1, expr2)</code></strong>   当 expr1 &#x3D; expr2 时返回null, 不相等的时候返回expr1值。</p>
 </li>
 <li><p><strong><code>COALESCE (expr1, expr2, ..., exprn)</code></strong>   找非空值函数  从左向右找参数中第一个不为空的值。</p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191431201.png" alt="image-20221019143055678" style="zoom:67%;" /></li>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191431201.png" alt="image-20221019143055678" style="zoom:67%;" /></li>
 </ul>
 <h2 id="分组函数"><a href="#分组函数" class="headerlink" title="分组函数"></a>分组函数</h2><p>分组函数:也称之为组函数或者聚合函数,oracle提供的常用的有5个函数: avg、count、max、min、sum操作的是一组数据，返回一个结果。     可以配合<a href="#%E5%88%86%E7%BB%84">分组数据</a>使用(select后同时存在分组函数和非分组函数的情况下,必须配合<a href="#%E5%88%86%E7%BB%84">分组数据</a>使用)</p>
 <ul>
@@ -986,7 +1002,7 @@
 <p><code>select count(distinct job) from emp</code>显示工作总数(去重才能计算到工作总数) </p>
 </li>
 <li><p><strong><code>avg(列名)</code></strong>  求平均列值(滤空)      注意: <code>avg(comm)</code>   等同于   <code>sum(comm)/count(comm)</code> (滤空) 而非<code>sum(comm)/count(empno)</code> (不滤空),前者是有奖金的人的奖金平均值,后者是全部人平均奖金的值</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191613017.png" alt="image-20221019161354607"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191613017.png" alt="image-20221019161354607"></p>
 </li>
 <li><p><strong><code>max(列名)</code></strong>  求列值最大值(滤空)</p>
 </li>
@@ -1014,7 +1030,7 @@
 <p>老板打算给员工涨工资, 要求：<br>总裁(PRESIDENT)涨1000, 经理(MANAGER)涨800, 其他人涨400. 请将涨前, 涨后的薪水列出。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> ename, job, sal 涨前薪水, 	</span><br><span class="line"><span class="keyword">case</span> job </span><br><span class="line"><span class="keyword">when</span> <span class="string">&#x27;PRESIDENT&#x27;</span> <span class="keyword">then</span> sal<span class="operator">+</span><span class="number">1000</span> </span><br><span class="line"><span class="keyword">when</span> <span class="string">&#x27;MANAGER&#x27;</span>   <span class="keyword">then</span> sal<span class="operator">+</span><span class="number">800</span> </span><br><span class="line"><span class="keyword">else</span>  sal <span class="operator">+</span> <span class="number">400</span></span><br><span class="line"><span class="keyword">end</span> 涨后薪水 </span><br><span class="line"><span class="keyword">from</span> emp;  </span><br></pre></td></tr></table></figure>
 
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191532530.png" alt="image-20221019153254072" style="zoom:67%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210191532530.png" alt="image-20221019153254072" style="zoom:67%;" />
 
 <h3 id="decode函数"><a href="#decode函数" class="headerlink" title="decode函数"></a>decode函数</h3><p>decode：是一个<strong>函数</strong>，其语法为：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DECODE(col<span class="operator">|</span>expression, search1, result1 </span><br><span class="line">			[, search2, result2,...,]</span><br><span class="line">			[, <span class="keyword">default</span>])</span><br></pre></td></tr></table></figure>
@@ -1030,7 +1046,7 @@
 <p>否则报错:  <code>ORA-00918: 未明确定义列</code></p>
 <h3 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h3><p>两个表的笛卡尔积 &#x3D; 两个表的项之间组合的所有可能的集合</p>
 <p>笛卡尔积的行数 &#x3D; table1的行数 x table2的行数<br>笛卡尔积的列数 &#x3D; table1的列数 + table2的列数</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210201658550.png" alt="image-20221020165843162"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210201658550.png" alt="image-20221020165843162"></p>
 <p>笛卡尔积中包含不正确的无用数据.上图中很显然左表(黄)和右表(绿)的deptno匹配会出现不相等的情况,即无效数据.(添加图中连接条件可以去除无效行)</p>
 <p>多表查询就是按照给定条件(连接条件)，从笛卡尔全集中选出正确的结果。</p>
 <h3 id="连接条件"><a href="#连接条件" class="headerlink" title="连接条件"></a>连接条件</h3><ul>
@@ -1049,7 +1065,7 @@
 <h4 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h4><p>按部门统计员工人数，显示： 部门号 部门名称 人数</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> d.deptno,dname,<span class="built_in">count</span>(e.empno) <span class="keyword">from</span> dept d,emp e <span class="keyword">where</span> d.deptno <span class="operator">=</span> e.deptno <span class="keyword">group</span> <span class="keyword">by</span> dname,d.deptno;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210201801063.png" alt="image-20221020180059609"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210201801063.png" alt="image-20221020180059609"></p>
 <p>虽然显示了如上结果,但因为<code>where d.deptno = e.deptno</code>,缺失了40号部门</p>
 <h5 id="右外连接"><a href="#右外连接" class="headerlink" title="右外连接"></a>右外连接</h5><p>右边deptno显示全</p>
 <p>写法：与叫法相反：<code>where e.deptno(+)=d.deptno</code></p>
@@ -1063,12 +1079,12 @@
 <p>查询员工信息：xxx的老板是 yyy </p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> e.ename <span class="operator">||</span> <span class="string">&#x27;  的老板是 &#x27;</span> <span class="operator">||</span> b.ename <span class="keyword">from</span> emp e, emp b <span class="keyword">where</span> e.mgr<span class="operator">=</span>b.empno;</span><br></pre></td></tr></table></figure>
 
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210211432867.png" alt="image-20221021143252478" style="zoom:50%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210211432867.png" alt="image-20221021143252478" style="zoom:50%;" />
 
 <p>由于KING没有老板,所以可以使用外连接的方式把king也显示出来:</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> e.ename <span class="operator">||</span> <span class="string">&#x27;  的老板是 &#x27;</span> <span class="operator">||</span> nvl(b.ename,<span class="string">&#x27;没有&#x27;</span>) <span class="keyword">from</span> emp e, emp b <span class="keyword">where</span> e.mgr<span class="operator">=</span>b.empno(<span class="operator">+</span>);</span><br></pre></td></tr></table></figure>
 
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210211602703.png" alt="image-20221021160247799" style="zoom:67%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210211602703.png" alt="image-20221021160247799" style="zoom:67%;" />
 
 <h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><p>子查询语法很简单，就是select 语句的嵌套使用,即<strong>sql嵌套sql</strong>。</p>
 <p>语法格式: 主查询的where、select、having、from后都可以放置子查询,如下:</p>
@@ -1139,9 +1155,9 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> rn 排名,d.<span class="operator">*</span> <span class="keyword">from</span> (<span class="keyword">select</span> rownum rn,e.<span class="operator">*</span> <span class="keyword">from</span> (<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp <span class="keyword">order</span> <span class="keyword">by</span> sal) e) d <span class="keyword">where</span> rn<span class="operator">&lt;=</span><span class="number">8</span> <span class="keyword">and</span> rn<span class="operator">&gt;=</span><span class="number">5</span>;</span><br></pre></td></tr></table></figure>
 
 <p><strong>[讲解]</strong> 二级子查询中,子集合中的rownum不是列名的话,不能在上级查询中被作为筛选条件,解决方式是给rownum提供一个别名,再多加一层子查询,使最外部查询中<code>rownum的别名</code>成为一个列名,以此参与筛选.</p>
-<p>结果:<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210281618481.png" alt="image-20221028161825421"></p>
+<p>结果:<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210281618481.png" alt="image-20221028161825421"></p>
 <h2 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h2><p>集合运算的操作符。<code>A ∩ B</code>、<code>A ∪ B</code>、<code>A - B</code>  			</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210231341844.png" alt="image-20221023134056913"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210231341844.png" alt="image-20221023134056913"></p>
 <p><strong><code>union</code>和<code>union all</code>的区别</strong>: <code>union</code>会去掉重复的, 而<code>union all</code>会全部显示</p>
 <p><strong>集合运算注意点</strong></p>
 <ul>
@@ -1151,7 +1167,7 @@
 </ul>
 <p><strong>案例</strong></p>
 <p>按照部门统计各部门不同工种的工资情况，要求按如下格式输出：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210231519944.png" alt="image-20221023151906466"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210231519944.png" alt="image-20221023151906466"></p>
 <p>照集合的要求,必须列数相同,类型一致,所以写法如下,使用null强行占位!</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> deptno,job,<span class="built_in">sum</span>(sal) <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> deptno,job</span><br><span class="line"><span class="keyword">union</span></span><br><span class="line"><span class="keyword">select</span> deptno,to_char(<span class="keyword">null</span>),<span class="built_in">sum</span>(sal) <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> deptno</span><br><span class="line"><span class="keyword">union</span></span><br><span class="line"><span class="keyword">select</span> to_number(<span class="keyword">null</span>),to_char(<span class="keyword">null</span>),<span class="built_in">sum</span>(sal) <span class="keyword">from</span> emp;	</span><br></pre></td></tr></table></figure>
 
@@ -1209,7 +1225,7 @@
 </li>
 </ul>
 <h2 id="控制事务"><a href="#控制事务" class="headerlink" title="控制事务"></a>控制事务</h2><p><strong>保存点（savepoint）</strong>可以防止错误操作影响整个事务，方便进行事务控制。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210241436648.png" alt="image-20221024143654530"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210241436648.png" alt="image-20221024143654530"></p>
 <ul>
 <li><strong>设置保存点</strong>aaa   <code>savepoint aaa;</code></li>
 <li><strong>回滚到保存点</strong>aaa   <code>rollback to savepoint aaa;</code></li>
@@ -1449,7 +1465,7 @@
 <li>oracle是先有库,库下是用户,用户下再有表</li>
 <li>mysql是先有用户,用户下是库,库下是表</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301136512.png" alt="image-20221030113604065"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301136512.png" alt="image-20221030113604065"></p>
 <p>操作盘点</p>
 <ul>
 <li><p><strong>显示已有的所有数据库</strong> <code>show databases</code></p>
@@ -1477,7 +1493,7 @@
 <p>p.s.  默认情况下,反引号 &#96;&#96; &#96; 括起来的字符串,区分大小写.</p>
 <h3 id="表CURD"><a href="#表CURD" class="headerlink" title="表CURD"></a>表CURD</h3><p>mysql的表curd操作和oracle是几乎一样的,只有<a href="#mysql%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">数据类型</a>不一致.</p>
 <p><a href="#%E8%A1%A8">跳转方便对比oracle的表curd</a></p>
-<h4 id="mysql的数据类型"><a href="#mysql的数据类型" class="headerlink" title="mysql的数据类型"></a>mysql的数据类型</h4><p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301356829.png" alt="image-20221030135621392"></p>
+<h4 id="mysql的数据类型"><a href="#mysql的数据类型" class="headerlink" title="mysql的数据类型"></a>mysql的数据类型</h4><p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301356829.png" alt="image-20221030135621392"></p>
 <p>p.s.  (附加说明)</p>
 <ul>
 <li><code>bit</code>     1位　	可以指定位数，如：bit(3)</li>
@@ -1493,7 +1509,7 @@
 <li><code>timeStamp</code>: 时间戳，自动赋值为当前日期时间</li>
 </ul>
 <p>在Mysql中显示多行数据应该在查询语句结尾处添加 <code>\G</code>或<code>\g</code>来替换结束标记<code>;</code></p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301443749.png" alt="image-20221030144335864" style="zoom: 50%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301443749.png" alt="image-20221030144335864" style="zoom: 50%;" />
 
 <ul>
 <li><strong>创建表</strong>   <code>create table t1 (id int, name varchar(20))</code></li>
@@ -1532,28 +1548,28 @@
 <p>将math成绩从小到大排序,求math成绩在5-8名的学生的信息</p>
 <p><code>select * from student order by math limit 4,4;</code></p>
 <h3 id="mysql中的函数"><a href="#mysql中的函数" class="headerlink" title="mysql中的函数"></a>mysql中的函数</h3><h4 id="日期时间函数"><a href="#日期时间函数" class="headerlink" title="日期时间函数"></a>日期时间函数</h4><p>MySQL里面时间分为三类：时间、日期、时间戳(含有时分秒的<code>sysdate</code>)。    (在mysql中使用sysdate必须加小括号)</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301726678.png" alt="image-20221030172638699"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301726678.png" alt="image-20221030172638699"></p>
 <ul>
 <li><code>DATA_ADD</code> 等同于 <code>ADDDATE</code> ,<code>DATA_SUB</code>同理</li>
 <li><code>CURDATE</code> 等同于 <code>CURRENT_DATE</code>,<code>current_time</code>同理</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301732417.png" alt="image-20221030173143508"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301732417.png" alt="image-20221030173143508"></p>
 <p><code>now()</code>   等同于   <code>sysdate()</code>   等同于   <code>current_timestamp()</code></p>
 <p>addtime函数用法参考</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301742376.png" alt="image-20221030174159636"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301742376.png" alt="image-20221030174159636"></p>
 <p>DATE_ADD函数用法参考  (<code>interval</code>是关键词,不能缺少)</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301750340.png" alt="image-20221030175035800"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301750340.png" alt="image-20221030175035800"></p>
 <p> 上述语句中的函数名, INTERVAL不区分大小写, day, month, year也可以用大写.</p>
 <p>DATEDIFF函数用法参考</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301802641.png" alt="image-20221030180213902"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301802641.png" alt="image-20221030180213902"></p>
 <h5 id="日期格式函数"><a href="#日期格式函数" class="headerlink" title="日期格式函数"></a>日期格式函数</h5><p>日期转字符串<br>$$<br>DATE_FORMAT(date,format)<br>$$</p>
 <p>根据format 字符串安排date 值的格式。 </p>
 <p>以下说明符可用在 format 字符串中：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301808026.png" alt="image-20221030180826827"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301808026.png" alt="image-20221030180826827"></p>
 <p>案例:   <code>select date_format(now(),&#39;%Y-%m-%d %H:%i:%s&#39;);</code></p>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301811721.png" alt="image-20221030181106873" style="zoom:67%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210301811721.png" alt="image-20221030181106873" style="zoom:67%;" />
 
-<h4 id="数学相关函数"><a href="#数学相关函数" class="headerlink" title="数学相关函数"></a>数学相关函数</h4><p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210311123690.png" alt="image-20221031112333528"></p>
+<h4 id="数学相关函数"><a href="#数学相关函数" class="headerlink" title="数学相关函数"></a>数学相关函数</h4><p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210311123690.png" alt="image-20221031112333528"></p>
 <ul>
 <li><code>conv(12,10,2)</code> 将12从10进制转换成2进制为1100</li>
 <li><code>format(12.015,2)</code> 将12.015保留小数点后两位为12.02</li>
@@ -1562,7 +1578,7 @@
 </ul>
 <p>还有三角函数,指数等等的一大堆数学函数</p>
 <h4 id="字符串相关函数"><a href="#字符串相关函数" class="headerlink" title="字符串相关函数"></a>字符串相关函数</h4><p><strong><code>||</code> 连接字符串 在 MySQL不可以使用。</strong>但mysql的<code>concat</code>函数可以连接多个字符串</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210311420970.png" alt="image-20221031142000017"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210311420970.png" alt="image-20221031142000017"></p>
 <ul>
 <li><code>replace</code>  会替换所有符合的字串</li>
 <li><code>strcmp</code>  相等返回0,小于返回-1,大于返回1</li>
@@ -1607,7 +1623,7 @@
 <p><strong>[自连接案例]</strong>   查询员工、老板信息，显示: xxx的老板是xxx</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> concat(e.ename,<span class="string">&#x27;的老板是&#x27;</span>,ifnull(b.ename,<span class="string">&#x27;自己&#x27;</span>)) <span class="keyword">from</span> emp e <span class="keyword">left</span> <span class="keyword">join</span> emp b <span class="keyword">on</span> e.mgr <span class="operator">=</span> b.empno;</span><br></pre></td></tr></table></figure>
 
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210311558213.png" alt="image-20221031155836798" style="zoom:67%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210311558213.png" alt="image-20221031155836798" style="zoom:67%;" />
 
 <h5 id="mysql满外连接"><a href="#mysql满外连接" class="headerlink" title="mysql满外连接"></a>mysql满外连接</h5><p>任一边有值就会显示。     在oracle中没有对应</p>
 <p>关键词    <strong><code>full [outer] join ... on ...</code></strong>      (outer可省略)</p>
@@ -1630,7 +1646,7 @@
 </blockquote>
 <p>指定字符集登录数据库(默认是utf8mb4)   <code>mysql -uroot -p123456 --default_character_set=gbk</code></p>
 <p>上面语句如果不是和插入时登录数据库使用的同一个字符集,就会中文乱码</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210311738498.png" alt="image-20221031173810379"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202210311738498.png" alt="image-20221031173810379"></p>
 <p>如果使用<code>secureCRT</code>,<code>secureCRT</code>菜单中的Options-Session Options-Category-Terminal-Appearance中可以设置Character encoding设置工具的字符集(如果未设置为utf-8也会显示乱码)</p>
 <p>操作系统的语言集</p>
 <p>Ubuntu下查看字符集 <code>cat /etc/default/locale</code></p>
@@ -1791,7 +1807,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MYSQL_ROW row = <span class="literal">NULL</span>;				<span class="comment">//typedef char **MYSQL_ROW;	</span></span><br><span class="line">     <span class="keyword">while</span> ((row = mysql_fetch_row(result))) &#123;</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">&quot;%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n&quot;</span>, row[<span class="number">0</span>],row[<span class="number">1</span>],row[<span class="number">2</span>],row[<span class="number">3</span>],row[<span class="number">4</span>],row[<span class="number">5</span>],row[<span class="number">6</span>],row[<span class="number">7</span>]);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 <p>MYSQL_ROW的本质是<code>tupedef char** MYSQL_ROW;</code>,数据信息存储的形式如下图</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202211141522005.png" alt="image-20221114152116545"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202211141522005.png" alt="image-20221114152116545"></p>
 <h5 id="mysql-free-result函数"><a href="#mysql-free-result函数" class="headerlink" title="mysql_free_result函数"></a>mysql_free_result函数</h5><p><strong>释放结果集</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">mysql_free_result</span><span class="params">(MYSQL_RES *result)</span>; </span><br><span class="line"><span class="comment">//成功释放参数传递的结果集。没有失败情况。</span></span><br></pre></td></tr></table></figure>
 
@@ -1863,7 +1879,7 @@
 <li><a href="#mysql_stmt_error%E5%87%BD%E6%95%B0"><code>mysql_stmt_error()</code> </a>	    获取错误消息。</li>
 <li><a href="#mysql_stmt_close%E5%87%BD%E6%95%B0"><code>mysql_stmt_close()</code> </a>	    关闭预处理语句</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202211221646758.png" alt="image-20221122164501715"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202211221646758.png" alt="image-20221122164501715"></p>
 <h5 id="mysql-stmt-init函数"><a href="#mysql-stmt-init函数" class="headerlink" title="mysql_stmt_init函数"></a>mysql_stmt_init函数</h5><p>创建MYSQL_STMT句柄。对于该句柄，应使用<a href="#mysql_stmt_close%E5%87%BD%E6%95%B0"><code>mysql_stmt_close(MYSQL_STMT *)</code></a>释放。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MYSQL_STMT *<span class="title function_">mysql_stmt_init</span><span class="params">(MYSQL *mysql)</span>;</span><br><span class="line"><span class="comment">//成功时，返回指向MYSQL_STMT结构的指针。如果内存溢出，返回NULL。</span></span><br></pre></td></tr></table></figure>
 
@@ -1899,7 +1915,7 @@
 </ul>
 </blockquote>
 <p>buffer_type成员指定的允许值:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202211221724158.png" alt="image-20221122172303182"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202211221724158.png" alt="image-20221122172303182"></p>
 <h5 id="mysql-stmt-execute函数"><a href="#mysql-stmt-execute函数" class="headerlink" title="mysql_stmt_execute函数"></a>mysql_stmt_execute函数</h5><p><code>mysql_stmt_execute()</code>执行与语句句柄相关的预处理查询。在该调用期间，将当前绑定的参数标记符的值发送到服务器，服务器用新提供的数据替换标记符。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">mysql_stmt_execute</span><span class="params">(MYSQL_STMT *stmt)</span>;</span><br><span class="line"><span class="comment">//如果执行成功，返回0。如果出现错误，返回非0值。</span></span><br></pre></td></tr></table></figure>
 
@@ -1961,7 +1977,7 @@
 </ul>
 </li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202305261512329.png" alt="image-20230526151239035" style="zoom:50%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202305261512329.png" alt="image-20230526151239035" style="zoom:50%;" />
 
 <ol>
 <li>所有的数据默认存储在关系型数据库中</li>
@@ -2142,6 +2158,23 @@
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ZEROKO14
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://zeroko14.gitee.io/blog/0/" title="数据库">http://zeroko14.gitee.io/blog/0/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -2173,6 +2206,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -2278,6 +2312,12 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">ZEROKO14</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">518k</span>
 </div>
 
         
@@ -2315,6 +2355,8 @@
 
   
   <script src="/blog/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/blog/lib/velocity/velocity.min.js"></script>
   <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
@@ -2327,6 +2369,8 @@
 
 
 <script src="/blog/js/next-boot.js"></script>
+
+<script src="/blog/js/bookmark.js"></script>
 
 
   <script defer src="/blog/lib/three/three.min.js"></script>
@@ -2351,6 +2395,19 @@
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   
@@ -2411,6 +2468,27 @@
     
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '67c7a42cef54843d55de',
+      clientSecret: 'ab1b9b51ee90c36803ecfaae6bc72ff75494f245',
+      repo        : 'gitalk',
+      owner       : 'che77a38',
+      admin       : ['che77a38'],
+      id          : '95e321ca5019a9ee155f909624203e9d',
+      proxy       : 'https://cors-anywhere.1l1.icu/https://github.com/login/oauth/access_token',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
