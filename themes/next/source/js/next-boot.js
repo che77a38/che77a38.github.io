@@ -74,7 +74,6 @@ NexT.boot.registerEvents = function() {
 };
 
 NexT.boot.refresh = function() {
-
   /**
    * Register JS handlers by condition option.
    * Need to add config option in Front-End at 'layout/_partials/head.swig' file.
@@ -92,6 +91,8 @@ NexT.boot.refresh = function() {
   NexT.utils.registerSidebarTOC();
   NexT.utils.wrapTableWithBox();
   NexT.utils.registerVideoIframe();
+  //下面这行是自行添加的
+  codeUnfold();
 };
 
 NexT.boot.motion = function() {
