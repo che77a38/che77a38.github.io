@@ -1138,6 +1138,8 @@ endif (OPENCV_FOUND)
 停止xxx服务：`brew services stop xxx`
 重启xxx服务：`brew services restart xxx`
 
+删除所有未使用的依赖  `brew autoremove`  (加`-n`可以预先确定哪些软件将会被清理)
+
 [更详细的命令]: https://blog.csdn.net/weixin_44280688/article/details/93391279
 
 # git一图流
@@ -1802,9 +1804,128 @@ Git不允许切换分支时覆盖未提交的更改，以避免意外丢失工�
 
 11. 设置推送请求,如图
 
-    <img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311241432050.png" alt="image-20231124143141499" style="zoom: 67%;" />
+    <img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311241432050.png" alt="image-20231124143141499" style="zoom: 50%;" />
 
 12. 等待原作者通过
+
+## github action
+
+简单来说可以
+
+1. 自己服务器上的应用部署过程自动化
+2. 合作开发的时候自动测试代码
+
+详细来说
+
+根据持续集成的设计，代码从提交到生产，整个过程有以下几步。
+
+> （1）提交
+>
+> 流程的第一步，是开发者向代码仓库提交代码。所有后面的步骤都始于本地代码的一次提交（commit）。
+>
+> （2）测试（第一轮）
+>
+> 代码仓库对commit操作配置了钩子（hook），只要提交代码或者合并进主干，就会跑自动化测试。 测试有好几种。
+>
+> - 单元测试：针对函数或模块的测试
+> - 集成测试：针对整体产品的某个功能的测试，又称功能测试
+> - 端对端测试：从用户界面直达数据库的全链路测试
+>
+> (3) 构建
+>
+> 通过第一轮测试，代码就可以合并进主干，就算可以交付了。 交付后，就先进行构建（build），再进入第二轮测试。所谓构建，指的是将源码转换为可以运行的实际代码，比如安装依赖，配置各种资源（样式表、JS脚本、图片）等等。 常用的构建工具如下。
+>
+> - Jenkins
+> - Travis
+> - Codeship
+> - Strider
+>
+> (4) 测试（第二轮）
+>
+> 构建完成，就要进行第二轮测试。如果第一轮已经涵盖了所有测试内容，第二轮可以省略，当然，这时构建步骤也要移到第一轮测试前面。
+>
+> 第二轮是全面测试，单元测试和集成测试都会跑，有条件的话，也要做端对端测试。所有测试以自动化为主，少数无法自动化的测试用例，就要人工跑。
+>
+> 需要强调的是，新版本的每一个更新点都必须测试到。如果测试的覆盖率不高，进入后面的部署阶段后，很可能会出现严重的问题。
+>
+> (5) 部署
+>
+> 通过了第二轮测试，当前代码就是一个可以直接部署的版本（artifact）。将这个版本的所有文件打包（ tar filename.tar * ）存档，发到生产服务器。
+>
+> (6) 回滚
+>
+> 一旦当前版本发生问题，就要回滚到上一个版本的构建结果。最简单的做法就是修改一下符号链接，指向上一个版本的目录。
+
+### GitHub Actions 是什么？
+
+> Github Actions是由Github创建的 CI/CD服务。 它的目的是使所有软件开发工作流程的自动化变得容易。 直接从GitHub构建，测试和部署代码。CI（持续集成）由很多操作组成，比如代码合并、运行测试、登录远程服务器，发布到第三方服务等等。GitHub 把这些操作就称为 actions。
+>
+> 很多操作在不同项目里面是类似的，完全可以共享。GitHub 允许开发者把每个操作写成独立的脚本文件，存放到代码仓库，使得其他开发者可以引用。
+>
+> 如果你需要某个 action，不必自己写复杂的脚本，直接引用他人写好的 action 即可，整个持续集成过程，就变成了一个 actions 的组合。这就是 GitHub Actions 最特别的地方。
+>
+> GitHub 做了一个[GitHub Marketplace](https://github.com/marketplace?type=actions) ，可以搜索到他人提交的 actions。另外，还有一个[Awesome Actions](https://github.com/sdras/awesome-actions)的仓库，也可以找到不少 action。
+
+#### 基础概念
+
+GitHub Actions 有一些自己的术语。
+
+- `workflow` （工作流程）：持续集成一次运行的过程。
+- `job` （任务）：一个 `workflow` 由一个或多个 job 构成，含义是一次持续集成的运行，可以完成多个任务。
+- `step`（步骤）：每个 `job` 由多个 `step` 构成，一步步完成。
+
+#### 虚拟环境
+
+GitHub Ac­tions 为每个任务 (job) 都提供了一个虚拟机来执行，每台虚拟机都有相同的硬件资源：
+
+- 2-core CPU, 7 GB RAM 内存, 14 GB SSD 硬盘空间
+- 硬盘总容量为90G左右，可用空间为30G左右
+
+#### 使用限制
+
+- 每个仓库只能同时支持20个 workflow 并行。
+- 每小时可以调用1000次 GitHub API 。
+- 每个 job 最多可以执行6个小时。
+- 免费版的用户最大支持20个 job 并发执行，macOS 最大只支持5个。
+- 私有仓库每月累计使用时间为2000分钟，超过后$ 0.008/分钟，公共仓库则无限制。
+- 操作系统方面可选择 Win­dows server、Linux、ma­cOS，并预装了大量软件包和工具。
+
+> TIPS： 虽然名称叫持续集成，但当所有任务终止和完成时，虚拟环境内的数据会随之清空，并不会持续。即每个新任务都是一个全新的虚拟环境。
+
+#### workflow 文件
+
+GitHub Ac­tions 的配置文件叫做 work­flow 文件，存放在代码仓库的`.github/workflows` 目录中。
+
+work­flow 文件采用 YAML 格式，文件名可以任意取，但是后缀名统一为`.yml`，比如 `build.yml`。一个库可以有多个 work­flow 文件，GitHub 只要发现`.github/workflows` 目录里面有`.yml` 文件，就会按照文件中所指定的触发条件在符合条件时自动运行该文件中的工作流程。
+
+在 Ac­tions 页面可以看到很多种语言的 work­flow 文件的模版，可以用于简单的构建与测试。下面是一个简单的 work­flow 文件示例：
+
+```yaml
+name: Hello World
+on: push
+jobs:
+  my_first_job:
+    name: My first job
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@master
+    - name: Run a single-line script
+      run: echo "Hello World!"
+  my_second_job:
+    name: My second job
+    runs-on: macos-latest
+    steps:
+    - name: Run a multi-line script
+      env:
+        MY_VAR: Hello World!
+        MY_NAME: P3TERX
+      run: |
+        echo $MY_VAR
+        echo My name is $MY_NAME
+```
+
+[更多细节参阅](https://zhuanlan.zhihu.com/p/250534172)
 
 # 图形化git管理软件
 

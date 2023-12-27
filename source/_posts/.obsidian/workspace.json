@@ -13,13 +13,38 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "加解密相关.md",
-                "mode": "source",
+                "file": "STL.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "a45dbff250c22e76",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "STL.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c8c16f2175467ee3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "算法.md",
+                "mode": "preview",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -48,7 +73,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "加解密相关",
+                "query": "算法",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -87,7 +112,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "加解密相关.md",
+                "file": "算法.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +129,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "加解密相关.md",
+                "file": "算法.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -137,12 +162,20 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "加解密相关.md"
+                "file": "算法.md"
               }
+            }
+          },
+          {
+            "id": "90c9d7e4e2236aa4",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {}
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       },
       {
         "id": "f220e106e57c0c58",
@@ -155,7 +188,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "加解密相关.md",
+                "file": "算法.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -178,7 +211,7 @@
                   "repelStrength": 0,
                   "linkStrength": 1,
                   "linkDistance": 30,
-                  "scale": 0.7209122452882916,
+                  "scale": 2.0609241744928473,
                   "close": true
                 }
               }
@@ -188,7 +221,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 391.5
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -202,10 +235,12 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "270a1b89141facc8",
+  "active": "c8c16f2175467ee3",
   "lastOpenFiles": [
-    "linux基础以及系统编程.md",
+    "STL.md",
+    "算法.md",
     "加解密相关.md",
+    "linux基础以及系统编程.md",
     "网络编程.md",
     "nginx.md",
     "正则表达式.md",
@@ -219,7 +254,6 @@
     "进程与线程.md",
     "APC机制.md",
     "视频效果.md",
-    "算法.md",
     "FPS逆向随笔.md",
     "C语言入门.md",
     "C++基础.md",
@@ -229,7 +263,6 @@
     "hello-world.md",
     "问题汇总.md",
     "句柄表.md",
-    "STL.md",
     "github.com/Dreamacro/clash-dashboard/tree",
     "github.com/Dreamacro/clash-dashboard",
     "github.com/Dreamacro",

@@ -831,6 +831,23 @@ change owner
 
 dpkg == Debian package
 
+`aptitude`是Debian Linux及其衍生系统中的一个功能强大的包管理工具。它与`apt-get`命令类似，但在处理依赖问题上更佳一些。例如，`aptitude`在删除一个包时，会同时删除本身所依赖的包。这样，系统中不会残留无用的包，整个系统更为干净
+
+以下是一些常用的`aptitude`命令
+
+```shell
+aptitude update # 更新可用的包列表
+aptitude upgrade # 升级可用的包
+aptitude dist-upgrade # 将系统升级到新的发行版
+aptitude install pkgname # 安装包
+aptitude remove pkgname # 删除包
+aptitude purge pkgname # 删除包及其配置文件
+aptitude search string # 搜索包
+aptitude show pkgname # 显示包的详细信息
+aptitude clean # 删除下载的包文件
+aptitude autoclean # 仅删除过期的包文件
+```
+
 ## 进程相关命令
 
 ps和[kill命令](#kill函数/命令)
@@ -993,6 +1010,8 @@ linux系统,通过修改 `/etc/crontab`文件(系统任务调度)添加定时任
 
   例如临时代理下载http文件下载链接,可用如下命令 
   `wget -c -r -np -k -L -p -e "http_proxy=http://127.0.0.1:9090" 下载链接`
+
+  `-S`用于显示详细的连接信息
 
 - `curl`命令    用来请求 Web 服务器的工具.发出网络请求,然后获取数据,显示在标准输出(stdout)上面
 
