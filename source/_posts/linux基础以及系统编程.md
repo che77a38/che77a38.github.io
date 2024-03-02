@@ -1025,6 +1025,41 @@ linux系统,通过修改 `/etc/crontab`文件(系统任务调度)添加定时任
 
 - `df` 和 `du` 命令,查看文件大小,如:`du -sh 文件夹路径`查看文件夹总大小
 
+### 第三方常用命令
+
+#### screen命令
+
+>  screen 命令是一个在 Linux 和 Unix 系统中使用的终端复用工具，它允许你在一个终端会话中同时运行多个窗口或会话，并且可以在断开连接后保持运行。以下是一些常用的 screen 命令用法：
+>
+
+1. 启动一个新的   screen   会话：
+   
+2. 创建一个带有自定义名称的新会话：
+     `screen -S session_name`
+   
+3. 列出当前所有的   screen   会话：
+     `screen -ls`
+   
+4. 连接到一个已经存在的   screen   会话：
+     `screen -r session_name`
+   
+5. 在   screen   会话中创建一个新窗口：
+     `Ctrl + A, C`
+   
+6. 在   screen   会话中切换窗口：
+     `Ctrl + A, N（下一个窗口）或 Ctrl + A, P（上一个窗口）`
+   
+7. 分离（断开）当前的   screen   会话：
+     `Ctrl + A, D`
+   
+8. 重新连接到之前分离的   screen   会话：
+     `screen -r`
+   
+9. 关闭当前的   screen   会话：
+   
+
+这些只是   screen   命令的一些基本用法，你可以通过查看   screen   的文档或使用   man screen   命令来获取更多详细信息和选项。
+
 # vim
 
 > vi是”visual interface”的简称, 它在Linux上的地位就仿佛Windows中的记事本一样. 它可以执行编辑、删除、查找、替换、块操作等众多文本操作, 而且用户可以根据自己的需要对其进行定制. vi是一个文本编辑程序, 没有菜单, 只有命令. 
@@ -1291,6 +1326,10 @@ $$
 #### 从末行模式切换回命令模式
 
 按两次ESC, 退格(backspace)或者回车键
+
+#### 删除全部内容
+
+`:%d`
 
 ## vim的配置文件
 
@@ -5269,5 +5308,4 @@ done
 
 `configure` 脚本无法确定系统的构建类型时。解决此问题的一种方法是在 `./configure` 步骤中指定 `--build` 参数。例如，对于 arm64，您可以使用 `./configure --build=aarch64-unknown-linux-gnu`，对于 x64，您可以使用 `./configure --build=x86_64-unknown-linux-gnu`
 
-
-
+[[C++基础#vcpkg包管理器|使用C++包管理器vcpkg]]

@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210613135932861.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311271632096.png">
 <meta property="article:published_time" content="2023-11-27T06:53:34.265Z">
-<meta property="article:modified_time" content="2023-11-28T04:01:28.313Z">
+<meta property="article:modified_time" content="2024-02-28T07:46:11.937Z">
 <meta property="article:author" content="ZEROKO14">
 <meta property="article:tag" content="开发">
 <meta name="twitter:card" content="summary">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-28 12:01:28" itemprop="dateModified" datetime="2023-11-28T12:01:28+08:00">2023-11-28</time>
+                <time title="修改时间：2024-02-28 15:46:11" itemprop="dateModified" datetime="2024-02-28T15:46:11+08:00">2024-02-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,14 +252,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.5k</span>
+              <span>5.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -402,13 +402,14 @@
 <li><strong>源码字符集</strong>(the source character set)   源码文件是使用何种编码保存的</li>
 <li><strong>执行字符集</strong>(the execution character set) 可执行程序内保存的是何种编码(程序执行时内存中字符编码)</li>
 </ul>
+<p><strong>在编译时，编译器会根据源文件的编码(源码字符集)将字符串字面量转换为目标字符串。只要没有进行编码转换，字符串字面量在程序中的表示形式将与其在源代码中的编码相同。</strong></p>
 <p><strong>操作系统字符集</strong></p>
 <blockquote>
 <p>除windows平台外大部分其他平台，编译器默认使用的编码都是UTF-8编码，最新版本的Clang编译器只支持UTF-8编码</p>
 </blockquote>
 <ul>
 <li><strong>windows</strong>中文版默认采用gbk编码</li>
-<li><strong>linux</strong>默认采用utf-8编码</li>
+<li><strong>linux</strong>,mac默认采用utf-8编码</li>
 </ul>
 <p>GCC编译器:</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-finput-charset 指定源文件的编码 (若不指定,默认是UTF-<span class="number">8</span>)</span><br><span class="line">-fexec-charset 指定多字节字符串(const char*)常量在编译后的程序里保存的编码集(若不指定,默认是UTF-<span class="number">8</span>)</span><br><span class="line">-fwide-exec-charset 指定宽字节字符串(const wchar_t*)常量在编译后的程序里的保存的编码集</span><br><span class="line"><span class="comment">#QMAKE中为:</span></span><br><span class="line">QMAKE_CFLAGS += -finput-charset=utf-<span class="number">8</span> -fexec-charset=gbk</span><br><span class="line">QMAKE_CXXFLAGS += -finput-charset=utf-<span class="number">8</span> -fexec-charset=gbk</span><br></pre></td></tr></table></figure>
@@ -429,7 +430,7 @@
 <p>如果程序需要在多个平台编译运行，则代码必须使用UTF-8。使用UTF-8可以更容易的在多字节字符串(char*, std::string)和宽字符(wchar_t* std::wstring）直接转换，更容易避免程序乱码，中文路径错误等问题。</p>
 </blockquote>
 <p> C++11 中引入的 <code>char16_t</code> 和 <code>char32_t</code> </p>
-<p>主要使用C++11引入的wstring_convert和codecvt相结合进行转换。但似乎在C++17遭到废弃</p>
+<p>主要使用C++11引入的wstring_convert和codecvt相结合进行转换。但在C++17遭到废弃</p>
 <h2 id="windows下常用转码需求"><a href="#windows下常用转码需求" class="headerlink" title="windows下常用转码需求"></a>windows下常用转码需求</h2><blockquote>
 <p>下面的代码在windows上完美运行（linux转码需求小）。GBK在linux下的locale名可能是”zh_CN.GBK”，而windows下是”.936”），因此做跨平台的话仍然要给不同的系统做适配</p>
 </blockquote>
@@ -455,12 +456,70 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::string <span class="title">wstr_to_gbk</span><span class="params">(<span class="type">const</span> std::wstring&amp; wstr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// GBK locale name in Windows</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* GBK_LOCALE_NAME = <span class="string">&quot;.936&quot;</span>;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_byname&lt;<span class="type">wchar_t</span>, <span class="type">char</span>, <span class="type">mbstate_t</span>&gt;&gt; <span class="built_in">convert</span>(<span class="keyword">new</span> std::<span class="built_in">codecvt_byname</span>&lt;<span class="type">wchar_t</span>, <span class="type">char</span>, <span class="type">mbstate_t</span>&gt;(GBK_LOCALE_NAME));</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">to_bytes</span>(wstr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>两个比较好的两个第三方库分别是 <a target="_blank" rel="noopener" href="http://utfcpp.sourceforge.net/">UTF8-CPP</a>以及<a target="_blank" rel="noopener" href="http://www.boost.org/doc/libs/1_51_0/libs/locale/doc/html/index.html">Boost.Locale</a>。</p>
-<h2 id="UTF8和UTF16互转"><a href="#UTF8和UTF16互转" class="headerlink" title="UTF8和UTF16互转"></a>UTF8和UTF16互转</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;codecvt&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;locale&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="function">std::u16string <span class="title">to_utf16</span><span class="params">( std::string str )</span> <span class="comment">// utf-8 to utf16</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> std::wstring_convert&lt; std::codecvt_utf8_utf16&lt;<span class="type">char16_t</span>&gt;, <span class="type">char16_t</span> &gt;&#123;&#125;.<span class="built_in">from_bytes</span>(str); &#125;</span><br><span class="line"> </span><br><span class="line"><span class="function">std::string <span class="title">to_utf8</span><span class="params">( std::u16string str16 )</span> <span class="comment">// utf-16 to utf8</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> std::wstring_convert&lt; std::codecvt_utf8_utf16&lt;<span class="type">char16_t</span>&gt;, <span class="type">char16_t</span> &gt;&#123;&#125;.<span class="built_in">to_bytes</span>(str16); &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="UTF8和UTF16互转"><a href="#UTF8和UTF16互转" class="headerlink" title="UTF8和UTF16互转"></a>UTF8和UTF16互转</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;codecvt&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;locale&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="function">std::u16string <span class="title">to_utf16</span><span class="params">( std::string str )</span> <span class="comment">// utf-8 to utf16</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> std::wstring_convert&lt; std::codecvt_utf8_utf16&lt;<span class="type">char16_t</span>&gt;, <span class="type">char16_t</span> &gt;&#123;&#125;.<span class="built_in">from_bytes</span>(str); &#125;</span><br><span class="line"> </span><br><span class="line"><span class="function">std::string <span class="title">to_utf8</span><span class="params">( std::u16string str16 )</span> <span class="comment">// utf-16 to utf8</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> std::wstring_convert&lt; std::codecvt_utf8_utf16&lt;<span class="type">char16_t</span>&gt;, <span class="type">char16_t</span> &gt;&#123;&#125;.<span class="built_in">to_bytes</span>(str16); &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下面也行</span></span><br><span class="line"><span class="function">std::u16string <span class="title">to_utf16</span><span class="params">(<span class="type">const</span> std::string&amp; str)</span> <span class="comment">// UTF-8 to UTF-16</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_utf8_utf16&lt;<span class="type">char16_t</span>&gt;, <span class="type">char16_t</span>&gt; convert;</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">from_bytes</span>(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">to_utf8</span><span class="params">(<span class="type">const</span> std::u16string&amp; str16)</span> <span class="comment">// UTF-16 to UTF-8</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_utf8_utf16&lt;<span class="type">char16_t</span>&gt;, <span class="type">char16_t</span>&gt; convert;</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">to_bytes</span>(str16);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>据称上面在C++17被废弃了</p>
+<p>上面在C++17被废弃了</p>
 <p>转而:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//c++17</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;codecvt&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;locale&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">std::u16string <span class="title">to_utf16</span><span class="params">(<span class="type">const</span> std::string&amp; str)</span> <span class="comment">// UTF-8 to UTF-16</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_utf8_utf16&lt;<span class="type">char16_t</span>&gt;, <span class="type">char16_t</span>&gt; convert;</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">from_bytes</span>(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">to_utf8</span><span class="params">(<span class="type">const</span> std::u16string&amp; str16)</span> <span class="comment">// UTF-16 to UTF-8</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_utf8_utf16&lt;<span class="type">char16_t</span>&gt;, <span class="type">char16_t</span>&gt; convert;</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">to_bytes</span>(str16);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string utf8Str = <span class="string">u8&quot;Hello, 你好&quot;</span>;</span><br><span class="line">    std::u16string utf16Str = <span class="built_in">to_utf16</span>(utf8Str);</span><br><span class="line">    std::string convertedUtf8Str = <span class="built_in">to_utf8</span>(utf16Str);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Original UTF-8: &quot;</span> &lt;&lt; utf8Str &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Converted UTF-16: &quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char16_t</span> c : utf16Str) &#123;</span><br><span class="line">        std::cout &lt;&lt; std::hex &lt;&lt; <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(c) &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Converted back to UTF-8: &quot;</span> &lt;&lt; convertedUtf8Str &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//c++17</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;codecvt&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;locale&gt;</span></span></span><br><span class="line"><span class="function">std::u16string <span class="title">to_utf16</span><span class="params">(<span class="type">const</span> std::string&amp; str)</span> <span class="comment">// UTF-8 to UTF-16</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_utf8&lt;<span class="type">char16_t</span>&gt;, <span class="type">char16_t</span>&gt; convert;</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">from_bytes</span>(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">to_utf8</span><span class="params">(<span class="type">const</span> std::u16string&amp; str16)</span> <span class="comment">// UTF-16 to UTF-8</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_utf8&lt;<span class="type">char16_t</span>&gt;, <span class="type">char16_t</span>&gt; convert;</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">to_bytes</span>(str16);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string utf8Str = <span class="string">u8&quot;Hello, 你好&quot;</span>;</span><br><span class="line">    std::u16string utf16Str = <span class="built_in">to_utf16</span>(utf8Str);</span><br><span class="line">    std::string convertedUtf8Str = <span class="built_in">to_utf8</span>(utf16Str);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Original UTF-8: &quot;</span> &lt;&lt; utf8Str &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Converted UTF-16: &quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char16_t</span> c : utf16Str) &#123;</span><br><span class="line">        std::cout &lt;&lt; std::hex &lt;&lt; <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(c) &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Converted back to UTF-8: &quot;</span> &lt;&lt; convertedUtf8Str &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="UTF8和UTF32互转"><a href="#UTF8和UTF32互转" class="headerlink" title="UTF8和UTF32互转"></a>UTF8和UTF32互转</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::u32string <span class="title">to_utf32</span><span class="params">(<span class="type">const</span> std::string&amp; str)</span> <span class="comment">// UTF-8 to UTF-32</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_utf8&lt;<span class="type">char32_t</span>&gt;, <span class="type">char32_t</span>&gt; convert;</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">from_bytes</span>(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">to_utf32</span><span class="params">(<span class="type">const</span> std::u32string&amp; str32)</span> <span class="comment">// UTF-32 to UTF-8</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::wstring_convert&lt;std::codecvt_utf8&lt;<span class="type">char32_t</span>&gt;, <span class="type">char32_t</span>&gt; convert;</span><br><span class="line">    <span class="keyword">return</span> convert.<span class="built_in">to_bytes</span>(str32);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="u8string转换为string"><a href="#u8string转换为string" class="headerlink" title="u8string转换为string"></a>u8string转换为string</h2><p>可以通过这种方式转换为string类型,本质上就是字节流拷贝</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">u8string u8str =<span class="string">u8&quot;你好,世界&quot;</span>;</span><br><span class="line">cout&lt;&lt;<span class="built_in">string</span>(u8str.<span class="built_in">begin</span>(),u8str.<span class="built_in">end</span>())&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+
+<h1 id="字符集总结"><a href="#字符集总结" class="headerlink" title="字符集总结"></a>字符集总结</h1><table>
+<thead>
+<tr>
+<th>字符类型</th>
+<th>字符串类型</th>
+<th>字符长度(bit)</th>
+<th>引入的C++版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char</td>
+<td>string</td>
+<td>8</td>
+<td>开始就存在</td>
+</tr>
+<tr>
+<td>char8_t</td>
+<td>u8string</td>
+<td>8</td>
+<td>20</td>
+</tr>
+<tr>
+<td>char16_t</td>
+<td>u16string</td>
+<td>16</td>
+<td>11</td>
+</tr>
+<tr>
+<td>char32_t</td>
+<td>u32string</td>
+<td>32</td>
+<td>11</td>
+</tr>
+<tr>
+<td>wchar_t</td>
+<td>wstring</td>
+<td>在不同的编译器和操作系统上不同</td>
+<td>开始就存在</td>
+</tr>
+</tbody></table>
+<p>cout不支持直接对u8string,u16string,u32string,wstring等的输出.可以通过下面方式:</p>
+<ul>
+<li>wstring使用wcout来输出</li>
+<li>u8string,u16string,u32string使用<a href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E8%BD%AC%E6%8D%A2">转换方式</a>来输出</li>
+</ul>
+<p>一些建议:</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.coder.work/article/576380">char8_t不建议用,其类型的问题可以参阅这里</a></p>
+<p>char8_t及u8string在标准中不受支持，任何系统API都不支持(而且可能永远不会,因为兼容性原因)。在大多数平台上，普通的<code>char</code>字符串已经是UTF-8，在Windows上，您可以使用<code>/utf-8</code>进行编译，这将在主要的操作系统上为您提供可移植的Unicode支持。您甚至不能使用u8字符串在C++20中编写Hello程序：</p>
+</li>
+<li><p>wchar_t因为平台之间的兼容性的问题,同样不建议用</p>
+</li>
+</ul>
 <h1 id="C语言中的宽字符"><a href="#C语言中的宽字符" class="headerlink" title="C语言中的宽字符"></a>C语言中的宽字符</h1><h2 id="宽字符类型"><a href="#宽字符类型" class="headerlink" title="宽字符类型"></a>宽字符类型</h2><ul>
 <li>char：多字节字符类型</li>
 <li>wchar_t：宽字符类型</li>
@@ -564,7 +623,10 @@
     <a href="/blog/ac56643f/" rel="prev" title="加密与解密">
       <i class="fa fa-chevron-left"></i> 加密与解密
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/blog/dd95332/" rel="next" title="C++11与14">
+      C++11与14 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -624,7 +686,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">字符编码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ANSI%E7%BC%96%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">ANSI编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E7%9A%84ASCII%E7%BC%96%E7%A0%81"><span class="nav-number">1.1.1.</span> <span class="nav-text">原始的ASCII编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASCII%E7%BC%96%E7%A0%81%E7%9A%84%E6%8B%93%E5%B1%95%EF%BC%9AGB2312%EF%BC%88GBK%EF%BC%89%E6%88%96GB2312-80"><span class="nav-number">1.1.2.</span> <span class="nav-text">ASCII编码的拓展：GB2312（GBK）或GB2312-80</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UNICODE%E7%BC%96%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">UNICODE编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UCS-2%E5%92%8CUCS-4"><span class="nav-number">1.2.1.</span> <span class="nav-text">UCS-2和UCS-4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNICODE%E7%BC%96%E7%A0%81%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">UNICODE编码的存储方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UTF-16"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">UTF-16</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UTF-8"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">UTF-8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UTF-32"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">UTF-32</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BOM%E5%AD%97%E8%8A%82%E9%A1%BA%E5%BA%8F%E6%A0%87%E8%AF%86"><span class="nav-number">1.2.3.</span> <span class="nav-text">BOM字节顺序标识</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="nav-number">2.</span> <span class="nav-text">操作系统字符集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%8F%B0"><span class="nav-number">2.1.</span> <span class="nav-text">控制台</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">字符集转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#windows%E4%B8%8B%E5%B8%B8%E7%94%A8%E8%BD%AC%E7%A0%81%E9%9C%80%E6%B1%82"><span class="nav-number">3.1.</span> <span class="nav-text">windows下常用转码需求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#utf8%E7%9A%84%E5%AE%BD%E7%AA%84%E5%AD%97%E7%AC%A6%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.1.1.</span> <span class="nav-text">utf8的宽窄字符转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#utf8%E4%B8%8Egbk%E4%BA%92%E8%BD%AC"><span class="nav-number">3.1.2.</span> <span class="nav-text">utf8与gbk互转</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#utf-8%E8%BD%ACgbk"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">utf-8转gbk</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gbk%E8%BD%ACutf-8"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">gbk转utf-8</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gbk%E7%9A%84%E5%AE%BD%E7%AA%84%E5%AD%97%E7%AC%A6%E4%BA%92%E8%BD%AC"><span class="nav-number">3.1.3.</span> <span class="nav-text">gbk的宽窄字符互转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF8%E5%92%8CUTF16%E4%BA%92%E8%BD%AC"><span class="nav-number">3.2.</span> <span class="nav-text">UTF8和UTF16互转</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%AE%BD%E5%AD%97%E7%AC%A6"><span class="nav-number">4.</span> <span class="nav-text">C语言中的宽字符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%BD%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.1.</span> <span class="nav-text">宽字符类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">4.2.</span> <span class="nav-text">字符常用函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%AD%97%E9%9D%A2%E9%87%8F%E7%9A%84%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8F"><span class="nav-number">4.3.</span> <span class="nav-text">设置字面量的编码方式</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">字符编码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ANSI%E7%BC%96%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">ANSI编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E7%9A%84ASCII%E7%BC%96%E7%A0%81"><span class="nav-number">1.1.1.</span> <span class="nav-text">原始的ASCII编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASCII%E7%BC%96%E7%A0%81%E7%9A%84%E6%8B%93%E5%B1%95%EF%BC%9AGB2312%EF%BC%88GBK%EF%BC%89%E6%88%96GB2312-80"><span class="nav-number">1.1.2.</span> <span class="nav-text">ASCII编码的拓展：GB2312（GBK）或GB2312-80</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UNICODE%E7%BC%96%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">UNICODE编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UCS-2%E5%92%8CUCS-4"><span class="nav-number">1.2.1.</span> <span class="nav-text">UCS-2和UCS-4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNICODE%E7%BC%96%E7%A0%81%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">UNICODE编码的存储方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UTF-16"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">UTF-16</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UTF-8"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">UTF-8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UTF-32"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">UTF-32</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BOM%E5%AD%97%E8%8A%82%E9%A1%BA%E5%BA%8F%E6%A0%87%E8%AF%86"><span class="nav-number">1.2.3.</span> <span class="nav-text">BOM字节顺序标识</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="nav-number">2.</span> <span class="nav-text">操作系统字符集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%8F%B0"><span class="nav-number">2.1.</span> <span class="nav-text">控制台</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">字符集转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#windows%E4%B8%8B%E5%B8%B8%E7%94%A8%E8%BD%AC%E7%A0%81%E9%9C%80%E6%B1%82"><span class="nav-number">3.1.</span> <span class="nav-text">windows下常用转码需求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#utf8%E7%9A%84%E5%AE%BD%E7%AA%84%E5%AD%97%E7%AC%A6%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.1.1.</span> <span class="nav-text">utf8的宽窄字符转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#utf8%E4%B8%8Egbk%E4%BA%92%E8%BD%AC"><span class="nav-number">3.1.2.</span> <span class="nav-text">utf8与gbk互转</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#utf-8%E8%BD%ACgbk"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">utf-8转gbk</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gbk%E8%BD%ACutf-8"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">gbk转utf-8</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gbk%E7%9A%84%E5%AE%BD%E7%AA%84%E5%AD%97%E7%AC%A6%E4%BA%92%E8%BD%AC"><span class="nav-number">3.1.3.</span> <span class="nav-text">gbk的宽窄字符互转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF8%E5%92%8CUTF16%E4%BA%92%E8%BD%AC"><span class="nav-number">3.2.</span> <span class="nav-text">UTF8和UTF16互转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF8%E5%92%8CUTF32%E4%BA%92%E8%BD%AC"><span class="nav-number">3.3.</span> <span class="nav-text">UTF8和UTF32互转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u8string%E8%BD%AC%E6%8D%A2%E4%B8%BAstring"><span class="nav-number">3.4.</span> <span class="nav-text">u8string转换为string</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">字符集总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%AE%BD%E5%AD%97%E7%AC%A6"><span class="nav-number">5.</span> <span class="nav-text">C语言中的宽字符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%BD%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.1.</span> <span class="nav-text">宽字符类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">5.2.</span> <span class="nav-text">字符常用函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%AD%97%E9%9D%A2%E9%87%8F%E7%9A%84%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8F"><span class="nav-number">5.3.</span> <span class="nav-text">设置字面量的编码方式</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -638,7 +700,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -651,7 +713,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -678,7 +740,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -688,8 +750,10 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">535k</span>
+    <span title="站点总字数">574k</span>
 </div>
+
+<!-- -->
 
         
 <div class="busuanzi-count">

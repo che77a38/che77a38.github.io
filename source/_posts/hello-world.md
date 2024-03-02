@@ -281,3 +281,5 @@ More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
 
 
 
+[hexo添加密码](https://ednovas.github.io/2021/05/03/hexoencrypt/#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B)
+

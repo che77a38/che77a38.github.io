@@ -129,7 +129,7 @@ void f()
 | 双向迭代器(bidirectional iterator)     | 提供读写操作，并能向前和向后操作                             | 读写，支持++、--，                       |
 | 随机访问迭代器(random access iterator) | 提供读写操作，并能以跳跃的方式访问容器的任意数据，是功能最强的迭代器 | 读写，支持++、--、[n]、+-n、<、<=、>、>= |
 
-`p.s.上面的迭代器都可以支持++，但只有随机访问迭代器可以支持迭代器+1的操作，不然会报错。因此可以以此作为判断是否随机访问迭代器的方式`
+`p.s.上面的迭代器都可以支持++，但只有随机访问迭代器可以支持迭代器+数字的操作，不然会报错。因此可以以此作为判断是否随机访问迭代器的方式`
 
 1. array: 随机访问迭代器
 1. vector: 随机访问迭代器
@@ -265,6 +265,23 @@ $$
 【重点理解】迭代器vector<xxxx>::iterator\  it;中，*it就是xxxx类型
 $$
 
+#### distance函数
+
+> **直接使用两个迭代器相减就可以得到距离**,但也可以使用这个函数
+
+int distance( InputIt first1, InputIt first2 );
+
+用于计算两个迭代器之间的距离，即两个迭代器所指向的元素之间的距离。
+
+参数说明：
+
+- `first1`：起始迭代器，指向要计算距离的范围的起始位置。
+- `first2`：结束迭代器，指向要计算距离的范围的结束位置。
+
+返回值说明：
+
+- 表示迭代器之间的距离。如果`first1`与`first2`相等，则返回值为0；如果`first1`大于`first2`，返回值为负数。
+
 #### 迭代器语法注意点
 
 > `stl`中的`end`函数实际上是指向容器的最后一个元素之后的位置的迭代器。这个迭代器指向一个“不存在”的元素，它不表示任何实际的元素，只是用来表示容器的结尾。在使用`end`迭代器时，**不能通过它来访问容器中的元素**，但是可以使用它来判断迭代器是否指向容器的结尾。
@@ -359,16 +376,16 @@ swap(vec);// 将vec与本身的元素互换。
 ```cpp
 size();//返回容器中元素的个数
 empty();//判断容器是否为空
-resize(int num);//重新指定容器有效的元素个数长度为num，若容器变长，则以默认值0填充新位置。如果容器变短，则末尾超出容器长度的元素被删除（实际上未被删除，还留存在内存中，除非之后被覆盖）。
-resize(int num, elem);//重新指定容器有效的元素个数长度为num，若容器变长，则以elem值填充新位置。如果容器变短，则末尾超出容器长度的元素被删除（实际上未被删除，还留存在内存中，除非之后被覆盖）。
+resize(int num);//重新指定容器有效的元素个数长度为num，若容器变长，则以默认值0填充新位置。如果容器变短，则末尾超出容器长度的元素被删除(实际上未被删除，还留存在内存中，除非之后被覆盖)
+resize(int num, elem);//重新指定容器有效的元素个数长度为num，若容器变长，则以elem值填充新位置。如果容器变短，则末尾超出容器长度的元素被删除(实际上未被删除，还留存在内存中，除非之后被覆盖)
 capacity();//容器的容量
-reserve(int len);//容器预留len个元素长度，预留位置不初始化，元素不可访问。
+reserve(int len);//容器预留len个元素长度，预留位置不初始化，元素不可访问
 ```
 
 #####  vector数据存取操作
 
 ```cpp
-at(int idx); //返回索引idx所指的数据，如果idx越界，抛出out_of_range异常。
+at(int idx); //返回索引idx所指的数据，如果idx越界，抛出out_of_range异常
 operator[];//返回索引idx所指的数据，越界时，运行直接报错
 front();//返回容器中第一个数据元素
 back();//返回容器中最后一个数据元素
@@ -389,7 +406,7 @@ vector判断元素不存在是通过[find函数](#常用查找算法)来判断:`
 
 ##### vector小案例
 
-###### 巧用swap，收缩内存空间（重点）
+###### 巧用swap，收缩内存空间(重点)
 
 ```cpp
 #define _CRT_SECURE_NO_WARNINGS
@@ -398,7 +415,6 @@ vector判断元素不存在是通过[find函数](#常用查找算法)来判断:`
 using namespace std;
 
 int main(){
-
 	vector<int> v;
 	for (int i = 0; i < 100000;i ++){
 		v.push_back(i);
@@ -433,12 +449,9 @@ int main(){
 using namespace std;
 
 int main(){
-
 	vector<int> v;
-
 	//预先开辟空间
 	v.reserve(100000);
-
 	int* pStart = NULL;
 	int count = 0;
 	for (int i = 0; i < 100000;i ++){
@@ -448,9 +461,7 @@ int main(){
 			count++;
 		}
 	}
-
 	cout << "count:" << count << endl;
-
 	system("pause");
 	return EXIT_SUCCESS;
 }
@@ -498,11 +509,9 @@ int main() {
 }
 ```
 
-
-
 ### deque容器（双端队列）
 
-头文件:#include\<deque\>
+头文件:`#include <deque>`
 
 #### deque容器基本概念
 
@@ -516,7 +525,7 @@ Deque容器和vector容器最大的差异，一在于deque允许使用常数项�
 
 #### deque容器实现原理
 
-Deque容器是连续的空间，至少逻辑上看来如此，连续现行空间总是令我们联想到array和vector,array无法成长，vector虽可成长，却只能向尾端成长，而且其成长其实是一个假象，事实上(1) 申请更大空间 (2)原数据复制新空间 (3)释放原空间 三步骤，如果不是vector每次配置新的空间时都留有余裕，其成长假象所带来的代价是非常昂贵的。
+Deque容器是连续的空间，至少逻辑上看来如此，连续现行空间总是令我们联想到array和vector,array无法成长，vector虽可成长，却只能向尾端成长，而且其成长其实是一个假象，事实上(1)申请更大空间 (2)原数据复制新空间 (3)释放原空间 三步骤，如果不是vector每次配置新的空间时都留有余裕，其成长假象所带来的代价是非常昂贵的。
 
 Deque是由一段一段的定量的连续空间构成。一旦有必要在deque前端或者尾端增加新的空间，便配置一段连续定量的空间，串接在deque的头端或者尾端。**Deque最大的工作就是维护这些分段连续的内存空间的整体性的假象，并提供随机存取的接口，避开了重新配置空间，复制，释放的轮回，代价就是复杂的迭代器架构。**
 
@@ -611,7 +620,6 @@ erase(const_iterator pos);//删除pos位置的数据，返回下一个数据的�
 using namespace std;
 
 int main(){
-
 	list<int> myList;
 	for (int i = 0; i < 10; i ++){
 		myList.push_back(i);
@@ -977,6 +985,8 @@ count(keyElem);//返回容器中key为keyElem的对组个数。对map来说，�
 lower_bound(keyElem);//返回第一个key>=keyElem元素的迭代器。
 upper_bound(keyElem);//返回第一个key>keyElem元素的迭代器。
 equal_range(keyElem);//返回容器中key与keyElem相等的上下限的两个迭代器。
+value_type;//成员类型别名,为值的类型
+key_type;//成员类型别名,为键的类型
 ```
 
 map/multimap同样可设定排序规则，方式与set一致。
@@ -1041,11 +1051,45 @@ int  main()
 
 API与map一致,参考[map的api](#map/multimap常用API)
 
+> map与unordered_map等的结构默认值均为0,如果直接访问一个没赋值的map[3],得到的结果直接是0
+
 ### unordered_set/unordered_multiset(无序集合)
 
 哈希表作为底层实现
 
 API与set一致,参考[set的api](#set/multiset常用API)
+
+> 由于哈希表需要对键计算哈希值,因此当视图定义`unordered_set<vector<int>>`这种复合类型的时候,由于unordered_set并未针对vector提供特化版本,因此会导致该结构报错: `the specified hash does not meet the Hash requirements`,即没有满足C++标准库对哈希函数的要求
+
+下面给出一个例子,提供unordered_set对vector的特化版本
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+#include <functional>
+
+struct VectorHash {
+    std::size_t operator()(const std::vector<int>& vec) const {
+        std::size_t seed = vec.size();
+        for (int i : vec) {
+            // 使用合适的哈希组合方式，这里使用 boost 的 hash_combine 算法思想
+            seed ^= i + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        }
+        return seed;
+    }
+};
+
+int main() {
+    std::unordered_set<std::vector<int>, VectorHash> mySet;
+    // 现在可以正常使用了
+    return 0;
+}
+```
+
+> hash_combine算法是一种用于将多个哈希值合并成一个新的哈希值的算法。它的思想是通过对每个输入哈希值进行位运算和异或操作，将它们组合成一个新的哈希值。这样做的目的是为了保持合并后的哈希值的唯一性和散列性。
+>
+> seed ^= i + 0x9e3779b9 + (seed << 6) + (seed >> 2);   在这个算法中，使用0x9e3779b9作为调整因子可以帮助扩散输入哈希值的位分布，增加合并后的哈希值的随机性和散列性。它的选择是基于对黄金比例的一种经验性的观察和研究。
 
 ## 容器适配器
 
@@ -1118,6 +1162,8 @@ String和c风格字符串对比：
   UTF-16编码是2个字节或4个字节表示一个字符:对于那些需要4个字节的UTF-16字符（也被称为代理对），它们会被分成两个2字节的部分，然后分别存储在`std::wstring`的两个连续的元素中
 
 #### string容器常用操作
+
+> 在C++标准库中，`std::string::npos` 是 `std::string` 类的一个静态成员常量，它代表了一个特殊值，通常表示一个不存在的位置或超出字符串长度的索引。当使用 `std::string` 的查找、替换等函数时，如果找不到指定的子串或字符，这些函数会返回 `std::string::npos`。
 
 #####  string 构造函数
 
@@ -1538,9 +1584,11 @@ resize();//设置队列的最大大小(下面有详细解释)
 
 优先队列
 
-基于堆的容器适配器，基于vector实现
+> 底层为:在vector上实现的一个[[数据结构#堆|堆]]数据结构
 
 头文件: `#include <queue>`
+
+
 
 ## STL容器使用时机(重点)
 
@@ -1556,428 +1604,17 @@ resize();//设置队列的最大大小(下面有详细解释)
 
    vector与deque的比较：
 
- 	1. `vector.at()比deque.at()效率高，比如vector.at(0)是固定的，deque的开始位置	却是不固定的。`
- 	2. `如果有大量释放操作的话，vector花的时间更少，这跟二者的内部实现有关。`
- 	3.  `deque支持头部的快速插入与快速移除，这是deque的优点。`
+```
+1. `vector.at()比deque.at()效率高，比如vector.at(0)是固定的，deque的开始位置	却是不固定的。`
+2. `如果有大量释放操作的话，vector花的时间更少，这跟二者的内部实现有关。`
+3.  `deque支持头部的快速插入与快速移除，这是deque的优点。`
+```
 
 - list的使用场景：比如公交车乘客的存储，随时可能有乘客下车，支持频繁的不确实位置元素的移除插入。
 - set的使用场景：比如对手机游戏的个人得分记录的存储，存储要求从高分到低分的顺序排列。 
 - map的使用场景：比如按ID号存储十万个用户，想要快速要通过ID查找对应的用户。二叉树的查找效率，这时就体现出来了。如果是vector容器，最坏的情况下可能要遍历完整个容器才能找到该用户。
 
 ## 常用算法
-
-### 函数对象（难点）
-
-重载函数调用操作符的类，其对象常称为**函数对象（function object）**，即它们是行为类似函数的对象，也叫**仿函数(functor)**,其实就是重载“()”操作符，使得类对象可以像函数那样调用。
-
-注意：
-
-1. 函数对象(仿函数)是一个类，不是一个函数。
-2. 函数对象(仿函数)重载了”() ”操作符使得它可以像函数一样调用。
-
-分类:假定某个类有一个重载的operator()，而且重载的operator()要求获取一个参数，我们就将这个类称为“一元仿函数”（unary functor）；相反，如果重载的operator()要求获取两个参数，就将这个类称为“**二元仿函数**”（binary functor）。
-
-函数对象的作用主要是什么？**STL提供的算法往往都有两个版本，其中一个版本表现出最常用的某种运算，另一版本则允许用户通过template参数的形式来指定所要采取的策略。**
-
-```cpp
-//函数对象是重载了函数调用符号的类
-class MyPrint
-{
-public:
-	MyPrint()
-	{
-		m_Num = 0;
-	}
-	int m_Num;
-
-public:
-	void operator() (int num)
-	{
-		cout << num << endl;
-		m_Num++;
-	}
-};
-
-//函数对象
-//重载了()操作符的类实例化的对象，可以像普通函数那样调用,可以有参数 ，可以有返回值
-void test01()
-{
-	MyPrint myPrint;
-	myPrint(20);
-
-}
-// 函数对象超出了普通函数的概念，可以保存函数的调用状态
-void test02()
-{
-	MyPrint myPrint;
-	myPrint(20);
-	myPrint(20);
-	myPrint(20);
-	cout << myPrint.m_Num << endl;//调用次数
-}
-
-void doBusiness(MyPrint print,int num)
-{
-	print(num);
-}
-
-//函数对象作为参数
-void test03()
-{
-	//参数1：匿名函数对象
-	doBusiness(MyPrint(),30);
-}
-```
-
-总结：
-
-1. 函数对象通常不定义构造函数和析构函数，所以在构造和析构时不会发生任何问题，避免了函数调用的运行时问题。
-2. 函数对象超出普通函数的概念，函数对象可以有自己的状态
-3. 函数对象可内联编译，性能好。用函数指针几乎不可能
-4. 模版函数对象使函数对象具有通用性，这也是它的优势之一 
-
-#### 谓词
-
-> 谓词是指**普通函数**或**重载的operator()**返回值是bool类型的函数对象(仿函数)。如果operator接受一个参数，那么叫做**一元谓词**,如果接受两个参数，那么叫做**二元谓词**，谓词可作为一个判断式。
-
-**一元谓词与二元谓词的案例：**(含lambda表达式)
-
-```cpp
-//一元谓词
-class GreaterThenFive
-{
-public:
-	bool operator()(int num)//一元谓词
-	{
-		return num > 5;
-	}
-
-};
-void test01()
-{
-	vector<int> v;
-	for (int i = 0; i < 10;i ++)
-	{
-		v.push_back(i);
-	}
-	//该函数在<algorithm>中
-	 vector<int>::iterator it =  find_if(v.begin(), v.end(), GreaterThenFive());
-	 if (it == v.end())
-	 {
-		 cout << "没有找到" << endl;
-	 }
-	 else
-	 {
-		 cout << "找到了: " << *it << endl;
-	 }
-}
-//二元谓词
-class MyCompare
-{
-public:
-	bool operator()(int num1, int num2)//二元谓词
-	{
-		return num1 > num2;
-	}
-};
-
-void test02()
-{
-	vector<int> v;
-	v.push_back(10);
-	v.push_back(40);
-	v.push_back(20);
-	v.push_back(90);
-	v.push_back(60);
-
-	//默认从小到大
-	sort(v.begin(), v.end());
-	for (vector<int>::iterator it = v.begin(); it != v.end();it++)
-	{
-		cout << *it << " ";
-	}
-	cout << endl;
-	cout << "----------------------------" << endl;
-	//使用函数对象改变算法策略，排序从大到小
-	sort(v.begin(), v.end(),MyCompare());//MyCompare()匿名对象,也可以填回调函数
-	for (vector<int>::iterator it = v.begin(); it != v.end(); it++)
-	{
-		cout << *it << " ";
-	}
-    //-----------------上面的遍历显示也可以用for_each函数----------------
-    //for_each是遍历函数，其中的第三个参数时lambda表达式，本质上就是匿名函数。
-    //lambda表达式：[]代表lambda表达式标志，()函数参数列表，{}函数体。
-    for_each(v.begin(),v.end(),[](int val){cout<<val<<" ";})
-    //----------------------------------------------------------------
-	cout << endl;
-}
-```
-
-#### 内建函数对象
-
-STL内建了一些函数对象。分为:算数类函数对象,关系运算类函数对象，逻辑运算类仿函数。这些仿函数所产生的对象，用法和一般函数完全相同，当然我们还可以产生无名的临时对象来履行函数功能。使用内建函数对象，需要引入头文件#include<functional>。
-
-- 6个算数类函数对象,除了negate是一元运算，其他都是二元运算。
-
-```cpp
-template<class T> T plus<T>//加法仿函数
-template<class T> T minus<T>//减法仿函数
-template<class T> T multiplies<T>//乘法仿函数
-template<class T> T divides<T>//除法仿函数
-template<class T> T modulus<T>//取模仿函数
-template<class T> T negate<T>//取反仿函数
-```
-
-- 6个关系运算类函数对象,每一种都是二元运算。
-
-```cpp
-template<class T> bool equal_to<T>//等于
-template<class T> bool not_equal_to<T>//不等于
-template<class T> bool greater<T>//大于
-template<class T> bool greater_equal<T>//大于等于
-template<class T> bool less<T>//小于
-template<class T> bool less_equal<T>//小于等于
-```
-
-- 逻辑运算类运算函数,not为一元运算，其余为二元运算。
-
-```cpp
-template<class T> bool logical_and<T>//逻辑与
-template<class T> bool logical_or<T>//逻辑或
-template<class T> bool logical_not<T>//逻辑非
-```
-
-内建函数对象举例:
-
-```cpp
-//取反仿函数
-void test01()
-{
-	negate<int> n;
-	cout << n(50) << endl;
-}
-
-//加法仿函数
-void test02()
-{
-	plus<int> p;
-	cout << p(10, 20) << endl;
-}
-
-//大于仿函数
-void test03()
-{
-	vector<int> v;
-	srand((unsigned int)time(NULL));
-	for (int i = 0; i < 10; i++){
-		v.push_back(rand() % 100);
-	}
-
-	for (vector<int>::iterator it = v.begin(); it != v.end(); it++){
-		cout << *it << " ";
-	}
-	cout << endl;
-	sort(v.begin(), v.end(), greater<int>());//大于仿函数
-
-	for (vector<int>::iterator it = v.begin(); it != v.end(); it++){
-		cout << *it << " ";
-	}
-	cout << endl;
-}
-```
-
-#### 函数对象适配器
-
-##### 函数对象适配器bind1st和bind2nd
-
-> 现在我有这个需求 在遍历容器的时候，我希望将容器中的值全部加上用户输入的数之后显示出来，怎么做？我们直接给函数对象绑定参数 编译阶段就会报错for_each(v.begin(), v.end(), bind2nd(myprint(),100));
-
-如果我们想使用绑定适配器,需要**我们自己的函数对象继承 unary_function或者 binary_function根据我们函数对象是一元函数对象 还是二元函数对象**
-
-**自己建的函数对象**写bind1st bind2nd适配器要**三个操作**：
-
-1. 利用bind1st或bind2nd进行绑定
-2. 继承public：binary_function<参数1类型，参数2类型，返回值类型>或 unary_function
-3. 加const
-
-**【注意】**内建的函数对象不需要写这些2,3(其实想写也没法写，内置的嘛)。利用函数指针适配器和成员函数适配器转换成的函数对象也不需要写2,3（同样也没法写...）。
-
-```cpp
-class MyPrint :public binary_function<int,int,void>//继承binary_function
-{
-public:
-	void operator()(int v1,int v2) const//const必须加
-	{
-		cout << "v1 = : " << v1 << " v2 = :" <<v2  << " v1+v2 = :" << (v1 + v2) << endl;	
-	}
-};
-//1、函数适配器
-void test01()
-{
-	vector<int>v;
-	for (int i = 0; i < 10; i++)
-	{
-		v.push_back(i);
-	}
-    //由用户输入
-	cout << "请输入起始值：" << endl;
-	int x;
-	cin >> x;
-
-	for_each(v.begin(), v.end(), bind1st(MyPrint(), x));//绑定
-	//for_each(v.begin(), v.end(), bind2nd( MyPrint(),x ));
-}
-```
-
-总结：  bind1st和bind2nd区别?
-
-1. bind1st ： 将参数绑定为函数对象的第一个参数
-2. bind2nd ： 将参数绑定为函数对象的第二个参数
-
-bind1st bind2nd作用：**将二元函数对象转为一元函数对象**
-
-所以bind1st或bind2nd如果要和其他适配器嵌套，比如需要用的是not1，因为已经转换为一元函数对象
-
-##### 取反适配器not1和not2
-
-```cpp
-class GreaterThenFive:public unary_function<int,bool>
-{
-public:
-	bool operator ()(int v) const
-	{
-		return v > 5;
-	}
-};
-
-//2、取反适配器
-void test02()
-{
-	vector <int> v;
-	for (int i = 0; i < 10;i++)
-	{
-		v.push_back(i);
-	}
-	
-// 	vector<int>::iterator it =  find_if(v.begin(), v.end(), GreaterThenFive()); //返回第一个大于5的迭代器
-//	vector<int>::iterator it = find_if(v.begin(), v.end(),  not1(GreaterThenFive())); //返回第一个小于5迭代器
-	//自定义输入（并且使用内建函数对象）
-	vector<int>::iterator it = find_if(v.begin(), v.end(), not1 ( bind2nd(greater<int>(),5)));
-	if (it == v.end())
-	{
-		cout << "没找到" << endl;
-	}
-	else
-	{
-		cout << "找到" << *it << endl;
-	}
-
-	//排序  二元函数对象
-	sort(v.begin(), v.end(), not2(less<int>()));
-	for_each(v.begin(), v.end(), [](int val){cout << val << " "; });
-
-}
-//not1 对一元函数对象取反
-//not2 对二元函数对象取反
-```
-
-##### 函数指针适配器 ptr_fun
-
-```cpp
-void MyPrint03(int v,int v2)
-{
-	cout << v + v2<< " ";
-}
-
-//3、函数指针适配器   ptr_fun
-void test03()
-{
-	vector <int> v;
-	for (int i = 0; i < 10; i++)
-	{
-		v.push_back(i);
-	}
-	// ptr_fun( )把一个普通的函数指针适配成函数对象
-	for_each(v.begin(), v.end(), bind2nd( ptr_fun( MyPrint03 ), 100));
-}
-```
-
-##### 成员函数适配器 mem_fun_ref和mem_fun
-
-1. 如果容器存放的是对象指针，  那么用mem_fun
-2. 如果容器中存放的是对象实体，那么用mem_fun_ref
-
-###### mem_fun_ref
-
-```cpp
-class Person
-{
-public:
-	Person(string name, int age)
-	{
-		m_Name = name;
-		m_Age = age;
-	}
-
-	//打印函数
-	void ShowPerson(){
-		cout << "成员函数:" << "Name:" << m_Name << " Age:" << m_Age << endl;
-	}
-	void Plus100()
-	{
-		m_Age += 100;
-	}
-public:
-	string m_Name;
-	int m_Age;
-};
-
-void MyPrint04(Person &p)
-{
-	cout << "姓名：" <<  p.m_Name << " 年龄：" << p.m_Age << endl;
-
-};
-
-void test04()
-{
-	vector <Person>v;
-	Person p1("aaa", 10);
-	Person p2("bbb", 20);
-	Person p3("ccc", 30);
-	Person p4("ddd", 40);
-	v.push_back(p1);
-	v.push_back(p2);
-	v.push_back(p3);
-	v.push_back(p4);
-
-	//for_each(v.begin(), v.end(), MyPrint04);
-	//利用 mem_fun_ref 将Person内部成员函数适配
-	for_each(v.begin(), v.end(), mem_fun_ref(&Person::ShowPerson));//成员函数指针要&Person::ShowPerson表示，和普通函数指针只要写函数名有区别
-// 	for_each(v.begin(), v.end(), mem_fun_ref(&Person::Plus100));
-// 	for_each(v.begin(), v.end(), mem_fun_ref(&Person::ShowPerson));
-}
-```
-
-###### mem_fun
-
-```cpp
-void test05(){
-
-	vector<Person*> v1;
-	//创建数据
-	Person p1("aaa", 10);
-	Person p2("bbb", 20);
-	Person p3("ccc", 30);
-	Person p4("ddd", 40);
-
-	v1.push_back(&p1);
-	v1.push_back(&p2);
-	v1.push_back(&p3);
-	v1.push_back(&p4);
-
-	for_each(v1.begin(), v1.end(), mem_fun(&Person::ShowPerson));
-}
-```
 
 ### 算法概述
 
@@ -1988,6 +1625,94 @@ void test05(){
 <numeric>体积很小，只包括在几个序列容器上进行的简单运算的模板函数.
 
 <functional> 定义了一些模板类,用以声明函数对象。
+
+#### 全排列算法
+
+**next_permutation函数**
+
+> 只要容器支持双向迭代器（Bidirectional Iterator）都支持该函数
+>
+> 但对于 `std::set` 和 `std::map` ,`std::next_permutation`函数不适用，因为它们是有序容器,没有意义
+
+```cpp
+template<class BidirectionalIterator>
+bool next_permutation(BidirectionalIterator first, BidirectionalIterator last);
+```
+
+> `next_permutation` 函数接受两个迭代器参数，表示要生成排列的范围。它会将范围内的元素重新排列为下一个字典序更大的排列，并返回 `true`。如果已经是最大的排列，则将范围内的元素重新排列为最小的排列，并返回 `false`。`next_permutation`会**确保每个生成的排列都是唯一的**。
+
+以下是一个示例，展示如何使用 `next_permutation` 函数生成排列：
+
+```cpp
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+int main() {
+    std::vector<int> nums = {1, 2, 3};
+
+    // 生成所有的排列
+    do {
+        for (int num : nums) {
+            std::cout << num << " ";
+        }
+        std::cout << std::endl;
+    } while (std::next_permutation(nums.begin(), nums.end()));
+
+    return 0;
+}
+```
+
+#### 相临去重算法
+
+`iterator unique(iterator it_1,iterator it_2,bool MyFunc);`
+
+`iterator unique(iterator it_1,iterator it_2`
+
+参数列表中前两个参数都是迭代器，表示对区间`[it_1,it_2)`内进行去重。（区间为左闭右开，很多STL函数都是这样）
+
+功能描述：移除给定范围内相邻的重复元素，只保留一个副本（注意一定是相邻元素，且只保留一个）。本质上没有将重复的元素删除，而是通过**把不重复的元素移到前面来**,导致重复的元素放到数组的最后面了
+
+> 只可用于支持随机访问迭代器的容器
+>
+> - `std::vector`
+> - `std::deque`
+> - `std::array`
+> - `std::string`
+
+可以理解实现为:
+
+```cpp
+  template <class ForwardIterator>
+  ForwardIterator unique (ForwardIterator first, ForwardIterator last)
+  {
+    //这里隐藏了第三个参数，则使用系统默认的相等机制。
+    if (first==last) return last;//判断是否相等，若相等，则表示数组为空。
+  
+    ForwardIterator result = first;//利用result迭代器去实现功能。
+    while (++first != last)//开始遍历区间[first,last)
+    {
+        //注意first和result，它们都在变，形成一个同步的取缔，其中first一直往后寻找不重复的元素，而result停留在重复的元素等待取缔。仔细理解下面这个if语句。退出循环时也就遍历完成，此时result指向的是最后一个不重复元素。
+      if (!(*result == *first))  // or: if (!pred(*result,*first)) for version (2)
+        *(++result)=*first;
+    }
+    return ++result;//这里++，我们返回的就是最后一个不重复元素的下一个迭代器。
+  }
+```
+
+unique函数并不会真正删除元素，而是用替代的方法来实现。容器的大小是不会变得，那么我们如果想真正删除元素我们该怎么办呢？我们想想，unique函数的返回值是指向最后一个不相等的元素的下一个元素的迭代器，我们只要接收这个返回值，**利用erase函数把后面元素都给直接删除即可。**
+
+整个流程是:  `sort->unique->erase`
+
+```cpp
+//排序后
+vector<int> a;
+sort(a.begin(),a.end());//排序
+vector<int>::iterator new_end=unique(a.begin(),a.end());//相邻去重
+a.erase(new_end,a.end());//抹除后面的重复元素
+```
+
+如果需要去重的同时复制序列:可以参考 `unique_copy`
 
 #### 常用遍历算法
 
@@ -2069,6 +1794,7 @@ int main()
 4. binary_search---二分查找法（在无序序列中不可使用）
 5. count---统计元素出现的次数
 6. count_if---按条件进行统计
+6. upper_bound --- 针对有序容器,查找第一个大于给定值的元素的迭代器
 
 ```cpp
 /*
@@ -2121,12 +1847,23 @@ count_if算法 统计元素出现次数
 	@return int返回元素个数
 */
 count_if(iterator beg, iterator end, _callback);
+/*
+参数解释：
+upper_bound 函数使用二分查找算法来查找元素，因此要求容器中的元素必须是有序的。如果找不到大于 val 的元素，则返回的迭代器将指向容器的 end() 位置。
+- first ：要搜索的范围的起始迭代器
+- last ：要搜索的范围的结束迭代器
+- val ：要查找的值
+- comp ：可选的比较函数，用于指定元素的比较方式。默认情况下，使用 operator< 进行比较。
+*/
+template <class ForwardIterator, class T, class Compare>
+ForwardIterator upper_bound (ForwardIterator first, ForwardIterator last, const T& val, Compare comp);
+//相似的还有lower_bound和equal_round(该函数返回上下界的对组)
 ```
 
 #### 常用排序算法
 
 1. merge---合并（合并两个有序序列到一个有预留空间的目标容器）
-2. sort---排序
+2. sort---排序（底层通常是[[算法#快速排序|快速排序]]或[[算法#归并排序|归并排序]]）
 3. random_shuffle---洗牌
 4. reverse---反转
 
@@ -2146,6 +1883,13 @@ merge(iterator beg1, iterator end1, iterator beg2, iterator end2, iterator dest)
 	@param beg 容器1开始迭代器
 	@param end 容器1结束迭代器
 	@param _callback 回调函数或者谓词(返回bool类型的函数对象)
+	_callback不填写的话默认从小到大排序,并且遇到vector,deque,array的嵌套结构会默认按照第一个元素进行排序
+	sort的第三个参数传入的比较函数需要满足严格弱序:
+	1. 非自反性（Irreflexivity）：对于所有的x，cmp(x, x)都返回false
+			即x < x 要必须返回false
+	2. 对称性（Asymmetry）：如果cmp(x, y)返回true，那么cmp(y, x)必须返回false
+	3. 传递性（Transitivity）：如果cmp(x, y)和cmp(y, z)都返回true，那么cmp(x, z)也必须返回true
+	如果比较函数不满足这些条件，那么std::sort()函数的行为就会变得不可预测
 */
 sort(iterator beg, iterator end, _callback);
 /*
@@ -2267,6 +2011,24 @@ set_union(iterator beg1, iterator end1, iterator beg2, iterator end2, iterator d
 	@return 目标容器的最后一个元素的迭代器地址
 */
 set_difference(iterator beg1, iterator end1, iterator beg2, iterator end2, iterator dest)
+```
+
+#### 堆相关算法
+
+可以先参考[[数据结构#堆|堆的知识点]]
+
+```cpp
+void make_heap(RandomAccessIterator first, RandomAccessIterator last)
+//将指定范围内的元素转换为堆。它通过重排范围内的元素，使得满足堆的性质。
+
+void push_heap(RandomAccessIterator first, RandomAccessIterator last)
+//将新元素插入到堆中，使用该函数保持堆的性质。
+
+void pop_heap(RandomAccessIterator first, RandomAccessIterator last)
+//将堆中的最大元素移动到范围的末尾，并重新调整堆的性质。它将堆顶元素与范围内的最后一个元素交换，然后对剩余的元素进行调整。
+
+void sort_heap(RandomAccessIterator first, RandomAccessIterator last)
+//堆排序:将堆中的元素按照升序排序。它通过反复调用`pop_heap`函数来实现，每次将最大元素移动到范围的末尾。
 ```
 
 #### 案例：
@@ -2451,17 +2213,5 @@ void test3()
 
 ![image-20210419163151486](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210419163151486.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+​    
 

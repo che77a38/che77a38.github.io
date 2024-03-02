@@ -20,29 +20,41 @@
     var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":{"gitalk":{"order":-2}},"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="算法学习">
+  <meta name="description" content="算法是指解决问题的方法(或过程),是若干指令的有穷序列 算法的本质就是「穷举」  算法的本质都是穷举二（多）叉树，有机会的话通过剪枝或者备忘录的方式减少冗余计算，提高效率">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法">
 <meta property="og:url" content="http://zeroko14.gitee.io/blog/b7e144d1/index.html">
 <meta property="og:site_name" content="ZEROKO14的个人博客">
-<meta property="og:description" content="算法学习">
+<meta property="og:description" content="算法是指解决问题的方法(或过程),是若干指令的有穷序列 算法的本质就是「穷举」  算法的本质都是穷举二（多）叉树，有机会的话通过剪枝或者备忘录的方式减少冗余计算，提高效率">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202312182212066.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/%E5%9B%BE%E7%89%8746.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401121114843.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/%E5%9B%BE%E7%89%8747.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401141635053.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401141703357.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401122024954.gif">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202304011925190.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202304011933178.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202304011933817.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202304011934699.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202312121453911.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202312261550430.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401291217810.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202402061312311.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202312261550430.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202312261458055.jpeg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/%E9%BE%9F%E5%85%94%E8%B5%9B%E8%B7%91%E7%AE%97%E6%B3%95.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401171202150.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202312271758349.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202312271754984.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202312271758320.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202312271800043.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202401091704999.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202401091714375.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202402021724019.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401201059831.gif">
 <meta property="article:published_time" content="2020-12-23T14:51:13.000Z">
-<meta property="article:modified_time" content="2023-12-27T10:35:36.894Z">
+<meta property="article:modified_time" content="2024-02-06T10:01:05.334Z">
 <meta property="article:author" content="ZEROKO14">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -237,7 +249,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-12-27 18:35:36" itemprop="dateModified" datetime="2023-12-27T18:35:36+08:00">2023-12-27</time>
+                <time title="修改时间：2024-02-06 18:01:05" itemprop="dateModified" datetime="2024-02-06T18:01:05+08:00">2024-02-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -262,14 +274,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>8.6k</span>
+              <span>14k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
+              <span>13 分钟</span>
             </span>
 
         </div>
@@ -281,9 +293,40 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>算法学习</p>
+        <p>算法是指解决问题的方法(或过程),是若干指令的有穷序列</p>
+<p><strong>算法的本质就是「穷举」</strong></p>
+<blockquote>
+<p>算法的本质都是穷举二（多）叉树，有机会的话通过剪枝或者备忘录的方式减少冗余计算，提高效率</p>
+</blockquote>
 <span id="more"></span>
 
+<p>利用计算机的速度,解决现实中的抽象问题</p>
+<p>穷举要做到两点</p>
+<ul>
+<li>无遗漏</li>
+<li>无冗余</li>
+</ul>
+<p>遗漏会导致算法错误,冗余会拖慢算法运行速度</p>
+<p>算法的难点在于两类问题</p>
+<ul>
+<li><p>如何穷举(递归算法往往解决的是这类问题)</p>
+</li>
+<li><p>如何聪明的穷举</p>
+<p>比如后文 Union Find 并查集算法详解,告诉你一种高效计算连通分量的技巧，理论上说，想判断两个节点是否连通，用DFS&#x2F;BFS 暴力搜索（穷举）肯定可以做到，但人家 Union Find 算法硬是用数组模拟树结构，给你把连通性相关的操作复杂度给干到<code>O(1)</code>了。<br>再比如贪心算法技巧，所谓贪心算法就是在题目中发现一些规律（专业点叫贪心选择性质），使得你不用完整穷举所有解就可以得出答案。<br>动态规划好歹是无冗余地穷举所有解，然后找一个最值，贪心算法倒好，都不用穷举所有解就可以找到答案，所以后文贪心算法解决跳跃游戏 中贪心算法的效率比动态规划还高。<br>再比如大名鼎鼎的KMP算法，KMP 算法的本质是聪明地缓存并复用一些信息，减少了冗余计算，后文 KMP 字符匹配算法 就是使用计算机的思路实现的 KMP 算法。</p>
+</li>
+</ul>
+<blockquote>
+<p>顺便强调下，「算法工程师」做的这个「算法」，和「数据结构与算法」中的这个「算法」完全是两码事</p>
+<p><strong>对前者来说，重点在数学建模和调参经验，计算机真就只是拿来做计算的工具而已；而后者的重点是计算机思维，需要你能够站在计算机的视角，抽象、化简实际问题，然后用合理的数据结构去解决问题。</strong></p>
+<p>所以，你千万别以为学好了数据结构和算法就能去做算法工程师，也不要以为只要不做算法工程师就不需要学习数据结构和算法。坦白说，大部分开发岗位工作中都是基于现成的开发框架做事，不怎么会碰到底层数据结构和算法相关的问题，但另一个事实是，只要找技术相关的岗位，数据结构和算法的考察是绕不开的，因为这块知识点是公认的程序员基本功。</p>
+<p>为了区分，不妨称算法工程师研究的算法为「<strong>数学算法</strong>」，称刷题面试的算法为「计算机算法」，此篇内容主要聚焦的是「<strong>计算机算</strong><br><strong>法</strong>」。</p>
+<p>「计算机算法」的思维恰恰相反：有没有什么数学公式就交给你们人类去推导吧，如果能找到一些巧妙的定理那最好，但如果找不<br>到，那就穷举呗，反正只要复杂度允许，没有什么答案是穷举不出来的</p>
+</blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Tb411M7FA?from=search&amp;seid=12518312174180048412&amp;spm_id_from=333.337.0.0">算法导论-麻省理工</a></li>
+<li><a target="_blank" rel="noopener" href="http://erdengk.top/archives/zuo-lao-shi-suan-fa-ke-xue-xi-jian-yi">前人学习经验</a></li>
+<li><a target="_blank" rel="noopener" href="https://labuladong.github.io/algo/home/">大佬非常全面的博客</a></li>
+</ul>
 <h1 id="算法入门"><a href="#算法入门" class="headerlink" title="算法入门"></a>算法入门</h1><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202312182212066.png" alt="image-20231218221243795" style="zoom: 25%;" />
 
 <blockquote>
@@ -299,6 +342,37 @@
 <p>表达式中，只要高阶项，不要低阶项的系数（阶：未知数的次方数），剩下的部分如果为f(N)，那么时间复杂度为O(f(N))。</p>
 <p><strong>【评价一个算法流程的好坏】</strong>:先看时间复杂度的指标，然后再分析不同数据样本下的实际运行时间，也就是“常数项时间”。</p>
 <h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><p>与时间复杂度相似,但针对空间</p>
+<h1 id="算法概述"><a href="#算法概述" class="headerlink" title="算法概述"></a>算法概述</h1><ul>
+<li>递归与分治Divide and Conquer</li>
+<li>动态规划Dynamic Programming</li>
+<li>贪心算法Greedy</li>
+<li>回溯算法Backtrack</li>
+<li>分支限界法Branch and Bound</li>
+<li>随机算法</li>
+<li>近似算法</li>
+</ul>
+<p>算法第一步是<a href="#%E9%97%AE%E9%A2%98%E5%BB%BA%E6%A8%A1">问题建模</a></p>
+<h2 id="问题建模"><a href="#问题建模" class="headerlink" title="问题建模"></a>问题建模</h2><p>问题类型:</p>
+<ul>
+<li>计数问题</li>
+<li>构造问题</li>
+<li>判定问题(二元的,yes or no)</li>
+<li>最优化问题</li>
+</ul>
+<p>问题建模:</p>
+<ol>
+<li>输入<code>input</code>:定义问题空间(即特定对象集合)</li>
+<li>输出<code>output</code>:定义解空间</li>
+<li>约束<code>constraint</code>:定义约束函数</li>
+<li>目标<code>objective function</code>:定义目标函数</li>
+</ol>
+<p>问题实例:<code>instance of a problem</code>:问题模型的实例化,即<strong>一个给定输入的实际问题</strong></p>
+<h3 id="图灵机"><a href="#图灵机" class="headerlink" title="图灵机"></a>图灵机</h3><blockquote>
+<p>1936年，Alan M. Turing （1912-1954）提出了一种在理论计算机科学中广泛采用的抽象计算机<br>它是通用数字计算机的理论原型。图灵机可制造出一种十分简单但计算能力极强的计算机装置。</p>
+</blockquote>
+<p>用有限的指令和有限的存储空间可算尽一切可算之物。</p>
+<p>一台图灵机是一个七元组</p>
+<p>图灵机&#x3D;有限状态自动机+无限纸带 &#x3D;&gt;  算尽一切可算之物</p>
 <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><ul>
 <li>概念</li>
 </ul>
@@ -336,22 +410,53 @@
 </ol>
 </li>
 </ul>
-<p>比较具备优势的排序算法:</p>
+<p>其他的一些排序算法:</p>
 <ol>
-<li>快速排序（Quick Sort）：快速排序是一种基于分治思想的排序算法，通过选择一个基准元素，将数组分为两个子数组，并递归地对子数组进行排序。快速排序的平均时间复杂度为O(nlogn)，在大多数情况下具有较高的效率。(快速排序与下文的排序算法不是一个东西)</li>
-<li>归并排序（Merge Sort）：归并排序也是一种分治算法，它将数组递归地分成两个子数组，然后将两个有序子数组合并成一个有序数组。归并排序的时间复杂度为O(nlogn)，并且具有稳定性。</li>
-<li>堆排序（Heap Sort）：堆排序利用堆这种数据结构进行排序，通过构建最大堆或最小堆来实现排序。堆排序的时间复杂度为O(nlogn)，并且具有<strong>原地排序</strong>的特点。</li>
+<li><a href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">快速排序</a>（Quick Sort）：快速排序是一种基于分治思想的排序算法，通过选择一个基准元素，将数组分为两个子数组，并递归地对子数组进行排序。快速排序的平均时间复杂度为O(nlogn)，在大多数情况下具有较高的效率。(快速排序与下文的排序算法不是一个东西)</li>
+<li><a href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F">归并排序</a>（Merge Sort）：归并排序也是一种分治算法，它将数组递归地分成两个子数组，然后将两个有序子数组合并成一个有序数组。归并排序的时间复杂度为O(nlogn)，并且具有稳定性。</li>
+<li><a href="#%E5%A0%86%E6%8E%92%E5%BA%8F">堆排序</a>（Heap Sort）：堆排序利用堆这种数据结构进行排序，通过构建最大堆或最小堆来实现排序。堆排序的时间复杂度为O(nlogn)，并且具有<strong>原地排序</strong>的特点。</li>
 </ol>
 <p>需要注意的是，这些算法的性能取决于输入数据的规模和特征。对于小规模的数据集，简单的排序算法如插入排序和冒泡排序可能更高效。对于已经部分有序的数据集，插入排序和冒泡排序也可能比其他算法更快。</p>
 <p>C++标准库中的<code>std::sort</code>函数使用了一种高效的排序算法（通常是快速排序或归并排序）</p>
-<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><ul>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401121114843.png" alt="sort"></p>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>时间复杂度是$O(n^2)$</p>
+<ul>
 <li>冒泡排序是一种效率低下的排序方法，在数据规模很小时，可以采用。数据规模比较大时，最好用其它排序方法。</li>
 <li>上述例子对冒泡做了优化，添加了flag作为标记，记录序列是否已经有序，减少循环次数。</li>
 </ul>
-<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/%E5%9B%BE%E7%89%8747.png" alt="img"  />
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>时间复杂度是$O(n^2)$</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/%E5%9B%BE%E7%89%8747.png" alt="img"  />
 
 <h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>插入排序算法是一种简单的排序算法，也成为直接插入排序算法。它是一种稳定的排序算法，对局部有序的数据具有较高的效率。</p>
 <p>插入排序算法是一个队少量元素进行排序的有效算法。比如，打牌是我们使用插入排序方法最多的日常生活例子。我们在摸牌时，一般会重复一下步骤。期初，我们手里没有牌，摸出第一张，随意放在左手上，以后每一次摸排，都会按照花色从小到大排列，直到所有的牌摸完。插入排序算法采用的类似思路，每一次从无序序列中拿出一个数据，将它放到已排序的序序列的正确位置，如此重复，直到所有的无序序列中的数据都找到了正确位置。</p>
+<p>插入排序（Insertion Sort）的时间复杂度是$O(n^2)$。在最坏的情况下，需要比较和移动元素的次数是n(n-1)&#x2F;2次，其中n是待排序数组的长度。</p>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>时间复杂度为O(nlogn)</p>
+<iframe width="720" height="360" src="https://player.bilibili.com/player.html?bvid=BV1pd4y1z7gf&high_quality=1&danmaku=0&as_wide=1&autoplay=0&" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" class="bili-iframe"> </iframe>
+
+<p>下面代码是使用交换法实现的快排</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quickSort</span><span class="params">(<span class="type">int</span> arr[],<span class="type">int</span> left,<span class="type">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(left&gt;=right)</span><br><span class="line">        <span class="keyword">return</span>;<span class="comment">//递归结束条件</span></span><br><span class="line">    <span class="comment">//双指针</span></span><br><span class="line">    <span class="type">int</span> i=left;</span><br><span class="line">    <span class="type">int</span> j=right;</span><br><span class="line">    <span class="type">int</span> key=arr[left];<span class="comment">//选取第一个数为基准数</span></span><br><span class="line">    <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">        <span class="comment">//不断往右移动左指针,找到第一个大于基准数的数</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;j&amp;&amp;arr[j]&gt;=key)</span><br><span class="line">        &#123;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//不断往左移动右指针,找到第一个小于基准数的数</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;j&amp;&amp;arr[i]&lt;=key)</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j)<span class="comment">//意思就是i==j的时候不交换,会走向循环跳出</span></span><br><span class="line">            <span class="built_in">swap</span>(arr[i], arr[j]);<span class="comment">//交换arr中i和j指针指向的值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">swap</span>(arr[i], arr[left]);</span><br><span class="line">    <span class="comment">//一轮基准值定位已经结束</span></span><br><span class="line">    <span class="comment">//该递归处理两边的数组了(此时i==j了,用哪个无所谓)</span></span><br><span class="line">    <span class="built_in">quickSort</span>(arr,left,i<span class="number">-1</span>);</span><br><span class="line">    <span class="built_in">quickSort</span>(arr,j+<span class="number">1</span>,right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>时间复杂度为O(nlogn)</p>
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><p>时间复杂度为O(nlogn)</p>
+<p>堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。</p>
+<blockquote>
+<p>基本思想</p>
+<p>利用大顶堆(小顶堆)堆顶记录的是最大关键字(最小关键字)这一特性，使得每次从无序中选择最大记录(最小记录)变得简单。</p>
+</blockquote>
+<p>倒序对每个父节点进行下潜操作,通过这个操作使得混乱数组具备堆序性,如下流程</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401141635053.gif" alt="堆排序" style="zoom: 33%;" />
+
+<p>反复调用<code>pop_heap</code>函数来实现，每次将最大元素移动到范围的末尾,就可以实现堆排序</p>
+<p><code>pop_heap</code>函数的实现参考下面流程: </p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401141703357.gif" alt="pop" style="zoom:33%;" />
+
+<p><a href="/blog/79666db#%E5%A0%86" data-pjax-state target="_Blank">堆的详解点击跳转</a></p>
+<p><a href="/blog/74483b98#%E5%A0%86%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95" data-pjax-state target="_Blank">stl中也有提供各种现成函数</a></p>
+<h3 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h3><p>计数排序的核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。</p>
+<p>① 找出待排序的数组中最大和最小的元素<br>② 统计数组中每个值为i的元素出现的次数，存入数组C的第i项<br>③ 对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）<br>④ 反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401122024954.gif" alt="计数排序" style="zoom:67%;" />
+
+<p>平均时间复杂度：O(n + k)<br>最佳时间复杂度：O(n + k)<br>最差时间复杂度：O(n + k)<br>空间复杂度：O(n + k)</p>
 <h1 id="查找算法"><a href="#查找算法" class="headerlink" title="查找算法"></a>查找算法</h1><h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><p><strong>无重复元素</strong> 的 <strong>升序</strong> 排列数组中的插入查找</p>
 <p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">searchInsert</span><span class="params">(vector&lt;<span class="type">int</span>&gt; &amp;nums, <span class="type">int</span> target)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target)</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target)</span><br><span class="line">                left = mid + <span class="number">1</span>;<span class="comment">//灵魂就在于这个+1和下面的-1</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
@@ -437,10 +542,43 @@
 <p>实际计算中，往往不用阶乘。从大的数字开始往小乘，乘“小的数字那么多”个，再除以“小的数字开始往小乘，乘小的数字那么多个”。</p>
 </blockquote>
 <h2 id="排列与组合的关系"><a href="#排列与组合的关系" class="headerlink" title="排列与组合的关系"></a>排列与组合的关系</h2><p>$$<br>C_n^m&#x3D;\frac{\mathrm{A}_n^m}{\mathrm{A}_m^m}&#x3D;\frac{n(n-1)(n-2)\cdots(n-m+1)}{m!}&#x3D;\frac{n!}{m!(n-m)!}<br>$$</p>
-<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/solutions/?envType=study-plan-v2&envId=top-100-liked">爬楼梯问题</a></p>
-<p>动态规划是运筹学的一个分支,求解决策过程最优化的一种思想</p>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><blockquote>
+<p>动态规划是运筹学的一个分支,<strong>求解决策过程最优值</strong>的一种思想</p>
+<p><strong>求解最优解的时候需要想到动态规划</strong></p>
+</blockquote>
 <p>本质就是:给定一个大问题,把它拆成一个个子问题,直到子问题可以直接解决.然后把子问题的答案保存起来,以减少重复计算.再根据子问题答案反推,得到大问题解题的一种方法</p>
-<p>动态规划是通过额外空间避免重复计算来加速计算过程,由于用到其余空间来保存计算结果,因此也称之为记忆化搜索(Recursion with Memoization),本质上是用空间换时间,也有人叫他”带备忘录的递归”,或者递归树的剪枝(pruning).因为整个递归树不需要全部访问到,仿佛有些枝叶被剪掉了.上面说的递归也可以是迭代,动态规划不一定得是递归</p>
+<blockquote>
+<p>动态规划中最重要的两个概念</p>
+<ul>
+<li>重叠子问题</li>
+<li>最优子结构</li>
+</ul>
+<p><strong>重叠子问题</strong>：动态规划会将每个求解过的子问题的解<strong>记录</strong>下来，这样当下一次碰到同样的子问题时，就可以<strong>直接使用</strong>之前记录的结果，而不是重复计算。<strong>（虽然动态规划使用这种方式来提高计算效率，但不能说这种做法就是动态规划的核心）</strong></p>
+<p>如果一个问题可以被分解成若干个子问题，且这些子问题会重复出现，那么称这个问题拥有 <strong>重叠子问题（Overlapping Subproblems）</strong>。</p>
+<p>如果一个问题的最优解可以由其子问题的最优解有效地构造出来，那么称这个问题拥有 <strong>最优子结构（Optimal Substructure）</strong>。最优子结构保证了动态规划中原问题的最优解可以由子问题的最优解推导而来</p>
+<p><strong>一个问题必须拥有重叠子问题和最优子结构，才能使用动态规划去解决</strong></p>
+</blockquote>
+<p>动态规划通过额外空间避免重复计算来加速计算过程,由于用到其余空间来保存计算结果,因此也称之为记忆化搜索(Recursion with Memoization),本质上是用空间换时间,也有人叫他”带备忘录的递归”,或者递归树的剪枝(pruning).因为整个递归树不需要全部访问到,仿佛有些枝叶被剪掉了.上面说的递归也可以是迭代,动态规划不一定得是递归</p>
+<p>动态规划的两种写法:</p>
+<ul>
+<li><strong>递推写法</strong>：<strong>自底向上（Bottom-up Approach）</strong>，即从边界开始，不断向上解决问题，直到解决了目标问题；</li>
+<li><strong>递归写法</strong>：<strong>自顶向下（Top-down Approach）</strong>，即从目标问题开始，将它分解成子问题的组合，直到分解至边界为至。</li>
+</ul>
+<p>标准的动态规划实例:<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/solutions/?envType=study-plan-v2&envId=top-100-liked">爬楼梯问题</a></p>
+<h2 id="动态规划与其他思想的差异"><a href="#动态规划与其他思想的差异" class="headerlink" title="动态规划与其他思想的差异"></a>动态规划与其他思想的差异</h2><h3 id="分治算法与动态规划——重叠子问题"><a href="#分治算法与动态规划——重叠子问题" class="headerlink" title="分治算法与动态规划——重叠子问题"></a>分治算法与动态规划——重叠子问题</h3><ul>
+<li>相同点：<br>将问题分解成子问题，然后合并子问题的解得到原问题的解。</li>
+<li>不同点：<br><strong>分治法</strong>解决的问题不拥有重叠子问题，解决的问题不一定是最优化问题；<br><strong>动态规划</strong>解决的问题拥有重叠子问题，解决的问题一定是最优化问题。</li>
+</ul>
+<h3 id="贪心算法与动态规划——最优子结构"><a href="#贪心算法与动态规划——最优子结构" class="headerlink" title="贪心算法与动态规划——最优子结构"></a><a href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95">贪心算法</a>与动态规划——最优子结构</h3><ul>
+<li>相同点<br>都要求原问题必须拥有<strong>最优子结构</strong>。</li>
+<li>不同点<br><strong>贪心</strong>的计算方式类似于”自顶向下“，但是并不等待<strong>所有子问题</strong>求解完毕后再选择使用哪一个，而是通过一种策略<strong>直接选择</strong>一个子问题去求解，没被选择的子问题就不会再去求解了。<br><strong>动态规划</strong>的计算方式有”自顶向下“和”自底向上“两种，都是从边界开始向上得到目标问题的解。也就是说，它总是会考虑<strong>所有子问题</strong>，并选择继承能得到最优结果的那个，对暂时没有被继承的子问题，由于重叠子问题的存在，后期可能会再次考虑它们，因此还有机会成为全局最优的一部分，不需要放弃。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-subarray/description/">53. 最大子数组和</a>这题同时有贪心算法解法和动态规划解法(官方解释中有视频两种方式的视频讲解)</p>
+<p>思路:</p>
+<ul>
+<li><a href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95">贪心算法</a>:若当前指针所指元素之前的和小于0，则丢弃当前元素之前的数列.维护两个值:当前和,之前和</li>
+<li>动态规划:若前一个元素大于0，则将其加到当前元素上.这样实际上存储的就是一个不确定左边界到当前边界的最大和,时间复杂度不如贪心算法</li>
+</ul>
 <h1 id="令人惊叹的平方根算法"><a href="#令人惊叹的平方根算法" class="headerlink" title="令人惊叹的平方根算法"></a>令人惊叹的平方根算法</h1><h2 id="平方根快速计算算法"><a href="#平方根快速计算算法" class="headerlink" title="平方根快速计算算法"></a>平方根快速计算算法</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/bluettt/p/13025259.html">二分法和牛顿迭代法都可以用来计算平方根</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/98501407">另外，还有一种被称为“神奇的方法”的算法，它使用了一个特殊的常数和牛顿迭代法来快速计算平方根</a>。</p>
 <iframe width="720" height="360" src="https://player.bilibili.com/player.html?bvid=BV18j411i7bp&high_quality=1&danmaku=0&as_wide=1&autoplay=0&" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" class="bili-iframe"> </iframe>
@@ -480,6 +618,47 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PID pid2 = <span class="built_in">PID</span>(<span class="number">0.1</span>, <span class="number">100</span>, <span class="number">-100</span>, <span class="number">0.1</span>, <span class="number">0.01</span>, <span class="number">0.5</span>);</span><br><span class="line">  <span class="type">double</span> val = <span class="number">20</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">      <span class="type">double</span> inc = pid2.<span class="built_in">calculate</span>(<span class="number">0</span>, val);</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;val:% 7.3f inc:% 7.3f\n&quot;</span>, val, inc);</span><br><span class="line">      val += inc;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
 
 <h1 id="卡尔曼滤波"><a href="#卡尔曼滤波" class="headerlink" title="卡尔曼滤波"></a>卡尔曼滤波</h1><p>卡尔曼滤波（Kalman Filtering）是一种用于估计系统状态的最优滤波算法。它基于对系统的动态模型和测量模型进行建模，通过递归地更新状态估计值，提供对系统状态的最优估计和预测。</p>
+<h1 id="图算法"><a href="#图算法" class="headerlink" title="图算法"></a>图算法</h1><ul>
+<li>DFS 深度优先搜索</li>
+<li>BFS 广度优先搜索</li>
+</ul>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401291217810.gif" alt="bfsanddfs" style="zoom: 67%;" />
+
+<p>BFS 可以用来求<strong>最短路径问题</strong></p>
+<p>DFS 常用来处理<a href="#%E5%85%A8%E6%8E%92%E5%88%97">全排列问题</a></p>
+<blockquote>
+<p>这里提一嘴:深度优先遍历、递归、栈，它们三者的关系，我个人以为它们背后统一的逻辑都是「后进先出」</p>
+<p>图算法本质上是二叉树算法的延续</p>
+</blockquote>
+<h2 id="Union-Find并查集算法"><a href="#Union-Find并查集算法" class="headerlink" title="Union Find并查集算法"></a>Union Find并查集算法</h2><h1 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h1><blockquote>
+<p><strong>回溯法</strong> 采用试错的思想，它尝试分步的去解决一个问题。在分步解决问题的过程中，当它通过尝试发现现有的分步答案不能得到有效的正确的解答的时候，它将取消上一步甚至是上几步的计算，再通过其它的可能的分步解答再次尝试寻找问题的答案。回溯法通常用最简单的递归方法来实现，在反复重复上述的步骤后可能出现两种情况：</p>
+<p><strong>回溯算法本质就是一种暴力穷举算法</strong>,虽然效率低,但是简单</p>
+<p>回溯算法一般不会让你求最值,而是用于罗列所有无重叠的子结果</p>
+<ul>
+<li><p>回溯算法和dfs的区别:</p>
+<p>DFS 是一个劲的往某一个方向搜索，而回溯算法建立在 DFS 基础之上的，但不同的是在搜索过程中，达到结束条件后，恢复状态，回溯上一层，再次搜索。因此回溯算法与 DFS 的区别就是有无状态重置</p>
+</li>
+<li><p>何时使用回溯算法:</p>
+<p>当问题需要 “回头”，以此来查找出所有的解的时候，使用回溯算法。即满足结束条件或者发现不是正确路径的时候(走不通)，要撤销选择，回退到上一个状态，继续尝试，直到找出所有解为止</p>
+</li>
+<li></li>
+</ul>
+</blockquote>
+<ul>
+<li>找到一个可能存在的正确的答案；</li>
+<li>在尝试了所有可能的分步方法后宣告该问题没有答案。</li>
+</ul>
+<p>「回溯算法」强调了「深度优先遍历」思想的用途，用一个 不断变化 的变量，在尝试各种可能的过程中，搜索需要的结果。强调了 回退 操作对于搜索的合理性。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//回溯算法框架伪代码</span></span><br><span class="line">List&lt;Value&gt; result;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">backtrack</span><span class="params">(路径,选择列表)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(满足结束条件)&#123;</span><br><span class="line">        result.<span class="built_in">add</span>(路径);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(选择:选择列表)&#123;</span><br><span class="line">        做选择;</span><br><span class="line">        <span class="built_in">backtrack</span>(路径,选择列表);</span><br><span class="line">        撤销选择;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>递归之后需要做和递归之前相同的逆向操作,实例可以参考<a href="#%E5%85%A8%E6%8E%92%E5%88%97">全排列问题</a></p>
+<blockquote>
+<p>可以使用<strong>排列树</strong>和<strong>子集树</strong>来理解回溯算法      <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subsets/?envType=study-plan-v2&envId=top-100-liked">子集树参考78.子集</a>     <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutations/description/?envType=study-plan-v2&envId=top-100-liked">排列树参考46.全排列</a></p>
+<p>下图中:最上方为<strong>N叉树</strong>,左下角为<strong>子集树</strong>,右下角为<strong>排列树</strong></p>
+</blockquote>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202402061312311.png" alt="tree"></p>
+<iframe width="720" height="360" src="https://player.bilibili.com/player.html?bvid=BV1YZ4y1H7TU&high_quality=1&danmaku=0&as_wide=1&autoplay=0&" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" class="bili-iframe"> </iframe>
+
 <h1 id="一些算法技巧"><a href="#一些算法技巧" class="headerlink" title="一些算法技巧"></a>一些算法技巧</h1><h2 id="异或运算"><a href="#异或运算" class="headerlink" title="异或运算"></a>异或运算</h2><ul>
 <li>0 ⊕ 0 &#x3D; 0</li>
 <li>1 ⊕ 0 &#x3D; 1</li>
@@ -498,10 +677,10 @@
 <p>解法如下:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">singleNumber</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            res^=nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Boyer-Moore投票算法"><a href="#Boyer-Moore投票算法" class="headerlink" title="Boyer-Moore投票算法"></a>Boyer-Moore投票算法</h2><p>如果一个数组有大于一半的数相同，那么任意删去两个不同的数字，新数组还是会有相同的性质</p>
+<h2 id="Boyer-Moore投票算法"><a href="#Boyer-Moore投票算法" class="headerlink" title="Boyer-Moore投票算法"></a>Boyer-Moore投票算法</h2><p>如果一个数组有大于一半的数相同，那么任意删去两个不同的数字，新数组还是会有相同的性质(即数组有大于一半的数相同)</p>
 <p>思路详解:</p>
 <blockquote>
-<p>“同归于尽消杀法” ：</p>
+<p><strong>同归于尽消杀法</strong> ：</p>
 <p>由于多数超过50%, 比如100个数，那么多数至少51个，剩下少数是49个。</p>
 <ol>
 <li>第一个到来的士兵，直接插上自己阵营的旗帜占领这块高地，此时领主 winner 就是这个阵营的人，现存兵力 count &#x3D; 1。</li>
@@ -530,13 +709,15 @@
 <iframe width="720" height="360" src="https://www.youtube.com/embed/PvrxZaH_eZ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <p>参阅上面视频,公式推导得到以下定理:</p>
-<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202312261550430.png" alt="image-20231226154955021" style="zoom:67%;" />
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202312261550430.png" alt="image-20231226154955021" style="zoom:67%;" />
 
 <ol>
 <li>有限时间内都从起点出发,快慢指针必然相遇且相遇点在环上:一定会相遇是基于有一个指针每个节点都走到了</li>
 <li>在环上相遇的等速指针必定在环的入口处相遇  &#x3D;&#x3D;推导&#x3D;&gt;  [1找到的相遇点]和起点的等速指针将在环的入口处相遇</li>
 </ol>
 <img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202312261458055.jpeg" alt="imageTmp" style="zoom:33%;" />
+
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/龟兔赛跑算法.gif" style="zoom:50%;" />
 
 <ul>
 <li>判断是否有环</li>
@@ -551,7 +732,36 @@
 </ul>
 <p>环的起点即图中点B，将指针p1指向链表的起始位置A，指针p2仍在位置C，指针p1与p2每次均移动一个单位，p1与p2再次相遇的位置就是环的起点位置点B。</p>
 <p>还有更高效率的做法:Brent的移动的兔子和传送的乌龟,<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/413900856">参阅此链接</a></p>
-<h1 id="巧妙的递归解法"><a href="#巧妙的递归解法" class="headerlink" title="巧妙的递归解法"></a>巧妙的递归解法</h1><h2 id="对称二叉树"><a href="#对称二叉树" class="headerlink" title="对称二叉树"></a>对称二叉树</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/symmetric-tree/description/">题目参考</a></p>
+<h2 id="链表中的哑节点"><a href="#链表中的哑节点" class="headerlink" title="链表中的哑节点"></a>链表中的哑节点</h2><p>哑节点的意义:</p>
+<ol>
+<li><p>简化插入和删除操作：哑节点可以作为链表的起始节点，使得插入和删除操作在任意位置都可以统一处理。无论是在链表头部、中间还是尾部插入或删除节点，都不需要特殊处理边界情况。</p>
+</li>
+<li><p>处理空链表：当链表为空时，哑节点可以作为链表的唯一节点，避免了对空链表的额外判断和处理。这样，在处理链表时，不需要单独考虑链表为空的情况。</p>
+</li>
+<li><p>简化遍历操作：哑节点可以作为链表的起始节点，使得遍历链表时不需要对头节点进行特殊处理。遍历操作可以从哑节点的下一个节点开始，一直遍历到链表的末尾。</p>
+</li>
+<li><p>提高代码的一致性和可读性：通过使用哑节点，链表的操作可以统一处理，减少了重复的代码和特殊情况的处理，使得代码更加简洁、一致和易于理解。</p>
+</li>
+</ol>
+<p>需要注意的是，哑节点并不存储实际的数据，它的存在仅仅是为了简化链表的操作。在实际应用中，根据具体的需求和场景，可以选择在链表的头部或尾部添加哑节点。</p>
+<p>使用哑节点的<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-two-sorted-lists/description/">问题</a>代码案例:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* list1, ListNode* list2)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//新建哑节点作为结果链表返回</span></span><br><span class="line">        ListNode* res=<span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        <span class="comment">//动态指针永远指向结果链表最后一个位置</span></span><br><span class="line">        ListNode* curRes=res;</span><br><span class="line">        <span class="keyword">while</span>(list1&amp;&amp;list2)&#123;<span class="comment">//只要有一个链表走到末尾,就退出循环</span></span><br><span class="line">            <span class="keyword">if</span>(list1-&gt;val&gt;list2-&gt;val)</span><br><span class="line">            &#123;</span><br><span class="line">                curRes-&gt;next=list2;</span><br><span class="line">                list2=list2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                curRes-&gt;next=list1;</span><br><span class="line">                list1=list1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            curRes=curRes-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        curRes-&gt;next=list1==<span class="literal">NULL</span>?list2:list1;<span class="comment">//补上未空链表</span></span><br><span class="line">        <span class="keyword">return</span> res-&gt;next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h2><p>可以将<code>求子数组的和为k</code>问题转化为<code>求解两个前缀和之差等于k</code>的问题,通过这种方式在某些题型中可以降低一维</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subarray-sum-equals-k/description/">题型参考</a></p>
+<p>解法如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">        参考:前缀和 + 哈希表优化</span></span><br><span class="line"><span class="comment">        将求子数组的和为k问题转化为求解两个前缀和之差等于k的情况</span></span><br><span class="line"><span class="comment">        使用一个哈希表来存储每个前缀和出现的次数</span></span><br><span class="line"><span class="comment">        对于任意的两个下标i和j（i &lt; j），如果prefixSum[j] - prefixSum[i] = k，即从第i个位置到第j个位置的元素之和等于k，那么说明从第i+1个位置到第j个位置的连续子数组的和为k，此时计数+1。</span></span><br><span class="line"><span class="comment">        通过遍历数组，计算每个位置的前缀和，并使用一个哈希表来存储每个前缀和出现的次数。在遍历的过程中，我们检查是否存在prefixSum[j] - k的前缀和，如果存在，说明从某个位置到当前位置的连续子数组的和为k，我们将对应的次数累加到结果中。</span></span><br><span class="line"><span class="comment">        93/93 cases passed (76 ms)</span></span><br><span class="line"><span class="comment">        Your runtime beats 56.29 % of cpp submissions</span></span><br><span class="line"><span class="comment">        Your memory usage beats 44.43 % of cpp submissions (41 MB)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">subarraySum</span><span class="params">(vector&lt;<span class="type">int</span>&gt; &amp;nums, <span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; prefixSum;<span class="comment">//// key为前缀和,value为该和出现的次数</span></span><br><span class="line">        prefixSum[<span class="number">0</span>]=<span class="number">1</span>;<span class="comment">//// 初始化：前缀和为0出现的次数为1:如果没有这个初始化，那么sum-k=0时，map中没有0，判断为false，就会漏掉这种情况</span></span><br><span class="line">        <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.<span class="built_in">size</span>();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum+=nums[i];</span><br><span class="line">            <span class="comment">//判断是是否存在和为k的值</span></span><br><span class="line">            <span class="keyword">if</span>(prefixSum.<span class="built_in">find</span>(sum-k)!=prefixSum.<span class="built_in">end</span>())</span><br><span class="line">                res+=prefixSum[sum-k];</span><br><span class="line">            <span class="comment">// if(prefixSum.find(sum)==prefixSum.end())</span></span><br><span class="line">            <span class="comment">//     prefixSum[sum]=1;</span></span><br><span class="line">            <span class="comment">// else</span></span><br><span class="line">            <span class="comment">//     prefixSum[sum]+=1;</span></span><br><span class="line">            <span class="comment">//上面注释的代码实际上一句就搞定了</span></span><br><span class="line">            prefixSum[sum]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="差分数组"><a href="#差分数组" class="headerlink" title="差分数组"></a>差分数组</h2><h2 id="荷兰国旗问题"><a href="#荷兰国旗问题" class="headerlink" title="荷兰国旗问题"></a>荷兰国旗问题</h2><blockquote>
+<p>Dutch National Flag Problem 荷兰国旗问题，该问题由荷兰计算机科学家Dijkstra所提出</p>
+</blockquote>
+<p>怎么对一组数做划分,左边都小于他,右边都大于他,中间都等于他(不要求有序,只要求对数组进行划分)</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401171202150.png" alt="iShot_2024-01-17_12.01.13_magic"></p>
+<p>参考leetcode的<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sort-colors/">75. 颜色分类</a></p>
+<p>解决代码如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//双指针,转移+修正</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sortColors</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> p0=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> p2=nums.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i =<span class="number">0</span>;i&lt;=p2;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i]==<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">swap</span>(nums[i],nums[p0]);</span><br><span class="line">                p0++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[i] == <span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">swap</span>(nums[i],nums[p2]);</span><br><span class="line">                p2--;</span><br><span class="line">                i--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="巧妙的递归解法思路盘点"><a href="#巧妙的递归解法思路盘点" class="headerlink" title="巧妙的递归解法思路盘点"></a>巧妙的递归解法思路盘点</h1><h2 id="对称二叉树"><a href="#对称二叉树" class="headerlink" title="对称二叉树"></a>对称二叉树</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/symmetric-tree/description/">题目参考</a></p>
 <p>递归解法:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//比较两棵树是否对称二叉树		</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(TreeNode *p, TreeNode *q)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (!p &amp;&amp; !q)</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">      <span class="keyword">if</span> (!p || !q)</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">   		<span class="comment">//p和q都不为NULL才可能走到这里</span></span><br><span class="line">      <span class="keyword">return</span> p-&gt;val == q-&gt;val &amp;&amp; <span class="built_in">check</span>(p-&gt;left, q-&gt;right) &amp;&amp; <span class="built_in">check</span>(p-&gt;right, q-&gt;left);</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">//判断树是否是二叉树</span></span><br><span class="line">  <span class="function"><span class="type">bool</span> <span class="title">isSymmetric</span><span class="params">(TreeNode *root)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">check</span>(root, root);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
@@ -565,6 +775,58 @@
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(TreeNode *u, TreeNode *v)</span> </span>&#123;</span><br><span class="line">        queue &lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(u); q.<span class="built_in">push</span>(v);</span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            u = q.<span class="built_in">front</span>(); q.<span class="built_in">pop</span>();</span><br><span class="line">            v = q.<span class="built_in">front</span>(); q.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">if</span> (!u &amp;&amp; !v) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> ((!u || !v) || (u-&gt;val != v-&gt;val)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">            q.<span class="built_in">push</span>(u-&gt;left); </span><br><span class="line">            q.<span class="built_in">push</span>(v-&gt;right);</span><br><span class="line"></span><br><span class="line">            q.<span class="built_in">push</span>(u-&gt;right); </span><br><span class="line">            q.<span class="built_in">push</span>(v-&gt;left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isSymmetric</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">check</span>(root, root);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<h2 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h2><p><a href="#https://leetcode.cn/problems/permutations/description/">46.全排列</a></p>
+<p>伪代码</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202401091704999.png" alt="image-20240109170435720"  />
+
+<p>遍历流程</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202401091714375.gif" alt="全排列" style="zoom: 33%;" />
+
+<p>代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">permute</span>(vector&lt;<span class="type">int</span>&gt; &amp;nums)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">dfs</span>(nums, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(vector&lt;<span class="type">int</span>&gt; nums, <span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x == nums.<span class="built_in">size</span>() - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res.<span class="built_in">push_back</span>(nums); <span class="comment">// 添加排列方案</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = x; i &lt; nums.<span class="built_in">size</span>(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 这里使用交换的原因是因为交换不会破坏本身的元素种类,并且最后一个元素可以天然得到保留,妙不可言</span></span><br><span class="line">            <span class="built_in">swap</span>(nums[i], nums[x]); <span class="comment">// 交换，将 nums[i] 固定在第 x 位</span></span><br><span class="line">            <span class="built_in">dfs</span>(nums, x + <span class="number">1</span>);       <span class="comment">// 开启固定第 x + 1 位元素</span></span><br><span class="line">            <span class="built_in">swap</span>(nums[i], nums[x]); <span class="comment">// 恢复交换(配合循环画龙点睛)</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>此代码后面使用交换的方式,避免了”检测是否已经重复处理过”的时间复杂度</p>
+<h2 id="子集"><a href="#子集" class="headerlink" title="子集"></a>子集</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subsets/description/">78.子集</a></p>
+<p>这一题找了半天都没有找到递归规律,看了题解才明白,遂记录下来</p>
+<ul>
+<li>开始假设输出子集为空子集</li>
+<li>遍历数组，对于数组中的每一个整数，每一步都向输出子集中所有子集添加这个整数，并生成新的子集。</li>
+</ul>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202402021724019.gif" alt="iShot_2024-02-02_16.55.51" style="zoom:50%;" />
+
+<p>gif最后少了一个3的子集,是bug</p>
+<p>解法如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">subsets</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res=&#123;&#123;&#125;&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; tmp = res;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> item:tmp)&#123;</span><br><span class="line">                item.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">                res.<span class="built_in">push_back</span>(item);</span><br><span class="line">            &#125;   </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>假设 nums 中的元素个数为n，则 nums 的子集个数为$2^n$。</p>
+<p>时间复杂度：$O(n•2^n)$<br>空间复杂度：$O(n•2^n)$</p>
+<h1 id="巧妙的算法解决记录"><a href="#巧妙的算法解决记录" class="headerlink" title="巧妙的算法解决记录"></a>巧妙的算法解决记录</h1><h2 id="15-三数之和"><a href="#15-三数之和" class="headerlink" title="15.三数之和"></a>15.三数之和</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum/description/">15.三数之和</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">threeSum</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="type">int</span> size = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; size; k++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[k]&gt;<span class="number">0</span>)<span class="comment">//因为 nums[j] &gt;= nums[i] &gt;= nums[k] &gt; 0，即 3 个元素都大于 0 ，在此固定指针 k 之后不可能再找到结果了。</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span>(k&gt;<span class="number">0</span>&amp;&amp;nums[k]==nums[k<span class="number">-1</span>])<span class="comment">//重复元素,跳过</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="type">int</span> i = k+<span class="number">1</span>;<span class="comment">//第二指针</span></span><br><span class="line">            <span class="type">int</span> j = size - <span class="number">1</span>; <span class="comment">// 第三指针</span></span><br><span class="line">            <span class="keyword">while</span> (i &lt; j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="type">int</span> sum = nums[k]+nums[i]+nums[j];</span><br><span class="line">                <span class="keyword">if</span> (sum &gt; <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">do</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        j--;</span><br><span class="line">                    &#125; <span class="keyword">while</span> (j&gt;i&amp;&amp;nums[j]==nums[j+<span class="number">1</span>]);</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (sum &lt; <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">do</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        i++;</span><br><span class="line">                    &#125; <span class="keyword">while</span> (j&gt;i&amp;&amp;nums[i]==nums[i<span class="number">-1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">// 找到为0的值则插入</span></span><br><span class="line">                    res.<span class="built_in">push_back</span>(vector&lt;<span class="type">int</span>&gt;&#123;nums[k], nums[i], nums[j]&#125;);</span><br><span class="line">                    <span class="keyword">do</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        i++;</span><br><span class="line">                    &#125; <span class="keyword">while</span> (j&gt;i&amp;&amp;nums[i]==nums[i<span class="number">-1</span>]);</span><br><span class="line">                    <span class="keyword">do</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        j--;</span><br><span class="line">                    &#125; <span class="keyword">while</span> (j&gt;i&amp;&amp;nums[j]==nums[j+<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码执行流程</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401201059831.gif" alt="三数之和" style="zoom:50%;" />
+
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum/solutions/11525/3sumpai-xu-shuang-zhi-zhen-yi-dong-by-jyd/">上面代码详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum/solutions/284681/san-shu-zhi-he-by-leetcode-solution/">详解参阅leetcode官方</a></p>
+<h2 id="128-最长连续序列"><a href="#128-最长连续序列" class="headerlink" title="128.最长连续序列"></a>128.最长连续序列</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-consecutive-sequence/description/">128. 最长连续序列</a></p>
+<p>记录的这个代码主要是精彩在一次遍历解决问题</p>
+<blockquote>
+<ul>
+<li>哈希map的key为:  数组中的数,</li>
+<li>value为: 遍历到该元素时，如果 key 是某个连续区间的左&#x2F;右端点，则 value 为该连续区间的长度；否则 value 值无意义</li>
+</ul>
+<p>伪代码:</p>
+<p>若数已在哈希表中：跳过不做处理</p>
+<p>若是新数加入：</p>
+<p>​     取出其左右相邻数已有的连续区间长度 left 和 right</p>
+<p>​     计算当前数的区间长度为：cur_length &#x3D; left + right + 1</p>
+<p>​     根据 cur_length 更新最大长度 max_length 的值</p>
+<p>​     更新区间两端点的长度值</p>
+</blockquote>
+<p>本质上就是利用map的value来储存正在处理的数以及他左右的数的序列长度,也即是通过value来<strong>动态叠加连续序列长度</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">longestConsecutive</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; m;</span><br><span class="line">        <span class="type">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>( <span class="type">int</span> n : nums ) &#123;</span><br><span class="line">            <span class="keyword">if</span>( m.<span class="built_in">find</span>(n) != m.<span class="built_in">end</span>() ) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="type">int</span> left = m.<span class="built_in">find</span>(n<span class="number">-1</span>) == m.<span class="built_in">end</span>() ? <span class="number">0</span> : m[n<span class="number">-1</span>];</span><br><span class="line">            <span class="type">int</span> right = m.<span class="built_in">find</span>(n+<span class="number">1</span>) == m.<span class="built_in">end</span>() ? <span class="number">0</span> : m[n+<span class="number">1</span>];</span><br><span class="line">            <span class="type">int</span> len = left + right + <span class="number">1</span>;</span><br><span class="line">            m[n] = <span class="number">1</span>;</span><br><span class="line">            m[n-left] = m[n+right] = len;</span><br><span class="line">            result = <span class="built_in">max</span>(result, len);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑"></a>疑惑</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/kth-smallest-element-in-a-bst/description">230题</a>使用中序morris遍历算法竟然报栈溢出错误?待解决</p>
 
     </div>
 
@@ -666,7 +928,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">算法入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.1.</span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.2.</span> <span class="nav-text">空间复杂度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">排序算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="nav-number">2.0.1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="nav-number">2.0.2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="nav-number">2.0.3.</span> <span class="nav-text">插入排序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">查找算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="nav-number">3.1.</span> <span class="nav-text">二分查找</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">字符串匹配算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP%E7%AE%97%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">KMP算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90next%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.1.</span> <span class="nav-text">生成next数组函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kmp%E6%90%9C%E7%B4%A2%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.2.</span> <span class="nav-text">kmp搜索函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM%E7%AE%97%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">BM算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%8F%E5%AD%97%E7%AC%A6%E8%A7%84%E5%88%99"><span class="nav-number">4.2.1.</span> <span class="nav-text">坏字符规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%BD%E5%90%8E%E7%BC%80%E8%A7%84%E5%88%99"><span class="nav-number">4.2.2.</span> <span class="nav-text">好后缀规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sunday%E7%AE%97%E6%B3%95"><span class="nav-number">4.3.</span> <span class="nav-text">Sunday算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">4.3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E7%A0%81"><span class="nav-number">4.3.2.</span> <span class="nav-text">编码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">贪心算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%85%AC%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">排列组合公式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E5%85%AC%E5%BC%8F"><span class="nav-number">6.1.</span> <span class="nav-text">排列公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E9%87%8D"><span class="nav-number">6.1.1.</span> <span class="nav-text">去重</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E5%85%AC%E5%BC%8F"><span class="nav-number">6.2.</span> <span class="nav-text">组合公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">6.3.</span> <span class="nav-text">排列与组合的关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">7.</span> <span class="nav-text">动态规划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A4%E4%BA%BA%E6%83%8A%E5%8F%B9%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9%E7%AE%97%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text">令人惊叹的平方根算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%BF%AB%E9%80%9F%E8%AE%A1%E7%AE%97%E7%AE%97%E6%B3%95"><span class="nav-number">8.1.</span> <span class="nav-text">平方根快速计算算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PID%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95"><span class="nav-number">9.</span> <span class="nav-text">PID控制算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PID%E5%85%AC%E5%BC%8F"><span class="nav-number">9.1.</span> <span class="nav-text">PID公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PID%E4%BB%A3%E7%A0%81"><span class="nav-number">9.2.</span> <span class="nav-text">PID代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2"><span class="nav-number">10.</span> <span class="nav-text">卡尔曼滤波</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7"><span class="nav-number">11.</span> <span class="nav-text">一些算法技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97"><span class="nav-number">11.1.</span> <span class="nav-text">异或运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boyer-Moore%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95"><span class="nav-number">11.2.</span> <span class="nav-text">Boyer-Moore投票算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88"><span class="nav-number">11.3.</span> <span class="nav-text">快慢指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Floyd%E5%88%A4%E5%9C%88%E7%AE%97%E6%B3%95"><span class="nav-number">11.3.1.</span> <span class="nav-text">Floyd判圈算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A7%E5%A6%99%E7%9A%84%E9%80%92%E5%BD%92%E8%A7%A3%E6%B3%95"><span class="nav-number">12.</span> <span class="nav-text">巧妙的递归解法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">12.1.</span> <span class="nav-text">对称二叉树</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">算法入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.1.</span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.2.</span> <span class="nav-text">空间复杂度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">算法概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%BB%BA%E6%A8%A1"><span class="nav-number">2.1.</span> <span class="nav-text">问题建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%81%B5%E6%9C%BA"><span class="nav-number">2.1.1.</span> <span class="nav-text">图灵机</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">排序算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.3.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.4.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.5.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.6.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.7.</span> <span class="nav-text">计数排序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">查找算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="nav-number">4.1.</span> <span class="nav-text">二分查找</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">字符串匹配算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP%E7%AE%97%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">KMP算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90next%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0"><span class="nav-number">5.1.1.</span> <span class="nav-text">生成next数组函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kmp%E6%90%9C%E7%B4%A2%E5%87%BD%E6%95%B0"><span class="nav-number">5.1.2.</span> <span class="nav-text">kmp搜索函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM%E7%AE%97%E6%B3%95"><span class="nav-number">5.2.</span> <span class="nav-text">BM算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%8F%E5%AD%97%E7%AC%A6%E8%A7%84%E5%88%99"><span class="nav-number">5.2.1.</span> <span class="nav-text">坏字符规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%BD%E5%90%8E%E7%BC%80%E8%A7%84%E5%88%99"><span class="nav-number">5.2.2.</span> <span class="nav-text">好后缀规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sunday%E7%AE%97%E6%B3%95"><span class="nav-number">5.3.</span> <span class="nav-text">Sunday算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">5.3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E7%A0%81"><span class="nav-number">5.3.2.</span> <span class="nav-text">编码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">贪心算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%85%AC%E5%BC%8F"><span class="nav-number">7.</span> <span class="nav-text">排列组合公式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E5%85%AC%E5%BC%8F"><span class="nav-number">7.1.</span> <span class="nav-text">排列公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E9%87%8D"><span class="nav-number">7.1.1.</span> <span class="nav-text">去重</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E5%85%AC%E5%BC%8F"><span class="nav-number">7.2.</span> <span class="nav-text">组合公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">7.3.</span> <span class="nav-text">排列与组合的关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">8.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%8E%E5%85%B6%E4%BB%96%E6%80%9D%E6%83%B3%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="nav-number">8.1.</span> <span class="nav-text">动态规划与其他思想的差异</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E2%80%94%E2%80%94%E9%87%8D%E5%8F%A0%E5%AD%90%E9%97%AE%E9%A2%98"><span class="nav-number">8.1.1.</span> <span class="nav-text">分治算法与动态规划——重叠子问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E2%80%94%E2%80%94%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E6%9E%84"><span class="nav-number">8.1.2.</span> <span class="nav-text">贪心算法与动态规划——最优子结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A4%E4%BA%BA%E6%83%8A%E5%8F%B9%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9%E7%AE%97%E6%B3%95"><span class="nav-number">9.</span> <span class="nav-text">令人惊叹的平方根算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%BF%AB%E9%80%9F%E8%AE%A1%E7%AE%97%E7%AE%97%E6%B3%95"><span class="nav-number">9.1.</span> <span class="nav-text">平方根快速计算算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PID%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95"><span class="nav-number">10.</span> <span class="nav-text">PID控制算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PID%E5%85%AC%E5%BC%8F"><span class="nav-number">10.1.</span> <span class="nav-text">PID公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PID%E4%BB%A3%E7%A0%81"><span class="nav-number">10.2.</span> <span class="nav-text">PID代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2"><span class="nav-number">11.</span> <span class="nav-text">卡尔曼滤波</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%AE%97%E6%B3%95"><span class="nav-number">12.</span> <span class="nav-text">图算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Union-Find%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95"><span class="nav-number">12.1.</span> <span class="nav-text">Union Find并查集算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95"><span class="nav-number">13.</span> <span class="nav-text">回溯算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7"><span class="nav-number">14.</span> <span class="nav-text">一些算法技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97"><span class="nav-number">14.1.</span> <span class="nav-text">异或运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boyer-Moore%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95"><span class="nav-number">14.2.</span> <span class="nav-text">Boyer-Moore投票算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88"><span class="nav-number">14.3.</span> <span class="nav-text">快慢指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Floyd%E5%88%A4%E5%9C%88%E7%AE%97%E6%B3%95"><span class="nav-number">14.3.1.</span> <span class="nav-text">Floyd判圈算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%93%91%E8%8A%82%E7%82%B9"><span class="nav-number">14.4.</span> <span class="nav-text">链表中的哑节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BC%80%E5%92%8C"><span class="nav-number">14.5.</span> <span class="nav-text">前缀和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84"><span class="nav-number">14.6.</span> <span class="nav-text">差分数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98"><span class="nav-number">14.7.</span> <span class="nav-text">荷兰国旗问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A7%E5%A6%99%E7%9A%84%E9%80%92%E5%BD%92%E8%A7%A3%E6%B3%95%E6%80%9D%E8%B7%AF%E7%9B%98%E7%82%B9"><span class="nav-number">15.</span> <span class="nav-text">巧妙的递归解法思路盘点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">15.1.</span> <span class="nav-text">对称二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%8E%92%E5%88%97"><span class="nav-number">15.2.</span> <span class="nav-text">全排列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E9%9B%86"><span class="nav-number">15.3.</span> <span class="nav-text">子集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A7%E5%A6%99%E7%9A%84%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95"><span class="nav-number">16.</span> <span class="nav-text">巧妙的算法解决记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-number">16.1.</span> <span class="nav-text">15.三数之和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#128-%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97"><span class="nav-number">16.2.</span> <span class="nav-text">128.最长连续序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%96%91%E6%83%91"><span class="nav-number">17.</span> <span class="nav-text">疑惑</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -680,7 +942,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -693,7 +955,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -720,7 +982,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -730,8 +992,10 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">535k</span>
+    <span title="站点总字数">574k</span>
 </div>
+
+<!-- -->
 
         
 <div class="busuanzi-count">

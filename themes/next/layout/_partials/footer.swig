@@ -42,9 +42,14 @@
   {%- endif %}
 </div>
 
-{%- if theme.footer.powered %}
-
-{%- endif %}
+<!--{%- if theme.footer.powered %}
+  <div class="powered-by">
+    {%- set next_site = 'https://theme-next.org' %}
+    {%- if theme.scheme !== 'Gemini' %}
+      {%- set next_site = 'https://' + theme.scheme | lower + '.theme-next.org' %}
+    {%- endif %}
+  </div>
+{%- endif %} -->
 
 {%- if theme.add_this_id %}
   <div class="addthis_inline_share_toolbox">

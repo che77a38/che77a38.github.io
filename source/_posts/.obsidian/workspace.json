@@ -4,47 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "8a70a3373a2360a4",
+        "id": "ce887eef82fbd911",
         "type": "tabs",
         "children": [
           {
-            "id": "270a1b89141facc8",
+            "id": "5f964c3244b08afc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STL.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "a45dbff250c22e76",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "STL.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c8c16f2175467ee3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "算法.md",
-                "mode": "preview",
+                "file": "32位逆向.md",
+                "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -73,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "算法",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -112,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "算法.md",
+                "file": "32位逆向.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "算法.md",
+                "file": "32位逆向.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -152,7 +127,9 @@
             "state": {
               "type": "all-properties",
               "state": {
-                "sortOrder": "frequency"
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
               }
             }
           },
@@ -162,12 +139,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "算法.md"
+                "file": "32位逆向.md"
               }
             }
           },
           {
-            "id": "90c9d7e4e2236aa4",
+            "id": "b61c59d28800ff65",
             "type": "leaf",
             "state": {
               "type": "quiet-outline",
@@ -188,7 +165,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "算法.md",
+                "file": "32位逆向.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -211,7 +188,7 @@
                   "repelStrength": 0,
                   "linkStrength": 1,
                   "linkDistance": 30,
-                  "scale": 2.0609241744928473,
+                  "scale": 0.8605167347592151,
                   "close": true
                 }
               }
@@ -226,28 +203,32 @@
   "left-ribbon": {
     "hiddenItems": {
       "remotely-save:Remotely Save": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "command-palette:打开命令面板": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "c8c16f2175467ee3",
+  "active": "b2b00d311a174d2d",
   "lastOpenFiles": [
+    "数据结构.md",
     "STL.md",
     "算法.md",
+    "64位逆向.md",
+    "32位逆向.md",
+    "hello-world.md",
+    "QT.md",
+    "MFC.md",
+    "PE.md",
     "加解密相关.md",
     "linux基础以及系统编程.md",
     "网络编程.md",
     "nginx.md",
     "正则表达式.md",
-    "QT.md",
     "C++11.md",
-    "数据结构.md",
-    "32位逆向.md",
     "windows开发.md",
     "屏幕监控（未完成）.md",
     "字符编码.md",
@@ -259,10 +240,6 @@
     "C++基础.md",
     "数据库.md",
     "系统调用.md",
-    "64位逆向.md",
-    "hello-world.md",
-    "问题汇总.md",
-    "句柄表.md",
     "github.com/Dreamacro/clash-dashboard/tree",
     "github.com/Dreamacro/clash-dashboard",
     "github.com/Dreamacro",

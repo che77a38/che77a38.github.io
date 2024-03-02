@@ -674,7 +674,7 @@ Qt5在语法上完全兼容Qt4，而反之是不可以的。
 
 ## connect中的Lambda表达式
 
-[[c++11#Lambda表达式|Lambda表达式详解跳转]]
+[[c++11与14#Lambda表达式|Lambda表达式详解跳转]]
 
  **【注意】Lambda和信号与槽（重点）**
 

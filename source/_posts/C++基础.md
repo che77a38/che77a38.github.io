@@ -354,7 +354,7 @@ void test02(){
 
 **理解注意点**：
 
-1. using声明和普通声明在一个作用域同时存在，会报错。但using编译指令和普通声明在一个作用域同时存在时，优先普通声明，若不存在普通声明，此时才使用使用的命名空间中的声明。
+1. using声明和普通声明在一个作用域同时存在，会报错。但using编译指令和普通声明在一个作用域同时存在时，**优先普通声明**，若不存在普通声明，此时才使用使用的命名空间中的声明。
 2. 没有普通声明下，两个using编译指令会报错
 
 ***注意：使用using声明或using编译指令会增加命名冲突的可能性。也就是说，如果有名称空间，并在代码中使用作用域解析运算符，则不会出现二义性。***
@@ -1464,7 +1464,7 @@ Person(Person person)
 
 1. 显式调用的时候，析构函数相当于的一个**普通的成员函数**；
 2. 编译器隐式调用析构函数，如分配了堆内存，显式调用析构的话引起重复**释放堆内存的异常**；
-3. 把一个对象看作占用了部分栈内存，占用了部分堆内存（如果申请了的话），这样便于理解这个问题，系统隐式调用析构函数的时候，会加入释放栈内存的动作（而堆内存则由用户手工的释放）；用户显式调用析构函数的时候，只是单纯执行析构函数内的语句，**不会释放栈内存，也不会摧毁对象**。
+3. 把一个对象看作占用了部分栈内存，占用了部分堆内存（如果申请了的话），这样便于理解这个问题，系统隐式调用析构函数的时候，会加入释放栈内存的动作（而堆内存则由用户手工的释放）；**用户显式调用析构函数的时候**，只是**单纯执行析构函数内的语句**，**不会释放栈内存，也不会摧毁对象**。
 
 
 
@@ -1960,7 +1960,7 @@ c的动态内存分配函数太复杂，容易令人混淆，是不可接受的�
 
 [new运算符详解]: https://blog.csdn.net/growth_path_/article/details/83927810
 
-C++中解决动态内存分配的方案是**把创建一个对象所需要的操作都结合在一个称为new的运算符里**。当用new创建一个对象时，它就在堆里为对象分配内存并调用构造函数完成初始化。
+C++中解决动态内存分配的方案是**把创建一个对象所需要的操作都结合在一个称为new的运算符里**。当用new创建一个对象时，它就在堆里**为对象分配内存并调用构造函数完成初始化**。
 
 ```cpp
 Person* person = new Person;
@@ -1981,6 +1981,63 @@ New操作符能确定在调用构造函数初始化之前内存分配是成功�
 1. malloc和free属于库函数，new和delete属于运算符
 2. malloc不会调用构造函数，new会调用构造函数
 3. malloc返回void* C++下要强转，new返回创建的对象的指针
+
+##### placement new机制
+
+> 一般来说，使用new申请空间时，是从系统的“堆”（heap）中分配空间。申请所得的空间的位置是根据当时的内存的实际使用情况决定的。但是，在某些特殊情况下，可能需要在已分配的特定内存创建对象，这就是所谓的“定位放置new”（placement new）操作。
+>
+> 定位放置new操作的语法形式不同于普通的new操作。例如，一般都用如下语句`A* p=new A`;申请空间，而定位放置new操作则使用如下语句`A* p=new (ptr)A`;申请空间，其中ptr就是程序员指定的内存首地址。
+
+- 用定位放置new操作，既可以在栈(stack)上生成对象，也可以在堆（heap）上生成对象。取决于ptr地址是指向哪里
+- 使用语句A* p=new (mem) A;定位生成对象时，指针p和数组名mem指向同一片存储区。所以，与其说定位放置new操作是申请空间，还不如说是利用已经请好的空间，真正的申请空间的工作是在此之前完成的。
+- 使用语句A *p=new (mem) A;定位生成对象时，会自动调用类A的构造函数，但是由于对象的空间不会自动释放（对象实际上是借用别人的空间），所以必须显示的调用类的析构函数，如本例中的`p->~A()`。
+
+> 如果有这样一个场景，我们需要大量的申请一块类似的内存空间，然后又释放掉，比如在在一个server中对于客户端的请求，每个客户端的每一次上行数据我们都需要为此申请一块内存，当我们处理完请求给客户端下行回复时释放掉该内存，表面上看者符合c++的内存管理要求，没有什么错误，但是仔细想想很不合理，为什么我们每个请求都要重新申请一块内存呢，要知道每一次内从的申请，系统都要在内存中找到一块合适大小的连续的内存空间，这个过程是很慢的（相对而言)，极端情况下，如果当前系统中有大量的内存碎片，并且我们申请的空间很大，甚至有可能失败。为什么我们不能共用一块我们事先准备好的内存呢？可以的，我们可以使用placement new来构造对象，那么就会在我们指定的内存空间中构造对象。
+>
+> 这种方式存在的根本原因是因为**内存申请是个耗时操作**
+
+```cpp
+#include <iostream>
+using namespace std;
+ 
+class A
+{
+public:
+	A()
+	{
+		cout << "A's constructor" << endl;
+	}
+ 
+ 
+	~A()
+	{
+		cout << "A's destructor" << endl;
+	}
+	
+	void show()
+	{
+		cout << "num:" << num << endl;
+	}
+	
+private:
+	int num;
+};
+ 
+int main()
+{
+	char mem[100];
+	mem[0] = 'A';
+	mem[1] = '\0';
+	mem[2] = '\0';
+	mem[3] = '\0';
+	cout << (void*)mem << endl;
+	A* p = new (mem)A;//将A对象分配到了栈上
+	cout << p << endl;
+	p->show();
+	p->~A();
+	getchar();
+}
+```
 
 #####  **delete operator**
 
@@ -2035,8 +2092,6 @@ void test(){
      person2=NULL;
 }
 ```
-
-
 
 ##### 用于数组的new和delete
 
@@ -4398,6 +4453,37 @@ void test(){
   2. 子类（派生类）重写父类（基类）的virtual函数
   3. 函数返回值，函数名字，函数参数，必须和基类中的虚函数一致
 
+## 位域
+
+[[C语言入门#位域|C语言中的位域]]只能用于整型数据类型（如int、char等），而**C++还支持对非整数类型的位域进行定义，如布尔类型、枚举类型等**。
+
+对齐规则的差异:
+   - 在C语言中，位域的对齐规则是相对于结构体的起始位置，不同位域之间可能会进行位填充以满足对齐要求。
+   - 在C++中，位域的对齐规则是相对于前一个位域的结束位置，不会进行位填充，因此**位域之间不会有空隙**。
+
+C++既可以使用struct,也可以使用class
+
+```cpp
+//C++的位域案例
+class Flags {
+public:
+    bool flag1 : 1;
+    bool flag2 : 1;
+    bool flag3 : 1;
+};
+void main()
+{
+  	Flags myFlags;
+    myFlags.flag1 = true;
+    myFlags.flag2 = false;
+    myFlags.flag3 = true;
+
+    std::cout << "Flag 1: " << myFlags.flag1 << std::endl;
+    std::cout << "Flag 2: " << myFlags.flag2 << std::endl;
+    std::cout << "Flag 3: " << myFlags.flag3 << std::endl;
+}
+```
+
 ## 模板
 
 ### 函数模板
@@ -4562,7 +4648,15 @@ void test04(){
 - 函数模板通过具体类型产生不同的函数
 - **两次编译，在声明的地方对模板代码本身进行编译(语法检测)，在调用的地方对参数替换后的代码进行编译（产生不同的函数）**（这也就是模板的分文件特殊化的原因）
 
-#### 函数模板具体化
+[成员模板函数不能为虚函数，同时也不能有默认参数](https://www.cnblogs.com/yyxt/p/5090942.html)
+
+#### 函数模板分文件编写
+
+函数模板的分文件编写与类模板分文件编写一致，参考[类模板的分文件编写章节](#类模板的分文件编写)
+
+#### 函数模板特化
+
+也称为模板具体化
 
 上面提到模板并不是真实的通用，对于自定义的数据类型，可以使用具体化技术，实现对自定义数据类型的特殊使用。
 
@@ -4613,9 +4707,47 @@ template<>void  mySwap<Person>(Person &p1, Person &p2)
 }
 ```
 
-[成员模板函数不能为虚函数，同时也不能有默认参数](https://www.cnblogs.com/yyxt/p/5090942.html)
+函数模板特化有两种形式：明确特化和部分特化。
 
-函数模板的分文件编写与类模板分文件编写一致，参考[类模板的分文件编写章节](#类模板的分文件编写)
+明确特化是指为特定类型或参数提供完全不同的函数实现。它使用`template<>`语法来声明特化版本，并提供特定的实现。
+
+下面是一个示例，展示了如何对函数模板进行明确特化：
+
+```cpp
+// 声明一个函数模板
+template <typename T>
+void print(T value) {
+    std::cout << "Generic template: " << value << std::endl;
+}
+
+// 明确特化的实现
+template <>
+void print<int>(int value) {
+    std::cout << "Specialized template for int: " << value << std::endl;
+}
+```
+
+在上面的示例中，我们定义了一个函数模板`print`，它可以打印任意类型的值。然后，通过使用`template<>`语法，我们对`print<int>`进行了明确特化，为`int`类型提供了一个特殊的实现。
+
+部分特化是指对函数模板的一部分参数进行特化。它使用模板参数的部分列表来匹配特定的实例，并提供特定的实现。
+
+下面是一个示例，展示了如何对函数模板进行部分特化：
+
+```cpp
+// 声明一个函数模板
+template <typename T, typename U>
+void print(T value, U extra) {
+    std::cout << "Generic template: " << value << ", " << extra << std::endl;
+}
+
+// 部分特化的实现
+template <typename T>
+void print<T, int>(T value, int extra) {
+    std::cout << "Partial specialization for T and int: " << value << ", " << extra << std::endl;
+}
+```
+
+在上面的示例中，我们对`print<T, int>`进行了部分特化，为特定的参数组合提供了一个特殊的实现。
 
 ### 类模板
 
@@ -5416,6 +5548,64 @@ int main()
 
 **【重点】**（**崩溃的调试定位问题技巧**）崩溃的时候在弹出的对话框按相应按钮进入调试，按Alt+7键查看Call Stack即“调用堆栈”里面从上到下列出的对应从里层到外层的函数调用历史。双击某一行可将光标定位到此次调用的源代码或汇编指令处，看不懂时双击下一行，直到能看懂为止。
 
+#### 类模板特化
+
+模板特化是从C++98标准开始引入的特性，并在后续的C++标准中进行了一些改进和扩展。因此，无论是C++98、C++11、C++14、C++17还是C++20，都支持模板特化。
+
+在C++中，你可以通过使用`template<>`语法来实现模板特化。下面是一个示例，展示了如何对一个类模板进行明确特化：
+
+```cpp
+// 声明一个类模板
+template <typename T>
+class MyClass {
+public:
+    void print() {
+        std::cout << "General template" << std::endl;
+    }
+};
+
+// 明确特化的实现
+template <>
+class MyClass<int> {
+public:
+    void print() {
+        std::cout << "Specialized template for int" << std::endl;
+    }
+};
+```
+
+在上面的示例中，我们定义了一个类模板`MyClass`，并为其提供了一个通用的实现。然后，通过使用`template<>`语法，我们对`MyClass<int>`进行了明确特化，并提供了一个特定的实现。
+
+你还可以进行部分特化，对模板的一部分参数进行特化。下面是一个示例：
+
+```cpp
+// 声明一个类模板
+template <typename T, typename U>
+class MyClass {
+public:
+    void print() {
+        std::cout << "General template" << std::endl;
+    }
+};
+
+// 部分特化的实现
+template <typename T>
+class MyClass<T, int> {
+public:
+    void print() {
+        std::cout << "Partial specialization for T and int" << std::endl;
+    }
+};
+```
+
+在上面的示例中，我们对`MyClass<T, int>`进行了部分特化，为特定的参数组合提供了一个特殊的实现。
+
+### 模板模板参数
+
+模板模板参数（Template Template Parameters）是在C++98标准中引入的。这意味着从C++98开始，就可以使用模板模板参数来定义模板，将模板作为另一个模板的参数。
+
+模板模板参数是C++中的一项强大的模板技术，它提供了更高级的模板编程能力，使得代码更加灵活和通用。它允许你以模板作为参数传递给其他模板，从而实现更复杂的泛型编程和模板元编程。
+
 ## 类型转换
 
 ### 静态类型转换(static_cast)
@@ -5538,10 +5728,10 @@ Other* other=reinterpret_cast<Other*>(base);
 
 #### c++异常机制相比C语言异常处理的优势?
 
-- 函数的返回值可以忽略，但异常不可忽略。如果程序出现异常，但是没有被捕获，程序就会终止，这多少会促使程序员开发出来的程序更健壮一点。而如果使用C语言的error宏或者函数返回值，调用者都有可能忘记检查，从而没有对错误进行处理，结果造成程序莫名其面的终止或出现错误的结果。
+- 函数的返回值可以忽略，但**异常不可忽略**。如果程序出现异常，但是没有被捕获，程序就会终止，这多少会促使程序员开发出来的程序更健壮一点。而如果使用C语言的error宏或者函数返回值，调用者都有可能忘记检查，从而没有对错误进行处理，结果造成程序莫名其面的终止或出现错误的结果。
 - 整型返回值没有任何语义信息。而异常却包含语义信息，有时你从类名就能够体现出来。
 - 整型返回值缺乏相关的上下文信息。异常作为一个类，可以拥有自己的成员，这些成员就可以传递足够的信息。
-- 异常处理可以在调用跳级。这是一个代码编写时的问题：假设在有多个函数的调用栈中出现了某个错误，使用整型返回码要求你在每一级函数中都要进行处理。而使用异常处理的栈展开机制，只需要在一处进行处理就可以了，不需要每级函数都处理。
+- 异常处理可以在调用跳级。这是一个代码编写时的问题：假设在有多个函数的调用栈中出现了某个错误，**使用整型返回码要求你在每一级函数中都要进行处理。而使用异常处理的栈展开机制，只需要在一处进行处理就可以了，不需要每级函数都处理**。
 
 C异常机制缺陷案例：
 
@@ -5587,6 +5777,8 @@ int C_MyDivide(){
 //1.异常应该捕获，如果你捕获，可以，那么异常必须继续抛给上层函数,你不处理，不代表你的上层不处理
 //2.这个例子，异常没有捕获的结果就是运行结果错的一塌糊涂，结果未知，未知的结果程序没有必要执行下去
 ```
+
+异常的一直不处理,最终程序会终止,调用`std::terminate()`,该函数中默认调用`std::abort()`,最终中止程序运行
 
 ### 异常基本语法
 
@@ -6885,7 +7077,123 @@ shared_ptr<AA> p3(new AA[5],[](AA *p){
 shared_ptr<AA[]> p3(new AA[5]);//这样的话也就可以释放全部对象数组
 ```
 
+# C++如何使用第三方库
+
+- C++最原始的方法就是自己建一个deps目录,把依赖的库的源代码直接放里面
+- apt-get install libxxx-dev    `libxxx-dev`是一个开发包，通常包含用于编译和链接程序的头文件和库
+- C++有大量的包管理器，包括 buckaroo、vcpkg、cget、conan、conda、cpm、cppan、hunter 等。
+- xmake内含自己的包管理器
+
+p.s.这里提一嘴谷歌的构建工具bazel,以及魔改版的blade
+
+## vcpkg包管理器
+
+> vcpkg是Microsoft的跨平台开源软件包管理器，极大地简化了 Windows、Linux 和 macOS 上第三方库的下载与安装。如果项目要使用第三方库，建议通过 vcpkg 来安装它们。vcpkg 同时支持开源和专有库。
+
+[与conan的比较](https://www.jianshu.com/p/96c64afc7c23)
+
+**源码级兼容**
+
+在编写C++程序时，一直有二进制兼容的问题。在可执行文件链接到三方库时，编译器的类型和版本的统一非常重要。Vcpkg通过下载源码(而不是二进制文件)的方式来提供三方库。
+
+### 下载与安装
+
+[Vcpkg的官方源码站点](https://github.com/microsoft/vcpkg)
+
+下面介绍的是二进制方式安装:
+
+- 下载
+
+  `git clone https://github.com/microsoft/vcpkg`
+
+- 编译
+
+  - Windows平台：在cmd中执行Vcpkg工程目录下的“bootstrap-vcpkg.bat”命令，编译好后会在同级目录下生成vcpkg.exe文件。
+  - Linux/mac平台：在命令行中执行在vcpkg工程目录下`sudo bash ./ bootstrap-vcpkg.sh`命令,会生成一个可执行文件vcpkg。定义环境变量 `VCPKG_ROOT="/vcpkg"`
+
+### 使用
+
+查看Vcpkg支持的库  `vcpkg search xxxx`
+
+安装一个库   `vcpkg install xxxx`  
+
+查看已安装的库  `vcpkg list`
+
+移除已经安装的库  `vcpkg remove xxxx`
+
+### 集成使用
+
+> Vcpkg提供了一套机制，可以全自动的适配目录，而开发者不需要关心已安装的库的目录在哪里，也不需要设置
+
+- 集成到全局: `vcpkg integrate install`
+
+  ```cpp
+  //输入vcpkg integrate install后,返回:
+  Applied user-wide integration for this vcpkg root.`
+  `CMake projects should use: "-DCMAKE_TOOLCHAIN_FILE=/Users/zeroko/vcpkg/scripts/buildsystems/vcpkg.cmake"
+  ```
+
+  表示集成成功,并提供了一个在CMake项目中使用vcpkg的提示。你可以将该指令添加到你的CMake构建命令中，以确保CMake能够正确地使用vcpkg安装的库。
+
+  在项目根目录执行命令:`cmake -DCMAKE_TOOLCHAIN_FILE=/Users/zeroko/vcpkg/scripts/buildsystems/vcpkg.cmake .`(`.`表示CMakeLists.txt的路径位置)
+
+  > 具体而言，`vcpkg integrate install`命令会执行以下操作：
+  >
+  > 1. 在当前用户的目录下创建一个名为`.vcpkg-root`的隐藏文件夹，用于存储vcpkg的集成信息。
+  >
+  > 2. 将vcpkg的路径添加到系统环境变量中，以便在构建项目时能够找到vcpkg。
+  >
+  > 3. 针对不同的开发环境，自动配置构建工具（如CMake、MSBuild等）的相关设置，以确保它们能够正确地使用vcpkg。
+
+- 移除集成: `vcpkg integrate remove`
+
+之后与CMake一起使用时，需添加依赖以及在设置路径
+
+### 与CMAKE配合使用
+
+> 以openssl库为例
+
+1. `vcpkg install openssl`,成功的话将返回如下:
+
+   ```cmake
+   #	寻找添加的库
+   find_package(OpenSSL REQUIRED)
+   #	添加库链接
+   target_link_libraries(${PROJECT_NAME} PRIVATE OpenSSL::SSL OpenSSL::Crypto)
+   ```
+
+2. CMakeLists.txt编写如下:
+
+```cmake
+cmake_minimum_required(VERSION 3.5)
+
+project(main)
+
+set(CMAKE_CXX_STANDARD 14)
+
+aux_source_directory(./  SRCS)
+
+#与手动执行cmake -DCMAKE_TOOLCHAIN_FILE=/Users/zeroko/vcpkg/scripts/buildsystems/vcpkg.cmake效果一致
+set(CMAKE_TOOLCHAIN_FILE /Users/zeroko/vcpkg/scripts/buildsystems/vcpkg.cmake)
+
+# 寻找添加的库
+find_package(OpenSSL REQUIRED)
+
+add_executable(${PROJECT_NAME} ${SRCS})
+
+# 添加库链接
+target_link_libraries(${PROJECT_NAME} PRIVATE OpenSSL::SSL OpenSSL::Crypto)
+```
+
+# boost库
+
+> ​	**boost**库是一个优秀的。可移植，开源的C++库，它是由C++标准委员会库工作自成员发起，它是对STL的延续和扩充，设计理念和STL比较接近，都是利用泛型让复用达到最大化，其中有些内容经常成为下一代C++标准库内容，在C++社区影响很大，是不折不扣的“准”标准库。
+> ​	相比STL，boost更加实用。STL集中在算法部分，而boost包含了不少工具类，可以完成比较具体的工作。当下在C/C++开发中，熟练掌握boost的使用可谓是必备的。
+> ​	boost主要包含一下几个大类：字符串及文本处理、容器、迭代子(Iterator)、算法、函数对象和高阶编程、泛型编程、模板元编程、预处理元编程、并发编程、数学相关、纠错和测试、数据结构、输入/输出、跨语言支持、内存相关、语法分析、杂项。 *有一些库是跨类别包含的，就是既属于这个类别又属于那个类别。*
+
 # C++通用开源框架和库
+
+[点击参考更多库](https://github.com/yuanzhongqiao/awesome-cpp-cn)
 
 2022-08-24 记录
 
@@ -7332,4 +7640,4 @@ shared_ptr<AA[]> p3(new AA[5]);//这样的话也就可以释放全部对象数�
 - include-what-you-use ：使用clang进行代码分析的工具，可以#include在C和C++文件中。
 - OCLint ：用于C，C++和Objective-C的静态源代码分析工具，用于提高质量，减少瑕疵。
 - Clang Static Analyzer：查找C，C++和Objective-C程序bug的源代码分析工具
-- List of tools for static code analysis ：来自维基百科的静态代码分析工具列表
+- List of tools for static code analysis ：来自维基百科的静态代码分析工具列表W

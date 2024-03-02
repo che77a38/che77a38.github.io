@@ -869,7 +869,7 @@ CMake目录结构：项目主目录存在一个CMakeLists.txt文件
 
 p.s.  vs code有一个叫cmake的拓展，可以支持智能补全cmake指令与直接生成CMakeLists.txt模板文件
 
-`cmake tools`是让vs code支持cmake的插件
+`cmake tools`是让[vs code支持cmake的插件](#CMake Tools插件)
 
 ### 两种构建方式
 
@@ -1400,9 +1400,36 @@ npoi.fast.test/obj
 
 #### 本地同步到远程
 
+> 这里指的是本地和远程的分支在过去节点就有差异的合并
+
+下面介绍了两种本地同步到远程的方式,一种会产生合并分支;一种不会产生合并分支,即可以保持线性.
+
 [本地库上传到远程库参考](#上传指令)   
 
+##### 不产生合并分支的方式
+
 **[注意]   上传到远程库最稳妥的方式是push之前先pull**
+
+> 如果**本地和远端本身就有不同**,则可以通过`git pull --rebase <远程主机名> <远程分支名>` 将远程的数据拉到本地自动产生一个本地节点(是作为原本节点之前的节点(而不是最新的节点),符合rebase的语义),本地最新的节点此时既有原本远程节点的数据,也有改动数据,然后就可以正常push提交了        
+
+更流程化的做法如下:
+
+1. 当在使用 `git pull --rebase` 命令时，如果发生冲突，需要手动解决冲突并继续rebase操作。以下是解决冲突的一般步骤： 
+2. 运行 `git pull --rebase `命令时，如果发生冲突，Git会停止rebase操作并提示冲突的文件。 
+3. 打开冲突的文件，手动解决冲突。在冲突标记（<<<<<<<，=======，>>>>>>>）之间编辑文件，将冲突部分修改为期望的内容。
+4. 保存文件后，运行 `git add -u `,命令将解决冲突后的文件标记为已解决。 
+5. 运行 `git rebase --continue `命令继续rebase操作。Git会继续应用之前的提交，直到完成rebase操作。
+
+##### 其他方式
+
+> 如果不使用 `git pull --rebase` ，而本地分支和远程分支有差异，您可以通过以下步骤提交代码： 
+>
+> 1. 首先，使用 `git pull` 命令拉取远程分支的最新代码到本地。这将自动合并远程分支的代码到本地分支，如果有冲突需要手动解决。 
+> 2. 解决可能出现的冲突。在解决完冲突后，使用 `git add` 命令将解决冲突的文件标记为已解决。 
+> 3. 运行 `git commit` 命令提交解决冲突后的代码。
+> 4. 如果需要将本地提交推送到远程分支，可以使用 `git push` 命令将本地提交推送到远程分支。 通过以上步骤，您可以在本地和远程分支有差异的情况下，手动合并代码并提交到远程分支。
+>
+> 请注意，这种方式可能会产生合并提交，如果希望**避免产生合并提交**，可以考虑使用 `git pull --rebase` 或其他方法来保持提交历史的线性和清晰。
 
 #### 远程同步到本地
 
@@ -1603,6 +1630,8 @@ git config --list
    //也可以在访答中键入command+shift+.
    ```
 
+2. [关联远程库](#远程储存库操作): `git remote add origin https://github.com/your-username/my-repo.git`命令将本地仓库与远程GitHub仓库关联起来。将`your-username`替换为你的GitHub用户名。
+
 2. 查询当前状态：`git status`
 
 3. 将有修改的档案加入到索引（暂存区）：`git add .` (但不包含删除改动, `git add -A`才是真正的所有改动)
@@ -1615,7 +1644,7 @@ git config --list
 
 6. 下载远程数据库：`git clone 数据库网址`
 
-7. 更新远程数据库：`git push origin master`
+7. 更新远程数据库：`git push origin master`  (此处的master为远程仓库的分支名)
 
 ```c
 //上传步骤
@@ -1631,8 +1660,8 @@ git push --force <远程主机名> <本地分支名>:<远程分支名>//强制�
 
 ### 远程储存库操作
 
-- 注册远程储存库origins名称对应远程储存库网址：git remote add origin 远程储存库网址（origin是自己取的远程储存库名字，怎么取都可以）
-- 更新资料到远程master分支：git push -u origin master（-u可以省略）
+- 注册远程储存库origins名称对应远程储存库网址：`git remote add origin 远程储存库网址`（origin是自己取的远程储存库名字，怎么取都可以）
+- 更新资料到远程master分支：`git push -u origin master`（-u可以省略）
 
 ```c
 //上传到已经存在的远程储存库
@@ -2046,23 +2075,25 @@ Vscode 安装 `remote development`插件
 
 右键ssh目标选择连接,输入密码,开始远程开发
 
+[更细节的操作参考](https://zhuanlan.zhihu.com/p/671718415)
+
 ### vscode配置C++调试
 
 1. 编译的时候需要加`-g`选项,才会附带调试需要的信息
 
-2. 点击左侧菜单栏中的`运行和调试`中的创建`launch.json文件`,如下图(非红圈)
+2. 点击左侧菜单栏中的`运行和调试`中的`创建launch.json文件`按钮,如下图(非红圈)
 
    <img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302192059807.png" alt="image-20230219205902832" style="zoom:25%;" />
 
    点击后会在项目根目录下生成`.vscode/launch.json`文件
-
-3. 
 
 ## code runner配置
 
 Code Runner默认运行是在输出端，是不能进行编辑输入的，所以我们要将其改到终端运行，打开VS Code设置，找到Run In Terminal配置处，将其勾选住，也可在设置的配置文件settings.json文件里添加"code-runner.runInTerminal": true配置，保存，我们再通过Code Runner运行，就可以在终端中运行了，可以在上面进行输入了。
 
 ## windows下的vscode终端乱码
+
+> windows下乱码最简单的方式是设置通过utf-8 with BOM的方式保存,如果不行再参考下面的方式解决
 
 VSCode 默认是 utf-8 编码，而在中国地区下的 Windows 的 cmd 默认是 GBK 编码,因此需要配置vscode终端为utf-8编码
 
@@ -2112,14 +2143,21 @@ SetConsoleOutputCP(CP_UTF8);
 
 安装并配置好C/C++插件后
 
-- 编译的话配置`tasks.json`
-- 【调试】启动的话配置`launch.json`
+- 编译的话配置[tasks.json](#tasks.json)
+
+  它可以定义一系列的任务,包括编译,运行,测试等,以便在开发过程中快速执行这些任务
+
+- 【调试】启动的话配置[launch.json](#launch.json)
+
+  它是用于调试的配置文件
+
+使用[CMake Tools插件](#CMake Tools插件)配合launch.json可以实现一键使用cmake启动程序的作用
 
 ### tasks.json
 
 **终端-配置任务**  生成tasks.json文件
 
-下面为用clang++配置的任务,也可以改成调用make,cmake等构建工具
+下面为用clang++配置的任务
 
 ```cpp
 {
@@ -2169,7 +2207,7 @@ launch.json参考如下:
             "name": "g++ - 生成和调试活动文件",// 配置名称，将会在启动配置的下拉菜单中显示
             "type": "cppdbg",// 配置类型，这里只能为cppdbg
             "request": "launch",// 请求配置类型，可以为launch（启动）或attach（附加）
-            "program": "/home/hewei/桌面/课程七讲_源码/Class_7/build/my_cmake_exe",// 将要进行调试的程序的路径
+            "program": "${fileDirname}/${fileBasenameNoExtension}",// 将要进行调试的程序的路径
             "args": [],// 程序调试时传递给程序的命令行参数，一般设为空即可
             "stopAtEntry": false, // 设为true时程序将暂停在程序入口处，我一般设置为true
             "cwd": "${fileDirname}",// 调试程序时的工作目录
@@ -2227,6 +2265,110 @@ m1 mac上的launch.json案例
 ```
 
 设置好后,点击调试按钮进行调试
+
+### c_cpp_properties.json
+
+`c_cpp_properties.json` 文件是 Visual Studio Code (VS Code) 中用于配置C/C++插件的重要文件。它主要用于针对特定项目设置包含头文件的路径，设置 C/C++ 支持的版本号等。
+
+一般情况下，`c_cpp_properties.json` 文件位于 VS Code 中项目的 `.vscode` 文件夹中。如果你的项目中没有这个文件，你可以通过以下步骤来创建它：
+
+1. 在 VS Code 中打开命令面板（快捷键是 `Ctrl+Shift+P`）
+2. 输入并选择 `C/C++: Edit Configurations (UI)` 命令
+
+如果使用 CMake，VS Code 的 C/C++ 插件可以自动处理包含路径和定义，因此不需要手动配置 `c_cpp_properties.json` 文件
+
+**常用配置项**
+
+- `includePath` 
+
+  用来指定头文件搜索路径的。当你在编写代码时，编译器会在 `includePath` 指定的路径中查找你引用的头文件。这样，编译器就能找到并正确地解析对应的头文件
+
+  此外，`includePath` 还有助于实现代码的自动补全功能,你在写代码的时候，VS Code 会根据 `includePath` 中的路径去找头文件，这样就可以使用自动补全功能，而且不会有下划线警告
+
+- `cppStandard` 
+
+  你想要设置的 C++ 版本号，例如 `"c++17"` 或 `"c++20"`
+
+[官方配置文档](https://code.visualstudio.com/docs/cpp/c-cpp-properties-schema-reference)
+
+## vscode插件
+
+> vscode设置技巧:
+>
+> `Ctrl + Shift + P`显示所有命令，查找`Preferences: OPen Default Settings (JSON)`，可以查看默认的配置文件，可以根据需要来定制进行环境的迁移
+
+### CMake Tools插件
+
+> cmake插件的目的是为了编写CMakeLists.txt的时候有智能提示,而CMake Tools插件是让vscode和cmake进行集成,更方便操作
+
+CMake Tools插件会在启动项目的时候检测是否存在CMakeLists.txt,存在才启动该插件的功能.因此新建的CMakeLists.txt被创建后要重启项目.
+
+如果需要使用该插件来调试的话,需要配合[launch.json](#launch.json)使用
+
+launch.json需要修改的代码如下:
+
+```json
+"program": "${command:cmake.launchTargetPath}"
+其实就是调用了CMake Tools插件提供的一个命令:cmake.launchTargetPath
+该命令的作用是编译好后返回生成的可执行程序的路径
+
+使用vscode集成终端添加:
+"console": "integratedTerminal"
+```
+
+接下来就可以通过F5来调试项目了,也可以使用vscode底部的运行和调试按钮
+
+**C/C++插件可以通过CMakeLists.txt自动配置vscode的代码提示.如果vscode的代码提示不正确,可以手动执行命令`C/C++:Select IntelliSense Configuration...`,然后选择`使用CMake Tools`,就可以使代码提示和CMakeLists.txt同步**
+
+### vscode clangd插件
+
+> C/C++插件代码一多,提示就太慢了,并且偶尔崩溃,使用clangd插件替代
+>
+> 二者都是智能提示插件,互相冲突
+
+当需要配置智能提示的头文件时:
+
+- 在项目目录的.vscode下新建settings.json文件
+
+- 来添加编译选项,智能提示会依据这些编译选项来提示
+
+  ```cpp
+  {
+    "clangd.fallbackFlags": [
+      "-I./inc",
+      "-std=c++14"
+    ]
+  }
+  ```
+
+- 配置完成后要重启vscode或者command+shift+p:restart-clangd-server才能生效
+
+clangd插件需要cmake下build文件夹生成的compile_commands.json文件来指导智能提示
+
+如果是makefile项目,可以使用`compiledb -n make -C build`(pip安装命令)来生成compile_commands.json
+
+如果是基于其他方式，可以使用[Bear项目](https://github.com/rizsotto/Bear)中的方式来生成对应的 compile_commands.json文件
+
+### vscode Clang-Format插件
+
+> 代码格式化工具
+>
+> clang-format基于Clang的代码解析能力，可以根据预定义的代码样式规范自动调整代码的缩进、换行、空格等格式
+
+可以在插件的设置中的style项中进行配置,如下图:
+
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202402141623239.png" alt="image-20240214162308645" style="zoom:33%;" />
+
+上图为针对Cpp语言的代码格式化设置
+
+- `IndentWidth`：指定每个缩进级别的空格数，默认为2。
+2. `TabWidth`：指定Tab字符的宽度，默认为4。
+3. `UseTab`：指定是否使用Tab字符进行缩进，默认为false，即使用空格进行缩进。
+4. `ContinuationIndentWidth`：指定在行尾继续缩进的空格数，默认为4。
+
+## vscode配置qt开发
+
+![vscode开发qt|720x360](https://www.bilibili.com/video/BV1YL411L7Sg)
 
 # 代理相关
 

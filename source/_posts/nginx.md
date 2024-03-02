@@ -906,6 +906,8 @@ server {
 
 [相关参考](https://blog.csdn.net/Lv_Victor/article/details/113417960)
 
+[超详细解释](https://mp.weixin.qq.com/s/HpO683eTzyFYjujR2qv_HQ)
+
 ```nginx
 location / {
                 resolver 8.8.8.8;  # 设置DNS解析器

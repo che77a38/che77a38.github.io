@@ -4,12 +4,11 @@
   "remotely-save",
   "global-search-and-replace",
   "obsidian-image-auto-upload-plugin",
-  "easy-typing-obsidian",
   "cm-typewriter-scroll-obsidian",
-  "obsidian-table-generator",
   "obsidian-minimal-settings",
-  "table-editor-obsidian",
   "editing-toolbar",
   "obsidian-quiet-outline",
-  "obsidian-hider"
+  "obsidian-hider",
+  "obsidian-table-generator",
+  "table-editor-obsidian"
 ]
