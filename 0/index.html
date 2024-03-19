@@ -2048,7 +2048,7 @@
 <p>排序集合(元素不重复,默认升序)</p>
 </li>
 <li><p>Hash类型</p>
-<p>与<a href="/blog/74483b98" data-pjax-state target="_Blank">STL</a>数据组织方式一样   key:value</p>
+<p>与[[stl]]数据组织方式一样   key:value</p>
 <ul>
 <li>map是红黑树实现的</li>
 <li>hash是数组实现的</li>
@@ -2070,7 +2070,7 @@
 <h4 id="Key-相关的命令"><a href="#Key-相关的命令" class="headerlink" title="Key 相关的命令"></a>Key 相关的命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除键值对</span></span><br><span class="line">DEL key [key ...]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看key值</span></span><br><span class="line">KEYS pattern</span><br><span class="line">查找所有符合给定模式 pattern 的 key 。</span><br><span class="line">KEYS * 匹配数据库中所有 key 。</span><br><span class="line">KEYS h?llo 匹配 hello ， hallo 和 hxllo 等。</span><br><span class="line">KEYS h*llo 匹配 hllo 和 heeeeello 等。</span><br><span class="line">KEYS h[ae]llo 匹配 hello 和 hallo ，但不匹配 hillo</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">给key设置生存时长(seconds可以输入算式如24*60*60)</span></span><br><span class="line">EXPIRE key seconds</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看key当前还剩下的生存时长,无限生存时间返回的是-1</span></span><br><span class="line">ttl key</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">取消生存时长</span></span><br><span class="line">PERSIST key</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">返回key对应的valued的数据类型</span></span><br><span class="line">TYPE key</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">判断key值是否存在(存在返回1,否则返回0)</span></span><br><span class="line">EXISTS key</span><br></pre></td></tr></table></figure>
 
 <h3 id="redis插件"><a href="#redis插件" class="headerlink" title="redis插件"></a>redis插件</h3><p><a target="_blank" rel="noopener" href="https://github.com/RedisBloom/RedisBloom/tree/v2.2.14">布隆过滤器插件</a></p>
-<p> <a href="/blog/79666db#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8" data-pjax-state target="_Blank">了解布隆过滤器</a></p>
+<p> [[数据结构#布隆过滤器|了解布隆过滤器]]</p>
 <h3 id="Redis数据持久化"><a href="#Redis数据持久化" class="headerlink" title="Redis数据持久化"></a>Redis数据持久化</h3><blockquote>
 <p>持久化:数据从内存到磁盘的过程</p>
 </blockquote>
@@ -2274,7 +2274,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2324,7 +2324,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">574k</span>
+    <span title="站点总字数">593k</span>
 </div>
 
 <!-- -->
