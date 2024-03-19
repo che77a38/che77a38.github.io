@@ -188,6 +188,216 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="ZEROKO14">
+      <meta itemprop="description" content="你好，欢迎来到ZEROKO14的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZEROKO14的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/0/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-14 17:25:13" itemprop="dateCreated datePublished" datetime="2024-03-14T17:25:13+08:00">2024-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-19 10:44:14" itemprop="dateModified" datetime="2024-03-19T10:44:14+08:00">2024-03-19</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>957</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>此文是针对<a target="_blank" rel="noopener" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/">Google开源项目风格指南</a>的笔记</p>
+<blockquote>
+<p>风格 (style, 亦称作可读性 (readability)) 是用于管理 C++ 代码的惯例. “风格” 这一术语略有不准确, 因为这些惯例并非仅仅囊括代码格式.</p>
+<ul>
+<li><p>为读者优化, 而非为作者优化</p>
+</li>
+<li><p>和现有代码保持一致</p>
+</li>
+<li><p>避免使用奇特或危险的语法结构</p>
+</li>
+<li><p>避免使用那些正常水平的 C++ 程序员认为棘手或难以维护的语法结构</p>
+</li>
+<li><p>需要注意我们的规模</p>
+<p>举例来说, 一定要避免污染全局命名空间 (global namespace): 如果所有人都往全局命名空间里塞东西, 就很难避免上亿行代码之间的符号冲突 (name collision), 也难以修复冲突.</p>
+</li>
+<li><p>在必要时为优化让路</p>
+</li>
+</ul>
+<p>目前代码的目标版本是 <strong>C++20</strong></p>
+</blockquote>
+<h1 id="头文件相关"><a href="#头文件相关" class="headerlink" title="头文件相关"></a>头文件相关</h1><h2 id="自给自足的头文件"><a href="#自给自足的头文件" class="headerlink" title="自给自足的头文件"></a>自给自足的头文件</h2><blockquote>
+<p>通常每个 <code>.cc</code>&#x2F; <code>.cpp</code> 文件应该有一个配套的 <code>.h</code> 文件. 常见的例外情况包括单元测试和仅有 <code>main()</code> 函数的 <code>.cc</code> 文件.</p>
+</blockquote>
+<p>头文件应该自给自足 (<strong>self-contained</strong>, 也就是可以独立编译), 并以 <code>.h</code> 为扩展名. 给需要被导入 (include) 但不属于头文件的文件设置为 <code>.inc</code> 扩展名, 并尽量避免使用.</p>
+<blockquote>
+<p>在少数情况下，用于导入的文件可能不能独立存在，通常是需要在特定位置导入，例如在另一个文件的中间位置。这种文件不需要使用头文件防护符（ifndef guard），也不需要导入其依赖。这种文件应该使用 .inc 扩展名。建议尽量避免使用这种文件，如果可能的话应该使用独立的头文件。</p>
+</blockquote>
+<h2 id="头文件中的内联函数和模板"><a href="#头文件中的内联函数和模板" class="headerlink" title="头文件中的内联函数和模板"></a>头文件中的内联函数和模板</h2><p>若头文件声明了内联函数 (inline function) 或模版 (template), 而且头文件的使用者需要实例化 (instantiate) 这些组件时:(三种处理方式)</p>
+<ul>
+<li>头文件中直接包含模板或内联函数定义</li>
+<li>头文件中间接导入一个单独的源文件(包含模板或内联函数的实现的源文件)</li>
+<li>若模版的所有实例化过程(使用)都仅出现在一个源文件中, 比如采用显式 (explicit) 实例化, 或者只有这个 <code>.cc</code> 文件会用到模版定义 (definition), 那么可以把模版的定义放在这个文件里.</li>
+</ul>
+<h2 id="define防护符"><a href="#define防护符" class="headerlink" title="#define防护符"></a>#define防护符</h2><p><strong>所有头文件都应该用 <code>#define</code> 防护符来防止重复导入</strong>. 防护符的格式是: <code>&lt;项目&gt;_&lt;路径&gt;_&lt;文件名&gt;_H_</code> .</p>
+<p>例如, <code>foo</code> 项目中的文件 <code>foo/src/bar/baz.h</code> 应该有如下防护:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> FOO_BAR_BAZ_H_</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FOO_BAR_BAZ_H_</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span>  <span class="comment">// FOO_BAR_BAZ_H_</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="导入你的依赖"><a href="#导入你的依赖" class="headerlink" title="导入你的依赖"></a>导入你的依赖</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/9f089854/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="ZEROKO14">
+      <meta itemprop="description" content="你好，欢迎来到ZEROKO14的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZEROKO14的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/9f089854/" class="post-title-link" itemprop="url">C++多线程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-12 16:59:50" itemprop="dateCreated datePublished" datetime="2024-03-12T16:59:50+08:00">2024-03-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-19 10:44:14" itemprop="dateModified" datetime="2024-03-19T10:44:14+08:00">2024-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>550</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>C++语言级线程支持详解</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/9f089854/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/dd95332/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -219,7 +429,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-03-02 14:53:22" itemprop="dateModified" datetime="2024-03-02T14:53:22+08:00">2024-03-02</time>
+                <time title="修改时间：2024-03-18 14:05:55" itemprop="dateModified" datetime="2024-03-18T14:05:55+08:00">2024-03-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -237,14 +447,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>13k</span>
+              <span>27k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>12 分钟</span>
+              <span>24 分钟</span>
             </span>
 
         </div>
@@ -256,7 +466,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>C++11和C++14新特性</p>
+          <p>C++11到C++20的新特性解析</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/dd95332/#more" rel="contents">
@@ -409,7 +619,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-12-11 14:07:03" itemprop="dateModified" datetime="2023-12-11T14:07:03+08:00">2023-12-11</time>
+                <time title="修改时间：2024-03-17 16:14:34" itemprop="dateModified" datetime="2024-03-17T16:14:34+08:00">2024-03-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -504,7 +714,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-25 19:16:19" itemprop="dateModified" datetime="2024-02-25T19:16:19+08:00">2024-02-25</time>
+                <time title="修改时间：2024-03-14 12:14:17" itemprop="dateModified" datetime="2024-03-14T12:14:17+08:00">2024-03-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -599,7 +809,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-29 17:31:09" itemprop="dateModified" datetime="2023-11-29T17:31:09+08:00">2023-11-29</time>
+                <time title="修改时间：2024-03-13 11:33:14" itemprop="dateModified" datetime="2024-03-13T11:33:14+08:00">2024-03-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -877,7 +1087,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-01-19 09:23:26" itemprop="dateModified" datetime="2024-01-19T09:23:26+08:00">2024-01-19</time>
+                <time title="修改时间：2024-03-19 10:43:30" itemprop="dateModified" datetime="2024-03-19T10:43:30+08:00">2024-03-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -923,191 +1133,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/f6491cfb/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/eefe591f/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="ZEROKO14">
-      <meta itemprop="description" content="你好，欢迎来到ZEROKO14的个人博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZEROKO14的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/eefe591f/" class="post-title-link" itemprop="url">进程与线程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-11-24 10:51:09" itemprop="dateCreated datePublished" datetime="2023-11-24T10:51:09+08:00">2023-11-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>8.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>更多信息参见《Windows内核原理与实现》第三章。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/eefe591f/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/a477be03/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="ZEROKO14">
-      <meta itemprop="description" content="你好，欢迎来到ZEROKO14的个人博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZEROKO14的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/a477be03/" class="post-title-link" itemprop="url">nginx</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-11-24 10:51:09" itemprop="dateCreated datePublished" datetime="2023-11-24T10:51:09+08:00">2023-11-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-01-09 21:12:22" itemprop="dateModified" datetime="2024-01-09T21:12:22+08:00">2024-01-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>13k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>11 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><blockquote>
-<p><strong>Nginx</strong> 是异步框架的网页服务器，也可以用作反向代理、负载平衡器和 HTTP缓存。该软件由俄罗斯程序员伊戈尔•赛索耶夫开发的开源框架,由c语言实现，并于2004年首次公开发布。2011年成立同名公司以提供支持服务。2019年3月11日，Nginx公司被F5网络公司以6.7亿美元收购。Nginx是免费的开源软件，根据类BSD许可证的条款发布。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/a477be03/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1196,7 +1221,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1246,7 +1271,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">574k</span>
+    <span title="站点总字数">592k</span>
 </div>
 
 <!-- -->

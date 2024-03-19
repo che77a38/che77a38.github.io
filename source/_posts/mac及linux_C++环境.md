@@ -2366,6 +2366,14 @@ clangd插件需要cmake下build文件夹生成的compile_commands.json文件来�
 3. `UseTab`：指定是否使用Tab字符进行缩进，默认为false，即使用空格进行缩进。
 4. `ContinuationIndentWidth`：指定在行尾继续缩进的空格数，默认为4。
 
+### tabout
+
+tab功能拓展,可以按一下tab直接从括号或引号中跳出,无需按方向键或end键
+
+### gitlens
+
+功能非常强大,甚至能系那是代码部分是谁在什么时候做的修改
+
 ## vscode配置qt开发
 
 ![vscode开发qt|720x360](https://www.bilibili.com/video/BV1YL411L7Sg)

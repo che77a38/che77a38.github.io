@@ -78,3 +78,4 @@ TS-453Dmini（3700）+4*12T （7,800）+（SANTAK)TG-BOX600/850（ 550）=12050
 2. 百度云
 3. 腾讯云
 
+[威联通python环境搭建参考](https://powersee.github.io/2023/05/qnap-crontab/)

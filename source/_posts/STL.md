@@ -290,6 +290,10 @@ int distance( InputIt first1, InputIt first2 );
 
 ## 常用容器
 
+容器底层结构一览图
+
+![](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202403161722032.png)
+
 ### vector容器(动态数组)
 
 也称为向量
@@ -719,6 +723,101 @@ back();//返回最后一个元素。
 ```cpp
 reverse();//反转链表，比如lst包含1,3,5元素，运行此方法后，lst就包含5,3,1元素。
 sort(); //list排序，参数可填入用于比较的函数指针。因为List不是随机访问迭代器，所以自己内部提供了排序的成员函数
+```
+
+### forward_list容器(单向链表)
+
+C++11才引入
+
+与list容器不同，forward_list是单向的，每个元素只有一个指向下一个元素的指针。它的底层实现通常是由单向链表结构构成，而不是像list那样的双向链表。
+
+> 既然已经有了 list，为什么 C++ STL 又设计了 forward_list 这一容器呢？设计 forward_list 的目的是为了达到不输于任何一个C风格手写链表的极值效率！为此，forward_list 是一个最小链表设计，它甚至没有`size()`接口，因为内部维护一个size变量会降低增删元素的效率。如果想要获取 forward_list 的 size，一个通常的做法是，用std::distance 计算 begin 到 end 的距离得出 size。一句话总结：list 兼顾了接口丰富性牺牲了效率，而 forward_list 舍弃了不必要的接口只为追求极致效率。
+>
+> 效率高是选用 forward_list 而弃用 list 容器最主要的原因，换句话说，只要是 list 容器和 forward_list 容器都能实现的操作，应优先选择 forward_list 容器。
+
+#### 相关函数
+
+| 成员函数        | 功能                                                         |
+| :-------------- | :----------------------------------------------------------- |
+| before_begin()  | 返回一个前向迭代器，其指向容器中第一个元素之前的位置。       |
+| begin()         | 返回一个前向迭代器，其指向容器中第一个元素的位置。           |
+| end()           | 返回一个前向迭代器，其指向容器中最后一个元素之后的位置。     |
+| cbefore_begin() | 和 before_begin() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。 |
+| cbegin()        | 和 begin() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。 |
+| cend()          | 和 end() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。 |
+| empty()         | 判断容器中是否有元素，若无元素，则返回 true；反之，返回 false。 |
+| max_size()      | 返回容器所能包含元素个数的最大值。这通常是一个很大的值，一般是 232-1，所以我们很少会用到这个函数。 |
+| front()         | 返回第一个元素的引用。                                       |
+| assign()        | 用新元素替换容器中原有内容。                                 |
+| push_front()    | 在容器头部插入一个元素。                                     |
+| emplace_front() | 在容器头部生成一个元素。该函数和 push_front() 的功能相同，但效率更高。 |
+| pop_front()     | 删除容器头部的一个元素。                                     |
+| emplace_after() | 在指定位置之后插入一个新元素，并返回一个指向新元素的迭代器。和 insert_after() 的功能相同，但效率更高。 |
+| insert_after()  | 在指定位置之后插入一个新元素，并返回一个指向新元素的迭代器。 |
+| erase_after()   | 删除容器中某个指定位置或区域内的所有元素。                   |
+| swap()          | 交换两个容器中的元素，必须保证这两个容器中存储的元素类型是相同的。 |
+| resize()        | 调整容器的大小。                                             |
+| clear()         | 删除容器存储的所有元素。                                     |
+| splice_after()  | 将某个 forward_list 容器中指定位置或区域内的元素插入到另一个容器的指定位置之后。 |
+| remove(val)     | 删除容器中所有等于 val 的元素。                              |
+| remove_if()     | 删除容器中满足条件的元素。                                   |
+| unique()        | 删除容器中相邻的重复元素，只保留一个。                       |
+| merge()         | 合并两个事先已排好序的 forward_list 容器，并且合并之后的 forward_list 容器依然是有序的。 |
+| sort()          | 通过更改容器中元素的位置，将它们进行排序。                   |
+| reverse()       | 反转容器中元素的顺序。                                       |
+
+#### 案例
+
+```cpp
+#include <iostream>
+#include <forward_list>
+
+int main() {
+    // 创建一个空的 forward_list
+    std::forward_list<int> fl;
+
+    // 添加元素到链表尾部
+    fl.push_front(5);
+    fl.push_front(3);
+    fl.push_front(1);
+
+    // 输出整个链表
+    for (const auto &value : fl) {
+        std::cout << value << " ";
+    }
+    std::cout << "\n";
+
+    // 在链表头部插入元素
+    fl.push_front(0);
+
+    // 删除特定值（例如 3）的第一个出现
+    fl.remove(3);
+
+    // 遍历并打印更新后的链表
+    std::cout << "After removal: ";
+    for (const auto &value : fl) {
+        std::cout << value << " ";
+    }
+    std::cout << "\n";
+
+    // 使用迭代器遍历和修改链表
+    for (auto it = fl.begin(); it != fl.end(); ++it) {
+        if (*it % 2 == 0) {
+            it = fl.erase_after(it);  // 删除偶数位置的元素
+        } else {
+            ++it;
+        }
+    }
+
+    // 输出最终处理过的链表
+    std::cout << "After erasing even numbers: ";
+    for (const auto &value : fl) {
+        std::cout << value << " ";
+    }
+    std::cout << "\n";
+
+    return 0;
+}
 ```
 
 ### set/multiset容器(集合)

@@ -4151,6 +4151,8 @@ linux也有Semaphore信号量(上图有误)
 
 ### 线程相关函数
 
+头文件`#include<pthread.h>`  您需要使用`-lpthread`编译选项来链接pthread库
+
 - [创建子线程](#pthread_create函数)    `pthread_create`
 - 获取子线程id  `pthread_self`
 - [线程退出 ](#pthread_exit函数)    `pthread_exit`
@@ -4538,6 +4540,8 @@ Linux中提供一把互斥锁mutex（也称之为互斥量）。每个线程在�
 [windows和linux线程相关函数比较跳转](#windows和linux线程的函数比较)
 
 #### 互斥锁
+
+头文件: `<mutex>`
 
 ##### 互斥锁相关函数
 
@@ -4936,6 +4940,10 @@ int sem_destroy(sem_t *sem);
   适用于**冲突概率较低**的场景，它可以**提高程序的并发性能**，但在冲突概率较高时会导致大量更新操作失败
 
 通过原子指令也可以实现互斥区(作为锁).
+
+### 线程池案例
+
+[[网络编程#线程池|线程池实现案例]]
 
 ## 其他常用函数
 
