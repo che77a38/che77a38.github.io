@@ -265,7 +265,7 @@
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>12 分钟</span>
+              <span>11 分钟</span>
             </span>
 
         </div>
@@ -321,7 +321,7 @@
 </li>
 </ul>
 </blockquote>
-<p>Nginx是[[网络编程#多并发服务器|异步非阻塞的事件驱动模型]]</p>
+<p>Nginx是<a href="/blog/f6491cfb#%E5%A4%9A%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8" data-pjax-state target="_Blank">异步非阻塞的事件驱动模型</a></p>
 <p><a target="_blank" rel="noopener" href="http://nginx.org/">Nginx官方地址</a></p>
 <h1 id="Nginx安装"><a href="#Nginx安装" class="headerlink" title="Nginx安装"></a>Nginx安装</h1><p>源码安装方式如下:</p>
 <p><a target="_blank" rel="noopener" href="https://pcre.org/">pcre官网</a>    <a target="_blank" rel="noopener" href="https://zlib.net/">zlib官网</a>   <a target="_blank" rel="noopener" href="https://www.openssl.org/">openssl官网</a></p>
@@ -389,7 +389,7 @@
 <p><strong>[重要]常用配置项介绍</strong></p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">user</span>  nobody;<span class="comment">#启动之后的worker进程属于谁</span></span><br><span class="line"><span class="comment">#需要将nobody改为root,否则nginx操作文件时会失败,显示原因:Permission denied</span></span><br><span class="line"><span class="attribute">worker_processes</span> <span class="number">1</span>;<span class="comment">#设置worker进程的个数,建议最大为cpu核数</span></span><br><span class="line"><span class="attribute">error_log</span> logs/<span class="literal">error</span>.log &#123;日志级别&#125;;<span class="comment">#设置错误日志路径(相对路径)和日志级别(如notice,info等)</span></span><br><span class="line"><span class="attribute">pid</span> logs/nginx.pid;<span class="comment">#pid文件,记录启动的nginx进程的pid</span></span><br><span class="line"><span class="comment">#nginx的事件处理</span></span><br><span class="line">events&#123;</span><br><span class="line">	<span class="attribute">use</span> <span class="literal">epoll</span>; <span class="comment">#多路IO转接模型选择epoll</span></span><br><span class="line">	<span class="attribute">worker_connections</span> <span class="number">1024</span>;<span class="comment">#每个工作进程的最大连接数</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#http模块</span></span><br><span class="line">http&#123;</span><br><span class="line">	<span class="comment">#省略...</span></span><br><span class="line">	<span class="comment">#server模块</span></span><br><span class="line">	server&#123;</span><br><span class="line">			<span class="attribute">listen</span>  <span class="number">80</span>;<span class="comment">#web服务器监听的端口</span></span><br><span class="line">			<span class="attribute">server_name</span> localhost;<span class="comment">#服务器的域名(不能写ip地址),让客户端通过该域名访问服务器</span></span><br><span class="line">			<span class="attribute">charset</span> utf8;<span class="comment">#设置字符编码</span></span><br><span class="line">			<span class="comment">#access_log logs/host.access.log main;#正常工作也会写访问日志,设置访问日志位置,该行注释掉表示正常工作不写访问日志.</span></span><br><span class="line">			<span class="comment">#location模块可以有多个</span></span><br><span class="line">			<span class="section">location</span> / &#123; <span class="comment">#&#x27;/&#x27;为location指令名(可以是正则表达式),location指令名不能重复</span></span><br><span class="line">            <span class="attribute">root</span>   html;<span class="comment">#一个相对/usr/local/nginx/来找的路径,html为nginx默认自带的web静态资源目录,也可以设置为自己建立的目录名</span></span><br><span class="line">            <span class="comment">#当客户端的请求是一个目录时,通过该指令设置nginx会找一个默认显示的网页,先找index.html,找不到再找index.htm</span></span><br><span class="line">            <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">				<span class="comment">#假设自建的静态资源目录yundisk下有个hello文件夹,当访问的url为http:xxx.xxx.xxx.xxx/hello/text.html,实际上是访问/usr/local/nginx/yundisk/hello/text.html</span></span><br><span class="line">				<span class="section">location</span> /hello/ &#123;</span><br><span class="line">						<span class="attribute">root</span> yundisk;<span class="comment">#此处的root表示location指令名&#x27;/hello/&#x27;的第一个&#x27;/&#x27;部分.结合这条root指令的&#x27;/hello&#x27;可以视为&#x27;/yundisk/hello/&#x27;</span></span><br><span class="line">						<span class="comment">#此处如果不写index的话,如果访问http:xxx.xxx.xxx.xxx/hello/会返回404</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>location指令名可以是[[正则表达式|正则表达式]]</p>
+<p>location指令名可以是<a href="/blog/2f57a694" data-pjax-state target="_Blank">正则表达式</a></p>
 <p>服务器要处理的指令如何<strong>从url中提取?</strong></p>
 <p>例子:<code>http://192.168.10.100:80/login.html</code></p>
 <ol>
@@ -721,7 +721,7 @@
 
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> localhost;</span><br><span class="line">    </span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">          <span class="attribute">root</span>   /opt/nginx/html;</span><br><span class="line">          <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><p>[[网络编程#反向代理|了解反向代理]]</p>
+<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><p><a href="/blog/f6491cfb#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86" data-pjax-state target="_Blank">了解反向代理</a></p>
 <blockquote>
 <p>反向代理是用户客户端访问代理服务器后，被反向代理服务器按照一定的规则从一个或多个被代理服务器中获取响应资源并返回给客户端的代理模式，客户端只知道代理服务器的 IP，并不知道后端服务器的 IP，原因是代理服务器隐藏了被代理服务器的信息。</p>
 </blockquote>
@@ -968,7 +968,7 @@
 <blockquote>
 <p>在<code>user root wheel；</code>中,wheel是通过<code>id root</code>指令查看root的用户组为wheel</p>
 </blockquote>
-<p>虽然这种方法可以解决权限不足问题,但有安全隐患,最好还是用别的用户    [[linux基础以及系统编程#用户权限,用户和用户组相关命令|查看linux权限相关命令]]</p>
+<p>虽然这种方法可以解决权限不足问题,但有安全隐患,最好还是用别的用户    <a href="/blog/5c231afa#%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90,%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4" data-pjax-state target="_Blank">查看linux权限相关命令</a></p>
 <h2 id="限速"><a href="#限速" class="headerlink" title="限速"></a>限速</h2><p><strong>limit_rate</strong></p>
 <blockquote>
 <p>定义响应数据的传输速度，bytes&#x2F;s</p>
@@ -1076,8 +1076,8 @@
 <h2 id="直接return文本"><a href="#直接return文本" class="headerlink" title="直接return文本"></a>直接return文本</h2><p>使用<code>default_type</code>指令将默认的<code>Content-Type</code>设置为<code>text/plain</code>，以确保返回的内容被浏览器识别为纯文本。然后，我们使用<code>return</code>指令返回带有<code>target_host</code>和<code>target_uri</code>的文本响应。</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">location</span> /test &#123;</span><br><span class="line">    <span class="attribute">default_type</span> text/plain;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">200</span> <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="nginx插件"><a href="#nginx插件" class="headerlink" title="nginx插件"></a>nginx插件</h1><h2 id="fastdfs插件"><a href="#fastdfs插件" class="headerlink" title="fastdfs插件"></a>fastdfs插件</h2><p>[[网络编程#FastDFS|fastdfs插件详解跳转]]</p>
-<p>[[网络编程#fastDFS配合fastCGI项目|nginx配合fastcgi使用跳转]]</p>
+<h1 id="nginx插件"><a href="#nginx插件" class="headerlink" title="nginx插件"></a>nginx插件</h1><h2 id="fastdfs插件"><a href="#fastdfs插件" class="headerlink" title="fastdfs插件"></a>fastdfs插件</h2><p><a href="/blog/f6491cfb#FastDFS" data-pjax-state target="_Blank">fastdfs插件详解跳转</a></p>
+<p><a href="/blog/f6491cfb#fastDFS%E9%85%8D%E5%90%88fastCGI%E9%A1%B9%E7%9B%AE" data-pjax-state target="_Blank">nginx配合fastcgi使用跳转</a></p>
 
     </div>
 
@@ -1243,7 +1243,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">593k</span>
+    <span title="站点总字数">592k</span>
 </div>
 
 <!-- -->
