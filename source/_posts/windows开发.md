@@ -8,7 +8,7 @@ abbrlink: b5b483bb
 windows开发相关知识点,涵盖部分驱动级内容
 <!-- more -->
 
-# Win32课程有哪些内容
+# Win32需要学习哪些内容
 
 1. 字符
 2. 多线程
@@ -32,7 +32,7 @@ malloc在windows上的底层也是win32实现的
 
 # win32的API
 
-主要是存放在C：/IWINDOWS/system32和C：/IWINDOWS/SysWow64 下面的所有dll
+主要是存放在`C：/IWINDOWS/system32`和`C：/IWINDOWS/SysWow64` 下面的所有dll
 
 SysWow64 存的是32位dll，而system32存的是64位DLL
 
@@ -46,7 +46,7 @@ SysWow64 存的是32位dll，而system32存的是64位DLL
 
 # win32的类型
 
- LPCSTR -> CONST CHAR \*->const char\*
+ `LPCSTR` -> `CONST CHAR \*`->`const char\*`
 
 看起来很复杂但其实只是起的别名
 

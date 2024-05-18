@@ -1331,12 +1331,24 @@ private:
 };
 ```
 
-无参构造调用方式注意点：（**重点**）
+##### 无参构造调用方式注意点：（**重点**）
 
 - 正确方式：`Person person1;`
 - 错误方式：`Person person1();`//会被误认为是函数声明
 
-有参构造调用方法如下
+引申出来的情况如下:(当使用父类指针指向子类对象的时候)
+
+```c++
+//举个例子:ITestOutput是纯虚类(接口),也是TestOutput的父类
+//这样是正确的   
+TestOutput testObj;
+ITestOutput* i = &testObj;
+
+//这样是错误的
+ITestOutput* i = &TestOutput();
+```
+
+##### 有参构造调用方法
 
 1. `Person person01(100);`
 2. `Person person02(person01);`
@@ -1516,8 +1528,6 @@ void main(){
 	Person p(10);
 	doBussiness(p);
 }
-
-
 ```
 
 输出结果:
@@ -3022,6 +3032,10 @@ void test01(){
 }
 ```
 
+为什么`operator->()`应该返回指针类型,是因为:
+$$
+p->m\qquad等价于\qquad(p.operator->())->m = 10
+$$
 **指针运算符(*、->)重载必须是成员函数** 
 
 【注意】两种一样的调用形式对比：
@@ -3718,6 +3732,55 @@ int main() {
 
 则不能实现运行时多态
 
+#### 父类引用/指向子类对象的四种方式
+
+```cpp
+class ITestOutput//纯虚类,接口ITestOutput
+{
+public:
+    virtual void testOutput()=0;
+};
+class TestOutput:public ITestOutput//继承自接口接口ITestOutput
+{
+public:
+    void testOutput() override{
+        cout<<"testOutput"<<endl;
+    }
+    void testOutput2(){
+        cout<<"testOutput2"<<endl;
+    }
+};
+```
+
+**指针,被指向对象为栈上分配内存**
+
+```cpp
+TestOutput testoutput;
+ITestOutput* i = &testoutput;
+```
+
+**指针,被指向对象为堆上分配内存**
+
+```cpp
+ITestOutput* i = new TestOutput;
+```
+
+**引用,被引用对象为栈上分配内存**
+
+```cpp
+TestOutput testObj;
+ITestOutput& i = testObj;
+```
+
+**引用,被引用对象为堆上分配内存**
+
+```cpp
+ITestOutput* p = new TestOutput
+ITestOutput& i = *p;
+i.testOutput();
+//p这一句指针获取语句必须有,如果直接"ITestOutput& i = *new TestOutput"的话,这里创建的临时对象没有被任何智能指针或其他变量捕获，这意味着它将在当前语句结束时变成无主对象（dangling reference），因为没有地方存储指向它的指针以供后续释放。
+```
+
 #### 动态多态原理
 
 ##### 原理详解
@@ -3851,12 +3914,6 @@ void main()
 }
 ```
 
-
-
-
-
-
-
 #### 内存布局详解
 
 - 当父类写了虚函数后，类内部的结构发生了改变，多了**vfptr（虚函数表指针），指向vftable（虚函数表）**
@@ -3975,7 +4032,7 @@ MyClassC对象空间布局如下：
 
 <img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120231043689.png" alt="image-20210120231043689" style="zoom:80%;" />![image-20210120231101348](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210120231101348.png)
 
-【重点解读】
+**【重点解读】**
 
 和单重继承类似，多重继承时MyClassC会把**所有的父类全部按序包含在自身内部**。而且**每一个父类都对应一个单独的虚函数表**。
 
@@ -4489,6 +4546,15 @@ void main()
 ```
 
 ## 模板
+
+模板参数列表中除了允许包含类型模板参数,也允许包含非类型模板参数，这些参数可以是整型（包括但不限于 `int`, `long`, `long long`, `unsigned` 及其对应的带符号整型）、枚举类型、指针或引用（到对象或函数），以及`std::nullptr_t`。对于整数类型，用户可以在模板实例化时传入一个整数常量表达式作为模板参数的值
+
+```cpp
+template <int N>
+class MyClass {};
+
+MyClass<10> obj;  // 正确：传入整数常量作为模板参数
+```
 
 ### 函数模板
 
@@ -5731,6 +5797,8 @@ Other* other=reinterpret_cast<Other*>(base);
   2. 函数的返回值只有一个，虽然可以通过指针或引用来返回另外的值，但这样就会令你的程序晦涩难懂
 
 #### c++异常机制相比C语言异常处理的优势?
+
+> C语言中没有内建的异常机制,类似于其他高级语言中的try-catch块。通常，C语言程序员会使用错误码或者返回值来处理异常情况
 
 - 函数的返回值可以忽略，但**异常不可忽略**。如果程序出现异常，但是没有被捕获，程序就会终止，这多少会促使程序员开发出来的程序更健壮一点。而如果使用C语言的error宏或者函数返回值，调用者都有可能忘记检查，从而没有对错误进行处理，结果造成程序莫名其面的终止或出现错误的结果。
 - 整型返回值没有任何语义信息。而异常却包含语义信息，有时你从类名就能够体现出来。
@@ -7108,6 +7176,44 @@ int main(){
 
 p.s.这里提一嘴谷歌的构建工具bazel,以及魔改版的blade
 
+## homebrew
+
+### 配合cmake使用开发包
+
+**在 CMakeLists.txt 中设置 CMAKE_PREFIX_PATH**:
+
+- Homebrew 将包安装在固定的目录,通常是 ` /opt/homebrew/Cellar/`。
+
+- 在 CMakeLists.txt 文件中,需要手动设置 
+
+  `CMAKE_PREFIX_PATH`
+
+   变量,指向 Homebrew 包的安装目录:
+
+  ```cmake
+  set(CMAKE_PREFIX_PATH /opt/homebrew/Cellar/)
+  ```
+
+- 这样 CMake 就能够找到 Homebrew 安装的包的头文件和库文件。
+
+**使用 find_package() 命令查找并链接包**:
+
+- 在 CMakeLists.txt 中使用 
+
+  `find_package()`
+
+   命令来查找需要的包,例如 OpenCV:
+
+  ```cmake
+  find_package(OpenCV REQUIRED)
+  ```
+
+- 然后在目标库上链接该包:
+
+  ```cmake
+  target_link_libraries(my_target PRIVATE ${OpenCV_LIBS})
+  ```
+
 ## vcpkg包管理器
 
 > vcpkg是Microsoft的跨平台开源软件包管理器，极大地简化了 Windows、Linux 和 macOS 上第三方库的下载与安装。如果项目要使用第三方库，建议通过 vcpkg 来安装它们。vcpkg 同时支持开源和专有库。
@@ -7131,7 +7237,11 @@ p.s.这里提一嘴谷歌的构建工具bazel,以及魔改版的blade
 - 编译
 
   - Windows平台：在cmd中执行Vcpkg工程目录下的“bootstrap-vcpkg.bat”命令，编译好后会在同级目录下生成vcpkg.exe文件。
-  - Linux/mac平台：在命令行中执行在vcpkg工程目录下`sudo bash ./ bootstrap-vcpkg.sh`命令,会生成一个可执行文件vcpkg。定义环境变量 `VCPKG_ROOT="/vcpkg"`
+  - Linux/mac平台：在命令行中执行在vcpkg工程目录下`sudo bash ./bootstrap-vcpkg.sh`命令,会生成一个可执行文件vcpkg。定义环境变量 `VCPKG_ROOT="~/vcpkg"`
+  
+  想到处使用别忘了添加到path中,比如mac:`export PATH=$PATH:$VCPKG_ROOT`
+
+注意clion想要使用系统带的vcpkg,路径就设置为`~/vcpkg`,全局就可以使用同一个vcpkg
 
 ### 使用
 
@@ -7206,6 +7316,11 @@ add_executable(${PROJECT_NAME} ${SRCS})
 # 添加库链接
 target_link_libraries(${PROJECT_NAME} PRIVATE OpenSSL::SSL OpenSSL::Crypto)
 ```
+
+### vcpkg与homebrew的区别
+
+- Homebrew 主要针对 macOS 平台,而 vcpkg 支持 Windows、Linux 和 macOS
+- Homebrew 主要使用 CMake 作为构建系统,而 vcpkg 支持多种构建系统,包括 MSBuild、Ninja 和 CMake
 
 # boost库
 

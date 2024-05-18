@@ -756,15 +756,50 @@ message("MYENV=$ENV{MYENV}")
 
 
 
-# 与vcpkg配合使用
-
-[[C++基础#与CMAKE配合使用|CMake与vcpkg配合使用]]
 
 
+## 测试相关
 
+cmake中引入测试相关特殊语法主要包括
 
+- `enable_testing`：必须要有该语句，后续才能添加测试，即 `add_test`。
 
+- `add_test`：添加测试用例，格式如下
 
+  ```c++
+  add_test(NAME <name> [CONFIGURATIONS [Debug|Release|...]]
+           [WORKING_DIRECTORY dir]
+           COMMAND <command> [arg1 [arg2 ...]])
+  ```
+
+  
+
+# 配合包管理工具使用
+
+## cmake与vcpkg配合使用
+
+[[C++基础#与CMAKE配合使用|CMake使用vcpkg安装的开发包]]
+
+## cmake与homebrew配合使用
+
+[[C++基础#配合cmake使用开发包|CMake使用homebrew安装的开发包]]
+
+# pkg-config工具
+
+pkg-config 是一个用于管理编译和链接软件包的命令行工具。
+
+它主要用于在编译和链接阶段查找软件包的头文件路径和库文件路径。
+
+对于 OpenCV 这样的库,pkg-config 可以帮助我们快速获取编译和链接所需的编译器和链接器标志。
+
+pkg-config 会读取软件包提供的 .pc 文件,这些文件包含了软件包的元信息,如版本号、头文件路径、库文件路径等。
+
+`pkg-config --cflags --libs opencv4` 命令的作用是:
+
+1. `--cflags`: 返回编译 OpenCV 4 程序所需的编译器标志,包括头文件路径。在这个例子中返回的是 `-I/opt/homebrew/opt/opencv/include/opencv4`，表示 OpenCV 4 的头文件路径。
+2. `--libs`: 返回链接 OpenCV 4 程序所需的链接器标志,包括库文件路径和库名称。在这个例子中返回的是一长串以 `-l` 开头的库名称,如 `-lopencv_gapi`、`-lopencv_stitching` 等。这些都是 OpenCV 4 提供的各种功能模块的库文件。还包括 `-L/opt/homebrew/opt/opencv/lib` 这样的库文件路径。
+
+总的来说,这个命令可以帮助我们快速获取编译和链接 OpenCV 4 程序所需的所有编译器和链接器标志,避免手动指定这些信息。在 CMake 等构建系统中,通常会使用这个命令来自动配置 OpenCV 的依赖关系。
 
 
 

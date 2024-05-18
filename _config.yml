@@ -104,12 +104,19 @@ ignore:
 theme: next
 css: /css/mermaid.css
 
-# Deployment
+# Deployment  
 ## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: git
-  repo: https://gitee.com/ZEROKO14/blog.git
-  branch: master
+#码云
+#deploy:
+#  type: git
+#  repo: https://gitee.com/ZEROKO14/blog.git
+#  branch: master
+
+#github
+
+
+
+
 
 # Link Obsidian
 easy_images:

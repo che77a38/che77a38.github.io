@@ -9,6 +9,10 @@ date: 2020-12-23 22:51:13
 
 # linux基础
 
+记录Linux由浅至深的一切知识
+
+<!-- more -->
+
 - 熟悉Linux下目录结构和常见目录的作用
 - 熟练使用linux下的相对路径和绝对路径
 - 熟练使用Linux下常用文件和目录操作相关的命令
@@ -17,24 +21,22 @@ date: 2020-12-23 22:51:13
 - 熟练掌握Ubuntu下的软件安装和卸载
 - 熟练使用压缩工具完成文件或目录的压缩解压缩
 
-<!-- more -->
-
-[linux详细查询跳转外部网址](http://c.biancheng.net/linux_tutorial/)
+[linux详细知识点查询](http://c.biancheng.net/linux_tutorial/)
 
 ## 命令解释器
 
 - shell就是命令解释器
 - 作用:对用户输入到终端的命令进行解析,调用对应的执行程序
 
-![1212121212](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051532095.png)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051532095.png" alt="1212121212" style="zoom:67%;" />
 
 用户在终端输入命令,由shell命令解释器对命令进行解析(按照$PATH环境变量搜索命令),解析成内核能够识别的指令,然后有内核执行命令,最后由终端显示命令执行的结果给用户
 
 shell在寻找命令的时候是按照$PATH环境变量去查找的,如果找到了就执行对应的命令,若找不到就报错,执行`echo $PATH`可以查看PATH环境变量的值
 
-![image-20220305153637492](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051536768.png)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051536768.png" alt="image-20220305153637492" style="zoom:67%;" />
 
-![1212121212](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051541990.png)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051541990.png" alt="1212121212" style="zoom: 67%;" />
 
 常见的命令解析器:
 
@@ -43,11 +45,11 @@ shell在寻找命令的时候是按照$PATH环境变量去查找的,如果找到
 
 查看当前电脑有几个命令解析器:`cat /etc/shells`
 
-![image-20220305154519666](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051545251.png)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051545251.png" alt="image-20220305154519666" style="zoom:67%;" />
 
 查看当前系统使用的shell:`echo $SHELL`
 
-![image-20220305154621265](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051546536.png)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051546536.png" alt="image-20220305154621265" style="zoom:67%;" />
 
 ## Linux下常用快捷键
 
@@ -232,13 +234,13 @@ ls 目录或文件名//显示指定目录下文件信息
 
 -a所有文件包含:隐藏文件(以.开头的文件名和普通文件和.还有..)
 
-![image-20220305170027550](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051700028.png)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051700028.png" alt="image-20220305170027550" style="zoom:67%;" />
 
 -l列出的详细信息包含7部分内容
 
-![图片1](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051716573.png)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051716573.png" alt="图片1" style="zoom:67%;" />
 
-![image-20220305165430053](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051654788.png)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203051654788.png" alt="image-20220305165430053" style="zoom:67%;" />
 
 - 文件类型(第1个字符)
 
@@ -415,7 +417,7 @@ cd -//切换到上一个目录cd切换过来的源目录
 
 一个比较重要的应用:显示日志: `tail -f test.log` (`-f` 是阻塞的意思,表示堵塞实时显示文件内容)
 
-![截屏2022-03-07 16.59.55](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203071702227.jpeg)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203071702227.jpeg" alt="截屏2022-03-07 16.59.55" style="zoom:67%;" />
 
 ### 链接相关命令
 
@@ -460,11 +462,11 @@ $$
 
 查看文件的i节点(inode): `ls -i 文件名` 
 
-![image-20220306101335367](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203061013559.png)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203061013559.png" alt="image-20220306101335367" style="zoom:67%;" />
 
 查看i节点信息: `stat 文件名`
 
-![image-20220306101354149](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203061013391.png)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203061013391.png" alt="image-20220306101354149" style="zoom:67%;" />
 
 如下图,file.hard是file的硬链接,这两个文件指向了同一个inode,同一个inode指向了相同的数据块(文件内容)
 
@@ -500,13 +502,13 @@ $$
 - `wc -w file` 显示文件的总单词数
 - `wc file` 显示文件的总行数,单词数和总字节数
 
-![image-20220306112350129](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203061123384.png)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203061123384.png" alt="image-20220306112350129" style="zoom:67%;" />
 
 ### whoami命令
 
 显示当前登录的用户名
 
-![image-20220306112431190](https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203061124397.png)
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/202203061124397.png" alt="image-20220306112431190" style="zoom:67%;" />
 
 ### man命令
 
@@ -4702,11 +4704,47 @@ int main(int argc,char** argv)
 
    ![image-20220726133159681](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202207261332625.png)
 
-**[如何解决死锁]**：
+##### 如何避免死锁
 
 - 让线程按照一定的顺序去访问共享资源
+
 - **在访问其他锁的时候，需要先将自己的锁解开**
-- **调用`pthread_mutex_trylock`**，如果加锁不成功会立刻返回
+
+- **调用[pthread_mutex_trylock](#pthread_mutex_trylock函数)**，如果加锁不成功会立刻释放其他锁
+
+  ```cpp
+  //如果某个锁暂时无法获取，线程不会陷入阻塞，而是可以继续尝试获取下一个锁或者释放已经获得的部分锁，从而打破潜在的死锁环路。  
+  pthread_mutex_t mutex1, mutex2;
+     while (true) {
+         if (!pthread_mutex_trylock(&mutex1)) {
+             break; // 成功获取mutex1
+         }
+         // 如果无法立即获取mutex1，这里可以做些其他事情，比如yield让出CPU，然后继续尝试
+         sched_yield();
+         
+         // 类似地尝试获取mutex2
+         if (!pthread_mutex_trylock(&mutex2)) {
+             pthread_mutex_unlock(&mutex1); // 如果先获取了mutex2，立即释放mutex1，以免死锁
+             continue;
+         }
+         // 成功获取mutex2之后，可以安全执行临界区代码
+         break;
+     }
+     // 执行临界区代码...
+     pthread_mutex_unlock(&mutex1);
+     pthread_mutex_unlock(&mutex2);
+  ```
+
+- 设置锁的超时时间来防止死锁
+
+- 使用[[C++多线程#无锁编程|无锁编程]]
+
+- 银行家算法
+
+  在多线程环境下应用银行家算法的思想，可以建立一种虚拟的资源管理系统，将不同的锁或者其他共享资源视为可分配的单元。每次线程请求资源（例如，尝试获取锁）时，相当于向银行家提出资源请求。这个请求会被算法评估，只有在不会导致系统进入不安全状态的情况下才会批准请求。
+
+  银行家算法的思想可以在更高层次的资源管理框架中得到体现，尤其是在分布式系统或者特定领域中需要严格控制资源分配的应用场景。一些高级资源管理和调度库可能会间接使用类似于银行家算法的思路来避免死锁。
+
 
 #### 读写锁
 

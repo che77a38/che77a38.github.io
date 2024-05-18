@@ -128,11 +128,11 @@ typedef struct _IMAGE_NT_HEADERS64 {
 //32位和64位的区别只有PE拓展头
 ```
 
-PE文件头包含三个部分
+PE文件头NtHeader包含三个部分
 
-1. PE文件头标记，存的是‘P’ 'E'，0,0（4个字节）
-2. 标准PE头（20个字节）
-3. 拓展PE头（这个结构体32位（默认224个字节）和64位（默认240个字节）文件不一样）
+1. PE文件头标记 Signature，存的是‘P’ 'E'，0,0（4个字节）
+2. [标准PE头 FileHeader](#标准PE头)（20个字节）(这个FileHeader英文名是对应010 Editor中的名字)
+3. [拓展PE头 OptionalHeader](#拓展PE头)（这个结构体32位（默认224个字节）和64位（默认240个字节）文件不一样）
 
 ### 标准PE头
 
@@ -202,7 +202,7 @@ typedef struct _IMAGE_OPTIONAL_HEADER {
     DWORD   ImageBase;//内存镜像基址(建议装载地址)，PE文件在内存中展开的首地址(重点)
     //上面这个字段，修改的话，由于很多内容是写在地址固定位置的，ImageBase修改的话，也要对他们进行修正，工作量大的话几乎是不可能的。（老师认为自动化不可能实现100%修正）；建议装载地址的意思是：如果这个地址没被占用并且合法有效（基于分页的首地址（页边界）并且不能是内核的地址）的就放这个地址，否则哪里有位置放哪里。
     DWORD   SectionAlignment;//内存对齐，在内存中对齐的大小，默认0x1000
-    //上面这个字段可以改，但必须是按照操作系统的特性改，winXP的话可以按照4个字节改，而win7开始必须1000为单位改（即可以改为2000,3000等等）（因为一页为1000字节）,当然，想要程序正常运行后面也要相对应的调整
+    //上面这个字段可以改，但必须是按照操作系统的特性改，winXP的话可以按照4个字节改，而win7开始必须0x1000为单位改（即可以改为0x2000,0x3000等等）（因为一页为0x1000字节）,当然，想要程序正常运行后面也要相对应的调整
     //拓展PE头的第36个字节(重点)
     DWORD   FileAlignment;//文件对齐，通常是0x200，对齐的话一定要按照这个里面存的整数倍(重点)
     //上面这个对齐和编译器有关，某些高级编译器是0x1000和内存对齐一样
@@ -214,7 +214,7 @@ typedef struct _IMAGE_OPTIONAL_HEADER {
     WORD    MinorSubsystemVersion;//运行所需次子系统版本号
     DWORD   Win32VersionValue;//子系统版本的值，必须为0
     //拓展PE头的第56个字节
-    DWORD   SizeOfImage;//内存中整个PE文件的映射的的内存对齐后的尺寸，所以可比实际的增大，必须是SectionAlignment的整数倍，该字段可以修改，但修改不能多不能少还要对齐，否则运行出错(重点)
+    DWORD   SizeOfImage;//内存中整个PE文件的映射的的内存对齐后的尺寸，所以可比实际的增大，必须是SectionAlignment(内存对齐)的整数倍，该字段可以修改，但修改不能多不能少还要对齐，否则运行出错(重点)
     //拓展PE头的第60个字节
     DWORD   SizeOfHeaders;//DOS头加上PE头加上节表按照文件对齐后的大小，否则加载会出错(重点)
     DWORD   CheckSum;//校验和，一些系统文件有要求(sys)，用来判断文件是否被修改(两个字节两个字节相加，最后再加上文件的长度得到的值就是校验和)(重点)
@@ -226,7 +226,7 @@ typedef struct _IMAGE_OPTIONAL_HEADER {
     DWORD   SizeOfHeapCommit;//初始化时实际提交堆的大小
     //保留和提交的区别，提交的是实际提供了物理空间的，马上可以用，保留是被分配了但并没有物理空间存在直到被使用才分配物理空间。"保留"就是最多可以"提交"多少，大型保留区域的副作用是应用程序可能会导致系统耗尽物理内存。上面四个字段都可以修改，但必须该空间大小系统能提供
     DWORD   LoaderFlags;//调试相关，操作系统保证不用他，用于程序运行后写自定义数据（被淘汰了）
-    DWORD   NumberOfRvaAndSizes;//目录项数目，当前的程序会用到各种表，这个值告诉我们有多少个表。
+    DWORD   NumberOfRvaAndSizes;//目录项数目，当前的程序会用到各种表，这个值告诉我们有多少个表。一般都是16个表
     //前面的结构占96个字节
     IMAGE_DATA_DIRECTORY DataDirectory[IMAGE_NUMBEROF_DIRECTORY_ENTRIES];//16个IMAGE_DATA_DIRECTORY DataDirectory结构体数组，共占16*8=128个字节，里面存的是各种表。大部分情况下是16个结构体的数组，但实际上有多少个结构体取决于NumberOfRvaAndSizes字段
 } IMAGE_OPTIONAL_HEADER32, *PIMAGE_OPTIONAL_HEADER32;
@@ -239,6 +239,8 @@ OD原版的分析功能，参考了这个SizeOfCode字段来确定读入的代�
 DllCharacteristics详细选项（WORD拆分为16位,按位对应含义）
 
 ![image-20210604210332119](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210604210332119.png)
+
+其中`IMAGE_DLLCHARACTERISTICS_DYNAMIC_BASE`很重要,决定了是否随机基址.
 
 ```cpp
 //64位的拓展PE头结构
@@ -302,11 +304,11 @@ typedef struct _IMAGE_ROM_OPTIONAL_HEADER {
 } IMAGE_ROM_OPTIONAL_HEADER, *PIMAGE_ROM_OPTIONAL_HEADER;
 ```
 
-## 节表
+## 节表 SectionHeaders
 
 真正的数据都存在节里
 
-有多少个节呢，节从哪开始到哪结束，存储的是什么数据，能读能写等等这些信息都存在节表里，相当于**节数据的目录**
+有多少个节呢，节从哪开始到哪结束，存储的是什么数据，能读能写等等这些信息都存在**节表**里，相当于[节数据](#节数据 Section)的目录
 
 节表实际上是一个结构体数组，**每一个结构体成员40个字节**，每一个结构体都可以描述一个节的特性（所有节相关的重要特性都记录在节表中）
 
@@ -338,7 +340,7 @@ typedef struct _IMAGE_SECTION_HEADER {
 >
 > 由于上面这点，所以Misc的大小有可能比SizeOfRawData大，但是又由于Misc是未内存对齐的数据大小，所以Misc 内存对齐后的大小有可能比SizeOfRawData小
 >
-> 实际在内存中到底占多大取决于SizeOfRawData和Misc的大小比较，若SizeOfRawData大则直接占SizeOfRawData的大小的空间，若Misc大则按照Misc内存对齐后的大小占用空间
+> 实际在内存中到底占多大取决于SizeOfRawData和Misc的大小比较，**若SizeOfRawData大则直接占SizeOfRawData的大小的空间，若Misc大则按照Misc内存对齐后的大小占用空间**
 
 Characteristics节的属性详解（DWORD拆分为32位,按位对应含义）
 
@@ -351,11 +353,19 @@ Characteristics节的属性详解（DWORD拆分为32位,按位对应含义）
 *由此可知这个节存的都是可读可写的全局变量(参考[[C语言入门#内存布局|C语言入门部分内存布局]]的
 **全局初始化数据区/静态数据区**)* 
 
+比如观察一个实际的文件的
+
+- .text节表中,只有IMAGE_SCN_CNT_CODE,IMAGE_SCN_MEM_EXECUTE和IMAGE_SCN_MEM_READ被置为1
+
+- .rsrc节表中,只有个IMAGE_SCN_CNT_INITIALIZED_DATA和IMAGE_SN_MEM_READ被置为1
+
+  rsrc节表一般用于存储Windows可执行文件中的资源信息，如图标、位图、字符串、对话框等。这些资源可以被程序在运行时动态加载和使用。
+
 `编译完了以后很多成员是没有意义的，所以也可以往这里成员里写入自己想写入的东西`
 
 节表后面会被编译器插入很多数据，这些数据不能动，不然会出问题
 
-## 节数据
+## 节数据 Section
 
 节数据的开始位置一定是拓展PE头里的SizeOfHeaders字段的地址位置。
 
@@ -379,7 +389,7 @@ Characteristics节的属性详解（DWORD拆分为32位,按位对应含义）
 
 **在内存中节的大小按照拓展PE头中的SectionAlignment字段进行的内存对齐，而不是文件对齐**
 
-上图PE磁盘文件与内存映像结构图中为什么每个刚好是0x1000，就是因为拓展PE头中的SectionAlignment字段为0x1000，并且每个节的真正字节大小为小于等于0x1000
+上图PE磁盘文件与内存映像结构图中为什么每个刚好是0x1000，就是因为拓展PE头中的SectionAlignment字段为0x1000，并且每个节的真正字节大小为:小于等于0x1000
 
 ## RVA到FOA的转换
 
@@ -463,7 +473,7 @@ Characteristics节的属性详解（DWORD拆分为32位,按位对应含义）
 
 **新增节的步骤**
 
-1. 判断是否有足够的空间，可以添加一个节表(不确定不够的话是否可以修改sizeOfHeader强行增加，**待测试**)
+1. 判断是否有足够的空间，可以添加一个节表(不确定不够的话是否可以修改sizeOfHeader强行增加，010Editor中可以)
 2. 修改节表末尾节的大小（只是为了省事，不修改的话麻烦一丢丢，下面例子修改了末尾节）
 3. 在节表中新增一个成员
 4. 修改PE头中节的数量
@@ -472,6 +482,8 @@ Characteristics节的属性详解（DWORD拆分为32位,按位对应含义）
 7. 修正新增节表的属性
 
 ![image-20210606121703626](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210606121703626.png)
+
+上图右下角有问题,严格来说应该是对最后的数值做内存对齐,这里的写文件对齐是因为,这个案例中文件对齐和内存对齐相等
 
 新增节前：
 
@@ -881,11 +893,17 @@ $$
 
 # 简单加密壳编写
 
+[从零开始写一个加壳器](https://www.freebuf.com/articles/system/268177.html)
 
 
 
 
-# [手动映射DLL](https://bbs.ichunqiu.com/thread-40593-1-1.html)                                 
+
+
+
+# 手动映射DLL
+
+[可参考开源项目](https://github.com/potats0/PeLoader)
 
 exe编译出的debug版是带重定位表的，浮动基址的exe都带有重定位表
 
@@ -905,7 +923,7 @@ exe编译出的debug版是带重定位表的，浮动基址的exe都带有重定
 
 [这两个练习并未完成，网页思考](https://www.one-tab.com/page/OOKOc7rnQG-ong09H6nEfw)
 
-## 重载内核练习
+# 重载内核练习
 
 内核文件本身就是一个exe文件，实际上**内核重载**就是内核可执行程序在**零环**内存中的文件展开          
 
@@ -920,10 +938,6 @@ exe编译出的debug版是带重定位表的，浮动基址的exe都带有重定
 重载内核的**弊端**：太容易被发现了，随便搜一个内核函数的特征码都能搜索出来两份。
 
 可以尝试加密内核函数，走HOOK的时候才解密
-
-
-
-
 
 
 

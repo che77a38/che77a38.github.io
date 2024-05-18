@@ -4,6 +4,7 @@ tags: C++
 categories: 技术
 mathjax: true
 abbrlink: b15ef99d
+
 ---
 
 mac及linux C++环境配置
@@ -27,31 +28,38 @@ Linux属于：多用户，多任务
 
 # vscode快捷键
 
-| 功能                               | 快捷键                   |
-| ---------------------------------- | ------------------------ |
-| 转到文件                           | command+p                |
-| 命令面板                           | F1                       |
-| 打开/跳转到终端                    | ctrl+`                   |
-| 变量统一重命名                     | F2                       |
-| 开关侧边栏                         | command+b                |
-| 转到定义处                         | F12                      |
-| 代码格式化                         | command+K 然后 command+F |
-| 当前行下方插入一行                 | command+enter            |
-| 当前行上方插入一行                 | command+shift+enter      |
-| 定义处缩略图(只看一眼而不跳转过去) | alt+F12                  |
-| 删除当前行光标右侧所有的字符       | command+delete           |
-| 多光标同时输入                     | alt+左键                 |
-| 同时选中所有匹配                   | command+shift+L          |
-| 回到上一个光标操作                 | command+U                |
-| 整个项目中查找                     | command+shift+F          |
-| 全屏                               | F11                      |
-| 字体和窗口大小调整                 | command+“+/-”            |
-| 撤销                               | command+z                |
-| 恢复撤销                           | command+shift+z          |
-| 单步步过                           | F10                      |
-| 单步步入                           | F11                      |
-| 选中当前行                         | command+L                |
-| 返回上一个标签页                   | ctrl+"-"                 |
+| 功能                                     | 快捷键                   |
+| ---------------------------------------- | ------------------------ |
+| 转到文件                                 | command+p                |
+| 命令面板                                 | F1                       |
+| 打开/跳转到终端                          | ctrl+`  或  ctrl+j       |
+| 变量统一重命名                           | F2                       |
+| 开关侧边栏                               | command+b                |
+| 转到定义处                               | F12                      |
+| 代码格式化                               | command+K 然后 command+F |
+| 当前行下方插入一行                       | command+enter            |
+| 当前行上方插入一行                       | command+shift+enter      |
+| 定义处缩略图(只看一眼而不跳转过去)       | alt+F12                  |
+| 删除当前行光标右侧所有的字符             | command+delete           |
+| 多光标同时输入                           | alt+左键 选多行          |
+| 同时选中所有匹配(可以方便修改和添加东西) | command+shift+L          |
+| 怕上面命令匹配太多可以逐个匹配           | command+d                |
+| 回到上一个光标操作                       | command+U                |
+| 整个项目中查找                           | command+shift+F          |
+| 全屏                                     | F11                      |
+| 字体和窗口大小调整                       | command+“+/-”            |
+| 撤销                                     | command+z                |
+| 恢复撤销                                 | command+shift+z          |
+| 单步步过                                 | F10                      |
+| 单步步入                                 | F11                      |
+| 选中当前行                               | command+L                |
+| 返回上一个标签页                         | ctrl+"-"                 |
+| 上下移动当前光标的代码                   | alt+上/下                |
+| 上下复制当前光标的代码                   | alt+shift+上下           |
+| 折叠代码块                               | command+k 然后 command+{ |
+| 展开代码块                               | command+k 然后 command+} |
+| 当前代码大纲                             | command+shift+.          |
+| 当前代码大纲2                            | 使用转到文件,然后输入@   |
 
 # makeFile学习
 
@@ -1137,10 +1145,33 @@ endif (OPENCV_FOUND)
 启动xxx服务：`brew services start xxx`
 停止xxx服务：`brew services stop xxx`
 重启xxx服务：`brew services restart xxx`
+查看某个软件的安装路径: `brew --prefix xxx`
 
 删除所有未使用的依赖  `brew autoremove`  (加`-n`可以预先确定哪些软件将会被清理)
 
+`brew tap  someone/special` 这个命令会将 `someone/special` 仓库克隆到本地机器上的一个特定目录中（通常是 `/usr/local/Homebrew/Library/Taps`），Homebrew 之后会在这个仓库中查找软件包。
+
+> `brew tap` 是 Homebrew 的一个命令，用于添加额外的软件包源（也称为 "tap"）。Homebrew 默认情况下只包含其主仓库（homebrew/core），这个仓库里包含了大量常用的软件包。但是，用户可能需要安装一些不在主仓库中的软件包，这时就可以使用 `brew tap` 命令来添加一个新的源。
+>
+> **取消 tap**: 如果你不再需要某个 tap，可以使用 `brew untap` 命令 followed by the tap's name 来移除它
+>
+> `brew tap` 是一个非常有用的特性，让用户能够轻松地扩展 Homebrew 的软件库，安装和管理广泛的第三方软件包
+
 [更详细的命令]: https://blog.csdn.net/weixin_44280688/article/details/93391279
+
+### 浅克隆问题
+
+Homebrew 浅克隆问题指的是 Homebrew 在安装或更新时，为了节省时间和带宽，通常会创建一个所谓的 "浅克隆"（shallow clone）的 Git 仓库。浅克隆只包含最近的提交记录，而不是整个仓库的历史记录。这通常足够 Homebrew 正常工作，因为大多数用户只关心最新的包版本。
+
+然而，GitHub 对于浅克隆的更新操作提出了性能问题。因为浅克隆需要在服务器端进行更多的计算来确定要发送哪些数据给客户端。当大量用户进行浅克隆的更新时，这将对 GitHub 服务器产生很大的负担。
+
+因此，Homebrew 在 GitHub 的请求下引入了一个限制，要求用户在更新浅克隆的 Homebrew 仓库之前，先将其转换为完整克隆（unshallow clone）。完整克隆包含了仓库的完整提交历史，虽然它需要更多的磁盘空间和更长的初始克隆时间，但之后的更新操作会更简单，对 GitHub 的服务器负载也更小。
+
+你可以通过执行以下命令将 Homebrew 的浅克隆转换为完整克隆：
+
+```sh
+git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask fetch --unshallow
+```
 
 # git一图流
 
@@ -1782,6 +1813,46 @@ Git不允许切换分支时覆盖未提交的更改，以避免意外丢失工�
 
    请注意，这将不可逆地丢弃当前分支上的所有未提交更改，请确保您不再需要这些更改。
 
+# git看这个就行
+
+[操作逻辑](https://blog.csdn.net/qing040513/article/details/109150075)
+
+# git操作记录
+
+## 如何让节点在分支间移动
+
+### git cherry-pick
+
+`git cherry-pick` 是一个强大的 Git 命令，它允许你将一个或多个提交从一个分支选出（cherry-pick）并应用到你当前工作的分支上。这个命令非常有用，特别是在你想要将特定的更改从一个分支移植（或复制）到另一个分支，而不需要合并整个分支的历史时。
+
+**使用方式**
+
+基本的 `git cherry-pick` 命令格式如下：`git cherry-pick <commit-hash>`,其中 `<commit-hash>` 是你希望复制过来的提交的哈希值。你可以通过 `git log` 命令查看提交的哈希值。
+
+**多个提交**
+
+如果你想一次性应用多个提交，只需在命令后面列出所有想要应用的提交的哈希值，用空格隔开：`git cherry-pick <commit-hash1> <commit-hash2> <commit-hash3>`
+
+也可以使用范围操作符用来指定一连串的提交，像这样：`git cherry-pick <start-commit-hash>^..<end-commit-hash>`
+
+**解决冲突**
+
+在 cherry-picking 过程中可能会遇到冲突。当发生冲突时，Git 会停止应用提交直到你解决冲突。解决冲突后，你需要通过以下命令继续：`git cherry-pick --continue`如果你决定不应用当前的 cherry-pick 操作，并想要取消它，可以使用：`git cherry-pick --abort`这将会停止 cherry-pick 操作，并将分支恢复到开始 cherry-pick 之前的状态。
+
+**选项**
+
+`git cherry-pick` 命令还有一些有用的选项，如：
+
+- `--edit`（`-e`）: 在提交前打开编辑器，允许你编辑提交信息。
+- `--no-commit`（`-n`）: 应用更改，但不产生新的提交。这允许你手动创建一个包含多个 cherry-pick 更改的单一提交。
+- `--signoff`（`-s`）: 在提交信息的末尾添加一个签名行，证明你是此次提交的作者。
+
+### 示例
+
+假设你有一个提交哈希值为 `abcd123` 的修复，你想将这个修复应用到当前分支上，你可以运行：`git cherry-pick abcd123`如果在应用过程中遇到合并冲突，解决冲突后，运行：`git cherry-pick --continue`这将提交更改，并将你的分支更新到包含新修复的状态。
+
+`git cherry-pick` 是一个非常实用的工具，特别是在处理涉及多个分支的复杂项目时。正确使用可以在保持项目清晰度的同时，有效管理分支之间的具体更改。
+
 # git和github
 
 - **Git**：一个分散式版本控制软件，可以由它产生一个储存库（git Repository）
@@ -1836,6 +1907,10 @@ Git不允许切换分支时覆盖未提交的更改，以避免意外丢失工�
     <img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202311241432050.png" alt="image-20231124143141499" style="zoom: 50%;" />
 
 12. 等待原作者通过
+
+## github上的开源协议
+
+![img](https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404221031505.png)
 
 ## github action
 
@@ -1956,6 +2031,56 @@ jobs:
 
 [更多细节参阅](https://zhuanlan.zhihu.com/p/250534172)
 
+# 与gitlab交互
+
+## 如何设置ssh key
+
+SSH 秘钥默认储存在账户的主目录下的 ~/.ssh 目录
+
+如：`C:\Users\用户\.ssh\`
+
+输入命令: `ssh-keygen -t rsa -C “your_email@youremail.com”`
+
+生成两个文件:
+
+- id_rsa  私钥
+- id_rsa.pub  公钥
+
+`cat id_rsa.pub`将这里面的内容复制粘贴到下面图片中的key中
+
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404291504072.png" alt="image-20240429150438631" style="zoom: 50%;" />
+
+成功后如图:
+
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404291525212.png" alt="image-20240429152541770" style="zoom:50%;" />
+
+这样就可以了
+
+之后可以正常使用git与gitlab交互
+
+## 初次提交到gitlab新项目
+
+一个新项目,不能直接提交代码到master分支(无权限),而应该是新建其它分支，将**项目push到新建的分支上，后期再进行merge(发起合并请求)**
+
+> 报错为:![remote rejected]master -> master(pre-receive hook declined) error: failed to push some refs to https:...
+>
+> git push不上去的原因在于所push的分支权限为protected,只有项目的管理员或者项目的管理员指派的具有相应权限的人才能进行push
+
+具体做法:
+
+```shell
+git add .
+git commmit -m "..."
+git branch -m "分支名"#建立新分支并切换过去
+#上面这句等同于:git branch 分支名  +  git checkout 分支名
+git remote add origin 远程仓库地址
+git push -u origin 分支名#将新分支上传到远程仓库
+```
+
+
+
+
+
 # 图形化git管理软件
 
 SourceTree
@@ -2041,7 +2166,12 @@ ssh远程连接   `ssh 用户名@ip地址或域名`
 
 **`printf`**    适用于有调试终端的情况
 
- **`写log日志`**    当应用程序没有终端的时候
+**`写log日志`**    当应用程序没有终端的时候
+
+> 此处记录一个小技巧,跟踪显示日志打印(以跟踪打印最后50行为例)
+>
+> - windows: `Get-Content -Path "C:\Path\To\Your\File.txt" -Wait -Tail 50`  
+> - Linux/Mac: `tail -n 50 -f /path/to/your/file.txt`
 
 - 应用程序发布了, 通过日志文件记录程序的工作状态
 
@@ -2052,6 +2182,8 @@ ssh远程连接   `ssh 用户名@ip地址或域名`
 # IDE相关tips
 
 在用vs调试的时候: 若看到**无法解析的外部符号**就是没有函数的实现, 应该是没有连接到库
+
+[各IDE跳出括号方法](https://blog.csdn.net/e891377/article/details/113914595)
 
 ## vs开发linux项目
 
@@ -2372,11 +2504,100 @@ tab功能拓展,可以按一下tab直接从括号或引号中跳出,无需按方
 
 ### gitlens
 
-功能非常强大,甚至能系那是代码部分是谁在什么时候做的修改
+功能非常强大,甚至能显示代码部分是谁在什么时候做的修改
+
+### 文件路径跳转插件
+
+[quick-go-to-selected-terraform-path插件](https://marketplace.visualstudio.com/items?itemName=duch11.quick-go-to-selected-terraform-path)
+
+### C/C++ Include Guard插件
+
+新建头文件时自动包含防重复包含的编译选项
+
+[插件主页](https://marketplace.visualstudio.com/items?itemName=akiramiyakoda.cppincludeguard)
+
+### c cpp cmake project creator插件
+
+新建基于cmake的项目文件
+
+[插件主页](https://marketplace.visualstudio.com/items?itemName=ChenPerach.c-cpp-cmake-project-creator)
+
+### Debug Visualizer
+
+调试可视化,c++还未完全支持
+
+[插件主页](https://marketplace.visualstudio.com/items?itemName=hediet.debug-visualizer)
+
+使用:
+
+命令行里输入 `Debug Visualizer: New View`
+
+https://marketplace.visualstudio.com/items?itemName=chendm.translate)
+
+### 变量名翻译
+
+[var-translate-en](https://marketplace.visualstudio.com/items?itemName=Wangguixuan.var-translate-en)
+
+mac上快捷键:
+
+- 双击control翻译成中文
+- control+shift+v 翻译成英文
+
+### 自动补分号
+
+[Colonize](https://marketplace.visualstudio.com/items?itemName=vmsynkov.colonize)
+
+- shift+enter自动补分号,光标停在末尾
+- alt+enter自动补分号,光标停在新行处
+
+### 自动生成Getter和Setter函数
+
+
 
 ## vscode配置qt开发
 
 ![vscode开发qt|720x360](https://www.bilibili.com/video/BV1YL411L7Sg)
+
+## vs团队资源管理器
+
+VS团队管理器是一种基于Git for Windows的Git GUI. 即命令都是由Git for Windows去执行的, 而VS只负责将界面的UI操作转换成对应的命令行发送给Git for Windows.直接作为一个管理器嵌入在VS中
+
+在单个组件中搜索git安装两个组件:
+
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404191142723.png" alt="image-20240419114211380" style="zoom:25%;" />
+
+VS的Github扩展需要浏览器支持,本质是在浏览器安装了个插件
+
+装好后,可以直接在github打开该界面
+
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404191149681.gif" alt="20200621211708619" style="zoom: 33%;" />
+
+手动打开clone项目:
+
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404191158006.png" alt="image-20240419115818424" style="zoom: 25%;" /><img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404191158916.png" alt="image-20240419115854380" style="zoom: 25%;" />
+
+### 主页介绍
+
+
+
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404191333060.png" alt="vsRemote" style="zoom: 50%;" />
+
+[详情参考](https://blog.csdn.net/luoyu510183/article/details/106888059)
+
+1. **更改（Change）**：这是你对代码进行的修改。当你在Visual Studio中修改了代码后，这些更改会在"更改"区域中显示出来。你可以查看你的更改，然后提交这些更改到本地的Git仓库。对应的Git命令是`git commit
+2. **分支（Branch）**：在Git中，分支是用来隔离你的工作环境的，让你可以在不影响其他分支的情况下进行开发。你可以创建新的分支进行开发，完成后再将其合并回主分支。对应的Git命令是`git branch`来创建新的分支，`git checkout`来切换分支，`git merge`来合并分支
+3. **拉取请求（Pull Request）**：这是一种在团队中协作开发的方式。你可以在自己的分支上进行开发，然后通过创建拉取请求来请求将你的更改合并到主分支。这也是一种代码审查的方式，可以让团队成员在合并前对你的更改进行审查。对应的Git命令是`git pull`来拉取最新的更改
+4. **同步（Sync）**：这是将你的本地仓库与远程仓库进行同步的操作。你可以拉取远程仓库的最新更改到你的本地仓库，也可以将你的更改推送到远程仓库。对应的Git命令是`git pull`来拉取最新的更改，`git push`来推送你的更改
+5. **标记（Tag）**：在Git中，标记通常用于标记某个重要的提交点，如版本发布等。对应的Git命令是`git tag`来创建新的标签
+
+点击分支,右键某分支,可以选择查看历史记录,打开的窗口能看到详细的时间点流程图
+
+## vscode相关设置
+
+- editor.wordSeparator可以设置分隔符,类似`-`的从中剔除,可以选中整个`-`分割的名称
+- explorer.compactFolders设置为false: 关闭单目录层级融合
+- editor.dragAndDrop 设置为false:禁止代码拖放
+- Editor: Insert Spaces  设置为true  用空格替代tab(对各种编译器兼容性有好处)
 
 # 代理相关
 
@@ -2425,6 +2646,105 @@ SSR协议
 
 
 ## UDP穿透篇
+
+
+
+## clash配置文件
+
+proxy-providers   节点提供者
+
+proxy-groups  代理组
+
+
+
+
+
+# 兼容性相关
+
+[各种平台宏详细参考](https://zhuanlan.zhihu.com/p/679130138)
+
+- 路径兼容性
+
+- 使用跨平台的库和框架
+
+  Boost,QT,
+
+- 避免使用平台特定API,万不得已使用条件编译根据不同平台编写不同代码
+
+  需要注意的是，使用条件编译也存在一些缺点。例如，代码可读性较差，维护成本较高，容易引入错误等。因此，应该谨慎使用条件编译。
+
+- 使用跨平台的编译器
+
+  GCC/Clang/Visual Studio Code等等
+
+**路径兼容性**
+
+```cpp
+//例如
+#ifdef _WIN32
+const char pathSeparator = '\\';
+#else
+const char pathSeparator = '/';
+#endif
+```
+
+使用boost库方案:
+
+使用Boost库中的`boost::filesystem::path`来保证路径操作在不同平台上的一致性；在多线程编程中，可以使用Boost库中的线程、互斥锁和条件变量等组件来保证多线程代码在不同平台上的可移植性。
+
+```cpp
+#include <boost/filesystem.hpp>
+#include <iostream>
+int main() {
+    boost::filesystem::path p("path/to/file.txt");
+    std::cout << "File extension: " << p.extension() << std::endl;
+    return 0;
+}
+```
+
+# 交叉编译
+
+构建机平台   -->   目标机平台
+
+> **本机编译**，顾名思义就是本机编译的程序或者动态在本机上运行（也可以在同平台的机器上运行，这里不做过多赘述），这个很好理解，要编译的程序或者动态库依赖的一些头文件或者库文件就在本机系统上，或在默认目录(以linux为例，/usr/include /usr/lib等)，另外也可以通过人工指定的方式（例如qt中可以通过LIBS关键字或者INCLUDEPATH等指定库文件路径和头文件路径等）指明依赖的头文件和库文件位置
+
+# 基于gitlab的工作流程设计
+
+## **软件开发阶段**
+
+- **IDEA**： 每一个从点子开始的项目，通常来源于一次闲聊。在这个阶段，GitLab 集成了[Mattermost](https://link.zhihu.com/?target=https%3A//about.gitlab.com/2015/08/18/gitlab-loves-mattermost/)。
+- **ISSUE**： 最有效的讨论一个点子的方法，就是为这个点子建立一个工单讨论。你的团队和你的合作伙伴可以在工单追踪器issue tracker中帮助你去提升这个点子
+- **PLAN**： 一旦讨论得到一致的同意，就是开始编码的时候了。但是等等！首先，我们需要优先考虑组织我们的工作流。对于此，我们可以使用工单看板Issue Board。
+- **CODE**： 现在，当一切准备就绪，我们可以开始写代码了。
+- **COMMIT**： 当我们为我们的初步成果欢呼的时候，我们就可以在版本控制下，提交代码到功能分支了。
+- **TEST**： 通过[GitLab CI](https://link.zhihu.com/?target=https%3A//about.gitlab.com/gitlab-ci/)，我们可以运行脚本来构建和测试我们的应用。
+- **REVIEW**： 一旦脚本成功运行，我们测试和构建成功，我们就可以进行代码复审code review以及批准。
+- **STAGING：**： 现在是时候[将我们的代码部署到演示环境](https://link.zhihu.com/?target=https%3A//about.gitlab.com/2016/08/05/continuous-integration-delivery-and-deployment-with-gitlab/)来检查一下，看看是否一切就像我们预估的那样顺畅——或者我们可能仍然需要修改。
+- **PRODUCTION**： 当一切都如预期，就是[部署到生产环境](https://link.zhihu.com/?target=https%3A//about.gitlab.com/2016/08/05/continuous-integration-delivery-and-deployment-with-gitlab/)的时候了！
+- **FEEDBACK**： 现在是时候返回去看我们项目中需要提升的部分了。我们使用[周期分析 Cycle Analytics](https://link.zhihu.com/?target=https%3A//about.gitlab.com/solutions/cycle-analytics/)来对当前项目中关键的部分进行的反馈。
+
+# m1 mac Rosetta2转译
+
+m1 mac Rosetta2转译运行命令行程序如下:
+
+`arch -x86_64 /bin/zsh` 进入转译模式终端:进入后,在该终端执行的所有命令会默认以`arch -x86_64`开头
+
+> 可以使用`arch`或`uname -m`判断当前架构
+>
+> 如果返回i386或x86_64表明已经进入转译模式
+
+如果要单独执行的命令在转译模式下,只需要在前面添加`arch -x86_64 `即可
+
+- 从 Apple Silicon 支持开始，Homebrew 推荐在 ARM 处理器的 Mac 上使用 `/opt/homebrew` 作为安装路径
+- 在 Intel 处理器架构设计的 Homebrew 默认安装路径（`/usr/local`）
+
+
+
+
+
+
+
+
 
 
 

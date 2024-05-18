@@ -14,7 +14,7 @@ abbrlink: 74483b98
 
 长久以来，软件界一直希望建立一种可重复利用的东西，以及一种得以制造出”可重复运用的东西”的方法,让程序员的心血不止于随时间的迁移，人事异动而烟消云散，从函数(functions)，类别(classes),函数库(function libraries),类别库(class libraries)、各种组件，从模块化设计，到面向对象(object oriented )，为的就是复用性的提升。
 
-复用性必须建立在某种标准之上。但是在许多环境下，就连软件开发最基本的[[数据结构]](data structures) 和[[算法]](algorithm)都未能有一套标准。大量程序员被迫从事大量重复的工作，竟然是为了完成前人已经完成而自己手上并未拥有的程序代码，这不仅是人力资源的浪费，也是挫折与痛苦的来源。
+复用性必须建立在某种标准之上。但是在许多环境下，就连软件开发最基本的[[数据结构]] 和[[算法]]都未能有一套标准。大量程序员被迫从事大量重复的工作，竟然是为了完成前人已经完成而自己手上并未拥有的程序代码，这不仅是人力资源的浪费，也是挫折与痛苦的来源。
 
 为了**建立[[数据结构]]和[[算法]]的一套标准，并且降低他们之间的耦合关系，以提升各自的独立性、弹性、交互操作性(相互合作性,interoperability),诞生了STL。**
 
@@ -22,7 +22,7 @@ abbrlink: 74483b98
 
 **STL(Standard Template Library,标准模板库)**，是惠普实验室开发的一系列软件的统
 称。现在主要出现在 c++中，但是在引入 c++之前该技术已经存在很长时间了。
-	STL 从广义上分为: 容器(container) [[算法]](algorithm) 迭代器(iterator),容器和[[算法]]之间通过迭代器进行无缝连接。STL 几乎所有的代码都采用了模板类或者模板函数，这相比传统的由函数和类组成的库来说提供了更好的代码重用机会。STL(Standard Template Library)标准模板库,在我们 c++标准程序库中隶属于 STL 的占到了 80%以上。
+	STL 从广义上分为: 容器(container) [[算法]]迭代器(iterator),容器和[[算法]]之间通过迭代器进行无缝连接。STL 几乎所有的代码都采用了模板类或者模板函数，这相比传统的由函数和类组成的库来说提供了更好的代码重用机会。STL(Standard Template Library)标准模板库,在我们 c++标准程序库中隶属于 STL 的占到了 80%以上。
 
 ### STL六大组件简介
 
@@ -70,7 +70,7 @@ STL之父Alex Stepanov 亚历山大·斯特潘诺夫(STL创建者)
 
 [[算法]]，问题之解法也。
 
-以有限的步骤，解决逻辑或数学上的问题，这一门学科我们叫做[[算法]](Algorithms).
+以有限的步骤，解决逻辑或数学上的问题，这一门学科我们叫做[[算法]].
 
 广义而言，我们所编写的每个程序都是一个算法，其中的每个函数也都是一个算法，毕竟它们都是用来解决或大或小的逻辑问题或数学问题。STL收录的算法经过了数学上的效能分析与证明，是极具复用价值的，包括常用的排序，查找等等。特定的算法往往搭配特定的数据结构，[[算法]]与[[数据结构]]相辅相成。
 
@@ -400,6 +400,7 @@ back();//返回容器中最后一个数据元素
 ```cpp
 insert(const_iterator pos, int count,ele);//迭代器指向位置pos插入count个元素ele.
 push_back(ele); //尾部插入元素ele
+emplace_back(ele);//(C++11引入,使用频率太高故添加到此处)尾部插入元素,接受构造元素所需的参数，并在容器的内部直接构造新对象。这意味着它可以避免push_back拷贝构造函数的调用，从而提高性能。如果要向容器中添加一个新元素，且该元素是通过构造函数创建的，则推荐使用 emplace_back ，因为它可以更高效地添加元素。
 pop_back();//删除最后一个元素
 erase(const_iterator start, const_iterator end);//删除迭代器从start到end之间的元素
 erase(const_iterator pos);//删除迭代器指向的元素
@@ -1190,6 +1191,43 @@ int main() {
 >
 > seed ^= i + 0x9e3779b9 + (seed << 6) + (seed >> 2);   在这个算法中，使用0x9e3779b9作为调整因子可以帮助扩散输入哈希值的位分布，增加合并后的哈希值的随机性和散列性。它的选择是基于对黄金比例的一种经验性的观察和研究。
 
+### bitset容器
+
+底层是一个固定大小的size_t数组
+
+`#include <bitset>`
+
+bitset比size_t数组更优秀的优点是：**节约空间，节约时间，支持基本的位运算**
+
+声明一个100000次方位的bitset
+
+```cpp
+bitset<100000> s;//构造的时候默认初始化为全0
+```
+
+#### bitset常用函数
+
+- `size_t count()`：计数1的个数
+- `size_t size()`: 返回bitset可以容纳的位数
+- `bool any()`：检查是否存在1
+- `bool none()`：检查是否全0
+- `bitset& set()`：所有位设置为1
+- `bitset& set(size_t pos,bool value = true)`: 指定位置的位设置为给定值(默认为1)
+- `bitset& reset()`：所有位重置为0
+- `bitset& reset(size_t pos)`: 将指定位置的位重置为0
+- `bitset& flip()`：翻转所有位
+- `bitset& flip(size_t pos);`:翻转指定位
+- `string to_string()`: 返回bitset的字符串表示
+
+**位运算符在bitset中的符号操作**
+
+- `~`：按位取反
+- `&`：按位与
+- `|`：按位或
+- `^`：按位异或
+- `<<`/` >>`：左/右移
+- `==`/`!=`：比较两个bitset是否相等。
+
 ## 容器适配器
 
 适配器是一种将一个类的接口转换成另一个类的接口的设计模式
@@ -1397,6 +1435,36 @@ string str(s);
 
 - 大写转小写toupper
 - 小写转大写tolower
+
+#### string其他相关算法
+
+##### 各种类型转string
+
+```c++
+_LIBCPP_FUNC_VIS string to_string(int __val);
+_LIBCPP_FUNC_VIS string to_string(unsigned __val);
+_LIBCPP_FUNC_VIS string to_string(long __val);
+_LIBCPP_FUNC_VIS string to_string(unsigned long __val);
+_LIBCPP_FUNC_VIS string to_string(long long __val);
+_LIBCPP_FUNC_VIS string to_string(unsigned long long __val);
+_LIBCPP_FUNC_VIS string to_string(float __val);
+_LIBCPP_FUNC_VIS string to_string(double __val);
+_LIBCPP_FUNC_VIS string to_string(long double __val);
+```
+
+##### string转其他类型
+
+```cpp
+_LIBCPP_FUNC_VIS int                stoi  (const string& __str, size_t* __idx = nullptr, int __base = 10);
+_LIBCPP_FUNC_VIS long               stol  (const string& __str, size_t* __idx = nullptr, int __base = 10);
+_LIBCPP_FUNC_VIS unsigned long      stoul (const string& __str, size_t* __idx = nullptr, int __base = 10);
+_LIBCPP_FUNC_VIS long long          stoll (const string& __str, size_t* __idx = nullptr, int __base = 10);
+_LIBCPP_FUNC_VIS unsigned long long stoull(const string& __str, size_t* __idx = nullptr, int __base = 10);
+
+_LIBCPP_FUNC_VIS float       stof (const string& __str, size_t* __idx = nullptr);
+_LIBCPP_FUNC_VIS double      stod (const string& __str, size_t* __idx = nullptr);
+_LIBCPP_FUNC_VIS long double stold(const string& __str, size_t* __idx = nullptr);
+```
 
 #### string操作utf8案例
 
@@ -1717,13 +1785,13 @@ resize();//设置队列的最大大小(下面有详细解释)
 
 ### 算法概述
 
-[[算法]]主要是由头文件<algorithm> <functional> <numeric>组成。
+[[算法]]主要是由头文件`<algorithm> <functional> <numeric>`组成。
 
-<algorithm>是所有STL头文件中最大的一个,其中常用的功能涉及到比较，交换，查找,遍历，复制，修改，反转，排序，合并等...
+`<algorithm>`是所有STL头文件中最大的一个,其中常用的功能涉及到比较，交换，查找,遍历，复制，修改，反转，排序，合并等...
 
-<numeric>体积很小，只包括在几个序列容器上进行的简单运算的模板函数.
+[`<numeric>`体积很小，只包括在几个序列容器上进行的简单运算的模板函数.](#numeric头文件)
 
-<functional> 定义了一些模板类,用以声明函数对象。
+`<functional>` 定义了一些模板类,用以声明函数对象。
 
 #### 全排列算法
 
@@ -2312,5 +2380,36 @@ void test3()
 
 ![image-20210419163151486](https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210419163151486.png)
 
-​    
+## stl包含的其他标准头文件
+
+- [algorithm](#算法概述) :包含了各种通用的算法，如查找、排序、变换等。
+- [numeric](#numeric头文件)  :数值操作
+- iterator  :迭代器相关功能
+- functional  :包含了一些函数对象,用于函数式编程
+
+### numeric头文件
+
+`#include <numeric>`
+
+属于stl的一部分,提供了一些用于数值计算的函数和算法,用于处理数值型数据
+
+**常用函数**
+
+- T accumulate(InputIterator first, InputIterator last, T init) 用于计算指定范围内元素的累加值,从init开始累加
+- T inner_product(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, T init) 计算两个序列的内积(即返回两序列对应位置相乘,最后相加的总和)
+- void iota(ForwardIterator first, ForwardIterator last, T value) 生成一个序列，从指定的起始值开始，递增一个固定的步长
+- OutputIterator partial_sum(InputIterator first, InputIterator last, OutputIterator result) 计算指定范围内元素的部分和
+- OutputIterator adjacent_difference(InputIterator first, InputIterator last, OutputIterator result) 计算相邻元素之间的差值,返回一个序列
+
+```cpp
+//adjacent_difference使用案例参考
+std::vector<int> vec = {1, 3, 6, 10};
+std::vector<int> diff(vec.size());
+std::adjacent_difference(vec.begin(), vec.end(), diff.begin());
+```
+
+**numeric头文件中还包含了一些模板类**
+
+1. valarray：用于表示和处理数值数组。
+2. complex：用于处理复数运算。
 

@@ -39,6 +39,17 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202304011933817.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202304011934699.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202312121453911.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404221555611.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404221558924.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404221602080.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404221608502.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202405070853189.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404230830700.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404230830917.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404230831975.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404230836012.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404230839844.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404221417951.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401291217810.gif">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202402061312311.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202312261550430.png">
@@ -54,7 +65,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202402021724019.gif">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401201059831.gif">
 <meta property="article:published_time" content="2020-12-23T14:51:13.000Z">
-<meta property="article:modified_time" content="2024-02-06T10:01:05.334Z">
+<meta property="article:modified_time" content="2024-05-09T12:51:30.681Z">
 <meta property="article:author" content="ZEROKO14">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -249,7 +260,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-06 18:01:05" itemprop="dateModified" datetime="2024-02-06T18:01:05+08:00">2024-02-06</time>
+                <time title="修改时间：2024-05-09 20:51:30" itemprop="dateModified" datetime="2024-05-09T20:51:30+08:00">2024-05-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -274,14 +285,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>14k</span>
+              <span>18k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>13 分钟</span>
+              <span>16 分钟</span>
             </span>
 
         </div>
@@ -583,15 +594,17 @@
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/98501407">另外，还有一种被称为“神奇的方法”的算法，它使用了一个特殊的常数和牛顿迭代法来快速计算平方根</a>。</p>
 <iframe width="720" height="360" src="https://player.bilibili.com/player.html?bvid=BV18j411i7bp&high_quality=1&danmaku=0&as_wide=1&autoplay=0&" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" class="bili-iframe"> </iframe>
 
-<h1 id="PID控制算法"><a href="#PID控制算法" class="headerlink" title="PID控制算法"></a>PID控制算法</h1><blockquote>
+
+
+<h1 id="闭环控制算法"><a href="#闭环控制算法" class="headerlink" title="闭环控制算法"></a>闭环控制算法</h1><h2 id="PID控制算法"><a href="#PID控制算法" class="headerlink" title="PID控制算法"></a>PID控制算法</h2><blockquote>
 <p>PID控制是一种线性控制，它将给定值(t)与实际输出值y(t)的偏差的比例(P),积分(I),微分(D)通过线性组合形成控制量，对被控对象进行控制。</p>
 <p>控制系统通常根据有没有反馈会分为开环系统和闭环系统，在闭环系统的控制中，PID算法非常强大</p>
 <p>工业应用上占了95%的应用比例,使用起来简单,无需精确建模</p>
 <p>其三个部分分别为</p>
 <ul>
-<li>Proportion  比例</li>
-<li>integration  积分</li>
-<li>differential  微分</li>
+<li>Proportion  比例   比例组件根据过程距设定点的距离按比例施加作用力</li>
+<li>integration  积分   积分组件会努力将过程返回到设定点,误差存在的时间越长,量越大,积分输出越大</li>
+<li>differential  微分   微分组件着眼于过程远离设定点的速度,相当于预测未来的误差来调整输出</li>
 </ul>
 <p>PID适用于二阶以内的线性系统   (线性指满足齐次性和叠加性,2阶以内是指系统动态方程中导数的最高次数在2以内)</p>
 <p>针对高阶系统 可以化为 二阶系统</p>
@@ -600,15 +613,33 @@
 <img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2//202312121453911.png" alt="image-20231212145322088" style="zoom: 67%;" />
 
 <p><code>PID</code>算法可以自动对控制系统进行准确且迅速的校正，因此被广泛地应用于工业控制系统   <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/168751613">参考</a></p>
-<h2 id="PID公式"><a href="#PID公式" class="headerlink" title="PID公式"></a>PID公式</h2><p>下面过程出自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/168751613">此博客</a></p>
-<p>PID控制的完整公式实际上是:(e是误差)<br>$$<br>C&#x3D;\frac{1}{P}(e+\frac{1}{T_{i}}\int_{0}^{t}e{dt}+T_{d}\frac{de}{dt})<br>$$<br>实际上常用的是:<br>$$<br>C&#x3D;k_{p}e+k_{i}\int_{0}^{t}edt+k_{d}\frac{de}{dt}<br>$$<br>离散化后如下:<br>$$<br>\begin{aligned}&amp;\text{比例项: }K_pe(t)\xrightarrow{\textbf{离散化}} K _ p e _ k \\text{ 积分项: }&amp;K_i\int_0^{t_k}e(\tau)d\tau\xrightarrow{\text{离散化}} K _ i \sum _ { i &#x3D; 1 }^{k}e(i)\Delta t\&amp;\text{微分项: }K_d\frac{de(t_k)}{dt}\xrightarrow{\text{离散化}} K _ d \frac { e ( k ) - e ( k - 1 ) }{ \Delta t}\end{aligned}<br>$$<br>离散化后为:<br>$$<br>u(k)&#x3D;K_pe_k+K_i\sum_{i&#x3D;1}^ke(i)\Delta t+K_d\frac{e(k)-e(k-1)}{\Delta t}<br>$$<br>根据$\Delta u(k)&#x3D;u(k)-u(k-1)$可得到增量式PID的离散公式如下:<br>$$<br>\Delta u(k)&#x3D;K_p(e(k)-e(k-1))+K_ie(k)+K_d\left(e(k)-2e(k-1)+e(k-2)\right)<br>$$</p>
+<h3 id="PID公式"><a href="#PID公式" class="headerlink" title="PID公式"></a>PID公式</h3><p>下面过程出自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/168751613">此博客</a></p>
+<p>PID控制的完整公式实际上是:(e是误差)<br>$$<br>C&#x3D;\frac{1}{P}(e+\frac{1}{T_{i}}\int_{0}^{t}e{dt}+T_{d}\frac{de}{dt})<br>$$<br>实际上常用的是:<br>$$<br>C&#x3D;k_{p}e+k_{i}\int_{0}^{t}edt+k_{d}\frac{de}{dt}<br>$$<br>离散化后如下:<br>$$<br>\begin{aligned}&amp;\text{比例项: }K_pe(t)\xrightarrow{\textbf{离散化}} K _ p e _ k \\text{ 积分项: }&amp;K_i\int_0^{t_k}e(\tau)d\tau\xrightarrow{\text{离散化}} K _ i \sum _ { i &#x3D; 1 }^{k}e(i)\Delta t\&amp;\text{微分项: }K_d\frac{de(t_k)}{dt}\xrightarrow{\text{离散化}} K _ d \frac { e ( k ) - e ( k - 1 ) }{ \Delta t}\end{aligned}<br>$$<br>分别看</p>
+<ul>
+<li><p>比例项  $K_pe_k$</p>
+<p>$e_k$表示x点的状态值与目标状态值的偏差(如图$e_x$就是$e_k$)</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404221555611.png" alt="image-20240422155515897" style="zoom:25%;" />
+</li>
+<li><p>积分项  $K_i\sum_{i&#x3D;1}^ke(i)\Delta t$</p>
+<p>$\sum_{i&#x3D;1}^ke(i)\Delta t$表示为下图三个颜色块的面积之和</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404221558924.png" alt="image-20240422155832526" style="zoom:25%;" />
+</li>
+<li><p>微分项   $K_d\frac{e(k)-e(k-1)}{\Delta t}$</p>
+<p>$\frac{e(k)-e(k-1)}{\Delta t}$表示下图中点的微分</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404221602080.png" alt="image-20240422160219761" style="zoom:25%;" /></li>
+</ul>
+<p>离散化后得到PID的离散表达式:<br>$$<br>u(k)&#x3D;K_pe_k+K_i\sum_{i&#x3D;1}^ke(i)\Delta t+K_d\frac{e(k)-e(k-1)}{\Delta t}<br>$$<br>由于$\Delta t$是固定值,将$\Delta t$归入K中就得到了位置式PID</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404221608502.png" alt="image-20240422160800161" style="zoom: 50%;" />
+
+<p>根据$\Delta u(k)&#x3D;u(k)-u(k-1)$可得到增量式PID的离散公式如下:<br>$$<br>\Delta u(k)&#x3D;K_p(e(k)-e(k-1))+K_ie(k)+K_d\left(e(k)-2e(k-1)+e(k-2)\right)<br>$$</p>
 <ul>
 <li>$k_{p}$  比例增益:决定减少误差的速度的参数</li>
 <li>$k_{i}$  积分增益:取决于之前所有误差的累积.消除了稳态误差,但也可能引入震荡</li>
 <li>$k_{d}$  微分增益:取决于误差变化速度.增加阻尼减弱震荡效果增加稳定性:当偏差变化过快，微分环节会输出较大的负数，作为抑制输出继续上升，从而抑制过冲。</li>
 </ul>
+<p>位置式PID和增量式PID本质是同一个公式</p>
 <p>在真正使用PID控制算法的时候:最好还要做到:积分限幅,积分分离,微分先行</p>
-<h2 id="PID代码"><a href="#PID代码" class="headerlink" title="PID代码"></a>PID代码</h2><p>pid.h</p>
+<h3 id="PID代码"><a href="#PID代码" class="headerlink" title="PID代码"></a>PID代码</h3><p>pid.h</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PIDImpl</span>;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PID</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="comment">// Kp - 比例增益</span></span><br><span class="line">        <span class="comment">// Ki - 积分增益</span></span><br><span class="line">        <span class="comment">// Kd - 微分增益</span></span><br><span class="line">        <span class="comment">// dt - 循环间隔时间</span></span><br><span class="line">        <span class="comment">// max - 受控变量的最大值</span></span><br><span class="line">        <span class="comment">// min - 受控变量的最小值</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//用指定的循环间隔时间（dt），最大和最小的受控变量值（max和min），以及比例、微分和积分增益（Kp，Kd和Ki）初始化PID控制器。</span></span><br><span class="line">        <span class="built_in">PID</span>( <span class="type">double</span> dt, <span class="type">double</span> max, <span class="type">double</span> min, <span class="type">double</span> Kp, <span class="type">double</span> Kd, <span class="type">double</span> Ki );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据设定点和当前过程值计算并返回受控变量</span></span><br><span class="line">        <span class="function"><span class="type">double</span> <span class="title">calculate</span><span class="params">( <span class="type">double</span> setpoint, <span class="type">double</span> pv )</span></span>;</span><br><span class="line">        ~<span class="built_in">PID</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        PIDImpl *pimpl;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PIDImpl</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">PIDImpl</span>( <span class="type">double</span> dt, <span class="type">double</span> max, <span class="type">double</span> min, <span class="type">double</span> Kp, <span class="type">double</span> Kd, <span class="type">double</span> Ki );</span><br><span class="line">        ~<span class="built_in">PIDImpl</span>();</span><br><span class="line">        <span class="function"><span class="type">double</span> <span class="title">calculate</span><span class="params">( <span class="type">double</span> setpoint, <span class="type">double</span> pv )</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="type">double</span> _dt;</span><br><span class="line">        <span class="type">double</span> _max;</span><br><span class="line">        <span class="type">double</span> _min;</span><br><span class="line">        <span class="type">double</span> _Kp;</span><br><span class="line">        <span class="type">double</span> _Kd;</span><br><span class="line">        <span class="type">double</span> _Ki;</span><br><span class="line">        <span class="type">double</span> _pre_error;</span><br><span class="line">        <span class="type">double</span> _integral;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>pid.cpp</p>
@@ -617,7 +648,133 @@
 <p>测试代码</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PID pid2 = <span class="built_in">PID</span>(<span class="number">0.1</span>, <span class="number">100</span>, <span class="number">-100</span>, <span class="number">0.1</span>, <span class="number">0.01</span>, <span class="number">0.5</span>);</span><br><span class="line">  <span class="type">double</span> val = <span class="number">20</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">      <span class="type">double</span> inc = pid2.<span class="built_in">calculate</span>(<span class="number">0</span>, val);</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;val:% 7.3f inc:% 7.3f\n&quot;</span>, val, inc);</span><br><span class="line">      val += inc;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
 
+<h3 id="现成的pid算法"><a href="#现成的pid算法" class="headerlink" title="现成的pid算法"></a>现成的pid算法</h3><ul>
+<li>Boost库里有PID控制器的封装。Boost::PID是基于boost::ublas的PID算法实现,提供基本的PID功能。</li>
+<li>Arduino库内的PID.h头文件封装了PID控制器类,支持增量式PID算法。</li>
+<li>OpenCV库中的cv::PIDController类实现了离散PID控制器。</li>
+<li>GNU科学库GSL中的gsl_control_pid_ss函数提供了单点离散PID控制。</li>
+<li>Eigen库中有BasicPIDControllers类实现基本PID控制。</li>
+</ul>
+<h2 id="模糊控制算法"><a href="#模糊控制算法" class="headerlink" title="模糊控制算法"></a>模糊控制算法</h2><p>Fuzzy Logic Control(FLC)</p>
+<p>模糊化是根据特定输入值的拟合程度,将特定输入值转换为模糊集某种程度的隶属度的过程</p>
+<p>隶属函数描述特定输入或输出变量,这些隶属函数可以用图形表示</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202405070853189.png" alt="image-20240507085315482" style="zoom: 25%;" />
+
+<p>这些隶属函数有助于量化基于语言变量,而不是精确数值做出决策所涉及的模糊逻辑</p>
+<h2 id="模型预测控制"><a href="#模型预测控制" class="headerlink" title="模型预测控制"></a>模型预测控制</h2><p>Model Predictive Control(MPC)</p>
+<p>是一种反馈控制技术,基于数学模型预测系统未来行为的控制算法</p>
+<p>作为许多工业应用中强大且广泛使用的控制策略</p>
+<h2 id="其他控制算法"><a href="#其他控制算法" class="headerlink" title="其他控制算法"></a>其他控制算法</h2><ul>
+<li>自适应控制算法</li>
+<li>神经网络控制算法</li>
+</ul>
 <h1 id="卡尔曼滤波"><a href="#卡尔曼滤波" class="headerlink" title="卡尔曼滤波"></a>卡尔曼滤波</h1><p>卡尔曼滤波（Kalman Filtering）是一种用于估计系统状态的最优滤波算法。它基于对系统的动态模型和测量模型进行建模，通过递归地更新状态估计值，提供对系统状态的最优估计和预测。</p>
+<blockquote>
+<p>卡尔曼滤波在以下情况需要使用</p>
+<ol>
+<li>当系统受到噪声干扰时，需要准确估计系统的状态。 </li>
+<li>当系统具有复杂的动态模型或多个传感器测量值时，需要融合这些信息来得到更准确的状态估计。 </li>
+<li>当系统需要快速响应和准确跟踪目标时，卡尔曼滤波可以提供更优秀的性能。 </li>
+<li>当系统需要实时进行状态估计，并且需要考虑系统的动态特性和测量误差时，卡尔曼滤波是一个有效的选择。</li>
+</ol>
+</blockquote>
+<h1 id="巴特沃斯滤波器"><a href="#巴特沃斯滤波器" class="headerlink" title="巴特沃斯滤波器"></a>巴特沃斯滤波器</h1><h1 id="LQR控制器"><a href="#LQR控制器" class="headerlink" title="LQR控制器"></a>LQR控制器</h1><h1 id="工业上的平滑算法"><a href="#工业上的平滑算法" class="headerlink" title="工业上的平滑算法"></a>工业上的平滑算法</h1><p>在工业上，当传感器测得的数据波动非常大时，常用的方法之一是数据平滑处理。以下是几种常见的数据平滑方法：</p>
+<ol>
+<li><p><strong>移动平均法</strong>：计算一定时间窗口内的数据平均值，用平均值替代原始数据点。移动平均法可以有效地减少数据的波动，使数据更加平滑。</p>
+</li>
+<li><p><strong>指数加权移动平均法</strong>：与简单移动平均法不同，指数加权移动平均法给予最近数据点更大的权重，使得平均值更加灵活地跟随数据的变化。</p>
+</li>
+<li><p><strong>滤波器</strong>：使用数字滤波器对数据进行滤波处理，常见的滤波器包括低通滤波器和中值滤波器等。滤波器可以有效地去除数据中的噪声和波动。</p>
+</li>
+<li><p><strong>数据插值</strong>：通过插值算法对数据进行插值处理，填补数据中的缺失或异常值，使得数据更加平滑。</p>
+</li>
+</ol>
+<h1 id="样条插值"><a href="#样条插值" class="headerlink" title="样条插值"></a>样条插值</h1><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/269230598?source_id=1005">知乎详解参考</a></p>
+<blockquote>
+<p>用途:</p>
+<ul>
+<li>根据数据做预测,或则根据局部情况估计整体分布</li>
+<li>图形化呈现计算结果</li>
+</ul>
+<p>缺点:不能给出明确函数关系,一般用于对数据的概括性描述,从中发现分布特征</p>
+<p>样条名词解析:</p>
+<p>“样条”这个术语源自于造船业，用来描述在木船的曲线形状中使用的一种柔软且易弯曲的木条。在数学和计算机科学领域，”样条”被引入用来描述一种平滑且连续的插值函数。因此，”样条插值”指的是通过连接相邻数据点的一系列曲线段来逼近数据的插值方法，以实现平滑的曲线拟合。 在样条插值中，通常会使用多项式函数来拟合相邻数据点之间的曲线段，以确保在数据点处函数值的连续性和平滑性。样条插值方法在数据处理、图像处理和数值分析等领域广泛应用，可以有效地处理数据的平滑和插值问题。</p>
+</blockquote>
+<p>不用给出具体的函数关系,根据已有数据预测其他数据即可的情况可以使用<strong>样条插值算法</strong></p>
+<p>根据实际应用对于“平滑”的要求，通常会有以下不同的约束：</p>
+<ol>
+<li>要求生成的参考曲线是连续的；</li>
+<li>在1的基础上，要求参考曲线的速度是连续的；</li>
+<li>在1和2的基础上，要参考曲线的加速度是连续的；</li>
+</ol>
+<blockquote>
+<p>速度是位置对时间的导数，加速度是速度对时间的导数，加速度对时间的导数我们称之为jerk。</p>
+</blockquote>
+<p>在多项式插值里面，给定多项式的阶次越高，能拟合的函数曲线就越复杂，但越高阶次的多项式对于计算资源的要求越多。因此对于这3个要求，我们可以分别用不同阶次的多项式函数来拟合，实际应用时根据需求选择合适的方法。</p>
+<blockquote>
+<p>下面的公式讲解如下:$a_0$,$a_1$是待确定的常量参数。$t_0$表示初始时刻， $a_0$表示初始时刻的位置， $a_1$表示斜率，也就是速度，这里为常量。因此，给定下一个时刻 $t_1$处的位置 q($t_1$), $t_f$表示分割点时间</p>
+</blockquote>
+<ol>
+<li><p>线性插值（一阶，恒定速度）</p>
+<p>线性插值，顾名思义，就是使用线性的方法来进行插值。即将给定的数据点依次用线段连起来，点与点之间运动的速度是恒定值。<br>$$<br>q(t)&#x3D;a_0+a_1(t-t_0)<br>$$<br>得出常数为:<br>$$<br>\left{\begin{array}{l}a_0&#x3D;q_0\a_1&#x3D;(q_1-q_0)&#x2F;(t_1-t_0)\end{array}\right.<br>$$</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404230830700.png" alt="image-20240423082957322" style="zoom:33%;" />
+</li>
+<li><p>抛物线插值（二阶，恒定加速度）</p>
+<p>抛物线差值（Parabolic Spline）是二阶多项式插值方法。与线性插值法将各个数据点用线段连起来不同，抛物线插值方法是用二次曲线将各个数据点连接起来，在连接处使用平滑的曲线来过渡，而避免速度不连续导致的“急剧拐弯”。抛物线差值的特征是具有恒定的加速度&#x2F;减速度，一般是由两个二阶多项式的组合来得到。为什么是两个二阶多项式呢？因为一个用于“加速阶段”，一个用于“减速阶段”。“加速阶段”和“减速阶段”的分割点叫flex point。</p>
+<ul>
+<li><p>加速阶段<br>$$<br>q_a(t)&#x3D;a_0+a_1(t-t_0)+a_2(t-t_0)^2,\quad t\in[t_0,t_f]<br>$$</p>
+</li>
+<li><p>减速阶段<br>$$<br>q_b(t)&#x3D;a_3+a_4\left(t-t_f\right)+a_5\left(t-t_f\right)^2\quad t\in[t_f,t_1]<br>$$</p>
+</li>
+<li></li>
+</ul>
+<p>常数公式略</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404230830917.png" alt="image-20240423083052298" style="zoom:33%;" />
+</li>
+<li><p>三次多项式插值（三阶，加速度可变）</p>
+<p>三次多项式插值方法（Cubic Spline）是一种常用的插值方法，其位置和速度曲线是连续的，加速度是可变的，但加速度不一定连续。考虑2个数据点之间插值的情况，其数学表达式为：<br>$$<br>q(t)&#x3D;a_0+a_1\left(t-t_0\right)+a_2(t-t_0)^2+a_3(t-t_0)^3,\quad t_0\leq t\leq t_1<br>$$<br>两种计算情况</p>
+<ul>
+<li><p>给定了初始时刻$t_0$和最终时刻$t_1$处的位置与速度信息($q_0,q_1,v_0,v_1$),设$h&#x3D;q_1-q_0,T&#x3D;t_1-t_0$,则参数可以使用一下公式计算:<br>$$<br>\left.\left{\begin{array}{l}a_0&#x3D;q_0\a_1&#x3D;\mathrm{v}_0\a_2&#x3D;\frac{3h-(2\mathrm{v}_0+\mathrm{v}_1)T}{T^2}\a_3&#x3D;\frac{-2h+(\mathrm{v}_0+\mathrm{v}_1)T}{T^3}.\end{array}\right.\right.<br>$$<br>对于给定 n 个一系列数据点进行插值的情况，只需要对所有相邻的两个数据点使用上述公式即可依次计算得到整条插值曲线。</p>
+</li>
+<li><p>给定了每一个点的位置信息$(\begin{array}{c}q_0,q_1,\ldots,q_n\end{array})$,但中间点的速度未给定</p>
+<p>这种情况,整条曲线最开始的起点和最终的终点速度需要直接给定，一般为零,$v_0&#x3D;v_1&#x3D;0$.中间各个数据点的速度可以通过启发式方法得到，即通过求解位置对时间的导数得到，那么对于第k个中间点，我们有：<br>$$<br>\left.v_k&#x3D;\left{\begin{array}{ll}0,\quad sign(d_k)\neq sign(d_{k+1})\\frac12(d_k+d_{k+1}),\quad sign(d_k)&#x3D;sign(d_{k+1})\end{array}\right.\right.<br>$$<br>其中$d_k&#x3D;(q_k-q_{k-1})&#x2F;(t_k-t_{k-1})$,表示曲线的导数或斜率,sign()为符号函数,返回1或-1</p>
+<blockquote>
+<p>直观理解:考察第k个数据点,若其导数在该点进行了符号反转,则该点速度为0,否则该点速度为其导数</p>
+</blockquote>
+</li>
+</ul>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404230831975.png" alt="image-20240423083157317" style="zoom:33%;" />
+
+<p>可以看到，位置曲线是“平滑”的，速度曲线是连续的，加速度曲线是可变的，但是不连续。这样，对于高速控制的场合来说，控制器的输入仍然会存在阶跃，导致不连续的情况。</p>
+</li>
+<li><p>五次多项式插值（五阶，加速度连续）</p>
+<p>略,<a target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/269230598?source_id=1005">更多详情参考此处</a></p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404230836012.png" alt="image-20240423083602333" style="zoom:33%;" />
+
+<p>可以看出，位置、速度、加速度三条曲线都是连续的，并且位置和速度还是“平滑”的,如果加速度曲线也要求是平滑的，那么就需要更高阶次的多项式插值方法了，例如七阶多项式插值。</p>
+</li>
+<li><p>七次及更高阶次的多项式插值</p>
+</li>
+</ol>
+<p>各种方法插值的对比图</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404230839844.png" alt="image-20240423083925159"></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/chauby/PolynomialInterpolation">相关开源代码Python及Matlab的Github仓库</a></p>
+<p>n次拉格朗日插值多项式:  太复杂,但能推出一个统一的多项式</p>
+<p>分段线性插值:  针对每两个点,分段进行线性插值</p>
+<p><strong>三次样条插值</strong>的Matlab语法</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#matlab语法</span><br><span class="line">interp1(x0,y0,x,<span class="string">&#x27;spline&#x27;</span>)</span><br><span class="line">#或</span><br><span class="line">spline(x0,y0,x)</span><br></pre></td></tr></table></figure>
+
+<p><strong>分段三次多项式插值</strong></p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404221417951.png" alt="image-20240422141726395" style="zoom:50%;" />
+
+<h1 id="数值分析-曲线拟合算法和函数逼近"><a href="#数值分析-曲线拟合算法和函数逼近" class="headerlink" title="数值分析:曲线拟合算法和函数逼近"></a>数值分析:曲线拟合算法和函数逼近</h1><p>与插值方法最大的区别在于最终要得到具体的函数关系 </p>
+<iframe width="720" height="360" src="https://player.bilibili.com/player.html?bvid=BV1HL4y1q7BV&high_quality=1&danmaku=0&as_wide=1&autoplay=0&" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" class="bili-iframe"> </iframe>
+
+<p>在数值积分中，除了使用梯形简单计算积分外,还可以使用插值或拟合技术来构造多项式来逼近被积函数。这里简单介绍一下常用的方法： </p>
+<ol>
+<li><strong>插值法</strong>：插值法通过已知数据点来构造通过这些点的多项式函数。常见的插值方法包括拉格朗日插值和牛顿插值。在辛普森法则中，我们可以通过子区间的左端点、右端点和中点处的函数值来构造一个二次多项式，从而近似代替被积函数。 </li>
+<li><strong>拟合法</strong>：拟合法通过已知数据点来拟合一个多项式函数，使得这个多项式函数与原函数在这些点上尽可能接近。常见的拟合方法包括最小二乘法和最小二乘多项式拟合。在数值积分中，我们可以使用拟合技术来构造一个简单的多项式函数来逼近被积函数。</li>
+</ol>
 <h1 id="图算法"><a href="#图算法" class="headerlink" title="图算法"></a>图算法</h1><ul>
 <li>DFS 深度优先搜索</li>
 <li>BFS 广度优先搜索</li>
@@ -928,7 +1085,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">算法入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.1.</span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.2.</span> <span class="nav-text">空间复杂度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">算法概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%BB%BA%E6%A8%A1"><span class="nav-number">2.1.</span> <span class="nav-text">问题建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%81%B5%E6%9C%BA"><span class="nav-number">2.1.1.</span> <span class="nav-text">图灵机</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">排序算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.3.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.4.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.5.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.6.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.7.</span> <span class="nav-text">计数排序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">查找算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="nav-number">4.1.</span> <span class="nav-text">二分查找</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">字符串匹配算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP%E7%AE%97%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">KMP算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90next%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0"><span class="nav-number">5.1.1.</span> <span class="nav-text">生成next数组函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kmp%E6%90%9C%E7%B4%A2%E5%87%BD%E6%95%B0"><span class="nav-number">5.1.2.</span> <span class="nav-text">kmp搜索函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM%E7%AE%97%E6%B3%95"><span class="nav-number">5.2.</span> <span class="nav-text">BM算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%8F%E5%AD%97%E7%AC%A6%E8%A7%84%E5%88%99"><span class="nav-number">5.2.1.</span> <span class="nav-text">坏字符规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%BD%E5%90%8E%E7%BC%80%E8%A7%84%E5%88%99"><span class="nav-number">5.2.2.</span> <span class="nav-text">好后缀规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sunday%E7%AE%97%E6%B3%95"><span class="nav-number">5.3.</span> <span class="nav-text">Sunday算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">5.3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E7%A0%81"><span class="nav-number">5.3.2.</span> <span class="nav-text">编码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">贪心算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%85%AC%E5%BC%8F"><span class="nav-number">7.</span> <span class="nav-text">排列组合公式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E5%85%AC%E5%BC%8F"><span class="nav-number">7.1.</span> <span class="nav-text">排列公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E9%87%8D"><span class="nav-number">7.1.1.</span> <span class="nav-text">去重</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E5%85%AC%E5%BC%8F"><span class="nav-number">7.2.</span> <span class="nav-text">组合公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">7.3.</span> <span class="nav-text">排列与组合的关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">8.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%8E%E5%85%B6%E4%BB%96%E6%80%9D%E6%83%B3%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="nav-number">8.1.</span> <span class="nav-text">动态规划与其他思想的差异</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E2%80%94%E2%80%94%E9%87%8D%E5%8F%A0%E5%AD%90%E9%97%AE%E9%A2%98"><span class="nav-number">8.1.1.</span> <span class="nav-text">分治算法与动态规划——重叠子问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E2%80%94%E2%80%94%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E6%9E%84"><span class="nav-number">8.1.2.</span> <span class="nav-text">贪心算法与动态规划——最优子结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A4%E4%BA%BA%E6%83%8A%E5%8F%B9%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9%E7%AE%97%E6%B3%95"><span class="nav-number">9.</span> <span class="nav-text">令人惊叹的平方根算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%BF%AB%E9%80%9F%E8%AE%A1%E7%AE%97%E7%AE%97%E6%B3%95"><span class="nav-number">9.1.</span> <span class="nav-text">平方根快速计算算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PID%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95"><span class="nav-number">10.</span> <span class="nav-text">PID控制算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PID%E5%85%AC%E5%BC%8F"><span class="nav-number">10.1.</span> <span class="nav-text">PID公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PID%E4%BB%A3%E7%A0%81"><span class="nav-number">10.2.</span> <span class="nav-text">PID代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2"><span class="nav-number">11.</span> <span class="nav-text">卡尔曼滤波</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%AE%97%E6%B3%95"><span class="nav-number">12.</span> <span class="nav-text">图算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Union-Find%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95"><span class="nav-number">12.1.</span> <span class="nav-text">Union Find并查集算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95"><span class="nav-number">13.</span> <span class="nav-text">回溯算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7"><span class="nav-number">14.</span> <span class="nav-text">一些算法技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97"><span class="nav-number">14.1.</span> <span class="nav-text">异或运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boyer-Moore%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95"><span class="nav-number">14.2.</span> <span class="nav-text">Boyer-Moore投票算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88"><span class="nav-number">14.3.</span> <span class="nav-text">快慢指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Floyd%E5%88%A4%E5%9C%88%E7%AE%97%E6%B3%95"><span class="nav-number">14.3.1.</span> <span class="nav-text">Floyd判圈算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%93%91%E8%8A%82%E7%82%B9"><span class="nav-number">14.4.</span> <span class="nav-text">链表中的哑节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BC%80%E5%92%8C"><span class="nav-number">14.5.</span> <span class="nav-text">前缀和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84"><span class="nav-number">14.6.</span> <span class="nav-text">差分数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98"><span class="nav-number">14.7.</span> <span class="nav-text">荷兰国旗问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A7%E5%A6%99%E7%9A%84%E9%80%92%E5%BD%92%E8%A7%A3%E6%B3%95%E6%80%9D%E8%B7%AF%E7%9B%98%E7%82%B9"><span class="nav-number">15.</span> <span class="nav-text">巧妙的递归解法思路盘点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">15.1.</span> <span class="nav-text">对称二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%8E%92%E5%88%97"><span class="nav-number">15.2.</span> <span class="nav-text">全排列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E9%9B%86"><span class="nav-number">15.3.</span> <span class="nav-text">子集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A7%E5%A6%99%E7%9A%84%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95"><span class="nav-number">16.</span> <span class="nav-text">巧妙的算法解决记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-number">16.1.</span> <span class="nav-text">15.三数之和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#128-%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97"><span class="nav-number">16.2.</span> <span class="nav-text">128.最长连续序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%96%91%E6%83%91"><span class="nav-number">17.</span> <span class="nav-text">疑惑</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">算法入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.1.</span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.2.</span> <span class="nav-text">空间复杂度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">算法概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%BB%BA%E6%A8%A1"><span class="nav-number">2.1.</span> <span class="nav-text">问题建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%81%B5%E6%9C%BA"><span class="nav-number">2.1.1.</span> <span class="nav-text">图灵机</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">排序算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.3.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.4.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.5.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.6.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="nav-number">3.0.7.</span> <span class="nav-text">计数排序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">查找算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="nav-number">4.1.</span> <span class="nav-text">二分查找</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">字符串匹配算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP%E7%AE%97%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">KMP算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90next%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0"><span class="nav-number">5.1.1.</span> <span class="nav-text">生成next数组函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kmp%E6%90%9C%E7%B4%A2%E5%87%BD%E6%95%B0"><span class="nav-number">5.1.2.</span> <span class="nav-text">kmp搜索函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM%E7%AE%97%E6%B3%95"><span class="nav-number">5.2.</span> <span class="nav-text">BM算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%8F%E5%AD%97%E7%AC%A6%E8%A7%84%E5%88%99"><span class="nav-number">5.2.1.</span> <span class="nav-text">坏字符规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%BD%E5%90%8E%E7%BC%80%E8%A7%84%E5%88%99"><span class="nav-number">5.2.2.</span> <span class="nav-text">好后缀规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sunday%E7%AE%97%E6%B3%95"><span class="nav-number">5.3.</span> <span class="nav-text">Sunday算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">5.3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E7%A0%81"><span class="nav-number">5.3.2.</span> <span class="nav-text">编码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">贪心算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%85%AC%E5%BC%8F"><span class="nav-number">7.</span> <span class="nav-text">排列组合公式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E5%85%AC%E5%BC%8F"><span class="nav-number">7.1.</span> <span class="nav-text">排列公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E9%87%8D"><span class="nav-number">7.1.1.</span> <span class="nav-text">去重</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E5%85%AC%E5%BC%8F"><span class="nav-number">7.2.</span> <span class="nav-text">组合公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">7.3.</span> <span class="nav-text">排列与组合的关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">8.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%8E%E5%85%B6%E4%BB%96%E6%80%9D%E6%83%B3%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="nav-number">8.1.</span> <span class="nav-text">动态规划与其他思想的差异</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E2%80%94%E2%80%94%E9%87%8D%E5%8F%A0%E5%AD%90%E9%97%AE%E9%A2%98"><span class="nav-number">8.1.1.</span> <span class="nav-text">分治算法与动态规划——重叠子问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E2%80%94%E2%80%94%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E6%9E%84"><span class="nav-number">8.1.2.</span> <span class="nav-text">贪心算法与动态规划——最优子结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A4%E4%BA%BA%E6%83%8A%E5%8F%B9%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9%E7%AE%97%E6%B3%95"><span class="nav-number">9.</span> <span class="nav-text">令人惊叹的平方根算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%BF%AB%E9%80%9F%E8%AE%A1%E7%AE%97%E7%AE%97%E6%B3%95"><span class="nav-number">9.1.</span> <span class="nav-text">平方根快速计算算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AD%E7%8E%AF%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95"><span class="nav-number">10.</span> <span class="nav-text">闭环控制算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PID%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95"><span class="nav-number">10.1.</span> <span class="nav-text">PID控制算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PID%E5%85%AC%E5%BC%8F"><span class="nav-number">10.1.1.</span> <span class="nav-text">PID公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PID%E4%BB%A3%E7%A0%81"><span class="nav-number">10.1.2.</span> <span class="nav-text">PID代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%B0%E6%88%90%E7%9A%84pid%E7%AE%97%E6%B3%95"><span class="nav-number">10.1.3.</span> <span class="nav-text">现成的pid算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E7%B3%8A%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95"><span class="nav-number">10.2.</span> <span class="nav-text">模糊控制算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E9%A2%84%E6%B5%8B%E6%8E%A7%E5%88%B6"><span class="nav-number">10.3.</span> <span class="nav-text">模型预测控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95"><span class="nav-number">10.4.</span> <span class="nav-text">其他控制算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2"><span class="nav-number">11.</span> <span class="nav-text">卡尔曼滤波</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%B4%E7%89%B9%E6%B2%83%E6%96%AF%E6%BB%A4%E6%B3%A2%E5%99%A8"><span class="nav-number">12.</span> <span class="nav-text">巴特沃斯滤波器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LQR%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-number">13.</span> <span class="nav-text">LQR控制器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E4%B8%9A%E4%B8%8A%E7%9A%84%E5%B9%B3%E6%BB%91%E7%AE%97%E6%B3%95"><span class="nav-number">14.</span> <span class="nav-text">工业上的平滑算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%B7%E6%9D%A1%E6%8F%92%E5%80%BC"><span class="nav-number">15.</span> <span class="nav-text">样条插值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90-%E6%9B%B2%E7%BA%BF%E6%8B%9F%E5%90%88%E7%AE%97%E6%B3%95%E5%92%8C%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91"><span class="nav-number">16.</span> <span class="nav-text">数值分析:曲线拟合算法和函数逼近</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%AE%97%E6%B3%95"><span class="nav-number">17.</span> <span class="nav-text">图算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Union-Find%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95"><span class="nav-number">17.1.</span> <span class="nav-text">Union Find并查集算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95"><span class="nav-number">18.</span> <span class="nav-text">回溯算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7"><span class="nav-number">19.</span> <span class="nav-text">一些算法技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97"><span class="nav-number">19.1.</span> <span class="nav-text">异或运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boyer-Moore%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95"><span class="nav-number">19.2.</span> <span class="nav-text">Boyer-Moore投票算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88"><span class="nav-number">19.3.</span> <span class="nav-text">快慢指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Floyd%E5%88%A4%E5%9C%88%E7%AE%97%E6%B3%95"><span class="nav-number">19.3.1.</span> <span class="nav-text">Floyd判圈算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%93%91%E8%8A%82%E7%82%B9"><span class="nav-number">19.4.</span> <span class="nav-text">链表中的哑节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BC%80%E5%92%8C"><span class="nav-number">19.5.</span> <span class="nav-text">前缀和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84"><span class="nav-number">19.6.</span> <span class="nav-text">差分数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98"><span class="nav-number">19.7.</span> <span class="nav-text">荷兰国旗问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A7%E5%A6%99%E7%9A%84%E9%80%92%E5%BD%92%E8%A7%A3%E6%B3%95%E6%80%9D%E8%B7%AF%E7%9B%98%E7%82%B9"><span class="nav-number">20.</span> <span class="nav-text">巧妙的递归解法思路盘点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">20.1.</span> <span class="nav-text">对称二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%8E%92%E5%88%97"><span class="nav-number">20.2.</span> <span class="nav-text">全排列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E9%9B%86"><span class="nav-number">20.3.</span> <span class="nav-text">子集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A7%E5%A6%99%E7%9A%84%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95"><span class="nav-number">21.</span> <span class="nav-text">巧妙的算法解决记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-number">21.1.</span> <span class="nav-text">15.三数之和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#128-%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97"><span class="nav-number">21.2.</span> <span class="nav-text">128.最长连续序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%96%91%E6%83%91"><span class="nav-number">22.</span> <span class="nav-text">疑惑</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -942,20 +1099,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/blog/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -992,7 +1149,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">592k</span>
+    <span title="站点总字数">689k</span>
 </div>
 
 <!-- -->

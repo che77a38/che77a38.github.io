@@ -7,7 +7,7 @@ abbrlink: b458259c
 
 
 
-## nas方案
+# nas方案
 
 前提：路由器要全千兆网口和网线（对应机械硬盘）
 
@@ -44,7 +44,7 @@ nas服务器：
 3. 威联通   TS-453Dmini（3700）
 4. microserver gen8
 
-##### <img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210407145052565.png" alt="image-20210407145052565" style="zoom:150%;" />
+<img src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210407145052565.png" alt="image-20210407145052565" style="zoom:150%;" />
 
 https://www.synology.cn/zh-cn/products/series/home
 
@@ -79,3 +79,9 @@ TS-453Dmini（3700）+4*12T （7,800）+（SANTAK)TG-BOX600/850（ 550）=12050
 3. 腾讯云
 
 [威联通python环境搭建参考](https://powersee.github.io/2023/05/qnap-crontab/)
+
+
+
+# zerotier参考
+
+[非常详细的zerotier部署参考](https://www.bilibili.com/video/BV1Vh411F7Mr)

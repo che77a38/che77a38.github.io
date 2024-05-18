@@ -1,7 +1,15 @@
 ---
-abbrlink: '0'
+title: c++谷歌代码规范
+tags: 代码规范
+categories: 技术
+mathjax: true
+abbrlink: 2c534657
+date: 2022-12-23 22:51:13
 ---
+
 此文是针对[Google开源项目风格指南](https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/)的笔记
+
+<!-- more -->
 
 > 风格 (style, 亦称作可读性 (readability)) 是用于管理 C++ 代码的惯例. “风格” 这一术语略有不准确, 因为这些惯例并非仅仅囊括代码格式.
 >
