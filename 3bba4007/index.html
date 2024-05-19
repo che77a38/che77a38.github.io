@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zeroko14.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":{"gitalk":{"order":-2}},"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="详细介绍doxygen的基本到进阶用法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="doxygen">
+<meta property="og:url" content="http://zeroko14.gitee.io/blog/3bba4007/index.html">
+<meta property="og:site_name" content="ZEROKO14的个人博客">
+<meta property="og:description" content="详细介绍doxygen的基本到进阶用法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404231114289.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404231140035.png">
+<meta property="article:published_time" content="2024-04-23T02:43:30.878Z">
+<meta property="article:modified_time" content="2024-05-18T01:13:22.371Z">
+<meta property="article:author" content="ZEROKO14">
+<meta property="article:tag" content="doxygen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404231114289.png">
+
+<link rel="canonical" href="http://zeroko14.gitee.io/blog/3bba4007/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>doxygen | ZEROKO14的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ZEROKO14的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">zeroko14's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zeroko14.gitee.io/blog/3bba4007/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="ZEROKO14">
+      <meta itemprop="description" content="你好，欢迎来到ZEROKO14的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZEROKO14的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          doxygen
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-04-23 10:43:30" itemprop="dateCreated datePublished" datetime="2024-04-23T10:43:30+08:00">2024-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-18 09:13:22" itemprop="dateModified" datetime="2024-05-18T09:13:22+08:00">2024-05-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>详细介绍doxygen的基本到进阶用法</p>
+<span id="more"></span>
+
+<p>文档生成工具方案盘点</p>
+<ul>
+<li><p>Doxygen: (直接生成.html)简单可用</p>
+</li>
+<li><p>Doxygen（生成.xml）+ 前端工具（由.xml生成html，例如 docsforge）</p>
+</li>
+<li><p>基于clang解析（Standardese&#x2F;Hdoc&#x2F;Cldoc）：不一定提供latex&#x3D;&gt;pdf</p>
+</li>
+<li><p>Sphinx: 需要手写独立的.rst文件，再生成，不好维护</p>
+</li>
+<li><p>.md转html（MkDocs&#x2F;Docusaurus）：需要手写独立的.md文件，再生成</p>
+</li>
+<li><p>Doxygen+Sphinx组合：需要进一步搭配Breathe，或定制开发的工具</p>
+</li>
+</ul>
+<p>最方便简单无痛使用的到头来还就是<strong>Doxygen</strong></p>
+<h1 id="Doxygen"><a href="#Doxygen" class="headerlink" title="Doxygen"></a>Doxygen</h1><p><a target="_blank" rel="noopener" href="http://www.doxygen.nl/">官网</a></p>
+<p>Doxygen 是一个文档生成工具，用于为源码生成说明文档。我们可以在代码中按照 Doxygen 要求的语法编写代码注释，然后使用 Doxygen 将程序中的注释提取出来生成一个文档。我们一般都把注释写在代码中，所以使用 Doxygen 生成的文档也能够非常方便地更新。Doxygen 还会在文档中引用源码文件，故我们也可在文档中方便地查看源码。</p>
+<p>Doxygen 实际上是为C++编写的标准的文档生成工具，它可以从C++源码中提取文档。除了 C++，还支持 C、Objective-C、C#、PHP、Java，、Python、IDL （Corba，Microsoft， 和 UNO&#x2F;OpenOffice flavors）、Fortran、VHDL、Tcl、以及D语言。</p>
+<p>Doxygen支持Windwos,Linux,macOS</p>
+<p>以mac安装为例:</p>
+<p>官网上download下载到的是界面版,不带命令行工具</p>
+<p>[可选] 通过 <code>brew install doxygen</code> 安装doxygen命令工具</p>
+<h2 id="生成文档流程"><a href="#生成文档流程" class="headerlink" title="生成文档流程"></a>生成文档流程</h2><p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404231114289.png" alt="img"></p>
+<ul>
+<li>Project name&#x2F;Project synopsis&#x2F;Project version or id均会显示到生成的网页中</li>
+</ul>
+<p><strong>Expert专家模式中记录常用设置流程</strong></p>
+<ol>
+<li>Project-&gt;OUTPUT_LANGUAGE:Chinese</li>
+<li>SHOW_USED_FILES:EXTRACT_ALL:true   即使没有注释也会提取,但是不包含私有,静态等实体,这些也需要手动开启</li>
+<li>SHOW_USED_FILES:false   取消某处文件位置显示</li>
+<li>HTML-&gt;DISABLE_INDEX:true   关掉顶部导航栏</li>
+<li>HTML-&gt;GENERATE_TREEVIEW:true  生成侧边栏的树状图</li>
+</ol>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>doxygen中的实体:类,函数,甚至函数的参数所有一切均视为实体</p>
+<p>简单理解流程,图中列的输出项并不全</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404231140035.png" alt="image-20240423113959320" style="zoom: 25%;" />
+
+<h2 id="注释写法"><a href="#注释写法" class="headerlink" title="注释写法"></a>注释写法</h2><p><a target="_blank" rel="noopener" href="https://doxygen.nl/manual/docblocks.html#cppblock">注释的几种风格参考官方文档</a></p>
+<p>这里列一套做法:</p>
+<ul>
+<li><p>与代码同行的注释类型</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*!&lt; ... 批注 ... */</span></span><br><span class="line"><span class="comment">/**&lt; ... 批注 ... */</span> （推荐）</span><br><span class="line"><span class="comment">//!&lt; ... 批注 ...</span></span><br><span class="line"><span class="comment">///&lt; ... 批注 ...  （推荐）</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在代码上方的注释类型</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*!</span></span><br><span class="line"><span class="comment"> * ... text ...</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ... txt ...</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">/// ... txt ...  (推荐)</span></span><br><span class="line"><span class="comment">///</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其它不想被包含到文档里的注释</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ... text ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*  ... text ... */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一种常用的注释格规范（一般放在函数、对象、结构体的定义前面）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 表示具体描述说明</span></span><br><span class="line"><span class="comment"> * @param 表示参数说明，有@param、@param[in]和@param[out]三种写法，字面意思</span></span><br><span class="line"><span class="comment"> * @return 表示返回参数</span></span><br><span class="line"><span class="comment"> * @see 表示另见See also，多用在存在继承关系上，\n</span></span><br><span class="line"><span class="comment">   比如A继承了B，但是A没有重写继承来的方法C，在C上就可以注释另见B</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="常用注释命令"><a href="#常用注释命令" class="headerlink" title="常用注释命令"></a>常用注释命令</h2><p>详解(下面的<code>@</code>均可替换为<code>\</code>)</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">@exception &lt;exception-<span class="built_in">object</span>&gt; &#123;exception description&#125; 对一个异常对象进行注释。</span><br><span class="line"></span><br><span class="line">@warning &#123;warning message &#125; 一些需要注意的事情</span><br><span class="line"></span><br><span class="line">@todo &#123; things to be done &#125; 对将要做的事情进行注释，链接到所有TODO 汇总的TODO 列表</span><br><span class="line"></span><br><span class="line">@bug 缺陷，链接到所有缺陷汇总的缺陷列表</span><br><span class="line"></span><br><span class="line">@see &#123;comment <span class="keyword">with</span> reference to other items &#125; 一段包含其他部分引用的注释，中间包含对其他代码项的名称，自动产生对其的引用链接。</span><br><span class="line"></span><br><span class="line">@relates &lt;name&gt; 通常用做把非成员函数的注释文档包含在类的说明文档中。</span><br><span class="line"></span><br><span class="line">@since &#123;text&#125; 通常用来说明从什么版本、时间写此部分代码。</span><br><span class="line"></span><br><span class="line">@deprecated</span><br><span class="line"></span><br><span class="line">@pre &#123; description of the precondition &#125; 用来说明代码项的前提条件。</span><br><span class="line"></span><br><span class="line">@post &#123; description of the postcondition &#125; 用来说明代码项之后的使用条件。</span><br><span class="line"></span><br><span class="line">@code 在注释中开始说明一段代码，直到@endcode命令。</span><br><span class="line"></span><br><span class="line">@endcode 注释中代码段的结束。</span><br><span class="line"></span><br><span class="line">@code .. @endcode 包含一段代码</span><br><span class="line"></span><br><span class="line">@addtogroup 添加到一个组。</span><br><span class="line"></span><br><span class="line">@brief 概要信息</span><br><span class="line"></span><br><span class="line">@deprecated 已废弃函数</span><br><span class="line"></span><br><span class="line">@details  详细描述</span><br><span class="line"></span><br><span class="line">@note 开始一个段落，用来描述一些注意事项</span><br><span class="line"></span><br><span class="line">@par 开始一个段落，段落名称描述由你自己指定</span><br><span class="line"></span><br><span class="line">@param 标记一个参数的意义</span><br><span class="line"></span><br><span class="line">@fn 函数说明</span><br><span class="line"></span><br><span class="line">@ingroup 加入到一个组</span><br><span class="line"></span><br><span class="line">@return 描述返回意义</span><br><span class="line"></span><br><span class="line">@retval 描述返回值意义</span><br><span class="line"></span><br><span class="line">@include 包含文件</span><br><span class="line"></span><br><span class="line">@var、@enum、@struct、@class 对变量、美剧、结构体、类等进行标注</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>一般在头文件中放置不太会发生变化的注释</p>
+<p>在源文件中使用一些易发生变化的注释</p>
+</blockquote>
+<h2 id="相关插件"><a href="#相关插件" class="headerlink" title="相关插件"></a>相关插件</h2><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=cschlosser.doxdocgen#config-options">Doxygen Documentation Generator</a>   自动补全注释模板</p>
+<p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=kevinkyang.auto-comment-blocks">Auto Comment Blocks</a>     自动补全注释符号,可以和上面搭配使用于单行注释</p>
+<h2 id="进阶用法"><a href="#进阶用法" class="headerlink" title="进阶用法"></a>进阶用法</h2><h3 id="函数关系图"><a href="#函数关系图" class="headerlink" title="函数关系图"></a>函数关系图</h3><p>Linux环境下采用CodeViz+GraphViz+gcc可以自动生成函数调用关系</p>
+<p>Windows环境下有很多方法</p>
+<ol>
+<li><p>vs有自动生成函数调用功能关系图的工具(社区版不够用)</p>
+</li>
+<li><p>开源利器SI(source insight)</p>
+<p>SI生成的调用关系图中，当两个函数调用同一个底层函数时，该底层函数会分别出现在两个函数调用图的下面，因此这种方法也不能最快的看出那些经常被调用的底层函数</p>
+</li>
+<li><p>自动生成函数调用关系图Doxygen+GraphViz+HtmlHelp</p>
+</li>
+</ol>
+<h4 id="Doxygen-GraphViz-HtmlHelp方案"><a href="#Doxygen-GraphViz-HtmlHelp方案" class="headerlink" title="Doxygen+GraphViz+HtmlHelp方案"></a>Doxygen+GraphViz+HtmlHelp方案</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zpqiatongxueshaonian/article/details/97056075">生成函数调用关系图</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014213012/article/details/123064358">较为详细的操作指引</a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ZEROKO14
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://zeroko14.gitee.io/blog/3bba4007/" title="doxygen">http://zeroko14.gitee.io/blog/3bba4007/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/doxygen/" rel="tag"># doxygen</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/838774f7/" rel="prev" title="C++相关工具盘点">
+      <i class="fa fa-chevron-left"></i> C++相关工具盘点
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/8b5f195/" rel="next" title="opencv">
+      opencv <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Doxygen"><span class="nav-number">1.</span> <span class="nav-text">Doxygen</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">生成文档流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A%E5%86%99%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">注释写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%B3%A8%E9%87%8A%E5%91%BD%E4%BB%A4"><span class="nav-number">1.4.</span> <span class="nav-text">常用注释命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%8F%92%E4%BB%B6"><span class="nav-number">1.5.</span> <span class="nav-text">相关插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E7%94%A8%E6%B3%95"><span class="nav-number">1.6.</span> <span class="nav-text">进阶用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="nav-number">1.6.1.</span> <span class="nav-text">函数关系图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Doxygen-GraphViz-HtmlHelp%E6%96%B9%E6%A1%88"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">Doxygen+GraphViz+HtmlHelp方案</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZEROKO14</p>
+  <div class="site-description" itemprop="description">你好，欢迎来到ZEROKO14的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZEROKO14</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">689k</span>
+</div>
+
+<!-- -->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+<script src="/blog/js/bookmark.js"></script>
+
+
+  <script defer src="/blog/lib/three/three.min.js"></script>
+    <script defer src="/blog/lib/three/three-waves.min.js"></script>
+
+<script src="/blog/js/jquery.min.js"></script>
+
+<script src="/blog/js/code-unfold.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '67c7a42cef54843d55de',
+      clientSecret: 'ab1b9b51ee90c36803ecfaae6bc72ff75494f245',
+      repo        : 'gitalk',
+      owner       : 'che77a38',
+      admin       : ['che77a38'],
+      id          : 'e9d76ec0a6b3f41b5929e7a72db3f896',
+      proxy       : 'https://cors-anywhere.1l1.icu/https://github.com/login/oauth/access_token',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
