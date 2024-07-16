@@ -1,0 +1,2332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"che77a38.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":{"gitalk":{"order":-2}},"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Web前端是指网站或Web应用程序的用户界面部分，通常由HTML、CSS和JavaScript等技术构建。前端开发人员负责设计、开发和优化网站的外观和交互体验，以确保用户能够轻松地浏览和使用网站。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WEB前端">
+<meta property="og:url" content="https://che77a38.github.io/a8bb82/index.html">
+<meta property="og:site_name" content="ZEROKO14的个人博客">
+<meta property="og:description" content="Web前端是指网站或Web应用程序的用户界面部分，通常由HTML、CSS和JavaScript等技术构建。前端开发人员负责设计、开发和优化网站的外观和交互体验，以确保用户能够轻松地浏览和使用网站。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202202021515626.jpeg">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202202021515715.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407151724213.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407151746094.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407151746633.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/che77a38/blogImage2/main/202209122130871.jpeg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407151044295.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/b55d0ad5068eca56e23d98d439637f94.png">
+<meta property="article:published_time" content="2024-07-16T04:06:28.963Z">
+<meta property="article:modified_time" content="2024-07-16T05:36:31.545Z">
+<meta property="article:author" content="ZEROKO14">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/che77a38/blogImage/main/202202021515626.jpeg">
+
+<link rel="canonical" href="https://che77a38.github.io/a8bb82/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>WEB前端 | ZEROKO14的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ZEROKO14的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">zeroko14's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://che77a38.github.io/a8bb82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZEROKO14">
+      <meta itemprop="description" content="你好，欢迎来到ZEROKO14的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZEROKO14的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WEB前端
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-07-16 12:06:28 / 修改时间：13:36:31" itemprop="dateCreated datePublished" datetime="2024-07-16T12:06:28+08:00">2024-07-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>20k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>18 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Web前端是指网站或Web应用程序的用户界面部分，通常由HTML、CSS和JavaScript等技术构建。前端开发人员负责设计、开发和优化网站的外观和交互体验，以确保用户能够轻松地浏览和使用网站。</p>
+<span id="more"></span>
+
+<ul>
+<li>HTML：页面结构，负责从语义的角度搭建页面结构。</li>
+<li>CSS：页面样式表现，负责从审美的角度美化页面。</li>
+<li>JavaScript：交互行为，负责从交互的角度提升用户体验。</li>
+</ul>
+<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><p>Html（Hyper Texture Markup Language）是超文本标记语言，在计算机中以 .html或者.htm作为扩展名,可以被浏览器识别,就是经常见到的网页.<br>    Html的语法非常简洁,比较松散,以相应的英语单词关键字进行组合,html标签不区分大小写,标签大多数成对出现,有开始,有结束,例如 <html></html>,但是并没有要求必须成对出现.同时也有固定的短标签	</p>
+<p>基本框架：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>HTML的组成可以分为如下部分:</p>
+<ol>
+<li><p><code>&lt;!doctype html&gt;</code>声明文档类型,可以不写</p>
+</li>
+<li><p><code>&lt;html&gt;</code> 开始 和<code>&lt;/html&gt;</code> 结束,属于html的<strong>根标签</strong></p>
+</li>
+<li><p><code>&lt;head&gt;&lt;/head&gt;</code> <strong>头部标签</strong>,头部标签内一般有 <code>&lt;title&gt;&lt;/title&gt;</code>打开网址是浏览器标签页显示的标题</p>
+</li>
+<li><p><code>&lt;body&gt;&lt;/body&gt;</code> <strong>主体标签</strong>,一般用于显示内容</p>
+</li>
+</ol>
+<p>也可以指定页面类型和字符编码,下面设置页面类型为html,并且字符编码为utf8<code>&lt;meta http-equiv=&quot;content-Type&quot; content=&quot;text/html; charset=utf8&quot;&gt;</code></p>
+<p>Html标签属性,可以双引号,单引号,或者不写</p>
+<p><strong>HTML文档的后缀名</strong></p>
+<ul>
+<li>html</li>
+<li>htm</li>
+</ul>
+<h2 id="常用标签盘点"><a href="#常用标签盘点" class="headerlink" title="常用标签盘点"></a>常用标签盘点</h2><h3 id="head内常用标签"><a href="#head内常用标签" class="headerlink" title="head内常用标签"></a>head内常用标签</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>指定整个网页的标题，在浏览器最上方显示</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>提供有关页面的基本信息</td>
+</tr>
+<tr>
+<td>link</td>
+<td>定义文档与外部资源的关系</td>
+</tr>
+<tr>
+<td>style</td>
+<td>定义内部样式表与网页的关系</td>
+</tr>
+</tbody></table>
+<h3 id="body内常用标签"><a href="#body内常用标签" class="headerlink" title="body内常用标签"></a>body内常用标签</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h1~h6</td>
+<td>一到六级标题</td>
+</tr>
+<tr>
+<td>p</td>
+<td>段落</td>
+</tr>
+<tr>
+<td>div</td>
+<td>容器</td>
+</tr>
+<tr>
+<td>br&#x2F;</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>hr&#x2F;</td>
+<td>水平线 size color</td>
+</tr>
+<tr>
+<td>ul</td>
+<td>无序列表type&#x3D;disc(实心圆圈);circle(空心圆圈);square(小方块)</td>
+</tr>
+<tr>
+<td>ol</td>
+<td>有序列表type&#x3D;1(数字)|a(字母)|i(罗马数字)</td>
+</tr>
+<tr>
+<td>li</td>
+<td>上面两种列表的列表项目</td>
+</tr>
+<tr>
+<td>img</td>
+<td>图片  src&#x3D;图片来源;alt&#x3D;图片不显示时显示的内容;titile&#x3D;鼠标在上面的文字;width &#x3D; 宽度;height &#x3D; 高度;(宽高不设置时候百分百显示,只设置其中一个等比例缩放显示)</td>
+</tr>
+<tr>
+<td>a</td>
+<td>超链接   href&#x3D;前往地址;titile&#x3D;鼠标在上面的文字;target&#x3D;_self(自身页面打开)|_blank(新页面打开)</td>
+</tr>
+<tr>
+<td>font</td>
+<td>文本   color&#x3D;#ff0000|RGB(255,0,0)|red;size&#x3D;文字大小(1-7)</td>
+</tr>
+<tr>
+<td>form</td>
+<td>表单   method &#x3D; 请求类型</td>
+</tr>
+<tr>
+<td>input</td>
+<td>输入  type &#x3D;text(文本)|password(密码);type &#x3D; input元素类型</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><table>
+<thead>
+<tr>
+<th>字符(去掉\)</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;nbsp;</td>
+<td>空格(non-breaking spacing)</td>
+</tr>
+<tr>
+<td>&amp;lt;</td>
+<td>小于号(less than)</td>
+</tr>
+<tr>
+<td>&amp;gt;</td>
+<td>大于号(greater than)</td>
+</tr>
+<tr>
+<td>&amp;amp;</td>
+<td>符号&amp;</td>
+</tr>
+<tr>
+<td>&amp;quot;</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>&amp;apos;</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>&amp;copy;</td>
+<td>版权©</td>
+</tr>
+<tr>
+<td>&amp;trade;</td>
+<td>商标™</td>
+</tr>
+</tbody></table>
+<h2 id="hexo超链接跳转到指定锚点注意"><a href="#hexo超链接跳转到指定锚点注意" class="headerlink" title="hexo超链接跳转到指定锚点注意"></a>hexo超链接跳转到指定锚点注意</h2><p><strong>尤其注意</strong>:<code>href</code>中的<code>http://www.example.com/page#anchor</code>后不能跟<code>/</code></p>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><ul>
+<li>全名：Cascading Style Sheets -&gt; 层叠样式表</li>
+<li>定义：CSS成为层叠样式表，它主要用于设置HTML页面中的文本内容（字体、大小、对齐方式等）、图片的外形（宽高、边框样式、边距等）以及版面的布局等外观显示样式。</li>
+</ul>
+<p>CSS的规则：</p>
+<ul>
+<li>层叠</li>
+<li>覆盖</li>
+</ul>
+<p>层叠就是浏览器对多个样式来源进行叠加，最终确定结果的过程。</p>
+<p><strong>层叠是CSS</strong>的核心机制，理解了它才能以最经济的方式写出最容易改动的CSS，让文档外观在达到设计要求的同时，也给用户留下一些空间，让他们根据需要更改文档的显示效果，例如调整字号。</p>
+<p> <strong>覆盖</strong>的默认规则是后者覆盖前者，但是有一个特殊情况——!important。</p>
+<h2 id="样式的来源"><a href="#样式的来源" class="headerlink" title="样式的来源"></a>样式的来源</h2><h3 id="浏览器默认样式"><a href="#浏览器默认样式" class="headerlink" title="浏览器默认样式"></a>浏览器默认样式</h3><p>所有的标签在不同的浏览器中都有各自默认的样式，如h1,h2,p,div,span,ul等，可以通过设置修改浏览器的样式。<br> 浏览器自带一个默认的样式，如果html中没有为标签设置样式，则浏览器会按照自己的样式来显示。<br>但是<strong>浏览器默认样式的级别是最低的</strong>，一旦有其他地方设置了标签样式，浏览器默认样式就会被冲掉。</p>
+<h3 id="样式的写法"><a href="#样式的写法" class="headerlink" title="样式的写法"></a>样式的写法</h3><ol>
+<li><p>内联样式</p>
+<p>行间式，在标签的style属性中设定CSS样式。<br>               通常用于特殊场合的特殊元素。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color:red&quot;</span>&gt;</span>This is tag of paragraph<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>内部样式</p>
+<p>嵌入式，把CSS样式代码集中写在<head>标签的<style></style>内部。<br>           通常用于单个page特有的样式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span></span><br><span class="line">            ...此处写CSS样式</span><br><span class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>外部样式</p>
+<p>链接式，将一个独立的.css文件引入到HTML文件中，使用<link>标记写在<code>&lt;head&gt;&lt;/head&gt;</code>标记中。<br>           样式代码存放在独立的.css文件中。<br>           通常用于多个page页面共享样式，如：论坛帖子的排版。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;My.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>导入样式</p>
+<p>@import -&gt; 不推荐使用的方式，会导致css不能并行下载，并且要求导入样式的书写必须在所有的css规则书写之前。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="comment">/*将某一个css文件的样式直接导入到当前位置*/</span></span></span><br><span class="line"><span class="language-css">        <span class="keyword">@import</span> url(css/main.css);</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">p</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>:green; <span class="comment">/*设置字体颜色*/</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>:silver;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>注意：<br>        导入式会在整个网页装载完后再装载CSS文件，因此这就导致了一个问题，如果网页比较大则会儿出现先显示无样式的页面，闪烁一下之后，再出现网页的样式。这是<strong>导入式固有的一个缺陷</strong>。</p>
+<p>使用链接式时与导入式不同的是它会以网页文件主体装载前装载CSS文件，因此显示出来的网页从一开始就是带样式的效果的，它不会象导入式那样先显示无样式的网页，然后再显示有样式的网页，这是<strong>链接式的优点</strong>。</p>
+<h2 id="CSS语法"><a href="#CSS语法" class="headerlink" title="CSS语法"></a>CSS语法</h2><p><img data-src="https://raw.githubusercontent.com/che77a38/blogImage/main/202202021515626.jpeg" alt="1734442-20190711193837033-2080817217"></p>
+<p><img data-src="https://raw.githubusercontent.com/che77a38/blogImage/main/202202021515715.png" alt="image-20220202151558456"></p>
+<p>CSS规则由两个主要的部分构成：<strong>选择器</strong>，以及<strong>一条或多条声明</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selector &#123;declaration1; declaration2; ... declarationN &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><ul>
+<li>每条声明由一个属性和一个值组成，属性和值被冒号分开。</li>
+<li>如果要定义不止一个声明，则需要用分号将每个声明分开。    </li>
+<li>当值为若干单词，则要给值加引号</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">        <span class="attribute">text-align</span>: center;</span><br><span class="line">        <span class="attribute">color</span>: black;</span><br><span class="line">        <span class="attribute">font-family</span>: arial;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123; <span class="attribute">color</span>: <span class="number">#ff0000</span>; &#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123; <span class="attribute">color</span>: <span class="number">#f00</span>; &#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123; <span class="attribute">color</span>: <span class="built_in">rgb</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>); &#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123; <span class="attribute">color</span>: <span class="built_in">rgb</span>(<span class="number">100%</span>,<span class="number">0%</span>,<span class="number">0%</span>); </span><br><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">font-family</span>: <span class="string">&quot;sans serif&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h3><ul>
+<li><p>通配符选择器</p>
+</li>
+<li><p>标签选择器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>类选择器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.valueOfClass</span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ID选择器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#valueOfId</span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多元素选择器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>,<span class="selector-tag">p</span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="复合选择器"><a href="#复合选择器" class="headerlink" title="复合选择器"></a>复合选择器</h4><ul>
+<li>后代选择器</li>
+<li>子元素选择器</li>
+<li>交集选择器</li>
+<li>并集选择器</li>
+<li>链接伪类选择器</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>链接器</th>
+<th>功能</th>
+<th>特征</th>
+<th>使用情况</th>
+<th>隔开符号及用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>后代选择器</td>
+<td>用来选择元素后代</td>
+<td>是选择所有的子孙后代</td>
+<td>较多</td>
+<td>符号是空格.nav a</td>
+</tr>
+<tr>
+<td>子代选择器</td>
+<td>选择最近一级元素</td>
+<td>只选亲儿子</td>
+<td>较少</td>
+<td>符号是大于符号.nav&gt;p</td>
+</tr>
+<tr>
+<td>交集选择器</td>
+<td>选择两个标签交集的部分</td>
+<td>既是 又是</td>
+<td>较少</td>
+<td>没有符号，直接挨到一起p.one</td>
+</tr>
+<tr>
+<td>并集选择器</td>
+<td>选择某些相同样式的选择器</td>
+<td>可以用于集体声明</td>
+<td>较多</td>
+<td>符号是逗号  .nav,.header</td>
+</tr>
+<tr>
+<td>链接伪类选择器</td>
+<td>给链接更改状态</td>
+<td>-</td>
+<td>较多</td>
+<td>重点记住a{}和a:hover实际开发的写法</td>
+</tr>
+</tbody></table>
+<h2 id="CSS常用属性一览表"><a href="#CSS常用属性一览表" class="headerlink" title="CSS常用属性一览表"></a>CSS常用属性一览表</h2><h3 id="动画属性-Animation"><a href="#动画属性-Animation" class="headerlink" title="动画属性(Animation)"></a>动画属性(Animation)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>animation</code></td>
+<td>指定基于关键帧的动画。</td>
+<td><code>animation: slidein 3s ease infinite;</code></td>
+</tr>
+<tr>
+<td><code>animation-delay</code></td>
+<td>指定动画何时开始。</td>
+<td><code>animation-delay: 2s;</code></td>
+</tr>
+<tr>
+<td><code>animation-direction</code></td>
+<td>指定动画是否应在交替的循环中反向播放。</td>
+<td><code>animation-direction: alternate;</code></td>
+</tr>
+<tr>
+<td><code>animation-duration</code></td>
+<td>指定动画完成一个周期应花费的秒数或毫秒数。</td>
+<td><code>animation-duration: 1s;</code></td>
+</tr>
+<tr>
+<td><code>animation-fill-mode</code></td>
+<td>指定CSS动画在执行之前和之后应如何将样式应用于其目标。</td>
+<td><code>animation-fill-mode: forwards;</code></td>
+</tr>
+<tr>
+<td><code>animation-iteration-count</code></td>
+<td>指定在停止之前动画循环应播放的次数。</td>
+<td><code>animation-iteration-count: 3;</code></td>
+</tr>
+<tr>
+<td><code>animation-name</code></td>
+<td>指定@keyframes应应用于所选元素的已定义动画的名称。</td>
+<td><code>animation-name: myanimation;</code></td>
+</tr>
+<tr>
+<td><code>animation-play-state</code></td>
+<td>指定动画是运行还是暂停。</td>
+<td><code>animation-play-state: running;</code></td>
+</tr>
+<tr>
+<td><code>animation-timing-function</code></td>
+<td>指定CSS动画在每个周期内应如何进行。</td>
+<td><code>animation-timing-function: ease-in-out;</code></td>
+</tr>
+</tbody></table>
+<h3 id="背景属性-Background"><a href="#背景属性-Background" class="headerlink" title="背景属性(Background)"></a>背景属性(Background)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>background</code></td>
+<td>在一个声明中定义各种背景属性。</td>
+<td><code>background: url(bg.jpg) no-repeat center/cover;</code></td>
+</tr>
+<tr>
+<td><code>background-attachment</code></td>
+<td>指定背景图像是在视口中固定还是滚动。</td>
+<td><code>background-attachment: fixed;</code></td>
+</tr>
+<tr>
+<td><code>background-clip</code></td>
+<td>指定背景的绘制区域。</td>
+<td><code>background-clip: content-box;</code></td>
+</tr>
+<tr>
+<td><code>background-color</code></td>
+<td>定义元素的背景色。</td>
+<td><code>background-color: #f0f0f0;</code></td>
+</tr>
+<tr>
+<td><code>background-image</code></td>
+<td>定义元素的背景图像。</td>
+<td><code>background-image: url(bg.jpg);</code></td>
+</tr>
+<tr>
+<td><code>background-origin</code></td>
+<td>指定背景图像的定位区域。</td>
+<td><code>background-origin: padding-box;</code></td>
+</tr>
+<tr>
+<td><code>background-position</code></td>
+<td>定义背景图像的原点。</td>
+<td><code>background-position: top left;</code></td>
+</tr>
+<tr>
+<td><code>background-repeat</code></td>
+<td>指定是否&#x2F;如何平铺背景图像。</td>
+<td><code>background-repeat: repeat-x;</code></td>
+</tr>
+<tr>
+<td><code>background-size</code></td>
+<td>指定背景图像的大小。</td>
+<td><code>background-size: cover;</code></td>
+</tr>
+</tbody></table>
+<h3 id="边框属性-Border"><a href="#边框属性-Border" class="headerlink" title="边框属性(Border)"></a>边框属性(Border)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>border</code></td>
+<td>设置元素边框所有四个侧面的宽度，样式和颜色。</td>
+<td><code>border: 1px solid #ccc;</code></td>
+</tr>
+<tr>
+<td><code>border-bottom</code></td>
+<td>设置元素底部边框的宽度，样式和颜色。</td>
+<td><code>border-bottom: 2px dashed #000;</code></td>
+</tr>
+<tr>
+<td><code>border-bottom-color</code></td>
+<td>设置元素底部边框的颜色。</td>
+<td><code>border-bottom-color: #f00;</code></td>
+</tr>
+<tr>
+<td><code>border-bottom-left-radius</code></td>
+<td>定义元素的左下边界角的形状。</td>
+<td><code>border-bottom-left-radius: 10px;</code></td>
+</tr>
+<tr>
+<td><code>border-bottom-right-radius</code></td>
+<td>定义元素右下边界的形状。</td>
+<td><code>border-bottom-right-radius: 5px;</code></td>
+</tr>
+<tr>
+<td><code>border-bottom-style</code></td>
+<td>设置元素底部边框的样式。</td>
+<td><code>border-bottom-style: dotted;</code></td>
+</tr>
+<tr>
+<td><code>border-bottom-width</code></td>
+<td>设置元素底部边框的宽度。</td>
+<td><code>border-bottom-width: 3px;</code></td>
+</tr>
+<tr>
+<td><code>border-color</code></td>
+<td>设置元素所有四个侧面的边框颜色。</td>
+<td><code>border-color: #333;</code></td>
+</tr>
+<tr>
+<td><code>border-image</code></td>
+<td>指定如何使用图像代替边框样式。</td>
+<td><code>border-image: url(border.png) 30 repeat;</code></td>
+</tr>
+<tr>
+<td><code>border-image-outset</code></td>
+<td>指定边框图像区域超出边框超出范围的数量。</td>
+<td><code>border-image-outset: 10px;</code></td>
+</tr>
+<tr>
+<td><code>border-image-repeat</code></td>
+<td>指定图像边框应重复，四舍五入还是拉伸。</td>
+<td><code>border-image-repeat: round;</code></td>
+</tr>
+<tr>
+<td><code>border-image-slice</code></td>
+<td>指定图像边框的向内偏移。</td>
+<td><code>border-image-slice: 20%;</code></td>
+</tr>
+<tr>
+<td><code>border-image-source</code></td>
+<td>指定要用作边框的图像的位置。</td>
+<td><code>border-image-source: url(border.png);</code></td>
+</tr>
+<tr>
+<td><code>border-image-width</code></td>
+<td>指定图像边框的宽度。</td>
+<td><code>border-image-width: 5px;</code></td>
+</tr>
+<tr>
+<td><code>border-left</code></td>
+<td>设置元素左边框的宽度，样式和颜色。</td>
+<td><code>border-left: 1px solid #999;</code></td>
+</tr>
+<tr>
+<td><code>border-left-color</code></td>
+<td>设置元素的左边框的颜色。</td>
+<td><code>border-left-color: #00f;</code></td>
+</tr>
+<tr>
+<td><code>border-left-style</code></td>
+<td>设置元素左边框的样式。</td>
+<td><code>border-left-style: double;</code></td>
+</tr>
+<tr>
+<td><code>border-left-width</code></td>
+<td>设置元素左边框的宽度。</td>
+<td><code>border-left-width: 2px;</code></td>
+</tr>
+<tr>
+<td><code>border-radius</code></td>
+<td>定义元素边界角的形状。</td>
+<td><code>border-radius: 10px;</code></td>
+</tr>
+<tr>
+<td><code>border-right</code></td>
+<td>设置元素右边框的宽度，样式和颜色。</td>
+<td><code>border-right: 3px solid #666;</code></td>
+</tr>
+<tr>
+<td><code>border-right-color</code></td>
+<td>设置元素右边框的颜色。</td>
+<td><code>border-right-color: #0f0;</code></td>
+</tr>
+<tr>
+<td><code>border-right-style</code></td>
+<td>设置元素右边框的样式。</td>
+<td><code>border-right-style: groove;</code></td>
+</tr>
+<tr>
+<td><code>border-right-width</code></td>
+<td>设置元素右边框的宽度。</td>
+<td><code>border-right-width: 4px;</code></td>
+</tr>
+<tr>
+<td><code>border-style</code></td>
+<td>在元素的所有四个面上设置边框的样式。</td>
+<td><code>border-style: outset;</code></td>
+</tr>
+<tr>
+<td><code>border-top</code></td>
+<td>设置元素顶部边框的宽度，样式和颜色。</td>
+<td><code>border-top: 2px dotted #888;</code></td>
+</tr>
+<tr>
+<td><code>border-top-color</code></td>
+<td>设置元素顶部边框的颜色。</td>
+<td><code>border-top-color: #ff0;</code></td>
+</tr>
+<tr>
+<td><code>border-top-left-radius</code></td>
+<td>定义元素左上角的形状。</td>
+<td><code>border-top-left-radius: 5px;</code></td>
+</tr>
+<tr>
+<td><code>border-top-right-radius</code></td>
+<td>定义元素的右上边界角的形状。</td>
+<td><code>border-top-right-radius: 15px;</code></td>
+</tr>
+<tr>
+<td><code>border-top-style</code></td>
+<td>设置元素顶部边框的样式。</td>
+<td><code>border-top-style: inset;</code></td>
+</tr>
+<tr>
+<td><code>border-top-width</code></td>
+<td>设置元素顶部边框的宽度。</td>
+<td><code>border-top-width: 1px;</code></td>
+</tr>
+<tr>
+<td><code>border-width</code></td>
+<td>设置元素所有四个侧面的边框宽度。</td>
+<td><code>border-width: 1px;</code></td>
+</tr>
+</tbody></table>
+<h3 id="颜色属性-Color"><a href="#颜色属性-Color" class="headerlink" title="颜色属性 (Color)"></a>颜色属性 (Color)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>color</td>
+<td>指定元素文本的颜色。</td>
+<td><code>color: #ff0000;</code></td>
+</tr>
+<tr>
+<td>opacity</td>
+<td>指定元素的透明度。</td>
+<td><code>opacity: 0.5;</code></td>
+</tr>
+</tbody></table>
+<h3 id="尺寸属性-Size"><a href="#尺寸属性-Size" class="headerlink" title="尺寸属性 (Size)"></a>尺寸属性 (Size)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>height</td>
+<td>指定元素的高度。</td>
+<td><code>height: 100px;</code></td>
+</tr>
+<tr>
+<td>max-height</td>
+<td>指定元素的最大高度。</td>
+<td><code>max-height: 80%;</code></td>
+</tr>
+<tr>
+<td>max-width</td>
+<td>指定元素的最大宽度。</td>
+<td><code>max-width: 1200px;</code></td>
+</tr>
+<tr>
+<td>min-height</td>
+<td>指定元素的最小高度。</td>
+<td><code>min-height: 50vh;</code></td>
+</tr>
+<tr>
+<td>min-width</td>
+<td>指定元素的最小宽度。</td>
+<td><code>min-width: 320px;</code></td>
+</tr>
+<tr>
+<td>width</td>
+<td>指定元素的宽度。</td>
+<td><code>width: 50%;</code></td>
+</tr>
+</tbody></table>
+<h3 id="内容属性-Content"><a href="#内容属性-Content" class="headerlink" title="内容属性 (Content)"></a>内容属性 (Content)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>content</td>
+<td>插入生成的内容。</td>
+<td><code>content: &quot;Hello&quot;;</code></td>
+</tr>
+<tr>
+<td>quotes</td>
+<td>指定嵌入引号的引号。</td>
+<td><code>quotes: &quot;«&quot; &quot;»&quot; &quot;&lt;&quot; &quot;&gt;&quot;</code></td>
+</tr>
+<tr>
+<td>counter-reset</td>
+<td>创建或重置一个或多个计数器。</td>
+<td><code>counter-reset: section;</code></td>
+</tr>
+<tr>
+<td>counter-increment</td>
+<td>递增一个或多个计数器值。</td>
+<td><code>counter-increment: section;</code></td>
+</tr>
+</tbody></table>
+<h3 id="弹性Flex盒子布局-Flex"><a href="#弹性Flex盒子布局-Flex" class="headerlink" title="弹性Flex盒子布局 (Flex)"></a>弹性Flex盒子布局 (Flex)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>align-content</td>
+<td>指定伸缩容器中伸缩容器的项目的对齐方式。</td>
+<td><code>align-content: center;</code></td>
+</tr>
+<tr>
+<td>align-items</td>
+<td>为flex容器中的项目指定默认对齐方式。</td>
+<td><code>align-items: flex-start;</code></td>
+</tr>
+<tr>
+<td>align-self</td>
+<td>指定弹性容器中选定项目的对齐方式。</td>
+<td><code>align-self: stretch;</code></td>
+</tr>
+<tr>
+<td>flex</td>
+<td>指定弹性长度的分量。</td>
+<td><code>flex: 1 0 auto;</code></td>
+</tr>
+<tr>
+<td>flex-basis</td>
+<td>指定弹性项目的初始主要尺寸。</td>
+<td><code>flex-basis: 200px;</code></td>
+</tr>
+<tr>
+<td>flex-direction</td>
+<td>指定弹性项目的方向。</td>
+<td><code>flex-direction: row;</code></td>
+</tr>
+<tr>
+<td>flex-flow</td>
+<td>flex-direction和flex-wrap属性的简写属性。</td>
+<td><code>flex-flow: row wrap;</code></td>
+</tr>
+<tr>
+<td>flex-grow</td>
+<td>指定弹性项目相对于弹性容器内其他项目的增长方式。</td>
+<td><code>flex-grow: 1;</code></td>
+</tr>
+<tr>
+<td>flex-shrink</td>
+<td>指定flex项目相对于flex容器内其他项目的收缩方式。</td>
+<td><code>flex-shrink: 0;</code></td>
+</tr>
+<tr>
+<td>flex-wrap</td>
+<td>指定是否应包装柔性物品。</td>
+<td><code>flex-wrap: nowrap;</code></td>
+</tr>
+<tr>
+<td>justify-content</td>
+<td>指定在解决了任何弹性长度和自动页边距之后，弹性项目如何沿弹性容器的主轴对齐。</td>
+<td><code>justify-content: space-between;</code></td>
+</tr>
+<tr>
+<td>order</td>
+<td>指定弹性项目在弹性容器中的显示和布局顺序。</td>
+<td><code>order: 2;</code></td>
+</tr>
+</tbody></table>
+<h3 id="字体属性-Fonts"><a href="#字体属性-Fonts" class="headerlink" title="字体属性 (Fonts)"></a>字体属性 (Fonts)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>font</td>
+<td>在一个声明中定义各种字体属性。</td>
+<td><code>font: italic small-caps bold 16px/1.5 Arial, sans-serif;</code></td>
+</tr>
+<tr>
+<td>font-family</td>
+<td>定义元素的字体列表。</td>
+<td><code>font-family: Arial, sans-serif;</code></td>
+</tr>
+<tr>
+<td>font-size</td>
+<td>定义文本的字体大小。</td>
+<td><code>font-size: 1.2rem;</code></td>
+</tr>
+<tr>
+<td>font-size-adjust</td>
+<td>发生字体回退时，保留文本的可读性。</td>
+<td><code>font-size-adjust: 0.5;</code></td>
+</tr>
+<tr>
+<td>font-stretch</td>
+<td>从字体中选择一个普通的，压缩的或扩展的字体。</td>
+<td><code>font-stretch: condensed;</code></td>
+</tr>
+<tr>
+<td>font-style</td>
+<td>定义文本的字体样式。</td>
+<td><code>font-style: italic;</code></td>
+</tr>
+<tr>
+<td>font-variant</td>
+<td>指定字体变体。</td>
+<td><code>font-variant: small-caps;</code></td>
+</tr>
+<tr>
+<td>font-weight</td>
+<td>指定文本的字体粗细。</td>
+<td><code>font-weight: bold;</code></td>
+</tr>
+</tbody></table>
+<h3 id="列表项属性-Lists"><a href="#列表项属性-Lists" class="headerlink" title="列表项属性 (Lists)"></a>列表项属性 (Lists)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>list-style</td>
+<td>定义列表和列表元素的显示样式。</td>
+<td><code>list-style: square inside;</code></td>
+</tr>
+<tr>
+<td>list-style-image</td>
+<td>指定用作列表项标记的图像。</td>
+<td><code>list-style-image: url(&#39;marker.png&#39;);</code></td>
+</tr>
+<tr>
+<td>list-style-position</td>
+<td>指定列表项标记的位置。</td>
+<td><code>list-style-position: outside;</code></td>
+</tr>
+<tr>
+<td>list-style-type</td>
+<td>指定列表项的标记样式。</td>
+<td><code>list-style-type: circle;</code></td>
+</tr>
+</tbody></table>
+<h3 id="边距属性-Margin"><a href="#边距属性-Margin" class="headerlink" title="边距属性 (Margin)"></a>边距属性 (Margin)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>margin</td>
+<td>在元素的所有四个面上设置边距。</td>
+<td><code>margin: 10px;</code></td>
+</tr>
+<tr>
+<td>margin-bottom</td>
+<td>设置元素的底边距。</td>
+<td><code>margin-bottom: 20px;</code></td>
+</tr>
+<tr>
+<td>margin-left</td>
+<td>设置元素的左边距。</td>
+<td><code>margin-left: 15px;</code></td>
+</tr>
+<tr>
+<td>margin-right</td>
+<td>设置元素的右边距。</td>
+<td><code>margin-right: 15px;</code></td>
+</tr>
+<tr>
+<td>margin-top</td>
+<td>设置元素的上边距。</td>
+<td><code>margin-top: 30px;</code></td>
+</tr>
+</tbody></table>
+<h3 id="多列布局属性-Column"><a href="#多列布局属性-Column" class="headerlink" title="多列布局属性 (Column)"></a>多列布局属性 (Column)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>column-count</td>
+<td>指定多列元素中的列数。</td>
+<td><code>column-count: 3;</code></td>
+</tr>
+<tr>
+<td>column-fill</td>
+<td>指定如何填充列。</td>
+<td><code>column-fill: auto;</code></td>
+</tr>
+<tr>
+<td>column-gap</td>
+<td>指定多列元素中各列之间的间隔。</td>
+<td><code>column-gap: 20px;</code></td>
+</tr>
+<tr>
+<td>column-rule</td>
+<td>指定在多列元素的每一列之间绘制的直线或“规则”。</td>
+<td><code>column-rule: 1px solid #ccc;</code></td>
+</tr>
+<tr>
+<td>column-rule-color</td>
+<td>指定在多列布局中的列之间绘制的规则的颜色。</td>
+<td><code>column-rule-color: blue;</code></td>
+</tr>
+<tr>
+<td>column-rule-style</td>
+<td>指定在多列布局中的列之间绘制的规则的样式。</td>
+<td><code>column-rule-style: dashed;</code></td>
+</tr>
+<tr>
+<td>column-rule-width</td>
+<td>指定在多列布局中的列之间绘制的规则的宽度。</td>
+<td><code>column-rule-width: 2px;</code></td>
+</tr>
+<tr>
+<td>column-span</td>
+<td>指定元素在多列布局中跨越多少列。</td>
+<td><code>column-span: all;</code></td>
+</tr>
+<tr>
+<td>column-width</td>
+<td>指定多列元素中列的最佳宽度。</td>
+<td><code>column-width: 200px;</code></td>
+</tr>
+<tr>
+<td>columns</td>
+<td>用于设置 column-width 和 column-count 属性的简写属性。</td>
+<td><code>columns: 2 auto;</code></td>
+</tr>
+</tbody></table>
+<h3 id="轮廓属性-Outline"><a href="#轮廓属性-Outline" class="headerlink" title="轮廓属性 (Outline)"></a>轮廓属性 (Outline)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>outline</td>
+<td>设置元素轮廓的所有四个边的宽度，样式和颜色。</td>
+<td><code>outline: 1px dotted red;</code></td>
+</tr>
+<tr>
+<td>outline-color</td>
+<td>设置轮廓的颜色。</td>
+<td><code>outline-color: #00ff00;</code></td>
+</tr>
+<tr>
+<td>outline-offset</td>
+<td>设置轮廓和元素边框之间的空间。</td>
+<td><code>outline-offset: 5px;</code></td>
+</tr>
+<tr>
+<td>outline-style</td>
+<td>设置轮廓样式。</td>
+<td><code>outline-style: solid;</code></td>
+</tr>
+<tr>
+<td>outline-width</td>
+<td>设置轮廓的宽度。</td>
+<td><code>outline-width: 2px;</code></td>
+</tr>
+</tbody></table>
+<h3 id="填充属性-Padding"><a href="#填充属性-Padding" class="headerlink" title="填充属性 (Padding)"></a>填充属性 (Padding)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>padding</td>
+<td>在元素的所有四个面上设置填充。</td>
+<td><code>padding: 15px;</code></td>
+</tr>
+<tr>
+<td>padding-bottom</td>
+<td>将填充设置为元素的底侧。</td>
+<td><code>padding-bottom: 10px;</code></td>
+</tr>
+<tr>
+<td>padding-left</td>
+<td>将填充设置为元素的左侧。</td>
+<td><code>padding-left: 20px;</code></td>
+</tr>
+<tr>
+<td>padding-right</td>
+<td>将填充设置为元素的右侧。</td>
+<td><code>padding-right: 20px;</code></td>
+</tr>
+<tr>
+<td>padding-top</td>
+<td>将填充设置为元素的顶部。</td>
+<td><code>padding-top: 5px;</code></td>
+</tr>
+</tbody></table>
+<h3 id="打印属性-Print"><a href="#打印属性-Print" class="headerlink" title="打印属性 (Print)"></a>打印属性 (Print)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>page-break-after</td>
+<td>在元素之后插入分页符。</td>
+<td><code>page-break-after: always;</code></td>
+</tr>
+<tr>
+<td>page-break-before</td>
+<td>在元素之前插入分页符。</td>
+<td><code>page-break-before: always;</code></td>
+</tr>
+<tr>
+<td>page-break-inside</td>
+<td>在元素内插入分页符。</td>
+<td><code>page-break-inside: avoid;</code></td>
+</tr>
+</tbody></table>
+<h3 id="表属性-Table"><a href="#表属性-Table" class="headerlink" title="表属性 (Table)"></a>表属性 (Table)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>border-collapse</td>
+<td>指定是连接还是分隔表格单元格边界。</td>
+<td><code>border-collapse: collapse;</code></td>
+</tr>
+<tr>
+<td>border-spacing</td>
+<td>设置相邻表格单元格的边界之间的间距。</td>
+<td><code>border-spacing: 5px;</code></td>
+</tr>
+<tr>
+<td>caption-side</td>
+<td>指定表格标题的位置。</td>
+<td><code>caption-side: bottom;</code></td>
+</tr>
+<tr>
+<td>empty-cells</td>
+<td>显示或隐藏空表单元格的边框和背景。</td>
+<td><code>empty-cells: hide;</code></td>
+</tr>
+<tr>
+<td>table-layout</td>
+<td>指定表布局算法。</td>
+<td><code>table-layout: fixed;</code></td>
+</tr>
+</tbody></table>
+<h3 id="文字属性-Text"><a href="#文字属性-Text" class="headerlink" title="文字属性 (Text)"></a>文字属性 (Text)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>direction</td>
+<td>定义文本方向&#x2F;书写方向。</td>
+<td><code>direction: rtl;</code></td>
+</tr>
+<tr>
+<td>tab-size</td>
+<td>指定制表符的长度。</td>
+<td><code>tab-size: 4;</code></td>
+</tr>
+<tr>
+<td>text-align</td>
+<td>设置内联内容的水平对齐方式。</td>
+<td><code>text-align: center;</code></td>
+</tr>
+<tr>
+<td>text-align-last</td>
+<td>指定当最后一行对齐时如何对齐块或强制换行符之前的行。</td>
+<td><code>text-align-last: justify;</code></td>
+</tr>
+<tr>
+<td>text-decoration</td>
+<td>指定添加到文本的装饰(下划线&#x2F;中划线等)</td>
+<td><code>text-decoration: underline;</code></td>
+</tr>
+<tr>
+<td>text-decoration-color</td>
+<td>指定的颜色text-decoration-line。</td>
+<td><code>text-decoration-color: red;</code></td>
+</tr>
+<tr>
+<td>text-decoration-line</td>
+<td>指定将哪种线条装饰添加到元素。</td>
+<td><code>text-decoration-line: underline;</code></td>
+</tr>
+<tr>
+<td>text-decoration-style</td>
+<td>指定text-decoration-line属性指定的线条样式。</td>
+<td><code>text-decoration-style: dotted;</code></td>
+</tr>
+<tr>
+<td>text-indent</td>
+<td>缩进文本的第一行。</td>
+<td><code>text-indent: 20px;</code></td>
+</tr>
+<tr>
+<td>text-justify</td>
+<td>指定当text-align属性设置为justify时要使用的对齐方法。</td>
+<td><code>text-justify: inter-word;</code></td>
+</tr>
+<tr>
+<td>text-overflow</td>
+<td>指定当文本内容溢出块容器时将如何显示。</td>
+<td><code>text-overflow: ellipsis;</code></td>
+</tr>
+<tr>
+<td>text-shadow</td>
+<td>将一个或多个阴影应用于元素的文本内容。</td>
+<td><code>text-shadow: 2px 2px 2px #000;</code></td>
+</tr>
+<tr>
+<td>text-transform</td>
+<td>转换文本的大小写。</td>
+<td><code>text-transform: uppercase;</code></td>
+</tr>
+<tr>
+<td>line-height</td>
+<td>设置文本行之间的高度。</td>
+<td><code>line-height: 1.5;</code></td>
+</tr>
+<tr>
+<td>vertical-align</td>
+<td>设置元素相对于当前文本基线的垂直位置。</td>
+<td><code>vertical-align: middle;</code></td>
+</tr>
+<tr>
+<td>letter-spacing</td>
+<td>设置字母之间的额外间距。</td>
+<td><code>letter-spacing: 1px;</code></td>
+</tr>
+<tr>
+<td>word-spacing</td>
+<td>设置单词之间的间距。</td>
+<td><code>word-spacing: 2px;</code></td>
+</tr>
+<tr>
+<td>white-space</td>
+<td>指定如何处理元素内的空白。</td>
+<td><code>white-space: nowrap;</code></td>
+</tr>
+<tr>
+<td>word-break</td>
+<td>指定如何在单词内换行。</td>
+<td><code>word-break: break-all;</code></td>
+</tr>
+<tr>
+<td>word-wrap</td>
+<td>指定在内容超出其容器边界时是否中断单词。</td>
+<td><code>word-wrap: break-word;</code></td>
+</tr>
+</tbody></table>
+<h3 id="转换属性-Transform"><a href="#转换属性-Transform" class="headerlink" title="转换属性 (Transform)"></a>转换属性 (Transform)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>backface-visibility</td>
+<td>指定当面对用户时，转换后的元素的“背面”是否可见。</td>
+<td><code>backface-visibility: hidden;</code></td>
+</tr>
+<tr>
+<td>perspective</td>
+<td>定义从中查看对象的所有子元素的透视图。</td>
+<td><code>perspective: 1000px;</code></td>
+</tr>
+<tr>
+<td>perspective-origin</td>
+<td>定义透视图属性的原点（3D空间的消失点）。</td>
+<td><code>perspective-origin: 50% 50%;</code></td>
+</tr>
+<tr>
+<td>transform</td>
+<td>将2D或3D变换应用于元素。</td>
+<td><code>transform: rotate(45deg);</code></td>
+</tr>
+<tr>
+<td>transform-origin</td>
+<td>定义元素的变换原点。</td>
+<td><code>transform-origin: top left;</code></td>
+</tr>
+<tr>
+<td>transform-style</td>
+<td>指定如何在3D空间中渲染嵌套元素。</td>
+<td><code>transform-style: preserve-3d;</code></td>
+</tr>
+</tbody></table>
+<h3 id="过渡属性-Transition"><a href="#过渡属性-Transition" class="headerlink" title="过渡属性 (Transition)"></a>过渡属性 (Transition)</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>transition</td>
+<td>定义元素的两种状态之间的过渡。</td>
+<td><code>transition: width 1s ease-in-out;</code></td>
+</tr>
+<tr>
+<td>transition-delay</td>
+<td>指定过渡效果何时开始。</td>
+<td><code>transition-delay: 0.5s;</code></td>
+</tr>
+<tr>
+<td>transition-duration</td>
+<td>指定过渡效果要花费的秒数或毫秒数。</td>
+<td><code>transition-duration: 0.3s;</code></td>
+</tr>
+<tr>
+<td>transition-property</td>
+<td>指定应将过渡效果应用到的CSS属性的名称。</td>
+<td><code>transition-property: background-color;</code></td>
+</tr>
+<tr>
+<td>transition-timing-function</td>
+<td>指定过渡效果的速度曲线。</td>
+<td><code>transition-timing-function: ease-out;</code></td>
+</tr>
+</tbody></table>
+<h3 id="视觉格式属性"><a href="#视觉格式属性" class="headerlink" title="视觉格式属性"></a>视觉格式属性</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>display</td>
+<td>指定元素在屏幕上的显示方式。</td>
+<td><code>display: block;</code></td>
+</tr>
+<tr>
+<td>position</td>
+<td>指定如何定位元素。</td>
+<td><code>position: absolute;</code></td>
+</tr>
+<tr>
+<td>top</td>
+<td>指定所定位元素的上边缘的位置。</td>
+<td><code>top: 10px;</code></td>
+</tr>
+<tr>
+<td>right</td>
+<td>指定所定位元素的右边缘的位置。</td>
+<td><code>right: 20px;</code></td>
+</tr>
+<tr>
+<td>bottom</td>
+<td>指定所定位元素底边的位置。</td>
+<td><code>bottom: 15px;</code></td>
+</tr>
+<tr>
+<td>left</td>
+<td>指定定位元素左边缘的位置。</td>
+<td><code>left: 25px;</code></td>
+</tr>
+<tr>
+<td>float</td>
+<td>指定一个框是否应该浮动。</td>
+<td><code>float: left;</code></td>
+</tr>
+<tr>
+<td>clear</td>
+<td>指定相对于浮动元素的元素位置。</td>
+<td><code>clear: both;</code></td>
+</tr>
+<tr>
+<td>z-index</td>
+<td>指定定位元素的分层或堆叠顺序。</td>
+<td><code>z-index: 100;</code></td>
+</tr>
+<tr>
+<td>overflow</td>
+<td>指定对溢出元素框的内容的处理。</td>
+<td><code>overflow: hidden;</code></td>
+</tr>
+<tr>
+<td>overflow-x</td>
+<td>指定当内容超出元素内容区域的宽度时如何管理内容。</td>
+<td><code>overflow-x: scroll;</code></td>
+</tr>
+<tr>
+<td>overflow-y</td>
+<td>指定当内容超出元素内容区域的高度时如何管理内容。</td>
+<td><code>overflow-y: auto;</code></td>
+</tr>
+<tr>
+<td>resize</td>
+<td>指定元素是否可由用户调整大小。</td>
+<td><code>resize: both;</code></td>
+</tr>
+<tr>
+<td>clip</td>
+<td>定义裁剪区域。</td>
+<td><code>clip: rect(10px, 50px, 20px, 0);</code></td>
+</tr>
+<tr>
+<td>visibility</td>
+<td>指定一个元素是否可见。</td>
+<td><code>visibility: hidden;</code></td>
+</tr>
+<tr>
+<td>cursor</td>
+<td>指定游标的类型。</td>
+<td><code>cursor: pointer;</code></td>
+</tr>
+<tr>
+<td>box-shadow</td>
+<td>将一个或多个阴影应用于元素的框。</td>
+<td><code>box-shadow: 3px 3px 5px #888888;</code></td>
+</tr>
+<tr>
+<td>box-sizing</td>
+<td>更改默认的CSS框模型。</td>
+<td><code>box-sizing: border-box;</code></td>
+</tr>
+</tbody></table>
+<h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407151724213.png" style="zoom:33%;" />
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box-model</span>&#123;</span><br><span class="line">  <span class="comment">/*针对边距,即margin或padding*/</span></span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">6px</span> <span class="number">12px</span>;<span class="comment">/*第一个表示水平左/右外边距为6px,第二个表示垂直上/下外边距为12px,padding同理设置*/</span></span><br><span class="line">  <span class="comment">/*针对边框*/</span></span><br><span class="line">  <span class="attribute">border</span>: <span class="number">2px</span> solid <span class="built_in">rgba</span>(<span class="number">235</span>,<span class="number">70</span>,<span class="number">224</span>,<span class="number">0.5</span>);</span><br><span class="line">  <span class="comment">/*针对本体,即body/content区域的调整:直接修改width和height*/</span></span><br><span class="line">  <span class="attribute">width</span>: <span class="number">80px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">120px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CSS布局"><a href="#CSS布局" class="headerlink" title="CSS布局"></a>CSS布局</h2><p>下面通过<code>display</code>来设置:</p>
+<ul>
+<li><p><strong>块级元素  block</strong></p>
+<p>独占一行,在父元素中从上至下排列</p>
+<p>默认元素有:div,p,h1</p>
+</li>
+<li><p><strong>内联元素元素  inline</strong></p>
+<p>会和同一个父级中相邻元素重叠,不可以设置宽高与盒子模型中的值</p>
+<p>默认元素有:span,a</p>
+</li>
+<li><p><strong>内联块级元素    inline-block</strong></p>
+<p>与内联元素性质一样,但可以设置宽高与盒子模型中的值</p>
+</li>
+<li><p><strong>隐藏元素  none</strong></p>
+<p>html代码中存在,但元素完全隐藏,并且不占用空间</p>
+</li>
+</ul>
+<h3 id="弹性布局-flex"><a href="#弹性布局-flex" class="headerlink" title="弹性布局 flex"></a>弹性布局 flex</h3><p>强大的布局模型</p>
+<p>父元素设置为flex,其子元素全部都会成为弹性布局</p>
+<p>默认水平排列,可以通过<code>flex-direction: column</code>来调整排列方向</p>
+<ul>
+<li><p>水平排列的时候,使用<code>justify-content: flex-end;</code>控制对齐方向,当前为末尾对齐,即会靠右边.center对齐在中心</p>
+<p>特有的space-between会将元素压到两侧,中间元素均匀分布</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407151746094.png" alt="image-20240715174627565" style="zoom: 33%;" />
+
+<p>space-around会将元素压到离两侧半个间距的距离,元素均匀分布</p>
+<img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407151746633.png" alt="image-20240715174655309" style="zoom:33%;" />
+</li>
+<li><p>垂直排列的时候,使用<code>align-items: flex-start;</code>控制对齐方向,当前为开始出对齐,即会靠住上方</p>
+</li>
+</ul>
+<p>每个项目占据的大小是可调的,比如通过<code>flex: 1</code>使每个元素占用一个比例</p>
+<p>如果不希望每个项目紧挨着,可以设置每个项之间的间距,如:<code>gap: 12px;</code></p>
+<h3 id="网格布局-grid"><a href="#网格布局-grid" class="headerlink" title="网格布局 grid"></a>网格布局 grid</h3><p>允许按照行和列设置的强大的布局模型</p>
+<p>父元素设置为grid,其子元素全部都会成为网格布局</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.grid</span>&#123;</span><br><span class="line">  <span class="comment">/*设定为网格布局*/</span></span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="comment">/*设定3行,第一行100像素,第二行200像素,类推*/</span></span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">100px</span> <span class="number">200px</span> <span class="number">300px</span>;</span><br><span class="line">  <span class="comment">/*设定2列,第一列占据的宽是第二列占据的宽的一半,fr是剩余空间单位*/</span></span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr <span class="number">2</span>fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以使网格布局自动适应内容</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.grid</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="comment">/*自适应行100px*/</span></span><br><span class="line">  <span class="attribute">grid-auto-rows</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="comment">/*自适应每列等宽*/</span></span><br><span class="line">  <span class="attribute">grid-auto-columns</span>: <span class="number">1</span>fr;</span><br><span class="line">  <span class="comment">/*不希望项目紧挨着,设置间隔12px*/</span></span><br><span class="line">  <span class="attribute">grid-gap</span>: <span class="number">12px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="定位布局"><a href="#定位布局" class="headerlink" title="定位布局"></a>定位布局</h3><p>是元素脱离文档流布局的方式</p>
+<p>通过position设置下面项</p>
+<table>
+<thead>
+<tr>
+<th>定位方式</th>
+<th>描述</th>
+<th>参考系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>relative</strong></td>
+<td>对元素进行相对定位，相对于其正常位置进行偏移</td>
+<td>相对于元素自身</td>
+</tr>
+<tr>
+<td><strong>absolute</strong></td>
+<td>对元素进行绝对定位，相对于最近的已定位父元素进行偏移，如果没有已定位的父元素，则相对于<html>元素</td>
+<td>相对于最近的非static定位的父元素</td>
+</tr>
+<tr>
+<td><strong>fixed</strong></td>
+<td>对元素进行固定定位，相对于浏览器窗口进行偏移</td>
+<td>相对于浏览器窗口</td>
+</tr>
+<tr>
+<td><strong>static</strong></td>
+<td>默认定位方式，元素在正常文档流中，不进行定位</td>
+<td>无参考系，遵循文档流布局</td>
+</tr>
+</tbody></table>
+<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//普通函数</span></span><br><span class="line"><span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="comment">//箭头函数(匿名的)</span></span><br><span class="line">()=&gt;&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>箭头函数并没有this，this会作为变量一直向上级词法作用域查找，直到找到为止</p>
+<h2 id="JSON解析"><a href="#JSON解析" class="headerlink" title="JSON解析"></a>JSON解析</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObj=<span class="title class_">JSON</span>.<span class="title function_">parse</span>(jsonStr);</span><br></pre></td></tr></table></figure>
+
+<p>JSON</p>
+<h2 id="typescript"><a href="#typescript" class="headerlink" title="typescript"></a>typescript</h2><p><code>npm install -g typescript</code>  安装typescript</p>
+<p>ts文件编译成js文件:<code>tsc yourfile.ts</code></p>
+<p> <strong>typescript 是 javascript 的超集，可编译成 javascript</strong></p>
+<h2 id="接口请求"><a href="#接口请求" class="headerlink" title="接口请求"></a>接口请求</h2><p>不需要传参数,使用get请求</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">getData</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">axios</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&quot;https://接口地址&quot;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&quot;get&quot;</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(res,<span class="string">&quot;后端拿到的数据&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要传参数,使用post请求</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">getData</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">axios</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&quot;https://接口地址&quot;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&quot;post&quot;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">      <span class="comment">//这里传入的数据</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(res,<span class="string">&quot;后端拿到的数据&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h1><p><code>node.js</code>:一个基于Chrome V8引擎的JavaScript运行时(运行环境)   (node.js无法调用DOM,BOM和Ajax等浏览器内置API)</p>
+<p><img data-src="https://raw.githubusercontent.com/che77a38/blogImage2/main/202209122130871.jpeg" alt="截屏2022-09-12 21.29.01"></p>
+<ul>
+<li>浏览器是JavaScript的前端运行环境</li>
+<li>Node.js是JavaScript的后端运行环境</li>
+</ul>
+<p>XMLHttpRequest也是V8引擎下提供的一个api</p>
+<p><strong>Node.js可以做什么?</strong></p>
+<p>比如说:</p>
+<ol>
+<li>基于Express框架(<a target="_blank" rel="noopener" href="http://www.expressjs.com.cn/),%E5%BF%AB%E9%80%9F%E6%9E%84%E5%BB%BAWeb%E5%BA%94%E7%94%A8">http://www.expressjs.com.cn/),快速构建Web应用</a></li>
+<li>基于Electron框架(<a target="_blank" rel="noopener" href="https://electronjs.org/),%E5%8F%AF%E4%BB%A5%E6%9E%84%E5%BB%BA%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8">https://electronjs.org/),可以构建跨平台的桌面应用</a></li>
+<li>基于restify框架(<a target="_blank" rel="noopener" href="http://restify.com/),%E5%8F%AF%E4%BB%A5%E5%BF%AB%E9%80%9F%E6%9E%84%E5%BB%BAAPI%E6%8E%A5%E5%8F%A3%E9%A1%B9%E7%9B%AE">http://restify.com/),可以快速构建API接口项目</a></li>
+<li>读写和操作数据库,创建实用的命令行工具辅助前端开发,等等</li>
+</ol>
+<p>Node.js下载</p>
+<ul>
+<li>LTS:长期稳定版(long time stable)</li>
+<li>Current:当前最新版</li>
+</ul>
+<p><code>node -v</code>查看node.js版本号</p>
+<p><code>node 要执行的js文件的路径</code>执行js文件代码(代码修改后不能即时响应,node换成nodemon就可以即时响应)</p>
+<h2 id="node-js安装"><a href="#node-js安装" class="headerlink" title="node.js安装"></a>node.js安装</h2><p>可以使用<code>nvm</code>工具管理不同版本的node</p>
+<p><code>nvm install 20</code>安装20版本的npm</p>
+<p><code>nvm ls/list</code>查看安装了哪些版本的nvm</p>
+<p><code>nvm use 版本号</code>使用哪个已经安装的版本号的node</p>
+<h2 id="fs文件系统模块"><a href="#fs文件系统模块" class="headerlink" title="fs文件系统模块"></a>fs文件系统模块</h2><p>fs模块是Node.js官方提供的,用来操作文件的模块,它提供了一系列的方法和属性,用来满足用户对文件的操作需求,如:</p>
+<ul>
+<li><p><code>fs.readFile()</code>方法,用来读取指定文件中的内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fs.<span class="title function_">readFile</span>(path[, options], callback)<span class="comment">//[]括起来表示可选参数</span></span><br><span class="line">  <span class="comment">//path:文件路径;option:编码格式;callback:通过回调函数拿到读取的结果(回调参数为1.errno,2.data)</span></span><br><span class="line"><span class="comment">//如果成功err里存NULL,data存读到的数据;失败的话errno存错误编号,data存undefined</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>fs.writeFile()</code>方法,用来向指定的文件中写入内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">  </span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>如果要在JavaScript代码中,使用fs模块来操作文件,则需要使用如下的方式先导入它:<code>const fs = require(&#39;fs&#39;)</code></p>
+<h1 id="Node-js相关工具"><a href="#Node-js相关工具" class="headerlink" title="Node.js相关工具"></a>Node.js相关工具</h1><h2 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/646112395">nvm的安装参考</a></p>
+<p><strong>常用命令</strong></p>
+<ul>
+<li><p>查看可安装版本:<code>nvm ls-remote</code></p>
+</li>
+<li><p>查看已安装版本:<code>nvm ls</code></p>
+</li>
+<li><p>安装指定版本:<code>nvm install &lt;Node.js的版本号&gt;</code></p>
+</li>
+<li><p>卸载指定版本:<code>nvm uninstall &lt;Node.js的版本号&gt;</code></p>
+</li>
+<li><p>查看当前版本:<code>nvm current</code></p>
+</li>
+<li><p>切换至指定版本</p>
+<p><code>nvm use &lt;Node.js的版本号&gt;</code></p>
+<p><code>nvm use &lt;别名&gt;</code></p>
+</li>
+<li><p>设置默认版本:<code>nvm alias default &lt;Node.js的版本号&gt;</code></p>
+</li>
+<li><p>对指定版本添加别名:<code>nvm alias &lt;别名&gt; &lt;Node.js的版本号&gt;</code></p>
+</li>
+<li><p>删除已定义别名: <code>nvm unalias &lt;别名&gt;</code></p>
+</li>
+</ul>
+<h1 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h1><ul>
+<li>get代表从服务器获取资源</li>
+<li>post代表为服务器添加资源</li>
+<li>put&#x2F;patch代表修改服务器资源，put更新资源的全部，patch根据资源的局部</li>
+<li>delete代表删除服务器资源</li>
+</ul>
+<p>HTTP&#x2F;1.1 定义的请求方法有8种：GET（完整请求一个资源）、POST（提交表单）、PUT（上传文件）、DELETE（删除）、PATCH、HEAD（仅请求响应首部）、OPTIONS（返回请求的资源所支持的方法）、TRACE（追求一个资源请求中间所经过的代理）。最常的两种GET和POST，如果是<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=RESTful&spm=1001.2101.3001.7020">RESTful</a>接口的话一般会用到GET、POST、DELETE、PUT。</p>
+<p><strong>同步和异步的区别：同步和异步关注的是消息通信机制(synchronous communication&#x2F; asynchronous communication)。同步，就是调用某个东西是，调用方得等待这个调用返回结果才能继续往后执行。异步，和同步相反 调用方不会理解得到结果，而是在调用发出后调用者可用继续执行后续操作，被调用者通过状态来通知调用者，或者通过回调函数来处理这个调用</strong></p>
+<p>使用XMLHttpRequest的方法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h1><p>一个JavaScript框架,目的是将html和JavaScript连起来,让网页能动起来</p>
+<p>下面只介绍了基本用法,<a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/introduction.html">详情参考官方文档</a></p>
+<p>一个Vue页面分为三个部分</p>
+<ul>
+<li>script标签: 写js的地方</li>
+<li>template标签: 写HTML的地方</li>
+<li>style标签: 写css的地方</li>
+</ul>
+<p><strong>vue中支持在html中使用变量通过<code>&#123;&#123;变量名&#125;&#125;</code>方式</strong></p>
+<p><strong>最基础的一些使用方法：</strong></p>
+<ul>
+<li>直接将数据渲染到dom</li>
+<li>v-bind:attribute名&#x3D;”Vue的键”,将属性绑定到Vue的键</li>
+<li>v-if&#x3D;”Vue的键”,将Vue的键（bool值）绑定元素是否显示</li>
+<li>v-for&#x3D;”xxx in xxxs”,将Vue的键xxxs(数组)，数组全部渲染出来</li>
+<li>v-on:click&#x3D;”函数名”,绑定函数到事件，函数直接在Vue实例对象中，可以直接使用那些数据</li>
+<li>v-model&#x3D;”Vue的键”，双向绑定输入和变量</li>
+</ul>
+<h2 id="开发环境搭建"><a href="#开发环境搭建" class="headerlink" title="开发环境搭建"></a>开发环境搭建</h2><p><a href="#node.js%E5%AE%89%E8%A3%85">安装好node.js与npm</a>后,还需要安装webpack和vue-cli</p>
+<ul>
+<li><strong><code>webpack</code>：</strong> Vue的组件都是通过 .vue 或者像微信小程序的.wxml 和.wcss 等自定义的，组件都无法被用户通过各种浏览器解析，需要被翻译打包成 js文件</li>
+<li><strong><code>vue-cli</code>：</strong> 用来生成模版的 Vue 工程，相当于按照设计好的图纸来盖房子</li>
+</ul>
+<h3 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install webpack -g</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：使用上面语法执行npm run dev 可能报错!</p>
+</blockquote>
+<p>解决方法：MAC电脑出现 .bin&#x2F;webpack-dev-server permission denied 提示权限问题,为了避免出现这个问题你可以采取下面语法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install webpack-dev-server -g </span><br></pre></td></tr></table></figure>
+
+<h3 id="安装vue脚手架"><a href="#安装vue脚手架" class="headerlink" title="安装vue脚手架"></a>安装vue脚手架</h3><blockquote>
+<p>Vue CLI 比如 Create Vue </p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>vue list</code>&#x2F;<code>vue --version</code>查看安装结果</p>
+<h3 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h3><ul>
+<li><p>已有vue项目，则进入项目根目录 ，安装项目依赖</p>
+<p><code>npm i</code>安装项目需要的所有依赖</p>
+</li>
+<li><p>还没有vue项目,则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装 vue 路由模块vue-router和网络请求模块vue-resource</span></span><br><span class="line">sudo npm install vue-router vue-resource --save</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p>–save选项是指在安装npm包时，将包的名称和版本号添加到项目的package.json文件中的dependencies部分。这样做可以确保其他开发人员在克隆项目并运行npm install时，会安装相同的包及版本。</p>
+</blockquote>
+<h4 id="更标准的做法"><a href="#更标准的做法" class="headerlink" title="更标准的做法"></a>更标准的做法</h4><ol>
+<li><p>打开终端或命令行，进入你想创建项目的目录，然后运行以下命令来创建一个新的 Vue 项目</p>
+<p><code>sudo vue create my-vue-app</code></p>
+</li>
+<li><p>安装依赖并启动开发服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line"><span class="comment">#上面命令有可能会报权限错误,重点在于:将所有者修改回自己(以下面项目为例)</span></span><br><span class="line">sudo <span class="built_in">chown</span> -R $(<span class="built_in">whoami</span>) /Users/zeroko/Documents/project/vue_project/test-vue</span><br><span class="line"></span><br><span class="line"><span class="comment">#构建项目</span></span><br><span class="line">npm run serve <span class="comment">#开发版本</span></span><br><span class="line">npm run build <span class="comment">#生产版本</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果一切配置正确，你应该会看到类似以下的输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DONE  Compiled successfully <span class="keyword">in</span> 1234ms                                      </span><br><span class="line">App running at:</span><br><span class="line">- Local:   http://localhost:8080/ </span><br><span class="line">- Network: http://192.168.1.2:8080/</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>src&#x2F;App.vue默认有vue代码</p>
+<p><strong>修改代码后保存文件</strong>，浏览器会自动刷新页面</p>
+<p>最后:</p>
+<p><code>npm run dev</code>启动项目</p>
+<blockquote>
+<p><code>cnpm run dev</code> 后面的dev在项目中表示的是dev环境，是在package.json文件里面，scripts字段定义的对象脚本，当然了，还可以有其他的环境，不同的环境对应的配置不同，在各境上运行只需要执行对应的命令即可。（可能有的是cnmp run sever，根据自己项目的配置启动即可）</p>
+</blockquote>
+<p>此处额外提供一个最简单的App.vue</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;h1&gt;Hello Vue!&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;App&#x27;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">#app &#123;</span><br><span class="line">  font-family: Avenir, Helvetica, Arial, sans-serif;</span><br><span class="line">  -webkit-font-smoothing: antialiased;</span><br><span class="line">  -moz-osx-font-smoothing: grayscale;</span><br><span class="line">  text-align: center;</span><br><span class="line">  color: #2c3e50;</span><br><span class="line">  margin-top: 60px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="vue中创建响应式变量"><a href="#vue中创建响应式变量" class="headerlink" title="vue中创建响应式变量"></a>vue中创建响应式变量</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="title function_">ref</span>(<span class="string">&#x27;123&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>创建的响应式变量,在template的<code>&quot;&quot;</code>中可直接使用str,在标签之间的文本中通过<code>&#123;&#123;str&#125;&#125;</code>来使用;而在script中,通过<code>str.value</code>来使用</p>
+<p><code>&#123;&#123;&#125;&#125;</code>中是可以执行运算公式的</p>
+<blockquote>
+<p>在Vue中，响应式变量是指当数据发生变化时，页面会自动更新以反映这些变化的特性。Vue通过使用数据绑定和依赖追踪来实现响应式变量。</p>
+<p>当你在Vue实例中声明一个变量时，Vue会将这个变量转换为响应式变量。这意味着当这个变量的值发生变化时，与之相关联的视图会自动更新以反映这个变化。</p>
+<p>Vue实现响应式变量的原理是通过使用Object.defineProperty()方法来劫持数据的访问和修改，从而能够在数据发生变化时通知相关的视图进行更新。这种机制使得开发者无需手动操作DOM，而是专注于数据的处理和逻辑，让Vue框架来处理视图的更新。</p>
+<p>当使用ref属性引用一个响应式变量时，当这个响应式变量发生变化时，通过ref引用的元素也会相应地更新。这样，ref属性可以帮助我们在需要直接访问DOM元素或组件实例时，保持视图与数据的同步更新。</p>
+</blockquote>
+<h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><p>vue中实现一个事件绑定:</p>
+<ul>
+<li><code>@submit</code>：监听表单提交事件</li>
+<li><code>@input</code>：监听输入框的输入事件</li>
+<li><code>@change</code>：监听输入框的值变化事件</li>
+<li><code>@mouseover</code>：监听鼠标移入事件</li>
+<li><code>@mouseleave</code>：监听鼠标移出事件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">  function add()&#123;</span><br><span class="line">    console.log(&#x27;123&#x27;);</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div @click=&quot;add&quot; class=&quot;todo-button&quot;&gt;</span><br><span class="line">    Add Todo</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>需要调用事件的时候传入参数,可以使用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> @<span class="attr">click</span>=<span class="string">&quot;add(参数)&quot;</span> <span class="attr">class</span>=<span class="string">&quot;todo-button&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>事件绑定中也可直接写代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button type=&quot;button&quot; @click=&quot;number++&quot;&gt;&#123;&#123; number &#125;&#125;&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量绑定"><a href="#变量绑定" class="headerlink" title="变量绑定"></a>变量绑定</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">	//const value = &#x27;123&#x27;//原本是这样的,改成下面vue的形式</span><br><span class="line">	import &#123;ref&#125; from &#x27;vue&#x27;;</span><br><span class="line">	const value =ref(&#x27;123&#x27;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;input v-model=&quot;value&quot;  class=&quot;todo-input&quot;/&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>value变量与input控件<strong>双向绑定</strong>成功</p>
+<ul>
+<li>如果需要在script中使用响应式变量的值需要使用:<code>value.value</code>,前一个value是绑定的响应式变量,后一个 value才真正取到变量</li>
+<li>如果需要再template中使用响应式变量的值,只需要直接使用变量名字</li>
+</ul>
+<ol>
+<li><code>v-bind</code>用于动态绑定数据到HTML元素的属性上，实现数据的<strong>单向绑定</strong>。通过<code>v-bind</code>，你可以将Vue实例中的数据动态地绑定到HTML元素的属性上。</li>
+<li><code>v-model</code>用于实现表单元素和Vue实例数据的<strong>双向绑定</strong>。当表单元素的值发生变化时，Vue实例中的数据也会相应地更新；反之，当Vue实例中的数据发生变化时，表单元素的值也会随之更新。</li>
+</ol>
+<h2 id="侦听器"><a href="#侦听器" class="headerlink" title="侦听器"></a>侦听器</h2><p>下面实现的效果为:当str变化的时候,会被调用add方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">	import&#123;ref,watch&#125; from &#x27;vue&#x27;//此处要添加watch才能添加监听器功能</span><br><span class="line">  const str=ref(&#x27;&#x27;);</span><br><span class="line">  </span><br><span class="line">  function add()&#123;</span><br><span class="line">	console.log(123);</span><br><span class="line">&#125;</span><br><span class="line">  /*</span><br><span class="line">  //这种方式可以获得修改前后的值</span><br><span class="line">  function add(newValue,oldValue)&#123;</span><br><span class="line">  	console.log(&#x27;新的值:&#x27;+newValue , &#x27;旧的值:&#x27;+oldValue);</span><br><span class="line">  &#125;</span><br><span class="line">  */</span><br><span class="line">  </span><br><span class="line">  watch(str,add)//此处连接str和add方法</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果侦听器侦听的响应式变量是个对象,而变化的只是对象中的一个成员的值,那么对应的侦听器将不会被触发,此时可以通过下面的方式实现监听</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">watch</span>(str,add,&#123;<span class="attr">deep</span>: <span class="literal">true</span>&#125;)</span><br><span class="line"><span class="comment">//此处的&#123;deep: true&#125;表示深度监听</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><p>v-for是根据list数组中的个数,来创建多少个中间的块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;h1&gt;Hello Vue!&lt;/h1&gt;</span><br><span class="line">    &lt;!-- eslint-disable-next-line vue/require-v-for-key --&gt;</span><br><span class="line">    &lt;div v-for=&quot;item in list&quot; :class=&quot;[item.isComplete ? &#x27;complete&#x27; : &#x27;&#x27;]&quot;&gt;</span><br><span class="line">      &lt;!--中间的块--&gt;</span><br><span class="line">      &lt;input type=&quot;checkbox&quot; v-model=&quot;item.isComplete&quot;/&gt;</span><br><span class="line">      &lt;span class=&quot;name&quot;&gt;&#123;&#123;item.text&#125;&#125;&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;App&#x27;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const list = ref([</span><br><span class="line">      &#123;</span><br><span class="line">        isComplete: false,</span><br><span class="line">        text: &#x27;吃饭&#x27;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        isComplete: false,</span><br><span class="line">        text: &#x27;睡觉&#x27;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        isComplete: false,</span><br><span class="line">        text: &#x27;打豆豆&#x27;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ]);</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">      list,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">#app &#123;</span><br><span class="line">  font-family: Avenir, Helvetica, Arial, sans-serif;</span><br><span class="line">  -webkit-font-smoothing: antialiased;</span><br><span class="line">  -moz-osx-font-smoothing: grayscale;</span><br><span class="line">  text-align: center;</span><br><span class="line">  color: #2c3e50;</span><br><span class="line">  margin-top: 60px;</span><br><span class="line">&#125;</span><br><span class="line">.complete &#123;</span><br><span class="line">  text-decoration: line-through;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;!-- eslint-disable-next-line vue/require-v-for-key --&gt;</code>用于禁禁用 ESLint 的 <code>vue/require-v-for-key</code> 规则,防止必须在v-for中使用key的规则阻止编译</p>
+<p>更标准的做法是为v-for添加key,如下:(此处添加的key是index,也可以添加别的)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;h1&gt;Hello Vue!&lt;/h1&gt;</span><br><span class="line">    &lt;div v-for=&quot;(item, index) in list&quot; :key=&quot;index&quot; :class=&quot;[item.isComplete ? &#x27;complete&#x27; : &#x27;&#x27;]&quot;&gt;</span><br><span class="line">      &lt;!--中间的块--&gt;</span><br><span class="line">      &lt;input type=&quot;checkbox&quot; v-model=&quot;item.isComplete&quot;/&gt;</span><br><span class="line">      &lt;span class=&quot;name&quot;&gt;&#123;&#123;item.text&#125;&#125;&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;App&#x27;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const list = ref([</span><br><span class="line">      &#123;</span><br><span class="line">        isComplete: false,</span><br><span class="line">        text: &#x27;吃饭&#x27;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        isComplete: false,</span><br><span class="line">        text: &#x27;睡觉&#x27;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        isComplete: false,</span><br><span class="line">        text: &#x27;打豆豆&#x27;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ]);</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">      list,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">#app &#123;</span><br><span class="line">  font-family: Avenir, Helvetica, Arial, sans-serif;</span><br><span class="line">  -webkit-font-smoothing: antialiased;</span><br><span class="line">  -moz-osx-font-smoothing: grayscale;</span><br><span class="line">  text-align: center;</span><br><span class="line">  color: #2c3e50;</span><br><span class="line">  margin-top: 60px;</span><br><span class="line">&#125;</span><br><span class="line">.complete &#123;</span><br><span class="line">  text-decoration: line-through;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>往往需要使用具有稳定唯一标识符的属性作为key,如:</p>
+<p><code>  &lt;div v-for=&quot;item in list&quot; :key=&quot;item.text&quot;/&gt;</code></p>
+<h2 id="动态绑定类名"><a href="#动态绑定类名" class="headerlink" title="动态绑定类名"></a>动态绑定类名</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:class=&quot;[item.isComplete ? &#x27;complete&#x27; : &#x27;&#x27;]&quot;</span><br></pre></td></tr></table></figure>
+
+<p><code>:class</code> 是 Vue 中用于动态绑定 CSS 类的指令。它允许你根据数据的变化动态地添加或移除 CSS 类，从而实现条件样式。</p>
+<p>也可以直接通过响应式变量传入类名</p>
+<p>动态绑定还有在 <code>&lt;img :src=&quot;...&quot; /&gt;</code>的过程中动态绑定图片源</p>
+<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-show</span>=<span class="string">&quot;true/false/bool变量&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">&quot;true/false/bool变量&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>v-show</strong>和<strong>v-if</strong>都可以控制是否展示该控件</p>
+<ul>
+<li><p>v-show是虽然可以控制代码是否展示,但是代码本身可以可以在浏览器开发者工具查看,代码本身是存在的</p>
+<p>使用v-show,盒子是会创建的,只是给他添加了<code>style=&quot;display:none;&quot;</code>隐藏了起来</p>
+</li>
+<li><p>v-if为false的时候,代码都不将不存在</p>
+<p>盒子不会被创建</p>
+</li>
+</ul>
+<p>对于需要频繁切换展示的使用v-show,对于第一次创建就确定是否展示的,后续不变的使用v-if</p>
+<h2 id="组件的注册和使用"><a href="#组件的注册和使用" class="headerlink" title="组件的注册和使用"></a>组件的注册和使用</h2><p>可以把封装成一个组件,每次使用只需要写一个名字就可以了,组件可大可小,只要是能公用的东西,我们都可以封装成<strong>组件</strong></p>
+<p>在vue中,每一个vue页面都可以理解为一个组件,有个文件夹components,就是给我们放组件的</p>
+<p><strong>父子组件的相互通信</strong></p>
+<ul>
+<li>vue支持父组件往子组件传值,可以使用vue的<strong>defineProps</strong></li>
+<li>vue也支持子组件往父组件传值,可以使用vue的<strong>defineEmits</strong></li>
+</ul>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>下面案例带传入信息给子组件,也带接受子组件传出的信息</p>
+<h4 id="创建组件"><a href="#创建组件" class="headerlink" title="创建组件"></a>创建组件</h4><p>比方说在components中创建一个button组件:components文件夹下新建文件button.vue,代码如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"> &lt;script setup&gt;</span><br><span class="line">   //引入defineProps函数,这个函数就是用来定义我们传进来的变量的,也叫props</span><br><span class="line">   //defineProps用于支持父组件往子组件传值,defineEmits用于支持子组件往父组件传值</span><br><span class="line">   import (defineProps,defineEmits&#125; from `vue`</span><br><span class="line">   </span><br><span class="line">   const props = defineProps([&#x27;text&#x27;])//数组中的每一项都是一个字符串,字符串就是我们要声明的变量的名字</span><br><span class="line">   //比如这里的text,就可以在外界使用该组件的时候通过text传进来值</span><br><span class="line">   </span><br><span class="line">   const emit = defineEmits([&#x27;ok&#x27;])//定义传出的值的键</span><br><span class="line">   </span><br><span class="line">   function send()&#123;</span><br><span class="line">     //处理数据</span><br><span class="line">     //处理完后将结果返回出去</span><br><span class="line">     emit(&#x27;ok&#x27;,&#x27;hello&#x27;)</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">)&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div class=&quot;button&quot; @click=&quot;send&quot;&gt;</span><br><span class="line">    &lt;!--此处使用传入的props--&gt;</span><br><span class="line">  	&#123;&#123;props.text&#125;&#125;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">  .button&#123;</span><br><span class="line">    margin: 100px 0 0 200px;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 50px;</span><br><span class="line">    line-height: 50px;</span><br><span class="line">    text-align: center;</span><br><span class="line">    background-color: antiquewhite;</span><br><span class="line">    border-radius: 10px;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面创建了一个组件</p>
+<h4 id="使用组件"><a href="#使用组件" class="headerlink" title="使用组件"></a>使用组件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">  //myButton是使用的时候随意起的名字</span><br><span class="line">	import myButton from &#x27;./components/button.vue</span><br><span class="line">  </span><br><span class="line">  //此方法用于接受子组件传出的值</span><br><span class="line">  function add(str)&#123;</span><br><span class="line">    console.log(str)</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;!--使用组件(此处传入的text将会传入props中)--&gt;</span><br><span class="line">&lt;!--使用组件(此处ok是子组件中使用defineEmits定义的键,当子组件中调用emit(&#x27;ok&#x27;,&#x27;&#x27;hello&#x27;)时,此代码中的add函数将被回调,add函数的参数即为传出的hello)--&gt;</span><br><span class="line">	&lt;myButton text=&quot;你好&quot; @ok=&quot;add&quot;&gt;&lt;/myButton&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="前后端交互"><a href="#前后端交互" class="headerlink" title="前后端交互"></a>前后端交互</h2><p>使用axios库来发起网络请求</p>
+<blockquote>
+<p>axios 是一个流行的 JavaScript 库，用于在浏览器和 Node.js 中进行 HTTP 请求。它可以让您发送异步请求到服务器并处理响应数据。axios 支持 Promise API，并且可以拦截请求和响应，提供了许多便捷的方法来处理数据。您可以使用 axios 发送 GET、POST、PUT、DELETE 等类型的请求，并对请求进行配置和处理错误。axios 是一个强大而灵活的工具，适合用于处理网络请求和构建前端应用。</p>
+</blockquote>
+<p>安装:<code>npm install axios</code></p>
+<p>下面的代码案例是继承于<a href="#%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93">列表渲染处的代码</a></p>
+<p>get方法演示:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">  import axios from &#x27;axios&#x27;</span><br><span class="line">	</span><br><span class="line">	const list = ref([])</span><br><span class="line"></span><br><span class="line">  async function getList()&#123;</span><br><span class="line">    const res = await axios(&#123;</span><br><span class="line">      url: &quot;https://q6zv39.laf.run/get_list&quot;,</span><br><span class="line">      method:&quot;GET&quot;,</span><br><span class="line">    &#125;)</span><br><span class="line">    //获取到的值赋给上面定义的list变量,res.data.list是因为接口传回来的数据就有几层json嵌套,进去data中找到list</span><br><span class="line">    list.value = res.data.list</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">	//vue3的setup语法呢,create构造函数就是这样直接调用就可以了,即想让网页渲染的时候就执行下面的函数,直接在script标签中直接调用就可以了</span><br><span class="line">  getList()</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>post方法演示新增数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">  import axios from &#x27;axios&#x27;</span><br><span class="line"></span><br><span class="line">  async function add()&#123;</span><br><span class="line">    const res = await axios(&#123;</span><br><span class="line">      url: &quot;https://q6zv39.laf.run/add-todo&quot;,</span><br><span class="line">      method:&quot;POST&quot;,</span><br><span class="line">      data: &#123;</span><br><span class="line">        value: value.value,</span><br><span class="line">        isCompleted: false,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">    //获取到的值赋给上面定义的list变量,res.data.list是因为接口传回来的数据就有几层json嵌套,进去data中找到list</span><br><span class="line">    getList()//调用这个刷新结果</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>post方法演示修改数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">  import axios from &#x27;axios&#x27;</span><br><span class="line"></span><br><span class="line">  async function update(id)&#123;</span><br><span class="line">    const res = await axios(&#123;</span><br><span class="line">      url: &quot;https://q6zv39.laf.run/update-todo&quot;,</span><br><span class="line">      method:&quot;POST&quot;,</span><br><span class="line">      data: &#123;</span><br><span class="line">        id,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">    //获取到的值赋给上面定义的list变量,res.data.list是因为接口传回来的数据就有几层json嵌套,进去data中找到list</span><br><span class="line">    getList()//调用这个刷新结果</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>post方法演示删除数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">  import axios from &#x27;axios&#x27;</span><br><span class="line"></span><br><span class="line">  async function del(id)&#123;</span><br><span class="line">    const res = await axios(&#123;</span><br><span class="line">      url: &quot;https://q6zv39.laf.run/del-todo&quot;,</span><br><span class="line">      method:&quot;POST&quot;,</span><br><span class="line">      data: &#123;</span><br><span class="line">        id,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">    //获取到的值赋给上面定义的list变量,res.data.list是因为接口传回来的数据就有几层json嵌套,进去data中找到list</span><br><span class="line">    getList()//调用这个刷新结果</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="过渡动画"><a href="#过渡动画" class="headerlink" title="过渡动画"></a>过渡动画</h2><p>过渡动画二要素</p>
+<ol>
+<li>怎么变化</li>
+<li>变化成啥样</li>
+</ol>
+<h3 id="css原生方法实现"><a href="#css原生方法实现" class="headerlink" title="css原生方法实现"></a>css原生方法实现</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> = <span class="string">&quot;cnt-box&quot;</span>&gt;</span></span><br><span class="line">  数值:<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btn&quot;</span> <span class="attr">:class</span>=<span class="string">&quot;&#123;changed:number%2==0&#125;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;number++&quot;</span>&gt;</span>&#123;&#123; number &#125;&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> number = <span class="title function_">ref</span>(<span class="number">1</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-class">.btn</span>&#123;</span></span><br><span class="line"><span class="language-css">  <span class="attribute">transition</span>: all <span class="number">1s</span> ease;</span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-class">.changed</span>&#123;</span></span><br><span class="line"><span class="language-css">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">100px</span>,<span class="number">0</span>) <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>transtion说明:</p>
+<ul>
+<li>all  过渡效果的css属性名称,all为所有的</li>
+<li>1s   过渡动画执行的时间,1秒</li>
+<li>ease    速度曲线函数,ease为快开始,慢结束<ul>
+<li>ease：默认值，缓慢加速，然后缓慢减速。是最自然、最符合人们感知的动画效果之一,<strong>最常用</strong></li>
+</ul>
+<ol start="2">
+<li>linear：匀速动画，速度保持恒定。</li>
+<li>ease-in：缓慢加速。</li>
+<li>ease-out：缓慢减速。</li>
+<li>ease-in-out：先缓慢加速，然后缓慢减速。</li>
+<li>cubic-bezier：自定义贝塞尔曲线，可以通过控制四个点的坐标来定义动画速度变化,使用如:<code>cubic-bezier(1,0.5,0.8,1)</code></li>
+</ol>
+</li>
+</ul>
+<h3 id="vue内置过渡动画组件"><a href="#vue内置过渡动画组件" class="headerlink" title="vue内置过渡动画组件"></a>vue内置过渡动画组件</h3><p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/built-ins/transition.html">详情参考官方文档</a></p>
+<p>Transition和TransitionGroup</p>
+<h4 id="Transition组件"><a href="#Transition组件" class="headerlink" title="Transition组件"></a>Transition组件</h4><p>可以由一下条件之一触发: <code>v-if</code>,<code>v-show</code>,由特殊元素<code>&lt;component&gt;</code>切换的动态组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line"> &lt;div class = &quot;cnt-box&quot;&gt;</span><br><span class="line">  数值:&lt;button class=&quot;btn&quot; :class=&quot;&#123;changed:number%2==0&#125;&quot; type=&quot;button&quot; @click=&quot;number++&quot;&gt;&#123;&#123; number &#125;&#125;&lt;/button&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">&lt;Transition name=&quot;fade&quot;&gt;</span><br><span class="line">  &lt;div v-if=&quot;number%2==0&quot;&gt;偶数</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/Transition&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;;</span><br><span class="line">const number = ref(1);</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.btn&#123;</span><br><span class="line">  transition: all 1s ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.changed&#123;</span><br><span class="line">  transform: translate(100px,0) rotate(360deg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  /*这两个的时机参考下方的图片*/</span><br><span class="line">  /*fade对应的是Transition的name*/</span><br><span class="line">.fade-enter-active, .fade-leave-active&#123;</span><br><span class="line">  transition: opacity 0.5s ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.fade-enter-from, .fade-leave-to&#123;</span><br><span class="line">  opacity: 0;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407151044295.png" alt="image-20240715104420639"></p>
+<h2 id="生命周期钩子"><a href="#生命周期钩子" class="headerlink" title="生命周期钩子"></a>生命周期钩子</h2><p>在Vue.js中，组件的生命周期钩子函数和选项是非常重要的一部分。下面是一些常用的生命周期钩子函数和选项：</p>
+<p><strong>生命周期钩子函数</strong>：</p>
+<ul>
+<li><code>beforeCreate</code>：在实例初始化之后，数据观测 (data observer) 和 event&#x2F;watcher 事件配置之前被调用。</li>
+<li><code>created</code>：在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测 (data observer)，属性和方法的运算，watch&#x2F;event 事件回调。然而，挂载阶段还没开始，<code>$el</code> 属性目前不可见。</li>
+<li><code>beforeMount</code>：在挂载开始之前被调用：相关的 <code>render</code> 函数首次被调用。</li>
+<li><code>mounted</code>：实例被挂载后调用，这是当 <code>el</code> 被新创建的 <code>vm.$el</code> 替换，并挂载到实例上去之后特指的。</li>
+<li><code>beforeUpdate</code>：数据更新时调用，发生在虚拟 DOM 打补丁之前。</li>
+<li><code>updated</code>：由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。</li>
+<li><code>beforeDestroy</code>：实例销毁之前调用。在这一步，实例仍然完全可用。</li>
+<li><code>destroyed</code>：实例销毁后调用。</li>
+</ul>
+<p><strong>选项</strong>：</p>
+<ul>
+<li><code>data</code>：组件的数据对象，可以在模板中通过 <code>&#123;&#123; &#125;&#125;</code> 语法访问。</li>
+<li><code>methods</code>：定义组件的方法，可以在模板中通过事件监听器调用。</li>
+<li><code>computed</code>：定义组件的计算属性，这些属性会根据依赖的数据动态计算并缓存结果。</li>
+<li><code>watch</code>：定义组件的观察者，当依赖的数据变化时，观察者函数会被调用。</li>
+</ul>
+<h1 id="前端常用工具命令"><a href="#前端常用工具命令" class="headerlink" title="前端常用工具命令"></a>前端常用工具命令</h1><h2 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h2><p>跨平台,不需要浏览器也可以作为http客户端发起请求,同时返回响应</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2112249?areaSource=102001.18&traceId=oXY9RueE3603o6R-L3RvK">详细用法参考</a></p>
+<h1 id="跨域问题详解"><a href="#跨域问题详解" class="headerlink" title="跨域问题详解"></a>跨域问题详解</h1><blockquote>
+<p>跨域是浏览器加载了与当前域名、协议、端口不同另一站点下的资源，这与各大支持JavaScript的浏览器的同源策略是违背的。所谓同源策略，它是由Netscape提出的一个著名的安全策略。现在所有支持JavaScript 的浏览器都会使用这个策略。所谓同源是指，<strong>域名，协议，端口</strong>相同。</p>
+</blockquote>
+<p>跨域并不会阻止请求的发出，也不会阻止请求的接受，跨域是浏览器为了保护当前页面，你的请求得到了响应，浏览器不会把响应的数据交给页面上的回调，取而代之的是去提示你这是一个跨域数据。</p>
+<p><img data-src="https://img-blog.csdnimg.cn/img_convert/b55d0ad5068eca56e23d98d439637f94.png" alt="跨域数据"></p>
+<h2 id="解决方法1"><a href="#解决方法1" class="headerlink" title="解决方法1"></a>解决方法1</h2><p><strong>Access-Control-Allow-Origin响应头</strong></p>
+<p>通过Access-Control-Allow-Origin响应头，就告诉了浏览器。如果请求我的资源的页面是我这个响应头里记录了的”源”，则不要拦截此响应，允许数据通行。比如说下面示列了一个场景</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//从 http://example.com 界面发出了一个请求到：http://example2.com，因为不同源，导致了跨域。</span></span><br><span class="line"><span class="comment">//而 http://example2.com 返回了下面的响应头：</span></span><br><span class="line">Content-Type: application/json;charset=utf<span class="number">-8</span></span><br><span class="line">Content-Length: <span class="number">3210</span></span><br><span class="line">Server: apache</span><br><span class="line">Access-Control-Allow-Origin: http:<span class="comment">//example.com</span></span><br></pre></td></tr></table></figure>
+
+<p>由于浏览器检测到 <code>http://example2.com</code> 的响应头中显示的写着：<code>Access-Control-Allow-Origin: http://example.com/</code>，也就是，如果请求数据的源是 <code>http://example.com</code> 则可以允许访问返回的数据。这样浏览器就不会抛出错误提示，而是正确的将数据交给你的ajax回调。</p>
+<p>在这个过程中跨域也存在，但跨域并没有导致问题了。因为后端的响应充分考虑到了某个页面源要使用这个资源，早就帮对方做好了跨域资源共享。这才可以顺利的进行对接。</p>
+<p>所以，要最简单解决跨域导致的问题，只需要后端响应时，在响应头里指定允许调用资源的源就可以了。除了设定指定的源以外，你还可以直接写一个<code>*</code>号，这样就表示：<strong>此数据允许被任何其他的源进行获取</strong>。</p>
+<p>其实除了它，还有与之相关的更多字段，它们也起到了更多的个性定值效果。下面进行了详细介绍。</p>
+<table>
+<thead>
+<tr>
+<th>header头字段</th>
+<th>含义</th>
+<th>取值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Access-Control-Allow-Credentials</td>
+<td>是否可以将对请求的响应暴露给页面。返回true则可以，其他值均不可以</td>
+<td>true&#x2F;false</td>
+</tr>
+<tr>
+<td>Access-Control-Allow-Headers</td>
+<td>用于服务器告知浏览器允许使用哪些自定义请求头,以便进行跨域请求的控制和安全性限制。</td>
+<td>自定义请求头(多个使用逗号隔开)</td>
+</tr>
+<tr>
+<td>Access-Control-Allow-Methods</td>
+<td>此次请求中可以使用哪些请求方法</td>
+<td>GET&#x2F;POST(多个使用逗号隔开)</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_53841730/article/details/128812393">未完待续,其他方法参阅此处</a></p>
+<h3 id="简单反向代理实现"><a href="#简单反向代理实现" class="headerlink" title="简单反向代理实现"></a>简单反向代理实现</h3><blockquote>
+<p>主要功能是实现一个 Google PaLM API 的代理</p>
+</blockquote>
+<p>下面贴一个使用ts实现的简单方向代理,同时解决跨域问题:</p>
+<ol>
+<li>当收到一个请求时，首先检查请求的方法是否为 OPTIONS。如果是，直接返回一个带有 CORS 头信息的空响应。</li>
+<li>如果请求的路径是 “&#x2F;“，则返回一个包含特定信息的 HTML 页面。</li>
+<li>否则，将请求的路径与 Google API 的基础 URL 拼接，处理请求的查询参数，并根据指定的键值挑选请求的 Headers。</li>
+<li>使用 <code>fetch</code> 函数向 Google API 发送请求，并将原始响应的 Headers 与 CORS 头信息合并，然后返回经过处理的响应对象。</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Context</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@netlify/edge-functions&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pickHeaders = (<span class="attr">headers</span>: <span class="title class_">Headers</span>, <span class="attr">keys</span>: (<span class="built_in">string</span> | <span class="title class_">RegExp</span>)[]): <span class="function"><span class="params">Headers</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> picked = <span class="keyword">new</span> <span class="title class_">Headers</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">of</span> headers.<span class="title function_">keys</span>()) &#123;</span><br><span class="line">    <span class="keyword">if</span> (keys.<span class="title function_">some</span>(<span class="function">(<span class="params">k</span>) =&gt;</span> (<span class="keyword">typeof</span> k === <span class="string">&quot;string&quot;</span> ? k === key : k.<span class="title function_">test</span>(key)))) &#123;</span><br><span class="line">      <span class="keyword">const</span> value = headers.<span class="title function_">get</span>(key);</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> value === <span class="string">&quot;string&quot;</span>) &#123;</span><br><span class="line">        picked.<span class="title function_">set</span>(key, value);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> picked;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">CORS_HEADERS</span>: <span class="title class_">Record</span>&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; = &#123;</span><br><span class="line">  <span class="string">&quot;access-control-allow-origin&quot;</span>: <span class="string">&quot;*&quot;</span>,</span><br><span class="line">  <span class="string">&quot;access-control-allow-methods&quot;</span>: <span class="string">&quot;*&quot;</span>,</span><br><span class="line">  <span class="string">&quot;access-control-allow-headers&quot;</span>: <span class="string">&quot;*&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">async</span> (<span class="attr">request</span>: <span class="title class_">Request</span>, <span class="attr">context</span>: <span class="title class_">Context</span>) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (request.<span class="property">method</span> === <span class="string">&quot;OPTIONS&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Response</span>(<span class="literal">null</span>, &#123;</span><br><span class="line">      <span class="attr">headers</span>: <span class="variable constant_">CORS_HEADERS</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> &#123; pathname, searchParams &#125; = <span class="keyword">new</span> <span class="title function_">URL</span>(request.<span class="property">url</span>);</span><br><span class="line">  <span class="keyword">if</span>(pathname === <span class="string">&quot;/&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> blank_html = <span class="string">`</span></span><br><span class="line"><span class="string">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="string">&lt;html&gt;</span></span><br><span class="line"><span class="string">&lt;head&gt;</span></span><br><span class="line"><span class="string">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span></span><br><span class="line"><span class="string">  &lt;title&gt;Google PaLM API proxy on Netlify Edge&lt;/title&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">  &lt;h1 id=&quot;google-palm-api-proxy-on-netlify-edge&quot;&gt;Google PaLM API proxy on Netlify Edge&lt;/h1&gt;</span></span><br><span class="line"><span class="string">  &lt;p&gt;Tips: This project uses a reverse proxy to solve problems such as location restrictions in Google APIs. &lt;/p&gt;</span></span><br><span class="line"><span class="string">  &lt;p&gt;If you have any of the following requirements, you may need the support of this project.&lt;/p&gt;</span></span><br><span class="line"><span class="string">  &lt;ol&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;When you see the error message &amp;quot;User location is not supported for the API use&amp;quot; when calling the Google PaLM API&lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;You want to customize the Google PaLM API&lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;/ol&gt;</span></span><br><span class="line"><span class="string">  &lt;p&gt;For technical discussions, please visit &lt;a href=&quot;https://simonmy.com/posts/使用netlify反向代理google-palm-api.html&quot;&gt;https://simonmy.com/posts/使用netlify反向代理google-palm-api.html&lt;/a&gt;&lt;/p&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">    `</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Response</span>(blank_html, &#123;</span><br><span class="line">      <span class="attr">headers</span>: &#123;</span><br><span class="line">        ...<span class="variable constant_">CORS_HEADERS</span>,</span><br><span class="line">        <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;text/html&quot;</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> url = <span class="keyword">new</span> <span class="title function_">URL</span>(pathname, <span class="string">&quot;https://generativelanguage.googleapis.com&quot;</span>);</span><br><span class="line">  searchParams.<span class="title function_">delete</span>(<span class="string">&quot;_path&quot;</span>);</span><br><span class="line"></span><br><span class="line">  searchParams.<span class="title function_">forEach</span>(<span class="function">(<span class="params">value, key</span>) =&gt;</span> &#123;</span><br><span class="line">    url.<span class="property">searchParams</span>.<span class="title function_">append</span>(key, value);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> headers = <span class="title function_">pickHeaders</span>(request.<span class="property">headers</span>, [<span class="string">&quot;content-type&quot;</span>, <span class="string">&quot;x-goog-api-client&quot;</span>, <span class="string">&quot;x-goog-api-key&quot;</span>, <span class="string">&quot;accept-encoding&quot;</span>]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(url, &#123;</span><br><span class="line">    <span class="attr">body</span>: request.<span class="property">body</span>,</span><br><span class="line">    <span class="attr">method</span>: request.<span class="property">method</span>,</span><br><span class="line">    <span class="attr">duplex</span>: <span class="string">&#x27;half&#x27;</span>,</span><br><span class="line">    headers,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> responseHeaders = &#123;</span><br><span class="line">    ...<span class="variable constant_">CORS_HEADERS</span>,</span><br><span class="line">    ...<span class="title class_">Object</span>.<span class="title function_">fromEntries</span>(response.<span class="property">headers</span>),</span><br><span class="line">    <span class="string">&quot;content-encoding&quot;</span>: <span class="literal">null</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Response</span>(response.<span class="property">body</span>, &#123;</span><br><span class="line">    <span class="attr">headers</span>: responseHeaders,</span><br><span class="line">    <span class="attr">status</span>: response.<span class="property">status</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ZEROKO14
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://che77a38.github.io/a8bb82/" title="WEB前端">https://che77a38.github.io/a8bb82/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vue/" rel="tag"># vue</a>
+              <a href="/tags/HTML/" rel="tag"># HTML</a>
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/c8aad41e/" rel="prev" title="slidev">
+      <i class="fa fa-chevron-left"></i> slidev
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/e74b610d/" rel="next" title="开发项目管理">
+      开发项目管理 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML"><span class="nav-number">1.</span> <span class="nav-text">HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE%E7%9B%98%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text">常用标签盘点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#head%E5%86%85%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE"><span class="nav-number">1.1.1.</span> <span class="nav-text">head内常用标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#body%E5%86%85%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE"><span class="nav-number">1.1.2.</span> <span class="nav-text">body内常用标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="nav-number">1.1.3.</span> <span class="nav-text">特殊字符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo%E8%B6%85%E9%93%BE%E6%8E%A5%E8%B7%B3%E8%BD%AC%E5%88%B0%E6%8C%87%E5%AE%9A%E9%94%9A%E7%82%B9%E6%B3%A8%E6%84%8F"><span class="nav-number">1.2.</span> <span class="nav-text">hexo超链接跳转到指定锚点注意</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS"><span class="nav-number">2.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F%E7%9A%84%E6%9D%A5%E6%BA%90"><span class="nav-number">2.1.</span> <span class="nav-text">样式的来源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E9%BB%98%E8%AE%A4%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">浏览器默认样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F%E7%9A%84%E5%86%99%E6%B3%95"><span class="nav-number">2.1.2.</span> <span class="nav-text">样式的写法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS%E8%AF%AD%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">CSS语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E"><span class="nav-number">2.2.1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">2.2.2.</span> <span class="nav-text">CSS选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E5%90%88%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">复合选择器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E4%B8%80%E8%A7%88%E8%A1%A8"><span class="nav-number">2.3.</span> <span class="nav-text">CSS常用属性一览表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E5%B1%9E%E6%80%A7-Animation"><span class="nav-number">2.3.1.</span> <span class="nav-text">动画属性(Animation)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E5%B1%9E%E6%80%A7-Background"><span class="nav-number">2.3.2.</span> <span class="nav-text">背景属性(Background)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E6%A1%86%E5%B1%9E%E6%80%A7-Border"><span class="nav-number">2.3.3.</span> <span class="nav-text">边框属性(Border)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%9C%E8%89%B2%E5%B1%9E%E6%80%A7-Color"><span class="nav-number">2.3.4.</span> <span class="nav-text">颜色属性 (Color)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%BA%E5%AF%B8%E5%B1%9E%E6%80%A7-Size"><span class="nav-number">2.3.5.</span> <span class="nav-text">尺寸属性 (Size)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E5%B1%9E%E6%80%A7-Content"><span class="nav-number">2.3.6.</span> <span class="nav-text">内容属性 (Content)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B9%E6%80%A7Flex%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80-Flex"><span class="nav-number">2.3.7.</span> <span class="nav-text">弹性Flex盒子布局 (Flex)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E4%BD%93%E5%B1%9E%E6%80%A7-Fonts"><span class="nav-number">2.3.8.</span> <span class="nav-text">字体属性 (Fonts)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E9%A1%B9%E5%B1%9E%E6%80%A7-Lists"><span class="nav-number">2.3.9.</span> <span class="nav-text">列表项属性 (Lists)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E8%B7%9D%E5%B1%9E%E6%80%A7-Margin"><span class="nav-number">2.3.10.</span> <span class="nav-text">边距属性 (Margin)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%88%97%E5%B8%83%E5%B1%80%E5%B1%9E%E6%80%A7-Column"><span class="nav-number">2.3.11.</span> <span class="nav-text">多列布局属性 (Column)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AE%E5%BB%93%E5%B1%9E%E6%80%A7-Outline"><span class="nav-number">2.3.12.</span> <span class="nav-text">轮廓属性 (Outline)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A1%AB%E5%85%85%E5%B1%9E%E6%80%A7-Padding"><span class="nav-number">2.3.13.</span> <span class="nav-text">填充属性 (Padding)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E5%B1%9E%E6%80%A7-Print"><span class="nav-number">2.3.14.</span> <span class="nav-text">打印属性 (Print)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E5%B1%9E%E6%80%A7-Table"><span class="nav-number">2.3.15.</span> <span class="nav-text">表属性 (Table)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E5%B1%9E%E6%80%A7-Text"><span class="nav-number">2.3.16.</span> <span class="nav-text">文字属性 (Text)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E5%B1%9E%E6%80%A7-Transform"><span class="nav-number">2.3.17.</span> <span class="nav-text">转换属性 (Transform)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%87%E6%B8%A1%E5%B1%9E%E6%80%A7-Transition"><span class="nav-number">2.3.18.</span> <span class="nav-text">过渡属性 (Transition)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%86%E8%A7%89%E6%A0%BC%E5%BC%8F%E5%B1%9E%E6%80%A7"><span class="nav-number">2.3.19.</span> <span class="nav-text">视觉格式属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.4.</span> <span class="nav-text">盒子模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS%E5%B8%83%E5%B1%80"><span class="nav-number">2.5.</span> <span class="nav-text">CSS布局</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80-flex"><span class="nav-number">2.5.1.</span> <span class="nav-text">弹性布局 flex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80-grid"><span class="nav-number">2.5.2.</span> <span class="nav-text">网格布局 grid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E5%B8%83%E5%B1%80"><span class="nav-number">2.5.3.</span> <span class="nav-text">定位布局</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#js"><span class="nav-number">3.</span> <span class="nav-text">js</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON%E8%A7%A3%E6%9E%90"><span class="nav-number">3.2.</span> <span class="nav-text">JSON解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typescript"><span class="nav-number">3.3.</span> <span class="nav-text">typescript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82"><span class="nav-number">3.4.</span> <span class="nav-text">接口请求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node-js"><span class="nav-number">4.</span> <span class="nav-text">Node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#node-js%E5%AE%89%E8%A3%85"><span class="nav-number">4.1.</span> <span class="nav-text">node.js安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97"><span class="nav-number">4.2.</span> <span class="nav-text">fs文件系统模块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node-js%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7"><span class="nav-number">5.</span> <span class="nav-text">Node.js相关工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nvm"><span class="nav-number">5.1.</span> <span class="nav-text">nvm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XMLHttpRequest"><span class="nav-number">6.</span> <span class="nav-text">XMLHttpRequest</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue"><span class="nav-number">7.</span> <span class="nav-text">vue</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">7.1.</span> <span class="nav-text">开发环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85webpack"><span class="nav-number">7.1.1.</span> <span class="nav-text">安装webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85vue%E8%84%9A%E6%89%8B%E6%9E%B6"><span class="nav-number">7.1.2.</span> <span class="nav-text">安装vue脚手架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%B9%E7%9B%AE"><span class="nav-number">7.1.3.</span> <span class="nav-text">初始化项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%A0%87%E5%87%86%E7%9A%84%E5%81%9A%E6%B3%95"><span class="nav-number">7.1.3.1.</span> <span class="nav-text">更标准的做法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue%E4%B8%AD%E5%88%9B%E5%BB%BA%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8F%98%E9%87%8F"><span class="nav-number">7.2.</span> <span class="nav-text">vue中创建响应式变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A"><span class="nav-number">7.3.</span> <span class="nav-text">事件绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%BB%91%E5%AE%9A"><span class="nav-number">7.4.</span> <span class="nav-text">变量绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%A6%E5%90%AC%E5%99%A8"><span class="nav-number">7.5.</span> <span class="nav-text">侦听器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93"><span class="nav-number">7.6.</span> <span class="nav-text">列表渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E7%B1%BB%E5%90%8D"><span class="nav-number">7.7.</span> <span class="nav-text">动态绑定类名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93"><span class="nav-number">7.8.</span> <span class="nav-text">条件渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E7%9A%84%E6%B3%A8%E5%86%8C%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="nav-number">7.9.</span> <span class="nav-text">组件的注册和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-number">7.9.1.</span> <span class="nav-text">案例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%BB%84%E4%BB%B6"><span class="nav-number">7.9.1.1.</span> <span class="nav-text">创建组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%BB%84%E4%BB%B6"><span class="nav-number">7.9.1.2.</span> <span class="nav-text">使用组件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92"><span class="nav-number">7.10.</span> <span class="nav-text">前后端交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB"><span class="nav-number">7.11.</span> <span class="nav-text">过渡动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#css%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">7.11.1.</span> <span class="nav-text">css原生方法实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue%E5%86%85%E7%BD%AE%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB%E7%BB%84%E4%BB%B6"><span class="nav-number">7.11.2.</span> <span class="nav-text">vue内置过渡动画组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Transition%E7%BB%84%E4%BB%B6"><span class="nav-number">7.11.2.1.</span> <span class="nav-text">Transition组件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90"><span class="nav-number">7.12.</span> <span class="nav-text">生命周期钩子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4"><span class="nav-number">8.</span> <span class="nav-text">前端常用工具命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#curl"><span class="nav-number">8.1.</span> <span class="nav-text">curl</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3"><span class="nav-number">9.</span> <span class="nav-text">跨域问题详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%951"><span class="nav-number">9.1.</span> <span class="nav-text">解决方法1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0"><span class="nav-number">9.1.1.</span> <span class="nav-text">简单反向代理实现</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZEROKO14</p>
+  <div class="site-description" itemprop="description">你好，欢迎来到ZEROKO14的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZEROKO14</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">837k</span>
+</div>
+
+<!-- -->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/code-unfold.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '67c7a42cef54843d55de',
+      clientSecret: 'ab1b9b51ee90c36803ecfaae6bc72ff75494f245',
+      repo        : 'gitalk',
+      owner       : 'che77a38',
+      admin       : ['che77a38'],
+      id          : '0f3d51538f81117fc513600fb2da87bc',
+      proxy       : 'https://cors-anywhere.1l1.icu/https://github.com/login/oauth/access_token',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

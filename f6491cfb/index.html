@@ -109,8 +109,8 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202306101457657.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202302201320179.jpeg">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202406092256262.png">
-<meta property="article:published_time" content="2023-11-24T02:51:09.101Z">
-<meta property="article:modified_time" content="2024-06-09T15:29:16.535Z">
+<meta property="article:published_time" content="2024-07-16T04:06:28.976Z">
+<meta property="article:modified_time" content="2024-07-16T04:06:28.980Z">
 <meta property="article:author" content="ZEROKO14">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
@@ -298,15 +298,8 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-11-24 10:51:09" itemprop="dateCreated datePublished" datetime="2023-11-24T10:51:09+08:00">2023-11-24</time>
+              <time title="创建时间：2024-07-16 12:06:28" itemprop="dateCreated datePublished" datetime="2024-07-16T12:06:28+08:00">2024-07-16</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-06-09 23:29:16" itemprop="dateModified" datetime="2024-06-09T23:29:16+08:00">2024-06-09</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -337,7 +330,7 @@
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>59 分钟</span>
+              <span>1:01</span>
             </span>
 
         </div>
@@ -2136,17 +2129,27 @@
 </ol>
 <p>get 和 post 请求都是<strong>请求资源</strong>,而且都会提交数据,如果提交密码信息用get请求,就会在url中<strong>明文显示</strong>,而post则不会显示出涉密信息.</p>
 <h4 id="请求头中重要内容"><a href="#请求头中重要内容" class="headerlink" title="请求头中重要内容"></a>请求头中重要内容</h4><ul>
-<li><strong><code>User-Agent</code></strong>:请求载体的身份标识(用啥发送的请求)</li>
-<li><strong><code>Referer</code></strong>:防盗链(这次请求是从哪个页面来的?往往用于反爬)</li>
-<li><strong><code>cookie</code></strong>:本地字符串数据信息(用户登录信息,反爬的token)</li>
-<li><strong><code>Content-Type</code></strong>:<strong>如果有请求体则必须有该项</strong>  表示返回的数据是什么类型的(均以<code>\r\n</code>结尾),如:<ul>
+<li><p><strong><code>User-Agent</code></strong>:请求载体的身份标识(用啥发送的请求)</p>
+</li>
+<li><p><strong><code>Referer</code></strong>:防盗链(这次请求是从哪个页面来的?往往用于反爬)</p>
+</li>
+<li><p><strong><code>cookie</code></strong>:本地字符串数据信息(用户登录信息,反爬的token)</p>
+<blockquote>
+<p>session是服务器为了保存用户状态而创建的一个拥有唯一id特殊对象,并将它以cookie的方式发送给浏览器,当浏览器再次访问此网站时,网站的服务器就会依据session的id找到对应的session对象</p>
+<p>其中session是存在服务器上的,cookie是存放在用户端的</p>
+<p>session可以类比成酒店前台电脑里的信息,cookie相当于房卡</p>
+</blockquote>
+</li>
+<li><p><strong><code>Content-Type</code></strong>:<strong>如果有请求体则必须有该项</strong>  表示返回的数据是什么类型的(均以<code>\r\n</code>结尾),如:</p>
+<ul>
 <li><code>text/plain</code> 纯文本  </li>
 <li><code>text/html</code>  网页</li>
 <li><code>text/json</code>  json数据</li>
 <li>…</li>
 </ul>
 </li>
-<li><strong><code>Content-Length</code></strong>:表示请求体(请求数据)的长度</li>
+<li><p><strong><code>Content-Length</code></strong>:表示请求体(请求数据)的长度</p>
+</li>
 </ul>
 <h5 id="Content-Type"><a href="#Content-Type" class="headerlink" title="Content-Type"></a>Content-Type</h5><blockquote>
 <ul>
@@ -2209,6 +2212,9 @@
 <td align="left">服务器错误，服务器在处理请求的过程中发生了错误</td>
 </tr>
 </tbody></table>
+<blockquote>
+<p>注意:看到2开头表示成功;看到4开头表示是前端的问题;看到5开头表示后端接口的问题</p>
+</blockquote>
 <p>常见的状态码如下:</p>
 <table>
 <thead>
@@ -3273,12 +3279,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/a477be03/" rel="prev" title="nginx">
-      <i class="fa fa-chevron-left"></i> nginx
+    <a href="/0/" rel="prev" title="数据库">
+      <i class="fa fa-chevron-left"></i> 数据库
     </a></div>
       <div class="post-nav-item">
-    <a href="/eefe591f/" rel="next" title="进程与线程">
-      进程与线程 <i class="fa fa-chevron-right"></i>
+    <a href="/364ea8cc/" rel="next" title="设计模式">
+      设计模式 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -3353,20 +3359,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -3403,7 +3409,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">723k</span>
+    <span title="站点总字数">837k</span>
 </div>
 
 <!-- -->
