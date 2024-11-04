@@ -1,0 +1,665 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>数学 | ZEROKO14的个人博客</title><meta name="keywords" content="数学"><meta name="author" content="ZEROKO14"><meta name="copyright" content="ZEROKO14"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="数学"><meta name="application-name" content="数学"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="数学"><meta property="og:url" content="https://che77a38.github.io/posts/%E6%95%B0%E5%AD%A6/index.html"><meta property="og:site_name" content="ZEROKO14的个人博客"><meta property="og:description" content="记录一些基本的数学知识   卷积神经网络的底层是傅里叶变换，傅里叶变换的底层是希尔伯特空间坐标变换 最伟大的算法之一，快速傅立叶变换 半小时带你了解傅里叶变换数学推导及其应用 LLM数学原理优质参考视频 幂函数与指函数 幂函数是以变量为底数，常数为指数 指数函数是以常数为底数，变量为指数 幂指函数则"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta property="article:author" content="ZEROKO14"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta name="description" content="记录一些基本的数学知识   卷积神经网络的底层是傅里叶变换，傅里叶变换的底层是希尔伯特空间坐标变换 最伟大的算法之一，快速傅立叶变换 半小时带你了解傅里叶变换数学推导及其应用 LLM数学原理优质参考视频 幂函数与指函数 幂函数是以变量为底数，常数为指数 指数函数是以常数为底数，变量为指数 幂指函数则"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://che77a38.github.io/posts/%E6%95%B0%E5%AD%A6/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":true,"limitCount":50,"languages":{"author":"作者: ZEROKO14","link":"链接: ","source":"来源: ZEROKO14的个人博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'ZEROKO14的个人博客',
+  title: '数学',
+  postAI: '',
+  pageFillDescription: 'LLM数学原理, 幂函数与指函数, 幂函数, 指数函数, 幂指函数, 导数相关, 基本求导公式, 导数的运算性质, 函数组的求导公式, 和差函数的导数, 乘积函数的导数(乘积法则), 商函数的导数(商法则), 复合函数的导数(链式法则), 高阶导数, 二阶导数, n阶导数, 对数求导法, 实例, 隐函数的导数, 实例, 参数方程的导数, 实例, 离散求导, 全微分, 线性运算, 线性运算的定义, 微分方程, 差分与求和, 差分, 求和, 差分x2F求和与微分x2F积分的关系, 求导和积分矩阵的特征向量, 特征函数解一阶微分方程, 特征函数解二阶微分方程, 线性代数, 乘法意义盘点, 标准正交基, 空间坐标转换, 总结, 特征向量, 新世界大门, 欧拉函数, 傅里叶变换, 基本概念, 周期函数的频率分解, 傅里叶级数, 连续傅里叶变换, 复数, 数学分析原理, 度量空间, 泛函分析, 一些概念, 高斯分布, 标准差, 协方差, 协方差矩阵, 圆参数方程, 点到直线的距离, 三角函数相关, 三角恒等式记录一些基本的数学知识卷积神经网络的底层是傅里叶变换傅里叶变换的底层是希尔伯特空间坐标变换最伟大的算法之一快速傅立叶变换半小时带你了解傅里叶变换数学推导及其应用数学原理优质参考视频幂函数与指函数幂函数是以变量为底数常数为指数指数函数是以常数为底数变量为指数幂指函数则是一种变量同时作为底数和指数的组合幂函数形式描述幂函数是指自变量提到某个常数幂的函数其中可以是任何实数典型的幂函数包括平方函数立方函数等特点当为正整数时函数在点附近既可微分又连续对于偶数幂函数图像关于轴对称对于奇数幂函数图像关于原点对称指数函数形式描述指数函数是指以常数通常且为底数自变量为指数的函数常见的指数函数有自然指数函数特点指数函数总是正的且当时为增长函数当时为衰减函数指数函数的图像永远不会与轴相交幂指函数形式特殊形式描述幂指函数是一个更特殊的函数形式可以视作既是幂函数又是指数函数的一种形式常见的幂指函数是在定义域为正实数的情况下是有意义的特点幂指函数没有幂函数和指数函数的简单对称性其行为在定义域之外可能不明确且不易延拓导数相关基本求导公式导数的运算性质线性性质其中为常数函数组的求导公式和差函数的导数乘积函数的导数乘积法则商函数的导数商法则复合函数的导数链式法则复合函数的导数在线折线图效果展示高阶导数二阶导数阶导数对数求导法取对数的运算可将幂函数指数函数及幂指函数运算降格成为乘法运算可将乘法运算或除法运算降格为加法或减法运算使求导运算计算量大为减少对于形如下的函数可以两边取对数简化求导过程在上述公式继续往下推导对等式两边求导使用链式法则解出代入得到实例求对的导数取对数对两边求导解出对的导数隐函数的导数隐函数是一种不能直接表示为形式的函数它通常以方程的形式给出其中和混合在一起圆的方程双曲线方程上述例子中不能简单地用来表示但仍然依赖于对于由方程定义的隐函数求导数隐函数的导数公式的基本思想是利用全微分和链式法则来推导的实例求对的导数全微分解出对的导数参数方程的导数参数方程是用一个额外的变量通常称为参数常用表示来表示和的函数参数方程通常以下面的形式给出其中是参数和是关于的函数参数方程的优点可以表示更复杂的曲线有时能简化计算可以表示运动轨迹其中可以代表时间参数方程的例子圆其中是半径是角度抛物线螺旋线它在描述运动轨迹时特别有用其中可以代表时间若函数由参数表示则导数为即分别计算和然后相除实例求对的导数分别计算对的导数和对的导数解出对的导数离散求导对于离散点求导的原理主要基于对导数定义的近似一阶导数的本质是函数在某一点的变化率在离散情况下由于没有连续的函数表达式通过有限差分来近似这个变化率以中心差分为例它利用了当前点前后两个相邻点的函数值来估计当前点的一阶导数其原理是认为在这一小段区间内函数的变化近似线性所以通过前后两点的差值除以两点之间的距离即步长来近似表示这一点的瞬时变化率一阶导数二阶导数反映的是一阶导数的变化率同样在离散情况下通过相邻点的一阶导数的差分来近似二阶导数或者直接基于函数值利用当前点及其前后点的函数值关系来近似表示二阶导数总的来说离散点求导的原理是在有限的离散数据中通过合理的数值计算方法来尽量逼近连续情况下导数所表达的函数变化特征对于离散的点求一阶导和二阶导常见的方法有有限差分法一阶导数可以使用前向差分后向差分或者中心差分来近似计算前向差分后向差分中心差分二阶导数可以通过对一阶导数再次差分来近似计算或者直接从函数值计算例如使用中心差分计算二阶导数以函数的方式说明一阶导数二阶导数全微分线性运算线性运算的定义一个运算是线性的意味着它满足两个基本性质加法的可加性加法保持性对于两个函数和如果运算是线性的那么运算对它们的加法遵循以下规则数乘的齐次性均匀性这两个定义共同定义了一个线性运算微分方程想解微分方程首先要摸透微分方程的本质视图理解透的视频但有点困难缺乏相当数量的基础知识差分与求和从离散的差分说起差分就是一个向量数组求后一项和前一项的差求和就是前项和差分如何以矩阵的形式表达差分呢下图作为案例求和差分求和与微分积分的关系求导的本质就是在无限密集情况下的差分积分的本质就是在无限密集情况下的求和如果把函数理解成无穷维的向量那么求导和积分有没有可能是无穷维的矩阵求导和积分矩阵的特征向量特征向量解释什么样的函数在求导和积分下他的形状是不变的指数函数的导数和积分结果仍然是指数函数只不过会有不同的系数通俗讲就是对于以为底的指数不断的求导和积分只是改变它乘以的系数求导和积分的运算是线性的特征函数解一阶微分方程解法流程如下特征函数解二阶微分方程解法流程如下有实数解的情况没有实数解的情况虽然上述的解是对的但是我们都会用欧拉公式把它化简成一个看起来比较舒服的状态线性代数线性代数本质原理视频乘法意义盘点简单介绍几种乘法的计算以及他们的现实意义矩阵乘积是矩阵之间的一种运算结果是一个新的矩阵涉及行与列的乘法和求和一个矩阵可以看作是对空间中向量的线性变换多个线性变换可以通过矩阵乘法组合在一起工程物理和经济等领域可以用来简洁地表示和求解线性方程组向量内积是两个向量之间的运算结果是一个标量表示两个向量的相似度或投影相似度指向相同内积大表示相似度高指向相反内积小表示相似度低垂直内积为零表示没有相似度这时两个向量是正交的投影对计算向量内积可以理解为在向量方向上的投影长度乘以的长度因此多个向量如果内积为代表他们之间垂直对应位元素乘积是两个相同维度的矩阵或向量之间的逐元素乘法结果也是一个相同维度的矩阵或向量元素级操作如图像处理中的加权或滤波如机器学习的激活函数等标准正交基为向量标志基向量两两垂直且长度归一化我们将满足上面两个公式的向量组合的称为标准正交基空间坐标转换投影到新的正交基如果确定一个三维空间下的向量在新的基向量下的坐标使得因为两个向量的向量内积计算出来为投影的长度所以需要将乘新的轴基向量得到的是在新正交基下的的新的值计算过程如图可以推广得到总结坐标系中的基向量由两两正交内积为零且长度为归一化的为空间维度个向量组成坐标系中任意一个向量可表示为基向量的线性组合其系数即为坐标向量从一个坐标系变换到另一个坐标系需要求向量在新坐标系的每个基向量下的投影特征向量矩阵作用于向量假设是一个矩阵是一个向量当矩阵作用在向量上时通常向量的方向和长度都会改变矩阵作用在某一些向量上时向量方向不变只有长度发生变化这些向量称之为矩阵的特征向量特征向量和特征值特征向量某些特殊的向量在被矩阵作用时方向不会改变只有长度发生变化这些特殊的向量称为矩阵的特征向量特征值当矩阵作用于特征向量时特征向量的长度会按某个数值特征值进行缩放是矩阵是矩阵的特征向量是与特征向量对应的特征值当矩阵作用于特征向量时结果是向量被缩放了倍但方向保持不变对于特征向量来说矩阵作用等于数乘现实意义在许多数学和物理问题中矩阵的特征向量和特征值具有重要意义比如在动力系统中它们可以用于描述系统的稳定性在量子力学中特征值和特征向量用于描述粒子的能量状态新世界大门用线性代数理解积分变换的核心函数就是无穷维的数组无穷维向量的欧拉函数欧拉函数又称为欧拉函数是一个与数论相关的函数通常用符号表示对于正整数欧拉函数定义为小于或等于的正整数中与互质的数的个数复数最初产生于对某些代数方程的根的研究或没有实数值解因为它要求我们对一个负数取平方根因此虚数被定义为因此有两个根和他们是的两个平方根概念复数共轭将虚部取负的复数傅里叶变换任何一个函数都是不同频率简谐振动即正余弦函数的叠加如果说线性代数是人工智能的数学基础那么傅里叶变换则是计算机视觉的数学基础在实际的工程问题中一些异常复杂的公式和难以理解的问题利用傅里叶变换转换到频率域后一个杂乱无章的世界瞬间整整齐齐一切都豁然开朗傅里叶变化分为两种傅里叶级数连续傅里叶变换基本概念为什么正弦波是分解信号的基本元素实际物理意义物理世界中许多振动现象都是通过正弦波来描述的如声波光波和电磁波便于理解其物理含义线性系统中的基础元素物理学中的许多系统如之前提到过的机械电子系统都可以用线性系统来描述因为线性系统的特性线性叠加性正弦波是基本的一个输入信号因此正弦波是分解复杂信号时理想的基础元素正交性正余弦函数具有非常好的数学特性正交性意味着不同频率的正弦波彼此没有相互影响可以独立处理这种性质这种特性使得我们可以将复杂系统分解为若干个正弦波的叠加数学上正交基的这种性质使傅里叶变换成为了可能周期性与频率的清晰表示数学上的简便性欧拉公式的应用欧拉公式揭示了正弦波和复数的紧密结合因此对于傅里叶变换除了三角形式通过欧拉公式还可以表示为复指数形式这就为处理信号的变换提供了一个强大的数学工具能够简化许多实际问题的求解过程周期函数的频率分解假定我们拥有一个该函数具备周期表示周期的两个参数分别是频率和角频率分别如下角频率表示周期函数每单位时间转过的相角它通过弧度来度量我们希望找到这个函数在复指数基函数下每个频率上的投影需要怎么做傅里叶级数傅里叶级数任何周期性函数一定可以转换为一堆正余弦函数的和正余弦函数就是正交基此处未理解完全由此引入了时域和频域的概念时域信号随着时间的变化频域在不同的频率下每个信号的大小频域中单个频包含相位和振幅信息一个时域信号可以拆分为多个频域信号可以拆分为多组增幅和相位信息之和连续傅里叶变换可以将一个非周期函数看成是一个周期性无穷大的周期函数复数数学分析原理在本科阶段学生通常会学习基础的微积分和实分析等内容而在研究生阶段学生可能会深入学习复分析泛函分析等更高级的数学分析原理度量空间泛函分析一些概念高斯分布正态分布又名高斯分布是一个在数学物理及工程等领域都非常重要的概率分布在统计学的许多方面有着重大的影响力标准差方差是数据的平方与检测值本身相差太大人们难以直观地衡量所以常用均方差代替方差判断数据的波动也称为均方差标准差详解用来衡量数据点相对于均值的分散程度或波动性的统计量是方差的平方根所有样本的方差之和除以样本的个数再把所得值开根号所得之数就是这组数据的均方差也叫标准差常见的离散型公式其中表示标准差表示数据点的数量表示第个数据点的数值表示数据集的均值在概率论中应该替换成表示随机变量的数学期望协方差下面视频是协方差公式推导流程当舞台转向了多维随机变量时方差就变成了协方差这里的协是指几个变量的协同相关性如果是二维随机变量且则的协方差的定义是和表示平均值或数学期望从直观上来看协方差表示的是两个变量总体误差的期望当两个变量完全一致时协方差就变成了方差协方差的性质协方差矩阵协方差只能处理二维问题对于三维以上数据就需要计算多个协方差然后用矩阵将其组织起来这就是协方差矩阵以三维随机变量为例其协方差矩阵用表示需要注意的是协方差矩阵计算的是不同维度之间的协方差而不是不同样本之间的简单来说协方差矩阵就是两两计算各维度之间的协方差看看每两个维度之间的相关情况如果各个变量之间相互独立那么两个不同维度变量的协方差是此时协方差矩阵就是一个对角矩阵并且对角线上的每个元素都是该维度的方差圆参数方程给定任何半斤和角度可以找到圆上的相应坐标表示圆心另有笛卡尔坐标系下的圆方程点到直线的距离在二维坐标系下已知三个点求点到直线的距离计算直线的方程直线方程的一般式为我们可以通过以下公式计算推导过程如下确定直线的斜率直线的斜率可以通过点和点的坐标计算但我们不需要直接计算斜率因为我们要用一般式来表示直线使用点斜式公式直线的点斜式方程为将斜率代入变换为一般式将上述方程变换为一般式展开并整理由此我们可以得到点到直线的距离公式为展开为求点到直线距离的推导过程参考此处上面是一般式下面是针对斜截式斜截式推导流程三角函数相关三角恒等式推导如下',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-01 15:16:11',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://th.bing.com/th/id/OIP.wtmjepfWPBvn26uz7s18dgHaHa?rs=1&amp;pid=ImgDetMain"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">ZEROKO14的个人博客</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 1.05rem;">C#<sup>3</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 1.05rem;">CSS<sup>1</sup></a><a href="/tags/CSharp/" style="font-size: 1.05rem;">CSharp<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.05rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 1.05rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 1.05rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 1.05rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 1.05rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 1.05rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 1.05rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 1.05rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 1.05rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 1.05rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 1.05rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/json/" style="font-size: 1.05rem;">json<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>1</sup></a><a href="/tags/next/" style="font-size: 1.05rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 1.05rem;">ppt<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 1.05rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 1.05rem;">vue<sup>1</sup></a><a href="/tags/xml/" style="font-size: 1.05rem;">xml<sup>1</sup></a><a href="/tags/yaml/" style="font-size: 1.05rem;">yaml<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 1.05rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 1.05rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 1.05rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 1.05rem;">加解密<sup>1</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 1.05rem;">多线程<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">开发<sup>4</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">数学<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.05rem;">数据库<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 1.05rem;">架构<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 1.05rem;">监控<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>1</sup></a><a href="/tags/%E7%AE%A1%E7%90%86/" style="font-size: 1.05rem;">管理<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.05rem;">网络<sup>2</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 1.05rem;">逆向<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">27</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/10/"><span class="card-archive-list-date">十月 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url">基础</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E6%95%B0%E5%AD%A6/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>数学</span></a></span></div></div><h1 class="post-title" itemprop="name headline">数学</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-07-16T04:06:28.968Z" title="发表于 2024-07-16 12:06:28">2024-07-16</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-11-01T07:16:11.539Z" title="更新于 2024-11-01 15:16:11">2024-11-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="数学"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为新加坡"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>新加坡</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://che77a38.github.io/posts/%E6%95%B0%E5%AD%A6/"><header><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url">基础</a><a href="/tags/%E6%95%B0%E5%AD%A6/" tabindex="-1" itemprop="url">数学</a><h1 id="CrawlerTitle" itemprop="name headline">数学</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">ZEROKO14</span><time itemprop="dateCreated datePublished" datetime="2024-07-16T04:06:28.968Z" title="发表于 2024-07-16 12:06:28">2024-07-16</time><time itemprop="dateCreated datePublished" datetime="2024-11-01T07:16:11.539Z" title="更新于 2024-11-01 15:16:11">2024-11-01</time></header><p>记录一些基本的数学知识</p>
+<span id="more"></span>
+
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ce4y1p7jF/">卷积神经网络的底层是傅里叶变换，傅里叶变换的底层是希尔伯特空间坐标变换</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1N94y147uY/">最伟大的算法之一，快速傅立叶变换</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Uy2iYrEyk/">半小时带你了解傅里叶变换数学推导及其应用</a></p>
+<h1 id="LLM数学原理"><a href="#LLM数学原理" class="headerlink" title="LLM数学原理"></a>LLM数学原理</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1atCRYsE7x/">优质参考视频</a></p>
+<h1 id="幂函数与指函数"><a href="#幂函数与指函数" class="headerlink" title="幂函数与指函数"></a>幂函数与指函数</h1><ul>
+<li>幂函数是以变量为底数，常数为指数</li>
+<li>指数函数是以常数为底数，变量为指数</li>
+<li>幂指函数则是一种变量同时作为底数和指数的组合。</li>
+</ul>
+<h2 id="幂函数"><a href="#幂函数" class="headerlink" title="幂函数"></a>幂函数</h2><ul>
+<li>形式：$ f(x) &#x3D; x^n $</li>
+<li>描述：幂函数是指自变量 $ x $ 提到某个常数幂 $ n $ 的函数，其中 $ n $ 可以是任何实数。典型的幂函数包括平方函数 $ f(x) &#x3D; x^2 $、立方函数 $ f(x) &#x3D; x^3 $ 等。</li>
+<li>特点：当 $ n $ 为正整数时，函数在 $ x &#x3D; 0 $ 点附近既可微分又连续。对于偶数幂，函数图像关于 $ y $ 轴对称；对于奇数幂，函数图像关于原点对称。</li>
+</ul>
+<h2 id="指数函数"><a href="#指数函数" class="headerlink" title="指数函数"></a>指数函数</h2><ul>
+<li>形式：$ f(x) &#x3D; a^x $</li>
+<li>描述：指数函数是指以常数 $ a $ （通常 $ a &gt; 0 $ 且 $ a \neq 1 $）为底数，自变量 $ x $ 为指数的函数。常见的指数函数有自然指数函数 $ e^x $。</li>
+<li>特点：指数函数总是正的，且当 $ a &gt; 1 $ 时为增长函数，当 $ 0 &lt; a &lt; 1 $ 时为衰减函数。指数函数的图像永远不会与 $ x $ 轴相交。</li>
+</ul>
+<h2 id="幂指函数"><a href="#幂指函数" class="headerlink" title="幂指函数"></a>幂指函数</h2><ul>
+<li>形式：$ f(x) &#x3D; x^x $（特殊形式）</li>
+<li>描述：幂指函数是一个更特殊的函数形式，可以视作既是幂函数又是指数函数的一种形式。常见的幂指函数是 $ f(x) &#x3D; x^x $，在定义域为正实数的情况下是有意义的。</li>
+<li>特点：幂指函数没有幂函数和指数函数的简单对称性，其行为在定义域之外可能不明确且不易延拓。</li>
+</ul>
+<h1 id="导数相关"><a href="#导数相关" class="headerlink" title="导数相关"></a>导数相关</h1><h2 id="基本求导公式"><a href="#基本求导公式" class="headerlink" title="基本求导公式"></a>基本求导公式</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410311121787.png" alt="常用基本初等函数的求导公式推导_基本初等函数的导数公式-CSDN博客"></p>
+<h2 id="导数的运算性质"><a href="#导数的运算性质" class="headerlink" title="导数的运算性质"></a>导数的运算性质</h2><p><strong>线性性质</strong><br>$$<br>[af(x)+bg(x)]^{‘}&#x3D;af^{‘}(x)+bg^{‘}(x)<br>$$<br>其中,a,b为常数</p>
+<h2 id="函数组的求导公式"><a href="#函数组的求导公式" class="headerlink" title="函数组的求导公式"></a>函数组的求导公式</h2><h3 id="和差函数的导数"><a href="#和差函数的导数" class="headerlink" title="和差函数的导数"></a>和差函数的导数</h3><p>$$<br>[f(x)\pm g(x)]^{‘}&#x3D;f^{‘}(x)\pm g^{‘}(x)<br>$$</p>
+<h3 id="乘积函数的导数-乘积法则"><a href="#乘积函数的导数-乘积法则" class="headerlink" title="乘积函数的导数(乘积法则)"></a>乘积函数的导数(乘积法则)</h3><p>$$<br>[u(x)\cdot v(x)]^{‘}&#x3D;u^{‘}(x)\cdot v(x)+u(x)\cdot v^{‘}(x)<br>$$</p>
+<h3 id="商函数的导数-商法则"><a href="#商函数的导数-商法则" class="headerlink" title="商函数的导数(商法则)"></a>商函数的导数(商法则)</h3><p>$$<br>\left[\frac{u(x)}{v(x)}\right]^{^{\prime}}&#x3D;\frac{u^{^{\prime}}(x)\cdot v(x)-u(x)\cdot v^{^{\prime}}(x)}{[v(x)]^2}<br>$$</p>
+<h3 id="复合函数的导数-链式法则"><a href="#复合函数的导数-链式法则" class="headerlink" title="复合函数的导数(链式法则)"></a>复合函数的导数(链式法则)</h3><p>$$<br>[f(g(x))]^{‘}&#x3D;f^{‘}(g(x))\cdot g^{‘}(x)<br>$$</p>
+<p><a target="_blank" rel="noopener" href="https://websim.ai/c/9P0ySZPmuYbEmRW5H">复合函数的导数在线折线图📈效果展示</a></p>
+<h2 id="高阶导数"><a href="#高阶导数" class="headerlink" title="高阶导数"></a>高阶导数</h2><h3 id="二阶导数"><a href="#二阶导数" class="headerlink" title="二阶导数"></a>二阶导数</h3><p>$$<br>f^{‘’}(x)&#x3D;\left[f^{‘}(x)\right]^{‘}<br>$$</p>
+<h3 id="n阶导数"><a href="#n阶导数" class="headerlink" title="n阶导数"></a>n阶导数</h3><p>$$<br>f^{(n)}(x)&#x3D;\frac{d^nf(x)}{dx^n}<br>$$</p>
+<h2 id="对数求导法"><a href="#对数求导法" class="headerlink" title="对数求导法"></a>对数求导法</h2><blockquote>
+<p>取对数的运算可将幂函数、指数函数及幂指函数运算降格成为乘法运算，可将乘法运算或除法运算降格为加法或减法运算，使求导运算计算量大为减少。</p>
+</blockquote>
+<p>对于形如下的函数,<br>$$<br>y&#x3D;[f(x)]^{g(x)}<br>$$<br>可以两边取对数,简化求导过程:<br>$$<br>\ln y&#x3D;g(x)\ln f(x)<br>$$<br>在上述公式继续往下推导:</p>
+<p>对等式两边求导(使用链式法则):<br>$$<br>\frac{1}{y} \cdot \frac{dy}{dx} &#x3D; g’(x) \ln f(x) + g(x) \cdot \frac{f’(x)}{f(x)}<br>$$<br>解出<br>$$<br>\frac{dy}{dx} &#x3D; y \cdot [g’(x) \ln f(x) + g(x) \cdot \frac{f’(x)}{f(x)}]<br>$$<br>代入 $ y&#x3D;[f(x)]^{g(x)} $</p>
+<p>得到:<br>$$<br>\frac{dy}{dx}&#x3D;[f(x)]^{g(x)}\left(g^{\prime}(x)\ln f(x)+g(x)\frac{f^{\prime}(x)}{f(x)}\right)<br>$$</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>$$<br>y &#x3D; x^x<br>$$</p>
+<p>求y对x的导数</p>
+<ol>
+<li><p>取对数<br>$$<br>\ln y&#x3D;\ln(x^x)&#x3D;x\ln x<br>$$</p>
+</li>
+<li><p>对两边求导<br>$$<br>\frac1y\frac{dy}{dx}&#x3D;\ln x+x\cdot\frac1x&#x3D;\ln x+1<br>$$</p>
+</li>
+<li><p>解出y对x的导数<br>$$<br>\frac{dy}{dx}&#x3D;y(\ln x+1)&#x3D;x^x(\ln x+1)<br>$$</p>
+</li>
+</ol>
+<h2 id="隐函数的导数"><a href="#隐函数的导数" class="headerlink" title="隐函数的导数"></a>隐函数的导数</h2><blockquote>
+<p>隐函数是一种不能直接表示为 y &#x3D; f(x) 形式的函数。它通常以方程的形式给出，其中 x 和 y 混合在一起</p>
+<ul>
+<li>$ x^2 + y^2 &#x3D; 1 $ （圆的方程）</li>
+<li>$ xy &#x3D; 1 $ （双曲线方程）</li>
+</ul>
+<p>上述例子中,y 不能简单地用 x 来表示，但 y 仍然依赖于 x</p>
+</blockquote>
+<p>对于由方程 $F(x,y)&#x3D;0$ 定义的隐函数 $y&#x3D;y(x)$，求导数：<br>$$<br>\frac{dy}{dx}&#x3D;-\frac{\frac{\partial F}{\partial x}}{\frac{\partial F}{\partial y}}<br>$$<br>隐函数的导数公式的基本思想是利用全微分和链式法则来推导的</p>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>$$<br>x^2 + y^2 &#x3D; 1<br>$$</p>
+<p>求y对x的导数</p>
+<ol>
+<li><p>全微分<br>$$<br>2x + 2y \frac{dy}{dx} &#x3D; 0<br>$$</p>
+</li>
+<li><p>解出y对x的导数<br>$$<br>\frac{dy}{dx} &#x3D; -\frac{x}{y}<br>$$</p>
+</li>
+<li></li>
+</ol>
+<h2 id="参数方程的导数"><a href="#参数方程的导数" class="headerlink" title="参数方程的导数"></a>参数方程的导数</h2><blockquote>
+<p>参数方程是用一个额外的变量（通常称为参数，常用 t 表示）来表示 x 和 y 的函数。参数方程通常以下面的形式给出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = f(t)</span><br><span class="line">y = g(t)</span><br></pre></td></tr></table></figure>
+
+<p>其中 t 是参数，f 和 g 是关于 t 的函数。</p>
+<p><strong>参数方程的优点：</strong></p>
+<ol>
+<li>可以表示更复杂的曲线</li>
+<li>有时能简化计算</li>
+<li>可以表示运动轨迹，其中 t 可以代表时间</li>
+</ol>
+<p><strong>参数方程的例子</strong>：</p>
+<ol>
+<li><strong>圆</strong>： x &#x3D; r cos(t) y &#x3D; r sin(t) 其中 r 是半径，t 是角度（0 ≤ t &lt; 2π）</li>
+<li><strong>抛物线</strong>： x &#x3D; t y &#x3D; t^2</li>
+<li><strong>螺旋线</strong>： x &#x3D; t cos(t) y &#x3D; t sin(t)</li>
+</ol>
+<p>它在描述运动轨迹时特别有用，其中 t 可以代表时间。</p>
+</blockquote>
+<p>若函数由参数t表示:<br>$$<br>\quad\begin{cases}x&#x3D;x(t)\y&#x3D;y(t)\end{cases}<br>$$<br>则导数为:<br>$$<br>\frac{dy}{dx}&#x3D;\frac{\frac{dy}{dt}}{\frac{dx}{dt}}<br>$$<br>即分别计算 $ \frac{dy}{dt} $ 和 $ \frac{dx}{dt} $，然后相除。</p>
+<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><p>$$<br>x &#x3D; t^2 \quad,\quad y &#x3D; t^3<br>$$</p>
+<p>求y对x的导数</p>
+<ol>
+<li><p>分别计算<code>x对t的导数</code>和<code>y对t的导数</code><br>$$<br>\frac{dx}{dt} &#x3D; 2t  \quad, \quad \frac{dy}{dt} &#x3D; 3t^2<br>$$</p>
+</li>
+<li><p>解出y对x的导数</p>
+</li>
+</ol>
+<p>$$<br>\frac{dy}{dx} &#x3D;\frac{\frac{dy}{dt}}{\frac{dx}{dt}}&#x3D; \frac{dy}{dt} \cdot \frac{dt}{dx} &#x3D; \frac{3t^2}{2t} &#x3D; \frac{3}{2} t<br>$$</p>
+<h2 id="离散求导"><a href="#离散求导" class="headerlink" title="离散求导"></a>离散求导</h2><p>对于离散点求导的原理主要基于对导数定义的近似。</p>
+<p>一阶导数的本质是函数在某一点的变化率。在离散情况下，由于没有连续的函数表达式，通过有限差分来近似这个变化率。</p>
+<p>以中心差分为例，它利用了当前点前后两个相邻点的函数值来估计当前点的一阶导数。其原理是认为在这一小段区间内，函数的变化近似线性，所以通过前后两点的差值除以两点之间的距离（即步长 h），来近似表示这一点的瞬时变化率（一阶导数）。</p>
+<p>二阶导数反映的是一阶导数的变化率。同样在离散情况下，通过相邻点的一阶导数的差分来近似二阶导数。或者直接基于函数值，利用当前点及其前后点的函数值关系来近似表示二阶导数。</p>
+<p>总的来说，离散点求导的原理是在有限的离散数据中，通过合理的数值计算方法来尽量逼近连续情况下导数所表达的函数变化特征。</p>
+<p>对于离散的点求一阶导和二阶导，常见的方法有有限差分法。</p>
+<p>一阶导数可以使用前向差分、后向差分或者中心差分来近似计算。</p>
+<p>前向差分：<code>f&#39;(x) ≈ (f(x + h) - f(x)) / h</code></p>
+<p>后向差分：<code>f&#39;(x) ≈ (f(x) - f(x - h)) / h</code></p>
+<p>中心差分：<code>f&#39;(x) ≈ (f(x + h) - f(x - h)) / (2 * h)</code></p>
+<p>二阶导数可以通过对一阶导数再次差分来近似计算，或者直接从函数值计算。</p>
+<p>例如，使用中心差分计算二阶导数：<code>f&#39;&#39;(x) ≈ (f(x + h) - 2 * f(x) + f(x - h)) / (h * h)</code></p>
+<p>以函数的方式说明:</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="built_in">double</span> <span class="title">CalculateFirstDerivative</span>(<span class="params"><span class="built_in">double</span>[] points, <span class="built_in">double</span> h, <span class="built_in">int</span> index</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (index &lt; <span class="number">1</span> || index &gt;= points.Length - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(<span class="string">&quot;Index out of range for derivative calculation.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (points[index + <span class="number">1</span>] - points[index - <span class="number">1</span>]) / (<span class="number">2</span> * h);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="built_in">double</span> <span class="title">CalculateSecondDerivative</span>(<span class="params"><span class="built_in">double</span>[] points, <span class="built_in">double</span> h, <span class="built_in">int</span> index</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (index &lt; <span class="number">1</span> || index &gt;= points.Length - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(<span class="string">&quot;Index out of range for derivative calculation.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (points[index + <span class="number">1</span>] - <span class="number">2</span> * points[index] + points[index - <span class="number">1</span>]) / (h * h);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">double</span>[] points = &#123; <span class="number">1.0</span>, <span class="number">3.0</span>, <span class="number">5.0</span>, <span class="number">7.0</span>, <span class="number">9.0</span> &#125;;</span><br><span class="line">        <span class="built_in">double</span> h = <span class="number">1.0</span>;</span><br><span class="line">        <span class="built_in">int</span> index = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">double</span> firstDerivative = CalculateFirstDerivative(points, h, index);</span><br><span class="line">        <span class="built_in">double</span> secondDerivative = CalculateSecondDerivative(points, h, index);</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;一阶导数: <span class="subst">&#123;firstDerivative&#125;</span>&quot;</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;二阶导数: <span class="subst">&#123;secondDerivative&#125;</span>&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="全微分"><a href="#全微分" class="headerlink" title="全微分"></a>全微分</h1><h1 id="线性运算"><a href="#线性运算" class="headerlink" title="线性运算"></a>线性运算</h1><h2 id="线性运算的定义"><a href="#线性运算的定义" class="headerlink" title="线性运算的定义"></a>线性运算的定义</h2><p>一个运算是<strong>线性</strong>的，意味着它满足两个基本性质：</p>
+<ul>
+<li><p><strong>加法的可加性</strong>（加法保持性，Additivity）：</p>
+<p>对于两个函数 f(t) 和 g(t) ，如果运算是线性的，那么运算 \mathcal{L} 对它们的加法遵循以下规则：<br>$$<br>\mathcal{L}(f(t) + g(t)) &#x3D; \mathcal{L}(f(t)) + \mathcal{L}(g(t))<br>$$</p>
+</li>
+<li><p><strong>数乘的齐次性</strong>（均匀性，Homogeneity）：<br>$$<br>\mathcal{L}(c \cdot f(t)) &#x3D; c \cdot \mathcal{L}(f(t))<br>$$</p>
+</li>
+<li></li>
+</ul>
+<p>这两个定义共同定义了一个线性运算</p>
+<h1 id="微分方程"><a href="#微分方程" class="headerlink" title="微分方程"></a>微分方程</h1><p>想解微分方程,首先要摸透微分方程的本质</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oz1eYVECp/">视图理解透的视频,但有点困难,缺乏相当数量的基础知识</a></p>
+<h2 id="差分与求和"><a href="#差分与求和" class="headerlink" title="差分与求和"></a>差分与求和</h2><p>从离散的差分说起,差分就是一个向量(数组)求后一项和前一项的差,求和就是前n项和</p>
+<h3 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h3><p>如何以矩阵的形式表达差分呢,下图作为案例:</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410191548198.png" alt="image-20241019154855533" style="zoom: 50%;" />
+
+<h3 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h3><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410191549856.png" alt="image-20241019154951275" style="zoom:50%;" />
+
+<h2 id="差分-求和与微分-积分的关系"><a href="#差分-求和与微分-积分的关系" class="headerlink" title="差分&#x2F;求和与微分&#x2F;积分的关系"></a>差分&#x2F;求和与微分&#x2F;积分的关系</h2><ul>
+<li><strong>求导</strong>的本质就是在无限密集情况下的<strong>差分</strong></li>
+<li><strong>积分</strong>的本质就是在无限密集情况下的<strong>求和</strong></li>
+</ul>
+<p>如果把函数理解成无穷维的向量,那么求导和积分有没有可能是无穷维的矩阵?</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410191555989.png" alt="image-20241019155536547" style="zoom:50%;" />
+
+<h2 id="求导和积分矩阵的特征向量"><a href="#求导和积分矩阵的特征向量" class="headerlink" title="求导和积分矩阵的特征向量"></a>求导和积分矩阵的特征向量</h2><p><a href="#%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F">特征向量解释</a></p>
+<p>什么样的函数,在求导和积分下,他的形状是不变的?指数函数的导数和积分结果仍然是指数函数,只不过会有不同的系数</p>
+<p>通俗讲: <strong>就是对于以e为底的指数不断的求导和积分只是改变它乘以的系数</strong><br>$$<br>\frac{\mathrm{d}}{\mathrm{d}t}(\mathrm{e}^{st})&#x3D;se^{st},\quad\int\mathrm{e}^{st} \mathrm{d}t&#x3D;\frac{1}{s}e^{st}+C<br>$$<br>求导和积分的运算是线性的</p>
+<h2 id="特征函数解一阶微分方程"><a href="#特征函数解一阶微分方程" class="headerlink" title="特征函数解一阶微分方程"></a>特征函数解一阶微分方程</h2><p>解法流程如下:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410191646932.png" alt="image-20241019164659396"></p>
+<h2 id="特征函数解二阶微分方程"><a href="#特征函数解二阶微分方程" class="headerlink" title="特征函数解二阶微分方程"></a>特征函数解二阶微分方程</h2><p>解法流程如下:</p>
+<p>有实数解的情况:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410191653288.png" alt="image-20241019165337881"></p>
+<p>没有实数解的情况:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410191658808.png" alt="image-20241019165847285"></p>
+<p>虽然上述的解是对的,但是我们都会用欧拉公式把它化简成一个看起来比较舒服的状态</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410191701161.png" alt="image-20241019170134624"  />
+
+<h1 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ys411472E">线性代数本质原理视频</a></p>
+<h2 id="乘法意义盘点"><a href="#乘法意义盘点" class="headerlink" title="乘法意义盘点"></a>乘法意义盘点</h2><p>简单介绍几种乘法的计算,以及他们的现实意义</p>
+<ul>
+<li><p><strong>矩阵乘积</strong>：是矩阵之间的一种运算，结果是一个新的矩阵，涉及行与列的乘法和求和</p>
+<p>一个矩阵可以看作是对空间中向量的线性变换,多个线性变换可以通过矩阵乘法组合在一起;工程、物理和经济等领域可以用来简洁地表示和求解线性方程组</p>
+</li>
+<li><p><strong>向量内积</strong>：是两个向量之间的运算，结果是一个标量，表示两个向量的相似度或投影。</p>
+<p>相似度</p>
+<ul>
+<li><strong>指向相同</strong>：内积大，表示相似度高。</li>
+<li><strong>指向相反</strong>：内积小，表示相似度低。</li>
+<li><strong>垂直</strong>：内积为零，表示没有相似度（这时两个向量是正交的）。</li>
+</ul>
+<p>投影</p>
+<ul>
+<li>A对B计算向量内积可以理解为 A在B向量方向上的投影长度 乘以B的长度</li>
+</ul>
+<p>因此,多个向量如果内积为0,代表他们之间垂直</p>
+</li>
+<li><p><strong>对应位元素乘积</strong>：是两个相同维度的矩阵或向量之间的逐元素乘法，结果也是一个相同维度的矩阵或向量。</p>
+<p>元素级操作,如图像处理中的加权或滤波,如机器学习的激活函数等</p>
+</li>
+</ul>
+<h2 id="标准正交基"><a href="#标准正交基" class="headerlink" title="标准正交基"></a>标准正交基</h2><p>$$<br>e_x<em>e_x&#x3D;e_y</em>e_y&#x3D;1<br>$$</p>
+<p>$$<br>e_x*e_y&#x3D;0<br>$$</p>
+<p>e为向量标志</p>
+<p>基向量两两垂直且长度归一化</p>
+<p>我们将满足上面两个公式的向量组合的称为标准正交基</p>
+<h3 id="空间坐标转换"><a href="#空间坐标转换" class="headerlink" title="空间坐标转换"></a>空间坐标转换</h3><p><strong>投影到新的正交基</strong> </p>
+<p>如果确定一个三维空间下的向量在新的基向量下的坐标$x_P^{\prime},\quad y_P^{\prime},\quad z_p^{\prime}$,使得<br>$$<br>\overrightarrow{OP}&#x3D;x_P’\boldsymbol{i}’+y_P’\boldsymbol{j}’+z_p’\boldsymbol{k}’<br>$$<br>因为两个向量的向量内积计算出来为投影的长度,所以需要将$\overrightarrow{OP}$乘新的x轴基向量,得到的是在新正交基下的$\overrightarrow{OP}$的新的x值,计算过程如图:</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410191448971.png" alt="image-20241019144850211" style="zoom:50%;" />
+
+<p>可以推广得到:</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410191508307.png" alt="image-20241019150802593" style="zoom:50%;" />
+
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>坐标系中的基向量,由两两正交(内积为零) 且长度为1(归一化)的n(n为空间维度) 个向量组成</li>
+<li>坐标系中任意一个向量可表示为基向量的线性组合,其系数即为坐标</li>
+<li>向量从一个坐标系变换到另一个坐标系,需要求向量在新坐标系的每个基向量下的投影</li>
+</ul>
+<h2 id="特征向量"><a href="#特征向量" class="headerlink" title="特征向量"></a>特征向量</h2><p>矩阵作用于向量：假设 A 是一个矩阵， x 是一个向量。当矩阵 A 作用在向量 x 上时，通常向量的方向和长度都会改变。</p>
+<p>矩阵作用在某一些向量上时,向量方向不变,只有长度发生变化,这些向量称之为矩阵的<strong>特征向量</strong></p>
+<p><strong>特征向量和特征值</strong>：</p>
+<p><strong>特征向量（Eigenvector）</strong>：某些特殊的向量，在被矩阵 A 作用时，方向不会改变，只有长度发生变化。这些特殊的向量称为矩阵的<strong>特征向量</strong>。</p>
+<p><strong>特征值（Eigenvalue）</strong>：当矩阵 A 作用于特征向量时，特征向量的长度会按某个数值 $\lambda$ （特征值）进行缩放。<br>$$<br>Ax &#x3D; \lambda x<br>$$</p>
+<ul>
+<li>A 是矩阵，</li>
+<li>x 是矩阵的特征向量，</li>
+<li>$\lambda$ 是与特征向量对应的特征值。</li>
+</ul>
+<p>当矩阵 A 作用于特征向量 x 时，结果是向量 x 被缩放了 $\lambda$ 倍，但方向保持不变。</p>
+<p>对于特征向量来说,矩阵作用等于数乘</p>
+<p><strong>现实意义</strong>：在许多数学和物理问题中，矩阵的特征向量和特征值具有重要意义。比如在动力系统中，它们可以用于描述系统的稳定性。在量子力学中，特征值和特征向量用于描述粒子的能量状态。</p>
+<h2 id="新世界大门"><a href="#新世界大门" class="headerlink" title="新世界大门"></a>新世界大门</h2><p>用线性代数理解积分变换的核心: 函数就是无穷维的数组</p>
+<p>无穷维向量的</p>
+<h1 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h1><p>欧拉函数（Euler’s Totient Function），又称为欧拉φ函数，是一个与数论相关的函数，通常用符号 φ(n) 表示。对于正整数 n，欧拉函数 φ(n) 定义为小于或等于 n 的正整数中与 n 互质的数的个数。</p>
+<p>$$<br>e^{ix}&#x3D;\cos x+i\sin x<br>$$<br>,复数最初产生于对某些代数方程的根的研究.$x_2+1&#x3D;0$或$x_2&#x3D;-1$没有实数值解.因为它要求我们对一个负数取平方根,因此”虚数”&#96;i被定义为<br>$$<br>i &#x3D; \sqrt-1<br>$$<br>因此 $x_2+1&#x3D;0$有两个根,x&#x3D;+i和x&#x3D;-i,他们是-1的两个平方根</p>
+<p>概念:  <strong>复数共轭</strong>：将虚部取负的复数。</p>
+<h1 id="傅里叶变换"><a href="#傅里叶变换" class="headerlink" title="傅里叶变换"></a>傅里叶变换</h1><blockquote>
+<p>任何一个函数都是不同频率简谐振动(即正余弦函数)的叠加</p>
+</blockquote>
+<p>如果说线性代数是人工智能的数学基础,那么傅里叶变换则是计算机视觉的数学基础</p>
+<p>在实际的工程问题中,一些异常复杂的公式和难以理解的问题,利用傅里叶变换转换到频率域后,一个杂乱无章的世界,瞬间整整齐齐,一切都豁然开朗.</p>
+<p>傅里叶变化分为两种</p>
+<ul>
+<li>傅里叶级数</li>
+<li>连续傅里叶变换</li>
+</ul>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>为什么正弦波是分解信号的基本元素?</p>
+<ol>
+<li><p>实际物理意义</p>
+<p>物理世界中许多振动现象都是通过正弦波来描述的,如声波,光波和电磁波,便于理解其物理含义</p>
+</li>
+<li><p>线性系统中的基础元素</p>
+<p>物理学中的许多系统,如之前提到过的机械电子系统都可以用线性系统来描述(因为线性系统的特性:线性叠加性),正弦波是基本的一个输入信号.因此正弦波是分解复杂信号时理想的基础元素</p>
+</li>
+<li><p>正交性</p>
+<p>正余弦函数具有非常好的数学特性: <strong>正交性</strong> </p>
+<p>意味着不同频率的正弦波彼此没有相互影响,可以独立处理这种性质.这种特性使得我们可以将复杂系统分解为若干个正弦波的叠加.</p>
+<p>数学上正交基的这种性质使傅里叶变换成为了可能</p>
+</li>
+<li><p>周期性与频率的清晰表示</p>
+</li>
+<li><p>数学上的简便性</p>
+</li>
+<li><p>欧拉公式的应用</p>
+<p>欧拉公式揭示了正弦波和复数的紧密结合</p>
+<p>因此对于傅里叶变换,除了三角形式,通过欧拉公式还可以表示为复指数形式,这就为处理信号的变换提供了一个强大的数学工具,能够简化许多实际问题的求解过程</p>
+</li>
+</ol>
+<p>$$<br>f(t)&#x3D;\sum_{n&#x3D;0}^\infty[b_n\sin(nt)+a_n\cos(nt)]<br>$$</p>
+<h2 id="周期函数的频率分解"><a href="#周期函数的频率分解" class="headerlink" title="周期函数的频率分解"></a>周期函数的频率分解</h2><ul>
+<li><p>假定我们拥有一个f(t),该函数具备周期T</p>
+</li>
+<li><p>表示周期的两个参数分别是频率和角频率分别如下:</p>
+<blockquote>
+<p>角频率 $\omega_0$ 表示周期函数每单位时间<strong>转过的相角</strong>，它通过弧度（rad）来度量</p>
+</blockquote>
+<p>$$<br>f_0&#x3D;\frac{1}{T}, \omega_0&#x3D;\frac{2\pi}{T}&#x3D;2\pi f_0<br>$$</p>
+</li>
+<li><p>我们希望找到这个函数在复指数基函数下每个频率$f_0,2f_0,…,nf_0$上的投影,需要怎么做</p>
+</li>
+</ul>
+<h2 id="傅里叶级数"><a href="#傅里叶级数" class="headerlink" title="傅里叶级数"></a>傅里叶级数</h2><p>傅里叶级数: 任何周期性函数一定 可以转换为一堆 正(余)弦函数的和</p>
+<p>正(余)弦函数就是正交基?此处未理解完全</p>
+<p>由此引入了时域和频域的概念</p>
+<ul>
+<li>时域: 信号随着时间的变化</li>
+<li>频域: 在不同的频率下每个信号的大小</li>
+</ul>
+<p>频域中单个频包含相位和振幅信息</p>
+<p><strong>一个时域信号</strong>&#x3D;&#x3D;可以拆分为&#x3D;&gt;<strong>多个频域信号</strong>&#x3D;&#x3D;可以拆分为&#x3D;&gt;<strong>多组增幅和相位信息之和</strong></p>
+<h2 id="连续傅里叶变换"><a href="#连续傅里叶变换" class="headerlink" title="连续傅里叶变换"></a>连续傅里叶变换</h2><p>可以将一个非周期函数看成是一个周期性无穷大的周期函数</p>
+<h1 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h1><h1 id="数学分析原理"><a href="#数学分析原理" class="headerlink" title="数学分析原理"></a>数学分析原理</h1><p>在本科阶段，学生通常会学习基础的微积分和实分析等内容；而在研究生阶段，学生可能会深入学习复分析、泛函分析等更高级的数学分析原理</p>
+<h2 id="度量空间"><a href="#度量空间" class="headerlink" title="度量空间"></a>度量空间</h2><h2 id="泛函分析"><a href="#泛函分析" class="headerlink" title="泛函分析"></a>泛函分析</h2><h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><h2 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h2><p><strong>正态分布</strong>（<strong>Normal distribution</strong>）又名<strong>高斯分布</strong>（<strong>Gaussian distribution</strong>），是一个在<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E6%95%B8%E5%AD%B8">数学</a>、<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E7%89%A9%E7%90%86">物理</a>及<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E5%B7%A5%E7%A8%8B">工程</a>等<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/w/index.php?title=%E9%A0%98%E5%9F%9F&action=edit&redlink=1">领域</a>都非常重要的概率分布，在统计学的许多方面有着重大的影响力。</p>
+<h2 id="标准差"><a href="#标准差" class="headerlink" title="标准差"></a>标准差</h2><p>方差是数据的平方，与检测值本身相差太大，人们难以直观地衡量，所以常用均方差代替方差判断数据的波动。</p>
+<p>也称为<strong>均方差</strong></p>
+<p>标准差详解:用来衡量数据点相对于均值的分散程度或波动性的统计量(是方差的平方根)</p>
+<p>所有样本的方差之和除以样本的个数，再把所得值开根号，所得之数就是这组数据的均方差，也叫标准差，常见的离散型公式：<br>$$<br>\sigma &#x3D; \sqrt{\frac{1}{N} \sum_{i&#x3D;1}^{N} (x_i - \bar{x})^2}<br>$$<br>其中，$\sigma$ 表示标准差，$N$ 表示数据点的数量，$x_i$ 表示第i个数据点的数值，$\bar{x}$ 表示数据集的均值。</p>
+<p>在概率论中,$\bar{x}$ 应该替换成r,表示随机变量的数学期望<br>$$<br>\sigma(r)&#x3D;\sqrt{\frac1N\sum_{i&#x3D;1}^N(x_i-r)^2}<br>$$</p>
+<h2 id="协方差"><a href="#协方差" class="headerlink" title="协方差"></a>协方差</h2><p>下面视频是协方差公式推导流程</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://www.bilibili.com/video/BV1gY4y187TL/" alt="教程|720x360"></p>
+<p>当舞台转向了多维随机变量时，方差就变成了协方差，这里的“协”是指几个变量的协同相关性。</p>
+<p>如果(X, Y)是二维随机变量，且D(X)&gt;0, D(Y)&gt;0，则X,Y的协方差的定义是：<br>$$<br>COV(X,Y)&#x3D;(X-E(X))(Y-E(Y))<br>$$<br>E(X)和E(Y)表示平均值或数学期望</p>
+<p>从直观上来看，协方差表示的是两个变量总体误差的期望,当两个变量完全一致时，协方差就变成了方差：<br>$$<br>COV(X,X)&#x3D;E(X^{2})-E(X)^{2}&#x3D;D(X)<br>$$<br>协方差的性质：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407111029726.png" alt="img"></p>
+<h3 id="协方差矩阵"><a href="#协方差矩阵" class="headerlink" title="协方差矩阵"></a>协方差矩阵</h3><p>协方差只能处理二维问题，对于三维以上数据，就需要计算多个协方差，然后用矩阵将其组织起来，这就是协方差矩阵。</p>
+<p>以三维随机变量(X,Y,Z)为例，其协方差矩阵用∑表示：<br>$$<br>\Sigma&#x3D;\begin{bmatrix}COV(X,X)&amp;COV(X,Y)&amp;COV(X,Z)\COV(Y,X)&amp;COV(Y,Y)&amp;COV(Y,Z)\COV(Z,X)&amp;COV(Z,Y)&amp;COV(Z,Z)\end{bmatrix}<br>$$<br>需要注意的是，协方差矩阵计算的是不同维度之间的协方差，而不是不同样本之间的。</p>
+<p>简单来说，协方差矩阵就是两两计算各维度之间的协方差，看看每两个维度之间的相关情况。如果各个变量之间相互独立，那么两个不同维度变量的协方差是0，此时协方差矩阵就是一个对角矩阵，并且对角线上的每个元素都是该维度的方差</p>
+<h1 id="圆参数方程"><a href="#圆参数方程" class="headerlink" title="圆参数方程"></a>圆参数方程</h1><p>$$<br>x &#x3D; h + r \cos(t)<br>$$</p>
+<p>$$<br>y &#x3D; k + r \sin(t)<br>$$</p>
+<p>给定任何半斤和角度,可以找到圆上的相应坐标,<code>(h,k)</code>表示圆心</p>
+<p>另有笛卡尔坐标系下的圆方程:<br>$$<br>(x - h)^2 + (y - k)^2 &#x3D; r^2<br>$$</p>
+<h1 id="点到直线的距离"><a href="#点到直线的距离" class="headerlink" title="点到直线的距离"></a>点到直线的距离</h1><p>在二维坐标系下，已知三个点 A(x1, y1), B(x2, y2), C(x3, y3)，求点 C 到直线 AB的距离。</p>
+<p>计算直线 AB 的方程:  直线方程的一般式为 <code>Ax + By + C = 0</code></p>
+<p>我们可以通过以下公式计算 A, B, C：</p>
+<ul>
+<li><code>A = y2 - y1</code></li>
+<li><code>B = x1 - x2</code></li>
+<li><code>C = x2 * y1 - x1 * y2</code></li>
+</ul>
+<blockquote>
+<p>推导过程如下:</p>
+<ol>
+<li><p><strong>确定直线的斜率</strong>：<br>直线 $ AB $ 的斜率 $ k $ 可以通过点 $ A $ 和点 $ B $ 的坐标计算：<br>$$<br>k &#x3D; \frac{y_2 - y_1}{x_2 - x_1}<br>$$<br>但我们不需要直接计算斜率，因为我们要用一般式来表示直线。</p>
+</li>
+<li><p><strong>使用点斜式公式</strong>：<br>直线的点斜式方程为：<br>$$<br>y - y_1 &#x3D; k(x - x_1)<br>$$</p>
+<p>将斜率 $ k $ 代入：<br>$$<br>y - y_1 &#x3D; \frac{y_2 - y_1}{x_2 - x_1}(x - x_1)<br>$$</p>
+</li>
+<li><p><strong>变换为一般式</strong>：<br>将上述方程变换为一般式 $ Ax + By + C &#x3D; 0 $：<br>$$<br>(y_2 - y_1)(x - x_1) - (x_2 - x_1)(y - y_1) &#x3D; 0<br>$$<br>展开并整理：<br>$$<br>(y_2 - y_1)x - (x_2 - x_1)y + (x_2y_1 - x_1y_2) &#x3D; 0<br>$$<br>由此，我们可以得到：</p>
+<ul>
+<li>$A &#x3D; y_2 - y_1 $</li>
+<li>$B &#x3D; x_1 - x_2 $</li>
+<li>$C &#x3D; x_2y_1 - x_1y_2 $</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<p>点 (x0, y0) 到直线 Ax + By + C &#x3D; 0 的距离公式为：<br>$$<br> \text{distance} &#x3D; \frac{|Ax_0 + By_0 + C|}{\sqrt{A^2 + B^2}}<br>$$<br>展开为:<br>$$<br>\text{distance} &#x3D; \frac{|(y_2 - y_1)x_0 + (x_1 - x_2)y_0 + (x_2y_1 - x_1y_2)|}{\sqrt{(y_2 - y_1)^2 + (x_1 - x_2)^2}}<br>$$<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26307123">求点到直线距离的推导过程参考此处</a></p>
+<p>上面是一般式,下面是针对斜截式:<br>$$<br>d&#x3D;\frac{|km+b-n|}{\sqrt{1+k^2}}<br>$$<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1sC4y1i7FC/">斜截式推导流程</a></p>
+<h1 id="三角函数相关"><a href="#三角函数相关" class="headerlink" title="三角函数相关"></a>三角函数相关</h1><h2 id="三角恒等式"><a href="#三角恒等式" class="headerlink" title="三角恒等式"></a>三角恒等式</h2><p>$$<br>\cos^2(t) + \sin^2(t) &#x3D; 1<br>$$</p>
+<p>推导如下:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202411011409664.webp" alt="基本三角身份证明"></p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"></a><div class="post-copyright__author_name">ZEROKO14</div><div class="post-copyright__author_desc">zeroko14's blog</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://che77a38.github.io/posts/%E6%95%B0%E5%AD%A6/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://che77a38.github.io/posts/%E6%95%B0%E5%AD%A6/')">数学</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://che77a38.github.io/posts/%E6%95%B0%E5%AD%A6/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=数学&amp;url=https://che77a38.github.io/posts/%E6%95%B0%E5%AD%A6/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://che77a38.github.io" target="_blank">ZEROKO14的个人博客</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E6%95%B0%E5%AD%A6/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>数学<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">开发项目管理</div></div></a></div><div class="next-post pull-right"><a href="/posts/%E6%95%B0%E6%8D%AE%E5%BA%93/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">数据库</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">欢迎来到ZEROKO14的个人博客</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">ZEROKO14</h1><div class="author-info__desc">zeroko14's blog</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/che77a38" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LLM%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">LLM数学原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%82%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8C%87%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">幂函数与指函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%82%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">幂函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E6%95%B0%E5%87%BD%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">指数函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%82%E6%8C%87%E5%87%BD%E6%95%B0"><span class="toc-number">2.3.</span> <span class="toc-text">幂指函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%BC%E6%95%B0%E7%9B%B8%E5%85%B3"><span class="toc-number">3.</span> <span class="toc-text">导数相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%B1%82%E5%AF%BC%E5%85%AC%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text">基本求导公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E6%95%B0%E7%9A%84%E8%BF%90%E7%AE%97%E6%80%A7%E8%B4%A8"><span class="toc-number">3.2.</span> <span class="toc-text">导数的运算性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%BB%84%E7%9A%84%E6%B1%82%E5%AF%BC%E5%85%AC%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text">函数组的求导公式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%92%8C%E5%B7%AE%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0"><span class="toc-number">3.3.1.</span> <span class="toc-text">和差函数的导数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%98%E7%A7%AF%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0-%E4%B9%98%E7%A7%AF%E6%B3%95%E5%88%99"><span class="toc-number">3.3.2.</span> <span class="toc-text">乘积函数的导数(乘积法则)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%95%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0-%E5%95%86%E6%B3%95%E5%88%99"><span class="toc-number">3.3.3.</span> <span class="toc-text">商函数的导数(商法则)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%90%88%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0-%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99"><span class="toc-number">3.3.4.</span> <span class="toc-text">复合函数的导数(链式法则)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E9%98%B6%E5%AF%BC%E6%95%B0"><span class="toc-number">3.4.</span> <span class="toc-text">高阶导数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E9%98%B6%E5%AF%BC%E6%95%B0"><span class="toc-number">3.4.1.</span> <span class="toc-text">二阶导数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#n%E9%98%B6%E5%AF%BC%E6%95%B0"><span class="toc-number">3.4.2.</span> <span class="toc-text">n阶导数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E6%95%B0%E6%B1%82%E5%AF%BC%E6%B3%95"><span class="toc-number">3.5.</span> <span class="toc-text">对数求导法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">3.5.1.</span> <span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%90%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0"><span class="toc-number">3.6.</span> <span class="toc-text">隐函数的导数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B-1"><span class="toc-number">3.6.1.</span> <span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E7%9A%84%E5%AF%BC%E6%95%B0"><span class="toc-number">3.7.</span> <span class="toc-text">参数方程的导数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B-2"><span class="toc-number">3.7.1.</span> <span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%BB%E6%95%A3%E6%B1%82%E5%AF%BC"><span class="toc-number">3.8.</span> <span class="toc-text">离散求导</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A8%E5%BE%AE%E5%88%86"><span class="toc-number">4.</span> <span class="toc-text">全微分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%BF%90%E7%AE%97"><span class="toc-number">5.</span> <span class="toc-text">线性运算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%BF%90%E7%AE%97%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">5.1.</span> <span class="toc-text">线性运算的定义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="toc-number">6.</span> <span class="toc-text">微分方程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%AE%E5%88%86%E4%B8%8E%E6%B1%82%E5%92%8C"><span class="toc-number">6.1.</span> <span class="toc-text">差分与求和</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%AE%E5%88%86"><span class="toc-number">6.1.1.</span> <span class="toc-text">差分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E5%92%8C"><span class="toc-number">6.1.2.</span> <span class="toc-text">求和</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%AE%E5%88%86-%E6%B1%82%E5%92%8C%E4%B8%8E%E5%BE%AE%E5%88%86-%E7%A7%AF%E5%88%86%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">6.2.</span> <span class="toc-text">差分&#x2F;求和与微分&#x2F;积分的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E5%AF%BC%E5%92%8C%E7%A7%AF%E5%88%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F"><span class="toc-number">6.3.</span> <span class="toc-text">求导和积分矩阵的特征向量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0%E8%A7%A3%E4%B8%80%E9%98%B6%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="toc-number">6.4.</span> <span class="toc-text">特征函数解一阶微分方程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0%E8%A7%A3%E4%BA%8C%E9%98%B6%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="toc-number">6.5.</span> <span class="toc-text">特征函数解二阶微分方程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="toc-number">7.</span> <span class="toc-text">线性代数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%98%E6%B3%95%E6%84%8F%E4%B9%89%E7%9B%98%E7%82%B9"><span class="toc-number">7.1.</span> <span class="toc-text">乘法意义盘点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E6%AD%A3%E4%BA%A4%E5%9F%BA"><span class="toc-number">7.2.</span> <span class="toc-text">标准正交基</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2"><span class="toc-number">7.2.1.</span> <span class="toc-text">空间坐标转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">7.2.1.1.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F"><span class="toc-number">7.3.</span> <span class="toc-text">特征向量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E4%B8%96%E7%95%8C%E5%A4%A7%E9%97%A8"><span class="toc-number">7.4.</span> <span class="toc-text">新世界大门</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text">欧拉函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2"><span class="toc-number">9.</span> <span class="toc-text">傅里叶变换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">9.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0%E7%9A%84%E9%A2%91%E7%8E%87%E5%88%86%E8%A7%A3"><span class="toc-number">9.2.</span> <span class="toc-text">周期函数的频率分解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0"><span class="toc-number">9.3.</span> <span class="toc-text">傅里叶级数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E7%BB%AD%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2"><span class="toc-number">9.4.</span> <span class="toc-text">连续傅里叶变换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%8D%E6%95%B0"><span class="toc-number">10.</span> <span class="toc-text">复数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%E5%8E%9F%E7%90%86"><span class="toc-number">11.</span> <span class="toc-text">数学分析原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%A6%E9%87%8F%E7%A9%BA%E9%97%B4"><span class="toc-number">11.1.</span> <span class="toc-text">度量空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%87%BD%E5%88%86%E6%9E%90"><span class="toc-number">11.2.</span> <span class="toc-text">泛函分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5"><span class="toc-number">12.</span> <span class="toc-text">一些概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83"><span class="toc-number">12.1.</span> <span class="toc-text">高斯分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E5%B7%AE"><span class="toc-number">12.2.</span> <span class="toc-text">标准差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E6%96%B9%E5%B7%AE"><span class="toc-number">12.3.</span> <span class="toc-text">协方差</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8F%E6%96%B9%E5%B7%AE%E7%9F%A9%E9%98%B5"><span class="toc-number">12.3.1.</span> <span class="toc-text">协方差矩阵</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%86%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B"><span class="toc-number">13.</span> <span class="toc-text">圆参数方程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%82%B9%E5%88%B0%E7%9B%B4%E7%BA%BF%E7%9A%84%E8%B7%9D%E7%A6%BB"><span class="toc-number">14.</span> <span class="toc-text">点到直线的距离</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E7%9B%B8%E5%85%B3"><span class="toc-number">15.</span> <span class="toc-text">三角函数相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E6%81%92%E7%AD%89%E5%BC%8F"><span class="toc-number">15.1.</span> <span class="toc-text">三角恒等式</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/avalonia/" title="avalonia">avalonia</a><time datetime="2024-09-11T14:51:13.000Z" title="发表于 2024-09-11 22:51:13">2024-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E8%A7%86%E9%A2%91%E6%95%88%E6%9E%9C/" title="PR">PR</a><time datetime="2024-07-18T07:06:08.330Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%89%8D%E7%AB%AF/" title="WEB前端">WEB前端</a><time datetime="2024-07-18T07:06:08.323Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/slidev/" title="slidev">slidev</a><time datetime="2024-07-18T07:06:08.319Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/C++%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="C++多线程">C++多线程</a><time datetime="2024-07-18T07:05:59.794Z" title="发表于 2024-07-18 15:05:59">2024-07-18</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="ZEROKO14" target="_blank">ZEROKO14</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu"></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">48</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 0.88rem;">C#<sup>3</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 0.88rem;">CSS<sup>1</sup></a><a href="/tags/CSharp/" style="font-size: 0.88rem;">CSharp<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 0.88rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 0.88rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 0.88rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 0.88rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 0.88rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 0.88rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 0.88rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 0.88rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 0.88rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 0.88rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 0.88rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/json/" style="font-size: 0.88rem;">json<sup>1</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>1</sup></a><a href="/tags/next/" style="font-size: 0.88rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 0.88rem;">ppt<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 0.88rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 0.88rem;">vue<sup>1</sup></a><a href="/tags/xml/" style="font-size: 0.88rem;">xml<sup>1</sup></a><a href="/tags/yaml/" style="font-size: 0.88rem;">yaml<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 0.88rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 0.88rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 0.88rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 0.88rem;">加解密<sup>1</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 0.88rem;">多线程<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">开发<sup>4</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.88rem;">数学<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 0.88rem;">数据库<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 0.88rem;">架构<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 0.88rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 0.88rem;">监控<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>1</sup></a><a href="/tags/%E7%AE%A1%E7%90%86/" style="font-size: 0.88rem;">管理<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 0.88rem;">网络<sup>2</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 0.88rem;">逆向<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

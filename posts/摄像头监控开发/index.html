@@ -1,0 +1,1108 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>摄像头监控开发 | ZEROKO14的个人博客</title><meta name="keywords" content="监控"><meta name="author" content="ZEROKO14"><meta name="copyright" content="ZEROKO14"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="摄像头监控开发"><meta name="application-name" content="摄像头监控开发"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="摄像头监控开发"><meta property="og:url" content="https://che77a38.github.io/posts/%E6%91%84%E5%83%8F%E5%A4%B4%E7%9B%91%E6%8E%A7%E5%BC%80%E5%8F%91/index.html"><meta property="og:site_name" content="ZEROKO14的个人博客"><meta property="og:description" content="此处记录一些摄像头监控相关知识   音视频基础知识记录参考链接 视频流程全解1234567891011121314graph LR	    A[数据] --&amp;gt; B[解协议]    B --&amp;gt; C[封装格式数据]    C --&amp;gt; D[解封装]    D --&amp;gt; E[音频压缩数"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta property="article:author" content="ZEROKO14"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta name="description" content="此处记录一些摄像头监控相关知识   音视频基础知识记录参考链接 视频流程全解1234567891011121314graph LR	    A[数据] --&amp;gt; B[解协议]    B --&amp;gt; C[封装格式数据]    C --&amp;gt; D[解封装]    D --&amp;gt; E[音频压缩数"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://che77a38.github.io/posts/%E6%91%84%E5%83%8F%E5%A4%B4%E7%9B%91%E6%8E%A7%E5%BC%80%E5%8F%91/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":true,"limitCount":50,"languages":{"author":"作者: ZEROKO14","link":"链接: ","source":"来源: ZEROKO14的个人博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'ZEROKO14的个人博客',
+  title: '摄像头监控开发',
+  postAI: '',
+  pageFillDescription: '音视频基础知识记录, 视频流程全解, 流媒体协议, 封装格式, 视频编码格式, 音频编码, 现有网络视音频平台对比, 直播平台参数对比, 点播平台参数对比, USB摄像头基础知识, FFMPEG, ffmpeg原理理解, FFmpeg的组成, 安装, 安装方式, Csharp ffmpeg, ffmpeg集成到程序目录下, FFmpeg的常用参数, 详细参数参考, 通用选项, 视频选项, 高级视频选项, 音频选项, 音频x2F视频捕获选项, 高级选项, FFmpeg指令使用, 摄像头监控方案盘点, MJPG-streamer方案详解, 格式理解, JPEG, MJPG, 用法, 流媒体方案详解, 推流端, windows捕获视频流, USB摄像头监控保存方案记录, 视频播放此处记录一些摄像头监控相关知识音视频基础知识记录参考链接视频流程全解数据解协议封装格式数据解封装音频压缩数据音频解码音频原始数据视音频同步音频驱动设备视频压缩数据视频解码视频原始数据视频驱动设备解协议的作用就是将流媒体协议的数据解析为标准的相应的封装格式数据视音频在网络上传播的时候常常采用各种流媒体协议例如或是等等这些协议在传输视音频数据的同时也会传输一些信令数据这些信令数据包括对播放的控制播放暂停停止或者对网络状态的描述等解协议的过程中会去除掉信令数据而只保留视音频数据例如采用协议传输的数据经过解协议操作后输出格式的数据解封装的作用就是将输入的封装格式的数据分离成为音频流压缩编码数据和视频流压缩编码数据封装格式种类很多例如等等它的作用就是将已经压缩编码的视频数据和音频数据按照一定的格式放到一起例如格式的数据经过解封装操作后输出编码的视频码流和编码的音频码流解码的作用就是将视频音频压缩编码数据解码成为非压缩的视频音频原始数据音频的压缩编码标准包含等等视频的压缩编码标准则包含等等解码是整个系统中最重要也是最复杂的一个环节通过解码压缩编码的视频数据输出成为非压缩的颜色数据例如等等压缩编码的音频数据输出成为非压缩的音频抽样数据例如数据视音频同步的作用就是根据解封装模块处理过程中获取到的参数信息同步解码出来的视频和音频数据并将视频音频数据送至系统的显卡和声卡播放出来流媒体协议流媒体协议是服务器与客户端之间通信遵循的规定当前网络上主要的流媒体协议如表所示主要流媒体协议一览协议传输方式流流流流封装格式文件延时低低高高数据分段连续流连续流切片文件切片文件播放使用由站推出不支持使用可播放总的来说和的延时较低但由于数据分段为连续流因此在网络环境不佳的情况下容易出现卡顿现象和的延时较高但由于数据分段为切片文件因此在网络环境不佳的情况下也能保证流畅播放名称推出机构传输层协议客户端目前使用领域互联网直播互联网直播互联网直播点播互联网点播下面都是公司推出的流媒体协议开发流程协议避免连接易被拦截的问题因此开发了协议苹果公司推出了协议延时低是当下最主流的直播协议注意可以用在双端只能用在拉流端封装格式封装格式的主要作用是把视频码流和音频码流按照一定的格式存储在一个文件中现如今流行的封装格式如下表所示主要封装格式一览名称推出机构流媒体支持的视频编码支持的音频编码目前使用领域不支持几乎所有格式几乎所有格式下载影视支持等等互联网视频网站支持数字电视支持等互联网视频网站支持几乎所有格式几乎所有格式互联网视频网站支持下载影视由表可见除了之外其他封装格式都支持流媒体即可以边下边播有些格式更万能一些支持的视音频编码标准多一些比如而有些格式则支持的相对比较少比如说视频编码格式视频编码的主要作用是将视频像素数据等压缩成为视频码流从而降低视频的数据量如果视频不经过压缩编码的话体积通常是非常大的一部电影可能就要上百的空间视频编码是视音频技术中最重要的技术之一视频码流的数据量占了视音频总数据量的绝大部分高效率的视频编码在同等的码率下可以获得更高的视频质量相关原理参考注视频编码技术在整个视音频技术中应该是最复杂的技术主要视频编码一览名称推出机构推出时间目前使用领域研发中各个领域不温不火数字电视研发中不普及微软平台由表可见有两种视频编码方案是最新推出的和目前这两种方案都处于研发阶段还没有到达实用的程度当前使用最多的视频编码方案就是但未来将会取代参考此处的实际对比整体来说同等码率的视频质量就是仅仅是一个编码标准而不是一个具体的编码器只是给编码器的实现提供参照用的学习最标准的源代码就是其官方标准了但是要注意速度非常的慢是无法用于实际的音频编码音频编码的主要作用是将音频采样数据等压缩成为音频码流从而降低音频的数据量音频编码也是互联网视音频技术中一个重要的技术但是一般情况下音频的数据量要远小于视频的数据量因而即使使用稍微落后的音频编码标准而导致音频数据量有所增加也不会对视音频的总数据量产生太大的影响高效率的音频编码在同等的码率下可以获得更高的音质音频编码的简单原理可以参考视频压缩编码和音频压缩编码的基本原理主要音频编码一览名称推出机构推出时间目前使用领域各个领域新电影各个领域旧微软平台结果大致是这样的现有网络视音频平台对比现有的网络视音频服务主要包括两种方式点播和直播点播意即根据用户的需要播放相应的视频节目这是互联网视音频服务最主要的方式绝大部分视频网站都提供了点播服务直播意即互联网视音频平台直接将视频内容实时发送给用户目前还处于发展阶段直播在网络电视台社交视频网站较为常见直播平台参数对比现有网络视音频平台参数对比名称协议封装视频编码音频编码私有华数六间房中国教育电视台北广传媒移动电视上海点播平台参数对比现有互联网视音频平台参数对比名称协议封装视频编码音频编码部分华数优酷网土豆网网音悦台乐视网新浪视频点播服务普遍采用了作为流媒体协议作为视频编码格式作为音频编码格式采用作为点播协议有以下两点优势一方面是基于协议的应用层协议媒体传输过程中不会出现丢包等现象从而保证了视频的质量另一方面被绝大部分的服务器支持因而流媒体服务机构不必投资购买额外的流媒体服务器从而节约了开支摄像头基础知识摄像头通常指通过口与连接通用的摄像头都是免驱摄像头采用驱动全称为即视频类是一种为视频捕获设备定义的协议标准通常会有两种视频输出格式和两种格式的区别格式输出的是无压缩的视频帧原始数据转换后得到格式数据系统资源占用少因为不用解码不需要解码器缺点是帧率稍慢受限于的带宽速率是速率是图像通常需要专用的图像查看工具才能打开例如格式输出的是将视频图像采用格式压缩后得到的视频帧优点是帧率高视频开启快曝光快缺点是影像有马赛克并且需要解码器会占用系统资源视频帧直接保存成文件即可用常见的图片查看工具打开是什么一套开源软件可以记录转换音视频可以从摄像头中记录视频从声卡中记录音频可以转换为各种格式保存起来还可以把各种格式的音视频转换为流供在线观看其他功能视频截图加水印裁剪等等射手播放器暴风影音影音等视频频播放器的内核就是格式工厂的内核也是原理理解的理解只是一种封装格式里面有音频数据视频数据音频数据有自己的压缩格式还不止一种视频数据也有自己的压缩格式还不止一种的组成用于各种音视频封装格式的生成和解析包括获取解码所需信息以生成解码上下文结构和读取音视频帧等功能包含和库用于各种类型声音图像编解码包含一些公共的工具函数用于视频场景比例缩放色彩映射转换用于后期效果处理是一个命令行工具用来对视频文件转换格式也支持对电视卡实时编码是一个多媒体实时广播流服务器支持时光平移是一个简单的播放器使用库解析和解码通过显示以转格式为例需经过一下步骤解复用音频数据解复用视频数据解码原始音频数据解码原始视频数据随意处理随意处理压缩音频数据压缩视频数据多路复用多路复用基础概念容器容器就是一种文件格式比如等包含下面种流以及文件头信息流是一种视频数据信息的传输方式种流音频视频字幕附件数据帧帧代表一幅静止的图像分为帧帧帧编解码器是对视频进行压缩或者解压缩编码解码复用解复用把不同的流按照某种容器的规则放入容器这种行为叫做复用把不同的流从某种容器中解析出来这种行为叫做解复用处理音视频的过程安装安装方式前往官方网站在部分选择版本在系统环境变量的中添加的目录验证安装是否成功参考链接可以使用包只是封装调用程序还是需要下在工具放在程序目录里且版本要对应的很多函数都是用到了指针工程里要勾选允许不安全代集成到程序目录下直接将可执行文件放置到程序中就可以了以下面的调用为例执行失败错误文件压缩并替换成功临时输出文件未找到的常用参数主要参数说明设置输入流设置输出格式开始时间视频参数说明设置视频流量码率默认为设置帧速率默认为设置画面的宽与高设置画面的比例不处理视频设置视频编解码器未设定时则使用与输入流相同的编解码器音频参数说明设置采样率通常使用的值是设置声音的通道数设置音频编解码器未设定时则使用与输入流相同的编解码器不处理音频音频比特率详细参数参考通用选项帮助显示可用的格式编解码的协议的强迫采用格式输入文件覆盖输出文件设置纪录时间格式的记录时间也支持搜索到指定的时间的格式也支持设置标题设置作者设置版权设置评论设置目标文件类型所有的格式选项比特率编解码以及缓冲区大小自动设置只需要输入如下的就可以了激活高质量设置设置以秒为基准的时间偏移该选项影响所有后面的输入文件该偏移被加到输入文件的时戳定义一个正偏移意味着相应的流被延迟了秒的格式也支持视频选项设置比特率缺省设置帧频缺省设置帧大小格式为缺省下面的简写也可以直接使用设置横纵比或设置顶部切除带大小像素单位设置顶部补齐的大小像素单位设置补齐条颜色个进制的数红绿兰排列比如代表黑色不做视频记录设置视频码率容忍度设置最大视频码率容忍度设置最小视频码率容忍度设置码率控制缓冲区大小强制使用编解码方式如果用表示原始编解码数据必须被拷贝使用同样视频质量作为源选择处理遍数或者两遍编码非常有用第一遍生成统计信息第二遍生成精确的请求的码率选择两遍的纪录文件名为高级视频选项设置图像组大小仅适用帧内编码使用固定的视频量化标度最小视频量化标度最大视频量化标度量化标度间最大偏差视频量化标度柔化视频量化标度压缩一遍编码的初始复杂度在和帧间的因子在和帧间的因子在和帧间的偏差在和帧间的偏差设置码率控制方程默认特定间隔下的速率控制重载设置运动估计的方法可用方法有缺省设置的算法可用的有缺省的设置算法可用的有缺省的设置错误残留为缺省设置错误掩蔽为该值为如下值的位掩码使用帧支持宏块决策使用使用个运动矢量仅用于使用数据划分仅用于绕过没有被自动监测到编码器的问题跟标准的严格性使能高级帧内编码使能无限运动矢量不采用交织方法强迫交织法编码仅对和有效当你的输入是交织的并且你想要保持交织以最小图像损失的时候采用该选项可选的方法是不交织但是损失更大计算压缩帧的输出视频编码统计到插入视频处理模块包括了模块名和参数用空格分开音频选项设置音频码率设置音频采样率设置通道缺省为不使能音频纪录使用编解码音频视频捕获选项设置视频捕获设备比如设置视频捕获通道专用设置电视标准设置捕获设置音频设备比如高级选项设置输入流映射打印特定调试信息为基准测试加入时间倾倒每一个输入包仅使用位精确算法用于编解码测试设置包大小以为单位以本地帧频读数据主要用于模拟捕获设备循环输入流只工作于图像流用于测试指令使用命令的典型语法是全局选项输入文件选项输入地址输出文件选项输出地址罗列一些常用的基本命令详细可参考此处显示媒体文件细节转换视频文件到不同的格式转化的时候如果想维持源文件的质量可以使用参数使用指定编码转换检查的支持格式的列表更改视频文件的分辨率压缩视频文件从视频文件中移除音频从媒体文件移除视频裁剪一个视频文件的语法如下给定视频文件中提取图像添加海报图像到音频文件切分视频文件为多个部分增加减少视频播放速度去除音频并压缩视频文件是个很重要的参数常量速率因子是一个用于控制视频编码质量的参数尤其是在使用或编码时无损编码输出的视频质量极高文件体积最大使用此值时编码器不会丢失任何信息因此文件大小会非常大被广泛认为是非常高的质量适合需要高保真度的视频例如专业视频制作此时文件大小相对较大但质量非常好通常被认为是高质量适合大多数用户需求文件大小和质量之间有良好的平衡这是一个常用的选择适合一般用途能够提供合理的质量和较小的文件大小到随着值的增加视频质量逐渐下降文件大小也会变小适合对质量要求不高的场合例如网络视频或低分辨率视频最低质量文件体积最小几乎没有任何可用的视觉质量特别留意的画质项最低画质低画质中画质高画质肉眼无损无损输出文件与输入文件不能是同一个需要转一手最快的编码速度文件体积最大质量最低比稍慢文件体积仍然较大适用于快速编码文件体积和质量之间有一定的平衡速度稍慢质量和压缩效果有所提升适合大多数情况下的编码默认设置速度和质量之间的折中编码速度较慢但质量和压缩效果更好非常慢的编码速度通常用于需要最高质量的场合极慢的编码速度几乎没有实际的质量提升主要用于实验和测试摄像头监控方案盘点方案适合低性能的开发板流媒体方案优点程序简单所有源码一目了然便于学习对板的性能要求不高主频的芯片也能实现缺点只能实现局域网内的视频监控要实现互联网视频监控需要另外实现内网穿透没有实现声音传输目已经不再维护仅仅建议用于学习流媒体方案流媒体方案是主流的视频监控方案推流端协议流媒体服务器协议拉流端全部使用开源方案可以推流端使用流媒体服务器使用拉流端使用浏览器播放器方案详解开源地址格式理解可以理解为一个原始图片的压缩格式简称上过美术课的人都知道一个像素的颜色可以用三原色来表示其实还可以用格式来表示使用的格式编码的照片文件都很大比如常见的文件就是用编码把一个文件转换为文件可以发现图片质量没发生变化但是文件变小了很是根据人体视觉的特点采用了格式大大压缩了照片的大小简称是静态图片的编码格式是动态的视频编码格式可以简理解就是把多个图片连续显示出来优点很多摄像头本身就支持所以处理器不需要做太多处理一般的低性能处理器就可以传输视频流缺点只是多个图片的组合它不考虑前后两帧数据的变化总是传输一帧帧图像传输带宽要求高等视频格式会考虑前后两帧数据的变化只传输变化的数据传输带宽要求低用法该指令内部实现原理查看帮助把摄像头数据存为文件把文件输出到浏览器流媒体方案详解推流端职责采集数据并转换格式再推送给流媒体服务器摄像头访问技术这是平台上常用的多媒体可以用于访问摄像头设备并获取视频数据跨平台这是一个开源的计算机视觉库提供了多种摄像头访问和视频处理功能跨平台这是一个强大的多媒体处理库可以用于视频录制解码和流传输推流端使用协议向推流或但他不支持编码格式拉流端浏览器使用协议从拉流安装从中得到摄像头数据一秒帧质量是把他以协议推送到本地服务器可以执行命令捕获视频流捕获音视频流全平台捕获视频流可以使用的库摄像头监控保存方案记录使用捕获的摄像头数据通过输入端传递给压缩后保存为文件优化夜间视觉效果在算法上优化夜间视觉效果可以通过以下几种方法实现图像增强使用图像增强技术如直方图均衡化和自适应直方图均衡化可以提高图像的对比度使暗部细节更加明显去噪声处理夜间拍摄通常会引入噪声使用去噪算法如高斯滤波中值滤波或更先进的深度学习去噪算法可以减少噪声对图像质量的影响多帧合成通过将多张低曝光的图像合成一张高质量图像可以有效提升图像的亮度和细节这种方法常用于长时间曝光摄影中图像锐化在低光条件下图像可能显得模糊通过锐化算法如拉普拉斯锐化或可以提高图像的清晰度深度学习技术利用深度学习模型如卷积神经网络进行低光图像增强可以自动学习和提升图像在低光环境下的表现色彩校正在夜间拍摄中色彩可能会失真通过色彩校正算法可以恢复图像的真实色彩视频播放可以使用和库还要安装',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-01 16:45:41',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://th.bing.com/th/id/OIP.wtmjepfWPBvn26uz7s18dgHaHa?rs=1&amp;pid=ImgDetMain"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">ZEROKO14的个人博客</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 1.05rem;">C#<sup>3</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 1.05rem;">CSS<sup>1</sup></a><a href="/tags/CSharp/" style="font-size: 1.05rem;">CSharp<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.05rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 1.05rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 1.05rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 1.05rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 1.05rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 1.05rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 1.05rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 1.05rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 1.05rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 1.05rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 1.05rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/json/" style="font-size: 1.05rem;">json<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>1</sup></a><a href="/tags/next/" style="font-size: 1.05rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 1.05rem;">ppt<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 1.05rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 1.05rem;">vue<sup>1</sup></a><a href="/tags/xml/" style="font-size: 1.05rem;">xml<sup>1</sup></a><a href="/tags/yaml/" style="font-size: 1.05rem;">yaml<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 1.05rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 1.05rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 1.05rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 1.05rem;">加解密<sup>1</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 1.05rem;">多线程<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">开发<sup>4</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">数学<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.05rem;">数据库<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 1.05rem;">架构<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 1.05rem;">监控<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>1</sup></a><a href="/tags/%E7%AE%A1%E7%90%86/" style="font-size: 1.05rem;">管理<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.05rem;">网络<sup>2</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 1.05rem;">逆向<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">27</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/10/"><span class="card-archive-list-date">十月 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url">技术</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E7%9B%91%E6%8E%A7/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>监控</span></a></span></div></div><h1 class="post-title" itemprop="name headline">摄像头监控开发</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2023-11-24T02:49:02.204Z" title="发表于 2023-11-24 10:49:02">2023-11-24</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-11-01T08:45:41.507Z" title="更新于 2024-11-01 16:45:41">2024-11-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="摄像头监控开发"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为新加坡"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>新加坡</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://che77a38.github.io/posts/%E6%91%84%E5%83%8F%E5%A4%B4%E7%9B%91%E6%8E%A7%E5%BC%80%E5%8F%91/"><header><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url">技术</a><a href="/tags/%E7%9B%91%E6%8E%A7/" tabindex="-1" itemprop="url">监控</a><h1 id="CrawlerTitle" itemprop="name headline">摄像头监控开发</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">ZEROKO14</span><time itemprop="dateCreated datePublished" datetime="2023-11-24T02:49:02.204Z" title="发表于 2023-11-24 10:49:02">2023-11-24</time><time itemprop="dateCreated datePublished" datetime="2024-11-01T08:45:41.507Z" title="更新于 2024-11-01 16:45:41">2024-11-01</time></header><p>此处记录一些摄像头监控相关知识</p>
+<span id="more"></span>
+
+<h1 id="音视频基础知识记录"><a href="#音视频基础知识记录" class="headerlink" title="音视频基础知识记录"></a>音视频基础知识记录</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/leixiaohua1020/article/details/18893769">参考链接</a></p>
+<h2 id="视频流程全解"><a href="#视频流程全解" class="headerlink" title="视频流程全解"></a>视频流程全解</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">graph LR	</span><br><span class="line">    A[数据] --&gt; B[解协议]</span><br><span class="line">    B --&gt; C[封装格式数据]</span><br><span class="line">    C --&gt; D[解封装]</span><br><span class="line">    D --&gt; E[音频压缩数据]</span><br><span class="line">    E --&gt; G[音频解码]</span><br><span class="line">    G --&gt; I[音频原始数据]</span><br><span class="line">    I --&gt; K[视音频同步]</span><br><span class="line">    K --&gt; L[音频驱动/设备]</span><br><span class="line">    D --&gt; F[视频压缩数据]</span><br><span class="line">    F --&gt; H[视频解码]</span><br><span class="line">    H --&gt; J[视频原始数据]</span><br><span class="line">    J --&gt; K</span><br><span class="line">    K --&gt; M[视频驱动/设备]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>解协议</strong>的作用，就是将流媒体协议的数据，解析为标准的相应的封装格式数据。视音频在网络上传播的时候，常常采用各种流媒体协议，例如HTTP，RTMP，或是MMS等等。这些协议在传输视音频数据的同时，也会传输一些信令数据。这些信令数据包括对播放的控制（播放，暂停，停止），或者对网络状态的描述等。解协议的过程中会去除掉信令数据而只保留视音频数据。例如，采用RTMP协议传输的数据，经过解协议操作后，输出FLV格式的数据。</li>
+<li><strong>解封装</strong>的作用，就是将输入的封装格式的数据，分离成为音频流压缩编码数据和视频流压缩编码数据。封装格式种类很多，例如MP4，MKV，RMVB，TS，FLV，AVI等等，它的作用就是将已经压缩编码的视频数据和音频数据按照一定的格式放到一起。例如，FLV格式的数据，经过解封装操作后，输出H.264编码的视频码流和AAC编码的音频码流。</li>
+<li><strong>解码</strong>的作用，就是将视频&#x2F;音频压缩编码数据，解码成为非压缩的视频&#x2F;音频原始数据。音频的压缩编码标准包含AAC，MP3，AC-3等等，视频的压缩编码标准则包含H.264，MPEG2，VC-1等等。解码是整个系统中最重要也是最复杂的一个环节。通过解码，压缩编码的视频数据输出成为非压缩的颜色数据，例如YUV420P，RGB等等；压缩编码的音频数据输出成为非压缩的音频抽样数据，例如PCM数据。</li>
+<li><strong>视音频同步</strong>的作用，就是根据解封装模块处理过程中获取到的参数信息，同步解码出来的视频和音频数据，并将视频音频数据送至系统的显卡和声卡播放出来。</li>
+</ul>
+<h2 id="流媒体协议"><a href="#流媒体协议" class="headerlink" title="流媒体协议"></a>流媒体协议</h2><p>流媒体协议是服务器与客户端之间通信遵循的规定。当前网络上主要的流媒体协议如表所示。</p>
+<p>主要流媒体协议一览</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>HTTP-FLV</th>
+<th>RTMP</th>
+<th>HLS</th>
+<th>DASH</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>传输方式</td>
+<td>http 流</td>
+<td>Tcp 流</td>
+<td>http 流</td>
+<td>http 流</td>
+</tr>
+<tr>
+<td>封装格式</td>
+<td>flv</td>
+<td>Flv tag</td>
+<td>TS 文件</td>
+<td>Mp4,3gp,webm</td>
+</tr>
+<tr>
+<td>延时</td>
+<td>低</td>
+<td>低</td>
+<td>高</td>
+<td>高</td>
+</tr>
+<tr>
+<td>数据分段</td>
+<td>连续流</td>
+<td>连续流</td>
+<td>切片文件</td>
+<td>切片文件</td>
+</tr>
+<tr>
+<td>HTML5 播放</td>
+<td>使用 Flv.js(由B站推出)</td>
+<td>不支持</td>
+<td>使用 hls.js</td>
+<td>可播放 mp4, webm</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>总的来说，HTTP-FLV 和 RTMP 的延时较低，但由于数据分段为连续流，因此在网络环境不佳的情况下容易出现卡顿现象。HLS 和 DASH 的延时较高，但由于数据分段为切片文件，因此在网络环境不佳的情况下也能保证流畅播放。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>推出机构</th>
+<th>传输层协议</th>
+<th>客户端</th>
+<th>目前使用领域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RTSP+RTP</td>
+<td>IETF</td>
+<td>TCP+UDP</td>
+<td>VLC, WMP</td>
+<td>IPTV</td>
+</tr>
+<tr>
+<td>RTMP</td>
+<td>Adobe Inc.</td>
+<td>TCP</td>
+<td>Flash</td>
+<td>互联网直播</td>
+</tr>
+<tr>
+<td>RTMFP</td>
+<td>Adobe Inc.</td>
+<td>UDP</td>
+<td>Flash</td>
+<td>互联网直播</td>
+</tr>
+<tr>
+<td>MMS</td>
+<td>Microsoft Inc.</td>
+<td>TCP&#x2F;UDP</td>
+<td>WMP</td>
+<td>互联网直播+点播</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>WWW+IETF</td>
+<td>TCP</td>
+<td>Flash</td>
+<td>互联网点播</td>
+</tr>
+</tbody></table>
+<p>下面都是adobe公司推出的流媒体协议开发流程:</p>
+<p>RTMP协议  &#x3D;避免TCP连接易被拦截的问题&#x3D;&gt; 因此开发了HTTP-FLV协议</p>
+<p>苹果公司推出了HLS协议</p>
+<p>HTTP-FLV延时低,是当下最主流的直播协议</p>
+<p>注意:</p>
+<ul>
+<li>RTMP可以用在双端</li>
+<li>HTTPFLV,HLS只能用在拉流端</li>
+</ul>
+<h2 id="封装格式"><a href="#封装格式" class="headerlink" title="封装格式"></a>封装格式</h2><p>封装格式的主要作用是把视频码流和音频码流按照一定的格式存储在一个文件中。现如今流行的封装格式如下表所示：</p>
+<p>主要封装格式一览</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>推出机构</th>
+<th>流媒体</th>
+<th>支持的视频编码</th>
+<th>支持的音频编码</th>
+<th>目前使用领域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AVI</td>
+<td>Microsoft Inc.</td>
+<td>不支持</td>
+<td>几乎所有格式</td>
+<td>几乎所有格式</td>
+<td>BT下载影视</td>
+</tr>
+<tr>
+<td>MP4</td>
+<td>MPEG</td>
+<td>支持</td>
+<td>MPEG-2, MPEG-4, H.264, H.263等</td>
+<td>AAC, MPEG-1 Layers I, II, III, AC-3等</td>
+<td>互联网视频网站</td>
+</tr>
+<tr>
+<td>TS</td>
+<td>MPEG</td>
+<td>支持</td>
+<td>MPEG-1, MPEG-2, MPEG-4, H.264</td>
+<td>MPEG-1 Layers I, II, III, AAC,</td>
+<td>IPTV，数字电视</td>
+</tr>
+<tr>
+<td>FLV</td>
+<td>Adobe Inc.</td>
+<td>支持</td>
+<td>Sorenson, VP6, H.264</td>
+<td>MP3, ADPCM, Linear PCM, AAC等</td>
+<td>互联网视频网站</td>
+</tr>
+<tr>
+<td>MKV</td>
+<td>CoreCodec Inc.</td>
+<td>支持</td>
+<td>几乎所有格式</td>
+<td>几乎所有格式</td>
+<td>互联网视频网站</td>
+</tr>
+<tr>
+<td>RMVB</td>
+<td>Real Networks Inc.</td>
+<td>支持</td>
+<td>RealVideo 8, 9, 10</td>
+<td>AAC, Cook Codec, RealAudio Lossless</td>
+<td>BT下载影视</td>
+</tr>
+</tbody></table>
+<p>由表可见，除了AVI之外，其他封装格式都支持流媒体，即可以“边下边播”。有些格式更“万能”一些，支持的视音频编码标准多一些，比如MKV。而有些格式则支持的相对比较少，比如说RMVB</p>
+<h2 id="视频编码格式"><a href="#视频编码格式" class="headerlink" title="视频编码格式"></a>视频编码格式</h2><p>视频编码的主要作用是将视频像素数据（RGB，YUV等）压缩成为视频码流，从而降低视频的数据量。如果视频不经过压缩编码的话，体积通常是非常大的，一部电影可能就要上百G的空间。视频编码是视音频技术中最重要的技术之一。视频码流的数据量占了视音频总数据量的绝大部分。高效率的视频编码在同等的码率下，可以获得更高的视频质量。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/leixiaohua1020/article/details/28114081">相关原理参考</a>  注：视频编码技术在整个视音频技术中应该是最复杂的技术</p>
+<p>主要视频编码一览</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>推出机构</th>
+<th>推出时间</th>
+<th>目前使用领域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HEVC(H.265)</td>
+<td>MPEG&#x2F;ITU-T</td>
+<td>2013</td>
+<td>研发中</td>
+</tr>
+<tr>
+<td>H.264</td>
+<td>MPEG&#x2F;ITU-T</td>
+<td>2003</td>
+<td>各个领域</td>
+</tr>
+<tr>
+<td>MPEG4</td>
+<td>MPEG</td>
+<td>2001</td>
+<td>不温不火</td>
+</tr>
+<tr>
+<td>MPEG2</td>
+<td>MPEG</td>
+<td>1994</td>
+<td>数字电视</td>
+</tr>
+<tr>
+<td>VP9</td>
+<td>Google</td>
+<td>2013</td>
+<td>研发中</td>
+</tr>
+<tr>
+<td>VP8</td>
+<td>Google</td>
+<td>2008</td>
+<td>不普及</td>
+</tr>
+<tr>
+<td>VC-1</td>
+<td>Microsoft Inc.</td>
+<td>2006</td>
+<td>微软平台</td>
+</tr>
+</tbody></table>
+<p>由表可见，有两种视频编码方案是最新推出的：VP9和HEVC。目前这两种方案都处于研发阶段，还没有到达实用的程度。当前使用最多的视频编码方案就是H.264。但未来<a target="_blank" rel="noopener" href="https://blog.csdn.net/leixiaohua1020/article/details/11844949">HEVC将会取代H.264</a></p>
+<p>参考此处的<a target="_blank" rel="noopener" href="https://blog.csdn.net/leixiaohua1020/article/details/12237177">实际对比</a></p>
+<p>整体来说同等码率的视频质量就是: HEVC &gt; VP9 &gt; H.264&gt; VP8 &gt; MPEG4 &gt; H.263 &gt; MPEG2</p>
+<blockquote>
+<p>H.264仅仅是一个编码标准，而不是一个具体的编码器，H.264只是给编码器的实现提供参照用的</p>
+<p>p.s. 学习H.264最标准的源代码，就是其官方标准JM了。但是要注意，JM速度非常的慢，是无法用于实际的</p>
+</blockquote>
+<h2 id="音频编码"><a href="#音频编码" class="headerlink" title="音频编码"></a>音频编码</h2><p>音频编码的主要作用是将音频采样数据（PCM等）压缩成为音频码流，从而降低音频的数据量。音频编码也是互联网视音频技术中一个重要的技术。但是一般情况下音频的数据量要远小于视频的数据量，因而即使使用稍微落后的音频编码标准，而导致音频数据量有所增加，也不会对视音频的总数据量产生太大的影响。高效率的音频编码在同等的码率下，可以获得更高的音质。</p>
+<p>音频编码的简单原理可以参考：<a target="_blank" rel="noopener" href="http://blog.csdn.net/leixiaohua1020/article/details/28114081">视频压缩编码和音频压缩编码的基本原理</a></p>
+<p>主要音频编码一览</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>推出机构</th>
+<th>推出时间</th>
+<th>目前使用领域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AAC</td>
+<td>MPEG</td>
+<td>1997</td>
+<td>各个领域（新）</td>
+</tr>
+<tr>
+<td>AC-3</td>
+<td>Dolby Inc.</td>
+<td>1992</td>
+<td>电影</td>
+</tr>
+<tr>
+<td>MP3</td>
+<td>MPEG</td>
+<td>1993</td>
+<td>各个领域（旧）</td>
+</tr>
+<tr>
+<td>WMA</td>
+<td>Microsoft Inc.</td>
+<td>1999</td>
+<td>微软平台</td>
+</tr>
+</tbody></table>
+<p>结果大致是这样的：AAC+ &gt; MP3PRO &gt; AAC&gt; RealAudio &gt; WMA &gt; MP3</p>
+<h2 id="现有网络视音频平台对比"><a href="#现有网络视音频平台对比" class="headerlink" title="现有网络视音频平台对比"></a>现有网络视音频平台对比</h2><p>现有的网络视音频服务主要包括两种方式：点播和直播。点播意即根据用户的需要播放相应的视频节目，这是互联网视音频服务最主要的方式。绝大部分视频网站都提供了点播服务。直播意即互联网视音频平台直接将视频内容实时发送给用户，目前还处于发展阶段。直播在网络电视台，社交视频网站较为常见。</p>
+<h3 id="直播平台参数对比"><a href="#直播平台参数对比" class="headerlink" title="直播平台参数对比"></a>直播平台参数对比</h3><p>现有网络视音频平台参数对比</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>协议</th>
+<th>封装</th>
+<th>视频编码</th>
+<th>音频编码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CNTV</td>
+<td>私有</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>华数TV</td>
+<td>RTMP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+</tr>
+<tr>
+<td>六间房</td>
+<td>RTMP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+</tr>
+<tr>
+<td>中国教育电视台</td>
+<td>RTMP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+</tr>
+<tr>
+<td>北广传媒移动电视</td>
+<td>RTMP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+</tr>
+<tr>
+<td>上海IPTV</td>
+<td>RTSP+RTP</td>
+<td>TS</td>
+<td>H.264</td>
+<td>MP2</td>
+</tr>
+</tbody></table>
+<h3 id="点播平台参数对比"><a href="#点播平台参数对比" class="headerlink" title="点播平台参数对比"></a>点播平台参数对比</h3><p>现有互联网视音频平台参数对比</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>协议</th>
+<th>封装</th>
+<th>视频编码</th>
+<th>音频编码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CNTV</td>
+<td>HTTP</td>
+<td>MP4</td>
+<td>H.264</td>
+<td>AAC</td>
+</tr>
+<tr>
+<td>CNTV（部分）</td>
+<td>RTMP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+</tr>
+<tr>
+<td>华数TV</td>
+<td>HTTP</td>
+<td>MP4</td>
+<td>H.264</td>
+<td>AAC</td>
+</tr>
+<tr>
+<td>优酷网</td>
+<td>HTTP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+</tr>
+<tr>
+<td>土豆网</td>
+<td>HTTP</td>
+<td>F4V</td>
+<td>H.264</td>
+<td>AAC</td>
+</tr>
+<tr>
+<td>56网</td>
+<td>HTTP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+</tr>
+<tr>
+<td>音悦台</td>
+<td>HTTP</td>
+<td>MP4</td>
+<td>H.264</td>
+<td>AAC</td>
+</tr>
+<tr>
+<td>乐视网</td>
+<td>HTTP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+</tr>
+<tr>
+<td>新浪视频</td>
+<td>HTTP</td>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC</td>
+</tr>
+</tbody></table>
+<p>点播服务普遍采用了HTTP作为流媒体协议，H.264作为视频编码格式，AAC作为音频编码格式。采用HTTP作为点播协议有以下两点优势：一方面，HTTP是基于TCP协议的应用层协议，媒体传输过程中不会出现丢包等现象，从而保证了视频的质量；另一方面，HTTP被绝大部分的Web服务器支持，因而流媒体服务机构不必投资购买额外的流媒体服务器，从而节约了开支</p>
+<h2 id="USB摄像头基础知识"><a href="#USB摄像头基础知识" class="headerlink" title="USB摄像头基础知识"></a>USB摄像头基础知识</h2><p>USB摄像头，通常指USB Web Camera，通过USB口与PC连接。</p>
+<ul>
+<li>通用的USB摄像头都是<strong>免驱摄像头</strong>（采用UVC驱动，<em>UVC</em>全称为USB Video Class，即：USB视频类，是一种为USB视频捕获设备定义的协议标准）。</li>
+<li>通常会有两种视频输出格式：YUV和MJPG。</li>
+</ul>
+<p><strong>两种格式的区别</strong></p>
+<ul>
+<li>YUV格式输出的是<strong>无压缩的视频帧</strong>(原始raw数据转换后得到YUV格式数据)，系统资源占用少（因为不用解码），<strong>不需要解码器，缺点是帧率稍慢</strong>（受限于USB的带宽，USB 2.0速率是480Mbps，USB 3.0 速率是5Gbps）。YUV图像通常需要专用的图像查看工具才能打开，例如PYUV。</li>
+<li>MJPG格式输出的是<strong>将视频图像采用JPEG格式压缩后得到的视频帧，优点是帧率高</strong>（视频开启快，曝光快），<strong>缺点是影像有马赛克，并且需要解码器</strong>，会占用PC系统资源。MJPG视频帧直接保存成jpg文件即可用常见的图片查看工具打开。</li>
+</ul>
+<h1 id="FFMPEG"><a href="#FFMPEG" class="headerlink" title="FFMPEG"></a>FFMPEG</h1><p>ffmpeg是什么</p>
+<p>• 一套开源软件<br>• 可以记录、转换音视频：可以从摄像头中记录视频，从声卡中记录音频，可以转换为各种格式，保存起来<br>• 还可以把各种格式的音视频，转换为流：供在线观看<br>• 其他功能：视频截图、加水印、裁剪等等<br>• Mplayer,ffplay，射手播放器，暴风影音，KMPlayer，QQ影音等视频频播放器的内核就是 FFmpeg<br>• 格式工厂的内核也是FFmpeg</p>
+<h2 id="ffmpeg原理理解"><a href="#ffmpeg原理理解" class="headerlink" title="ffmpeg原理理解"></a>ffmpeg原理理解</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202409131339155.png" alt="image-20240913133936811"></p>
+<blockquote>
+<p>MP4的理解:</p>
+<p>Mp4只是一种封装格式,里面有音频数据,视频数据</p>
+<ul>
+<li>音频数据有自己的压缩格式,还不止一种</li>
+<li>视频数据也有自己的压缩格式,还不止一种</li>
+</ul>
+</blockquote>
+<h2 id="FFmpeg的组成"><a href="#FFmpeg的组成" class="headerlink" title="FFmpeg的组成"></a>FFmpeg的组成</h2><p>1、libavformat：用于各种音视频封装格式的生成和解析，包括获取解码所需信息以生成解码上下文结构和读取音视频帧等功能，包含<strong>demuxers和muxer</strong>库；<br>2、libavcodec：用于各种类型声音&#x2F;图像<strong>编解码</strong>；<br>3、libavutil：包含一些公共的工具函数；<br>4、libswscale：用于视频场景<strong>比例缩放、色彩映射转换</strong>；<br>5、libpostproc：用于<strong>后期效果处理</strong>；<br>6、ffmpeg：是一个命令行工具，用来对视频文件转换格式，也支持对电视卡实时编码；<br>7、ffsever：是一个HTTP多媒体实时广播流服务器，支持时光平移；<br>8、ffplay：是一个简单的播放器，使用ffmpeg 库解析和解码，通过SDL显示；</p>
+<p>以MP4转flv格式为例,需经过一下步骤</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line">    A[MP4] --&gt;|demux解复用| B(音频数据)</span><br><span class="line">    A --&gt; |demux解复用|C(视频数据)</span><br><span class="line">    B --&gt;|decode解码| D(原始音频数据)</span><br><span class="line">    C --&gt;|decode解码| E(原始视频数据)</span><br><span class="line">    D--&gt;|随意处理| D</span><br><span class="line">    E--&gt;|随意处理| E</span><br><span class="line">    D --&gt;|encode压缩|F(音频数据)</span><br><span class="line">    E --&gt;|encode压缩|G(视频数据)</span><br><span class="line">    F --&gt;|mux多路复用 |H(FLV)</span><br><span class="line">    G --&gt;|mux多路复用 |H(FLV)</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>基础概念:</p>
+<ul>
+<li><p>容器(Container)</p>
+<p>容器就是一种文件格式，比如flv，mkv等。包含下面5种流以及文件头信息。</p>
+</li>
+<li><p>流(Stream)</p>
+<p>是一种视频数据信息的传输方式，5种流：音频，视频，字幕，附件，数据。</p>
+</li>
+<li><p>帧(Frame)</p>
+<p>帧代表一幅静止的图像，分为I帧，P帧，B帧。</p>
+</li>
+<li><p>编解码器(Codec)</p>
+<p>是对视频进行压缩或者解压缩，CODEC &#x3D;COde （编码） +DECode（解码）</p>
+</li>
+<li><p>复用&#x2F;解复用(mux&#x2F;demux)</p>
+<p>把不同的流按照某种容器的规则放入容器，这种行为叫做复用（mux）</p>
+<p>把不同的流从某种容器中解析出来，这种行为叫做解复用(demux)</p>
+</li>
+</ul>
+</blockquote>
+<p>FFMpeg处理音视频的过程:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202409131438083.png" alt="image-20240913143846873"></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="安装方式"><a href="#安装方式" class="headerlink" title="安装方式"></a>安装方式</h3><ul>
+<li>前往 FFmpeg 官方网站 <a target="_blank" rel="noopener" href="https://ffmpeg.org/download.html">FFmpeg.org</a>。</li>
+<li>在”Get packages &amp; executable files”部分，选择 Windows 版本。</li>
+<li>在系统环境变量的PATH中添加 FFmpeg 的 <code>bin</code> 目录</li>
+<li><code>ffmpeg -version</code>验证安装是否成功</li>
+</ul>
+<h3 id="Csharp-ffmpeg"><a href="#Csharp-ffmpeg" class="headerlink" title="Csharp ffmpeg"></a>Csharp ffmpeg</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/pomtom/article/details/120432867">参考链接</a></p>
+<p>可以使用包FFmpeg.AutoGen</p>
+<p>AutoGen只是封装调用FFmpeg，程序还是需要下在FFmpeg工具放在程序目录里，且版本要对应</p>
+<p>FFmpeg.AutoGen的很多函数都是用到了指针，工程里要勾选允许不安全代</p>
+<h3 id="ffmpeg集成到程序目录下"><a href="#ffmpeg集成到程序目录下" class="headerlink" title="ffmpeg集成到程序目录下"></a>ffmpeg集成到程序目录下</h3><p>直接将ffmpeg可执行文件放置到程序中就可以了<br>以下面的csharp调用为例:</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> _ffmpegPath = <span class="string">@&quot;./ffmpeg.exe&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">StartFFmpegProcess</span>(<span class="params"><span class="built_in">string</span> absolutePath</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">string</span> directory = Path.GetDirectoryName(absolutePath);</span><br><span class="line">    <span class="built_in">string</span> fileName = Path.GetFileNameWithoutExtension(absolutePath);</span><br><span class="line">    <span class="built_in">string</span> tempOutputPath = Path.Combine(directory, <span class="string">$&quot;<span class="subst">&#123;fileName&#125;</span>_temp.mp4&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> arguments = <span class="string">$&quot;-i \&quot;<span class="subst">&#123;absolutePath&#125;</span>\&quot; -c:v libx264 -preset slow -crf 26 -an \&quot;<span class="subst">&#123;tempOutputPath&#125;</span>\&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> processStartInfo = <span class="keyword">new</span> ProcessStartInfo</span><br><span class="line">    &#123;</span><br><span class="line">        FileName = _ffmpegPath,</span><br><span class="line">        Arguments = arguments,</span><br><span class="line">        RedirectStandardOutput = <span class="literal">true</span>,</span><br><span class="line">        RedirectStandardError = <span class="literal">true</span>,</span><br><span class="line">        UseShellExecute = <span class="literal">false</span>,</span><br><span class="line">        CreateNoWindow = <span class="literal">true</span>,</span><br><span class="line">        WorkingDirectory = directory</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">using</span> (Process process = <span class="keyword">new</span> Process &#123; StartInfo = processStartInfo &#125;)</span><br><span class="line">    &#123;</span><br><span class="line">        process.Start();</span><br><span class="line">        <span class="built_in">string</span> error = process.StandardError.ReadToEnd();</span><br><span class="line">        process.WaitForExit();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (process.ExitCode != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.WriteLine(<span class="string">$&quot;FFmpeg 执行失败。错误：<span class="subst">&#123;error&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (File.Exists(tempOutputPath))</span><br><span class="line">            &#123;</span><br><span class="line">                File.Delete(absolutePath);</span><br><span class="line">                File.Move(tempOutputPath, absolutePath);</span><br><span class="line">                Debug.WriteLine(<span class="string">&quot;文件压缩并替换成功&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                Debug.WriteLine(<span class="string">&quot;临时输出文件未找到&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="FFmpeg的常用参数"><a href="#FFmpeg的常用参数" class="headerlink" title="FFmpeg的常用参数"></a>FFmpeg的常用参数</h2><table>
+<thead>
+<tr>
+<th>主要参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i</td>
+<td>设置输入流</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>设置输出格式</td>
+</tr>
+<tr>
+<td>-ss</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td><strong>视频参数</strong></td>
+<td><strong>说明</strong></td>
+</tr>
+<tr>
+<td>-b</td>
+<td>设置视频流量（码率），默认为200Kbit&#x2F;s</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>设置帧速率，默认为25</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>设置画面的宽与高</td>
+</tr>
+<tr>
+<td>-aspect</td>
+<td>设置画面的比例</td>
+</tr>
+<tr>
+<td>-vn</td>
+<td>不处理视频</td>
+</tr>
+<tr>
+<td>-vcodec</td>
+<td>设置视频编解码器，未设定时则使用与输入流相同的编解码器</td>
+</tr>
+<tr>
+<td><strong>音频参数</strong></td>
+<td><strong>说明</strong></td>
+</tr>
+<tr>
+<td>-ar</td>
+<td>设置采样率,通常使用的值是22050,44100,48000Hz</td>
+</tr>
+<tr>
+<td>-ac</td>
+<td>设置声音的通道数</td>
+</tr>
+<tr>
+<td>-acodec</td>
+<td>设置音频编解码器，未设定时则使用与输入流相同的编解码器</td>
+</tr>
+<tr>
+<td>-an</td>
+<td>不处理音频</td>
+</tr>
+<tr>
+<td>-ab</td>
+<td>音频比特率</td>
+</tr>
+</tbody></table>
+<h3 id="详细参数参考"><a href="#详细参数参考" class="headerlink" title="详细参数参考"></a>详细参数参考</h3><h4 id="通用选项"><a href="#通用选项" class="headerlink" title="通用选项"></a>通用选项</h4><ul>
+<li>-L license</li>
+<li>-h 帮助</li>
+<li>-fromats 显示可用的格式，编解码的，协议的…</li>
+<li>-f fmt 强迫采用格式fmt</li>
+<li>-I filename 输入文件</li>
+<li>-y 覆盖输出文件</li>
+<li>-t duration 设置纪录时间 hh:mm:ss[.xxx]格式的记录时间也支持</li>
+<li>-ss position 搜索到指定的时间 [-]hh:mm:ss[.xxx]的格式也支持</li>
+<li>-title string 设置标题</li>
+<li>-author string 设置作者</li>
+<li>-copyright string 设置版权</li>
+<li>-comment string 设置评论</li>
+<li>-target type 设置目标文件类型(vcd,svcd,dvd) 所有的格式选项（比特率，编解码以及缓冲区大小）自动设置，只需要输入如下的就可以了：ffmpeg -i myfile.avi -target vcd &#x2F;tmp&#x2F;vcd.mpg</li>
+<li>-hq 激活高质量设置</li>
+<li>-itsoffset offset 设置以秒为基准的时间偏移，该选项影响所有后面的输入文件。该偏移被加到输入文件的时戳，定义一个正偏移意味着相应的流被延迟了 offset秒。 [-]hh:mm:ss[.xxx]的格式也支持</li>
+</ul>
+<h4 id="视频选项"><a href="#视频选项" class="headerlink" title="视频选项"></a>视频选项</h4><ul>
+<li>-b bitrate 设置比特率，缺省200kb&#x2F;s</li>
+<li>-r fps 设置帧频 缺省25</li>
+<li>-s size 设置帧大小 格式为WXH 缺省160X128.下面的简写也可以直接使用：</li>
+<li>Sqcif 128X96 qcif 176X144 cif 252X288 4cif 704X576</li>
+<li>-aspect aspect 设置横纵比 4:3 16:9 或 1.3333 1.7777</li>
+<li>-croptop size 设置顶部切除带大小 像素单位</li>
+<li>-cropbottom size –cropleft size –cropright size</li>
+<li>-padtop size 设置顶部补齐的大小 像素单位</li>
+<li>-padbottom size –padleft size –padright size –padcolor color 设置补齐条颜色(hex,6个16进制的数，红:绿:兰排列，比如 000000代表黑色)</li>
+<li>-vn 不做视频记录</li>
+<li>-bt tolerance 设置视频码率容忍度kbit&#x2F;s</li>
+<li>-maxrate bitrate设置最大视频码率容忍度</li>
+<li>-minrate bitreate 设置最小视频码率容忍度</li>
+<li>-bufsize size 设置码率控制缓冲区大小</li>
+<li>-vcodec codec 强制使用codec编解码方式。如果用copy表示原始编解码数据必须被拷贝。</li>
+<li>-sameq 使用同样视频质量作为源（VBR）</li>
+<li>-pass n 选择处理遍数（1或者2）。两遍编码非常有用。第一遍生成统计信息，第二遍生成精确的请求的码率</li>
+<li>-passlogfile file 选择两遍的纪录文件名为file</li>
+</ul>
+<h4 id="高级视频选项"><a href="#高级视频选项" class="headerlink" title="高级视频选项"></a>高级视频选项</h4><ul>
+<li>-g gop_size 设置图像组大小</li>
+<li>-intra 仅适用帧内编码</li>
+<li>-qscale q 使用固定的视频量化标度(VBR)</li>
+<li>-qmin q 最小视频量化标度(VBR)</li>
+<li>-qmax q 最大视频量化标度(VBR)</li>
+<li>-qdiff q 量化标度间最大偏差 (VBR)</li>
+<li>-qblur blur 视频量化标度柔化(VBR)</li>
+<li>-qcomp compression 视频量化标度压缩(VBR)</li>
+<li>-rc_init_cplx complexity 一遍编码的初始复杂度</li>
+<li>-b_qfactor factor 在p和b帧间的qp因子</li>
+<li>-i_qfactor factor 在p和i帧间的qp因子</li>
+<li>-b_qoffset offset 在p和b帧间的qp偏差</li>
+<li>-i_qoffset offset 在p和i帧间的qp偏差</li>
+<li>-rc_eq equation 设置码率控制方程 默认tex^qComp</li>
+<li>-rc_override override 特定间隔下的速率控制重载</li>
+<li>-me method 设置运动估计的方法 可用方法有 zero phods log x1 epzs(缺省) full</li>
+<li>-dct_algo algo 设置dct的算法 可用的有 0 FF_DCT_AUTO 缺省的DCT 1 FF_DCT_FASTINT 2 FF_DCT_INT 3 FF_DCT_MMX 4 FF_DCT_MLIB 5 FF_DCT_ALTIVEC</li>
+<li>-idct_algo algo 设置idct算法。可用的有 0 FF_IDCT_AUTO 缺省的IDCT 1 FF_IDCT_INT 2 FF_IDCT_SIMPLE 3 FF_IDCT_SIMPLEMMX 4 FF_IDCT_LIBMPEG2MMX 5 FF_IDCT_PS2 6 FF_IDCT_MLIB 7 FF_IDCT_ARM 8 FF_IDCT_ALTIVEC 9 FF_IDCT_SH4 10 FF_IDCT_SIMPLEARM</li>
+<li>-er n 设置错误残留为n 1 FF_ER_CAREFULL 缺省 2 FF_ER_COMPLIANT 3 FF_ER_AGGRESSIVE 4 FF_ER_VERY_AGGRESSIVE</li>
+<li>-ec bit_mask 设置错误掩蔽为bit_mask,该值为如下值的位掩码 1 FF_EC_GUESS_MVS (default&#x3D;enabled) 2 FF_EC_DEBLOCK (default&#x3D;enabled)</li>
+<li>-bf frames 使用frames B 帧，支持mpeg1,mpeg2,mpeg4</li>
+<li>-mbd mode 宏块决策 0 FF_MB_DECISION_SIMPLE 使用mb_cmp 1 FF_MB_DECISION_BITS 2 FF_MB_DECISION_RD</li>
+<li>-4mv 使用4个运动矢量 仅用于mpeg4</li>
+<li>-part 使用数据划分 仅用于mpeg4</li>
+<li>-bug param 绕过没有被自动监测到编码器的问题</li>
+<li>-strict strictness 跟标准的严格性</li>
+<li>-aic 使能高级帧内编码 h263+</li>
+<li>-umv 使能无限运动矢量 h263+</li>
+<li>-deinterlace 不采用交织方法</li>
+<li>-interlace 强迫交织法编码仅对mpeg2和mpeg4有效。当你的输入是交织的并且你想要保持交织以最小图像损失的时候采用该选项。可选的方法是不交织，但是损失更大</li>
+<li>-psnr 计算压缩帧的psnr</li>
+<li>-vstats 输出视频编码统计到vstats_hhmmss.log</li>
+<li>-vhook module 插入视频处理模块 module 包括了模块名和参数，用空格分开</li>
+</ul>
+<h4 id="音频选项"><a href="#音频选项" class="headerlink" title="音频选项"></a>音频选项</h4><ul>
+<li>-ab bitrate 设置音频码率</li>
+<li>-ar freq 设置音频采样率</li>
+<li>-ac channels 设置通道 缺省为1</li>
+<li>-an 不使能音频纪录</li>
+<li>-acodec codec 使用codec编解码</li>
+</ul>
+<h4 id="音频-视频捕获选项"><a href="#音频-视频捕获选项" class="headerlink" title="音频&#x2F;视频捕获选项"></a>音频&#x2F;视频捕获选项</h4><ul>
+<li>-vd device 设置视频捕获设备。比如&#x2F;dev&#x2F;video0</li>
+<li>-vc channel 设置视频捕获通道 DV1394专用</li>
+<li>-tvstd standard 设置电视标准 NTSC PAL(SECAM)</li>
+<li>-dv1394 设置DV1394捕获</li>
+<li>-av device 设置音频设备 比如&#x2F;dev&#x2F;dsp</li>
+</ul>
+<h4 id="高级选项"><a href="#高级选项" class="headerlink" title="高级选项"></a>高级选项</h4><ul>
+<li>-map file:stream 设置输入流映射</li>
+<li>-debug 打印特定调试信息</li>
+<li>-benchmark 为基准测试加入时间</li>
+<li>-hex 倾倒每一个输入包</li>
+<li>-bitexact 仅使用位精确算法 用于编解码测试</li>
+<li>-ps size 设置包大小，以bits为单位</li>
+<li>-re 以本地帧频读数据，主要用于模拟捕获设备</li>
+<li>-loop 循环输入流（只工作于图像流，用于ffserver测试）</li>
+</ul>
+<h2 id="FFmpeg指令使用"><a href="#FFmpeg指令使用" class="headerlink" title="FFmpeg指令使用"></a>FFmpeg指令使用</h2><p>FFmpeg 命令的典型语法是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg [全局选项] &#123;[输入文件选项] -i 输入_url_地址&#125; ...</span><br><span class="line"> &#123;[输出文件选项] 输出_url_地址&#125; ...</span><br></pre></td></tr></table></figure>
+
+<p>罗列一些常用的基本命令,<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/67878761">详细可参考此处</a></p>
+<ul>
+<li><p>显示媒体文件细节  <code>ffmpeg -i video.mp4</code></p>
+</li>
+<li><p>转换视频文件到不同的格式  <code>ffmpeg -i video.mp4 video.avi</code></p>
+<p>转化的时候如果想维持源文件的质量,可以使用<code>-qscale 0</code>参数</p>
+<p>使用指定编码转换:<code>-vcodec libx264</code></p>
+</li>
+<li><p>检查 FFmpeg 的支持格式的列表  <code>ffmpeg -formats</code></p>
+</li>
+<li><p>更改视频文件的分辨率  <code>ffmpeg -i input.mp4 -s 1280x720 -c:a copy output.mp4</code></p>
+</li>
+<li><p>压缩视频文件 <code>ffmpeg -i input.mp4 -vf scale=1280:-1 -c:v libx264 -preset veryslow -crf 24 output.mp4</code></p>
+</li>
+<li><p>从视频文件中移除音频 <code>ffmpeg -i input.mp4 -an output.mp4</code></p>
+</li>
+<li><p>从媒体文件移除视频  <code>ffmpeg -i input.mp4 -vn output.mp3</code></p>
+</li>
+<li><p>裁剪一个视频文件的语法如下给定  <code>ffmpeg -i input.mp4 -filter:v &quot;crop=w:h:x:y&quot; output.mp4</code></p>
+</li>
+<li><p>视频文件中提取图像 <code>ffmpeg -i input.mp4 -r 1 -f image2 image-%2d.png</code></p>
+</li>
+<li><p>添加海报图像到音频文件  <code>ffmpeg -loop 1 -i inputimage.jpg -i inputaudio.mp3 -c:v libx264 -c:a aac -strict experimental -b:a 192k -shortest output.mp4</code></p>
+</li>
+<li><p>切分视频文件为多个部分 <code> ffmpeg -i input.mp4 -t 00:00:30 -c copy part1.mp4 -ss 00:00:30 -codec copy part2.mp4</code></p>
+</li>
+<li><p>增加&#x2F;减少视频播放速度 <code>ffmpeg -i input.mp4 -vf &quot;setpts=0.5*PTS&quot; output.mp4</code></p>
+</li>
+<li><p>去除音频并压缩视频文件 <code>ffmpeg -i input.avi -c:v libx264 -preset slow -crf 26 -an output.mp4</code></p>
+<p>crf是个很重要的参数</p>
+<p>CRF（Constant Rate Factor，常量速率因子）是一个用于控制视频编码质量的参数，尤其是在使用 H.264 或 H.265 编码时</p>
+<ul>
+<li><p><strong>0</strong>：无损编码，输出的视频质量极高，文件体积最大。使用此值时，编码器不会丢失任何信息，因此文件大小会非常大。</p>
+</li>
+<li><p><strong>18</strong>：被广泛认为是非常高的质量，适合需要高保真度的视频，例如专业视频制作。此时，文件大小相对较大，但质量非常好。</p>
+</li>
+<li><p><strong>20</strong>：通常被认为是高质量，适合大多数用户需求，文件大小和质量之间有良好的平衡。</p>
+</li>
+<li><p><strong>23</strong>：这是一个常用的选择，适合一般用途，能够提供合理的质量和较小的文件大小。</p>
+</li>
+<li><p><strong>24 到 28</strong>：随着 CRF 值的增加，视频质量逐渐下降，文件大小也会变小。适合对质量要求不高的场合，例如网络视频或低分辨率视频。</p>
+</li>
+<li><p><strong>51</strong>：最低质量，文件体积最小，几乎没有任何可用的视觉质量。</p>
+<p>特别留意的画质项:</p>
+</li>
+<li><p>51 最低画质</p>
+</li>
+<li><p>30 低画质</p>
+</li>
+<li><p>24 中画质</p>
+</li>
+<li><p>18 高画质</p>
+</li>
+<li><p>12 肉眼无损</p>
+</li>
+<li><p>0 无损</p>
+</li>
+</ul>
+<p>p.s.ffmpeg输出文件与输入文件不能是同一个,需要转一手</p>
+</li>
+<li><p>1</p>
+</li>
+</ul>
+<p>preset:</p>
+<ul>
+<li><strong>ultrafast</strong>：最快的编码速度，文件体积最大，质量最低。</li>
+<li><strong>superfast</strong>：比 ultrafast 稍慢，文件体积仍然较大。</li>
+<li><strong>veryfast</strong>：适用于快速编码，文件体积和质量之间有一定的平衡。</li>
+<li><strong>faster</strong>：速度稍慢，质量和压缩效果有所提升。</li>
+<li><strong>fast</strong>：适合大多数情况下的编码。</li>
+<li><strong>medium</strong>：默认设置，速度和质量之间的折中。</li>
+<li><strong>slow</strong>：编码速度较慢，但质量和压缩效果更好。</li>
+<li><strong>veryslow</strong>：非常慢的编码速度，通常用于需要最高质量的场合。</li>
+<li><strong>placebo</strong>：极慢的编码速度，几乎没有实际的质量提升，主要用于实验和测试。</li>
+</ul>
+<h1 id="摄像头监控方案盘点"><a href="#摄像头监控方案盘点" class="headerlink" title="摄像头监控方案盘点"></a>摄像头监控方案盘点</h1><ul>
+<li>MJPG-streamer方案  适合低性能的开发板</li>
+<li>流媒体方案</li>
+</ul>
+<p><a href="#MJPG-streamer%E6%96%B9%E6%A1%88%E8%AF%A6%E8%A7%A3">MJPG-streamer</a></p>
+<p>优点：<br>• 程序简单，所有源码一目了然，便于学习<br>• 对ARM板的性能要求不高，主频200MHz的ARM芯片也能实现<br>缺点：<br>• 只能实现局域网内的视频监控<br>• 要实现互联网视频监控，需要另外实现内网穿透<br>• mjpg-streamer没有实现声音传输<br>• mjipg-streamed目已经不再维护，仅仅建议用于学习</p>
+<p><a href="#%E6%B5%81%E5%AA%92%E4%BD%93%E6%96%B9%E6%A1%88%E8%AF%A6%E8%A7%A3">流媒体方案</a></p>
+<p>流媒体方案是主流的视频监控方案</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202409131053890.png" alt="image-20240913105309045" style="zoom:33%;" />
+
+<p>推流端  &#x3D;RTMP协议&#x3D;&gt;  流媒体服务器  &#x3D;RTMP&#x2F;httpflv&#x2F;hls协议&#x3D;&gt;  拉流端</p>
+<p>全部使用开源方案可以</p>
+<ul>
+<li>推流端: 使用ffmpeg</li>
+<li>流媒体服务器: 使用nginx</li>
+<li>拉流端: 使用浏览器&#x2F;VLC播放器</li>
+</ul>
+<h1 id="MJPG-streamer方案详解"><a href="#MJPG-streamer方案详解" class="headerlink" title="MJPG-streamer方案详解"></a>MJPG-streamer方案详解</h1><p><a target="_blank" rel="noopener" href="https://github.com/jacksonliam/mjpg-streamer">开源地址</a></p>
+<h2 id="格式理解"><a href="#格式理解" class="headerlink" title="格式理解"></a>格式理解</h2><h3 id="JPEG"><a href="#JPEG" class="headerlink" title="JPEG"></a>JPEG</h3><p>可以理解为一个原始图片的压缩格式</p>
+<ul>
+<li><p>简称JPG</p>
+</li>
+<li><p>上过美术课的人都知道一个像素的颜色可以用RGB三原色来表示，其实还可以用YUV格式来表示</p>
+</li>
+<li><p>使用RGB、YUV的格式编码的照片，文件都很大，比如<strong>常见的BMP文件就是用RGB编码</strong></p>
+</li>
+<li><p>把一个BMP文件转换为JPEG文件，可以发现图片质量没发生变化，但是文件变小了很</p>
+<p>JPEG是<strong>根据人体视觉的特点采用了YCbCr格式，大大压缩了照片的大小</strong></p>
+</li>
+</ul>
+<h3 id="MJPG"><a href="#MJPG" class="headerlink" title="MJPG"></a>MJPG</h3><ul>
+<li>Motion JPEG，简称MJPG</li>
+<li>JPEG是静态图片的编码格式，MUJPG是动态的视频编码格式</li>
+<li>可以简理解：MJPG就是把多个JPEG图片连续显示出[来</li>
+</ul>
+<p>优点:</p>
+<ul>
+<li>很多摄像头本身就支持JPEG、MJPG，所以处理器不需要做太多处理</li>
+<li>一般的<strong>低性能处理器就可以传输</strong>MJPG视频流</li>
+</ul>
+<p>缺点:</p>
+<p>MJPG只是多个JPEG图片的组合，它<strong>不考虑前后两帧数据的变化</strong>，总是传输一帧帧图像：<strong>传输带宽要求高</strong></p>
+<p>H264等视频格式，会考虑前后两帧数据的变化，只传输变化的数据：传输带宽要求低</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mjpg_streamer -i &quot;/usr/lib/mjpg-streamer/input_uvc.so -d /dev/video1 -f 30 -q 90 -n&quot; -o &quot;/usr/lib/mjpg-streamer/output_http.so -w /usr/share/mjpg-streamer/www&quot;</span><br></pre></td></tr></table></figure>
+
+<p>该指令内部实现原理:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202409131120026.png" alt="image-20240913112015644"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看帮助</span></span><br><span class="line">mjpg_streamer -o &quot;/usr/lib/mjpg-streamer/output_file.so --help&quot;</span><br><span class="line">mjpg_streamer -i &quot;/usr/lib/mjpg-streamer/input_file.so --help&quot;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">把摄像头数据存为jpg文件</span></span><br><span class="line">mjpg_streamer -i &quot;/usr/lib/mjpg-streamer/input_uvc.so -d /dev/video1 -f 30 -q 90 -n&quot; -o &quot;/usr/lib/mjpg-streamer/output_file.so -f /tmp&quot;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">把jpg文件输出到浏览器</span></span><br><span class="line">mjpg_streamer -i &quot;/usr/lib/mjpg-streamer/input_file.so -e -f /tmp&quot; -o &quot;/usr/lib/mjpg-streamer/output_http.so -w /usr/share/mjpg-streamer/www&quot;</span><br></pre></td></tr></table></figure>
+
+<h1 id="流媒体方案详解"><a href="#流媒体方案详解" class="headerlink" title="流媒体方案详解"></a>流媒体方案详解</h1><h2 id="推流端"><a href="#推流端" class="headerlink" title="推流端"></a>推流端</h2><p>职责: 采集数据,并转换格式,再推送给流媒体服务器</p>
+<p><strong>摄像头访问技术:</strong></p>
+<ul>
+<li><strong>DirectShow (Windows):</strong> 这是 Windows 平台上常用的多媒体 API，可以用于访问摄像头设备并获取视频数据。</li>
+<li><strong>OpenCV (跨平台):</strong> 这是一个开源的计算机视觉库，提供了多种摄像头访问和视频处理功能。</li>
+<li><strong>FFmpeg (跨平台):</strong> 这是一个强大的多媒体处理库，可以用于视频录制、解码和流传输。</li>
+</ul>
+<p>推流端: FFmpeg使用RTMP协议向Nginx推流,或<a target="_blank" rel="noopener" href="https://github.com/bluenviron/mediamtx">rtsp-simple-server</a>(但他不支持MJPG编码格式)</p>
+<p>拉流端: 浏览器使用HTTPFLV协议从Nginx拉流(安装flv.js)</p>
+<p>FFmpeg从&#x2F;dev&#x2F;video1中得到摄像头数据,一秒10帧,质量是10,把他以RTMP协议推送到本地服务器,可以执行命令<code>ffmpeg -f v4|2 -framerate 10 -i /dev/video1 -q 10 -f flv rtmp://127.0.0.1/live/wei</code></p>
+<h1 id="windows捕获视频流"><a href="#windows捕获视频流" class="headerlink" title="windows捕获视频流"></a>windows捕获视频流</h1><p>windows捕获音视频流:Media Foundation</p>
+<p>全平台捕获视频流可以使用qt的库</p>
+<h1 id="USB摄像头监控保存方案记录"><a href="#USB摄像头监控保存方案记录" class="headerlink" title="USB摄像头监控保存方案记录"></a>USB摄像头监控保存方案记录</h1><p>使用opencv捕获的摄像头数据通过输入端传递给ffmpeg压缩后保存为文件</p>
+<p>优化夜间视觉效果</p>
+<p>在算法上优化夜间视觉效果可以通过以下几种方法实现：</p>
+<ol>
+<li><strong>图像增强</strong>：使用图像增强技术，如直方图均衡化（Histogram Equalization）和自适应直方图均衡化（CLAHE），可以提高图像的对比度，使暗部细节更加明显。 </li>
+<li><strong>去噪声处理</strong>：夜间拍摄通常会引入噪声，使用去噪算法（如高斯滤波、中值滤波或更先进的深度学习去噪算法）可以减少噪声对图像质量的影响。 </li>
+<li><strong>多帧合成</strong>：通过将多张低曝光的图像合成一张高质量图像，可以有效提升图像的亮度和细节。这种方法常用于长时间曝光摄影中。 </li>
+<li><strong>图像锐化</strong>：在低光条件下，图像可能显得模糊，通过锐化算法（如拉普拉斯锐化或Unsharp Mask）可以提高图像的清晰度。 </li>
+<li><strong>深度学习技术</strong>：利用深度学习模型（如卷积神经网络）进行低光图像增强，可以自动学习和提升图像在低光环境下的表现。 </li>
+<li><strong>色彩校正</strong>：在夜间拍摄中，色彩可能会失真，通过色彩校正算法可以恢复图像的真实色彩。</li>
+</ol>
+<h1 id="视频播放"><a href="#视频播放" class="headerlink" title="视频播放"></a>视频播放</h1><p>可以使用libVLCSharp和<a href="#https://github.com/videolan/libvlcsharp/blob/3.x/src/LibVLCSharp.WPF/README.md">libVLCSharp.WPF</a>库</p>
+<p>还要安装VideoLAN.LibVLC.Windows</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"></a><div class="post-copyright__author_name">ZEROKO14</div><div class="post-copyright__author_desc">zeroko14's blog</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://che77a38.github.io/posts/%E6%91%84%E5%83%8F%E5%A4%B4%E7%9B%91%E6%8E%A7%E5%BC%80%E5%8F%91/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://che77a38.github.io/posts/%E6%91%84%E5%83%8F%E5%A4%B4%E7%9B%91%E6%8E%A7%E5%BC%80%E5%8F%91/')">摄像头监控开发</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://che77a38.github.io/posts/%E6%91%84%E5%83%8F%E5%A4%B4%E7%9B%91%E6%8E%A7%E5%BC%80%E5%8F%91/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=摄像头监控开发&amp;url=https://che77a38.github.io/posts/%E6%91%84%E5%83%8F%E5%A4%B4%E7%9B%91%E6%8E%A7%E5%BC%80%E5%8F%91/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://che77a38.github.io" target="_blank">ZEROKO14的个人博客</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E7%9B%91%E6%8E%A7/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>监控<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/PE/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">PE</div></div></a></div><div class="next-post pull-right"><a href="/posts/prism/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Prism</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">欢迎来到ZEROKO14的个人博客</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">ZEROKO14</h1><div class="author-info__desc">zeroko14's blog</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/che77a38" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9F%B3%E8%A7%86%E9%A2%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">音视频基础知识记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E6%B5%81%E7%A8%8B%E5%85%A8%E8%A7%A3"><span class="toc-number">1.1.</span> <span class="toc-text">视频流程全解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.2.</span> <span class="toc-text">流媒体协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">封装格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.4.</span> <span class="toc-text">视频编码格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9F%B3%E9%A2%91%E7%BC%96%E7%A0%81"><span class="toc-number">1.5.</span> <span class="toc-text">音频编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E6%9C%89%E7%BD%91%E7%BB%9C%E8%A7%86%E9%9F%B3%E9%A2%91%E5%B9%B3%E5%8F%B0%E5%AF%B9%E6%AF%94"><span class="toc-number">1.6.</span> <span class="toc-text">现有网络视音频平台对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%92%AD%E5%B9%B3%E5%8F%B0%E5%8F%82%E6%95%B0%E5%AF%B9%E6%AF%94"><span class="toc-number">1.6.1.</span> <span class="toc-text">直播平台参数对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%B9%E6%92%AD%E5%B9%B3%E5%8F%B0%E5%8F%82%E6%95%B0%E5%AF%B9%E6%AF%94"><span class="toc-number">1.6.2.</span> <span class="toc-text">点播平台参数对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#USB%E6%91%84%E5%83%8F%E5%A4%B4%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.7.</span> <span class="toc-text">USB摄像头基础知识</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FFMPEG"><span class="toc-number">2.</span> <span class="toc-text">FFMPEG</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ffmpeg%E5%8E%9F%E7%90%86%E7%90%86%E8%A7%A3"><span class="toc-number">2.1.</span> <span class="toc-text">ffmpeg原理理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FFmpeg%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">2.2.</span> <span class="toc-text">FFmpeg的组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.3.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F"><span class="toc-number">2.3.1.</span> <span class="toc-text">安装方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Csharp-ffmpeg"><span class="toc-number">2.3.2.</span> <span class="toc-text">Csharp ffmpeg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ffmpeg%E9%9B%86%E6%88%90%E5%88%B0%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95%E4%B8%8B"><span class="toc-number">2.3.3.</span> <span class="toc-text">ffmpeg集成到程序目录下</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FFmpeg%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0"><span class="toc-number">2.4.</span> <span class="toc-text">FFmpeg的常用参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E5%8F%82%E6%95%B0%E5%8F%82%E8%80%83"><span class="toc-number">2.4.1.</span> <span class="toc-text">详细参数参考</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E9%80%89%E9%A1%B9"><span class="toc-number">2.4.1.1.</span> <span class="toc-text">通用选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E9%80%89%E9%A1%B9"><span class="toc-number">2.4.1.2.</span> <span class="toc-text">视频选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E8%A7%86%E9%A2%91%E9%80%89%E9%A1%B9"><span class="toc-number">2.4.1.3.</span> <span class="toc-text">高级视频选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9F%B3%E9%A2%91%E9%80%89%E9%A1%B9"><span class="toc-number">2.4.1.4.</span> <span class="toc-text">音频选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9F%B3%E9%A2%91-%E8%A7%86%E9%A2%91%E6%8D%95%E8%8E%B7%E9%80%89%E9%A1%B9"><span class="toc-number">2.4.1.5.</span> <span class="toc-text">音频&#x2F;视频捕获选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E9%80%89%E9%A1%B9"><span class="toc-number">2.4.1.6.</span> <span class="toc-text">高级选项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FFmpeg%E6%8C%87%E4%BB%A4%E4%BD%BF%E7%94%A8"><span class="toc-number">2.5.</span> <span class="toc-text">FFmpeg指令使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%91%84%E5%83%8F%E5%A4%B4%E7%9B%91%E6%8E%A7%E6%96%B9%E6%A1%88%E7%9B%98%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">摄像头监控方案盘点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MJPG-streamer%E6%96%B9%E6%A1%88%E8%AF%A6%E8%A7%A3"><span class="toc-number">4.</span> <span class="toc-text">MJPG-streamer方案详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E7%90%86%E8%A7%A3"><span class="toc-number">4.1.</span> <span class="toc-text">格式理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JPEG"><span class="toc-number">4.1.1.</span> <span class="toc-text">JPEG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MJPG"><span class="toc-number">4.1.2.</span> <span class="toc-text">MJPG</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%B3%95"><span class="toc-number">4.2.</span> <span class="toc-text">用法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E5%AA%92%E4%BD%93%E6%96%B9%E6%A1%88%E8%AF%A6%E8%A7%A3"><span class="toc-number">5.</span> <span class="toc-text">流媒体方案详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E6%B5%81%E7%AB%AF"><span class="toc-number">5.1.</span> <span class="toc-text">推流端</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#windows%E6%8D%95%E8%8E%B7%E8%A7%86%E9%A2%91%E6%B5%81"><span class="toc-number">6.</span> <span class="toc-text">windows捕获视频流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#USB%E6%91%84%E5%83%8F%E5%A4%B4%E7%9B%91%E6%8E%A7%E4%BF%9D%E5%AD%98%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95"><span class="toc-number">7.</span> <span class="toc-text">USB摄像头监控保存方案记录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE"><span class="toc-number">8.</span> <span class="toc-text">视频播放</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/avalonia/" title="avalonia">avalonia</a><time datetime="2024-09-11T14:51:13.000Z" title="发表于 2024-09-11 22:51:13">2024-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E8%A7%86%E9%A2%91%E6%95%88%E6%9E%9C/" title="PR">PR</a><time datetime="2024-07-18T07:06:08.330Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%89%8D%E7%AB%AF/" title="WEB前端">WEB前端</a><time datetime="2024-07-18T07:06:08.323Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/slidev/" title="slidev">slidev</a><time datetime="2024-07-18T07:06:08.319Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/C++%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="C++多线程">C++多线程</a><time datetime="2024-07-18T07:05:59.794Z" title="发表于 2024-07-18 15:05:59">2024-07-18</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="ZEROKO14" target="_blank">ZEROKO14</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu"></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">48</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 0.88rem;">C#<sup>3</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 0.88rem;">CSS<sup>1</sup></a><a href="/tags/CSharp/" style="font-size: 0.88rem;">CSharp<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 0.88rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 0.88rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 0.88rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 0.88rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 0.88rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 0.88rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 0.88rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 0.88rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 0.88rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 0.88rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 0.88rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/json/" style="font-size: 0.88rem;">json<sup>1</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>1</sup></a><a href="/tags/next/" style="font-size: 0.88rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 0.88rem;">ppt<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 0.88rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 0.88rem;">vue<sup>1</sup></a><a href="/tags/xml/" style="font-size: 0.88rem;">xml<sup>1</sup></a><a href="/tags/yaml/" style="font-size: 0.88rem;">yaml<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 0.88rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 0.88rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 0.88rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 0.88rem;">加解密<sup>1</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 0.88rem;">多线程<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">开发<sup>4</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.88rem;">数学<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 0.88rem;">数据库<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 0.88rem;">架构<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 0.88rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 0.88rem;">监控<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>1</sup></a><a href="/tags/%E7%AE%A1%E7%90%86/" style="font-size: 0.88rem;">管理<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 0.88rem;">网络<sup>2</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 0.88rem;">逆向<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

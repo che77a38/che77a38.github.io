@@ -1,0 +1,739 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>slidev | ZEROKO14的个人博客</title><meta name="keywords" content="ppt,slidev"><meta name="author" content="ZEROKO14"><meta name="copyright" content="ZEROKO14"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="slidev"><meta name="application-name" content="slidev"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="slidev"><meta property="og:url" content="https://che77a38.github.io/posts/slidev/index.html"><meta property="og:site_name" content="ZEROKO14的个人博客"><meta property="og:description" content="Slidev 是一个基于 Markdown 的演示文稿工具，它允许用户使用简单的语法创建漂亮的幻灯片演示。Slidev 提供了丰富的主题和布局选项，使用户能够定制他们的演示文稿。此外，Slidev 还支持代码高亮、动画效果、演讲者模式等功能，使演示更加生动和吸引人    想要更进阶的效果,需要使用R"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta property="article:author" content="ZEROKO14"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta name="description" content="Slidev 是一个基于 Markdown 的演示文稿工具，它允许用户使用简单的语法创建漂亮的幻灯片演示。Slidev 提供了丰富的主题和布局选项，使用户能够定制他们的演示文稿。此外，Slidev 还支持代码高亮、动画效果、演讲者模式等功能，使演示更加生动和吸引人    想要更进阶的效果,需要使用R"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://che77a38.github.io/posts/slidev/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":true,"limitCount":50,"languages":{"author":"作者: ZEROKO14","link":"链接: ","source":"来源: ZEROKO14的个人博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'ZEROKO14的个人博客',
+  title: 'slidev',
+  postAI: '',
+  pageFillDescription: '配置与启动, 项目结构, 组件, 布局, 静态资源, 样式, 全局图层, 拓展Markdown语法, 扉页及布局, 代码高亮, 内联样式, 静态资源, 备注, 图标, 布局, 代码片段导入, LaTex行高亮, 图表缩放和主题, markdown嵌套, MDC 语法, 快捷键, 动画, 点击动画, v-click, v-after, 点击后隐藏, v-clicks, 次数定位, 相对定位, 绝对定位, 进入和离开, 元素过渡, 特定方向动画, 幻灯片过渡, 可以使用vue的动画, v-motion, v-mark, 拓展插件, 内置, 组件, 布局是一个基于的演示文稿工具它允许用户使用简单的语法创建漂亮的幻灯片演示提供了丰富的主题和布局选项使用户能够定制他们的演示文稿此外还支持代码高亮动画效果演讲者模式等功能使演示更加生动和吸引人想要更进阶的效果需要使用一个功能丰富的演示框架支持丰富的和事件监听配置与启动启动项目项目结构对项目结构进行了一些约定以尽量减少配置项使功能扩展更加灵活直观基本结构如下所示自定义组件自定义布局静态资源自定义自定义样式注入的幻灯片主入口扩展配置以上所有均为可选组件约定此目录中的组件可以在幻灯片的中直接使用其组件名与文件名相同布局约定你可以为布局文件使用任何文件名然后只需在你的头部使用文件名引用你的布局如果你提供的布局与内置布局或主题布局重名的话你的自定义布局将优先于内置主题布局优先级为本地主题内置在布局组件中你可以使用展示幻灯片内容比如静态资源约定开发过程中此目录中的资源文件将在下提供并会按原样复制到目录的根目录中样式约定遵循上述约定的文件将被注入到的根目录中如果你需要引入多个入口你可以按如下方式创建结构并自行管理引入顺序样式得益于和你拥有开箱即用的嵌套和示例全局图层约定拓展语法除了基本的语法外拓展了语法支持内联的和组件也支持使用来编写样式分隔幻灯片使用扉页及布局代码高亮第一个步骤为行高亮下一个步骤第行高亮再下一个步骤全部高亮为当前代码块显示行号为设置起始行突出显示展示不下的情况使用设置固定高度同时会启用滚动如果想把代码块变成编辑器跟在代码块后加上需要直接运行或代码的话使用并通过设置是否自动运行展示代码间差异使用来分隔代码的原始版本和修改后的版本内联样式在中直接使用标签来覆盖当前幻灯片的样式静态资源可以使用本地或远程的的图片如果是远程资源内置的将在第一次运行时把它们缓存到磁盘中即便是大图也能实现立即加载如果是本地资源请将资源放置到文件夹中并使用开头的来引用它们可以使用的格式感叹号图片路径的格式自定义尺寸和样式用下面的格式备注在中每张幻灯片中的最后一个注释块将被视为备注供你在演示时参考第页这是一条备注第页这不是一条备注因为它在幻灯片内容前这是另一条备注图标允许你在中在安装对应包后访问几乎所有的开源的图标集这得益于和图标遵循的命名规则例如使用其规则为使用其规则为使用其规则为使用其规则为使用其规则为还有更多你可以通过来浏览访问所有可用的图标可以像其他元素一样对图标的样式进行修改例如布局具名插槽在布局中你可以采用左插槽右插槽两列的布局方式可使用提供的语法糖代替代码片段导入通过以下语法从现有文件中导入代码片段的值对应于您的软件包根目录建议将代码片段放在中以便与编辑器兼容或者您也可以从相对路径导入也支持代码高亮等功能行高亮图表缩放和主题嵌套意味着可以将分割成多个文件并可以按照你的需求组织它们有了嵌套的加持对页面进行重用变得很容易语法参考快捷键快捷键按钮说明切换全屏下一动画或幻灯片上一动画或幻灯片上一张幻灯片下一张幻灯片切换幻灯片总览切换暗黑模式切换摄像头视图演讲录制进入演讲者模式切换集成编辑器下载幻灯片仅在单页构建中支持显示该演示文稿的信息显示设置菜单显示前往动画点击动画要为元素应用点击动画可以使用指令或组件组件用法此行将在你点击下一页前不可见指令用法此行将在你第二次点击下一页时不可见仅作为指令提供它将在触发前一个时使元素变为可见当你点击下一步时和将同时显示点击后隐藏你可以为或添加修饰符使元素在点击后不可见而不是显示出来仅作为一个组件提供它是将指令应用于所有子元素的简写它在处理列表和表格时尤其出色它同时接受用于嵌套列表的属性此外还可以使用属性来指定每次点击后要显示的项目数次数定位默认情况下点击动画是逐个进行的你可以使用或指令自定义元素的动画位置与布局系统一样点击动画元素可以是相对或绝对的相对定位相对元素的实际位置是根据之前的相对元素计算出来的这段代码表示这个元素在第次点击后显示这段代码表示这个元素在第次点击后显示这段代码表示这个元素在相对于前一个指令即第次点击提前次点击时隐藏即在第次点击时隐藏只有以或如开头的字符串值才会被视为相对位置属性值类型相对绝对绝对因此不要忘记为相对值加上单引号绝对定位传递的值为需要操作的精确点击次数下面通过同步了两行代码的高亮进入和离开你也可以通过传递一个数组为指令指定进入和离开的时间显示隐藏周期是不包含结束索引在内的元素过渡当你将指令应用于元素时它将附加类名相反当元素被隐藏时类名会被附加例如点击后它将变成默认情况下这些类别会使用透明度过渡你可以覆盖它们在自定义样式表中定制过渡效果例如你可以通过以下方法实现放大转换仅为某些幻灯片或布局指定动画特定方向动画在某些情况下你可能希望在前进和后退时使用不同的动画在切换幻灯片时将对容器应用或类因此你可以利用这一点为不同的方向应用不同的动画幻灯片过渡内置过渡交叉淡入淡出淡出后再淡入向左滑动后退时向右滑动向右滑动后退时向左滑动向上方滑动向后时向下方滑动向下滑动向后时滑动到顶部使用视图转换的幻灯片可以使用的动画前端过渡动画参考过渡动画此组件使用的其实是库一个轻量级的动画库库的官方文档演示效果目前已知有初始状态在元素加载时应用的动画进入状态当元素进入视图时应用的动画离开状态当元素离开视图时应用的动画点击第次的时候触发元素每次在视野内时将装备的属性一旦离开视野将应用这些属性元素进入视图后将具备的属性当指针进入元素区域时该元素将具备的属性当元素获得焦点时元素将具备的属性单击鼠标或点击触摸设备时元素将具备的属性圆圈下划线在中更换主题非常简单在中添加配置即可提示若要从作用域包中安装主题你需要提供完整的命名空间例如在服务启动后它会自动提示你是否安装该主题注意主题也可以提供组件参考他们各自的文档拓展插件扩展插件是你可以在演示文稿中使用的附加组件布局样式配置等集它们不影响幻灯片的全局样式你可以在同一演示文稿中使用多个插件为了使用扩展插件你必须通过以下方式手动安装它们然后你需要在中声明你的扩展插件或在中内置组件绘制一个箭头字体大小自适应文本框链接目录转换自定义组件前端组件的注册和使用参考如何定义自定义组件布局由于主题可能会覆盖布局的行为因此精确理解主题的使用参数和例子最好的方式是查阅主题文档可用内置布局盘点如下在屏幕中间展示内容用来展示演讲稿的封面页可以包含演讲的标题演讲者时间等最基础的布局用于展示任意类型的内容演讲的最后一页用来在屏幕上突出展示很多事实或数据使用屏幕全部空间来展示内容在屏幕左侧展示图片屏幕右侧展示内容用法在屏幕右侧展示图片屏幕左侧展示内容用法将图片作为页面的主要内容进行展示用法你可以使用选项来控制背景图片的大小在屏幕左侧展示网页内容将放置在右侧用法在屏幕右侧展示网页内容将放置在左侧用法将网页作为页面的主要内容进行展示用法介绍演讲稿通常包含演讲稿标题简述作者等信息没有任何样式的布局突出显示引文用于标记演讲稿的新部分的开始将主张声明作为主要页面内容将页面内容分为两列显示在左侧显示在右侧将页面内容分为两列上方和下方的内容分开第二行将左右两列分开显示在上方显示在左侧显示在右侧',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-04 17:01:58',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://th.bing.com/th/id/OIP.wtmjepfWPBvn26uz7s18dgHaHa?rs=1&amp;pid=ImgDetMain"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">ZEROKO14的个人博客</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 1.05rem;">C#<sup>3</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 1.05rem;">CSS<sup>1</sup></a><a href="/tags/CSharp/" style="font-size: 1.05rem;">CSharp<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.05rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 1.05rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 1.05rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 1.05rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 1.05rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 1.05rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 1.05rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 1.05rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 1.05rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 1.05rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 1.05rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/json/" style="font-size: 1.05rem;">json<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>1</sup></a><a href="/tags/next/" style="font-size: 1.05rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 1.05rem;">ppt<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 1.05rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 1.05rem;">vue<sup>1</sup></a><a href="/tags/xml/" style="font-size: 1.05rem;">xml<sup>1</sup></a><a href="/tags/yaml/" style="font-size: 1.05rem;">yaml<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 1.05rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 1.05rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 1.05rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 1.05rem;">加解密<sup>1</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 1.05rem;">多线程<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">开发<sup>4</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">数学<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.05rem;">数据库<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 1.05rem;">架构<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 1.05rem;">监控<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>1</sup></a><a href="/tags/%E7%AE%A1%E7%90%86/" style="font-size: 1.05rem;">管理<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.05rem;">网络<sup>2</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 1.05rem;">逆向<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">27</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/10/"><span class="card-archive-list-date">十月 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url">技术</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/ppt/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>ppt</span></a><a class="article-meta__tags" href="/tags/slidev/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>slidev</span></a></span></div></div><h1 class="post-title" itemprop="name headline">slidev</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-07-18T07:06:08.319Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-11-04T09:01:58.247Z" title="更新于 2024-11-04 17:01:58">2024-11-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="slidev"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为新加坡"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>新加坡</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://che77a38.github.io/posts/slidev/"><header><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url">技术</a><a href="/tags/ppt/" tabindex="-1" itemprop="url">ppt</a><a href="/tags/slidev/" tabindex="-1" itemprop="url">slidev</a><h1 id="CrawlerTitle" itemprop="name headline">slidev</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">ZEROKO14</span><time itemprop="dateCreated datePublished" datetime="2024-07-18T07:06:08.319Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time><time itemprop="dateCreated datePublished" datetime="2024-11-04T09:01:58.247Z" title="更新于 2024-11-04 17:01:58">2024-11-04</time></header><p>Slidev 是一个基于 Markdown 的演示文稿工具，它允许用户使用简单的语法创建漂亮的幻灯片演示。Slidev 提供了丰富的主题和布局选项，使用户能够定制他们的演示文稿。此外，Slidev 还支持代码高亮、动画效果、演讲者模式等功能，使演示更加生动和吸引人</p>
+<span id="more"></span>
+
+<blockquote>
+<p>想要更进阶的效果,需要使用<strong>Reveal.js</strong>：一个功能丰富的 HTML 演示框架，支持丰富的 JavaScript API 和事件监听</p>
+</blockquote>
+<h1 id="配置与启动"><a href="#配置与启动" class="headerlink" title="配置与启动"></a>配置与启动</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init slidev@latest</span><br><span class="line">slidev <span class="comment">#启动项目</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h1><p>Slidev 对项目结构进行了一些约定，以尽量减少配置项，使功能扩展更加灵活直观。</p>
+<p>基本结构如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">your-slidev/</span><br><span class="line">  ├── components/       <span class="comment"># 自定义组件</span></span><br><span class="line">  ├── layouts/          <span class="comment"># 自定义布局</span></span><br><span class="line">  ├── public/           <span class="comment"># 静态资源</span></span><br><span class="line">  ├── setup/            <span class="comment"># 自定义 setup / hooks</span></span><br><span class="line">  ├── styles/           <span class="comment"># 自定义样式</span></span><br><span class="line">  ├── index.html        <span class="comment"># 注入的 index.html</span></span><br><span class="line">  ├── slides.md         <span class="comment"># 幻灯片主入口</span></span><br><span class="line">  └── vite.config.ts    <span class="comment"># 扩展 vite 配置</span></span><br></pre></td></tr></table></figure>
+
+<p>以上所有均为可选。</p>
+<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><p>约定：<code>./components/*.&#123;vue,js,ts,jsx,tsx,md&#125;</code></p>
+<p>此目录中的组件可以在幻灯片的 Markdown 中直接使用，其组件名与文件名相同。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">your-slidev/</span><br><span class="line">  ├── ...</span><br><span class="line">  └── components/</span><br><span class="line">      ├── MyComponent.vue</span><br><span class="line">      └── HelloWorld.ts</span><br></pre></td></tr></table></figure>
+
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>约定：<code>./layouts/*.&#123;vue,js,ts,jsx,tsx&#125;</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">your-slidev/</span><br><span class="line">  ├── ...</span><br><span class="line">  └── layouts/</span><br><span class="line">      ├── cover.vue</span><br><span class="line">      └── my-cool-theme.vue</span><br></pre></td></tr></table></figure>
+
+<p>你可以为布局文件使用任何文件名。然后只需在你的 YAML 头部使用文件名引用你的布局。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">my-cool-theme</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你提供的布局与内置布局或主题布局重名的话，你的自定义布局将优先于内置&#x2F;主题布局。优先级为 <code>本地 &gt; 主题 &gt; 内置</code>。</p>
+<p>在布局组件中，你可以使用 <code>&lt;slot/&gt;</code> 展示幻灯片内容。比如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- default.vue --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;slidev-layout default&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h2><p>约定：<code>./public/*</code></p>
+<p>开发过程中，此目录中的资源文件将在 <code>/</code> 下提供，并会按原样复制到 dist 目录的根目录中</p>
+<h2 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h2><p>约定：<code>./style.css</code> | <code>./styles/index.&#123;css,js,ts&#125;</code></p>
+<p>遵循上述约定的文件将被注入到 App 的根目录中。如果你需要引入多个 css 入口，你可以按如下方式创建结构并自行管理引入顺序。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">your-slidev/</span><br><span class="line">  ├── ...</span><br><span class="line">  └── styles/</span><br><span class="line">      ├── index.ts</span><br><span class="line">      ├── base.css</span><br><span class="line">      ├── code.css</span><br><span class="line">      └── layouts.css</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// styles/index.ts</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./base.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./code.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./layouts.css&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>样式得益于 <a target="_blank" rel="noopener" href="https://unocss.dev/">UnoCSS</a> 和 <a target="_blank" rel="noopener" href="https://postcss.org/">PostCSS</a>，你拥有开箱即用的 css 嵌套和 <a target="_blank" rel="noopener" href="https://unocss.dev/transformers/directives#apply">at-directives</a>。示例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.slidev-layout</span> &#123;</span><br><span class="line">  <span class="attr">--uno</span>: px-<span class="number">14</span> py-<span class="number">10</span> text-[<span class="number">1.1rem</span>];</span><br><span class="line"></span><br><span class="line">  <span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">p</span>, <span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attr">--uno</span>: select-none;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  pre, <span class="selector-tag">code</span> &#123;</span><br><span class="line">    <span class="attr">--uno</span>: select-text;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">theme</span>(<span class="string">&#x27;colors.primary&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="全局图层"><a href="#全局图层" class="headerlink" title="全局图层"></a>全局图层</h2><p>约定：<code>global-top.vue</code> | <code>global-bottom.vue</code></p>
+<h1 id="拓展Markdown语法"><a href="#拓展Markdown语法" class="headerlink" title="拓展Markdown语法"></a>拓展Markdown语法</h1><p>除了基本的Markdown语法外,slidev拓展了markdown语法,支持内联的HTML和Vue组件,也支持使用UnoCSS来编写样式</p>
+<p>分隔幻灯片使用<code>---</code></p>
+<h2 id="扉页及布局"><a href="#扉页及布局" class="headerlink" title="扉页及布局"></a>扉页及布局</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">layout: center</span><br><span class="line">background: &#x27;./images/background-1.png&#x27;</span><br><span class="line"><span class="section">class: &#x27;text-white&#x27;</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">````md magic-move &#123;at:4&#125;</span></span><br><span class="line"><span class="code">```ts &#123;2-3|5|all&#125;&#123;lines:true,startLine:5&#125;&#123;maxHeight:&#x27;100px&#x27;&#125;</span></span><br><span class="line"><span class="code">function add(</span></span><br><span class="line"><span class="code">  a: Ref&lt;number&gt; | number,</span></span><br><span class="line"><span class="code">  b: Ref&lt;number&gt; | number</span></span><br><span class="line"><span class="code">) &#123;</span></span><br><span class="line"><span class="code">  return computed(() =&gt; unref(a) + unref(b))</span></span><br><span class="line"><span class="code">&#125;</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+
+<p>第一个步骤为2-3行高亮,下一个步骤第5行高亮,再下一个步骤全部高亮</p>
+<p><code>lines:true</code>为当前代码块显示行号,startLine为设置起始行突出显示</p>
+<p>展示不下的情况使用<code>maxHeight</code>设置固定高度(同时会启用滚动)</p>
+<p>如果想把代码块变成编辑器,跟在代码块&#96;&#96;&#96;&#96;ts后<code>加上</code>{monaco}<code>,需要直接运行js或ts代码的话使用</code>{monaco-run}<code>,并通过</code>{autorun:false}&#96;设置是否自动运行</p>
+<p>展示代码间差异:使用<code>~~~</code>来分隔代码的原始版本和修改后的版本</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```ts &#123;monaco-diff&#125;</span></span><br><span class="line"><span class="code">console.log(&#x27;Original text&#x27;)</span></span><br><span class="line"><span class="code">~~~</span></span><br><span class="line"><span class="code">console.log(&#x27;Modified text&#x27;)</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h2><p>在 Markdown 中直接使用 <code>&lt;style&gt;</code> 标签来覆盖<strong>当前幻灯片</strong>的样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="静态资源-1"><a href="#静态资源-1" class="headerlink" title="静态资源"></a>静态资源</h2><p>可以使用本地或远程的 URL 的图片。</p>
+<p>如果是远程资源，内置的 <a target="_blank" rel="noopener" href="https://github.com/antfu/vite-plugin-remote-assets"><code>vite-plugin-remote-assets</code></a> 将在第一次运行时把它们缓存到磁盘中，即便是大图也能实现立即加载。</p>
+<p>如果是本地资源，请将资源放置到 <a target="_blank" rel="noopener" href="https://cn.sli.dev/custom/directory-structure.html#public"><code>public</code> 文件夹</a> 中并使用 <strong>&#x2F;</strong> 开头的 URL 来引用它们。</p>
+<p>可以使用markdown的格式<code>感叹号[](图片路径)</code>的格式</p>
+<p>自定义尺寸和样式用下面<code>&lt;img&gt;</code>的格式</p>
+<p><code>&lt;img src=&quot;/pic.png&quot; class=&quot;m-40 h-40 rounded shadow&quot; /&gt;</code></p>
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>在 Markdown 中，每张幻灯片中的最后一个注释块将被视为备注.供你在演示时参考。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="section">layout: cover</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 第 1 页</span></span><br><span class="line"></span><br><span class="line">This is the cover page.</span><br><span class="line"></span><br><span class="line">&lt;!-- 这是一条备注 --&gt;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section"># 第 2 页</span></span><br><span class="line"></span><br><span class="line">&lt;!-- 这不是一条备注，因为它在幻灯片内容前 --&gt;</span><br><span class="line"></span><br><span class="line">The second page</span><br><span class="line"></span><br><span class="line">&lt;!--</span><br><span class="line">这是另一条备注</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h2><p>Slidev 允许你在 Markdown 中在安装对应包后访问几乎所有的开源的图标集。这得益于 <a target="_blank" rel="noopener" href="https://github.com/antfu/unplugin-icons"><code>unplugin-icons</code></a> 和 <a target="_blank" rel="noopener" href="https://iconify.design/">Iconify</a>。</p>
+<p>图标 ID 遵循 <a target="_blank" rel="noopener" href="https://iconify.design/">Iconify</a> 的命名规则 <code>&#123;collection-name&#125;-&#123;icon-name&#125;</code>。例如：</p>
+<ul>
+<li>使用 <a target="_blank" rel="noopener" href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a>，其规则为 <code>&lt;mdi-account-circle /&gt;</code> - </li>
+<li>使用 <a target="_blank" rel="noopener" href="https://github.com/carbon-design-system/carbon/tree/main/packages/icons">Carbon</a>，其规则为 <code>&lt;carbon-badge /&gt;</code> - </li>
+<li>使用 <a target="_blank" rel="noopener" href="https://github.com/Iconscout/unicons">Unicons Monochrome</a>，其规则为 <code>&lt;uim-rocket /&gt;</code> - </li>
+<li>使用 <a target="_blank" rel="noopener" href="https://github.com/twitter/twemoji">Twemoji</a>，其规则为 <code>&lt;twemoji-cat-with-tears-of-joy /&gt;</code> - </li>
+<li>使用 <a target="_blank" rel="noopener" href="https://github.com/gilbarbara/logos">SVG Logos</a>，其规则为 <code>&lt;logos-vue /&gt;</code> - </li>
+<li>还有更多…</li>
+</ul>
+<p>你可以通过 <a target="_blank" rel="noopener" href="https://icones.js.org/">Icônes</a> 来浏览访问所有可用的图标。</p>
+<p>可以像其他 HTML 元素一样对图标的样式进行修改。例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uim-rocket</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uim-rocket</span> <span class="attr">class</span>=<span class="string">&quot;text-3xl text-red-400 mx-2&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uim-rocket</span> <span class="attr">class</span>=<span class="string">&quot;text-3xl text-orange-400 animate-ping&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="布局-1"><a href="#布局-1" class="headerlink" title="布局"></a>布局</h2><p>vue具名插槽</p>
+<p>在 <a target="_blank" rel="noopener" href="https://github.com/slidevjs/slidev/blob/main/packages/client/layouts/two-cols.vue"><code>two-cols</code> 布局</a> 中，你可以采用左（<code>default</code> 插槽）右（<code>right</code> 插槽）两列的布局方式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">layout: two-cols</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:default</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--可使用slidev提供的语法糖::default::代替--&gt;</span></span><br><span class="line"></span><br><span class="line"># Left</span><br><span class="line"></span><br><span class="line">This shows on the left</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:right</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># Right</span><br><span class="line"></span><br><span class="line">This shows on the right</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="代码片段导入"><a href="#代码片段导入" class="headerlink" title="代码片段导入"></a>代码片段导入</h2><p>通过以下语法从现有文件中导入代码片段</p>
+<blockquote>
+<p><code>@</code>的值对应于您的软件包根目录。建议将代码片段放在<code>@/snippets</code>中，以便与Monaco编辑器兼容。或者，您也可以从相对路径导入</p>
+</blockquote>
+<p>也支持<a href="#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE">代码高亮</a>等功能</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt; @/snippets/snippet.js ts &#123;2,3|5&#125;&#123;lines:true&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="LaTex行高亮"><a href="#LaTex行高亮" class="headerlink" title="LaTex行高亮"></a>LaTex行高亮</h2><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span> &#123;1|3|all&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;array&#125;&#123;c&#125;</span><br><span class="line"><span class="keyword">\nabla</span> <span class="keyword">\times</span> <span class="keyword">\vec</span>&#123;<span class="keyword">\mathbf</span>&#123;B&#125;&#125; -<span class="keyword">\,</span> <span class="keyword">\frac</span>1c<span class="keyword">\,</span> <span class="keyword">\frac</span>&#123;<span class="keyword">\partial</span><span class="keyword">\vec</span>&#123;<span class="keyword">\mathbf</span>&#123;E&#125;&#125;&#125;&#123;<span class="keyword">\partial</span> t&#125; <span class="built_in">&amp;</span></span><br><span class="line">= <span class="keyword">\frac</span>&#123;4<span class="keyword">\pi</span>&#125;&#123;c&#125;<span class="keyword">\vec</span>&#123;<span class="keyword">\mathbf</span>&#123;j&#125;&#125;    <span class="keyword">\nabla</span> <span class="keyword">\cdot</span> <span class="keyword">\vec</span>&#123;<span class="keyword">\mathbf</span>&#123;E&#125;&#125; <span class="built_in">&amp;</span> = 4 <span class="keyword">\pi</span> <span class="keyword">\rho</span> <span class="keyword">\\</span></span><br><span class="line"><span class="keyword">\nabla</span> <span class="keyword">\times</span> <span class="keyword">\vec</span>&#123;<span class="keyword">\mathbf</span>&#123;E&#125;&#125;<span class="keyword">\,</span> +<span class="keyword">\,</span> <span class="keyword">\frac</span>1c<span class="keyword">\,</span> <span class="keyword">\frac</span>&#123;<span class="keyword">\partial</span><span class="keyword">\vec</span>&#123;<span class="keyword">\mathbf</span>&#123;B&#125;&#125;&#125;&#123;<span class="keyword">\partial</span> t&#125; <span class="built_in">&amp;</span> = <span class="keyword">\vec</span>&#123;<span class="keyword">\mathbf</span>&#123;0&#125;&#125; <span class="keyword">\\</span></span><br><span class="line"><span class="keyword">\nabla</span> <span class="keyword">\cdot</span> <span class="keyword">\vec</span>&#123;<span class="keyword">\mathbf</span>&#123;B&#125;&#125; <span class="built_in">&amp;</span> = 0</span><br><span class="line"><span class="keyword">\end</span>&#123;array&#125;</span><br><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="图表缩放和主题"><a href="#图表缩放和主题" class="headerlink" title="图表缩放和主题"></a>图表缩放和主题</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```mermaid &#123;theme: &#x27;neutral&#x27;, scale: 0.8&#125;</span></span><br><span class="line"><span class="code">graph TD</span></span><br><span class="line"><span class="code">B[Text] --&gt; C&#123;Decision&#125;</span></span><br><span class="line"><span class="code">C --&gt;|One| D[Result 1]</span></span><br><span class="line"><span class="code">C --&gt;|Two| E[Result 2]</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="markdown嵌套"><a href="#markdown嵌套" class="headerlink" title="markdown嵌套"></a>markdown嵌套</h2><p>意味着可以将 <code>slides.md</code> 分割成多个文件，并可以按照你的需求组织它们。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># Page 1</span></span><br><span class="line"></span><br><span class="line">This is a normal page</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"><span class="section">src: ./subpage2.md</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line">&lt;!-- this page will be loaded from &#x27;./subpage2.md&#x27; --&gt;</span><br><span class="line">Inline content will be ignored</span><br></pre></td></tr></table></figure>
+
+<p>有了markdown嵌套的加持，对页面进行重用变得很容易</p>
+<h2 id="MDC-语法"><a href="#MDC-语法" class="headerlink" title="MDC 语法"></a>MDC 语法</h2><p><a target="_blank" rel="noopener" href="https://cn.sli.dev/guide/syntax#MDC%20Syntax/">参考</a></p>
+<h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><table>
+<thead>
+<tr>
+<th align="left">快捷键</th>
+<th align="left">按钮</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">f</td>
+<td align="left"></td>
+<td align="left">切换全屏</td>
+</tr>
+<tr>
+<td align="left">right &#x2F; space</td>
+<td align="left"></td>
+<td align="left">下一动画或幻灯片</td>
+</tr>
+<tr>
+<td align="left">left</td>
+<td align="left"></td>
+<td align="left">上一动画或幻灯片</td>
+</tr>
+<tr>
+<td align="left">up</td>
+<td align="left">-</td>
+<td align="left">上一张幻灯片</td>
+</tr>
+<tr>
+<td align="left">down</td>
+<td align="left">-</td>
+<td align="left">下一张幻灯片</td>
+</tr>
+<tr>
+<td align="left">o</td>
+<td align="left"></td>
+<td align="left">切换 <a target="_blank" rel="noopener" href="https://cn.sli.dev/guide/navigation#slides-overview">幻灯片总览</a></td>
+</tr>
+<tr>
+<td align="left">d</td>
+<td align="left"></td>
+<td align="left">切换暗黑模式</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left"></td>
+<td align="left">切换 <a target="_blank" rel="noopener" href="https://cn.sli.dev/guide/recording#camera-view">摄像头视图</a></td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left"></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://cn.sli.dev/guide/recording#camera-view">演讲录制</a></td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left"></td>
+<td align="left">进入 <a target="_blank" rel="noopener" href="https://cn.sli.dev/guide/presenter-mode">演讲者模式</a></td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left"></td>
+<td align="left">切换 <a target="_blank" rel="noopener" href="https://cn.sli.dev/guide/editors#integrated-editor">集成编辑器</a></td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left"></td>
+<td align="left">下载幻灯片 (仅在 <a target="_blank" rel="noopener" href="https://cn.sli.dev/guide/exporting#single-page-application-spa">单页（SPA）构建</a> 中支持)</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left"></td>
+<td align="left">显示该演示文稿的信息</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left"></td>
+<td align="left">显示设置菜单</td>
+</tr>
+<tr>
+<td align="left">g</td>
+<td align="left">-</td>
+<td align="left">显示“前往…”</td>
+</tr>
+</tbody></table>
+<h1 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h1><h2 id="点击动画"><a href="#点击动画" class="headerlink" title="点击动画"></a>点击动画</h2><h3 id="v-click"><a href="#v-click" class="headerlink" title="v-click"></a>v-click</h3><p>要为元素应用 “点击动画”，可以使用<code> v-click</code> 指令或 <code>&lt;v-click&gt;</code> 组件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 组件用法:</span></span><br><span class="line"><span class="comment">     此行将在你点击“下一页”前不可见 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">v-click</span>&gt;</span> Hello World! <span class="tag">&lt;/<span class="name">v-click</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指令用法:</span></span><br><span class="line"><span class="comment">     此行将在你第二次点击“下一页”时不可见 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-click</span> <span class="attr">class</span>=<span class="string">&quot;text-xl&quot;</span>&gt;</span> Hey! <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="v-after"><a href="#v-after" class="headerlink" title="v-after"></a>v-after</h3><p><code>v-after</code> 仅作为指令提供。它将在触发前一个 <code>v-click</code> 时使元素变为可见。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-click</span>&gt;</span> Hello <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-after</span>&gt;</span> World <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>当你点击“下一步”时，“Hello”和“World”将同时显示。</p>
+<h3 id="点击后隐藏"><a href="#点击后隐藏" class="headerlink" title="点击后隐藏"></a>点击后隐藏</h3><p>你可以为 <code>v-click</code> 或 <code>v-after</code> 添加 <code>.hide</code> 修饰符，使元素在点击后不可见，而不是显示出来。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-click</span>&gt;</span> Visible after 1 click <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-click.hide</span>&gt;</span> Hidden after 2 click <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-after.hide</span>&gt;</span> Hidden after 2 click <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">v-click</span>&gt;</span> Visible after 1 click <span class="tag">&lt;/<span class="name">v-click</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">v-click</span> <span class="attr">hide</span>&gt;</span> Hidden after 2 click <span class="tag">&lt;/<span class="name">v-click</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="v-clicks"><a href="#v-clicks" class="headerlink" title="v-clicks"></a>v-clicks</h3><p><code>v-clicks</code> 仅作为一个组件提供。它是将 <code>v-click</code> 指令应用于所有子元素的简写。它在处理列表和表格时尤其出色。</p>
+<p>它同时接受用于嵌套列表的 <code>depth</code> 属性</p>
+<p>此外还可以使用 <code>every</code> 属性来指定每次点击后要显示的项目数</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">v-clicks</span> <span class="attr">depth</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">- Item 1</span><br><span class="line">  - Item 1.1</span><br><span class="line">  - Item 1.2</span><br><span class="line">- Item 2</span><br><span class="line">  - Item 2.1</span><br><span class="line">  - Item 2.2</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">v-clicks</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">v-clicks</span> <span class="attr">every</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">- Item 1 (part 1)</span><br><span class="line">- Item 1 (part 2)</span><br><span class="line">- Item 2 (part 1)</span><br><span class="line">- Item 2 (part 2)</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">v-clicks</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="次数定位"><a href="#次数定位" class="headerlink" title="次数定位"></a>次数定位</h3><p>默认情况下，点击动画是逐个进行的。你可以使用 <code>at</code> prop 或 <code>v-click</code> 指令自定义元素的动画位置。</p>
+<p>与 CSS 布局系统一样，点击动画元素可以是“相对”或“绝对”的</p>
+<h4 id="相对定位"><a href="#相对定位" class="headerlink" title="相对定位"></a>相对定位</h4><p>相对元素的实际位置是根据之前的相对元素计算出来的：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-click</span>&gt;</span> visible after 1 click <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">v-click</span> <span class="attr">at</span>=<span class="string">&quot;+2&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span> visible after 3 clicks <span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">v-click</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-click.hide</span>=<span class="string">&quot;&#x27;-1&#x27;&quot;</span>&gt;</span> hidden after 2 clicks <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">```js &#123;none|1|2&#125;&#123;at:&#x27;+5&#x27;&#125;</span><br><span class="line">1  // highlighted after 7 clicks</span><br><span class="line">2  // highlighted after 8 clicks</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><strong><code>&lt;div v-click&gt;</code></strong>: 这段代码表示这个元素在第1次点击后显示。</li>
+<li><strong><code>&lt;v-click at=&quot;+2&quot;&gt;&lt;div&gt; visible after 3 clicks &lt;/div&gt;&lt;/v-click&gt;</code></strong>: 这段代码表示这个元素在第3次点击后显示。</li>
+<li><strong><code>&lt;div v-click.hide=&quot;&#39;-1&#39;&quot;</code></strong>: 这段代码表示这个元素在相对于前一个<code>v-click</code>指令（即第3次点击）提前1次点击时隐藏，即在第2次点击时隐藏。</li>
+</ol>
+<blockquote>
+<p>只有以 <code>&#39;+&#39;</code> 或 <code>&#39;-&#39;</code>（如 <code>&#39;+1&#39;</code>）开头的字符串值才会被视为相对位置：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性值</th>
+<th align="left">类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>&#39;-1&#39;</code>, <code>&#39;+1&#39;</code></td>
+<td align="left">相对</td>
+</tr>
+<tr>
+<td align="left"><code>+1 </code>&#x3D; &#x3D; &#x3D;<code>1</code></td>
+<td align="left">绝对</td>
+</tr>
+<tr>
+<td align="left"><code>&#39;1&#39;</code></td>
+<td align="left">绝对</td>
+</tr>
+</tbody></table>
+<p>因此，不要忘记为相对值加上单引号。</p>
+</blockquote>
+<h4 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h4><p>传递的值为需要操作的精确点击次数</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-click</span>=<span class="string">&quot;3&quot;</span>&gt;</span> visible after 3 clicks <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">v-click</span> <span class="attr">at</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span> visible after 2 clicks <span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">v-click</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-click.hide</span>=<span class="string">&quot;1&quot;</span>&gt;</span> hidden after 1 click <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">```js &#123;none|1|2&#125;&#123;at:3&#125;</span><br><span class="line">1  // highlighted after 3 clicks</span><br><span class="line">2  // highlighted after 4 clicks</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+
+<p>下面通过<code>&#123;at:1&#125;</code>同步了两行代码的高亮</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```js &#123;1|2&#125;&#123;at:1&#125;</span></span><br><span class="line"><span class="code">1 + 1</span></span><br><span class="line"><span class="code">&#x27;a&#x27; + &#x27;b&#x27;</span></span><br><span class="line"><span class="code">```</span></span><br><span class="line"></span><br><span class="line"><span class="code">```js &#123;1|2&#125;&#123;at:1&#125;</span></span><br><span class="line"><span class="code">2</span></span><br><span class="line"><span class="code">&#x27;ab&#x27;</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="进入和离开"><a href="#进入和离开" class="headerlink" title="进入和离开"></a>进入和离开</h3><p>你也可以通过传递一个数组为 <code>v-click</code> 指令指定进入和离开的时间。显示&#x2F;隐藏周期是不包含结束索引在内的。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-click</span>=<span class="string">&quot;[2, 4]&quot;</span>&gt;</span></span>This will be shown on the 2nd and 3rd clicks, and hide again after the 4th.<span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="元素过渡"><a href="#元素过渡" class="headerlink" title="元素过渡"></a>元素过渡</h2><p>当你将 <code>v-click</code> 指令应用于元素时，它将附加 <code>slidev-vclick-target</code> 类名。相反，当元素被隐藏时，类名 <code>slidev-vclick-hidden</code> 会被附加。例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;slidev-vclick-target slidev-vclick-hidden&quot;</span>&gt;</span>Text<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>点击后，它将变成</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;slidev-vclick-target&quot;</span>&gt;</span>Text<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，这些类别会使用透明度过渡：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* below shows the default style */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.slidev-vclick-target</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: opacity <span class="number">100ms</span> ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.slidev-vclick-hidden</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">pointer-events</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你可以覆盖它们，在自定义样式表中定制过渡效果。</p>
+<p>例如，你可以通过以下方法实现放大转换：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* styles.css */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.slidev-vclick-target</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: all <span class="number">500ms</span> ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.slidev-vclick-hidden</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">仅为某些幻灯片或布局指定动画</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.slidev-page-7</span>,</span><br><span class="line"><span class="selector-class">.slidev-layout</span><span class="selector-class">.my-custom-layout</span> &#123;</span><br><span class="line">  <span class="selector-class">.slidev-vclick-target</span> &#123;</span><br><span class="line">    <span class="attribute">transition</span>: all <span class="number">500ms</span> ease;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.slidev-vclick-hidden</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="特定方向动画"><a href="#特定方向动画" class="headerlink" title="特定方向动画"></a>特定方向动画</h2><p>在某些情况下，你可能希望在前进和后退时使用不同的动画。在切换幻灯片时，Slidev 将对 slide 容器应用 <code>.slidev-nav-go-forward</code> 或 <code>.slidev-nav-go-backward</code> 类。</p>
+<p>因此，你可以利用这一点为不同的方向应用不同的动画：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* example: delay on only forward but not backward */</span></span><br><span class="line"><span class="selector-class">.slidev-nav-go-forward</span> <span class="selector-class">.slidev-vclick-target</span> &#123;</span><br><span class="line">  <span class="attribute">transition-delay</span>: <span class="number">500ms</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.slidev-nav-go-backward</span> <span class="selector-class">.slidev-vclick-target</span> &#123;</span><br><span class="line">  <span class="attribute">transition-delay</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="幻灯片过渡"><a href="#幻灯片过渡" class="headerlink" title="幻灯片过渡"></a>幻灯片过渡</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">transition:</span> <span class="string">slide-left</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>内置过渡:</p>
+<ul>
+<li><code>fade</code> - 交叉淡入&#x2F;淡出</li>
+<li><code>fade-out</code> - 淡出后再淡入</li>
+<li><code>slide-left</code> - 向左滑动（后退时向右滑动）</li>
+<li><code>slide-right</code> - 向右滑动（后退时向左滑动）</li>
+<li><code>slide-up</code> - 向上方滑动（向后时向下方滑动）</li>
+<li><code>slide-down</code> - 向下滑动（向后时滑动到顶部）</li>
+<li><code>view-transition</code> - 使用视图转换 API (View Transitions API) 的幻灯片</li>
+</ul>
+<h2 id="可以使用vue的动画"><a href="#可以使用vue的动画" class="headerlink" title="可以使用vue的动画"></a>可以使用vue的动画</h2><p>[[前端#过渡动画|参考vue过渡动画]]</p>
+<h2 id="v-motion"><a href="#v-motion" class="headerlink" title="v-motion"></a>v-motion</h2><p>此组件使用的其实是<a target="_blank" rel="noopener" href="https://motion.vueuse.org/">motion库,一个轻量级的动画库</a></p>
+<p><a target="_blank" rel="noopener" href="https://motion.vueuse.org/getting-started/introduction">motion库的官方文档</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-motion</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">:initial</span>=<span class="string">&quot;&#123; opacity: 0 &#125;&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">:visible</span>=<span class="string">&quot;&#123; opacity: 1, transition: &#123; delay: 500, duration: 600 &#125; &#125;&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">style</span>=<span class="string">&quot;&#123;</span></span></span><br><span class="line"><span class="string"><span class="tag">      backdrop-filter: blur(100px) brightness(90%);</span></span></span><br><span class="line"><span class="string"><span class="tag">      background-color: rgba(255, 255, 255, 0.8);</span></span></span><br><span class="line"><span class="string"><span class="tag">      border-radius: 10px;</span></span></span><br><span class="line"><span class="string"><span class="tag">      padding: 20px;</span></span></span><br><span class="line"><span class="string"><span class="tag">      border: 1px solid #ccc;</span></span></span><br><span class="line"><span class="string"><span class="tag">      border-radius: 15px;</span></span></span><br><span class="line"><span class="string"><span class="tag">      width: 270px;</span></span></span><br><span class="line"><span class="string"><span class="tag">      position: absolute;</span></span></span><br><span class="line"><span class="string"><span class="tag">      top: 10px;</span></span></span><br><span class="line"><span class="string"><span class="tag">      left: 10px;</span></span></span><br><span class="line"><span class="string"><span class="tag">      z-index: 9999;</span></span></span><br><span class="line"><span class="string"><span class="tag">      text-align: center;</span></span></span><br><span class="line"><span class="string"><span class="tag">      font-size: 24px;</span></span></span><br><span class="line"><span class="string"><span class="tag">      box-shadow: 20px 26px 14px -6px #ccc;</span></span></span><br><span class="line"><span class="string"><span class="tag">      line-height: 1;</span></span></span><br><span class="line"><span class="string"><span class="tag">   &#125;&quot;</span></span></span><br><span class="line"><span class="tag"> &gt;</span></span><br><span class="line">   演示效果</span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>v-motion目前已知有:</p>
+<ul>
+<li><code>initial</code>：初始状态。在元素加载时应用的动画。</li>
+<li><code>enter</code>：进入状态。当元素进入视图时应用的动画。</li>
+<li><code>leave</code>：离开状态。当元素离开视图时应用的动画。</li>
+<li><code>click-3</code>: 点击第3次的时候触发</li>
+<li>**<code>visible</code>**：元素每次在视野内时将装备的属性。一旦离开视野，<code>initial</code>将应用这些属性。</li>
+<li>**<code>visible-once</code>**：元素进入视图后将具备的属性。</li>
+<li>**<code>hovered</code>**：当指针进入元素区域时，该元素将具备的属性。</li>
+<li>**<code>focused</code>**：当元素获得焦点时，元素将具备的属性。</li>
+<li>**<code>tapped</code>**：单击（鼠标）或点击（触摸设备）时元素将具备的属性。</li>
+</ul>
+<h2 id="v-mark"><a href="#v-mark" class="headerlink" title="v-mark"></a>v-mark</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-<span class="selector-tag">mark</span>=&quot;&#123; at: <span class="number">2</span>, color: <span class="string">&#x27;#234&#x27;</span>, type: <span class="string">&#x27;circle&#x27;</span> &#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>type:</p>
+<ul>
+<li><code>circle</code>: 圆圈</li>
+<li><code>underline</code>下划线</li>
+</ul>
+<p>在 Slidev 中更换主题非常简单。在 frontmatter 中添加 <code>theme:</code> 配置即可。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">seriph</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>提示</strong> 若要从作用域包中安装主题，你需要提供完整的命名空间，例如 <code>@organization/slidev-theme-name</code></p>
+</blockquote>
+<p>在服务启动后，它会自动提示你是否安装该主题</p>
+<p>注意:主题也可以提供组件,参考他们各自的文档</p>
+<h1 id="拓展插件"><a href="#拓展插件" class="headerlink" title="拓展插件"></a>拓展插件</h1><p>扩展插件是你可以在演示文稿中使用的附加组件、布局、样式、配置等集。</p>
+<ul>
+<li>它们不影响幻灯片的全局样式</li>
+<li>你可以在同一演示文稿中使用多个插件</li>
+</ul>
+<p>为了使用扩展插件，你必须通过以下方式手动安装它们：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install [slidev-addon-package1] [slidev-addon-package2]</span><br></pre></td></tr></table></figure>
+
+<p>然后，你需要在 frontmatter 中声明你的扩展插件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">addons:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">slidev-addon-package1</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">slidev-addon-package2</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>或在package.json中</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;slidev&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;addons&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="string">&quot;slidev-addon-package1&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;slidev-addon-package2&quot;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="内置"><a href="#内置" class="headerlink" title="内置"></a>内置</h1><h2 id="组件-1"><a href="#组件-1" class="headerlink" title="组件"></a>组件</h2><ul>
+<li><p>Arrow 绘制一个箭头</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Arrow</span> <span class="attr">x1</span>=<span class="string">&quot;10&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;20&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;100&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;200&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>AutoFitText 字体大小自适应文本框</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">AutoFitText</span> <span class="attr">:max</span>=<span class="string">&quot;200&quot;</span> <span class="attr">:min</span>=<span class="string">&quot;100&quot;</span> <span class="attr">modelValue</span>=<span class="string">&quot;Some text&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Link 链接</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;42&quot;</span>&gt;</span>Go to slide 42<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;42&quot;</span> <span class="attr">title</span>=<span class="string">&quot;Go to slide 42&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;solutions&quot;</span> <span class="attr">title</span>=<span class="string">&quot;Go to solutions&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Toc 目录</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Toc</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Transform 转换</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Transform</span> <span class="attr">:scale</span>=<span class="string">&quot;0.5&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">YourElements</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Transform</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义组件,[[前端#组件的注册和使用|参考vue如何定义自定义组件]]</p>
+</li>
+</ul>
+<h2 id="布局-2"><a href="#布局-2" class="headerlink" title="布局"></a>布局</h2><blockquote>
+<p>由于主题可能会覆盖布局的行为，因此精确理解主题的使用、参数和例子最好的方式是查阅主题文档。</p>
+</blockquote>
+<p>可用内置布局盘点如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">404              center           cover            </span><br><span class="line">default          end              error            </span><br><span class="line">fact             full             iframe-left      </span><br><span class="line">iframe-right     iframe           image-left       </span><br><span class="line">image-right      image            intro            </span><br><span class="line">none             quote            section          </span><br><span class="line">statement        two-cols-header  two-cols    </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>center: 在屏幕中间展示内容。</p>
+</li>
+<li><p>cover: 用来展示演讲稿的封面页，可以包含演讲的标题、演讲者、时间等。</p>
+</li>
+<li><p>default: 最基础的布局，用于展示任意类型的内容。</p>
+</li>
+<li><p>end: 演讲的最后一页。</p>
+</li>
+<li><p>fact: 用来在屏幕上突出展示很多事实或数据。</p>
+</li>
+<li><p>full: 使用屏幕全部空间来展示内容。</p>
+</li>
+<li><p>image-left: 在屏幕左侧展示图片，屏幕右侧展示内容。<br>用法:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">image-left</span></span><br><span class="line"><span class="attr">image:</span> <span class="string">./path/to/the/image</span></span><br><span class="line"><span class="attr">class:</span> <span class="string">my-cool-content-on-the-right</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>image-right: 在屏幕右侧展示图片，屏幕左侧展示内容。<br>用法:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">image-right</span></span><br><span class="line"><span class="attr">image:</span> <span class="string">./path/to/the/image</span></span><br><span class="line"><span class="attr">class:</span> <span class="string">my-cool-content-on-the-left</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>image: 将图片作为页面的主要内容进行展示。<br>用法:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">image</span></span><br><span class="line"><span class="attr">image:</span> <span class="string">./path/to/the/image</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="string">你可以使用</span> <span class="string">backgroundSize</span> <span class="string">选项来控制背景图片的大小：</span></span><br><span class="line"><span class="string">```yaml</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">image</span></span><br><span class="line"><span class="attr">image:</span> <span class="string">./path/to/the/image</span></span><br><span class="line"><span class="attr">backgroundSize:</span> <span class="string">contain</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="string">```yaml</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">image-left</span></span><br><span class="line"><span class="attr">image:</span> <span class="string">./path/to/the/image</span></span><br><span class="line"><span class="attr">backgroundSize:</span> <span class="string">20em</span> <span class="number">70</span><span class="string">%</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>iframe-left: 在屏幕左侧展示网页，内容将放置在右侧。<br>用法:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">iframe-left</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://github.com/slidevjs/slidev</span></span><br><span class="line"><span class="attr">class:</span> <span class="string">my-cool-content-on-the-right</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>iframe-right: 在屏幕右侧展示网页，内容将放置在左侧。<br>用法:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">iframe-right</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://github.com/slidevjs/slidev</span></span><br><span class="line"><span class="attr">class:</span> <span class="string">my-cool-content-on-the-left</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>iframe: 将网页作为页面的主要内容进行展示。<br>用法:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">iframe</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://github.com/slidevjs/slidev</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>intro: 介绍演讲稿，通常包含演讲稿标题、简述、作者等信息。</p>
+</li>
+<li><p>none: 没有任何样式的布局。</p>
+</li>
+<li><p>quote: 突出显示引文。</p>
+</li>
+<li><p>section: 用于标记演讲稿的新部分的开始。</p>
+</li>
+<li><p>statement: 将主张&#x2F;声明作为主要页面内容。</p>
+</li>
+<li><p>two-cols: 将页面内容分为两列。</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="section">layout: two-cols</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># Left</span></span><br><span class="line"></span><br><span class="line">显示在左侧</span><br><span class="line"></span><br><span class="line">::right::</span><br><span class="line"></span><br><span class="line"><span class="section"># Right</span></span><br><span class="line"></span><br><span class="line">显示在右侧</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>two-cols-header: 将页面内容分为两列，上方和下方的内容分开，第二行将左右两列分开。</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="section">layout: two-cols-header</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line">显示在上方</span><br><span class="line"></span><br><span class="line">::left::</span><br><span class="line"></span><br><span class="line"><span class="section"># Left</span></span><br><span class="line"></span><br><span class="line">显示在左侧</span><br><span class="line"></span><br><span class="line">::right::</span><br><span class="line"></span><br><span class="line"><span class="section"># Right</span></span><br><span class="line"></span><br><span class="line">显示在右侧</span><br></pre></td></tr></table></figure></li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"></a><div class="post-copyright__author_name">ZEROKO14</div><div class="post-copyright__author_desc">zeroko14's blog</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://che77a38.github.io/posts/slidev/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://che77a38.github.io/posts/slidev/')">slidev</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://che77a38.github.io/posts/slidev/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=slidev&amp;url=https://che77a38.github.io/posts/slidev/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://che77a38.github.io" target="_blank">ZEROKO14的个人博客</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/ppt/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>ppt<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/slidev/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>slidev<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/C++%E5%A4%9A%E7%BA%BF%E7%A8%8B/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C++多线程</div></div></a></div><div class="next-post pull-right"><a href="/posts/%E5%89%8D%E7%AB%AF/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">WEB前端</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">欢迎来到ZEROKO14的个人博客</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">ZEROKO14</h1><div class="author-info__desc">zeroko14's blog</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/che77a38" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%90%AF%E5%8A%A8"><span class="toc-number">1.</span> <span class="toc-text">配置与启动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">项目结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B1%80"><span class="toc-number">2.2.</span> <span class="toc-text">布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90"><span class="toc-number">2.3.</span> <span class="toc-text">静态资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B7%E5%BC%8F"><span class="toc-number">2.4.</span> <span class="toc-text">样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%9B%BE%E5%B1%82"><span class="toc-number">2.5.</span> <span class="toc-text">全局图层</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8B%93%E5%B1%95Markdown%E8%AF%AD%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">拓展Markdown语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%89%E9%A1%B5%E5%8F%8A%E5%B8%83%E5%B1%80"><span class="toc-number">3.1.</span> <span class="toc-text">扉页及布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE"><span class="toc-number">3.2.</span> <span class="toc-text">代码高亮</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E8%81%94%E6%A0%B7%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text">内联样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90-1"><span class="toc-number">3.4.</span> <span class="toc-text">静态资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%87%E6%B3%A8"><span class="toc-number">3.5.</span> <span class="toc-text">备注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E6%A0%87"><span class="toc-number">3.6.</span> <span class="toc-text">图标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B1%80-1"><span class="toc-number">3.7.</span> <span class="toc-text">布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E5%AF%BC%E5%85%A5"><span class="toc-number">3.8.</span> <span class="toc-text">代码片段导入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LaTex%E8%A1%8C%E9%AB%98%E4%BA%AE"><span class="toc-number">3.9.</span> <span class="toc-text">LaTex行高亮</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E8%A1%A8%E7%BC%A9%E6%94%BE%E5%92%8C%E4%B8%BB%E9%A2%98"><span class="toc-number">3.10.</span> <span class="toc-text">图表缩放和主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#markdown%E5%B5%8C%E5%A5%97"><span class="toc-number">3.11.</span> <span class="toc-text">markdown嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MDC-%E8%AF%AD%E6%B3%95"><span class="toc-number">3.12.</span> <span class="toc-text">MDC 语法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">4.</span> <span class="toc-text">快捷键</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB"><span class="toc-number">5.</span> <span class="toc-text">动画</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%B9%E5%87%BB%E5%8A%A8%E7%94%BB"><span class="toc-number">5.1.</span> <span class="toc-text">点击动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#v-click"><span class="toc-number">5.1.1.</span> <span class="toc-text">v-click</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-after"><span class="toc-number">5.1.2.</span> <span class="toc-text">v-after</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%B9%E5%87%BB%E5%90%8E%E9%9A%90%E8%97%8F"><span class="toc-number">5.1.3.</span> <span class="toc-text">点击后隐藏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-clicks"><span class="toc-number">5.1.4.</span> <span class="toc-text">v-clicks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A1%E6%95%B0%E5%AE%9A%E4%BD%8D"><span class="toc-number">5.1.5.</span> <span class="toc-text">次数定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D"><span class="toc-number">5.1.5.1.</span> <span class="toc-text">相对定位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D"><span class="toc-number">5.1.5.2.</span> <span class="toc-text">绝对定位</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E5%92%8C%E7%A6%BB%E5%BC%80"><span class="toc-number">5.1.6.</span> <span class="toc-text">进入和离开</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E8%BF%87%E6%B8%A1"><span class="toc-number">5.2.</span> <span class="toc-text">元素过渡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%AE%9A%E6%96%B9%E5%90%91%E5%8A%A8%E7%94%BB"><span class="toc-number">5.3.</span> <span class="toc-text">特定方向动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%BB%E7%81%AF%E7%89%87%E8%BF%87%E6%B8%A1"><span class="toc-number">5.4.</span> <span class="toc-text">幻灯片过渡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8vue%E7%9A%84%E5%8A%A8%E7%94%BB"><span class="toc-number">5.5.</span> <span class="toc-text">可以使用vue的动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-motion"><span class="toc-number">5.6.</span> <span class="toc-text">v-motion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-mark"><span class="toc-number">5.7.</span> <span class="toc-text">v-mark</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8B%93%E5%B1%95%E6%8F%92%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">拓展插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E7%BD%AE"><span class="toc-number">7.</span> <span class="toc-text">内置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6-1"><span class="toc-number">7.1.</span> <span class="toc-text">组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B1%80-2"><span class="toc-number">7.2.</span> <span class="toc-text">布局</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/avalonia/" title="avalonia">avalonia</a><time datetime="2024-09-11T14:51:13.000Z" title="发表于 2024-09-11 22:51:13">2024-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E8%A7%86%E9%A2%91%E6%95%88%E6%9E%9C/" title="PR">PR</a><time datetime="2024-07-18T07:06:08.330Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%89%8D%E7%AB%AF/" title="WEB前端">WEB前端</a><time datetime="2024-07-18T07:06:08.323Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/slidev/" title="slidev">slidev</a><time datetime="2024-07-18T07:06:08.319Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/C++%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="C++多线程">C++多线程</a><time datetime="2024-07-18T07:05:59.794Z" title="发表于 2024-07-18 15:05:59">2024-07-18</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="ZEROKO14" target="_blank">ZEROKO14</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu"></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">48</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 0.88rem;">C#<sup>3</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 0.88rem;">CSS<sup>1</sup></a><a href="/tags/CSharp/" style="font-size: 0.88rem;">CSharp<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 0.88rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 0.88rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 0.88rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 0.88rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 0.88rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 0.88rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 0.88rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 0.88rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 0.88rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 0.88rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 0.88rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/json/" style="font-size: 0.88rem;">json<sup>1</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>1</sup></a><a href="/tags/next/" style="font-size: 0.88rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 0.88rem;">ppt<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 0.88rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 0.88rem;">vue<sup>1</sup></a><a href="/tags/xml/" style="font-size: 0.88rem;">xml<sup>1</sup></a><a href="/tags/yaml/" style="font-size: 0.88rem;">yaml<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 0.88rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 0.88rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 0.88rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 0.88rem;">加解密<sup>1</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 0.88rem;">多线程<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">开发<sup>4</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.88rem;">数学<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 0.88rem;">数据库<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 0.88rem;">架构<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 0.88rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 0.88rem;">监控<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>1</sup></a><a href="/tags/%E7%AE%A1%E7%90%86/" style="font-size: 0.88rem;">管理<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 0.88rem;">网络<sup>2</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 0.88rem;">逆向<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

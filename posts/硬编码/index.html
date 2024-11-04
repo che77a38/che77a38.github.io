@@ -1,0 +1,672 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>硬编码 | ZEROKO14的个人博客</title><meta name="keywords" content="硬编码"><meta name="author" content="ZEROKO14"><meta name="copyright" content="ZEROKO14"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="硬编码"><meta name="application-name" content="硬编码"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="硬编码"><meta property="og:url" content="https://che77a38.github.io/posts/%E7%A1%AC%E7%BC%96%E7%A0%81/index.html"><meta property="og:site_name" content="ZEROKO14的个人博客"><meta property="og:description" content="硬编码  硬编码简介硬编码就是指令编码格式  x64比x86主要是多了一组指令前缀，还有比如地址偏移和立即数可以允许8个字节（x86只允许最多4个） 这里学习的主要是x86 无论是x86还是x64的指令格式，都是最短一个字节，最长15个字节 硬编码转换为汇编语言的过程叫反汇编 哪些人需要学习硬编码"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta property="article:author" content="ZEROKO14"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta name="description" content="硬编码  硬编码简介硬编码就是指令编码格式  x64比x86主要是多了一组指令前缀，还有比如地址偏移和立即数可以允许8个字节（x86只允许最多4个） 这里学习的主要是x86 无论是x86还是x64的指令格式，都是最短一个字节，最长15个字节 硬编码转换为汇编语言的过程叫反汇编 哪些人需要学习硬编码"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://che77a38.github.io/posts/%E7%A1%AC%E7%BC%96%E7%A0%81/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":true,"limitCount":50,"languages":{"author":"作者: ZEROKO14","link":"链接: ","source":"来源: ZEROKO14的个人博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'ZEROKO14的个人博客',
+  title: '硬编码',
+  postAI: '',
+  pageFillDescription: '硬编码, 硬编码简介, 前缀指令（Instruction Prefixes）, 前缀指令分组, LOCK和REPEAT前缀指令, LOCK, REPNEx2FREPNZ, REPx2FREPZ, 段前缀指令, 操作数宽度前缀指令, 地址宽度前缀指令, 定长指令和变长指令, 经典定长指令_修改寄存器, PUSHx2FPOP, INCx2FDEC(i64), MOV Rblb(定长2个字节), MOV ERXld(定长5个字节), XCHG EAXERX, 可通过NOP指令构造花指令使得调试器的汇编混乱, 经典定长指令_修改EIP, 0x70~0x7F短跳（定长两个字节）, 0x0F 0x80~0x0F 0x8F长跳（定长6个字节）, 其他指令, 经典变长指令_ModRx2FM, 经典变长指令_RegOpcode, 经典变长指令_SIB, 阶段性总结, 32位二进制中含操作数的汇编代码总结汇总硬编码硬编码简介硬编码就是指令编码格式比主要是多了一组指令前缀还有比如地址偏移和立即数可以允许个字节只允许最多个这里学习的主要是无论是还是的指令格式都是最短一个字节最长个字节硬编码转换为汇编语言的过程叫反汇编哪些人需要学习硬编码病毒与反病毒加密与破解外挂与反外挂所有与计算机底层相关的行业都需要学习汇编指令有六部分构成指令前缀可选项操作指令必选项操作数辅助说明可选项辅助说明可选项但是出现这个必须有操作数作为内存地址时用来表示位移可选项表示操作数为立即数可选项前缀指令该指令是可选的最多可以在每组中选一个最少可以什么都不写并且前缀指令和顺序没关系在中会把前缀指令和后面的指令中间加上冒号方便用户识别前缀指令分组和前缀指令段前缀指令操作数宽度前缀指令地址宽度前缀指令和前缀指令锁地址总线在多核下才有意义使同一时刻只有一个核可以读这个地址单核下该指令没有意义重复执行为的时候执行重复执行为的时候执行段前缀指令明确地告诉要使用的是哪个段不写段前缀指令的情况如果访问的是全局地址则默认访问若访问的是则默认是访问段操作数宽度前缀指令用来改变操作数宽度的前缀指令默认位加就改成位默认位加就改成位地址宽度前缀指令用来改变寻址方式的默认位加就改成位默认位加就改成位定长指令和变长指令整个硬编码的长度取决于操作码和这三个字段决定了后面有没有没有就是定长决定了后面有没有可以决定整个指令是否定长还是变长此处的定长是不包含前缀的变长指令仅仅通过没办法确定长度的指令上图中为的那行指令是定长指令为的那三行指令是变长指令一个字节的操作码查表下图只是一个字节的操作码还有两个和三个字节的操作码在因特尔白皮书中白皮书页查表方式图中的是因特尔的表示法即一个大写带一个小写的字母表示对应的含义也需要查表白皮书页大写字母小写字母图中大写和大写表示的一定是后面接了的即变长指令页部分表中标志含义解读在位系统位操作数无效只能位操作数在位系统只有在位模式有效在位系统默认操作数宽度不能编码宽度位的操作数意思是其他位可以在位系统强制位操作数哪怕前面加了操作数宽度前缀指令经典定长指令修改寄存器为为为为定长个字节是操作码是操作数什么叫定长只要确定那么这行指令的长度就确定了如上只要确定了那么这个指令一定占两个字节定长个字节没有任何意义所以给赋予新的意义遇到他不做任何事情直接跳过他他唯一的作用就是用来对齐其他指令交换和里面的值可通过指令构造花指令使得调试器的汇编混乱假如上图中框选的部分为我们要跳过来执行的代码段这是没使用花指令的情况下我们把的改成由于是定长个字节的操作码因此会吃掉后面一个字节的数据所以汇编的过程中就显示出错了但是实际上执行的时候程序还是跳转到正常执行代码如何去除这种花指令从上面执行下来的时候跳转到的应该是但在上图中左列地址列却没有显示的地址很显然该地址被花指令了经典定长指令修改短跳定长两个字节条件跳转后跟一个字节立即数的偏移有符号共两个字节如果条件成立跳转到当前指令地址当前指令长度向前跳向大地址跳向后跳向前跳目标地址当前命令地址当前命令长度的原码大地址小地址向后跳目标地址当前命令地址当前命令长度的原码舍弃溢出位小地址大地址舍弃溢出位也可以理解成当前命令地址当前命令长度目标地址的补码长跳定长个字节和短跳的语法完全一样向前跳向大地址跳向后跳其他指令表示间接寻址即操作数是相对偏移表示操作数一个字节下面的暂时不讲没进环之前下面指令基本用不到表示直接寻址表示当前操作数宽度是位就表示位操作数位表示位操作数位表示位跨段跳转讲调用门的时候会用到是一个字节内的跳转是超越一个字节的跳转是跨段跳转的用于内平衡都常用于环经典变长指令大小为一个字节由三部分组成分别为字节前两位字节中间三位字节后三位的主要功能就是说明操作数的寻址方式包括寄存器选择内存操作数的偏移等等例如因特尔白皮书中指令查表中和开头的表示变长指令经典变长指令通用寄存器通用寄存器或者内存字节这里应该注意的是中已经说明了要使用通用寄存器或者内存操作数并且要使用来进行辅助说明所以在操作码后的就是统一起来就是可以使用双子寄存器操作数或者双子内存操作数具体的要使用字段来辅助说明的目的就是告诉我们和到底是谁这个位究竟是如何工作的操作手册给出了一张表因为操作指令是所以由于所以无论和都是一个字节所以上图说还是是由操作码决定的经典变长指令除了可以确定还有时候作为的拓展位来确定操作指令举例说明查表表示位偏移可以查表看意思标明了中的位作为的扩展代表的未标明操作指令凡是写了的均参见页上图红线处和上标中间的代表第组可以在下表中的中对应第组总结一下查表流程首先看到了作为查到了格式为此时不确定操作指令是什么通过知道操作指令取决于和的位并且知道了查表找操作指令的时候要查的是第一组通过的位参考上一章知识确定是该指令当前为通过的位确定操作指令为当前的指令为完整编码的后半部分和按硬编码结构顺序填入位偏移和一个字节的立即数由此得到完整指令经典变长指令辅助说明可选项阶段性总结决定了后面是否有决定了后面是否存在和查表的时候如果位查到上图红线这种形式标明后面需要再跟一个字节就是来确定里面的信息用到的表比如查表确定到为拆分的部分查到下图红线的部分决定了拿个的部分此处缺了一张图得出结论所以结论为这也意味着后面还会吃掉个字节来作为位二进制中含操作数的汇编代码总结汇总汇编指令汇编二进制形式大小字节直接字节目标地址地址间接短字节目标地址地址长字节目标地址地址间接直接间接直接间接等等等等非常多汇编大全参考',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-24 10:49:02',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://th.bing.com/th/id/OIP.wtmjepfWPBvn26uz7s18dgHaHa?rs=1&amp;pid=ImgDetMain"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">ZEROKO14的个人博客</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 1.05rem;">C#<sup>3</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 1.05rem;">CSS<sup>1</sup></a><a href="/tags/CSharp/" style="font-size: 1.05rem;">CSharp<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.05rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 1.05rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 1.05rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 1.05rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 1.05rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 1.05rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 1.05rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 1.05rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 1.05rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 1.05rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 1.05rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/json/" style="font-size: 1.05rem;">json<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>1</sup></a><a href="/tags/next/" style="font-size: 1.05rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 1.05rem;">ppt<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 1.05rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 1.05rem;">vue<sup>1</sup></a><a href="/tags/xml/" style="font-size: 1.05rem;">xml<sup>1</sup></a><a href="/tags/yaml/" style="font-size: 1.05rem;">yaml<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 1.05rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 1.05rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 1.05rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 1.05rem;">加解密<sup>1</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 1.05rem;">多线程<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">开发<sup>4</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">数学<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.05rem;">数据库<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 1.05rem;">架构<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 1.05rem;">监控<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>1</sup></a><a href="/tags/%E7%AE%A1%E7%90%86/" style="font-size: 1.05rem;">管理<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.05rem;">网络<sup>2</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 1.05rem;">逆向<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">27</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/10/"><span class="card-archive-list-date">十月 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url">技术</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E7%A1%AC%E7%BC%96%E7%A0%81/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>硬编码</span></a></span></div></div><h1 class="post-title" itemprop="name headline">硬编码</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2023-11-24T02:49:02.211Z" title="发表于 2023-11-24 10:49:02">2023-11-24</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2023-11-24T02:49:02.211Z" title="更新于 2023-11-24 10:49:02">2023-11-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="硬编码"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为新加坡"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>新加坡</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://che77a38.github.io/posts/%E7%A1%AC%E7%BC%96%E7%A0%81/"><header><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url">技术</a><a href="/tags/%E7%A1%AC%E7%BC%96%E7%A0%81/" tabindex="-1" itemprop="url">硬编码</a><h1 id="CrawlerTitle" itemprop="name headline">硬编码</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">ZEROKO14</span><time itemprop="dateCreated datePublished" datetime="2023-11-24T02:49:02.211Z" title="发表于 2023-11-24 10:49:02">2023-11-24</time><time itemprop="dateCreated datePublished" datetime="2023-11-24T02:49:02.211Z" title="更新于 2023-11-24 10:49:02">2023-11-24</time></header><h1 id="硬编码"><a href="#硬编码" class="headerlink" title="硬编码"></a>硬编码</h1><span id="more"></span>
+
+<h2 id="硬编码简介"><a href="#硬编码简介" class="headerlink" title="硬编码简介"></a>硬编码简介</h2><p>硬编码就是<strong>指令编码格式</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210517110614296.png" alt="image-20210517110614296"></p>
+<p>x64比x86主要是多了一组指令前缀，还有比如地址偏移和立即数可以允许8个字节（x86只允许最多4个）</p>
+<p>这里学习的主要是x86</p>
+<p>无论是x86还是x64的指令格式，都是最短一个字节，最长15个字节</p>
+<p>硬编码转换为汇编语言的过程叫<strong>反汇编</strong></p>
+<p>哪些人需要学习硬编码</p>
+<ol>
+<li>病毒与反病毒</li>
+<li>加密与破解</li>
+<li>外挂与反外挂</li>
+</ol>
+<p>所有与计算机底层相关的行业都需要学习</p>
+<p><strong>汇编指令有六部分构成</strong></p>
+<ol>
+<li>Prefix—-指令前缀（可选项）</li>
+<li>Opcode—-操作指令（必选项）</li>
+<li>Mod R&#x2F;M—操作数辅助说明（可选项）</li>
+<li>SIB—-Mod R&#x2F;M辅助说明（可选项，但是出现Mod R&#x2F;M 这个必须有）</li>
+<li>Displacement—操作数作为内存地址时用来表示位移（可选项）</li>
+<li>Immediate —-表示操作数为立即数（可选项）</li>
+</ol>
+<h2 id="前缀指令（Instruction-Prefixes）"><a href="#前缀指令（Instruction-Prefixes）" class="headerlink" title="前缀指令（Instruction Prefixes）"></a>前缀指令（Instruction Prefixes）</h2><p>该指令是可选的，最多可以在<strong>每组中选一个</strong>，最少可以什么都不写。并且前缀指令和顺序没关系</p>
+<p>在od中会把前缀指令和后面的指令中间加上冒号:方便用户识别</p>
+<h3 id="前缀指令分组"><a href="#前缀指令分组" class="headerlink" title="前缀指令分组"></a>前缀指令分组</h3><ol>
+<li><p>LOCK和REPEAT前缀指令</p>
+<p>LOCK&#x3D;&#x3D;&#x3D;F0   REPNE&#x2F;REPNZ&#x3D;&#x3D;&#x3D;F2  REP&#x2F;REPZ&#x3D;&#x3D;&#x3D;F3</p>
+</li>
+<li><p>段前缀指令</p>
+<p>CS(2E)  SS(36)  DS(3E)  ES(26)  FS(64)  GS(65)</p>
+</li>
+<li><p>操作数宽度前缀指令</p>
+<p>66</p>
+</li>
+<li><p>地址宽度前缀指令</p>
+<p>67</p>
+</li>
+</ol>
+<h4 id="LOCK和REPEAT前缀指令"><a href="#LOCK和REPEAT前缀指令" class="headerlink" title="LOCK和REPEAT前缀指令"></a>LOCK和REPEAT前缀指令</h4><h5 id="LOCK"><a href="#LOCK" class="headerlink" title="LOCK"></a>LOCK</h5><p><strong>锁地址总线</strong>，在多核下才有意义，使同一时刻只有一个核可以读这个地址。（单核下，该指令没有意义）</p>
+<h5 id="REPNE-REPNZ"><a href="#REPNE-REPNZ" class="headerlink" title="REPNE&#x2F;REPNZ"></a>REPNE&#x2F;REPNZ</h5><p>重复执行（zero flag为0的时候执行）</p>
+<h5 id="REP-REPZ"><a href="#REP-REPZ" class="headerlink" title="REP&#x2F;REPZ"></a>REP&#x2F;REPZ</h5><p>重复执行（zero flag为1的时候执行）</p>
+<h4 id="段前缀指令"><a href="#段前缀指令" class="headerlink" title="段前缀指令"></a>段前缀指令</h4><p>CS(2E)  SS(36)  DS(3E)  ES(26)  FS(64)  GS(65)</p>
+<p>明确地告诉cpu要使用的是哪个段</p>
+<p>不写段前缀指令的情况，如果访问的是全局地址，则默认访问DS；若访问的是ebp，esp，则默认是访问SS段</p>
+<h4 id="操作数宽度前缀指令"><a href="#操作数宽度前缀指令" class="headerlink" title="操作数宽度前缀指令"></a>操作数宽度前缀指令</h4><p>66</p>
+<p>用来改变操作数宽度的前缀指令（默认32位，加66就改成16位；默认16位，加66就改成32位）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">55</span><br><span class="line">//PUSH EBP</span><br><span class="line">66 55</span><br><span class="line">//PUSH BP</span><br></pre></td></tr></table></figure>
+
+<h4 id="地址宽度前缀指令"><a href="#地址宽度前缀指令" class="headerlink" title="地址宽度前缀指令"></a>地址宽度前缀指令</h4><p>67</p>
+<p>用来改变寻址方式的（默认32位，加66就改成16位；默认16位，加66就改成32位）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">8965 E8</span><br><span class="line">//MOV DWORD PTR SS:[EBP-18],ESP</span><br><span class="line">67 8965 E8</span><br><span class="line">//MOV DWORD PTR DS:[DI+FFE8],ESP</span><br></pre></td></tr></table></figure>
+
+<h2 id="定长指令和变长指令"><a href="#定长指令和变长指令" class="headerlink" title="定长指令和变长指令"></a>定长指令和变长指令</h2><p>整个硬编码的长度取决于Opcode（operand code操作码），ModR&#x2F;M和SIB这三个字段</p>
+<p>Opcode决定了后面有没有ModR&#x2F;M（没有ModR&#x2F;M就是定长）</p>
+<p>ModR&#x2F;M决定了后面有没有SIB</p>
+<p><strong>Opcode可以决定整个指令是否定长还是变长</strong>（此处的定长是不包含前缀的）</p>
+<p>变长指令：仅仅通过Opcode没办法确定长度的指令</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210517121504731.png" alt="image-20210517121504731"></p>
+<p>上图中Opcode为50的那行指令是定长指令。</p>
+<p>Opcode为00的那三行指令是变长指令。</p>
+<p>一个字节的操作码查表（下图只是一个字节的操作码，还有两个和三个字节的操作码在因特尔白皮书中）</p>
+<p>（intel白皮书1737页）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210517124255812.png" alt="image-20210517124255812"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210517122807231.png" alt="image-20210517122807231"></p>
+<p>查表方式：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/1502566-20181215195735075-1632848315.png" alt="1502566-20181215195735075-1632848315"></p>
+<p>图中的Eb是因特尔的Zz表示法，即一个大写带一个小写的字母表示，对应的含义也需要查表</p>
+<p>（intel白皮书1731页）</p>
+<ul>
+<li>Codes for Addressing Method（大写字母）</li>
+<li>Codes for Operand Type（小写字母）</li>
+</ul>
+<p>p.s.图中大写E和大写G表示的一定是后面接了ModR&#x2F;M的（即变长指令）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210601180927470.png" alt="image-20210601180927470"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210601180946471.png" alt="image-20210601180946471"></p>
+<p>1735页</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210601181145342.png" alt="image-20210601181145342"></p>
+<p>部分表中标志含义解读：</p>
+<ul>
+<li>i64 invalid，在64位系统64位操作数无效，只能32位操作数</li>
+<li>o64 only，在64位系统只有在64位模式有效</li>
+<li>d64 default，在64位系统默认操作数宽度64，不能编码宽度32位的操作数，意思是其他位可以</li>
+<li>f64 forced，在64位系统强制64位操作数，哪怕前面加了操作数宽度前缀指令。</li>
+</ul>
+<h2 id="经典定长指令-修改寄存器"><a href="#经典定长指令-修改寄存器" class="headerlink" title="经典定长指令_修改寄存器"></a>经典定长指令_修改寄存器</h2><h3 id="PUSH-POP"><a href="#PUSH-POP" class="headerlink" title="PUSH&#x2F;POP"></a>PUSH&#x2F;POP</h3><ul>
+<li>0x50~0x57为push</li>
+<li>0x58~0x5F为pop</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">0x50 	PUSH EAX</span><br><span class="line">0x51 	PUSH ECX</span><br><span class="line">0x52 	PUSH EDX</span><br><span class="line">0x53 	PUSH EBX</span><br><span class="line">0x54 	PUSH ESP</span><br><span class="line">0x55 	PUSH EBP</span><br><span class="line">0x56 	PUSH ESI</span><br><span class="line">0x57 	PUSH EDI</span><br><span class="line">	</span><br><span class="line">0x58	POP EAX</span><br><span class="line">0x59	POP ECX</span><br><span class="line">0x5A	POP EDX</span><br><span class="line">0x5B 	POP EBX</span><br><span class="line">0x5C 	POP ESP</span><br><span class="line">0x5D 	POP EBP</span><br><span class="line">0x5E	POP ESI</span><br><span class="line">0x5F 	POP EDI</span><br></pre></td></tr></table></figure>
+
+<h3 id="INC-DEC-i64"><a href="#INC-DEC-i64" class="headerlink" title="INC&#x2F;DEC(i64)"></a>INC&#x2F;DEC(i64)</h3><ul>
+<li>0x40~0x47为INC</li>
+<li>0x48~0x4F为DEC</li>
+</ul>
+<h3 id="MOV-Rb，lb-定长2个字节"><a href="#MOV-Rb，lb-定长2个字节" class="headerlink" title="MOV Rb，lb(定长2个字节)"></a>MOV Rb，lb(定长2个字节)</h3><p>0xb0~0xb7</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//B0是操作码,A4是操作数</span><br><span class="line">0xB0 0xA4    MOV AL,0A4 </span><br><span class="line">//什么叫定长，只要opCode确定，那么这行指令的长度就确定了</span><br><span class="line">//如上，只要B0确定了，那么这个指令一定占两个字节</span><br></pre></td></tr></table></figure>
+
+<h3 id="MOV-ERX，ld-定长5个字节"><a href="#MOV-ERX，ld-定长5个字节" class="headerlink" title="MOV ERX，ld(定长5个字节)"></a>MOV ERX，ld(定长5个字节)</h3><p>0xb8~0xbF</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B8 8DA42400    MOV EAX,24A48D</span><br></pre></td></tr></table></figure>
+
+<h3 id="XCHG-EAX-ERX"><a href="#XCHG-EAX-ERX" class="headerlink" title="XCHG EAX,ERX"></a>XCHG EAX,ERX</h3><p>0x90~0x97   XCHG EAX,ERX</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">90</span>   NOP  <span class="comment">//XCHG EAX,EAX没有任何意义，所以给90赋予新的意义，NOP，CPU遇到他不做任何事情直接跳过他，他唯一的作用就是用来对齐其他指令</span></span><br><span class="line"><span class="number">91</span>   XCHG EAX,ECX<span class="comment">//交换EAX和ECX里面的值</span></span><br><span class="line"><span class="number">92</span>	 XCHG EAX,EDX</span><br><span class="line"><span class="number">93</span>	 XCHG EAX,EBX</span><br><span class="line"><span class="number">94</span>	 XCHG EAX,ESP</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="可通过NOP指令构造花指令使得调试器的汇编混乱"><a href="#可通过NOP指令构造花指令使得调试器的汇编混乱" class="headerlink" title="可通过NOP指令构造花指令使得调试器的汇编混乱"></a><strong>可通过NOP指令构造花指令使得调试器的汇编混乱</strong></h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210601161252391.png" alt="image-20210601161252391"></p>
+<p>假如上图中框选的部分为我们要跳过来77DE01E8执行的代码段，这是没使用花指令的情况下。</p>
+<p>我们把77DE01E7的90改成B0</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210601161559344.png" alt="image-20210601161559344"></p>
+<p>由于B0是定长2个字节的操作码，因此会吃掉后面一个字节的数据，所以汇编的过程中就显示出错了，但是实际上执行的时候，程序还是跳转到77DE01E8正常执行代码。</p>
+<p><strong>如何去除这种花指令</strong>，从上面执行下来的时候，跳转到的应该是77DE01E8，但在上图中，左列地址列却没有显示77DE01E8的地址，很显然该地址被花指令了</p>
+<h2 id="经典定长指令-修改EIP"><a href="#经典定长指令-修改EIP" class="headerlink" title="经典定长指令_修改EIP"></a>经典定长指令_修改EIP</h2><h3 id="0x70-0x7F短跳（定长两个字节）"><a href="#0x70-0x7F短跳（定长两个字节）" class="headerlink" title="0x70~0x7F短跳（定长两个字节）"></a>0x70~0x7F短跳（定长两个字节）</h3><ul>
+<li>条件跳转，后跟一个字节立即数的偏移（有符号），共两个字节。</li>
+<li>如果条件成立，跳转到当前指令地址+当前指令长度+lb</li>
+<li>向前跳0<del>7f（向大地址跳），向后跳FF</del>80</li>
+</ul>
+<p><strong>向前跳：</strong><br>$$<br>目标地址-（当前命令地址+当前命令长度）的原码<br>$$<br><code>大地址-小地址</code></p>
+<p><strong>向后跳：</strong><br>$$<br>目标地址-（当前命令地址+当前命令长度）的原码舍弃溢出位<br>$$<br><code>小地址-大地址（舍弃溢出位）</code></p>
+<p>也可以理解成<br>$$<br>（当前命令地址+当前命令长度）-目标地址的补码<br>$$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">0x70   JO</span><br><span class="line">0x71   JNO</span><br><span class="line">0x72   JB/JNAE/JC</span><br><span class="line">0x73   JNB/JAE/JNC</span><br><span class="line">0x74   JZ/JE</span><br><span class="line">0x75   JNZ/JNE</span><br><span class="line">0x76   JBE/JNA</span><br><span class="line">0x77   JNBE/JA</span><br><span class="line">0x78   JS</span><br><span class="line">0x79   JNS</span><br><span class="line">0x7A   JP/JPE</span><br><span class="line">0x7B   JNP/JPO</span><br><span class="line">0x7C   JL/JNGE</span><br><span class="line">0x7D   JNL/JGE</span><br><span class="line">0x7E   JLE/JNG</span><br><span class="line">0x7F   JNLE/JG</span><br><span class="line">//e.g.</span><br><span class="line">004183DD--0x73 0x80   JNB SHORT 0041835F</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x0F-0x80-0x0F-0x8F长跳（定长6个字节）"><a href="#0x0F-0x80-0x0F-0x8F长跳（定长6个字节）" class="headerlink" title="0x0F 0x80~0x0F 0x8F长跳（定长6个字节）"></a>0x0F 0x80~0x0F 0x8F长跳（定长6个字节）</h3><p>和短跳的语法完全一样</p>
+<p>向前跳0000 0000<del>7FFF FFFF（向大地址跳），向后跳FFFF FFFF</del>8000 0000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">0x0F 0x70   JO</span><br><span class="line">0x0F 0x71   JNO</span><br><span class="line">0x0F 0x72   JB/JNAE/JC</span><br><span class="line">0x0F 0x73   JNB/JAE/JNC</span><br><span class="line">0x0F 0x74   JZ/JE</span><br><span class="line">0x0F 0x75   JNZ/JNE</span><br><span class="line">0x0F 0x76   JBE/JNA</span><br><span class="line">0x0F 0x77   JNBE/JA</span><br><span class="line">0x0F 0x78   JS</span><br><span class="line">0x0F 0x79   JNS</span><br><span class="line">0x0F 0x7A   JP/JPE</span><br><span class="line">0x0F 0x7B   JNP/JPO</span><br><span class="line">0x0F 0x7C   JL/JNGE</span><br><span class="line">0x0F 0x7D   JNL/JGE</span><br><span class="line">0x0F 0x7E   JLE/JNG</span><br><span class="line">0x0F 0x7F   JNLE/JG</span><br><span class="line">//e.g.</span><br><span class="line">004183E9--0F83 00606489  JNB 89A5D3EF</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他指令"><a href="#其他指令" class="headerlink" title="其他指令"></a>其他指令</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210601180602207.png" alt="image-20210601180602207"></p>
+<p>Jb：J表示间接寻址，即操作数是相对偏移；b表示操作数一个字节</p>
+<p>下面的暂时不讲（没进0环之前下面指令基本用不到）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210601181544726.png" alt="image-20210601181544726"></p>
+<p>Ap：A表示直接寻址，p表示当前操作数宽度是16位，p就表示32位，操作数32位，p表示48位，操作数64位，p表示80位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EA 410064A1 0000   JMP FAR 0000:A1640041//跨段跳转，讲调用门的时候会用到</span><br></pre></td></tr></table></figure>
+
+<p><strong>EB是一个字节内的跳转，E9是超越一个字节的跳转</strong>，EA是跨段跳转</p>
+<p>C2的return用于内平衡</p>
+<p>EA,CB,CA都常用于0环</p>
+<h2 id="经典变长指令-ModR-M"><a href="#经典变长指令-ModR-M" class="headerlink" title="经典变长指令_ModR&#x2F;M"></a>经典变长指令_ModR&#x2F;M</h2><p>Mod R&#x2F;M 大小为一个字节，由三部分组成，分别为 Mod（字节前两位），Reg（字节中间三位），R&#x2F;M(字节后三位)。Mod R&#x2F;M的主要功能就是说明操作数的寻址方式，包括寄存器选择，内存操作数的偏移等等。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">66：81FE 4746   CMP SI,474</span><br></pre></td></tr></table></figure>
+
+<p>因特尔白皮书中指令查表中，E和G开头的表示变长指令。</p>
+<p>经典变长指令_ModR&#x2F;M</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0x88   MOV Eb,Gb	G:通用寄存器</span><br><span class="line">0x89   MOV Ev,Gv	E:通用寄存器或者内存</span><br><span class="line">0x8A   MOV Gb,Eb	b:字节</span><br><span class="line">0x8B   MOV Gv,Ev	v:Word,doubleword or quadword</span><br></pre></td></tr></table></figure>
+
+<p>这里应该注意的是，E中已经说明了要使用通用寄存器或者内存操作数，并且要使用Mod R&#x2F;M来进行辅助说明，所以在操作码89后的C1就是ModR&#x2F;M,Ev统一起来就是可以使用双子寄存器操作数或者双子内存操作数，具体的要使用ModR&#x2F;M字段来辅助说明。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603151613245.png" alt="image-20210603151613245"></p>
+<p>ModR&#x2F;M的目的就是告诉我们G和E到底是谁</p>
+<p>这8个位究竟是如何工作的，Inter操作手册给出了一张表</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/1502566-20181215195902895-1924133618.png" alt="1502566-20181215195902895-1924133618"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603162026207.png" alt="image-20210603162026207"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603162045657.png" alt="image-20210603162045657"></p>
+<p>因为操作指令是88，所以MOV Eb,Gb，由于b所以无论E和G都是一个字节，所以上图说EAX还是AL是由操作码决定的</p>
+<h2 id="经典变长指令-RegOpcode"><a href="#经典变长指令-RegOpcode" class="headerlink" title="经典变长指令_RegOpcode"></a>经典变长指令_RegOpcode</h2><p>Reg&#x2F;Opcode除了可以确定G，还有时候作为opcode的拓展位来确定操作指令</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603163024666.png" alt="image-20210603163024666"></p>
+<p>举例说明0x80 0x65 0x08 0xFF查表</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603164816516.png" alt="image-20210603164816516"></p>
+<p>DIS8表示8位偏移</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603165041786.png" alt="image-20210603165041786"></p>
+<p>1A可以查表看意思：<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603165406263.png" alt="image-20210603165406263"></p>
+<p>1A标明了ModR&#x2F;M中的3,4,5位作为opcode的扩展</p>
+<p>80代表的Opcode未标明操作指令，<strong>凡是写了Grp的，均参见TableA-6</strong>（1748页）</p>
+<p>上图红线处Grp和上标1A中间的1代表第1组，可以在下表TableA-6中的Group中对应第1组</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603165308505.png" alt="image-20210603165308505"></p>
+<p>总结一下0x80 0x65 0x08 0xFF查表流程</p>
+<ol>
+<li><p>首先看到了0x80作为opcode查到了格式为xxx Eb,Ib(此时不确定操作指令是什么),通过1A知道操作指令取决于opcode和ModR&#x2F;M的3,4,5位，并且知道了查表找操作指令的时候要查的是第一组</p>
+</li>
+<li><p>通过ModR&#x2F;M的1,2,6,7,8,位：0x65&#x3D;01 100 101（参考上一章知识）确定Eb是[EBP+DIS8]，该指令当前为xxx byte ptr ds:[EBP+DIS8],Ib</p>
+</li>
+<li><p>通过ModR&#x2F;M的3,4,5位：<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603171014362.png" alt="image-20210603171014362"></p>
+<p>确定操作指令为AND，当前的指令为AND byte ptr ds:[EBP+DIS8],Ib</p>
+</li>
+<li><p>完整编码的后半部分0x08和0xFF按硬编码结构顺序填入DIS8（8位偏移）和Ib（一个字节的立即数），由此得到完整指令：AND byte ptr ds:[EBP+0x08],0xFF</p>
+</li>
+</ol>
+<h2 id="经典变长指令-SIB"><a href="#经典变长指令-SIB" class="headerlink" title="经典变长指令_SIB"></a>经典变长指令_SIB</h2><p>SIB—-Mod R&#x2F;M辅助说明（可选项）</p>
+<h3 id="阶段性总结"><a href="#阶段性总结" class="headerlink" title="阶段性总结"></a>阶段性总结</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603172025574.png" alt="image-20210603172025574"></p>
+<p>Opcode决定了后面是否有ModR&#x2F;M，ModR&#x2F;M决定了后面是否存在SIB，Displacement和immediate</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603172713610.png" alt="image-20210603172713610"></p>
+<p>查ModR&#x2F;M表的时候如果ModR&#x2F;M1,2,6,7,8位查到上图红线[–]这种形式，标明ModR&#x2F;M后面需要再跟一个字节，就是SIB来确定[–]里面的信息</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603173312603.png" alt="image-20210603173312603"></p>
+<p>sib用到的表</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603173524173.png" alt="image-20210603173524173"></p>
+<p>比如0x88 0x84 0x48查表确定到MOV Eb,Gb</p>
+<p>MOV [–][–]+DISP32,AL</p>
+<p>SIB为0x48 拆分01 001 000</p>
+<p>000的base部分查到EAX（下图红线）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603173832029.png" alt="image-20210603173832029"></p>
+<p>01的Scale部分决定了拿个SS</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage/image-20210603174113527.png" alt="image-20210603174113527"></p>
+<p>001的Index部分</p>
+<p>(此处缺了一张图)</p>
+<p>得出结论SIB&#x3D;&#x3D; [EAX+ECX*2]</p>
+<p>所以结论为MOV byte ptr DS:[EAX+ECX*2+DISP32],AL</p>
+<p>这也意味着0x88 0x84 0x48后面还会吃掉4个字节来作为DISP32.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">888448 6AFF6818		MOV BYTE PTR DS:[EAX+ECX*2+1868FF6A],AL</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="32位二进制中含操作数的汇编代码总结汇总"><a href="#32位二进制中含操作数的汇编代码总结汇总" class="headerlink" title="32位二进制中含操作数的汇编代码总结汇总"></a>32位二进制中含操作数的汇编代码总结汇总</h1><table>
+<thead>
+<tr>
+<th>汇编指令</th>
+<th>汇编二进制形式</th>
+<th>大小(字节)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>retn 0~0xFFFF</td>
+<td>C2 <code>FFFF</code></td>
+<td>3</td>
+</tr>
+<tr>
+<td>直接call 0x1</td>
+<td>E8 <code>(4字节)目标地址-call地址-5</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td>间接call [0x12345678]</td>
+<td>FF 15 <code>78 56 34 12</code></td>
+<td>6</td>
+</tr>
+<tr>
+<td>短jmp</td>
+<td>EB <code>(1字节)目标地址-jmp地址-2</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td>长jmp</td>
+<td>E9 <code>(4字节)目标地址-jmp地址-5</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td>间接jmp [0x12345678]</td>
+<td>FF 25 <code>78 56 34 12</code></td>
+<td>6</td>
+</tr>
+<tr>
+<td>直接push 0x12345678</td>
+<td>68 <code>78 56 34 12</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td>间接push [0x12345678]</td>
+<td>FF 35 <code>78 56 34 12</code></td>
+<td>6</td>
+</tr>
+<tr>
+<td>直接add eax 0x100</td>
+<td>05 <code>00 01 00 00</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td>间接add eax [0x12345678]</td>
+<td>03 05 <code>00 01 00 00</code></td>
+<td>6</td>
+</tr>
+<tr>
+<td>等等等等（非常多）</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/best_fiends_zxh/article/details/53142847">汇编大全参考</a></p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"></a><div class="post-copyright__author_name">ZEROKO14</div><div class="post-copyright__author_desc">zeroko14's blog</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://che77a38.github.io/posts/%E7%A1%AC%E7%BC%96%E7%A0%81/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://che77a38.github.io/posts/%E7%A1%AC%E7%BC%96%E7%A0%81/')">硬编码</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://che77a38.github.io/posts/%E7%A1%AC%E7%BC%96%E7%A0%81/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=硬编码&amp;url=https://che77a38.github.io/posts/%E7%A1%AC%E7%BC%96%E7%A0%81/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://che77a38.github.io" target="_blank">ZEROKO14的个人博客</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E7%A1%AC%E7%BC%96%E7%A0%81/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>硬编码<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">屏幕监控</div></div></a></div><div class="next-post pull-right"><a href="/posts/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">正则表达式</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">欢迎来到ZEROKO14的个人博客</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">ZEROKO14</h1><div class="author-info__desc">zeroko14's blog</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/che77a38" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A1%AC%E7%BC%96%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">硬编码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E7%BC%96%E7%A0%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">硬编码简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E6%8C%87%E4%BB%A4%EF%BC%88Instruction-Prefixes%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">前缀指令（Instruction Prefixes）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E6%8C%87%E4%BB%A4%E5%88%86%E7%BB%84"><span class="toc-number">1.2.1.</span> <span class="toc-text">前缀指令分组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#LOCK%E5%92%8CREPEAT%E5%89%8D%E7%BC%80%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">LOCK和REPEAT前缀指令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#LOCK"><span class="toc-number">1.2.1.1.1.</span> <span class="toc-text">LOCK</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#REPNE-REPNZ"><span class="toc-number">1.2.1.1.2.</span> <span class="toc-text">REPNE&#x2F;REPNZ</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#REP-REPZ"><span class="toc-number">1.2.1.1.3.</span> <span class="toc-text">REP&#x2F;REPZ</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AE%B5%E5%89%8D%E7%BC%80%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">段前缀指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%95%B0%E5%AE%BD%E5%BA%A6%E5%89%8D%E7%BC%80%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">操作数宽度前缀指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E5%AE%BD%E5%BA%A6%E5%89%8D%E7%BC%80%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">地址宽度前缀指令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E9%95%BF%E6%8C%87%E4%BB%A4%E5%92%8C%E5%8F%98%E9%95%BF%E6%8C%87%E4%BB%A4"><span class="toc-number">1.3.</span> <span class="toc-text">定长指令和变长指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E5%AE%9A%E9%95%BF%E6%8C%87%E4%BB%A4-%E4%BF%AE%E6%94%B9%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.4.</span> <span class="toc-text">经典定长指令_修改寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PUSH-POP"><span class="toc-number">1.4.1.</span> <span class="toc-text">PUSH&#x2F;POP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#INC-DEC-i64"><span class="toc-number">1.4.2.</span> <span class="toc-text">INC&#x2F;DEC(i64)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MOV-Rb%EF%BC%8Clb-%E5%AE%9A%E9%95%BF2%E4%B8%AA%E5%AD%97%E8%8A%82"><span class="toc-number">1.4.3.</span> <span class="toc-text">MOV Rb，lb(定长2个字节)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MOV-ERX%EF%BC%8Cld-%E5%AE%9A%E9%95%BF5%E4%B8%AA%E5%AD%97%E8%8A%82"><span class="toc-number">1.4.4.</span> <span class="toc-text">MOV ERX，ld(定长5个字节)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XCHG-EAX-ERX"><span class="toc-number">1.4.5.</span> <span class="toc-text">XCHG EAX,ERX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%80%9A%E8%BF%87NOP%E6%8C%87%E4%BB%A4%E6%9E%84%E9%80%A0%E8%8A%B1%E6%8C%87%E4%BB%A4%E4%BD%BF%E5%BE%97%E8%B0%83%E8%AF%95%E5%99%A8%E7%9A%84%E6%B1%87%E7%BC%96%E6%B7%B7%E4%B9%B1"><span class="toc-number">1.4.6.</span> <span class="toc-text">可通过NOP指令构造花指令使得调试器的汇编混乱</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E5%AE%9A%E9%95%BF%E6%8C%87%E4%BB%A4-%E4%BF%AE%E6%94%B9EIP"><span class="toc-number">1.5.</span> <span class="toc-text">经典定长指令_修改EIP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x70-0x7F%E7%9F%AD%E8%B7%B3%EF%BC%88%E5%AE%9A%E9%95%BF%E4%B8%A4%E4%B8%AA%E5%AD%97%E8%8A%82%EF%BC%89"><span class="toc-number">1.5.1.</span> <span class="toc-text">0x70~0x7F短跳（定长两个字节）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x0F-0x80-0x0F-0x8F%E9%95%BF%E8%B7%B3%EF%BC%88%E5%AE%9A%E9%95%BF6%E4%B8%AA%E5%AD%97%E8%8A%82%EF%BC%89"><span class="toc-number">1.5.2.</span> <span class="toc-text">0x0F 0x80~0x0F 0x8F长跳（定长6个字节）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4"><span class="toc-number">1.5.3.</span> <span class="toc-text">其他指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E5%8F%98%E9%95%BF%E6%8C%87%E4%BB%A4-ModR-M"><span class="toc-number">1.6.</span> <span class="toc-text">经典变长指令_ModR&#x2F;M</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E5%8F%98%E9%95%BF%E6%8C%87%E4%BB%A4-RegOpcode"><span class="toc-number">1.7.</span> <span class="toc-text">经典变长指令_RegOpcode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E5%8F%98%E9%95%BF%E6%8C%87%E4%BB%A4-SIB"><span class="toc-number">1.8.</span> <span class="toc-text">经典变长指令_SIB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E6%80%A7%E6%80%BB%E7%BB%93"><span class="toc-number">1.8.1.</span> <span class="toc-text">阶段性总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#32%E4%BD%8D%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%E5%90%AB%E6%93%8D%E4%BD%9C%E6%95%B0%E7%9A%84%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81%E6%80%BB%E7%BB%93%E6%B1%87%E6%80%BB"><span class="toc-number">2.</span> <span class="toc-text">32位二进制中含操作数的汇编代码总结汇总</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/avalonia/" title="avalonia">avalonia</a><time datetime="2024-09-11T14:51:13.000Z" title="发表于 2024-09-11 22:51:13">2024-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E8%A7%86%E9%A2%91%E6%95%88%E6%9E%9C/" title="PR">PR</a><time datetime="2024-07-18T07:06:08.330Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%89%8D%E7%AB%AF/" title="WEB前端">WEB前端</a><time datetime="2024-07-18T07:06:08.323Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/slidev/" title="slidev">slidev</a><time datetime="2024-07-18T07:06:08.319Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/C++%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="C++多线程">C++多线程</a><time datetime="2024-07-18T07:05:59.794Z" title="发表于 2024-07-18 15:05:59">2024-07-18</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="ZEROKO14" target="_blank">ZEROKO14</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu"></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">48</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 0.88rem;">C#<sup>3</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 0.88rem;">CSS<sup>1</sup></a><a href="/tags/CSharp/" style="font-size: 0.88rem;">CSharp<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 0.88rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 0.88rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 0.88rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 0.88rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 0.88rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 0.88rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 0.88rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 0.88rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 0.88rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 0.88rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 0.88rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/json/" style="font-size: 0.88rem;">json<sup>1</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>1</sup></a><a href="/tags/next/" style="font-size: 0.88rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 0.88rem;">ppt<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 0.88rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 0.88rem;">vue<sup>1</sup></a><a href="/tags/xml/" style="font-size: 0.88rem;">xml<sup>1</sup></a><a href="/tags/yaml/" style="font-size: 0.88rem;">yaml<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 0.88rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 0.88rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 0.88rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 0.88rem;">加解密<sup>1</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 0.88rem;">多线程<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">开发<sup>4</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.88rem;">数学<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 0.88rem;">数据库<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 0.88rem;">架构<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 0.88rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 0.88rem;">监控<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>1</sup></a><a href="/tags/%E7%AE%A1%E7%90%86/" style="font-size: 0.88rem;">管理<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 0.88rem;">网络<sup>2</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 0.88rem;">逆向<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

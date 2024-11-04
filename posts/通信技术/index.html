@@ -1,0 +1,1278 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>硬件通信技术 | ZEROKO14的个人博客</title><meta name="keywords" content="通信技术"><meta name="author" content="ZEROKO14"><meta name="copyright" content="ZEROKO14"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="硬件通信技术"><meta name="application-name" content="硬件通信技术"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="硬件通信技术"><meta property="og:url" content="https://che77a38.github.io/posts/%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/index.html"><meta property="og:site_name" content="ZEROKO14的个人博客"><meta property="og:description" content="盘点常用的硬件通信技术    硬件通信技术有  有线通信技术：包括以太网、USB、HDMI、VGA、串口等有线通信接口。 无线通信技术：包括Wi-Fi、蓝牙、Zigbee、LoRa等无线通信技术。 射频通信技术：包括RFID、NFC、GPS等射频通信技术。 光通信技术：包括光纤通信、激光通信等光通信"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta property="article:author" content="ZEROKO14"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta name="description" content="盘点常用的硬件通信技术    硬件通信技术有  有线通信技术：包括以太网、USB、HDMI、VGA、串口等有线通信接口。 无线通信技术：包括Wi-Fi、蓝牙、Zigbee、LoRa等无线通信技术。 射频通信技术：包括RFID、NFC、GPS等射频通信技术。 光通信技术：包括光纤通信、激光通信等光通信"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://che77a38.github.io/posts/%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":true,"limitCount":50,"languages":{"author":"作者: ZEROKO14","link":"链接: ","source":"来源: ZEROKO14的个人博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'ZEROKO14的个人博客',
+  title: '硬件通信技术',
+  postAI: '',
+  pageFillDescription: 'USB通信技术, 如何查看设别的VID和PID, 串口通信, 重要参数, 位时间计算, 串口通信开发, SerialPort类, 常用属性, 事件, 常用方法, 进阶, 下位机与上位机间串口通信, 开发步骤概述, ModBUS, 格式分类, MODBUS TCPx2FIP, Modbus UDPx2FIP, MODBUS RTU, MODBUS ASCII, 协议格式, Modbus功能码列表, 报文结构解析(Modbus RTU版本), 0x03请求应答方式, 0x10请求应答方式, 通信库盘点, 尝试编写modbus RTU通信库, easyModbus, SerialPortStream, 开源使用要求, NModbus, WINIO库, 获取管理员权限, 使用服务加载驱动, 使用清单文件, 自动生成如下, 手动创建如下, 提醒用户管理员启动, 相关函数盘点, Ix2FO端口地址获取, Ix2FO端口与内存映射Ix2FO, IRQ, IRQ 的主要作用, 工作流程, 常见的 IRQ 应用场景, 计算机总线接口, ISA总线设备(老式设备), PCIx2FPCIE设备(现代设备), PCI总线, PCIE总线, SECSx2FGEM通信协议, 协议格式, HSMS 协议, 硬件测量的校准算法, 零点漂移, 增益校正, 增益校正算法的原理盘点常用的硬件通信技术硬件通信技术有有线通信技术包括以太网串口等有线通信接口无线通信技术包括蓝牙等无线通信技术射频通信技术包括等射频通信技术光通信技术包括光纤通信激光通信等光通信技术传感器技术包括温度传感器湿度传感器加速度传感器等传感器技术通信技术在上最早用语言开发后来由于的发展采用开发近几年微软发布了基于框架的面向对象语言更加稳定安全再配合微软强大的进行开发效率奇高另外如果想要在上跨平台运行可以选用如果想要更加丰富好看的数据显示界面可以选用开发在中可以使用提供的类来进行类来进行串口通信通过该类可以实现与串口设备的通信另外也可以使用第三方库如等来简化通信的操作这些库提供了更高级别的接口和封装使得通信更加方便和易用中可以使用操作系统提供的库如或者第三方库如等来进行通信通过这些库可以实现设备的枚举数据传输和控制等操作开发者需要编写相应的代码来配置设备发送和接收数据等是一种通用的高速的双向的串行总线标准用于连接计算机和外部设备接口支持多种设备类型如存储设备打印机键盘鼠标等和高速数据传输具有热插拔即插即用等特点通信是基于主从设备的通信模式通过协议栈进行通信传统的串口通信技术如串口是一种较老的串行通信接口标准通常用于连接计算机和外部设备串口通信速度较低通常用于较简单的数据传输和控制应用通信是基于点对点的通信模式通过串口通信协议如进行通信通信流程如下打开设备发送数据接受数据关闭设备根据规范的规定所有设别都有供应商和产品识别码主机通过不同的和来区别不同的设备附一个使用获取设备信息的代码如何查看设别的和是通过设备接口类的来区分设备是什么类型的常用设备接口类参考比如根据设备接口类的获取对应的设备列表再通过和去设备列表中匹配对应的设备获取设备的路径通过路径打开设备进行通信异步流常用设备接口类取得接口详细信息第一次读取错误但可以取得信息缓冲区的大小构建接收缓冲指定设备打印机支持中文只返回与系统默认设备相关的设备只返回当前存在的设备返回所有已安装的设备如果这个标志设置了参数将被忽略只返回当前硬件配置文件中的设备返回所有支持的设备接口数据定义定义设备实例该实例是设备信息集的成员获取设备的设备接口类即获取对应的设备信息集句柄设备设置类或设备接口类的指向以空结尾的字符串的指针该字符串提供枚举器或设备实例标识符的名称用于用户界面的顶级窗口的句柄一个变量指定用于筛选添加到设备信息集中的设备信息元素的控制选项设备信息集的句柄根据句柄枚举设备信息集中包含的设备接口获取接口详细信息在第一次主要是读取缓存信息第二次获取详细信息必须调用两次指向设备信息集的指针它包含了所要接收信息的接口该句柄通常由函数返回返回数据删除设备信息并释放内存访问权限如何创建普通文件名或设备文件名访问模式写读共享模式指向安全属性的指针如何创建文件属性用于复制文件句柄关闭串口通信串口通信通过串行端口进行数据传输的一种通信方式串口通信技术通常用于连接计算机与外部设备如传感器打印机嵌入式系统等进行数据交换和控制常见的串口通信标准包括等串口通信技术在工业控制嵌入式系统通信设备等领域广泛应用是一种串行通信标准定义了信号电平数据格式控制信号等规范在编程接口上通常需要使用特定的串行通信库或驱动程序来进行数据传输和控制常见的编程接口包括使用语言的串口编程库如库的库等也是一种串行通信标准与相比支持多点通信和远距离传输在编程接口上通常需要使用特定的串口通信库或驱动程序来进行数据传输和控制常见的编程接口包括使用协议库专门的通信库等是一种硬件接口用于串行数据通信在编程接口上通常需要通过操作系统提供的串口通信接口或者相关的串口编程库来进行数据传输和控制常见的编程接口包括系统的串口编程接口系统的串口通信等在实际应用中和这三种通信协议各有其适用的场景和优势没有一种是绝对广泛应用的但从整体来看通信协议可能是最广泛应用的一种因为是一种通用的串行通信协议几乎所有的微控制器传感器通信模块等设备都支持通信在嵌入式系统传感器网络物联网等领域通信协议被广泛应用和通信协议在工业控制通信设备自动化系统等领域也有广泛的应用特别是在需要远距离传输抗干扰能力强的场景下通常比更受青睐真正开发中似乎无需关心串行通信的标准是哪一种可以直接使用系统来操作串口通信直接不需要关心具体的协议或者可以使用第三方库如等来简化串口通信的编程过程中可以使用提供的类来实现串口通信同样不关心具体的协议使用上述通信接口开发都需要设置如下项查看串口情况命令只会显示空闲的串口被打开的串口将不会显示重要参数串口名称指定要打开的串口设备的名称如等波特率指定串口通信的波特率即数据传输速率常见的波特率有等数据位指定每个数据字节的位数通常为位停止位指定每个数据帧的停止位数通常为位或位校验位指定用于检测数据传输中错误的校验位常见的校验方式有无校验奇校验偶校验等除了以上基本参数外还可以根据需要传入其他参数来配置串口通信如流控制超时设置缓冲区大小等流控制用于控制数据传输的速度常见取值为硬件流控制如或软件流控制如丢弃空字符指定是否丢弃接收到的空字符如果设置为接收到的空字符将被丢弃而不会传递给应用程序启用信号用于启用或禁用数据终端就绪信号信号通常用于指示设备是否准备好进行通信握手方式指定数据传输时使用的握手协议常见的握手协议包括无握手软件握手硬件握手等用于控制数据传输的流程替换奇偶校验指定在接收到奇偶校验错误时应如何处理通常可以设置为替换错误的奇偶校验位以确保数据的正确性超时设置指定连接读取写入数据的超时时间缓冲区大小指定输入和输出缓冲区的大小以影响串口通信的性能位时间计算位时间是指在串行通信中传输一个位所需的时间它的具体值取决于通信的波特率一个位时间的时间间隔可以用下面公式计算一个位时间的时间间隔秒波特率波特如波特率的位时间为秒串口通信开发以为例在中提供了类该类主要实现串口数据通信等类常用属性名称说明获取对象的基础对象获取或设置串行波特率获取或设置中断信号状态获取接收缓冲区中数据的字节数获取发送缓冲区中数据的字节数获取端口的载波检测行的状态获取可以发送行的状态获取或设置每个字节的标准数据位长度获取或设置一个值该值指示字节在端口和接收缓冲区之间传输时是否被忽略获取数据设置就绪信号的状态获取或设置一个值该值在串行通信过程中启用数据终端就绪信号获取或设置传输前后文本转换的字节编码获取或设置串行端口数据传输的握手协议获取一个值该值指示对象的打开或关闭状态获取或设置用于解释和方法调用结束的值获取或设置奇偶校验检查协议获取或设置一个字节该字节在发生奇偶校验错误时替换数据流中的无效字节获取或设置通信端口包括但不限于所有可用的端口获取或设置输入缓冲区的大小获取或设置读取操作未完成时发生超时之前的毫秒数获取或设置事件发生前内部输入缓冲区中的字节数获取或设置一个值该值指示在串行通信中是否启用请求发送信号获取或设置每个字节的标准停止位数获取或设置串行端口输出缓冲区的大小获取或设置写入操作未完成时发生超时之前的毫秒数事件注意下面事件绑定的回调方法都是在非线程中执行的名称说明当串口接收到数据时引发此事件可以通过该事件处理程序读取接收到的数据当串口的控制信号引脚状态发生变化时引发此事件可以用于监控等引脚的状态当串口出现错误例如溢出错误时引发此事件可以在事件处理程序中处理错误信息当对象被释放时引发此事件可以用于清理资源常用方法方法名称说明关闭端口连接将属性设置为并释放内部对象打开一个新的串行端口连接从输入缓冲区中读取从输入缓冲区中同步读取一个字节从输入缓冲区中同步读取一个字符一直读取到输入缓冲区中的值一直读取到输入缓冲区中指定的字符串读到马上可用的字节已重载将数据写入串行端口输出缓冲区将指定的字符串和值写入输出缓冲区进阶类中的属性表示底层的流对象该流对象提供对串口端口的低级别访问通过可以使用更多的流方法包括异步方法如和这些方法不在类本身中直接提供使用进行异步操作的优点包括非阻塞操作异步方法不会阻塞调用线程可以提高应用程序的响应速度更细粒度的控制可以利用类提供的所有功能包括异步读写操作在类中使用和异步方法来处理异步串口通信是一种更现代和高效的编程方式核心代码确保读取完全事件驱动读取暂时取消事件处理程序以防止重入标记接收活动状态获取触发事件的串口对象如果没有要读取的字节丢弃输入缓冲区中的数据标记接收活动结束重新添加事件处理程序初始化读取缓冲区已读取的字节数当前读取位置当前时间更新当前时间如果没有数据可读等待毫秒超时检查获取可读取的字节数创建临时缓冲区从串口读取数据到临时缓冲区将数据复制到读取缓冲区更新已读取的字节数处理读取过程中可能发生的异常循环读取直到满足条件初始化接收数据缓冲区将读取的数据复制到接收数据缓冲区如果启用调试记录接收到的数据重置要读取的字节数标记数据已接收标记接收活动结束重新添加事件处理程序触发接收数据更改事件事件处理程序的移除和重新添加在处理数据接收时暂时移除事件处理程序以防止重入在处理完数据后重新添加事件处理程序接收数据的初始化初始化读取缓冲区和初始化已读取的字节数和当前读取位置数据读取循环如果没有数据可读等待毫秒获取可读取的字节数从串口读取数据到临时缓冲区将数据复制到读取缓冲区数据接收完成后的处理初始化接收数据缓冲区将读取的数据复制到接收数据缓冲区如果启用调试记录接收到的数据重置要读取的字节数标记数据已接收标记接收活动结束触发接收数据更改事件在串口通信中即使在事件处理方法中有时仍需要使用循环来确保数据的完整接收这主要是因为串口通信的特点和数据到达的不确定性原因解释数据到达的不确定性串口数据是以字节流的形式异步到达的具体到达的时间和数量可能不确定即使触发了数据接收事件可能只接收到部分数据需要循环等待和读取后续到达的数据处理连续数据帧有时需要从串口接收连续的数据帧这意味着一次接收事件可能无法完全获取一个完整的数据帧循环读取可以确保在处理事件时获取完整的数据帧缓冲区处理串口接收缓冲区可能在一次事件中未能完全处理循环读取可以确保缓冲区中的所有数据都被读取和处理动机说明事件驱动使得没有数据传输的情况下不需要一直检测串口状态事件驱动中循环接受使得每次事件驱动触发后充分接受完全至少接收完一个数据帧下位机与上位机间串口通信处理思想一般情况下当下位机高速发送应答数据时串口接收到的数据不会是一个完整应答数据而是多个应答数据的混合集因此当你以单一应答数据来解析收到的数据时往往会发现应答数据格式不正确在界面上的表现就是没有收到数据另外把收到的原始字节数组解析为程序能读懂的数据也是一项费时费力的事情因此会出现高速收低速埋的矛盾但是如果只让串口执行收而辅助线程执行埋那么就有效的解决了这个矛盾即使下位机发的速度再高系统也能抗得住为了实现这个思想可以有如下设计数据接收与处理分离串口接收线程专责监听串口并将接收到的数据累积在一个共享的缓冲区中这个线程只负责数据的接收不做任何处理以保证数据能够尽快从串口被读取出来避免丢失数据数据处理线程负责从共享缓冲区读取数据并进行解析和处理处理完的数据可以进一步用于更新存储或进行其他操作线程安全的共享缓冲区因为数据接收和处理是由不同的线程并发执行的共享缓冲区必须是线程安全的可以使用锁如中的语句来同步对缓冲区的访问或者使用线程安全的集合如来自动管理同步数据的边界识别与完整性保证由于接收到的数据可能是多个应答数据的混合集数据处理线程需要能够正确识别每个独立应答数据的边界这通常需要根据具体的应答数据格式来设计解析算法例如通过特定的起始字节结束字节长度字段或校验和来识别和验证数据的完整性开发步骤概述设计共享缓冲区选择或实现一个线程安全的数据结构来作为共享缓冲区用于存储从串口接收到的原始数据实现串口接收线程连续监听串口将接收到的数据追加到共享缓冲区使用最小的处理确保高效接收实现数据处理线程循环从共享缓冲区读取数据识别和提取完整的应答数据对每个完整应答数据进行解析和处理同步机制确保对共享缓冲区的访问是线程安全的可以通过锁或线程安全的集合来实现错误处理与异常管理添加必要的错误处理和异常管理机制以确保系统的鲁棒性采用这种多线程的设计方案可以有效地解决接收和处理速度不匹配的问题提高系统对高速串口数据流的处理能力统一数据读取所有数据读取都通过事件驱动进行然后将数据存储到一个线程安全的容器中手动读取时从该容器中取数据并且使用确保多线程环境下的数据安全协议是一种用于工业控制的网络通讯协议可以片面的理解为协议一种机器与机器之间进行数据信息传递的一种格式规范协议还遵循主从协议支持单主机多从机最多支持个从机设备并且在同一个通信线路上只会有一个主机所有的通讯过程全部由主机主动发起从机接收到主机请求后会对请求做出响应从机不会主动进行数据的发送从机之间也不会有通讯过程通俗一点来说主机从机之间想要实现通讯需要将主机与从机进行连接然后再进行数据传输而连接方式有上述种方式连接实现之后主机与从机之间就可以进行数据传输了而它们传输的数据内容均按照协议规定的格式进行转换这样就保证了能够让同一个主机与不同功能不同厂家的设备之间进行准确的通讯优势标准开放免费支持多种电器接口如串行接口等还可以在各种介质上传递如光纤无线等的帧格式简单紧凑通俗易懂用户使用简单厂商开发简单格式分类通信协议的三种格式工业领域中用得最多的上述三种其实就是硬件接口以及传输数据方式的不同注意在协议中从机属于服务端而主机属于客户端这是因为在通信中主机负责发起请求并控制通信过程而从机则负责响应请求并提供数据主机通过发送请求帧给从机从机接收并处理请求然后返回响应帧给主机基于以太网的一种通讯方式它将协议封装在协议栈中通过以太网传输数据具有高速稳定的特点传输的是码使用的接口是以太网口确认传送结束重置紧急建立联机顺序号码确认号码主要用于做网络通讯基于协议的一种通讯方式与不同采用无连接的通讯方式不保证数据的可靠性和顺序相比于的通讯开销较小可以减少网络负载使用串口通讯协议使用二进制格式进行数据传输通讯效率更高可读性较差直接传输的是二进制的数字用的是或者是等接口主要是做串口通信可读性好但通讯效率更低接口与一样主要是做串口通信只不过传递的是二进制的码协议格式通用帧无论哪一种协议版本的帧格式都是一样的地址域主机要访问的从机的地址功能码主机对从机实现的操作功能码有很多不同的功能码也对应操作不同类型的寄存器比如读线圈读保持寄存器写单个寄存器写多个寄存器等更多功能码见下方功能码列表数据根据功能的不同以及传输的数据为请求数据还是响应数据的不同会有不同的内容详见报文结构解析差错校验为保障传输数据的准确性会进行差错校验如校验等详情请自行了解将采用大端字节序传输报文比如一个位数据先传输高字节再传输低字节将数据抽象成四张表主表对象类型读写属性描述读功能码离散输入寄存器单个位数据只读这些寄存器包含只读的布尔值通常用于表示输入状态如开关或传感器状态线圈寄存器单个位数据可读可写这些寄存器包含可读写的布尔值通常用于控制输出设备如开关或继电器输入寄存器位数据只读这些寄存器包含只读的位数据通常用于表示输入数据如传感器数据保持寄存器位数据可读可写这些寄存器包含可读写的位数据通常用于存储和控制数据如设备配置或控制参数左边第一列的名字不用关心属于历史遗留问题因为协议原本是公司针对其产品开发的协议与其特殊的工业控制编程有很大关系对于使用进行应用开发并不需要关心这四个表本质上就是将应用数据规划为离散位开关量以及寄存器变量其中线圈与保持寄存器表为可读可写其他两个表为只读这个四个表中将应用数据都利用寄存器地址进行索引地址范围为需要理解的是这里的地址与芯片的地址空间完全是两个概念把它简单理解成可以索引这么多个用户应用位数据即可其中有的可能是开关量有的可能利用两个连续寄存器对应用户的浮点数字符串等等都有可能一般的应用而言单个位开关量通信效率不免低下现在很多产品开发已很少使用其实对于这样的离散量也完全可以直接放在输入寄存器表以及保持寄存器表中对于用户应用并没有严格的规定用户可以自由进行寄存器地址或叫索引映射功能码列表功能码解释翻译作用读线圈状态读取远程设备中到个连续的线圈的状态读离散输入状态读取远程设备中到个连续的离散输入的状态读保持寄存器内容读取远程设备中到个连续的保持寄存器的内容读输入寄存器内容读取远程设备中到个连续的输入寄存器的内容写单个线圈在远程设备中把单个线圈状态改变为打开或关闭的状态写单个保持寄存器在远程设备中写入单个保持寄存器读取异常状态仅限串行线路读取远程设备中八个异常状态输出的内容通信系统诊断仅限串行线路获取通讯事件计数器仅限串行线路从远程设备的通信事件计数器获取状态字和事件计数获取通讯事件日志仅限串行线路从远程设备获取状态字事件计数消息计数和事件字节字段写多个线圈强制远程设备中线圈序列中的每个线圈接通或断开写多个保持寄存器在远程设备中写入连续寄存器块报导从机信息仅限串行线路读取远程设备特有的类型当前状态和其他信息的说明数据内容特定于每种类型的设备读取文件记录写文件记录带屏蔽字写入寄存器读写多个寄存器执行一次连续写和连续读写入操作在读取之前执行读取先进先出队列封装接口传输报文结构解析版本在线校验工具算法算法参考下面使用最常用的版本使用校验的保持寄存器做演示解析其三个常用功能读写单个写的报文结构请求应答方式主机请求示例含义从机设备地址功能码起始寄存器完整地址要读取的寄存器个数校验码解析从地址为的从机读取寄存器块内容寄存器开始地址为连续读取个寄存器即读取地址为到的寄存器块从机应答示例含义从机设备地址功能码寄存器完整地址成功写入的数据校验码解析在地址为的从机地址为的寄存器中成功写入数据如果功能写入成功的话请求码和响应码会是一样的请求应答方式示例含义从机设备地址功能码起始寄存器地址写入的寄存器个数数据字节数数据内容校验码解析在地址为的从机中向起始地址为的连续个寄存器分别写入字节数个示例含义从机设备地址功能码起始寄存器地址写入的寄存器个数校验码解析在地址为的从机起始地址为的连续个寄存器中写入数值通信库盘点尝试编写通信库核心代码以一个回环验证来演示重试机制超时机制循环堵塞读取起始从机号验证循环冗余验证环路检查开始次回环测试确定第一个是从机号去除从机号之前的数如果没有找到从机号重置次读到数据为连接成功超时处理连接失败支持自动重连异步读写等高级特性使用案例创建客户端实例设置从机地址为打开串行端口读取从站的线圈状态读取从站的响应打印响应结果从站响应高字节低字节关闭串行端口串口通信库开源地址其通过多种机制来确保读取到完整的数据这些机制包括内部缓冲区管理超时处理和设备错误检查类是命名空间下的一个库用于提供串行端口通信的功能它对的类进行了重新实现旨在解决一些在及更早版本中存在的问题这个类提供了一种流的方式来处理串行数据的读写关于如何确定读取操作完成类使用了几种机制来确保数据可以被完整读取缓冲机制内部使用缓冲区来存储从串行端口读取的数据这意味着即使数据还没有完全从硬件接收完毕它也会被暂存在缓冲区内超时设置类中提供了和属性来设置读写操作的超时时间如果操作在超时时间内没有完成将会抛出异常或返回错误事件驱动使用事件如来通知应用程序有数据到达或发生错误这允许应用程序在数据到达时立即响应而不是等待特定数量的数据或超时读取方法提供了多种读取方法例如等这些方法可以读取字节字符或直到特定字符串特别是方法它能够读取直到输入缓冲区中出现特定的文本这有助于读取基于特定分隔符的数据状态监控通过监控串行端口的状态可以在适当的时机进行读取操作例如它可以检查硬件缓冲区的状态或者等待特定的硬件事件如信号错误处理在读取过程中会检查设备错误如果发现设备已断开或发生错误将会抛出异常开源使用要求对于项目采用的微软公用许可证根据该许可证的规定您使用这个库时通常是需要在您的项目中声明许可证信息的根据许可证的要求您需要在派生作品包括商业软件的源代码中保留原始许可证文本并提供对应的版权声明免责声明等信息具体的声明内容和位置可以参考许可证文档中的要求因此为了遵守许可证的要求和最佳实践建议您在使用时在您的项目文档文件或其他相关介绍中提供适当的许可证声明和鸣谢这样可以向其他人清楚地传达您使用了库并表达对原作者的感谢与尊重主要是支持跨平台和校验开源开源地址库是一个专为设计的低级接口库它允许程序员直接对硬件进行端口级访问实现高速数据传输和控制该库通常用于系统开发和驱动编写尽管它能提供更高的效率但也带来了复杂性和潜在风险的功能包括端口操作内存映射中断处理系统调用拦截等并强调使用时的安全性和兼容性它主要服务于需要底层硬件交互的应用程序开发如系统工具调试器和驱动程序等开源地址也可以在此处下载正常的访问硬件的方式应用程序设备驱动硬件库的访问方式应用程序硬件这种直接访问的场景通常用在工控卡比如采集卡在特定物理地址映射了其寄存器工业设备设备可能在固定的端口提供数据特殊硬件需要直接读写物理内存或端口的设备优点响应速度快没有系统调用开销可以实现一些操作系统不支持的特殊功能缺点不安全可能会破坏系统需要管理员权限兼容性差提供了两种方式访问硬件直接访问物理内存将物理地址映射到程序可以访问的内存空间之后可以直接读写这段内存写入数据读取数据直接访问端口直接读取端口的值直接向端口写入数据此库使用需要加载驱动程序因此需要管理员权限以及可能需要驱动签名位不需要获取管理员权限需要管理权限才能正常运行这可以通过以下方式实现使用服务加载驱动从作为运行的服务中使用必须显式启用权限大概步骤编写一个以帐户运行的服务通过调用如来修改服务进程的权限并在服务启动时启用权限在服务中加载驱动处理所需的硬件交互在服务的关闭过程中卸载驱动并释放相关资源使用清单文件在请求权限提升的应用程序中嵌入清单文件应用程序可以包含一个清单文件来声明所需的权限级别自动生成如下右键点击项目选择属性在左侧导航栏中展开配置属性链接器清单文件将生成清单设置为生成清单将执行级别设置为这样程序将要求以管理员身份运行应用更改并重新编译项目手动创建如下创建一个文件例如文件内容如下将文件添加到项目中在项目属性中展开配置属性链接器清单文件将清单输入设置为嵌入并指定你创建的文件路径重新编译项目文件将被嵌入应用程序用户同意后应用程序将以管理员权限运行可以加载驱动提醒用户管理员启动要求用户在启动应用程序时选择以管理员身份运行选项在中可以通过检查当前用户是否属于管理员组来确定应用程序是否以管理员权限运行以下是中的代码示例示例代码检测管理员权限相关函数盘点以下是提供的每个函数的详细介绍功能初始化库说明加载并初始化驱动程序使其可以被应用程序调用此函数是操作的起始点必须在调用其他函数之前调用返回值表示初始化成功表示失败可能是由于驱动未正确加载或权限不足功能关闭库并卸载驱动说明停止并卸载驱动程序释放资源所有使用进行的内存映射或端口操作应在调用此函数之前完成以确保资源正确释放返回值无功能将物理内存地址映射到应用程序的虚拟地址空间说明此函数接受一个结构其中包含物理内存地址和所需的映射大小函数会将指定的物理地址空间映射为进程可用的线性地址虚拟地址便于用户态程序对物理内存直接操作参数一个结构体包含要映射的物理地址和映射区域大小返回值返回映射后的虚拟地址如果失败则返回功能取消先前的物理内存到虚拟地址的映射说明用于解除物理内存映射关系释放虚拟内存地址此函数在不再需要访问物理内存时调用以清理资源参数包含要解除映射的物理地址信息与中使用的结构一致返回值表示成功表示失败功能读取指定物理地址的位数据说明该函数用于从指定的物理内存地址读取一个位的值适用于需要从特定硬件地址获取状态或配置信息的情况参数指向要读取数据的物理地址输出参数用于存储读取到的值返回值表示读取成功表示失败功能向指定物理地址写入位数据说明该函数用于将位数据写入指定的物理内存地址可用于配置或控制硬件设备参数指向要写入数据的物理地址要写入的位数据返回值表示写入成功表示失败功能读取指定端口的值说明从指定端口地址读取数据用于控制与设备的直接通信指定要读取的字节数可以是或分别对应位位和位数据参数端口地址输出参数用于存储读取到的端口值要读取的字节数返回值表示读取成功表示失败功能向指定端口写入值说明将数据写入指定的端口地址用于向硬件设备发送命令或数据指定要写入的字节数或字节参数端口地址要写入的值要写入的字节数返回值表示写入成功表示失败功能安装驱动程序说明加载的内核驱动程序可以指定驱动程序文件路径是否按需加载驱动为时驱动按需加载参数驱动程序文件路径是否按需加载驱动默认为立即加载返回值表示安装成功表示失败功能卸载驱动程序说明卸载并删除的驱动程序通常在不再需要硬件操作时调用返回值表示卸载成功表示失败端口地址获取在机上标准的串口端口地址一般是并口通常是或通过设备管理器获取打开设备管理器右键此电脑属性设备管理器找到目标设备右键点击并选择属性进入资源选项卡查看端口地址和中断请求号等资源分配信息注意设备管理器主要适用于标准设备某些设备可能不会在资源中显示端口信息使用系统命令命令提示符中输入进入系统信息窗口在硬件资源中可以找到设备的地址映射端口与内存映射端口和内存映射是两种不同的硬件访问机制这两个是分开的地址空间使用不同的指令访问这种设计是历史原因造成的现代的等架构一般只使用内存映射在架构中内存地址空间物理内存使用地址空间物理内存地址空间物理内存等内存映射一些设备的寄存器映射到这里比如显存网卡缓存等端口空间端口使用独立的地址空间端口地址空间端口独立的地址空间用于直接与设备通信端口使用专门的指令从端口读取数据向端口写入数据内存地址指令地址从内存读取地址写入内存中断请求是一种硬件信号用于通知需要处理某个事件它的主要目的是协调硬件设备和的交互使设备可以及时通知触发相应的处理流程在硬件和操作系统之间充当了信使的角色确保关键事件不会被忽视的主要作用事件通知当外部设备如键盘鼠标硬盘等需要的关注时会向发送一个信号这个信号会让暂停当前任务转而处理该事件资源共享通过中断机制可以高效地在多个任务之间切换而无需一直等待设备完成操作例如打印机完成打印任务时会发出中断请求而无需一直等待可以处理其他任务系统响应性提升了系统的响应性确保设备请求能够被及时响应例如当网络接口收到数据包时会通知进行处理工作流程发送中断设备向发送中断信号每个设备都有自己的通道用于标识设备的中断请求中断处理停止当前任务并跳转到对应的中断处理程序这个程序由操作系统分配给每种中断类型恢复工作完成中断处理后返回到之前被中断的任务常见的应用场景键盘按键时触发获取按键数据硬盘数据读写完成时触发继续处理数据网络设备收到数据包时触发处理网络数据是多任务系统中实现高效设备管理和事件响应的关键机制计算机总线接口计算机总线是连接计算机各个组件的通道它们允许内存外设等之间进行数据传输在计算机发展过程中出现了多种类型的总线每种总线都有其独特的设计和应用场景有总线总线总线和总线等等总线设备老式设备总线最早由在年为其个人计算机推出总线是最早期的计算机总线之一在世纪年代和年代初广泛使用卡是长条形的有金手指接口可能有地址选择跳线物理地址是固定的通过跳线或开关设置例如经典的显存地址设备通常使用以下固定地址范围显存区域和设备内存映射区域总线在早期的中广泛使用主要用于连接键盘鼠标打印机调制解调器等外设由于其速度和带宽限制总线在性能要求较高的应用中逐渐被淘汰设备现代设备物理地址是动态分配的需要通过配置空间读取设备分配到的基地址正确的做法应该是从配置空间获取总线总线在世纪年代和年代初广泛应用于服务器和嵌入式系统中它支持多种外设如显卡声卡网卡硬盘控制器等显著提升了系统的性能和扩展性总线总线是总线的继承者由在年推出总线设计旨在满足高速数据传输需求广泛应用于现代计算机系统中总线是现代计算机系统中最常用的扩展总线广泛应用于服务器工作站和嵌入式系统它支持高速显卡固态硬盘网卡存储控制器等设备满足了高速数据传输和高性能计算的需求通信协议由于当前还没用到暂时略其通过一组标准化的消息实现这些消息定义了如何上传下载删除和验证配方从而实现对配方的集中管理和控制是一种用于半导体制造设备和工厂自动化系统之间的通信协议标准由定义该协议主要应用于半导体生产过程允许设备与工厂系统进行数据交换控制和监控帮助实现生产的自动化和智能化管理定义了设备和主控系统之间的数据传输协议有两个版本使用串行通信方式进行设备数据的传输适用于数据量较小实时性要求不高的环境采用基于的网络通信方式适用于数据传输速度要求较高的场合建立在标准之上定义了通用的设备模型包括设备状态报警管理数据收集事件报告远程控制等功能允许主控系统通过一组通用指令来控制设备的操作和数据采集统一了不同设备的控制方式协议的核心功能包括状态管理设备状态例如运行暂停报警等监控与报告数据收集按需或定时收集设备参数和状态数据便于生产分析事件报告设备发生特定事件时自动向主控系统报告报警管理设备报警时通知主控系统帮助及时排查设备故障远程控制主控系统可向设备发送命令实现设备的远程控制与管理的标准是有问必有答主动发送和被动响应协议格式参考文档参考文档视频参考协议全称为是一种高速的消息传输协议而自身只负责连接的控制用于现代半导体设备高效的信息传输承载整个通讯连接的底层基础消息也有人称之为是的替代品协议拥有个状态分别为之所以出现这四种状态是因为是一种基于协议上的高层协议当套字节建立连接后还需要保证两端能互相确认对方能支持协议故会有状态只有的连接才被视为有效可用的连接对于而言发送和接收的均为二进制数据包它的整体长度大小随着消息长度大小而灵活决定的但是的握手过程中没有交换数据包需求它为固定的消息硬件测量的校准算法零点漂移零点漂移指的是设备在没有输入信号时输出不为零的现象这种漂移会影响测量的准确性尤其在低信号测量中更为明显可以通过以下方式进行补偿读取零点反馈值使用零点反馈数据如等来识别零点偏移计算偏移量将零点反馈值作为零点偏移量例如如果设备在没有输入时反馈为理想应为则漂移量为补偿当前测量数据在每次测量时减去这个偏移量使得测量值回归到真实的零点基准例如实际测量值经过零点补偿后的结果为这种零点补偿应在每次测量开始前进行确保每次测量值都基于当前的零点状态增益校正增益校正是一种基于多点校准反馈的校准算法旨在消除设备的增益误差以确保输出值与理想响应线性相关这个算法的核心是计算设备的实际增益与理想增益之间的比率增益误差因子然后对测量值进行调整使其更加准确增益校正算法的原理增益误差发生在设备的输出与输入信号之间的放大比率不符合设计的理想比率时假设理想情况下输入信号和输出信号之间的关系为其中是测量输出值是理想的增益预期放大倍数是输入信号比如电流电压等然而由于硬件误差等原因实际测量响应会偏离理想值为了校正这一偏差我们引入了增益误差因子用公式表示为获取校准反馈数据通过多点校准测量不同输入点例如等的实际输出计算各点的增益应用增益校正因子用每个输入点的校正因子来调整测量值使校正后的输出尽可能接近理想值多点插值或拟合为了在整个测量范围内进行校准可以对校正因子进行插值或拟合确保增益校正平滑地覆盖整个测量范围而不仅限于已校准的点上',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-01 11:12:02',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://th.bing.com/th/id/OIP.wtmjepfWPBvn26uz7s18dgHaHa?rs=1&amp;pid=ImgDetMain"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">ZEROKO14的个人博客</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 1.05rem;">C#<sup>3</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 1.05rem;">CSS<sup>1</sup></a><a href="/tags/CSharp/" style="font-size: 1.05rem;">CSharp<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.05rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 1.05rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 1.05rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 1.05rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 1.05rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 1.05rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 1.05rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 1.05rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 1.05rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 1.05rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 1.05rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/json/" style="font-size: 1.05rem;">json<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>1</sup></a><a href="/tags/next/" style="font-size: 1.05rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 1.05rem;">ppt<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 1.05rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 1.05rem;">vue<sup>1</sup></a><a href="/tags/xml/" style="font-size: 1.05rem;">xml<sup>1</sup></a><a href="/tags/yaml/" style="font-size: 1.05rem;">yaml<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 1.05rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 1.05rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 1.05rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 1.05rem;">加解密<sup>1</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 1.05rem;">多线程<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">开发<sup>4</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">数学<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.05rem;">数据库<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 1.05rem;">架构<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 1.05rem;">监控<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>1</sup></a><a href="/tags/%E7%AE%A1%E7%90%86/" style="font-size: 1.05rem;">管理<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.05rem;">网络<sup>2</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 1.05rem;">逆向<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">27</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/10/"><span class="card-archive-list-date">十月 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url">技术</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>通信技术</span></a></span></div></div><h1 class="post-title" itemprop="name headline">硬件通信技术</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2021-10-23T14:51:13.000Z" title="发表于 2021-10-23 22:51:13">2021-10-23</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-11-01T03:12:02.967Z" title="更新于 2024-11-01 11:12:02">2024-11-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="硬件通信技术"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为新加坡"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>新加坡</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://che77a38.github.io/posts/%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/"><header><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url">技术</a><a href="/tags/%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/" tabindex="-1" itemprop="url">通信技术</a><h1 id="CrawlerTitle" itemprop="name headline">硬件通信技术</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">ZEROKO14</span><time itemprop="dateCreated datePublished" datetime="2021-10-23T14:51:13.000Z" title="发表于 2021-10-23 22:51:13">2021-10-23</time><time itemprop="dateCreated datePublished" datetime="2024-11-01T03:12:02.967Z" title="更新于 2024-11-01 11:12:02">2024-11-01</time></header><p>盘点常用的硬件通信技术</p>
+<span id="more"></span>
+
+<blockquote>
+<p>硬件通信技术有</p>
+<ol>
+<li>有线通信技术：包括以太网、USB、HDMI、VGA、串口等有线通信接口。</li>
+<li>无线通信技术：包括Wi-Fi、蓝牙、Zigbee、LoRa等无线通信技术。</li>
+<li>射频通信技术：包括RFID、NFC、GPS等射频通信技术。</li>
+<li>光通信技术：包括光纤通信、激光通信等光通信技术。</li>
+<li>传感器技术：包括温度传感器、湿度传感器、加速度传感器等传感器技术。</li>
+</ol>
+</blockquote>
+<h1 id="USB通信技术"><a href="#USB通信技术" class="headerlink" title="USB通信技术"></a>USB通信技术</h1><p>在Windows上，最早用VB语言开发，后来由于C++的发展，采用MFC开发，近几年，微软发布了基于.NET框架的面向对象语言C#，更加稳定安全，再配合微软强大的VS进行开发，效率奇高；</p>
+<p>另外，如果想要在Linux上跨平台运行，可以选用Qt；如果想要更加丰富好看的数据显示界面，可以选用Labview开发；</p>
+<blockquote>
+<p>在C#中，可以使用.NET Framework提供的SerialPort类来进行SerialPort类来进行串口通信，通过该类可以实现与USB串口设备的通信。另外，也可以使用第三方库（如HidLibrary、UsbLibrary等）来简化USB通信的操作。这些库提供了更高级别的接口和封装，使得USB通信更加方便和易用。</p>
+<p>C++中，可以使用操作系统提供的USB库（如libusb）或者第三方库（如WinUSB、libusb-win32等）来进行USB通信。通过这些库，可以实现USB设备的枚举、数据传输和控制等操作。开发者需要编写相应的代码来配置USB设备、发送和接收数据等。</p>
+<p>USB是一种通用的、高速的、双向的串行总线标准，用于连接计算机和外部设备。USB接口支持多种设备类型（如存储设备、打印机、键盘、鼠标等）和高速数据传输，具有热插拔、即插即用等特点。USB通信是基于主从设备的通信模式，通过USB协议栈进行通信。</p>
+<p>传统的串口通信技术（如RS-232串口）是一种较老的串行通信接口标准，通常用于连接计算机和外部设备。RS-232串口通信速度较低，通常用于较简单的数据传输和控制应用。RS-232通信是基于点对点的通信模式，通过串口通信协议（如UART）进行通信。</p>
+</blockquote>
+<p>通信流程如下:</p>
+<ol>
+<li>打开USB设备</li>
+<li>发送数据</li>
+<li>接受数据</li>
+<li>关闭USB设备</li>
+</ol>
+<p>根据USB规范的规定,所有USB设别都有供应商ID(VID)和产品识别码(PID),主机通过不同的VID和PID来区别不同的设备</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Kconnie/p/4675156.html">附一个使用C#获取USB设备信息的代码</a></p>
+<h2 id="如何查看设别的VID和PID"><a href="#如何查看设别的VID和PID" class="headerlink" title="如何查看设别的VID和PID"></a>如何查看设别的VID和PID</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202404101430715.png" alt="img"></p>
+<p>windows是通过设备接口类的GUID来区分设备是什么类型的</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jhqin/article/details/6775321">常用设备接口类GUID参考</a></p>
+<p>比如</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HID：         <span class="string">&quot;&#123;4D1E55B2-F16F-11CF-88CB-001111000030&#125;&quot;</span>;</span><br><span class="line">USB_DEVICE：  <span class="string">&quot;&#123;A5DCBF10-6530-11D2-901F-00C04FB951ED&#125;&quot;</span>;</span><br><span class="line">COMPORT：     <span class="string">&quot;&#123;86E0D1E0-8089-11D0-9CE4-08003E301F73&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>根据设备接口类的GUID&#x3D;&gt;获取对应的设备列表&#x3D;&gt;再通过VID和GUID去设备列表中匹配对应的设备&#x3D;&gt;获取设备的路径&#x3D;&gt;通过路径打开设备进行通信</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Microsoft.Win32.SafeHandles;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Diagnostics;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Runtime.InteropServices;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">namespace</span> <span class="title">TPCL.USB</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">UsbDevice</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="meta">#<span class="keyword">region</span> MyRegion</span></span><br><span class="line">        <span class="keyword">private</span> FileStream DeviceIo = <span class="literal">null</span>; <span class="comment">//异步IO流</span></span><br><span class="line">        <span class="keyword">private</span> <span class="built_in">bool</span> is_open = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">private</span> IntPtr device = <span class="keyword">new</span> IntPtr(<span class="number">-1</span>);</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">const</span> <span class="built_in">int</span> MAX_USB_DEVICES = <span class="number">64</span>;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> IntPtr INVALID_HANDLE_VALUE = <span class="keyword">new</span> IntPtr(<span class="number">-1</span>);</span><br><span class="line">        <span class="comment">//常用设备接口类GUID</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">const</span> <span class="built_in">string</span> HidGuid = <span class="string">&quot;&#123;4D1E55B2-F16F-11CF-88CB-001111000030&#125;&quot;</span>;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">const</span> <span class="built_in">string</span> UsbDevGuid = <span class="string">&quot;&#123;A5DCBF10-6530-11D2-901F-00C04FB951ED&#125;&quot;</span>;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">const</span> <span class="built_in">string</span> UsbComPort = <span class="string">&quot;&#123;86E0D1E0-8089-11D0-9CE4-08003E301F73&#125;&quot;</span>;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">GetAllUsbDevice</span>(<span class="params"><span class="keyword">ref</span> List&lt;<span class="built_in">string</span>&gt; UsbDeviceList</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            UsbDeviceList.Clear();</span><br><span class="line">            Guid guid = Guid.Parse(UsbDevGuid);</span><br><span class="line">            IntPtr deviceInfoSet = SetupDiGetClassDevs(<span class="keyword">ref</span> guid, <span class="number">0</span>, IntPtr.Zero, DIGCF.DIGCF_PRESENT | DIGCF.DIGCF_DEVICEINTERFACE);</span><br><span class="line">            <span class="keyword">if</span> (deviceInfoSet != IntPtr.Zero)</span><br><span class="line">            &#123;</span><br><span class="line">                SP_DEVICE_INTERFACE_DATA interfaceInfo = <span class="keyword">new</span> SP_DEVICE_INTERFACE_DATA();</span><br><span class="line">                interfaceInfo.cbSize = Marshal.SizeOf(interfaceInfo);</span><br><span class="line">                <span class="keyword">for</span> (<span class="built_in">uint</span> index = <span class="number">0</span>; index &lt; <span class="number">64</span>; index++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (SetupDiEnumDeviceInterfaces(deviceInfoSet, IntPtr.Zero, <span class="keyword">ref</span> guid, index, <span class="keyword">ref</span> interfaceInfo))</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="comment">// 取得接口详细信息:第一次读取错误,但可以取得信息缓冲区的大小</span></span><br><span class="line">                        <span class="built_in">int</span> buffsize = <span class="number">0</span>;</span><br><span class="line">                        SetupDiGetDeviceInterfaceDetail(deviceInfoSet, <span class="keyword">ref</span> interfaceInfo, IntPtr.Zero, buffsize, <span class="keyword">ref</span> buffsize, <span class="literal">null</span>);</span><br><span class="line">                        <span class="comment">//构建接收缓冲</span></span><br><span class="line">                        IntPtr pDetail = Marshal.AllocHGlobal(buffsize);</span><br><span class="line">                        SP_DEVICE_INTERFACE_DETAIL_DATA detail = <span class="keyword">new</span> SP_DEVICE_INTERFACE_DETAIL_DATA();</span><br><span class="line">                        <span class="comment">//detail.cbSize = Marshal.SizeOf(typeof(SP_DEVICE_INTERFACE_DETAIL_DATA));</span></span><br><span class="line">                        <span class="keyword">if</span> (IntPtr.Size == <span class="number">8</span>)</span><br><span class="line">                            detail.cbSize = <span class="number">8</span>;  <span class="comment">// for 64 bit operating systems</span></span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                            detail.cbSize = <span class="number">4</span> + Marshal.SystemDefaultCharSize; <span class="comment">// for 32 bit operating systems</span></span><br><span class="line">                        Marshal.StructureToPtr(detail, pDetail, <span class="literal">false</span>);</span><br><span class="line">                        <span class="keyword">if</span> (SetupDiGetDeviceInterfaceDetail(deviceInfoSet, <span class="keyword">ref</span> interfaceInfo, pDetail, buffsize, <span class="keyword">ref</span> buffsize, <span class="literal">null</span>))</span><br><span class="line">                        &#123;</span><br><span class="line">                            UsbDeviceList.Add(Marshal.PtrToStringAuto((IntPtr)((<span class="built_in">int</span>)pDetail + <span class="number">4</span>)));</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="comment">//</span></span><br><span class="line">                        Marshal.FreeHGlobal(pDetail);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            SetupDiDestroyDeviceInfoList(deviceInfoSet);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">OpenUsbDevice</span>(<span class="params">UInt16 vID, UInt16 pID</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            List&lt;<span class="built_in">string</span>&gt; deviceList = <span class="keyword">new</span> List&lt;<span class="built_in">string</span>&gt;();</span><br><span class="line">            GetAllUsbDevice(<span class="keyword">ref</span> deviceList);</span><br><span class="line">            <span class="keyword">if</span> (deviceList.Count == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> </span><br><span class="line">            <span class="built_in">string</span> VID = <span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0:X4&#125;&quot;</span>, vID);</span><br><span class="line">            <span class="built_in">string</span> PID = <span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0:X4&#125;&quot;</span>, pID);</span><br><span class="line"> </span><br><span class="line">            <span class="keyword">foreach</span> (<span class="built_in">string</span> item <span class="keyword">in</span> deviceList)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (item.ToLower().Contains(VID.ToLower()) &amp;&amp; item.ToLower().Contains(PID.ToLower())) <span class="comment">//指定设备</span></span><br><span class="line">                &#123;</span><br><span class="line">                    Debug.WriteLine(item);</span><br><span class="line">                    <span class="keyword">if</span> (is_open == <span class="literal">false</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        device = CreateFile(item, DESIREDACCESS.GENERIC_READ | DESIREDACCESS.GENERIC_WRITE,</span><br><span class="line">                                        <span class="number">0</span>, <span class="number">0</span>, CREATIONDISPOSITION.OPEN_EXISTING, <span class="number">0x40000000</span>, <span class="number">0</span>);</span><br><span class="line"> </span><br><span class="line">                        <span class="keyword">if</span> (device != INVALID_HANDLE_VALUE)</span><br><span class="line">                        &#123;</span><br><span class="line">                            Debug.WriteLine(<span class="string">&quot;open&quot;</span>);</span><br><span class="line">                            DeviceIo = <span class="keyword">new</span> FileStream(<span class="keyword">new</span> SafeFileHandle(device, <span class="literal">false</span>), FileAccess.ReadWrite,<span class="number">40</span>,<span class="literal">true</span>);</span><br><span class="line">                            <span class="comment">//DeviceIo = new FileStream(new SafeFileHandle(device, false), FileAccess.ReadWrite);</span></span><br><span class="line">                            <span class="keyword">this</span>.is_open = <span class="literal">true</span>;</span><br><span class="line">                            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                        CloseHandle(device);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CloseDevice</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (is_open == <span class="literal">true</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                is_open = <span class="literal">false</span>;</span><br><span class="line">                DeviceIo.Close();</span><br><span class="line">                CloseHandle(device);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Send</span>(<span class="params"><span class="built_in">string</span> dataString</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (DeviceIo == <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                Debug.WriteLine(<span class="string">&quot;USB Device not open&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">byte</span>[] data = Encoding.GetEncoding(<span class="string">&quot;GBK&quot;</span>).GetBytes(dataString); <span class="comment">//打印机支持GBK中文</span></span><br><span class="line">                                                                            <span class="comment">// byte[] data = System.Text.Encoding.ASCII.GetBytes(dataString);</span></span><br><span class="line">            DeviceIo.Write(data, <span class="number">0</span>, data.Length);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Read</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//DeviceIo.Read</span></span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">GetDeviceState</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> is_open;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"> </span><br><span class="line">        <span class="meta">#<span class="keyword">region</span> Win32_api</span></span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">enum</span> DIGCF</span><br><span class="line">        &#123;</span><br><span class="line">            DIGCF_DEFAULT = <span class="number">0x00000001</span>,         <span class="comment">//只返回与系统默认设备相关的设备。</span></span><br><span class="line">            DIGCF_PRESENT = <span class="number">0x00000002</span>,         <span class="comment">//只返回当前存在的设备。</span></span><br><span class="line">            DIGCF_ALLCLASSES = <span class="number">0x00000004</span>,      <span class="comment">//返回所有已安装的设备。如果这个标志设置了，ClassGuid参数将被忽略</span></span><br><span class="line">            DIGCF_PROFILE = <span class="number">0x00000008</span>,         <span class="comment">//只返回当前硬件配置文件中的设备。</span></span><br><span class="line">            DIGCF_DEVICEINTERFACE = <span class="number">0x00000010</span>  <span class="comment">//返回所有支持的设备。</span></span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 接口数据定义</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">struct</span> SP_DEVICE_INTERFACE_DATA</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">public</span> <span class="built_in">int</span> cbSize;</span><br><span class="line">            <span class="keyword">public</span> Guid interfaceClassGuid;</span><br><span class="line">            <span class="keyword">public</span> <span class="built_in">int</span> flags;</span><br><span class="line">            <span class="keyword">public</span> <span class="built_in">int</span> reserved;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 定义设备实例，该实例是设备信息集的成员</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SP_DEVINFO_DATA</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">public</span> <span class="built_in">int</span> cbSize = Marshal.SizeOf(<span class="keyword">typeof</span>(SP_DEVINFO_DATA));</span><br><span class="line">            <span class="keyword">public</span> Guid classGuid = Guid.Empty; <span class="comment">// temp</span></span><br><span class="line">            <span class="keyword">public</span> <span class="built_in">int</span> devInst = <span class="number">0</span>; <span class="comment">// dumy</span></span><br><span class="line">            <span class="keyword">public</span> <span class="built_in">int</span> reserved = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">internal</span> <span class="keyword">struct</span> SP_DEVICE_INTERFACE_DETAIL_DATA</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">internal</span> <span class="built_in">int</span> cbSize;</span><br><span class="line">            <span class="keyword">internal</span> <span class="built_in">short</span> devicePath;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 获取USB-HID设备的设备接口类GUID，即&#123;4D1E55B2-F16F-11CF-88CB-001111000030&#125;</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;HidGuid&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        [<span class="meta">DllImport(<span class="string">&quot;hid.dll&quot;</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keyword">void</span> <span class="title">HidD_GetHidGuid</span>(<span class="params"><span class="keyword">ref</span> Guid HidGuid</span>)</span>;</span><br><span class="line"> </span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 获取对应GUID的设备信息集(句柄)</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;ClassGuid&quot;&gt;</span>设备设置类或设备接口类的guid<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;Enumerator&quot;&gt;</span>指向以空结尾的字符串的指针，该字符串提供PNP枚举器或PNP设备实例标识符的名称<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;HwndParent&quot;&gt;</span>用于用户界面的顶级窗口的句柄<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;Flags&quot;&gt;</span>一个变量，指定用于筛选添加到设备信息集中的设备信息元素的控制选项。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>设备信息集的句柄<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">        [<span class="meta">DllImport(<span class="string">&quot;setupapi.dll&quot;</span>, SetLastError = true)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">extern</span> IntPtr <span class="title">SetupDiGetClassDevs</span>(<span class="params"><span class="keyword">ref</span> Guid ClassGuid, <span class="built_in">uint</span> Enumerator, IntPtr HwndParent, DIGCF Flags</span>)</span>;</span><br><span class="line"> </span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 根据句柄，枚举设备信息集中包含的设备接口。</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;deviceInfoSet&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;deviceInfoData&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;interfaceClassGuid&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;memberIndex&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;deviceInterfaceData&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">        [<span class="meta">DllImport(<span class="string">&quot;setupapi.dll&quot;</span>, CharSet = CharSet.Auto, SetLastError = true)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">extern</span> Boolean <span class="title">SetupDiEnumDeviceInterfaces</span>(<span class="params">IntPtr deviceInfoSet, IntPtr deviceInfoData, <span class="keyword">ref</span> Guid interfaceClassGuid, UInt32 memberIndex, <span class="keyword">ref</span> SP_DEVICE_INTERFACE_DATA deviceInterfaceData</span>)</span>;</span><br><span class="line"> </span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 获取接口详细信息，在第一次主要是读取缓存信息,第二次获取详细信息(必须调用两次)</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;deviceInfoSet&quot;&gt;</span>指向设备信息集的指针，它包含了所要接收信息的接口。该句柄通常由SetupDiGetClassDevs函数返回。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;deviceInterfaceData&quot;&gt;</span>返回数据<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;deviceInterfaceDetailData&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;deviceInterfaceDetailDataSize&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;requiredSize&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;deviceInfoData&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">        [<span class="meta">DllImport(<span class="string">&quot;setupapi.dll&quot;</span>, SetLastError = true, CharSet = CharSet.Auto)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="built_in">bool</span> <span class="title">SetupDiGetDeviceInterfaceDetail</span>(<span class="params">IntPtr deviceInfoSet, <span class="keyword">ref</span> SP_DEVICE_INTERFACE_DATA deviceInterfaceData, IntPtr deviceInterfaceDetailData, <span class="built_in">int</span> deviceInterfaceDetailDataSize, <span class="keyword">ref</span> <span class="built_in">int</span> requiredSize, SP_DEVINFO_DATA deviceInfoData</span>)</span>;</span><br><span class="line"> </span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 删除设备信息并释放内存。</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;HIDInfoSet&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">        [<span class="meta">DllImport(<span class="string">&quot;setupapi.dll&quot;</span>, CharSet = CharSet.Auto, SetLastError = true)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">extern</span> Boolean <span class="title">SetupDiDestroyDeviceInfoList</span>(<span class="params">IntPtr deviceInfoSet</span>)</span>;</span><br><span class="line">        <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"> </span><br><span class="line">        <span class="meta">#<span class="keyword">region</span> Open_Device</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 访问权限</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">DESIREDACCESS</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">uint</span> GENERIC_READ = <span class="number">0x80000000</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">uint</span> GENERIC_WRITE = <span class="number">0x40000000</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">uint</span> GENERIC_EXECUTE = <span class="number">0x20000000</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">uint</span> GENERIC_ALL = <span class="number">0x10000000</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 如何创建</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">CREATIONDISPOSITION</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">uint</span> CREATE_NEW = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">uint</span> CREATE_ALWAYS = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">uint</span> OPEN_EXISTING = <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">uint</span> OPEN_ALWAYS = <span class="number">4</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">uint</span> TRUNCATE_EXISTING = <span class="number">5</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> </span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;lpFileName&quot;&gt;</span>普通文件名或设备文件名<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;desiredAccess&quot;&gt;</span>访问模式（写/读） GENERIC_READ、GENERIC_WRITE <span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;shareMode&quot;&gt;</span>共享模式<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;securityAttributes&quot;&gt;</span>指向安全属性的指针<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;creationDisposition&quot;&gt;</span>如何创建<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;flagsAndAttributes&quot;&gt;</span>文件属性<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;templateFile&quot;&gt;</span>用于复制文件句柄<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">        [<span class="meta">DllImport(<span class="string">&quot;kernel32.dll&quot;</span>, SetLastError = true)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">extern</span> IntPtr <span class="title">CreateFile</span>(<span class="params"><span class="built_in">string</span> lpFileName, <span class="built_in">uint</span> desiredAccess, <span class="built_in">uint</span> shareMode, <span class="built_in">uint</span> securityAttributes, <span class="built_in">uint</span> creationDisposition, <span class="built_in">uint</span> flagsAndAttributes, <span class="built_in">uint</span> templateFile</span>)</span>;</span><br><span class="line"> </span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 关闭</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;hObject&quot;&gt;</span>Handle to an open object<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">        [<span class="meta">DllImport(<span class="string">&quot;kernel32.dll&quot;</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="built_in">int</span> <span class="title">CloseHandle</span>(<span class="params">IntPtr hObject</span>)</span>;</span><br><span class="line"> </span><br><span class="line">        <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="串口通信"><a href="#串口通信" class="headerlink" title="串口通信"></a>串口通信</h1><p><strong>串口通信</strong>通过串行端口（Serial Port）进行数据传输的一种通信方式。串口通信技术通常用于连接计算机与外部设备（如传感器、打印机、嵌入式系统等）进行数据交换和控制。常见的串口通信标准包括RS-232、RS-485、UART等。串口通信技术在工业控制、嵌入式系统、通信设备等领域广泛应用。</p>
+<ol>
+<li>RS-232：RS-232是一种串行通信标准，定义了信号电平、数据格式、控制信号等规范。在编程接口上，RS-232通常需要使用特定的串行通信库或驱动程序来进行数据传输和控制。常见的RS-232编程接口包括使用C语言的串口编程库（如termios库）、Python的pySerial库等。</li>
+<li>RS-485：RS-485也是一种串行通信标准，与RS-232相比，RS-485支持多点通信和远距离传输。在编程接口上，RS-485通常需要使用特定的串口通信库或驱动程序来进行数据传输和控制。常见的RS-485编程接口包括使用Modbus协议库、专门的RS-485通信库等。 </li>
+<li>UART：UART（Universal Asynchronous Receiver&#x2F;Transmitter）是一种硬件接口，用于串行数据通信。在编程接口上，UART通常需要通过操作系统提供的串口通信接口或者相关的串口编程库来进行数据传输和控制。常见的UART编程接口包括Linux系统的串口编程接口、Windows系统的串口通信API等。</li>
+</ol>
+<blockquote>
+<p>在实际应用中，RS-232、RS-485和UART这三种通信协议各有其适用的场景和优势，没有一种是绝对广泛应用的。但从整体来看，UART通信协议可能是最广泛应用的一种。因为UART是一种通用的串行通信协议，几乎所有的微控制器、传感器、通信模块等设备都支持UART通信。在嵌入式系统、传感器网络、物联网等领域，UART通信协议被广泛应用。 RS-232和RS-485通信协议在工业控制、通信设备、自动化系统等领域也有广泛的应用，特别是在需要远距离传输、抗干扰能力强的场景下，RS-485通常比RS-232更受青睐。</p>
+</blockquote>
+<p>真正开发中似乎无需关心串行通信的标准是哪一种</p>
+<ul>
+<li>C&#x2F;C++可以直接使用系统API来操作串口通信(直接不需要关心具体的协议),或者可以使用第三方库如Boost.Asio、libserial等来简化串口通信的编程过程</li>
+<li>C#中，可以使用.NET Framework提供的SerialPort类来实现串口通信，同样不关心具体的协议</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://www.bilibili.com/video/BV1y34y147s5/" alt="理解原理视频参考|720x360"></p>
+<p>使用上述通信接口开发都需要设置<a href="#%E9%87%8D%E8%A6%81%E5%8F%82%E6%95%B0">如下项</a></p>
+<p>windows查看串口情况命令 <code>mode</code>  只会显示空闲的串口,被打开的串口将不会显示</p>
+<h2 id="重要参数"><a href="#重要参数" class="headerlink" title="重要参数"></a>重要参数</h2><ol>
+<li>串口名称（Port Name）：指定要打开的串口设备的名称，如”COM1”、”COM2”等。 </li>
+<li>波特率（Baud Rate）：指定串口通信的波特率，即数据传输速率，常见的波特率有9600、115200等。 </li>
+<li>数据位（Data Bits）：指定每个数据字节的位数，通常为8位。 </li>
+<li>停止位（Stop Bits）：指定每个数据帧的停止位数，通常为1位或2位。 </li>
+<li>校验位（Parity）：指定用于检测数据传输中错误的校验位，常见的校验方式有无校验、奇校验、偶校验等。</li>
+</ol>
+<p>除了以上基本参数外，还可以根据需要传入其他参数来配置串口通信，如流控制（Flow Control）、超时设置（Timeouts）、缓冲区大小等。</p>
+<ol>
+<li>流控制(Flow Control):用于控制数据传输的速度,常见取值为硬件流控制(如RTS&#x2F;CTS)或软件流控制(如XON&#x2F;XOFF)</li>
+<li>丢弃空字符(DiscardNull):指定是否丢弃接收到的空(null)字符。如果设置为true,接收到的空字符将被丢弃而不会传递给应用程序</li>
+<li>启用DTR信号(DtrEnable):用于启用或禁用数据终端就绪(DTR)信号。DTR信号通常用于指示设备是否准备好进行通信</li>
+<li>握手方式(Handshake):指定数据传输时使用的握手协议。常见的握手协议包括无握手、软件握手、硬件握手等,用于控制数据传输的流程</li>
+<li>替换奇偶校验(ParityReplace):指定在接收到奇偶校验错误时应如何处理。通常可以设置为替换错误的奇偶校验位,以确保数据的正确性</li>
+<li>超时设置(Timeouts):指定连接、读取、写入数据的超时时间。</li>
+<li>缓冲区大小(Buffer Size):指定输入和输出缓冲区的大小,以影响串口通信的性能。</li>
+</ol>
+<h2 id="位时间计算"><a href="#位时间计算" class="headerlink" title="位时间计算"></a>位时间计算</h2><p>位时间（bit time）是指在串行通信中传输一个位所需的时间，它的具体值取决于通信的波特率（baud rate）</p>
+<p>一个位时间的时间间隔可以用下面公式计算:<br>$$<br>\text{一个位时间的时间间隔(秒)}&#x3D;\frac{1}{\text{波特率(波特)}}<br>$$<br>如9600波特率的24位时间为:<br>$$<br>\frac{24}{9600}\approx0.0025秒<br>$$</p>
+<h2 id="串口通信开发"><a href="#串口通信开发" class="headerlink" title="串口通信开发"></a>串口通信开发</h2><p>以CSharp为例</p>
+<p>在.NET Framework 2.0中提供了 SerialPort 类，该类主要实现串口数据通信等。</p>
+<h3 id="SerialPort类"><a href="#SerialPort类" class="headerlink" title="SerialPort类"></a>SerialPort类</h3><h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BaseStream</td>
+<td>获取 SerialPort 对象的基础 Stream 对象</td>
+</tr>
+<tr>
+<td>BaudRate</td>
+<td>获取或设置串行波特率</td>
+</tr>
+<tr>
+<td>BreakState</td>
+<td>获取或设置中断信号状态</td>
+</tr>
+<tr>
+<td>BytesToRead</td>
+<td>获取接收缓冲区中数据的字节数</td>
+</tr>
+<tr>
+<td>BytesToWrite</td>
+<td>获取发送缓冲区中数据的字节数</td>
+</tr>
+<tr>
+<td>CDHolding</td>
+<td>获取端口的载波检测行的状态</td>
+</tr>
+<tr>
+<td>CtsHolding</td>
+<td>获取“可以发送”行的状态</td>
+</tr>
+<tr>
+<td>DataBits</td>
+<td>获取或设置每个字节的标准数据位长度</td>
+</tr>
+<tr>
+<td>DiscardNull</td>
+<td>获取或设置一个值，该值指示 Null 字节在端口和接收缓冲区之间传输时是否被忽略</td>
+</tr>
+<tr>
+<td>DsrHolding</td>
+<td>获取数据设置就绪 (DSR) 信号的状态</td>
+</tr>
+<tr>
+<td>DtrEnable</td>
+<td>获取或设置一个值，该值在串行通信过程中启用数据终端就绪 (DTR) 信号</td>
+</tr>
+<tr>
+<td>Encoding</td>
+<td>获取或设置传输前后文本转换的字节编码</td>
+</tr>
+<tr>
+<td>Handshake</td>
+<td>获取或设置串行端口数据传输的握手协议</td>
+</tr>
+<tr>
+<td>IsOpen</td>
+<td>获取一个值，该值指示 SerialPort 对象的打开或关闭状态</td>
+</tr>
+<tr>
+<td>NewLine</td>
+<td>获取或设置用于解释 ReadLine( )和 WriteLine( )方法调用结束的值</td>
+</tr>
+<tr>
+<td>Parity</td>
+<td>获取或设置奇偶校验检查协议</td>
+</tr>
+<tr>
+<td>ParityReplace</td>
+<td>获取或设置一个字节，该字节在发生奇偶校验错误时替换数据流中的无效字节</td>
+</tr>
+<tr>
+<td>PortName</td>
+<td>获取或设置通信端口，包括但不限于所有可用的 COM 端口</td>
+</tr>
+<tr>
+<td>ReadBufferSize</td>
+<td>获取或设置 SerialPort 输入缓冲区的大小</td>
+</tr>
+<tr>
+<td>ReadTimeout</td>
+<td>获取或设置读取操作未完成时发生超时之前的毫秒数</td>
+</tr>
+<tr>
+<td>ReceivedBytesThreshold</td>
+<td>获取或设置 DataReceived 事件发生前内部输入缓冲区中的字节数</td>
+</tr>
+<tr>
+<td>RtsEnable</td>
+<td>获取或设置一个值，该值指示在串行通信中是否启用请求发送 (RTS) 信号</td>
+</tr>
+<tr>
+<td>StopBits</td>
+<td>获取或设置每个字节的标准停止位数</td>
+</tr>
+<tr>
+<td>WriteBufferSize</td>
+<td>获取或设置串行端口输出缓冲区的大小</td>
+</tr>
+<tr>
+<td>WriteTimeout</td>
+<td>获取或设置写入操作未完成时发生超时之前的毫秒数</td>
+</tr>
+</tbody></table>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>注意:下面事件绑定的回调方法都是在非UI线程中执行的</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DataReceived</td>
+<td>当串口接收到数据时引发此事件。可以通过该事件处理程序读取接收到的数据。</td>
+</tr>
+<tr>
+<td>PinChanged</td>
+<td>当串口的控制信号引脚状态发生变化时引发此事件。可以用于监控 RTS、CTS 等引脚的状态。</td>
+</tr>
+<tr>
+<td>ErrorReceived</td>
+<td>当串口出现错误（例如，溢出错误）时引发此事件。可以在事件处理程序中处理错误信息。</td>
+</tr>
+<tr>
+<td>Disposed</td>
+<td>当 <code>SerialPort</code> 对象被释放时引发此事件。可以用于清理资源。</td>
+</tr>
+</tbody></table>
+<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Close</td>
+<td>关闭端口连接，将 IsOpen 属性设置为 False，并释放内部 Stream 对象</td>
+</tr>
+<tr>
+<td>Open</td>
+<td>打开一个新的串行端口连接</td>
+</tr>
+<tr>
+<td>Read</td>
+<td>从 SerialPort 输入缓冲区中读取</td>
+</tr>
+<tr>
+<td>ReadByte</td>
+<td>从 SerialPort 输入缓冲区中同步读取一个字节</td>
+</tr>
+<tr>
+<td>ReadChar</td>
+<td>从 SerialPort 输入缓冲区中同步读取一个字符</td>
+</tr>
+<tr>
+<td>ReadLine</td>
+<td>一直读取到输入缓冲区中的 NewLine 值</td>
+</tr>
+<tr>
+<td>ReadTo</td>
+<td>一直读取到输入缓冲区中指定 value 的字符串</td>
+</tr>
+<tr>
+<td>ReadExisting</td>
+<td>读到马上可用的字节</td>
+</tr>
+<tr>
+<td>Write</td>
+<td>已重载。将数据写入串行端口输出缓冲区</td>
+</tr>
+<tr>
+<td>WriteLine</td>
+<td>将指定的字符串和 NewLine 值写入输出缓冲区</td>
+</tr>
+</tbody></table>
+<h4 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h4><p><code>SerialPort</code> 类中的 <code>BaseStream</code> 属性表示底层的流对象，该流对象提供对串口端口的低级别访问。通过 <code>BaseStream</code>，可以使用更多的流方法，包括异步方法，如 <code>ReadAsync</code> 和 <code>WriteAsync</code>，这些方法不在 <code>SerialPort</code> 类本身中直接提供。</p>
+<p>使用 <code>BaseStream</code> 进行异步操作的优点包括：</p>
+<ol>
+<li><strong>非阻塞操作</strong>：异步方法不会阻塞调用线程，可以提高应用程序的响应速度。</li>
+<li><strong>更细粒度的控制</strong>：可以利用 <code>Stream</code> 类提供的所有功能，包括异步读写操作。</li>
+</ol>
+<p>在 <code>SerialPort</code> 类中使用 <code>BaseStream</code> 和异步方法来处理异步串口通信，是一种更现代和高效的编程方式。</p>
+<p>核心代码(确保读取完全)</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> bytesRead = <span class="number">0</span>; </span><br><span class="line"><span class="keyword">while</span> (bytesRead &lt; result.Length)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">int</span> read = <span class="keyword">await</span> serialPort.BaseStream.ReadAsync(result, bytesRead, result.Length - bytesRead);</span><br><span class="line">                    <span class="keyword">if</span> (read == <span class="number">0</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="comment">// No more data available</span></span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    bytesRead += read;</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
+
+<p>事件驱动读取</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">DataReceivedHandler</span>(<span class="params"><span class="built_in">object</span> sender, SerialDataReceivedEventArgs e</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    serialport.DataReceived -= DataReceivedHandler; <span class="comment">// 暂时取消事件处理程序，以防止重入</span></span><br><span class="line">    receiveActive = <span class="literal">true</span>; <span class="comment">// 标记接收活动状态</span></span><br><span class="line">    SerialPort serialPort = (SerialPort)sender; <span class="comment">// 获取触发事件的串口对象</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (bytesToRead == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        serialPort.DiscardInBuffer(); <span class="comment">// 如果没有要读取的字节，丢弃输入缓冲区中的数据</span></span><br><span class="line">        receiveActive = <span class="literal">false</span>; <span class="comment">// 标记接收活动结束</span></span><br><span class="line">        serialport.DataReceived += DataReceivedHandler; <span class="comment">// 重新添加事件处理程序</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    readBuffer = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">256</span>]; <span class="comment">// 初始化读取缓冲区</span></span><br><span class="line">    <span class="built_in">int</span> num = <span class="number">0</span>; <span class="comment">// 已读取的字节数</span></span><br><span class="line">    <span class="built_in">int</span> num2 = <span class="number">0</span>; <span class="comment">// 当前读取位置</span></span><br><span class="line">    DateTime now = DateTime.Now; <span class="comment">// 当前时间</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            now = DateTime.Now; <span class="comment">// 更新当前时间</span></span><br><span class="line">            <span class="keyword">while</span> (serialPort.BytesToRead == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                Thread.Sleep(<span class="number">10</span>); <span class="comment">// 如果没有数据可读，等待10毫秒</span></span><br><span class="line">                <span class="keyword">if</span> (DateTime.Now.Ticks - now.Ticks &gt; <span class="number">20000000</span>) <span class="comment">// 超时检查</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            num = serialPort.BytesToRead; <span class="comment">// 获取可读取的字节数</span></span><br><span class="line">            <span class="built_in">byte</span>[] array = <span class="keyword">new</span> <span class="built_in">byte</span>[num]; <span class="comment">// 创建临时缓冲区</span></span><br><span class="line">            serialPort.Read(array, <span class="number">0</span>, num); <span class="comment">// 从串口读取数据到临时缓冲区</span></span><br><span class="line">            Array.Copy(array, <span class="number">0</span>, readBuffer, num2, (num2 + array.Length &lt;= bytesToRead) ? array.Length : (bytesToRead - num2)); <span class="comment">// 将数据复制到读取缓冲区</span></span><br><span class="line">            num2 += array.Length; <span class="comment">// 更新已读取的字节数</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 处理读取过程中可能发生的异常</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (bytesToRead &gt; num2 &amp;&amp; !(DetectValidModbusFrame(readBuffer, (num2 &lt; readBuffer.Length) ? num2 : readBuffer.Length) | (bytesToRead &lt;= num2)) &amp;&amp; DateTime.Now.Ticks - now.Ticks &lt; <span class="number">20000000</span>); <span class="comment">// 循环读取直到满足条件</span></span><br><span class="line"></span><br><span class="line">    receiveData = <span class="keyword">new</span> <span class="built_in">byte</span>[num2]; <span class="comment">// 初始化接收数据缓冲区</span></span><br><span class="line">    Array.Copy(readBuffer, <span class="number">0</span>, receiveData, <span class="number">0</span>, (num2 &lt; readBuffer.Length) ? num2 : readBuffer.Length); <span class="comment">// 将读取的数据复制到接收数据缓冲区</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (debug)</span><br><span class="line">    &#123;</span><br><span class="line">        StoreLogData.Instance.Store(<span class="string">&quot;Received Serial-Data: &quot;</span> + BitConverter.ToString(readBuffer), DateTime.Now); <span class="comment">// 如果启用调试，记录接收到的数据</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    bytesToRead = <span class="number">0</span>; <span class="comment">// 重置要读取的字节数</span></span><br><span class="line">    dataReceived = <span class="literal">true</span>; <span class="comment">// 标记数据已接收</span></span><br><span class="line">    receiveActive = <span class="literal">false</span>; <span class="comment">// 标记接收活动结束</span></span><br><span class="line">    serialport.DataReceived += DataReceivedHandler; <span class="comment">// 重新添加事件处理程序</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.ReceiveDataChanged != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>.ReceiveDataChanged(<span class="keyword">this</span>); <span class="comment">// 触发接收数据更改事件</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>事件处理程序的移除和重新添加：</p>
+<ul>
+<li><code>serialport.DataReceived -= DataReceivedHandler;</code>：在处理数据接收时，暂时移除事件处理程序以防止重入。</li>
+<li><code>serialport.DataReceived += DataReceivedHandler;</code>：在处理完数据后，重新添加事件处理程序。</li>
+</ul>
+<p>接收数据的初始化：</p>
+<ul>
+<li><code>readBuffer = new byte[256];</code>：初始化读取缓冲区。</li>
+<li><code>int num = 0; 和 int num2 = 0;</code>：初始化已读取的字节数和当前读取位置。</li>
+</ul>
+<p>数据读取循环：</p>
+<ul>
+<li><code>while (serialPort.BytesToRead == 0)</code>：如果没有数据可读，等待10毫秒。</li>
+<li><code>num = serialPort.BytesToRead;</code>：获取可读取的字节数。</li>
+<li><code>serialPort.Read(array, 0, num);</code>：从串口读取数据到临时缓冲区。</li>
+<li><code>Array.Copy(array, 0, readBuffer, num2, (num2 + array.Length &lt;= bytesToRead) ? array.Length : (bytesToRead - num2));</code>：将数据复制到读取缓冲区。</li>
+</ul>
+<p>数据接收完成后的处理：</p>
+<ul>
+<li><code>receiveData = new byte[num2];</code>：初始化接收数据缓冲区。</li>
+<li><code>Array.Copy(readBuffer, 0, receiveData, 0, (num2 &lt; readBuffer.Length) ? num2 : readBuffer.Length);</code>：将读取的数据复制到接收数据缓冲区。</li>
+<li><code>if (debug) &#123; StoreLogData.Instance.Store(&quot;Received Serial-Data: &quot; + BitConverter.ToString(readBuffer), DateTime.Now); &#125;</code>：如果启用调试，记录接收到的数据。</li>
+<li><code>bytesToRead = 0;</code>：重置要读取的字节数。</li>
+<li><code>dataReceived = true;</code>：标记数据已接收。</li>
+<li><code>receiveActive = false;</code>：标记接收活动结束。</li>
+<li><code>if (this.ReceiveDataChanged != null) &#123; this.ReceiveDataChanged(this); &#125;</code>：触发接收数据更改事件。</li>
+</ul>
+<blockquote>
+<p>在串口通信中，即使在事件处理方法中，有时仍需要使用循环来确保数据的完整接收。这主要是因为串口通信的特点和数据到达的不确定性。</p>
+<p><strong>原因解释</strong></p>
+<ol>
+<li><strong>数据到达的不确定性</strong>：<ul>
+<li>串口数据是以字节流的形式异步到达的，具体到达的时间和数量可能不确定。</li>
+<li>即使触发了数据接收事件，可能只接收到部分数据，需要循环等待和读取后续到达的数据。</li>
+</ul>
+</li>
+<li><strong>处理连续数据帧</strong>：<ul>
+<li>有时需要从串口接收连续的数据帧，这意味着一次接收事件可能无法完全获取一个完整的数据帧。</li>
+<li>循环读取可以确保在处理事件时获取完整的数据帧。</li>
+</ul>
+</li>
+<li><strong>缓冲区处理</strong>：<ul>
+<li>串口接收缓冲区可能在一次事件中未能完全处理，循环读取可以确保缓冲区中的所有数据都被读取和处理。</li>
+</ul>
+</li>
+</ol>
+<p><strong>动机说明</strong></p>
+<ul>
+<li><strong>事件驱动</strong>  &#x3D;&#x3D;使得&#x3D;&#x3D;&gt;  没有数据传输的情况下不需要一直检测串口状态</li>
+<li><strong>事件驱动中循环接受</strong>  &#x3D;&#x3D;使得&#x3D;&#x3D;&gt;   每次事件驱动触发后充分接受完全,至少接收完一个数据帧</li>
+</ul>
+</blockquote>
+<h3 id="下位机与上位机间串口通信"><a href="#下位机与上位机间串口通信" class="headerlink" title="下位机与上位机间串口通信"></a>下位机与上位机间串口通信</h3><p>处理思想:</p>
+<p>一般情况下，当下位机高速发送应答数据时，串口接收到的数据不会是一个完整应答数据，而是多个应答数据的混合集，因此当你以单一应答数据来解析收到的数据时往往会发现应答数据格式不正确，在界面上的表现就是“没有收到数据”。</p>
+<p>另外把收到的原始字节数组解析为程序能读懂的数据也是一项费时费力的事情，因此会出现“高速收，低速埋”的矛盾。但是，如果只让串口执行“收”，而辅助线程执行“埋”，那么就有效的解决了这个矛盾，即使下位机发的速度再高，系统也能抗得住。</p>
+<p>为了实现这个思想,可以有如下设计:</p>
+<ol>
+<li>数据接收与处理分离</li>
+</ol>
+<ul>
+<li><strong>串口接收线程</strong>：专责监听串口，并将接收到的数据累积在一个共享的缓冲区中。这个线程只负责数据的接收，不做任何处理，以保证数据能够尽快从串口被读取出来，避免丢失数据。</li>
+<li><strong>数据处理线程</strong>：负责从共享缓冲区读取数据，并进行解析和处理。处理完的数据可以进一步用于更新UI、存储或进行其他操作。</li>
+</ul>
+<ol start="2">
+<li>线程安全的共享缓冲区</li>
+</ol>
+<p>因为数据接收和处理是由不同的线程并发执行的，共享缓冲区必须是线程安全的。可以使用锁（如C#中的<code>lock</code>语句）来同步对缓冲区的访问，或者使用线程安全的集合（如<code>ConcurrentQueue&lt;T&gt;</code>）来自动管理同步。</p>
+<ol start="3">
+<li>数据的边界识别与完整性保证</li>
+</ol>
+<p>由于接收到的数据可能是多个应答数据的混合集，数据处理线程需要能够正确识别每个独立应答数据的边界。这通常需要根据具体的应答数据格式来设计解析算法，例如，通过特定的起始字节、结束字节、长度字段或校验和来识别和验证数据的完整性。</p>
+<h4 id="开发步骤概述"><a href="#开发步骤概述" class="headerlink" title="开发步骤概述"></a>开发步骤概述</h4><ol>
+<li><strong>设计共享缓冲区</strong>：选择或实现一个线程安全的数据结构来作为共享缓冲区，用于存储从串口接收到的原始数据。</li>
+<li><strong>实现串口接收线程</strong>：<ul>
+<li>连续监听串口。</li>
+<li>将接收到的数据追加到共享缓冲区。</li>
+<li>使用最小的处理，确保高效接收。</li>
+</ul>
+</li>
+<li><strong>实现数据处理线程</strong>：<ul>
+<li>循环从共享缓冲区读取数据。</li>
+<li>识别和提取完整的应答数据。</li>
+<li>对每个完整应答数据进行解析和处理。</li>
+</ul>
+</li>
+<li><strong>同步机制</strong>：确保对共享缓冲区的访问是线程安全的，可以通过锁或线程安全的集合来实现。</li>
+<li><strong>错误处理与异常管理</strong>：添加必要的错误处理和异常管理机制，以确保系统的鲁棒性。</li>
+</ol>
+<p>采用这种多线程的设计方案，可以有效地解决接收和处理速度不匹配的问题，提高系统对高速串口数据流的处理能力。</p>
+<p> 统一数据读取：所有数据读取都通过事件驱动进行，然后将数据存储到一个线程安全的容器中。手动读取时从该容器中取数据。并且使用 ConcurrentQueue 确保多线程环境下的数据安全</p>
+<h1 id="ModBUS"><a href="#ModBUS" class="headerlink" title="ModBUS"></a>ModBUS</h1><p>​    Modbus协议是一种用于工业控制的网络通讯协议，可以片面的理解为，Modbus协议一种机器与机器之间进行数据、信息传递的一种格式规范。<br>​    Modbus协议还遵循主从协议，支持单主机，多从机，最多支持247个从机设备。并且，在同一个通信线路上只会有一个主机，所有的通讯过程全部由主机主动发起，从机接收到主机请求后，会对请求做出响应。从机不会主动进行数据的发送，从机之间也不会有通讯过程。</p>
+<blockquote>
+<p><strong>通俗一点来说</strong>：<br>主机从机之间想要实现通讯，需要将主机与从机进行连接，然后再进行数据传输。而连接方式有上述4种方式，连接实现之后，主机与从机之间就可以进行数据传输了。而它们传输的数据内容，均按照Modbus协议规定的格式进行转换。这样，就保证了能够让同一个主机与不同功能、不同厂家的设备之间进行准确的通讯。</p>
+</blockquote>
+<p>优势:</p>
+<ul>
+<li>标准、开放、免费</li>
+<li>支持多种电器接口，如串行接口RS-232、RS-485等，还可以在各种介质上传递，如：光纤、无线等</li>
+<li>Modbus的帧格式简单、紧凑、通俗易懂。用户使用简单，厂商开发简单。</li>
+</ul>
+<h2 id="格式分类"><a href="#格式分类" class="headerlink" title="格式分类"></a>格式分类</h2><p>MODBUS通信协议的三种格式</p>
+<ul>
+<li>MODBUS TCP&#x2F;IP</li>
+<li>Modbus UDP&#x2F;IP</li>
+<li>MODBUS RTU   工业领域中用得最多的</li>
+<li>MODBUS ASCII</li>
+</ul>
+<p>上述三种其实就是硬件接口以及传输数据方式的不同</p>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>在Modbus协议中，从机（Slave）属于服务端（Server），而主机（Master）属于客户端（Client）。这是因为在Modbus通信中，主机负责发起请求并控制通信过程，而从机则负责响应请求并提供数据。主机通过发送请求帧给从机，从机接收并处理请求，然后返回响应帧给主机。</p>
+</blockquote>
+<h3 id="MODBUS-TCP-IP"><a href="#MODBUS-TCP-IP" class="headerlink" title="MODBUS TCP&#x2F;IP"></a>MODBUS TCP&#x2F;IP</h3><p>基于以太网的一种通讯方式，它将Modbus协议封装在TCP&#x2F;IP协议栈中，通过以太网传输数据。具有高速、稳定的特点。</p>
+<p>传输的是TCP码,使用的接口是以太网口</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407191624405.png" alt="image-20240719162356207" style="zoom: 50%;" />
+
+<ul>
+<li>ACK（acknowledgement 确认）</li>
+<li>PSH（push传送）</li>
+<li>FIN（finish结束）</li>
+<li>RST（reset重置）</li>
+<li>URG（urgent紧急）</li>
+<li>SYN（synchronous建立联机）</li>
+<li>Sequence Number（顺序号码）</li>
+<li>Acknowledge Number（确认号码）</li>
+</ul>
+<p>主要用于做网络通讯</p>
+<h3 id="Modbus-UDP-IP"><a href="#Modbus-UDP-IP" class="headerlink" title="Modbus UDP&#x2F;IP"></a>Modbus UDP&#x2F;IP</h3><p>基于UDP&#x2F;IP协议的一种通讯方式。与Modbus TCP&#x2F;IP不同，Modbus UDP&#x2F;IP采用无连接的通讯方式，不保证数据的可靠性和顺序。相比于Modbus TCP&#x2F;IP，Modbus UDP&#x2F;IP的通讯开销较小，可以减少网络负载。</p>
+<h3 id="MODBUS-RTU"><a href="#MODBUS-RTU" class="headerlink" title="MODBUS RTU"></a>MODBUS RTU</h3><p>使用串口通讯协议，Modbus RTU使用二进制格式进行数据传输，通讯效率更高，可读性较差</p>
+<p>直接传输的是二进制的数字</p>
+<p>用的是RS232或者是RS485&#x2F;422等接口,主要是做串口通信</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407191624700.png" alt="image-20240719162444529"  />
+
+<h3 id="MODBUS-ASCII"><a href="#MODBUS-ASCII" class="headerlink" title="MODBUS ASCII"></a>MODBUS ASCII</h3><p>可读性好，但通讯效率更低</p>
+<p>接口与MODBUS RTU一样,主要是做串口通信,只不过传递的是二进制的ASCII码</p>
+<h2 id="协议格式"><a href="#协议格式" class="headerlink" title="协议格式"></a>协议格式</h2><p>通用modbus帧:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407191639905.png" alt="image-20240719163938621"></p>
+<p>无论哪一种Modbus协议版本的帧格式都是一样的</p>
+<ul>
+<li><strong>地址域</strong>：主机要访问的从机的地址</li>
+<li><strong>功能码</strong>：主机对从机实现的操作，功能码有很多，不同的功能码也对应操作不同类型的寄存器。比如：0x01读线圈、0x03读保持寄存器、0x06写单个寄存器、0x10写多个寄存器等。（更多功能码见<a href="#Modbus%E5%8A%9F%E8%83%BD%E7%A0%81%E5%88%97%E8%A1%A8">下方Modbus功能码列表</a>）</li>
+<li>数据：根据功能的不同，以及传输的数据为请求数据还是响应数据的不同，会有不同的内容。（详见<a href="#%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84%E8%A7%A3%E6%9E%90">报文结构解析</a>）</li>
+<li>差错校验：为保障传输数据的准确性，modbus会进行差错校验，如Modbus CRC16校验等。详情请自行了解。</li>
+</ul>
+<p>Modbus将采用<strong>大端字节序传输报文</strong>，比如一个16位数据0x55AA，先传输高字节0x55，再传输低字节0xAA。</p>
+<p>Modbus将数据抽象成四张表</p>
+<table>
+<thead>
+<tr>
+<th>主表</th>
+<th>对象类型</th>
+<th>读写属性</th>
+<th>描述</th>
+<th>读功能码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>离散输入寄存器（Discrete Input Registers）</td>
+<td>单个位数据</td>
+<td>只读</td>
+<td>这些寄存器包含<strong>只读</strong>的布尔值，通常用于表示输入状态，如开关或传感器状态</td>
+<td>0x02</td>
+</tr>
+<tr>
+<td>线圈寄存器（Coil Registers）</td>
+<td>单个位数据</td>
+<td>可读可写</td>
+<td>这些寄存器包含<strong>可读写</strong>的布尔值，通常用于控制输出设备，如开关或继电器</td>
+<td>0x01</td>
+</tr>
+<tr>
+<td>输入寄存器（Input Registers）</td>
+<td>16位数据</td>
+<td>只读</td>
+<td>这些寄存器包含<strong>只读</strong>的16位数据，通常用于表示输入数据，如传感器数据</td>
+<td>0x04</td>
+</tr>
+<tr>
+<td>保持寄存器（Holding Registers）</td>
+<td>16位数据</td>
+<td>可读可写</td>
+<td>这些寄存器包含<strong>可读写</strong>的16位数据，通常用于存储和控制数据，如设备配置或控制参数</td>
+<td>0x03</td>
+</tr>
+</tbody></table>
+<p>左边第一列的名字不用关心,属于历史遗留问题,因为modbus协议原本是Modicon公司针对其PLC产品开发的协议,与其特殊的工业PLC控制编程有很大关系,对于使用modbus进行应用开发并不需要关心</p>
+<blockquote>
+<p>这四个表本质上就是将应用数据规划为离散位开关量，以及寄存器变量，其中线圈与保持寄存器表为可读可写，其他两个表为只读。这个四个表中将应用数据都利用寄存器地址进行索引。地址范围为0x0000-0xFFFF。<strong>需要理解的是，这里的地址与芯片的地址空间完全是两个概念，把它简单理解成modbus可以索引0x0000-0xFFFF这么多个用户应用16位数据即可。其中有的可能是开关量，有的可能利用两个连续寄存器对应用户的浮点数，字符串等等，都有可能</strong></p>
+<p>一般的应用而言，单个位开关量通信效率不免低下，现在很多产品开发已很少使用。其实对于这样的离散量也完全可以直接放在输入寄存器表以及保持寄存器表中。modbus对于用户应用并没有严格的规定。用户可以自由进行寄存器地址(或叫索引) 映射</p>
+</blockquote>
+<h3 id="Modbus功能码列表"><a href="#Modbus功能码列表" class="headerlink" title="Modbus功能码列表"></a>Modbus功能码列表</h3><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">功能码</td>
+<td align="center">解释翻译</td>
+<td align="center">作用</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">0x01</td>
+<td align="center">Read Coils</td>
+<td align="center">读线圈状态</td>
+<td>读取远程设备中1到2000个<strong>连续的</strong>线圈的状态</td>
+</tr>
+<tr>
+<td align="center">0x02</td>
+<td align="center">Read Discrete Inputs</td>
+<td align="center">读离散输入状态</td>
+<td>读取远程设备中1到2000个<strong>连续的</strong>离散输入的状态</td>
+</tr>
+<tr>
+<td align="center">0x03</td>
+<td align="center">Read Holding Registers</td>
+<td align="center">读保持寄存器内容</td>
+<td>读取远程设备中1到125个<strong>连续的</strong>保持寄存器的内容</td>
+</tr>
+<tr>
+<td align="center">0x04</td>
+<td align="center">Read Input Registers</td>
+<td align="center">读输入寄存器内容</td>
+<td>读取远程设备中1到125个<strong>连续的</strong>输入寄存器的内容</td>
+</tr>
+<tr>
+<td align="center">0x05</td>
+<td align="center">Write Single Coil</td>
+<td align="center">写单个线圈</td>
+<td>在远程设备中把单个线圈状态改变为打开或关闭的状态</td>
+</tr>
+<tr>
+<td align="center">0x06</td>
+<td align="center">Write Single Register</td>
+<td align="center">写单个保持寄存器</td>
+<td>在远程设备中写入单个保持寄存器</td>
+</tr>
+<tr>
+<td align="center">0x07</td>
+<td align="center">Read Exception Status (Serial Line only)</td>
+<td align="center">读取异常状态（仅限串行线路）</td>
+<td>读取远程设备中八个异常状态输出的内容</td>
+</tr>
+<tr>
+<td align="center">0x08</td>
+<td align="center">Diagnostics (Serial Line only)</td>
+<td align="center">通信系统诊断（仅限串行线路）</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">0x0B</td>
+<td align="center">Get Comm Event Counter (Serial Line only)</td>
+<td align="center">获取通讯事件计数器（仅限串行线路）</td>
+<td>从远程设备的通信事件计数器获取状态字和事件计数</td>
+</tr>
+<tr>
+<td align="center">0x0C</td>
+<td align="center">Get Comm Event Log (Serial Line only)</td>
+<td align="center">获取通讯事件日志（仅限串行线路）</td>
+<td>从远程设备获取状态字、事件计数、消息计数和事件字节字段</td>
+</tr>
+<tr>
+<td align="center">0x0F</td>
+<td align="center">Write Multiple Coils</td>
+<td align="center">写多个线圈</td>
+<td>强制远程设备中线圈序列中的每个线圈接通或断开</td>
+</tr>
+<tr>
+<td align="center">0x10</td>
+<td align="center">Write Multiple registers</td>
+<td align="center">写多个保持寄存器</td>
+<td>在远程设备中写入连续寄存器块</td>
+</tr>
+<tr>
+<td align="center">0x11</td>
+<td align="center">Report Slave ID (Serial Line only)</td>
+<td align="center">报导从机信息（仅限串行线路）</td>
+<td>读取远程设备特有的类型、当前状态和其他信息的说明。数据内容特定于每种类型的设备</td>
+</tr>
+<tr>
+<td align="center">0x14</td>
+<td align="center">Read File Record</td>
+<td align="center">读取文件记录</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">0x15</td>
+<td align="center">Write File Record</td>
+<td align="center">写文件记录</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">0x16</td>
+<td align="center">Mask Write Register</td>
+<td align="center">带屏蔽字写入寄存器</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">0x17</td>
+<td align="center">Read&#x2F;Write Multiple registers</td>
+<td align="center">读、写多个寄存器</td>
+<td>执行一次连续写和连续读，写入操作在读取之前执行</td>
+</tr>
+<tr>
+<td align="center">0x18</td>
+<td align="center">Read FIFO Queue</td>
+<td align="center">读取先进先出队列</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">0x2B</td>
+<td align="center">Encapsulated Interface Transport</td>
+<td align="center">封装接口传输</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="报文结构解析-Modbus-RTU版本"><a href="#报文结构解析-Modbus-RTU版本" class="headerlink" title="报文结构解析(Modbus RTU版本)"></a>报文结构解析(Modbus RTU版本)</h3><p><a target="_blank" rel="noopener" href="https://www.23bei.com/tool/59.html">CRC16在线校验工具</a></p>
+<p>[[算法#CRC16|CRC16算法参考]]</p>
+<p>下面使用最常用的Modbus RTU版本、使用Modbus CRC16校验的保持寄存器（Holding registers）做演示，解析其三个常用功能0x03读、0x06写单个、0x10写的报文结构</p>
+<h4 id="0x03请求应答方式"><a href="#0x03请求应答方式" class="headerlink" title="0x03请求应答方式"></a>0x03请求应答方式</h4><p><strong>主机请求</strong></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407221138492.png" style="zoom:67%;" />
+
+<p>示例：<code>01 03 00 01 00 0A 94 0D</code></p>
+<p>含义：从机设备地址（01）+功能码（03）+起始寄存器完整地址（00 01）+要读取的寄存器个数（00 0A）+CRC16校验码（94 0D）</p>
+<p>解析：从地址为1的从机读取寄存器块内容，寄存器开始地址为1，连续读取10个寄存器，即读取地址为1到10的寄存器块。</p>
+<p><strong>从机应答</strong></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407221139929.png" style="zoom:67%;" />
+
+<p>示例：<code>01 06 27 11 00 01 12 BB</code></p>
+<p>含义：从机设备地址（01）+功能码（06）+寄存器完整地址（27 11）+成功写入的数据（00 01）+CRC16校验码（12 BB）</p>
+<p>解析：在地址为1的从机，地址为10001的寄存器中，成功写入数据1。如果06功能写入成功的话，请求码和响应码会是一样的。</p>
+<h4 id="0x10请求应答方式"><a href="#0x10请求应答方式" class="headerlink" title="0x10请求应答方式"></a>0x10请求应答方式</h4><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407221144065.png" style="zoom:67%;" />
+
+<p>示例：<code>01 10 4E 21 00 03 06 00 01 00 11 00 08 BB 05</code></p>
+<p>含义：从机设备地址（01）+功能码（10）+起始寄存器地址（4E 21）+写入的寄存器个数（00 03）+数据字节数（00 06）+数据内容（00 01、00 11、00 08）+CRC16校验码（BB 05）</p>
+<p>解析：在地址为1的从机中，向起始地址为20001的连续3个寄存器，分别写入1、17、8，字节数6个。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202407221144148.png" style="zoom:67%;" />
+
+<p>示例：<code>01 10 4E 21 00 03 C7 2A</code></p>
+<p>含义：从机设备地址（01）+功能码（10）起始寄存器地址（4E 21）+写入的寄存器个数（00 03）+CRC16校验码（C7 2A）</p>
+<p>解析：在地址为1的从机，起始地址为20001的连续3个寄存器中（20001、20002、20003），写入数值。</p>
+<h1 id="通信库盘点"><a href="#通信库盘点" class="headerlink" title="通信库盘点"></a>通信库盘点</h1><h2 id="尝试编写modbus-RTU通信库"><a href="#尝试编写modbus-RTU通信库" class="headerlink" title="尝试编写modbus RTU通信库"></a>尝试编写modbus RTU通信库</h2><p>核心代码以一个回环验证来演示</p>
+<ul>
+<li>重试机制</li>
+<li>超时机制</li>
+<li>循环堵塞读取</li>
+<li>起始从机号验证</li>
+<li>crc循环冗余验证</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">ConnectCheck</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">byte</span>[] LoopTestCmd = <span class="keyword">new</span> <span class="built_in">byte</span>[] &#123; <span class="number">0x01</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x1f</span>, <span class="number">0x34</span>, <span class="number">0xe9</span>, <span class="number">0xec</span> &#125;; <span class="comment">// 环路检查</span></span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">int</span> maxRetries = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">int</span> retryCount = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    serialport.ReadTimeout = connectTimeout;</span><br><span class="line">    serialport.WriteTimeout = connectTimeout;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (retryCount &lt; maxRetries)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            App.DebugWriteLine(<span class="string">$&quot;开始<span class="subst">&#123;retryCount&#125;</span>次回环测试&quot;</span>);</span><br><span class="line">            serialport.Write(LoopTestCmd, <span class="number">0</span>, LoopTestCmd.Length);</span><br><span class="line"></span><br><span class="line">            <span class="built_in">byte</span>[] receivedBytes = <span class="keyword">new</span> <span class="built_in">byte</span>[LoopTestCmd.Length];</span><br><span class="line">            <span class="built_in">int</span> bytesRead = <span class="number">0</span>;</span><br><span class="line">            DateTime timeoutTime = DateTime.Now.AddMilliseconds(connectTimeout);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="built_in">bool</span> firstLoop = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">while</span> (bytesRead &lt; receivedBytes.Length &amp;&amp; DateTime.Now &lt; timeoutTime)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">int</span> read = serialport.Read(receivedBytes, bytesRead, receivedBytes.Length - bytesRead);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (read &gt; <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    bytesRead += read;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (firstLoop)</span><br><span class="line">                    &#123;</span><br><span class="line">                        firstLoop = <span class="literal">false</span>;</span><br><span class="line">                        <span class="comment">// 确定第一个是从机号</span></span><br><span class="line">                        <span class="built_in">int</span> index = <span class="number">0</span>;</span><br><span class="line">                        <span class="keyword">while</span> (index &lt; bytesRead &amp;&amp; receivedBytes[index] != unitIdentifier)</span><br><span class="line">                        &#123;</span><br><span class="line">                            index++;</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span> (index &lt; bytesRead)</span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="comment">// 去除从机号之前的数</span></span><br><span class="line">                            Array.Copy(receivedBytes, index, receivedBytes, <span class="number">0</span>, bytesRead - index);</span><br><span class="line">                            bytesRead -= index;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="comment">// 如果没有找到从机号，重置bytesRead</span></span><br><span class="line">                            bytesRead = <span class="number">0</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            App.DebugWriteLine(<span class="string">$&quot;<span class="subst">&#123;retryCount&#125;</span>次读到数据为:&quot;</span> + BitConverter.ToString(receivedBytes));</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (bytesRead == receivedBytes.Length)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">byte</span>[] receivedCrc = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line">                Array.Copy(receivedBytes, receivedBytes.Length - <span class="number">2</span>, receivedCrc, <span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">                <span class="built_in">byte</span>[] calculatedCrc = BitConverter.GetBytes(calculateCRC(receivedBytes, (<span class="built_in">ushort</span>)(receivedBytes.Length - <span class="number">2</span>), <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (receivedCrc.SequenceEqual(calculatedCrc) &amp;&amp; receivedBytes.Take(LoopTestCmd.Length).SequenceEqual(LoopTestCmd))</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 连接成功</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (TimeoutException)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 超时处理</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.WriteLine(<span class="string">$&quot;Error: <span class="subst">&#123;ex.Message&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        retryCount++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (serialport.IsOpen)</span><br><span class="line">    &#123;</span><br><span class="line">        serialport.Close();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 连接失败</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="easyModbus"><a href="#easyModbus" class="headerlink" title="easyModbus"></a>easyModbus</h2><p>支持自动重连,异步读写等高级特性</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/rossmann-engineering/EasyModbusTCP.NET">easyModbus</a></p>
+<p>使用案例:</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建 Modbus RTU 客户端实例</span></span><br><span class="line">        ModbusClient modbusClient = <span class="keyword">new</span> ModbusClient(<span class="string">&quot;COM3&quot;</span>);</span><br><span class="line">        modbusClient.Baudrate = <span class="number">19200</span>;</span><br><span class="line">        modbusClient.Parity = Parity.None;</span><br><span class="line">        modbusClient.StopBits = StopBits.One;</span><br><span class="line">        modbusClient.ConnectionTimeout = <span class="number">500</span>;</span><br><span class="line">        modbusClient.UnitIdentifier = <span class="number">1</span>; <span class="comment">// 设置从机地址为1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 打开串行端口</span></span><br><span class="line">            modbusClient.Connect();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 读取从站的线圈状态</span></span><br><span class="line">                <span class="built_in">int</span>[] request = <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; <span class="number">0x0108</span>, <span class="number">0x0000</span>, <span class="number">0x1F34</span>, <span class="number">0xE9EC</span> &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                <span class="comment">// 读取从站的响应</span></span><br><span class="line">                List&lt;<span class="built_in">int</span>&gt; response = modbusClient.ReadHoldingRegisters(<span class="number">0</span>, <span class="number">4</span>).ToList();</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 打印响应结果</span></span><br><span class="line">                Console.WriteLine(<span class="string">&quot;从站响应:&quot;</span>);</span><br><span class="line">                <span class="keyword">foreach</span> (<span class="built_in">int</span> b <span class="keyword">in</span> response)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">byte</span> highByte = (<span class="built_in">byte</span>)(b &gt;&gt; <span class="number">8</span>); <span class="comment">// 高字节</span></span><br><span class="line">                    <span class="built_in">byte</span> lowByte = (<span class="built_in">byte</span>)(b &amp; <span class="number">0xFF</span>); <span class="comment">// 低字节</span></span><br><span class="line"></span><br><span class="line">                    Console.Write(highByte.ToString(<span class="string">&quot;X2&quot;</span>) + <span class="string">&quot; &quot;</span> + lowByte.ToString(<span class="string">&quot;X2&quot;</span>) + <span class="string">&quot; &quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                Console.WriteLine();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Error: <span class="subst">&#123;ex.Message&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">finally</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 关闭串行端口</span></span><br><span class="line">            modbusClient.Disconnect();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="SerialPortStream"><a href="#SerialPortStream" class="headerlink" title="SerialPortStream"></a>SerialPortStream</h2><p><strong>串口通信库</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jcurl/RJCP.DLL.SerialPortStream">SerialPortStream开源地址  </a></p>
+<p>其通过多种机制来确保读取到完整的数据，这些机制包括内部缓冲区管理、超时处理和设备错误检查</p>
+<p><code>SerialPortStream</code> 类是 <code>RJCP.IO.Ports</code> 命名空间下的一个 .NET 库，用于提供串行端口通信的功能。它对 Microsoft 的 <code>SerialPort</code> 类进行了重新实现，旨在解决一些在 .NET 4.0 及更早版本中存在的问题。这个类提供了一种<strong>流（<code>Stream</code>）的方式来处理串行数据的读写</strong>。</p>
+<p>关于如何确定读取操作完成，<code>SerialPortStream</code> 类使用了几种机制来确保数据可以被完整读取：</p>
+<ol>
+<li><strong>缓冲机制</strong>：<code>SerialPortStream</code> 内部使用缓冲区（<code>SerialBuffer</code>）来存储从串行端口读取的数据。这意味着即使数据还没有完全从硬件接收完毕，它也会被暂存在缓冲区内。</li>
+<li><strong>超时设置</strong>：类中提供了 <code>ReadTimeout</code> 和 <code>WriteTimeout</code> 属性来设置读写操作的超时时间。如果操作在超时时间内没有完成，将会抛出异常或返回错误。</li>
+<li><strong>事件驱动</strong>：<code>SerialPortStream</code> 使用事件（如 <code>DataReceived</code>）来通知应用程序有数据到达或发生错误。这允许应用程序在数据到达时立即响应，而不是等待特定数量的数据或超时。</li>
+<li><strong>读取方法</strong>：<code>SerialPortStream</code> 提供了多种读取方法，例如 <code>Read</code>, <code>ReadLine</code>, <code>ReadTo</code> 等，这些方法可以读取字节、字符或直到特定字符串。特别是 <code>ReadTo</code> 方法，它能够读取直到输入缓冲区中出现特定的文本，这有助于读取基于特定分隔符的数据。</li>
+<li><strong>状态监控</strong>：通过监控串行端口的状态，<code>SerialPortStream</code> 可以在适当的时机进行读取操作。例如，它可以检查硬件缓冲区的状态，或者等待特定的硬件事件（如 CTS 信号）。</li>
+<li><strong>错误处理</strong>：<code>SerialPortStream</code> 在读取过程中会检查设备错误，如果发现设备已断开或发生错误，将会抛出异常。</li>
+</ol>
+<h3 id="开源使用要求"><a href="#开源使用要求" class="headerlink" title="开源使用要求"></a>开源使用要求</h3><p>对于RJCP SerialPortStream项目采用的微软公用许可证（MS-PL），根据该许可证的规定，您使用这个库时通常是需要在您的项目中声明许可证信息的。</p>
+<p>根据MS-PL许可证的要求，您需要在派生作品（包括商业软件）的源代码中保留原始许可证文本，并提供对应的版权声明、免责声明等信息。具体的声明内容和位置可以参考许可证文档中的要求。</p>
+<p>因此，为了遵守MS-PL许可证的要求和最佳实践，建议您在使用RJCP SerialPortStream时，在您的项目文档、Readme文件或其他相关介绍中提供适当的许可证声明和鸣谢。这样可以向其他人清楚地传达您使用了RJCP SerialPortStream库，并表达对原作者的感谢与尊重。</p>
+<h2 id="NModbus"><a href="#NModbus" class="headerlink" title="NModbus"></a>NModbus</h2><p>主要是支持跨平台和crc校验</p>
+<p>MIT开源</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/NModbus/NModbus">开源地址</a></p>
+<h1 id="WINIO库"><a href="#WINIO库" class="headerlink" title="WINIO库"></a>WINIO库</h1><p>WinIO是一个专为Windows设计的低级I&#x2F;O接口库，它允许程序员直接对硬件进行端口级访问，实现高速数据传输和控制。该库通常用于系统开发和驱动编写，尽管它能提供更高的效率，但也带来了复杂性和潜在风险。WinIO的功能包括端口I&#x2F;O操作、内存映射I&#x2F;O、中断处理、系统调用拦截等，并强调使用时的安全性和兼容性。它主要服务于需要底层硬件交互的应用程序开发，如系统工具、调试器和驱动程序等</p>
+<p><a target="_blank" rel="noopener" href="https://gitcode.com/open-source-toolkit/66394/overview">开源地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.softpedia.com/get/Programming/Components-Libraries/WinIo.shtml">也可以在此处下载</a></p>
+<p>正常的Windows访问硬件的方式: <code>应用程序 -&gt; Windows API -&gt; 设备驱动 -&gt; 硬件</code></p>
+<p>WinIO库的访问方式: <code>应用程序 -&gt; WinIO -&gt; 硬件</code></p>
+<p>这种直接访问的场景通常用在:</p>
+<ul>
+<li>工控卡:比如采集卡在特定物理地址映射了其寄存器</li>
+<li>工业设备:设备可能在固定的I&#x2F;O端口提供数据</li>
+<li>特殊硬件:需要直接读写物理内存或I&#x2F;O端口的设备</li>
+</ul>
+<p>优点:响应速度快,没有系统调用开销可以实现一些操作系统不支持的特殊功能</p>
+<p>缺点:不安全,可能会破坏系统需要管理员权限,兼容性差</p>
+<p>WinIO提供了<a href="#I/O%E7%AB%AF%E5%8F%A3%E4%B8%8E%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84I/O">两种方式访问硬件</a>:</p>
+<ul>
+<li><p>直接访问物理内存</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将物理地址0xd8000映射到程序可以访问的内存空间</span></span><br><span class="line">pbLinAddr = <span class="built_in">MapPhysToLin</span>((PBYTE)<span class="number">0xd8000</span>, <span class="number">65536</span>, &amp;hPhysicalMemory);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 之后可以直接读写这段内存</span></span><br><span class="line">pbLinAddr[<span class="number">0</span>] = <span class="number">1</span>;    <span class="comment">// 写入数据</span></span><br><span class="line">value = pbLinAddr[<span class="number">0</span>]; <span class="comment">// 读取数据</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接访问I&#x2F;O端口</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DWORD value;</span><br><span class="line"><span class="comment">// 直接读取端口0x378的值</span></span><br><span class="line"><span class="built_in">GetPortVal</span>(<span class="number">0x378</span>, &amp;value, <span class="number">1</span>);  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接向端口0x378写入数据</span></span><br><span class="line"><span class="built_in">SetPortVal</span>(<span class="number">0x378</span>, <span class="number">0x55</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>此库使用需要加载驱动程序,因此需要管理员权限以及可能需要驱动签名(win32位不需要)</p>
+<h2 id="获取管理员权限"><a href="#获取管理员权限" class="headerlink" title="获取管理员权限"></a>获取管理员权限</h2><p>WinIo 需要管理权限才能正常运行。这可以通过以下方式实现：</p>
+<h3 id="使用服务加载驱动"><a href="#使用服务加载驱动" class="headerlink" title="使用服务加载驱动"></a>使用服务加载驱动</h3><p>从作为 LocalSystem 运行的服务中使用 WinIo（必须显式启用 SE_LOAD_DRIVER_NAME 权限）</p>
+<p>大概步骤</p>
+<ol>
+<li>编写一个以 LocalSystem 帐户运行的服务(通过调用 Windows API（如 AdjustTokenPrivileges）来修改服务进程的权限)，并在服务启动时启用 SE_LOAD_DRIVER_NAME 权限。</li>
+<li>在服务中加载 WinIo 驱动，处理所需的硬件交互。</li>
+<li>在服务的关闭过程中，卸载驱动并释放相关资源。</li>
+</ol>
+<h3 id="使用清单文件"><a href="#使用清单文件" class="headerlink" title="使用清单文件"></a>使用清单文件</h3><p>在请求权限提升的应用程序中嵌入清单文件</p>
+<p>应用程序可以包含一个清单文件（Manifest）来声明所需的权限级别</p>
+<h4 id="自动生成如下"><a href="#自动生成如下" class="headerlink" title="自动生成如下"></a>自动生成如下</h4><ol>
+<li>右键点击项目，选择“属性”。</li>
+<li>在左侧导航栏中，展开“配置属性” -&gt; “链接器” -&gt; “清单文件”。</li>
+<li>将“生成清单”设置为 Yes（生成清单）。</li>
+<li>将“UAC 执行级别”设置为 requireAdministrator，这样程序将要求以管理员身份运行。</li>
+<li>应用更改并重新编译项目。</li>
+</ol>
+<h4 id="手动创建如下"><a href="#手动创建如下" class="headerlink" title="手动创建如下"></a>手动创建如下</h4><ol>
+<li><p>创建一个 .manifest 文件，例如 MyApp.manifest，文件内容如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> standalone=<span class="string">&quot;yes&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">assembly</span> <span class="attr">xmlns</span>=<span class="string">&quot;urn:schemas-microsoft-com:asm.v1&quot;</span> <span class="attr">manifestVersion</span>=<span class="string">&quot;1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">trustInfo</span> <span class="attr">xmlns</span>=<span class="string">&quot;urn:schemas-microsoft-com:asm.v3&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">security</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">requestedPrivileges</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">requestedExecutionLevel</span> <span class="attr">level</span>=<span class="string">&quot;requireAdministrator&quot;</span> <span class="attr">uiAccess</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">requestedPrivileges</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">security</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">trustInfo</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">assembly</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 Manifest 文件添加到项目中。</p>
+</li>
+<li><p>在项目属性中，展开“配置属性” -&gt; “链接器” -&gt; “清单文件”。</p>
+</li>
+<li><p>将“清单输入”设置为“嵌入”，并指定你创建的 .manifest 文件路径。</p>
+</li>
+<li><p>重新编译项目，Manifest 文件将被嵌入应用程序。</p>
+</li>
+</ol>
+<p>用户同意后，应用程序将以管理员权限运行，可以加载 WinIo 驱动。</p>
+<h3 id="提醒用户管理员启动"><a href="#提醒用户管理员启动" class="headerlink" title="提醒用户管理员启动"></a>提醒用户管理员启动</h3><p>要求用户在启动应用程序时选择“以管理员身份运行”选项</p>
+<p>在 Windows 中可以通过检查当前用户是否属于管理员组来确定应用程序是否以管理员权限运行。以下是 C++ 中的代码示例：</p>
+<p><strong>示例代码：检测管理员权限</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;shellapi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">IsRunningAsAdministrator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    BOOL isAdmin = FALSE;</span><br><span class="line">    PSID adminGroup = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Create a SID for the Administrators group.</span></span><br><span class="line">    SID_IDENTIFIER_AUTHORITY ntAuthority = SECURITY_NT_AUTHORITY;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">AllocateAndInitializeSid</span>(</span><br><span class="line">            &amp;ntAuthority,</span><br><span class="line">            <span class="number">2</span>,</span><br><span class="line">            SECURITY_BUILTIN_DOMAIN_RID,</span><br><span class="line">            DOMAIN_ALIAS_RID_ADMINS,</span><br><span class="line">            <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">            &amp;adminGroup)) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Check if the current token is part of the Administrators group.</span></span><br><span class="line">        <span class="built_in">CheckTokenMembership</span>(<span class="literal">NULL</span>, adminGroup, &amp;isAdmin);</span><br><span class="line">        <span class="built_in">FreeSid</span>(adminGroup);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> isAdmin;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">IsRunningAsAdministrator</span>()) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Program is running with administrator privileges.\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Program is not running with administrator privileges.\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="相关函数盘点"><a href="#相关函数盘点" class="headerlink" title="相关函数盘点"></a>相关函数盘点</h2><p>以下是 WinIO API 提供的每个函数的详细介绍：</p>
+<hr>
+<p><strong>InitializeWinIo()</strong></p>
+<p><strong>功能</strong>：初始化 WinIO 库。</p>
+<p><strong>说明</strong>：加载并初始化 WinIO 驱动程序，使其可以被应用程序调用。此函数是 WinIO 操作的起始点，必须在调用其他 WinIO 函数之前调用。</p>
+<p><strong>返回值</strong>：true 表示初始化成功，false 表示失败（可能是由于驱动未正确加载或权限不足）。</p>
+<hr>
+<p><strong>ShutdownWinIo()</strong></p>
+<p><strong>功能</strong>：关闭 WinIO 库并卸载驱动。</p>
+<p><strong>说明</strong>：停止并卸载 WinIO 驱动程序，释放资源。所有使用 WinIO 进行的内存映射或端口操作应在调用此函数之前完成，以确保资源正确释放。</p>
+<p><strong>返回值</strong>：无。</p>
+<hr>
+<p><strong>MapPhysToLin(tagPhysStruct &amp;PhysStruct)</strong></p>
+<p><strong>功能</strong>：将物理内存地址映射到应用程序的虚拟地址空间。</p>
+<p><strong>说明</strong>：此函数接受一个 tagPhysStruct 结构，其中包含物理内存地址和所需的映射大小。函数会将指定的物理地址空间映射为进程可用的线性地址（虚拟地址），便于用户态程序对物理内存直接操作。</p>
+<p><strong>参数</strong>：</p>
+<ul>
+<li>PhysStruct：一个结构体，包含要映射的物理地址和映射区域大小。</li>
+</ul>
+<p><strong>返回值</strong>：返回映射后的虚拟地址（PBYTE），如果失败则返回 nullptr。</p>
+<hr>
+<p><strong>UnmapPhysicalMemory(tagPhysStruct &amp;PhysStruct)</strong></p>
+<p><strong>功能</strong>：取消先前的物理内存到虚拟地址的映射。</p>
+<p><strong>说明</strong>：用于解除物理内存映射关系，释放虚拟内存地址。此函数在不再需要访问物理内存时调用，以清理资源。</p>
+<p><strong>参数</strong>：</p>
+<ul>
+<li>PhysStruct：包含要解除映射的物理地址信息，与 MapPhysToLin 中使用的结构一致。</li>
+</ul>
+<p><strong>返回值</strong>：true 表示成功，false 表示失败。</p>
+<hr>
+<p><strong>GetPhysLong(PBYTE pbPhysAddr, PDWORD pdwPhysVal)</strong></p>
+<p><strong>功能</strong>：读取指定物理地址的 32 位数据。</p>
+<p><strong>说明</strong>：该函数用于从指定的物理内存地址读取一个 32 位的值。适用于需要从特定硬件地址获取状态或配置信息的情况。</p>
+<p><strong>参数</strong>：</p>
+<ul>
+<li>pbPhysAddr：指向要读取数据的物理地址。</li>
+<li>pdwPhysVal：输出参数，用于存储读取到的值。</li>
+</ul>
+<p><strong>返回值</strong>：true 表示读取成功，false 表示失败。</p>
+<hr>
+<p><strong>SetPhysLong(PBYTE pbPhysAddr, DWORD dwPhysVal)</strong></p>
+<p><strong>功能</strong>：向指定物理地址写入 32 位数据。</p>
+<p><strong>说明</strong>：该函数用于将 32 位数据写入指定的物理内存地址，可用于配置或控制硬件设备。</p>
+<p><strong>参数</strong>：</p>
+<ul>
+<li>pbPhysAddr：指向要写入数据的物理地址。</li>
+<li>dwPhysVal：要写入的 32 位数据。</li>
+</ul>
+<p><strong>返回值</strong>：true 表示写入成功，false 表示失败。</p>
+<hr>
+<p><strong>GetPortVal(WORD wPortAddr, PDWORD pdwPortVal, BYTE bSize)</strong></p>
+<p><strong>功能</strong>：读取指定 I&#x2F;O 端口的值。</p>
+<p><strong>说明</strong>：从指定 I&#x2F;O 端口地址读取数据，用于控制与设备的直接通信。bSize 指定要读取的字节数，可以是 1、2 或 4，分别对应 8 位、16 位和 32 位数据。</p>
+<p><strong>参数</strong>：</p>
+<ul>
+<li>wPortAddr：I&#x2F;O 端口地址。</li>
+<li>pdwPortVal：输出参数，用于存储读取到的端口值。</li>
+<li>bSize：要读取的字节数。</li>
+</ul>
+<p><strong>返回值</strong>：true 表示读取成功，false 表示失败。</p>
+<hr>
+<p><strong>SetPortVal(WORD wPortAddr, DWORD dwPortVal, BYTE bSize)</strong></p>
+<p><strong>功能</strong>：向指定 I&#x2F;O 端口写入值。</p>
+<p><strong>说明</strong>：将数据写入指定的 I&#x2F;O 端口地址，用于向硬件设备发送命令或数据。bSize 指定要写入的字节数（1、2 或 4 字节）。</p>
+<p><strong>参数</strong>：</p>
+<ul>
+<li>wPortAddr：I&#x2F;O 端口地址。</li>
+<li>dwPortVal：要写入的值。</li>
+<li>bSize：要写入的字节数。</li>
+</ul>
+<p><strong>返回值</strong>：true 表示写入成功，false 表示失败。</p>
+<hr>
+<p><strong>InstallWinIoDriver(PWSTR pszWinIoDriverPath, bool IsDemandLoaded &#x3D; false)</strong></p>
+<p><strong>功能</strong>：安装 WinIO 驱动程序。</p>
+<p><strong>说明</strong>：加载 WinIO 的内核驱动程序。可以指定驱动程序文件路径，是否按需加载驱动（IsDemandLoaded 为 true 时，驱动按需加载）。</p>
+<p><strong>参数</strong>：</p>
+<ul>
+<li>pszWinIoDriverPath：WinIO 驱动程序文件路径。</li>
+<li>IsDemandLoaded：是否按需加载驱动，默认为 false（立即加载）。</li>
+</ul>
+<p><strong>返回值</strong>：true 表示安装成功，false 表示失败。</p>
+<hr>
+<p><strong>RemoveWinIoDriver()</strong></p>
+<p><strong>功能</strong>：卸载 WinIO 驱动程序。</p>
+<p><strong>说明</strong>：卸载并删除 WinIO 的驱动程序，通常在不再需要硬件操作时调用。</p>
+<p><strong>返回值</strong>：true 表示卸载成功，false 表示失败。</p>
+<hr>
+<h2 id="I-O端口地址获取"><a href="#I-O端口地址获取" class="headerlink" title="I&#x2F;O端口地址获取"></a>I&#x2F;O端口地址获取</h2><p>在 PC 机上，标准的串口端口地址一般是：</p>
+<p>COM1: 0x3F8</p>
+<p>COM2: 0x2F8</p>
+<p>COM3: 0x3E8</p>
+<p>COM4: 0x2E8</p>
+<p>并口通常是 0x378 或 0x278。</p>
+<p><strong>通过设备管理器获取</strong></p>
+<ol>
+<li>打开“设备管理器”（右键“此电脑” -&gt; “属性” -&gt; “设备管理器”）。</li>
+<li>找到目标设备，右键点击并选择“属性”。</li>
+<li>进入“资源”选项卡，查看 I&#x2F;O 端口地址和<a href="#IRQ">中断请求号（IRQ）</a>等资源分配信息。</li>
+</ol>
+<p>注意，设备管理器主要适用于标准设备；某些设备可能不会在资源中显示 I&#x2F;O 端口信息。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410291349265.png" alt="image-20241029134955695" style="zoom: 67%;" />
+
+<p><strong>使用系统命令</strong></p>
+<p>命令提示符中输入: <code>msinfo32</code> 进入系统信息窗口</p>
+<p>在“硬件资源” -&gt; “I&#x2F;O”中可以找到设备的 I&#x2F;O 地址映射。</p>
+<h1 id="I-O端口与内存映射I-O"><a href="#I-O端口与内存映射I-O" class="headerlink" title="I&#x2F;O端口与内存映射I&#x2F;O"></a>I&#x2F;O端口与内存映射I&#x2F;O</h1><p>I&#x2F;O端口和内存映射I&#x2F;O是两种不同的硬件访问机制</p>
+<p>这两个是分开的地址空间，使用不同的CPU指令访问。这种设计是历史原因造成的，现代的ARM等架构一般只使用内存映射I&#x2F;O</p>
+<p>在x86架构中</p>
+<p><strong>内存地址空间</strong></p>
+<p>物理内存使用4GB地址空间(0x00000000-0xFFFFFFFF)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">物理内存地址空间</span><br><span class="line">+------------------+ 0xFFFFFFFF</span><br><span class="line">|                  |</span><br><span class="line">|     物理内存      |  &lt;- RAM、ROM等</span><br><span class="line">|                  |</span><br><span class="line">+------------------+ </span><br><span class="line">|                  |</span><br><span class="line">|    内存映射I/O    |  &lt;- 一些设备的寄存器映射到这里</span><br><span class="line">|                  |     比如显存、网卡缓存等</span><br><span class="line">+------------------+ 0x00000000</span><br></pre></td></tr></table></figure>
+
+<p><strong>I&#x2F;O端口空间</strong></p>
+<p>I&#x2F;O端口使用独立的64KB地址空间(0x0000-0xFFFF)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">I/O端口地址空间</span><br><span class="line">+------------------+ 0xFFFF</span><br><span class="line">|                  |</span><br><span class="line">|    I/O端口        |  &lt;- 独立的I/O地址空间</span><br><span class="line">|                  |     用于直接与设备通信</span><br><span class="line">+------------------+ 0x0000</span><br></pre></td></tr></table></figure>
+
+<p>I&#x2F;O端口使用专门的cpu指令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IN AL, DX   ; 从I/O端口读取数据</span><br><span class="line">OUT DX, AL  ; 向I/O端口写入数据</span><br></pre></td></tr></table></figure>
+
+<p>内存地址cpu指令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV AL, [地址]  ; 从内存读取</span><br><span class="line">MOV [地址], AL  ; 写入内存</span><br></pre></td></tr></table></figure>
+
+<h1 id="IRQ"><a href="#IRQ" class="headerlink" title="IRQ"></a>IRQ</h1><p>IRQ（中断请求，Interrupt Request）是一种硬件信号，用于通知 CPU 需要处理某个事件。它的主要目的是协调硬件设备和 CPU 的交互，使设备可以及时通知 CPU，触发相应的处理流程。IRQ 在硬件和操作系统之间充当了“信使”的角色，确保关键事件不会被忽视。</p>
+<h2 id="IRQ-的主要作用"><a href="#IRQ-的主要作用" class="headerlink" title="IRQ 的主要作用"></a>IRQ 的主要作用</h2><ol>
+<li><strong>事件通知</strong>：当外部设备（如键盘、鼠标、硬盘等）需要 CPU 的关注时，会向 CPU 发送一个 IRQ 信号。这个信号会让 CPU 暂停当前任务，转而处理该事件。</li>
+<li><strong>资源共享</strong>：通过中断机制，CPU 可以高效地在多个任务之间切换，而无需一直等待设备完成操作。例如，打印机完成打印任务时会发出中断请求，而 CPU 无需一直等待，可以处理其他任务。</li>
+<li><strong>系统响应性</strong>：IRQ 提升了系统的响应性，确保设备请求能够被及时响应。例如，当网络接口收到数据包时，IRQ 会通知 CPU 进行处理。</li>
+</ol>
+<h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><ol>
+<li><strong>发送中断</strong>：设备向 CPU 发送中断信号。每个设备都有自己的 IRQ 通道，用于标识设备的中断请求。</li>
+<li><strong>中断处理</strong>：CPU 停止当前任务并跳转到对应的中断处理程序，这个程序由操作系统分配给每种中断类型。</li>
+<li><strong>恢复工作</strong>：CPU 完成中断处理后，返回到之前被中断的任务。</li>
+</ol>
+<h2 id="常见的-IRQ-应用场景"><a href="#常见的-IRQ-应用场景" class="headerlink" title="常见的 IRQ 应用场景"></a>常见的 IRQ 应用场景</h2><ul>
+<li><strong>键盘</strong>：按键时触发 IRQ，CPU 获取按键数据。</li>
+<li><strong>硬盘</strong>：数据读写完成时触发 IRQ，CPU 继续处理数据。</li>
+<li><strong>网络设备</strong>：收到数据包时触发 IRQ，CPU 处理网络数据。</li>
+</ul>
+<p>IRQ 是多任务系统中实现高效设备管理和事件响应的关键机制。</p>
+<h1 id="计算机总线接口"><a href="#计算机总线接口" class="headerlink" title="计算机总线接口"></a>计算机总线接口</h1><p><strong>计算机总线</strong>是连接计算机各个组件的通道，它们允许CPU、内存、外设等之间进行数据传输。在计算机发展过程中，出现了多种类型的总线，每种总线都有其独特的设计和应用场景</p>
+<p>有ISA总线、AT总线、PCI总线和PCIE总线等等</p>
+<h2 id="ISA总线设备-老式设备"><a href="#ISA总线设备-老式设备" class="headerlink" title="ISA总线设备(老式设备)"></a>ISA总线设备(老式设备)</h2><p>ISA（Industry Standard Architecture）总线最早由IBM在1981年为其个人计算机（PC）推出。ISA总线是最早期的计算机总线之一，在20世纪80年代和90年代初广泛使用。</p>
+<p>ISA卡是长条形的</p>
+<p>有金手指接口</p>
+<p>可能有地址选择跳线</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410291458008.png" alt="img" style="zoom:75%;" />
+
+<p><strong>物理地址是固定的</strong>,通过跳线或开关设置</p>
+<p>例如经典的显存地址: 0xA0000</p>
+<p>ISA设备通常使用以下固定地址范围：</p>
+<ul>
+<li>0xA0000-0xBFFFF: 显存区域</li>
+<li>0xC0000-0xDFFFF: ROM和设备内存映射区域</li>
+</ul>
+<p>ISA总线在早期的PC中广泛使用，主要用于连接键盘、鼠标、打印机、调制解调器等外设。由于其速度和带宽限制，ISA总线在性能要求较高的应用中逐渐被淘汰</p>
+<h2 id="PCI-PCIE设备-现代设备"><a href="#PCI-PCIE设备-现代设备" class="headerlink" title="PCI&#x2F;PCIE设备(现代设备)"></a>PCI&#x2F;PCIE设备(现代设备)</h2><p><strong>物理地址是动态分配的</strong></p>
+<p>需要通过PCI配置空间读取设备分配到的基地址</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正确的做法应该是：</span></span><br><span class="line">DWORD baseAddr = <span class="built_in">GetPCIDeviceBaseAddress</span>(); <span class="comment">// 从PCI配置空间获取</span></span><br><span class="line">pbLinAddr = <span class="built_in">MapPhysToLin</span>((PBYTE)baseAddr, <span class="number">65536</span>, &amp;hPhysicalMemory);</span><br></pre></td></tr></table></figure>
+
+<h3 id="PCI总线"><a href="#PCI总线" class="headerlink" title="PCI总线"></a>PCI总线</h3><p>PCI总线在20世纪90年代和2000年代初广泛应用于PC、服务器和嵌入式系统中。它支持多种外设，如显卡、声卡、网卡、硬盘控制器等，显著提升了系统的性能和扩展性。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410291502466.png" alt="img" style="zoom:75%;" />
+
+<h3 id="PCIE总线"><a href="#PCIE总线" class="headerlink" title="PCIE总线"></a>PCIE总线</h3><p>PCIE（PCI Express）总线是PCI总线的继承者，由PCI-SIG（PCI Special Interest Group）在2003年推出。PCIE总线设计旨在满足高速数据传输需求，广泛应用于现代计算机系统中。</p>
+<p>PCIE总线是现代计算机系统中最常用的扩展总线，广泛应用于PC、服务器、工作站和嵌入式系统。它支持高速显卡、固态硬盘（SSD）、网卡、存储控制器等设备，满足了高速数据传输和高性能计算的需求。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410291503773.png" alt="img" style="zoom:75%;" />
+
+<h1 id="SECS-GEM通信协议"><a href="#SECS-GEM通信协议" class="headerlink" title="SECS&#x2F;GEM通信协议"></a>SECS&#x2F;GEM通信协议</h1><blockquote>
+<p>由于当前还没用到,暂时略</p>
+<p>其通过一组标准化的 SECS&#x2F;GEM 消息实现。这些消息定义了如何上传、下载、删除和验证配方（Recipe），从而实现对配方的集中管理和控制</p>
+</blockquote>
+<p>SECS&#x2F;GEM (SEMI Equipment Communications Standard&#x2F;Generic Equipment Model) 是<strong>一种用于半导体制造设备和工厂自动化系统之间的通信协议标准</strong>，由SEMI (Semiconductor Equipment and Materials International) 定义。该协议主要应用于半导体生产过程，允许设备与工厂系统进行数据交换、控制和监控，帮助实现生产的自动化和智能化管理。</p>
+<p>**SECS (SEMI Equipment Communications Standard)**：定义了设备和主控系统之间的数据传输协议。SECS 有两个版本：</p>
+<ul>
+<li><strong>SECS-I</strong> (SEMI E4)：使用串行通信方式（RS-232）进行设备数据的传输，适用于数据量较小、实时性要求不高的环境。</li>
+<li><strong>HSMS (High-Speed SECS Message Services)</strong> (SEMI E37)：采用基于 TCP&#x2F;IP 的网络通信方式，适用于数据传输速度要求较高的场合。</li>
+</ul>
+<p>**GEM (Generic Equipment Model)**：建立在 SECS 标准之上，定义了通用的设备模型，包括设备状态、报警管理、数据收集、事件报告、远程控制等功能。GEM 允许主控系统通过一组通用指令来控制设备的操作和数据采集，统一了不同设备的控制方式。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410301033430.png" alt="image-20241030103307442"></p>
+<p>SECS&#x2F;GEM 协议的核心功能包括：</p>
+<ul>
+<li><strong>状态管理</strong>：设备状态（例如运行、暂停、报警等）监控与报告。</li>
+<li><strong>数据收集</strong>：按需或定时收集设备参数和状态数据，便于生产分析。</li>
+<li><strong>事件报告</strong>：设备发生特定事件时，自动向主控系统报告。</li>
+<li><strong>报警管理</strong>：设备报警时通知主控系统，帮助及时排查设备故障。</li>
+<li><strong>远程控制</strong>：主控系统可向设备发送命令，实现设备的远程控制与管理。</li>
+</ul>
+<p><strong>SECS的标准是有问必有答:主动发送和被动响应</strong></p>
+<h2 id="协议格式-1"><a href="#协议格式-1" class="headerlink" title="协议格式"></a>协议格式</h2><p><a target="_blank" rel="noopener" href="https://leo.moe/archives/SECS-GEM-1">参考文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/7star/p/12815219.html">参考文档2</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1MU4y1v7hT/">视频参考</a></p>
+<h3 id="HSMS-协议"><a href="#HSMS-协议" class="headerlink" title="HSMS 协议"></a>HSMS 协议</h3><p>HSMS 全称为 High Speed SECS Message Service，是一种高速的 SECS 消息传输协议，而自身只负责连接的控制，用于现代半导体设备高效的信息传输，承载整个通讯连接的底层基础消息，也有人称之为 SECS II，是 SECS I（E4）的替代品。</p>
+<p>HSMS 协议拥有 4个状态，分别为 </p>
+<ul>
+<li>Not Connected</li>
+<li>Connected</li>
+<li>Not Selected</li>
+<li>Selected。</li>
+</ul>
+<p>之所以出现这四种状态，是因为 HSMS 是一种基于 TCP&#x2F;IP 协议上的高层协议，当套字节（Raw Socket）建立连接后，还需要保证两端能互相确认对方能支持 HSMS 协议，故会有 Select 状态，<strong>只有 Selected 的 HSMS 连接才被视为有效可用的连接</strong>。</p>
+<p>对于 TCP Stream 而言，发送和接收的均为二进制数据包，它的整体长度大小随着消息长度大小而灵活决定的，但是 HSMS 的握手过程中，没有交换数据包需求，它为固定的 14 Bytes 消息。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410301112605.png" alt="img"></p>
+<h1 id="硬件测量的校准算法"><a href="#硬件测量的校准算法" class="headerlink" title="硬件测量的校准算法"></a>硬件测量的校准算法</h1><h2 id="零点漂移"><a href="#零点漂移" class="headerlink" title="零点漂移"></a>零点漂移</h2><p>零点漂移指的是设备在没有输入信号时输出不为零的现象。这种漂移会影响测量的准确性，尤其在低信号测量中更为明显。可以通过以下方式进行补偿：</p>
+<ul>
+<li><strong>读取零点反馈值</strong>：使用零点反馈数据（如 ui1st_2uA_Zero、ui2nd_2mA_Zero 等），来识别零点偏移。</li>
+<li><strong>计算偏移量</strong>：将零点反馈值作为零点偏移量。例如，如果设备在没有输入时反馈为 5（理想应为 0），则漂移量为 +5。</li>
+<li><strong>补偿当前测量数据</strong>：在每次测量时，减去这个偏移量，使得测量值回归到真实的零点基准。例如，实际测量值 M 经过零点补偿后的结果为 <code>M_corrected = M - offset</code>。</li>
+</ul>
+<p>这种零点补偿应在每次测量开始前进行，确保每次测量值都基于当前的零点状态。</p>
+<h2 id="增益校正"><a href="#增益校正" class="headerlink" title="增益校正"></a>增益校正</h2><p>增益校正是一种<strong>基于多点校准反馈的校准算法</strong>，旨在消除设备的增益误差，以确保输出值与理想响应线性相关。这个算法的核心是计算设备的实际增益与理想增益之间的比率（增益误差因子），然后对测量值进行调整，使其更加准确。</p>
+<h3 id="增益校正算法的原理"><a href="#增益校正算法的原理" class="headerlink" title="增益校正算法的原理"></a>增益校正算法的原理</h3><p>增益误差发生在设备的输出与输入信号之间的放大比率不符合设计的理想比率时。假设理想情况下，输入信号和输出信号之间的关系为：</p>
+<p>$$<br>y &#x3D; G_{\text{ideal}} \times x<br>$$</p>
+<p>其中：</p>
+<ul>
+<li>y 是测量输出值。</li>
+<li>$ G_{\text{ideal}} $ 是理想的增益（预期放大倍数）。</li>
+<li>x  是输入信号（比如电流、电压等）。</li>
+</ul>
+<p>然而，由于硬件误差等原因，实际测量响应会偏离理想值。为了校正这一偏差，我们引入了<strong>增益误差因子</strong> K ，用公式表示为：<br>$$<br>K&#x3D;\frac{G_{\mathrm{ideal}}}{G_{\mathrm{actual}}}<br>$$</p>
+<p><strong>获取校准反馈数据</strong>：通过多点校准测量不同输入点（例如 2uA、20uA、2mA 等）的实际输出，计算各点的增益。</p>
+<p><strong>应用增益校正因子</strong> K ：用每个输入点的校正因子来调整测量值 M ，使校正后的输出尽可能接近理想值：<br>$$<br>M_{\text{corrected}} &#x3D; M \times K<br>$$<br><strong>多点插值或拟合</strong>：为了在整个测量范围内进行校准，可以对校正因子进行插值或拟合，确保增益校正平滑地覆盖整个测量范围，而不仅限于已校准的点上。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"></a><div class="post-copyright__author_name">ZEROKO14</div><div class="post-copyright__author_desc">zeroko14's blog</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://che77a38.github.io/posts/%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://che77a38.github.io/posts/%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/')">硬件通信技术</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://che77a38.github.io/posts/%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=硬件通信技术&amp;url=https://che77a38.github.io/posts/%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://che77a38.github.io" target="_blank">ZEROKO14的个人博客</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>通信技术<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C语言入门</div></div></a></div><div class="next-post pull-right"><a href="/posts/%E8%BF%90%E7%BB%B4/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">运维</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">欢迎来到ZEROKO14的个人博客</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">ZEROKO14</h1><div class="author-info__desc">zeroko14's blog</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/che77a38" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#USB%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF"><span class="toc-number">1.</span> <span class="toc-text">USB通信技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E8%AE%BE%E5%88%AB%E7%9A%84VID%E5%92%8CPID"><span class="toc-number">1.1.</span> <span class="toc-text">如何查看设别的VID和PID</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1"><span class="toc-number">2.</span> <span class="toc-text">串口通信</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E5%8F%82%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">重要参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8D%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97"><span class="toc-number">2.2.</span> <span class="toc-text">位时间计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1%E5%BC%80%E5%8F%91"><span class="toc-number">2.3.</span> <span class="toc-text">串口通信开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SerialPort%E7%B1%BB"><span class="toc-number">2.3.1.</span> <span class="toc-text">SerialPort类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">常用属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">2.3.2.</span> <span class="toc-text">事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">常用方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6"><span class="toc-number">2.3.2.2.</span> <span class="toc-text">进阶</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E4%BD%8D%E6%9C%BA%E4%B8%8E%E4%B8%8A%E4%BD%8D%E6%9C%BA%E9%97%B4%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1"><span class="toc-number">2.3.3.</span> <span class="toc-text">下位机与上位机间串口通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4%E6%A6%82%E8%BF%B0"><span class="toc-number">2.3.3.1.</span> <span class="toc-text">开发步骤概述</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ModBUS"><span class="toc-number">3.</span> <span class="toc-text">ModBUS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%88%86%E7%B1%BB"><span class="toc-number">3.1.</span> <span class="toc-text">格式分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MODBUS-TCP-IP"><span class="toc-number">3.1.1.</span> <span class="toc-text">MODBUS TCP&#x2F;IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Modbus-UDP-IP"><span class="toc-number">3.1.2.</span> <span class="toc-text">Modbus UDP&#x2F;IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MODBUS-RTU"><span class="toc-number">3.1.3.</span> <span class="toc-text">MODBUS RTU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MODBUS-ASCII"><span class="toc-number">3.1.4.</span> <span class="toc-text">MODBUS ASCII</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">协议格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Modbus%E5%8A%9F%E8%83%BD%E7%A0%81%E5%88%97%E8%A1%A8"><span class="toc-number">3.2.1.</span> <span class="toc-text">Modbus功能码列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84%E8%A7%A3%E6%9E%90-Modbus-RTU%E7%89%88%E6%9C%AC"><span class="toc-number">3.2.2.</span> <span class="toc-text">报文结构解析(Modbus RTU版本)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#0x03%E8%AF%B7%E6%B1%82%E5%BA%94%E7%AD%94%E6%96%B9%E5%BC%8F"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">0x03请求应答方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x10%E8%AF%B7%E6%B1%82%E5%BA%94%E7%AD%94%E6%96%B9%E5%BC%8F"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">0x10请求应答方式</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E5%BA%93%E7%9B%98%E7%82%B9"><span class="toc-number">4.</span> <span class="toc-text">通信库盘点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E7%BC%96%E5%86%99modbus-RTU%E9%80%9A%E4%BF%A1%E5%BA%93"><span class="toc-number">4.1.</span> <span class="toc-text">尝试编写modbus RTU通信库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easyModbus"><span class="toc-number">4.2.</span> <span class="toc-text">easyModbus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SerialPortStream"><span class="toc-number">4.3.</span> <span class="toc-text">SerialPortStream</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E6%BA%90%E4%BD%BF%E7%94%A8%E8%A6%81%E6%B1%82"><span class="toc-number">4.3.1.</span> <span class="toc-text">开源使用要求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NModbus"><span class="toc-number">4.4.</span> <span class="toc-text">NModbus</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WINIO%E5%BA%93"><span class="toc-number">5.</span> <span class="toc-text">WINIO库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90"><span class="toc-number">5.1.</span> <span class="toc-text">获取管理员权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%8A%A0%E8%BD%BD%E9%A9%B1%E5%8A%A8"><span class="toc-number">5.1.1.</span> <span class="toc-text">使用服务加载驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%B8%85%E5%8D%95%E6%96%87%E4%BB%B6"><span class="toc-number">5.1.2.</span> <span class="toc-text">使用清单文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%A6%82%E4%B8%8B"><span class="toc-number">5.1.2.1.</span> <span class="toc-text">自动生成如下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BA%E5%A6%82%E4%B8%8B"><span class="toc-number">5.1.2.2.</span> <span class="toc-text">手动创建如下</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E9%86%92%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E5%91%98%E5%90%AF%E5%8A%A8"><span class="toc-number">5.1.3.</span> <span class="toc-text">提醒用户管理员启动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0%E7%9B%98%E7%82%B9"><span class="toc-number">5.2.</span> <span class="toc-text">相关函数盘点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O%E7%AB%AF%E5%8F%A3%E5%9C%B0%E5%9D%80%E8%8E%B7%E5%8F%96"><span class="toc-number">5.3.</span> <span class="toc-text">I&#x2F;O端口地址获取</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#I-O%E7%AB%AF%E5%8F%A3%E4%B8%8E%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84I-O"><span class="toc-number">6.</span> <span class="toc-text">I&#x2F;O端口与内存映射I&#x2F;O</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IRQ"><span class="toc-number">7.</span> <span class="toc-text">IRQ</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IRQ-%E7%9A%84%E4%B8%BB%E8%A6%81%E4%BD%9C%E7%94%A8"><span class="toc-number">7.1.</span> <span class="toc-text">IRQ 的主要作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">7.2.</span> <span class="toc-text">工作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84-IRQ-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">7.3.</span> <span class="toc-text">常见的 IRQ 应用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3"><span class="toc-number">8.</span> <span class="toc-text">计算机总线接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ISA%E6%80%BB%E7%BA%BF%E8%AE%BE%E5%A4%87-%E8%80%81%E5%BC%8F%E8%AE%BE%E5%A4%87"><span class="toc-number">8.1.</span> <span class="toc-text">ISA总线设备(老式设备)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PCI-PCIE%E8%AE%BE%E5%A4%87-%E7%8E%B0%E4%BB%A3%E8%AE%BE%E5%A4%87"><span class="toc-number">8.2.</span> <span class="toc-text">PCI&#x2F;PCIE设备(现代设备)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PCI%E6%80%BB%E7%BA%BF"><span class="toc-number">8.2.1.</span> <span class="toc-text">PCI总线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PCIE%E6%80%BB%E7%BA%BF"><span class="toc-number">8.2.2.</span> <span class="toc-text">PCIE总线</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SECS-GEM%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-number">9.</span> <span class="toc-text">SECS&#x2F;GEM通信协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE%E6%A0%BC%E5%BC%8F-1"><span class="toc-number">9.1.</span> <span class="toc-text">协议格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HSMS-%E5%8D%8F%E8%AE%AE"><span class="toc-number">9.1.1.</span> <span class="toc-text">HSMS 协议</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%B5%8B%E9%87%8F%E7%9A%84%E6%A0%A1%E5%87%86%E7%AE%97%E6%B3%95"><span class="toc-number">10.</span> <span class="toc-text">硬件测量的校准算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%B6%E7%82%B9%E6%BC%82%E7%A7%BB"><span class="toc-number">10.1.</span> <span class="toc-text">零点漂移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E7%9B%8A%E6%A0%A1%E6%AD%A3"><span class="toc-number">10.2.</span> <span class="toc-text">增益校正</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E7%9B%8A%E6%A0%A1%E6%AD%A3%E7%AE%97%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">10.2.1.</span> <span class="toc-text">增益校正算法的原理</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/avalonia/" title="avalonia">avalonia</a><time datetime="2024-09-11T14:51:13.000Z" title="发表于 2024-09-11 22:51:13">2024-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E8%A7%86%E9%A2%91%E6%95%88%E6%9E%9C/" title="PR">PR</a><time datetime="2024-07-18T07:06:08.330Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%89%8D%E7%AB%AF/" title="WEB前端">WEB前端</a><time datetime="2024-07-18T07:06:08.323Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/slidev/" title="slidev">slidev</a><time datetime="2024-07-18T07:06:08.319Z" title="发表于 2024-07-18 15:06:08">2024-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/C++%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="C++多线程">C++多线程</a><time datetime="2024-07-18T07:05:59.794Z" title="发表于 2024-07-18 15:05:59">2024-07-18</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="ZEROKO14" target="_blank">ZEROKO14</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu"></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">48</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 0.88rem;">C#<sup>3</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 0.88rem;">CSS<sup>1</sup></a><a href="/tags/CSharp/" style="font-size: 0.88rem;">CSharp<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 0.88rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 0.88rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 0.88rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 0.88rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 0.88rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 0.88rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 0.88rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 0.88rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 0.88rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 0.88rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 0.88rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/json/" style="font-size: 0.88rem;">json<sup>1</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>1</sup></a><a href="/tags/next/" style="font-size: 0.88rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 0.88rem;">ppt<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 0.88rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 0.88rem;">vue<sup>1</sup></a><a href="/tags/xml/" style="font-size: 0.88rem;">xml<sup>1</sup></a><a href="/tags/yaml/" style="font-size: 0.88rem;">yaml<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 0.88rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 0.88rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 0.88rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 0.88rem;">加解密<sup>1</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 0.88rem;">多线程<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">开发<sup>4</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.88rem;">数学<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 0.88rem;">数据库<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 0.88rem;">架构<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 0.88rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 0.88rem;">监控<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>1</sup></a><a href="/tags/%E7%AE%A1%E7%90%86/" style="font-size: 0.88rem;">管理<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 0.88rem;">网络<sup>2</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 0.88rem;">逆向<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
