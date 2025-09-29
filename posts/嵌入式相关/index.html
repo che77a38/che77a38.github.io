@@ -1,0 +1,1213 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>嵌入式相关 | ZEROKO14的个人博客</title><meta name="keywords" content="基础"><meta name="author" content="ZEROKO14"><meta name="copyright" content="ZEROKO14"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="嵌入式相关"><meta name="application-name" content="嵌入式相关"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="嵌入式相关"><meta property="og:url" content="https://che77a38.github.io/posts/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3/index.html"><meta property="og:site_name" content="ZEROKO14的个人博客"><meta property="og:description" content="嵌入式相关知识点   嵌入式系统：以应用为中心、软硬件可裁剪的专用计算机系统，嵌入到设备中执行特定任务（如智能手环、工业控制器） 特点：  实时性：工业控制需毫秒级响应（如机器人紧急制动） 低功耗：电池设备需优化能耗（如物联网传感器） 资源受限：内存&amp;#x2F;处理器性能远低于PC（ESP8266仅"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta property="article:author" content="ZEROKO14"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta name="description" content="嵌入式相关知识点   嵌入式系统：以应用为中心、软硬件可裁剪的专用计算机系统，嵌入到设备中执行特定任务（如智能手环、工业控制器） 特点：  实时性：工业控制需毫秒级响应（如机器人紧急制动） 低功耗：电池设备需优化能耗（如物联网传感器） 资源受限：内存&amp;#x2F;处理器性能远低于PC（ESP8266仅"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://che77a38.github.io/posts/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":true,"limitCount":50,"languages":{"author":"作者: ZEROKO14","link":"链接: ","source":"来源: ZEROKO14的个人博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'ZEROKO14的个人博客',
+  title: '嵌入式相关',
+  postAI: '',
+  pageFillDescription: '基础知识, 电路基础, 基尔霍夫定律, 模拟数字电路, 单片机基础, 计算机的最小组成, 硬件组成三要素, 控制器, SoC, MCU, 软件核心层级, FreeRTOS架构解析, 任务调度机制（状态转换图）, 低延迟实现机制, 中断管理框架, 优先级继承解决资源竞争, 低功耗与实时性平衡（Tickless模式）, 开发工具链, 自动化设备开发路径, 阶段1：基础实践（2-4周）, 阶段2：系统进阶（4-8周）, 阶段3：自动化设备集成（8+周）, 伪代码示例：土壤湿度控制, 硬件配置：, 资源推荐, 关键提示：, ESP开发板对比, GPIO, 仿真软件, 主流仿真工具, Tinkercad Circuits（最适合初学者）, Proteus（专业级仿真）, fritzing, Virtual Breadboard, WOKWi, 基本电子元器件, 舵机, 使用场景, 控制原理, 注意事项, 电子电路, 上拉和下拉电阻, 为什么需要他们, PWM引脚, PWM引脚的bug, 模拟引脚, 原理嵌入式相关知识点嵌入式系统以应用为中心软硬件可裁剪的专用计算机系统嵌入到设备中执行特定任务如智能手环工业控制器特点实时性工业控制需毫秒级响应如机器人紧急制动低功耗电池设备需优化能耗如物联网传感器资源受限内存处理器性能远低于仅基础知识电路基础基尔霍夫定律基尔霍夫电流定律在集总参数电路中任意时刻对任意节点流出或流入该节点电流的代数和等于零基尔霍夫电压定律在集总参数电路中任一时刻沿任一闭合路径绕行各支路电压的代数和等于零模拟数字电路数字电路是处理数字信号的电路数字信号数字信号是离散的电信号只有和区分模拟电路是处理模拟信号的电路模拟信号模拟信号是连续的电信号以电压为纵坐标时间为横坐标为例函数曲线是连续的不存在突然阶跃的情况单片机基础计算机的最小组成计算机的组成非常复杂但其基本单元非常简单笔记本电路板上有很多芯片一个芯片就是一个系统一个系统由很多模块组成如加法器乘法器等一个模块由很多逻辑门组成如非门与门或门等逻辑门由晶体管组成如管和管灯芯片很多模块组成很多逻辑门组成很多晶体管组成现代智能手机芯片中的晶体管数量已经达到数百亿级别硬件组成三要素组件作用实例传感器感知物理量温度光照位置并转为电信号光电传感器编码器控制器处理传感器数据并决策核心为或执行器执行控制指令机械运动开关控制直流电机气缸控制器系统级芯片是将整个计算机系统的各个组件如内存接口通信模块等集成到单个芯片上的解决方案典型实例使用的单板计算机适合各种计算和嵌入式应用手机芯片如系列集成了通信模块如图像处理器等系列用于人工智能和机器学习的集成了强大的和处理能力虽然它也可以被视为但它集成了和蓝牙功能因此在某些上下文中也可以被视为特点功能强大集成度高支持多种处理任务和外设通常具有较高的功耗和性能适合需要高性能和多功能的应用微控制器单元定义是一种集成电路通常包括一个或多个处理核心内存和输入输出端口和其他外设如定时器等用途通常用于控制应用如家电汽车工业控制等它们适合处理简单的控制任务和实时处理特点功耗低处理能力较弱适合简单任务通常具有较小的存储空间设计简单适合嵌入式系统典型实例基于或微控制器的开发板广泛用于教育和原型设计系列提供的位微控制器广泛应用于嵌入式系统微控制器提供的系列微控制器常用于工业控制和消费电子产品微控制器一种经典的位微控制器架构应用于许多嵌入式系统软件核心层级裸机开发直接操作寄存器控制硬件语言点灯实验实时操作系统必要性多任务调度如同时处理通信电机控制常用系统兼容通信协议设备间传感器与控制器通信网络层物联网云通信工业控制架构解析通过精妙的分层架构确定性调度策略和硬件级优化实现实时低延迟与优先级抢占其框架设计可通过以下结构图及核心机制解析通过分层微内核硬件加速调度中断优先级隔离实现硬实时抢占式调度确保高优先级任务即刻响应优先级继承消除资源竞争延迟缩短中断到任务唤醒路径模式兼顾低功耗与定时精度开发者需合理配置如调度策略堆大小并优化任务优先级分配以发挥其极致实时性能设计哲学微内核架构仅包含调度任务同步等必要功能内核代码精简至几通过动态裁剪模块如关闭定时器以节省资源应用层调用层依赖内核服务内核层硬件抽象接口移植层寄存器操作硬件层任务调度机制状态转换图创建态创建态就绪态就绪态运行态调度器选择优先级抢占运行态阻塞态队列等待阻塞态就绪态事件触发如信号量释放运行态挂起态挂起态就绪态核心调度策略优先级抢占高优先级任务就绪时立即抢占低优先级任务优先级位图算法在常数时间内定位最高优先级任务时间片轮转同优先级任务共享时间通过中断触发切换调度确定性保障任务切换时间依赖硬件加速的上下文保存异常自动压栈等低延迟实现机制中断管理框架硬件中断触发中断服务例程快速处理需调用是使用如否直接返回触发即时任务切换中断优先级分层不可屏蔽中断优先级禁止调用响应延迟极低如电机控制可屏蔽中断优先级阈值可安全调用但可能被内核短暂阻塞优先级继承解决资源竞争高优先级任务互斥量低优先级任务高优先级任务互斥量请求获取阻塞互斥量低优先级任务临时提升其优先级低优先级任务互斥量释放资源互斥量高优先级任务恢复运行互斥锁动态提升低优先级任务的优先级避免优先级反转导致高优先级任务阻塞低功耗与实时性平衡模式空闲时关闭中断由高精度唤醒并补偿节拍计数减少功耗且不牺牲调度精度开发工具链工具类型代表软件用途插件代码编辑编译调试调试器硬件程序烧录与实时调试仿真器无硬件时的逻辑验证自动化设备开发路径阶段基础实践周硬件入门购买开发板兼容蓝牙完成实验控制读取温湿度传感器软件框架用搭建开发环境支持编写程序驱动外设如按键触发电机阶段系统进阶周实战在上移植创建多任务任务传感器采集任务网络上报通信协议通过的发送传感器数据至云平台协议阶段自动化设备集成周项目案例智能浇水系统伪代码示例土壤湿度控制读取湿度传感器发送到队列秒采集一次启动水泵硬件配置传感器土壤湿度传感器继电器控制水泵资源推荐书籍嵌入式系统设计与实践课程社区开源硬件项目硬件调试技巧关键提示从软件工程师到硬件融合的转型核心在于动手为先拆解旧家电如遥控车理解电路设计渐进式学习从快速原型到专业开发利用现有优势能力可快速切入驱动开发网络知识助力物联网应用通过此路径您可在个月内构建完整的自动化设备开发能力将软件经验转化为硬件创新力开发板对比特性基础款推荐替代处理器单核双核单核内存无线功能蓝牙蓝牙精度数量路位量程路位路位可用通道路路路典型成本元元元仅用于触发型场景如收数据发指令复杂逻辑如电机控制必选全系新项目无脑入是的理想升级则满足等前沿需求避坑点的仅路且量程窄直接接传感器易烧毁务必分压电路通用输入输出接口是嵌入式系统中最基础的硬件交互通道可直接连接传感器执行器或其他电子模块实现芯片与物理世界的双向通信硬件结构上看每个对应芯片的物理引脚如的内部通过寄存器控制状态无需外接复杂电路即可驱动或读取按钮是嵌入式开发的手脚通过它感知世界输入接收按钮传感器信号操控设备输出驱动电机点亮灯光行动建议入门套件推荐购买开发板实验套件含按钮光敏电阻花费约快速验证思路用等电路仿真工具设计逻辑再动手焊接掌握后您即可将算法能力转化为实体自动化设备的控制力仿真软件层级语言工具作用用户操作示例用户编写代码控制虚拟硬件如点亮读取传感器仿真环境内核模拟硬件行为如生成虚拟电压信号后台运行用户不可见如用编译运行电路可视化图形化拖拽界面构建虚拟电路连线元件选择拖入板连接到引脚开始仿真主流仿真工具最适合初学者参考视频教程操作流程浏览器打开创建电路设计拖入虚拟如和元件如传感器用写控制代码基于库点击仿真按钮示例虚拟按钮控制按钮接虚拟接虚拟按钮按下亮灯优势无需安装支持仿真含模拟专业级仿真代码流程在用编译出文件在中导入到虚拟模拟传感器信号适用场景电机控制时序验证精度测试等精密仿真网址电路仿真仅支持系统可以模拟包括在内的微控制器仿真网址基本电子元器件灯泡与灯泡的不同在于有单向导通性建议最大值为不烧坏也不影响寿命三色发光二极管可以理解为三个合成一体有共阳极和共阴极两种发光是三色不同比例的叠加滑动开关多位开关轻触按键多位开关多个滑动开关合并到一块轻触按键按下后状态改变松开后恢复和与和是默认连通的按下按钮就会全连通常见的电池纽扣电池常见系列为锂锰扣式电池提供一个的电压常见的系列干电池一种以糊状电解液来产生直流电的化学电池标称电压均为日常使用型号有号号号电池积层电池主要用于仪表测学仪器供电电池容量小电压高内部化学反应迟經的电电流小能使用很长时间水果电池利用水果中的化学物质和金属片发生反应产生电能的一种电池电压很低其他可以提供电压的设备根据接线可以提供或的电压电源能提供的电压注意电流波轮是做了一个限流的作用而不是让你设置电流测量仪器万用表用于测量电压电流与电阻示波器函数生成器电位器可调电阻改变接入电路的电阻阻值人体红外检测模块在安防领域中探测器的全称就是即被动式红外探测器或身体感应器三个引脚电源接地信号如果探测到移动信号会输出电流继电器一种电控制器件可以理解成是用小电流控制大电流的一种自动开关示波器可以将数据收集起来以曲线形式显示蜂鸣器可以发出声音可以分有源和无源是否有震荡源蜂鸣器有源蜂鸣器给高电平会自动响无源蜂鸣器需要给震荡的信号才能响仿真中提供的是有源蜂鸣器输入的电压频率直接决定音调频率越高音调越高声音越尖细频率越低音调越低声音越低沉舵机红外接收器最简单的自保持电路舵机舵机是一种位置角度伺服驱动器它的核心功能是接收一个控制信号并精确地转动到并保持在那个指定的角度位置当说舵机时通常就是指那种三线用控制内部集成了控制电路和电位器的位置伺服电机它是伺服电机大家族中最常见最易于使用的一员伺服电机拥有闭环控制的电机与普通电机的区别普通直流电机通常只能控制正转反转速度而舵机可以控制转到特定角度比如精确转到度度度与步进电机的区别舵机内部集成了电机减速齿轮控制电路和反馈系统如电位器形成了一个闭环控制所以它通常比开环控制的步进电机精度更高扭矩更大更易用红色是正极通常棕色是地线橙色是信号线用于接收控制信号切勿将舵机的直接接到的引脚上尤其是扭矩较大的舵机板载的稳压器无法提供足够电流可能导致板子重启或烧毁务必使用外部电源如电池组独立的电源模块为舵机供电并将此外部电源的与的共地连接在一起使用场景舵机的角度保持特性使其非常适合需要精确定位的场景机器人关节机器人的手臂腿头部手指的转动航模车模控制飞机舵面故名舵机汽车转向摄像头云台控制摄像头上下左右转动进行追踪智能门锁控制锁舌的弹出和收回喂食器开关作为机械臂远程控制一个物理开关的按下或松开控制原理舵机的控制需要一种特殊的信号其特点是频率通常为即周期为脉冲宽度高电平持续时间决定了舵机的角度的脉冲宽度位置的脉冲宽度位置的脉冲宽度位置舵机角度与脉冲宽度关系图脉冲宽度转动角度脉冲宽度在至之间线性变化舵机的角度就会在至之间相应变化像这样的平台提供了现成的库它可以自动帮我们处理这些底层细节注意事项不要手动扭动在断电时不要用力强行手动旋转舵机轴极易损坏内部的齿轮和电位器注意扭矩选择舵机时要注意其扭矩参数扭矩太小可能带不动你的机械结构供电要充足务必使用外部电源供电确保电源能提供足够的电流单个舵机工作电流可达几百动作时更大机械限位很多舵机如舵机有物理限位编程时不要试图让它转到超出范围的角度如否则会听到齿轮打齿的噪音长期会损坏舵机电子电路上拉和下拉电阻用于确定引脚状态上拉和下拉电阻的核心目的是为按键一个机械开关在未被按下时提供一个确定的稳定的电平状态高电平或低电平防止其引脚处于不确定的浮空状态从而避免误触发和电路不稳定为什么需要他们原因是浮空状态的危害当我们把按键连接到微控制器如单片机的引脚时理想情况是按键断开引脚读到一种明确电平比如按键闭合引脚读到另一种明确电平比如但问题在于当一个引脚什么都不连接即按键断开时时它处于高阻抗状态也叫浮空状态这个引脚的电平是不确定的极易受到周围环境如静电电磁干扰的影响会在高电平和低电平之间随机波动微控制器会因此读到混乱的信号导致程序误以为按键被频繁地按下和释放上拉下拉电阻就是为了解决这个浮空问题而存在的特性上拉电阻下拉电阻默认电平高电平低电平有效电平低电平有效按下为高电平有效按下为常见应用更常见因为很多内部集成上拉电阻同样可用但内部集成下拉的情况较少电路影响在按键按下时通过电阻到形成回路有微小电流消耗同样有微小电流消耗选择依据取决于你的程序逻辑和特性取决于你的程序逻辑和特性上图中偏左的为上拉电阻偏右的为下拉电阻优先使用上拉电阻因为绝大多数微控制器如的引脚都内部集成了可软件开启的上拉电阻你只需要在代码中配置一下无需外接物理电阻非常方便示例示例如果你的没有内部下拉电阻而你需要的逻辑又是高电平有效那么就需要外接一个下拉电阻电阻值选择通常选择到的电阻阻值太大会无法有效拉平干扰阻值太小则在按键按下时会产生过大的不必要的电流消耗费电并且可能烧坏端口引脚板上端口数字前带表示他可以输出信号是如何产生的微控制器内部有多个专门的硬件模块叫做定时器计数器它们就像一个个独立的小时钟可以精确地计数和计时频率由定时器的计数速度决定定时器计数得多快一个周期的完成就有多快从而决定了的频率占空比在同一个定时器内有专门的比较寄存器当定时器的计数值小于比较寄存器的值时输出高电平大于时输出低电平改变比较寄存器的值就能改变高电平的时间比例即占空比关键点一个定时器可以同时控制多个输出通道通常到个为这些通道提供相同的计数基准即相同的频率但每个通道都有自己独立的比较寄存器即可以有不同的占空比为什么同一块板子上的引脚频率会不同因为你的开发板比如常见的等的芯片内部有多个定时器而不是只有一个引脚分组板子上的引脚并不是平等的它们被分组连接到不同的定时器上例如在基于上引脚和由控制默认频率约引脚和由控制默认频率约引脚和由控制默认频率约这些定时器在出厂时或被库初始化为不同的默认值所以它们产生的默认频率就不同你也可以自己改变频率通过编程你可以重新配置这些定时器比如改变它的预分频器设置从而改变其频率但请注意如果你改变了的频率那么所有由控制的引脚如的和脚的频率都会一起改变由一个定时器控制的多个引脚频率必然相同但占空比可以各自独立设置为什么要这样设计这样设计的好处这种设计主要是为了灵活性和功能分工主要原因有以下几点兼顾精度与性能高频适合控制开关电源调光消除人眼可见的闪烁等需要快速响应的场合低频适合控制舵机生成音频信号等需要精确脉冲宽度的场合默认用位定时器来产生更稳定的低频就是因为它的精度更高更适合驱动舵机独立控制互不干扰假设你有一个项目需要同时用高频控制一个电机的转速比如用的信号控制一个舵机如果所有引脚都必须是同一个频率你就无法同时完成这两个任务有了多个独立定时器你就可以将设置为高频率控制电机同时将设置为来控制舵机两者互不干扰资源分配与优化芯片设计者提供了多个不同位宽位位和功能的定时器以满足各种不同的应用需求让用户可以根据项目需要灵活分配这些硬件资源总结不同频率是因为它们背后连接的是不同的定时器硬件同一频率连接在同一个定时器上的多个引脚必须有相同的频率为什么要这样为了提供灵活性允许用户为不同的任务电机控制舵机控制调光等同时设置不同的最佳频率让各个功能模块互不干扰地工作设置的引脚写入是什么意思为什么是方波在编程中使用函数来向标有的引脚写入值这个的取值范围是到表示占空比为引脚持续输出低电平表示占空比为引脚持续输出高电平表示占空比约为这意味着在一个周期内引脚只在的时间输出高电平其余的时间输出低电平所以您并没有命令引脚一直输出高电平而是命令它以大约的占空比快速开关输出电压这正好完美匹配了您电压表上的读数电压表告诉你的是这个引脚输出的平均电压是而示波器告诉你的是这个引脚是通过快速在和之间切换来产生这个平均电压的如果期望的是一条稳定的直线不应该使用而应该使用数字写入函数引脚持续输出示波器上显示一条水平的直线电压表显示函数输出信号类型纯数字信号脉冲宽度调制信号并非真实模拟物理电平如快速切换于和之间电压可变性只有种固定电平平均电压可变硬件依赖任何通用引脚仅限带标记的引脚需硬件定时器支持二者的应用场景对比纯二进制控制场景典型应用为什么用开关类器件继电器通断只需开关状态无需中间值晶体管开关状态指示电源灯亮灭视觉听觉只需二元状态蜂鸣器报警鸣叫数字通信时钟线协议要求精确的跳变起始信号按钮读取检测按键是否按下输入本身就是数字信号模拟效果仿真场景典型应用的优势调光调色呼吸灯无极调节亮度颜色无级变速平滑灯颜色渐变电机调速直流电机转速控制精确控制功率输出替代笨重的模拟电路风扇风力调节舵机角度控制机器人关节舵机信号用脉冲宽度精确映射角度简易音频合成生成方波音乐如游戏音效频率可调占空比改变音色加热功率控制电热丝加热片温控高效调节发热功率是控制世界的开关是调节万物的旋钮是假模拟没有真正的数模转换器只是通过高速开关模拟出中间电压效果需外接芯片才能输出真实连续电压如音频输出分辨率限制标准为位共级精细度有限等高端可达位精度提升倍引脚冲突风险修改频率如寄存器会影响同一定时器的所有引脚例如改频率后和行为会同时变化驱动能力输出类型无论还是最大输出电流仅约驱动大功率设备电机灯带必须加晶体管驱动电路引脚的以板子为例会有下面的情况舵机影响和引脚蜂鸣器和红外接收影响和引脚原因是基于芯片只有个独立的硬件定时器的引脚是这样分配给各个定时器的控制引脚和控制引脚和控制引脚和一些复杂的库如舵机库红外接收库为了实现其功能需要接管整个定时器舵机库与引脚和舵机需要非常精确的信号为了方便和保证精度库默认会接管位的将其强制设置为产生的模式更强大的板子如情况好得多例如有高达个定时器系列有个以上有个更简单的板子如情况更糟如只有个定时器模拟引脚在等开发板上通常标有其背后连接的是一个叫做模数转换器的硬件模块模拟引脚负责读取外部的模拟世界如温度光线强度引脚负责模拟输出一个中间值去控制外部设备特性模拟输入引脚引脚核心功能读取外部模拟电压值输出脉冲宽度调制信号信号类型输入输出工作方式模数转换器定时器产生特殊方波测量控制对象物理世界的连续变化量输出效果的平均强度分辨率位位返回值参数典型应用读取电位器光敏电阻温度传感器控制亮度电机转速舵机角度原理模拟引脚的实现依赖于一个叫做模数转换器的硬件模块它的任务是将一个连续的模拟电压信号转换成一个离散的数字数值以便的数字核心能够读取和处理当你执行时底层硬件悄然完成以下操作内部的多路选择器将引脚连接到模块启动一次转换采样保持电路捕获引脚上的瞬时电压进行量化将电压值转换为之间的数字转换完成结果被存入数据寄存器函数从这个寄存器中取出这个值并返回给你的程序详细如下采样并不是持续不断地测量电压而是以一个固定的时间间隔由采样频率决定快速地瞥一眼输入引脚上的电压值并把这个瞬间的电压值捕获下来采样率根据奈奎斯特采样定理采样频率必须至少是输入信号最高频率的倍才能无失真地还原原始信号但对于大多数测量的传感器如缓慢变化的温度光线默认的采样率已经足够量化捕获到的模拟电压值可以是某个范围内的任意值如但需要把它归类到一个有限的离散的等级中去这就是分辨率的概念分辨率通常用位数表示的是位的这意味着它可以将至的参考电压划分为个离散的等级从到每个等级代表的电压差是编码将量化后得到的等级数值转换成一个二进制数字并存储到的寄存器中等待程序通过函数来读取最终在代码中得到的里的就是这个编码后的数字值相关参数分辨率定义能区分的最小电压变化能力位数越高分辨率越高举例位范围最小电压步进位范围最小电压步进假设参考电压精度是位的倍影响分辨率决定测量的精细度高分辨率能探测到更微弱的电压变化参考电压定义用于比较和量化的基准电压通常是的工作电压如为重要性测量小电压范围如时若使用参考电压精度会大幅浪费解决方案许多允许改变参考电压使用函数可改变的参考电压提高精度采样速度定义完成一次采样量化编码过程所需时间影响决定能测量多快变化的信号捕获音频信号需高采样速度而测量温度等缓慢变化的数据低速也足够',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-09-19 09:07:10',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://th.bing.com/th/id/OIP.wtmjepfWPBvn26uz7s18dgHaHa?rs=1&amp;pid=ImgDetMain"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">ZEROKO14的个人博客</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/AI/" style="font-size: 1.05rem;">AI<sup>1</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C#<sup>3</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 1.05rem;">CSS<sup>1</sup></a><a href="/tags/CSharp/" style="font-size: 1.05rem;">CSharp<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.05rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 1.05rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 1.05rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 1.05rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 1.05rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 1.05rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 1.05rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 1.05rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 1.05rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 1.05rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 1.05rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>1</sup></a><a href="/tags/nas/" style="font-size: 1.05rem;">nas<sup>1</sup></a><a href="/tags/next/" style="font-size: 1.05rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 1.05rem;">ppt<sup>1</sup></a><a href="/tags/python/" style="font-size: 1.05rem;">python<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 1.05rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 1.05rem;">vue<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 1.05rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 1.05rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 1.05rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 1.05rem;">加解密<sup>1</sup></a><a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 1.05rem;">基础<sup>6</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 1.05rem;">多线程<sup>1</sup></a><a href="/tags/%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%BC%8F/" style="font-size: 1.05rem;">并发模式<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">开发<sup>4</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">数学<sup>1</sup></a><a href="/tags/%E6%9D%82%E9%A1%B9/" style="font-size: 1.05rem;">杂项<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%89%A9%E7%90%86/" style="font-size: 1.05rem;">物理<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 1.05rem;">监控<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.05rem;">网络<sup>3</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 1.05rem;">逆向<sup>5</sup></a><a href="/tags/%E9%AD%94%E6%B3%95/" style="font-size: 1.05rem;">魔法<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">14</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url">技术</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>基础</span></a></span></div></div><h1 class="post-title" itemprop="name headline">嵌入式相关</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-02-14T03:04:40.761Z" title="发表于 2025-02-14 11:04:40">2025-02-14</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-09-19T01:07:10.582Z" title="更新于 2025-09-19 09:07:10">2025-09-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="嵌入式相关"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为新加坡"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>新加坡</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://che77a38.github.io/posts/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3/"><header><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url">技术</a><a href="/tags/%E5%9F%BA%E7%A1%80/" tabindex="-1" itemprop="url">基础</a><h1 id="CrawlerTitle" itemprop="name headline">嵌入式相关</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">ZEROKO14</span><time itemprop="dateCreated datePublished" datetime="2025-02-14T03:04:40.761Z" title="发表于 2025-02-14 11:04:40">2025-02-14</time><time itemprop="dateCreated datePublished" datetime="2025-09-19T01:07:10.582Z" title="更新于 2025-09-19 09:07:10">2025-09-19</time></header><p>嵌入式相关知识点</p>
+<span id="more"></span>
+
+<p><strong>嵌入式系统</strong>：以应用为中心、软硬件可裁剪的专用计算机系统，嵌入到设备中执行特定任务（如智能手环、工业控制器）</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li><strong>实时性</strong>：工业控制需毫秒级响应（如机器人紧急制动）</li>
+<li><strong>低功耗</strong>：电池设备需优化能耗（如物联网传感器）</li>
+<li><strong>资源受限</strong>：内存&#x2F;处理器性能远低于PC（ESP8266仅80KB RAM）</li>
+</ul>
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="电路基础"><a href="#电路基础" class="headerlink" title="电路基础"></a>电路基础</h2><h3 id="基尔霍夫定律"><a href="#基尔霍夫定律" class="headerlink" title="基尔霍夫定律"></a>基尔霍夫定律</h3><ul>
+<li><p><strong>基尔霍夫电流定律（KCL）</strong>：在集总参数电路中，任意时刻，对<strong>任意节点流出或流入该节点电流的代数和等于零</strong></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202509190859163.png" alt="image-20250919085902707" style="zoom:25%;" />
+$$
+i_1+i_2+i_3=i_4+i_5
+$$
+</li>
+<li><p><strong>基尔霍夫电压定律（KVL）</strong>：在集总参数电路中，任一时刻，沿<strong>任一闭合路径绕行，各支路电压的代数和等于零</strong></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202509190859092.png" alt="image-20250919085928634" style="zoom:25%;" />
+$$
+U_{S1}-U_{S2}-U_2-U_1=0
+$$
+</li>
+<li></li>
+</ul>
+<h3 id="模拟数字电路"><a href="#模拟数字电路" class="headerlink" title="模拟数字电路"></a>模拟数字电路</h3><ul>
+<li><strong>数字电路</strong>是处理数字信号的电路。<br>数字信号：数字信号是离散的电信号。只有0和1区分。</li>
+<li><strong>模拟电路</strong>是处理模拟信号的电路。<br>模拟信号：模拟信号是连续的电信号。以电压为纵坐标，时间t为横坐标为例，函数曲线是连续的，不存在突然阶跃的情况</li>
+</ul>
+<h2 id="单片机基础"><a href="#单片机基础" class="headerlink" title="单片机基础"></a>单片机基础</h2><h3 id="计算机的最小组成"><a href="#计算机的最小组成" class="headerlink" title="计算机的最小组成"></a>计算机的最小组成</h3><p>计算机的组成非常复杂,但其基本单元非常简单</p>
+<ol>
+<li>笔记本电路板上有很多芯片,一个芯片就是一个系统</li>
+<li>一个系统由很多模块组成,如加法器,乘法器等</li>
+<li>一个模块由很多逻辑门组成,如非门,与门,或门等</li>
+<li>逻辑门由晶体管组成,如PMOS管和NMOS管灯</li>
+</ol>
+<p>芯片 &#x3D;&gt;  很多模块组成 &#x3D;&gt; 很多逻辑门组成 &#x3D;&gt; 很多<strong>晶体管</strong>组成</p>
+<p>现代智能手机芯片中的晶体管数量已经达到数百亿级别</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202509190907154.png" alt="image-20250919090701683" style="zoom:25%;" />
+
+
+
+<h1 id="硬件组成三要素"><a href="#硬件组成三要素" class="headerlink" title="硬件组成三要素"></a>硬件组成三要素</h1><table>
+<thead>
+<tr>
+<th>组件</th>
+<th>作用</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>传感器</td>
+<td>感知物理量（温度&#x2F;光照&#x2F;位置）并转为电信号</td>
+<td>光电传感器、编码器</td>
+</tr>
+<tr>
+<td>控制器</td>
+<td>处理传感器数据并决策（核心为MCU或SoC）</td>
+<td>STM32、ESP32</td>
+</tr>
+<tr>
+<td>执行器</td>
+<td>执行控制指令（机械运动&#x2F;开关控制）</td>
+<td>直流电机、气缸</td>
+</tr>
+</tbody></table>
+<h2 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h2><h3 id="SoC"><a href="#SoC" class="headerlink" title="SoC"></a>SoC</h3><p><strong>系统级芯片</strong></p>
+<p><strong>System on Chip</strong>: SoC 是将整个计算机系统的各个组件（如 CPU、GPU、内存、I&#x2F;O 接口、通信模块等）集成到单个芯片上的解决方案</p>
+<p>典型实例:</p>
+<ul>
+<li><strong>Raspberry Pi</strong>：使用 Broadcom SoC 的单板计算机，适合各种计算和嵌入式应用。</li>
+<li><strong>手机芯片（如 Qualcomm Snapdragon、Apple A 系列）</strong>：集成了 CPU、GPU、通信模块（如 4G&#x2F;5G）、图像处理器等。</li>
+<li><strong>NVIDIA Jetson 系列</strong>：用于人工智能和机器学习的 SoC，集成了强大的 GPU 和处理能力。</li>
+<li><strong>ESP32</strong>：虽然它也可以被视为 MCU，但它集成了 Wi-Fi 和蓝牙功能，因此在某些上下文中也可以被视为 SoC。</li>
+</ul>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>功能强大，集成度高</li>
+<li>支持多种处理任务和外设</li>
+<li>通常具有较高的功耗和性能</li>
+<li>适合需要高性能和多功能的应用</li>
+</ul>
+<h3 id="MCU"><a href="#MCU" class="headerlink" title="MCU"></a>MCU</h3><p><strong>微控制器单元</strong></p>
+<p><strong>定义</strong>：MCU 是一种集成电路，通常包括一个或多个处理核心、内存（RAM 和 ROM）、输入输出端口（I&#x2F;O）和其他外设（如定时器、ADC 等）</p>
+<p><strong>用途</strong>：MCU 通常用于控制应用，如家电、汽车、工业控制等。它们适合处理简单的控制任务和实时处理</p>
+<p><strong>特点</strong></p>
+<ul>
+<li>功耗低</li>
+<li>处理能力较弱，适合简单任务</li>
+<li>通常具有较小的存储空间</li>
+<li>设计简单，适合嵌入式系统</li>
+</ul>
+<p><strong>典型实例</strong>：</p>
+<ol>
+<li><strong>Arduino</strong>：基于 AVR 或 ARM 微控制器的开发板，广泛用于教育和原型设计。</li>
+<li><strong>STM32 系列</strong>：STMicroelectronics 提供的 32 位微控制器，广泛应用于嵌入式系统。</li>
+<li><strong>PIC 微控制器</strong>：Microchip Technology 提供的系列微控制器，常用于工业控制和消费电子产品。</li>
+<li><strong>8051 微控制器</strong>：一种经典的 8 位微控制器架构，应用于许多嵌入式系统。</li>
+</ol>
+<h1 id="软件核心层级"><a href="#软件核心层级" class="headerlink" title="软件核心层级"></a>软件核心层级</h1><ul>
+<li><strong>裸机开发</strong>：直接操作寄存器控制硬件（C语言点灯实验）</li>
+<li><strong>RTOS（实时操作系统）</strong><ul>
+<li>必要性: 多任务调度(如同时处理Wi-Fi通信 + 电机控制)</li>
+<li>常用系统: FreeRTOS(ESP8266兼容),Zephyr</li>
+</ul>
+</li>
+<li><strong>通信协议</strong><ul>
+<li>设备间: I²C、SPI、UART（传感器与控制器通信）</li>
+<li>网络层: MQTT（物联网云通信）、Modbus（工业控制）</li>
+</ul>
+</li>
+</ul>
+<h3 id="FreeRTOS架构解析"><a href="#FreeRTOS架构解析" class="headerlink" title="FreeRTOS架构解析"></a>FreeRTOS架构解析</h3><p>FreeRTOS 通过精妙的<strong>分层架构</strong>、<strong>确定性调度策略</strong>和<strong>硬件级优化</strong>实现实时低延迟与优先级抢占，其框架设计可通过以下结构图及核心机制解析</p>
+<p>FreeRTOS通过 <strong>分层微内核+硬件加速调度+中断优先级隔离</strong> 实现硬实时</p>
+<ul>
+<li><p><strong>抢占式调度</strong>确保高优先级任务即刻响应</p>
+</li>
+<li><p><strong>优先级继承</strong>消除资源竞争延迟</p>
+</li>
+<li><p><strong>FromISR API</strong> 缩短中断到任务唤醒路径</p>
+</li>
+<li><p><strong>Tickless模式</strong>兼顾低功耗与定时精度</p>
+<p>开发者需合理配置 <code>FreeRTOSConfig.h</code>（如调度策略、堆大小）并优化任务优先级分配，以发挥其极致实时性能</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>设计哲学</strong>：<strong>微内核架构</strong>仅包含调度、任务同步等必要功能，内核代码精简至几KB，通过 <code>FreeRTOSConfig.h</code>动态裁剪模块（如关闭定时器以节省资源）</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    A[应用层] --&gt;|调用API| B(FreeRTOS API层)</span><br><span class="line">    B --&gt;|依赖内核服务| C[内核层]</span><br><span class="line">    C --&gt;|硬件抽象接口| D[移植层]</span><br><span class="line">    D --&gt;|寄存器操作| E[硬件层]</span><br></pre></td></tr></table></figure>
+
+<h4 id="任务调度机制（状态转换图）"><a href="#任务调度机制（状态转换图）" class="headerlink" title="任务调度机制（状态转换图）"></a>任务调度机制（状态转换图）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">stateDiagram-v2</span><br><span class="line">    [*] --&gt; 创建态 : xTaskCreate()</span><br><span class="line">    创建态 --&gt; 就绪态 : vTaskStartScheduler()</span><br><span class="line">    就绪态 --&gt; 运行态 : 调度器选择（优先级抢占）</span><br><span class="line">    运行态 --&gt; 阻塞态 : vTaskDelay()/队列等待</span><br><span class="line">    阻塞态 --&gt; 就绪态 : 事件触发（如信号量释放）</span><br><span class="line">    运行态 --&gt; 挂起态 : vTaskSuspend()</span><br><span class="line">    挂起态 --&gt; 就绪态 : vTaskResume()</span><br></pre></td></tr></table></figure>
+
+<p>核心调度策略</p>
+<ol>
+<li><p>优先级抢占</p>
+<ul>
+<li>高优先级任务就绪时立即抢占低优先级任务</li>
+<li>优先级位图算法(uxTopReadyPriority)在常数时间内定位最高优先级任务</li>
+</ul>
+</li>
+<li><p>时间片轮转</p>
+<p>同优先级任务共享CPU时间(通过SysTick中断触发切换)</p>
+</li>
+<li><p>调度确定性保障</p>
+<p>任务切换时间&lt;&#x3D;1<strong>μs</strong>（Cortex-M），依赖硬件加速的上下文保存（PendSV异常自动压栈R0-R3等）</p>
+</li>
+</ol>
+<h4 id="低延迟实现机制"><a href="#低延迟实现机制" class="headerlink" title="低延迟实现机制"></a>低延迟实现机制</h4><h5 id="中断管理框架"><a href="#中断管理框架" class="headerlink" title="中断管理框架"></a>中断管理框架</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">flowchart TB</span><br><span class="line">    硬件中断 --&gt;|触发| ISR[中断服务例程]</span><br><span class="line">    ISR --&gt;|快速处理| A&#123;需调用FreeRTOS API？&#125;</span><br><span class="line">    A --&gt;|是| B[使用FromISR API&lt;br&gt;（如xSemaphoreGiveFromISR）]</span><br><span class="line">    A --&gt;|否| C[直接返回]</span><br><span class="line">    B --&gt;|触发| D[即时任务切换&lt;br&gt;（portYIELD_FROM_ISR）]</span><br></pre></td></tr></table></figure>
+
+<p><strong>中断优先级分层</strong>：</p>
+<ul>
+<li><strong>不可屏蔽中断</strong>（优先级≤<code>configMAX_SYSCALL_INTERRUPT_PRIORITY</code>）：禁止调用API，响应延迟极低（如电机控制）</li>
+<li><strong>可屏蔽中断</strong>（优先级＞阈值）：可安全调用API，但可能被内核短暂阻塞</li>
+</ul>
+<h5 id="优先级继承解决资源竞争"><a href="#优先级继承解决资源竞争" class="headerlink" title="优先级继承解决资源竞争"></a>优先级继承解决资源竞争</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">    participant 高优先级任务</span><br><span class="line">    participant 互斥量</span><br><span class="line">    participant 低优先级任务</span><br><span class="line"></span><br><span class="line">    高优先级任务-&gt;&gt;+互斥量: 请求获取（阻塞）</span><br><span class="line">    互斥量-&gt;&gt;+低优先级任务: 临时提升其优先级</span><br><span class="line">    低优先级任务-&gt;&gt;-互斥量: 释放资源</span><br><span class="line">    互斥量-&gt;&gt;-高优先级任务: 恢复运行</span><br></pre></td></tr></table></figure>
+
+<p>互斥锁（Mutex）动态提升低优先级任务的优先级，避免<strong>优先级反转</strong>导致高优先级任务阻塞</p>
+<h4 id="低功耗与实时性平衡（Tickless模式）"><a href="#低功耗与实时性平衡（Tickless模式）" class="headerlink" title="低功耗与实时性平衡（Tickless模式）"></a>低功耗与实时性平衡（Tickless模式）</h4><p>空闲时关闭SysTick中断，由高精度RTC唤醒并补偿节拍计数，减少功耗且不牺牲调度精度</p>
+<h2 id="开发工具链"><a href="#开发工具链" class="headerlink" title="开发工具链"></a>开发工具链</h2><table>
+<thead>
+<tr>
+<th align="center"><strong>工具类型</strong></th>
+<th align="center"><strong>代表软件</strong></th>
+<th align="center"><strong>用途</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">IDE</td>
+<td align="center">PlatformIO(vscode插件)、Keil</td>
+<td align="center">代码编辑&#x2F;编译&#x2F;调试</td>
+</tr>
+<tr>
+<td align="center">调试器</td>
+<td align="center">J-Link、ST-Link</td>
+<td align="center">硬件程序烧录与实时调试</td>
+</tr>
+<tr>
+<td align="center">仿真器</td>
+<td align="center">Proteus、QEMU</td>
+<td align="center">无硬件时的逻辑验证</td>
+</tr>
+</tbody></table>
+<h1 id="自动化设备开发路径"><a href="#自动化设备开发路径" class="headerlink" title="自动化设备开发路径"></a>自动化设备开发路径</h1><h2 id="阶段1：基础实践（2-4周）"><a href="#阶段1：基础实践（2-4周）" class="headerlink" title="阶段1：基础实践（2-4周）"></a>阶段1：基础实践（2-4周）</h2><ol>
+<li><p><strong>硬件入门</strong>：</p>
+<ul>
+<li>购买ESP32开发板（兼容Wi-Fi&#x2F;蓝牙）。</li>
+<li>完成实验：GPIO控制LED、ADC读取温湿度传感器。</li>
+</ul>
+</li>
+<li><p><strong>软件框架</strong>：</p>
+<ul>
+<li>用PlatformIO搭建开发环境（支持VS Code）。</li>
+<li>编写C程序驱动外设（如按键触发电机）。</li>
+</ul>
+</li>
+</ol>
+<h2 id="阶段2：系统进阶（4-8周）"><a href="#阶段2：系统进阶（4-8周）" class="headerlink" title="阶段2：系统进阶（4-8周）"></a>阶段2：系统进阶（4-8周）</h2><ol>
+<li><p><strong>RTOS实战</strong>：</p>
+<ul>
+<li>在ESP32上移植FreeRTOS，创建多任务（任务1：传感器采集；任务2：网络上报）。</li>
+</ul>
+</li>
+<li><p><strong>通信协议</strong>：</p>
+<ul>
+<li>通过ESP32的Wi-Fi发送传感器数据至云平台（MQTT协议）。</li>
+</ul>
+</li>
+</ol>
+<h2 id="阶段3：自动化设备集成（8-周）"><a href="#阶段3：自动化设备集成（8-周）" class="headerlink" title="阶段3：自动化设备集成（8+周）"></a>阶段3：自动化设备集成（8+周）</h2><ul>
+<li><strong>项目案例</strong>：智能浇水系统</li>
+</ul>
+<h3 id="伪代码示例：土壤湿度控制"><a href="#伪代码示例：土壤湿度控制" class="headerlink" title="伪代码示例：土壤湿度控制"></a>伪代码示例：土壤湿度控制</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">task_sensor</span><span class="params">(<span class="type">void</span> *pvParams)</span> &#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="type">int</span> moisture = read_sensor(); <span class="comment">// 读取湿度传感器</span></span><br><span class="line">    xQueueSend(data_queue, &amp;moisture, <span class="number">0</span>); <span class="comment">// 发送到队列</span></span><br><span class="line">    vTaskDelay(<span class="number">5000</span>); <span class="comment">// 5秒采集一次</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">task_control</span><span class="params">(<span class="type">void</span> *pvParams)</span> &#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="type">int</span> moisture;</span><br><span class="line">    xQueueReceive(data_queue, &amp;moisture, portMAX_DELAY);</span><br><span class="line">    <span class="keyword">if</span> (moisture &lt; <span class="number">30</span>) digitalWrite(PUMP_PIN, HIGH); <span class="comment">// 启动水泵</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="硬件配置："><a href="#硬件配置：" class="headerlink" title="硬件配置："></a>硬件配置：</h3><ul>
+<li>传感器：土壤湿度传感器 → ESP32 → 继电器控制水泵。</li>
+</ul>
+<h2 id="资源推荐"><a href="#资源推荐" class="headerlink" title="资源推荐"></a>资源推荐</h2><ul>
+<li><strong>书籍</strong>：《嵌入式系统设计与实践》（O’Reilly）</li>
+<li><strong>课程</strong>：Coursera《Embedded Hardware and Operating Systems》</li>
+<li><strong>社区</strong>：GitHub（开源硬件项目）、EEVblog（硬件调试技巧）</li>
+</ul>
+<h2 id="关键提示："><a href="#关键提示：" class="headerlink" title="关键提示："></a>关键提示：</h2><p>从软件工程师到硬件融合的转型核心在于：</p>
+<ol>
+<li><strong>动手为先</strong>：拆解旧家电（如遥控车）理解电路设计。</li>
+<li><strong>渐进式学习</strong>：从Arduino快速原型到专业RTOS开发。</li>
+<li><strong>利用现有优势</strong>：C&#x2F;C++能力可快速切入驱动开发，网络知识助力物联网应用。</li>
+</ol>
+<p>通过此路径，您可在3-6个月内构建完整的自动化设备开发能力，将软件经验转化为硬件创新力！</p>
+<h1 id="ESP开发板对比"><a href="#ESP开发板对比" class="headerlink" title="ESP开发板对比"></a>ESP开发板对比</h1><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>ESP8266</th>
+<th>ESP32（基础款）</th>
+<th>ESP32-C3（推荐替代）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>处理器</td>
+<td>单核 80MHz</td>
+<td>双核 240MHz</td>
+<td>单核 RISC-V 160MHz</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>80KB RAM</td>
+<td>520KB RAM</td>
+<td>400KB RAM</td>
+</tr>
+<tr>
+<td>无线功能</td>
+<td>Wi-Fi 4 (802.11b&#x2F;g&#x2F;n)</td>
+<td>Wi-Fi 4 + 蓝牙4.2&#x2F;BLE</td>
+<td>Wi-Fi 4 + 蓝牙5.0</td>
+</tr>
+<tr>
+<td>ADC精度&#x2F;数量</td>
+<td>1路（10位，0-1V量程）</td>
+<td>18路（12位，0-3.3V）</td>
+<td>6路（12位）</td>
+</tr>
+<tr>
+<td>PWM可用通道</td>
+<td>8路</td>
+<td>16路</td>
+<td>4路</td>
+</tr>
+<tr>
+<td>典型成本</td>
+<td>10-15元</td>
+<td>20-30元</td>
+<td>15-20元</td>
+</tr>
+</tbody></table>
+<blockquote>
+<ul>
+<li><strong>ESP8266</strong>：仅用于“触发型”场景（如收数据→发指令），复杂逻辑（如电机PID控制）必选ESP32。</li>
+<li><strong>ESP32全系</strong>：新项目无脑入！<strong>ESP32-C3</strong>是ESP8266的理想升级，<strong>ESP32-S3</strong>则满足AI等前沿需求</li>
+<li><strong>避坑点</strong>：ESP8266的ADC仅1路且量程窄（0-1V），直接接传感器易烧毁，务必分压电路</li>
+</ul>
+</blockquote>
+<h1 id="GPIO"><a href="#GPIO" class="headerlink" title="GPIO"></a>GPIO</h1><p>GPIO（<strong>General-Purpose Input&#x2F;Output</strong>，通用输入输出接口）是<strong>嵌入式系统中最基础的硬件交互通道</strong>，可直接连接传感器、执行器或其他电子模块，实现芯片与物理世界的双向通信</p>
+<p>硬件结构上看: 每个 GPIO 对应芯片的物理引脚（如 ESP8266 的 <code>D0~D8</code>），内部通过寄存器控制状态（无需外接复杂电路即可驱动 LED 或读取按钮）</p>
+<p>GPIO 是<strong>嵌入式开发的“手脚”</strong> —— 通过它：</p>
+<ol>
+<li><p><strong>感知世界</strong>（输入）→ 接收按钮、传感器信号。</p>
+</li>
+<li><p><strong>操控设备</strong>（输出）→ 驱动电机、点亮灯光。</p>
+<p><strong>行动建议</strong>：</p>
+<ul>
+<li><p><strong>入门套件推荐</strong>：购买 <strong>ESP32 开发板 + GPIO 实验套件</strong>（含按钮&#x2F;LED&#x2F;光敏电阻），花费约￥50。</p>
+</li>
+<li><p><strong>快速验证思路</strong>：用 Tinkercad 等电路仿真工具设计逻辑，再动手焊接。</p>
+<p>掌握 GPIO 后，您即可将 C++ 算法能力转化为实体自动化设备的控制力！</p>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="仿真软件"><a href="#仿真软件" class="headerlink" title="仿真软件"></a>仿真软件</h1><table>
+<thead>
+<tr>
+<th>层级</th>
+<th>语言&#x2F;工具</th>
+<th>作用</th>
+<th>用户操作示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户编写代码</td>
+<td>Arduino C&#x2F;C++</td>
+<td>控制虚拟硬件（如点亮LED、读取传感器）</td>
+<td><code>void loop() &#123; digitalWrite(13, HIGH); delay(1000); &#125;</code></td>
+</tr>
+<tr>
+<td>仿真环境内核</td>
+<td>C++&#x2F;Java&#x2F;Python</td>
+<td>模拟硬件行为（如生成虚拟电压信号）</td>
+<td>后台运行，用户不可见（如Tinkercad用WebAssembly编译运行）</td>
+</tr>
+<tr>
+<td>电路可视化</td>
+<td>图形化拖拽界面</td>
+<td>构建虚拟电路（连线、元件选择）</td>
+<td>拖入Arduino UNO板 → 连接LED到D13引脚 → 开始仿真</td>
+</tr>
+</tbody></table>
+<h2 id="主流仿真工具"><a href="#主流仿真工具" class="headerlink" title="主流仿真工具"></a>主流仿真工具</h2><h4 id="Tinkercad-Circuits（最适合初学者）"><a href="#Tinkercad-Circuits（最适合初学者）" class="headerlink" title="Tinkercad Circuits（最适合初学者）"></a>Tinkercad Circuits（最适合初学者）</h4><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fK4y187jE?p=12">参考视频教程</a></p>
+<p><strong>操作流程</strong>：</p>
+<p>① 浏览器打开 <a target="_blank" rel="noopener" href="https://www.tinkercad.com/">Tinkercad</a>→ 创建电路设计</p>
+<p>② 拖入虚拟Arduino（如UNO&#x2F;ESP32）和元件（如LED、传感器）</p>
+<p>③ <strong>用C++写控制代码</strong>（基于Arduino库） → 点击仿真按钮</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例：虚拟按钮控制LED</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">setup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">pinMode</span>(<span class="number">2</span>, INPUT); <span class="comment">// 按钮接虚拟D2</span></span><br><span class="line">  <span class="built_in">pinMode</span>(<span class="number">13</span>, OUTPUT); <span class="comment">// LED接虚拟D13</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">digitalRead</span>(<span class="number">2</span>) == HIGH) &#123; <span class="comment">// 按钮按下</span></span><br><span class="line">    <span class="built_in">digitalWrite</span>(<span class="number">13</span>, HIGH);     <span class="comment">// 亮灯</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">digitalWrite</span>(<span class="number">13</span>, LOW);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优势</strong>：无需安装，支持<strong>ESP32&#x2F;ESP8266仿真</strong>（含Wi-Fi模拟）</p>
+<h3 id="Proteus（专业级仿真）"><a href="#Proteus（专业级仿真）" class="headerlink" title="Proteus（专业级仿真）"></a>Proteus（专业级仿真）</h3><p><strong>代码流程</strong>：</p>
+<p>① 在Arduino IDE用C++编译出<strong>HEX文件</strong></p>
+<p>② 在Proteus中导入HEX到虚拟MCU → 模拟传感器信号</p>
+<p><strong>适用场景</strong>：电机控制时序验证、ADC精度测试等精密仿真</p>
+<h3 id="fritzing"><a href="#fritzing" class="headerlink" title="fritzing"></a>fritzing</h3><p><a href="hhttps://fritzing.org/">网址</a></p>
+<h3 id="Virtual-Breadboard"><a href="#Virtual-Breadboard" class="headerlink" title="Virtual Breadboard"></a>Virtual Breadboard</h3><p>VBB 电路仿真,仅支持win10系统</p>
+<h3 id="WOKWi"><a href="#WOKWi" class="headerlink" title="WOKWi"></a>WOKWi</h3><p>可以模拟包括ESP32在内的微控制器仿真</p>
+<p><a target="_blank" rel="noopener" href="https://wokwi.com/">网址</a></p>
+<h1 id="基本电子元器件"><a href="#基本电子元器件" class="headerlink" title="基本电子元器件"></a>基本电子元器件</h1><ul>
+<li><p>灯泡 </p>
+</li>
+<li><p>LED</p>
+<p>与灯泡的不同在于有单向导通性,建议最大值为20mA,不烧坏LED也不影响寿命</p>
+</li>
+<li><p>三色RGB发光二极管</p>
+<p>可以理解为三个LED合成一体,有共阳极和共阴极两种,发光是RGB三色不同比例的叠加</p>
+</li>
+<li><p>滑动开关&#x2F;多位开关&#x2F;轻触按键</p>
+<p>多位开关: 多个滑动开关合并到一块</p>
+<p>轻触按键: 按下后状态改变,松开后恢复</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202508191634465.png" alt="image-20250819163422059"></p>
+<p>1a和1b 与 2a和2b是默认连通的,按下按钮就会全连通</p>
+</li>
+<li><p>常见的电池</p>
+<ul>
+<li>纽扣电池  常见CR系列为锂锰扣式电池  提供一个3V的电压,常见的cr2032系列</li>
+<li>干电池  一种以糊状电解液来产生直流电的化学电池,标称电压均为<strong>1.5V</strong>,日常使用型号有1号、5号、7号</li>
+<li>9V电池   积层电池   主要用于仪表测学仪器供电 电池容量小，电压高，内部化学反应迟經的电电流小能使用很长时间</li>
+<li>水果电池   利用水果中的化学物质和金属片发生反应产生电能的一种电池,电压很低</li>
+</ul>
+</li>
+<li><p>其他可以提供电压的设备</p>
+<ul>
+<li>Arduino Uno R3 根据接线可以提供3.3V或5V的电压</li>
+<li>电源 能提供0~30V的电压,注意电流波轮是做了一个限流的作用而不是让你设置电流</li>
+</ul>
+</li>
+<li><p>测量仪器</p>
+<ul>
+<li>万用表  用于测量电压,电流与电阻</li>
+<li>示波器</li>
+<li>函数生成器</li>
+</ul>
+</li>
+<li><p>电位器 - 可调电阻</p>
+<p>改变接入电路的电阻阻值</p>
+</li>
+<li><p>人体红外检测模块PIR</p>
+<p>在安防领域中，PIR探测器的全称就是Passive Infrared Deteetor，即被动式红外探测器或身体感应器</p>
+<p>三个引脚: 电源,接地,信号   如果探测到移动,信号会输出电流</p>
+</li>
+<li><p>继电器</p>
+<p>一种电控制器件,可以理解成是用小电流控制大电流的一种自动开关</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202508191650686.png" alt="image-20250819165016451"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202508191652686.png" alt="image-20250819165134683"></p>
+</li>
+<li><p><strong>示波器</strong>  可以将数据收集起来,以曲线形式显示</p>
+</li>
+<li><p><strong>蜂鸣器</strong> </p>
+<p>可以发出声音</p>
+<p>可以分有源和无源(是否有震荡源)蜂鸣器</p>
+<p>有源蜂鸣器给高电平会自动响,无源蜂鸣器需要给震荡的信号才能响</p>
+<p>Tinkercad仿真中提供的是有源蜂鸣器</p>
+<p><strong>输入的pmw电压频率直接决定音调</strong>。频率越高，音调越高（声音越尖细）；频率越低，音调越低（声音越低沉）</p>
+</li>
+<li><p><a href="#%E8%88%B5%E6%9C%BA"><strong>舵机</strong></a></p>
+</li>
+<li><p>红外接收器</p>
+</li>
+</ul>
+<p><strong>最简单的自保持电路</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202508191707063.png" alt="image-20250819170714766"></p>
+<h2 id="舵机"><a href="#舵机" class="headerlink" title="舵机"></a>舵机</h2><p>舵机是一种<strong>位置（角度）伺服驱动器</strong>。它的核心功能是：<strong>接收一个控制信号，并精确地转动到并保持在那个指定的角度位置</strong></p>
+<p>当说“舵机”时，通常就是指那种<strong>三线、用PWM控制、内部集成了控制电路和电位器</strong>的<strong>位置伺服电机</strong>。它是伺服电机大家族中最常见、最易于使用的一员</p>
+<blockquote>
+<p>伺服电机: 拥有闭环控制的电机</p>
+</blockquote>
+<p><strong>与普通电机的区别</strong>：普通直流电机通常只能控制“正转&#x2F;反转&#x2F;速度”，而舵机可以控制“转到<strong>特定角度</strong>”（比如精确转到30度、90度、180度）</p>
+<p><strong>与步进电机的区别</strong>：舵机内部集成了电机、减速齿轮、控制电路和反馈系统（如电位器），形成了一个闭环控制，所以它通常比开环控制的步进电机<strong>精度更高、扭矩更大、更易用</strong>。</p>
+<p>红色是正极（通常4.8-6V），棕色是地线，橙色是PWM信号线(用于接收控制信号)</p>
+<blockquote>
+<ul>
+<li>切勿将舵机的VCC直接接到Arduino的<strong>5V引脚</strong>上，尤其是扭矩较大的舵机！Arduino板载的5V稳压器无法提供足够电流，可能导致板子重启或烧毁。</li>
+<li>务必使用<strong>外部电源</strong>（如电池组、独立的5V电源模块）为舵机供电，并将此外部电源的GND与Arduino的GND<strong>共地</strong>（连接在一起）</li>
+</ul>
+</blockquote>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>舵机的“角度保持”特性使其非常适合需要精确定位的场景：</p>
+<ul>
+<li><strong>机器人关节</strong>：机器人的手臂、腿、头部、手指的转动。</li>
+<li><strong>航模&#x2F;车模</strong>：控制飞机舵面（故名“舵机”）、汽车转向。</li>
+<li><strong>摄像头云台</strong>：控制摄像头上下左右转动，进行追踪。</li>
+<li><strong>智能门锁</strong>：控制锁舌的弹出和收回。</li>
+<li><strong>喂食器&#x2F;开关</strong>：作为机械臂，远程控制一个物理开关的按下或松开</li>
+</ul>
+<h3 id="控制原理"><a href="#控制原理" class="headerlink" title="控制原理"></a>控制原理</h3><p>舵机的控制需要一种特殊的<strong>PWM信号</strong>，其特点是：</p>
+<ul>
+<li><strong>频率</strong>：通常为 <strong>50Hz</strong>（即周期为20ms）。</li>
+<li><strong>脉冲宽度（高电平持续时间）</strong>：决定了舵机的角度。<ul>
+<li><strong>0.5ms</strong> 的脉冲宽度 -&gt; <strong>0°</strong> 位置</li>
+<li><strong>1.5ms</strong> 的脉冲宽度 -&gt; <strong>90°</strong> 位置</li>
+<li><strong>2.5ms</strong> 的脉冲宽度 -&gt; <strong>180°</strong> 位置</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xychart-beta</span><br><span class="line">    title &quot;舵机角度与脉冲宽度关系图&quot;</span><br><span class="line">    x-axis &quot;脉冲宽度 (ms)&quot; [0.5, 1.0, 1.5, 2.0, 2.5]</span><br><span class="line">    y-axis &quot;转动角度 (°)&quot; 0 --&gt; 180</span><br><span class="line">    line [0, 45, 90, 135, 180]</span><br></pre></td></tr></table></figure>
+
+<p>脉冲宽度在0.5ms至2.5ms之间线性变化，舵机的角度就会在0°至180°之间相应变化</p>
+<p>像Arduino这样的平台提供了现成的 <strong><code>Servo</code>库</strong>，它可以自动帮我们处理这些底层细节</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><strong>不要手动扭动</strong>：在断电时，不要用力强行手动旋转舵机轴，极易损坏内部的齿轮和电位器。</li>
+<li><strong>注意扭矩</strong>：选择舵机时要注意其<strong>扭矩（kg·cm）</strong> 参数，扭矩太小可能带不动你的机械结构。</li>
+<li><strong>供电要充足</strong>：务必使用外部电源供电，确保电源能提供足够的电流（单个舵机工作电流可达几百mA，动作时更大）。</li>
+<li><strong>机械限位</strong>：很多舵机（如180°舵机）有物理限位，编程时不要试图让它转到超出范围的角度（如<code>myServo.write(200)</code>），否则会听到齿轮“打齿”的噪音，长期会损坏舵机。</li>
+</ol>
+<h1 id="电子电路"><a href="#电子电路" class="headerlink" title="电子电路"></a>电子电路</h1><h2 id="上拉和下拉电阻"><a href="#上拉和下拉电阻" class="headerlink" title="上拉和下拉电阻"></a>上拉和下拉电阻</h2><p>用于确定引脚状态</p>
+<blockquote>
+<p><strong>上拉和下拉电阻的核心目的，是为按键（一个机械开关）在未被按下时，提供一个确定的、稳定的电平状态（高电平或低电平），防止其引脚处于不确定的“浮空”状态，从而避免误触发和电路不稳定</strong></p>
+</blockquote>
+<h3 id="为什么需要他们"><a href="#为什么需要他们" class="headerlink" title="为什么需要他们"></a>为什么需要他们</h3><p>原因是<strong>浮空状态的危害</strong></p>
+<p>当我们把按键连接到微控制器（如 Arduino, STM32, 51单片机）的 GPIO 引脚时，理想情况是：</p>
+<ul>
+<li>按键断开 -&gt; 引脚读到一种明确电平（比如 3.3V）</li>
+<li>按键闭合 -&gt; 引脚读到另一种明确电平（比如 0V）</li>
+</ul>
+<p>但问题在于，当一个引脚什么都不连接（即按键断开时）时，它处于<strong>高阻抗状态</strong>，也叫“浮空”状态。这个引脚的电平是不确定的，极易受到周围环境（如静电、电磁干扰）的影响，会在高电平和低电平之间随机波动。微控制器会因此读到混乱的信号，导致程序误以为按键被频繁地按下和释放</p>
+<p><strong>上拉&#x2F;下拉电阻就是为了解决这个“浮空”问题而存在的</strong></p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>上拉电阻 (Pull-up)</th>
+<th>下拉电阻 (Pull-down)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>默认电平</td>
+<td>高电平 (1)</td>
+<td>低电平 (0)</td>
+</tr>
+<tr>
+<td>有效电平</td>
+<td>低电平有效 (按下为0)</td>
+<td>高电平有效 (按下为1)</td>
+</tr>
+<tr>
+<td>常见应用</td>
+<td>更常见，因为很多 MCU 内部集成上拉电阻</td>
+<td>同样可用，但内部集成下拉的情况较少</td>
+</tr>
+<tr>
+<td>电路影响</td>
+<td>在按键按下时，Vcc 通过电阻到 GND 形成回路，有微小电流消耗</td>
+<td>同样有微小电流消耗</td>
+</tr>
+<tr>
+<td>选择依据</td>
+<td>取决于你的程序逻辑和 MCU 特性</td>
+<td>取决于你的程序逻辑和 MCU 特性</td>
+</tr>
+</tbody></table>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202508281145568.png" alt="image-20250828114508924"></p>
+<p>👆🏻上图中<strong>偏左的为上拉电阻,偏右的为下拉电阻</strong></p>
+<ol>
+<li><strong>优先使用上拉电阻</strong>：因为绝大多数微控制器（如Arduino, STM32, ESP32）的GPIO引脚都<strong>内部集成了可软件开启的上拉电阻</strong>。你只需要在代码中配置一下，无需外接物理电阻，非常方便。<ul>
+<li><strong>Arduino示例</strong>: <code>pinMode(pin, INPUT_PULLUP);</code></li>
+<li><strong>STM32 HAL示例</strong>: <code>GPIO_InitStruct.Pull = GPIO_PULLUP;</code></li>
+</ul>
+</li>
+<li>如果你的MCU没有内部下拉电阻，而你需要的逻辑又是“高电平有效”，那么就需要外接一个下拉电阻。</li>
+</ol>
+<p><strong>电阻值选择</strong>：通常选择 <strong>4.7kΩ 到 10kΩ</strong> 的电阻。阻值太大会无法有效拉平干扰；阻值太小则在按键按下时会产生过大的不必要的电流消耗（费电）,并且可能烧坏端口</p>
+<h2 id="PWM引脚"><a href="#PWM引脚" class="headerlink" title="PWM引脚"></a>PWM引脚</h2><p>Arduino板上端口数字前带<code>~</code>表示他可以输出pwm信号</p>
+<blockquote>
+<p>PWM是如何产生的？</p>
+<p>微控制器（MCU）内部有多个专门的硬件模块，叫做定时器&#x2F;计数器。它们就像一个个独立的小时钟，可以精确地计数和计时。</p>
+<ul>
+<li><strong>频率（Frequency）</strong>：由定时器的计数速度决定。定时器计数得多快，一个PWM周期的完成就有多快，从而决定了PWM的频率。</li>
+<li><strong>占空比（Duty Cycle）</strong>：在同一个定时器内，有专门的比较寄存器。当定时器的计数值小于比较寄存器的值时，输出高电平；大于时，输出低电平。改变比较寄存器的值，就能改变高电平的时间比例，即占空比。</li>
+</ul>
+<p><strong>关键点</strong>：一个定时器可以同时控制多个输出通道（通常2到4个），为这些通道提供相同的计数基准（即相同的频率），但每个通道都有自己独立的比较寄存器（即可以有不同的占空比）。</p>
+<p>为什么同一块板子上的PWM引脚频率会不同？</p>
+<p>因为你的开发板（比如常见的Arduino Uno、STM32等）的MCU芯片内部有多个定时器，而不是只有一个。</p>
+<ul>
+<li><p><strong>引脚分组</strong>：板子上的PWM引脚并不是平等的，它们被分组连接到不同的定时器上。</p>
+<p>例如，在Arduino Uno（基于ATmega328P）上：</p>
+<ul>
+<li>引脚 5 和 6 由Timer0控制，默认频率约 976 Hz。</li>
+<li>引脚 9 和 10 由Timer1控制，默认频率约 488 Hz。</li>
+<li>引脚 3 和 11 由Timer2控制，默认频率约 488 Hz。</li>
+</ul>
+</li>
+</ul>
+<p>这些定时器在出厂时或被Arduino库初始化为不同的默认值，所以它们产生的默认PWM频率就不同。</p>
+<ul>
+<li><p><strong>你也可以自己改变频率</strong>：通过编程，你可以重新配置这些定时器（比如改变它的预分频器设置），从而改变其频率。但请注意：</p>
+<ul>
+<li>如果你改变了Timer1的频率，那么所有由Timer1控制的引脚（如Arduino的9和10脚）的频率都会一起改变。</li>
+<li>由一个定时器控制的多个引脚，频率必然相同，但占空比可以各自独立设置。</li>
+</ul>
+</li>
+</ul>
+<p>为什么要这样设计？（这样设计的好处）</p>
+<p>这种设计主要是为了灵活性和功能分工，主要原因有以下几点：</p>
+<ol>
+<li><p><strong>兼顾精度与性能</strong>：</p>
+<ul>
+<li><strong>高频PWM</strong>：适合控制开关电源、LED调光（消除人眼可见的闪烁）等需要快速响应的场合。</li>
+<li><strong>低频PWM</strong>：适合控制舵机（Servo）、生成音频信号等需要精确脉冲宽度的场合。Arduino默认用Timer1（16位定时器）来产生更稳定的低频PWM，就是因为它的精度更高，更适合驱动舵机。</li>
+</ul>
+</li>
+<li><p><strong>独立控制，互不干扰</strong>：</p>
+<ul>
+<li>假设你有一个项目，需要同时：<ul>
+<li>用高频PWM控制一个电机的转速（比如25kHz）。</li>
+<li>用50Hz的PWM信号控制一个舵机。</li>
+</ul>
+</li>
+<li>如果所有PWM引脚都必须是同一个频率，你就无法同时完成这两个任务。</li>
+<li>有了多个独立定时器，你就可以将Timer0设置为高频率控制电机，同时将Timer1设置为50Hz来控制舵机，两者互不干扰。</li>
+</ul>
+</li>
+<li><p><strong>资源分配与优化</strong>：</p>
+<ul>
+<li>芯片设计者提供了多个不同位宽（8位、16位）和功能的定时器，以满足各种不同的应用需求。让用户可以根据项目需要，灵活分配这些硬件资源。</li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<ul>
+<li><strong>不同频率</strong>：是因为它们背后连接的是不同的定时器硬件。</li>
+<li><strong>同一频率</strong>：连接在同一个定时器上的多个PWM引脚，必须有相同的频率。</li>
+<li><strong>为什么要这样</strong>：为了提供灵活性，允许用户为不同的任务（电机控制、舵机控制、LED调光等）同时设置不同的最佳频率，让各个功能模块互不干扰地工作。</li>
+</ul>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202509011600251.png" alt="image-20250901160005788"></p>
+<p><strong>设置的引脚10写入“100”是什么意思？为什么是方波?</strong></p>
+<p>在Arduino编程中，使用 <code>analogWrite(pin, value)</code>函数来向标有<code>~</code>的PWM引脚写入值。这个 <code>value</code>的取值范围是 <strong>0 到 255</strong>。</p>
+<ul>
+<li><code>analogWrite(10, 0)</code>：表示占空比为 **0%**，引脚持续输出低电平（0V）。</li>
+<li><code>analogWrite(10, 255)</code>：表示占空比为 **100%**，引脚持续输出高电平（5V）。</li>
+<li><code>analogWrite(10, 100)</code>：表示占空比约为 **100&#x2F;255 ≈ 39.2%<strong>。这意味着在一个PWM周期内，引脚只在</strong>39.2%<strong>的时间输出高电平（5V），其余</strong>60.8%**的时间输出低电平（0V）。</li>
+</ul>
+<p>所以，您并没有命令引脚“一直输出高电平”，而是命令它“以大约39%的占空比快速开关”</p>
+<p><code>输出电压 ≈ (100 / 255) × 5V ≈ 0.392 × 5V ≈ 1.96V</code></p>
+<p><strong>这正好完美匹配了您电压表上1.96V的读数！</strong> 电压表告诉你的是：“这个引脚输出的平均电压是1.96V”，而示波器告诉你的是：“这个引脚是通过快速在5V和0V之间切换来产生这个1.96V平均电压的”</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果期望的是一条稳定的5V直线，不应该使用 `analogWrite`，而应该使用数字写入函数：</span></span><br><span class="line">digitalWrite(<span class="number">10</span>, HIGH); <span class="comment">// 引脚持续输出5V，示波器上显示一条水平的直线，电压表显示5V</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>digitalWrite()</th>
+<th>analogWrite()</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输出信号类型</td>
+<td>纯数字信号 (Digital)</td>
+<td>脉冲宽度调制信号 (PWM - 并非真实模拟)</td>
+</tr>
+<tr>
+<td>物理电平</td>
+<td>HIGH&#x3D; Vcc (如5V&#x2F;3.3V)</td>
+<td>LOW&#x3D; 0V (GND)</td>
+</tr>
+<tr>
+<td></td>
+<td>快速切换于 HIGH 和 LOW 之间</td>
+<td></td>
+</tr>
+<tr>
+<td>电压可变性</td>
+<td>❌ 只有2种固定电平</td>
+<td>✅ 平均电压可变 (0V ~ Vcc)</td>
+</tr>
+<tr>
+<td>硬件依赖</td>
+<td>任何通用I&#x2F;O引脚 (GPIO)</td>
+<td>仅限带 ~ 标记的PWM引脚 (需硬件定时器支持)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>二者的应用场景对比</p>
+<p><strong><code>digitalWrite()</code>：纯二进制控制</strong></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>典型应用</th>
+<th>为什么用？</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>开关类器件</td>
+<td>- 继电器通断</td>
+<td>只需“开&#x2F;关”状态，无需中间值</td>
+</tr>
+<tr>
+<td></td>
+<td>- 晶体管&#x2F;MOSFET开关</td>
+<td></td>
+</tr>
+<tr>
+<td>状态指示</td>
+<td>- LED电源灯亮灭</td>
+<td>视觉&#x2F;听觉只需二元状态</td>
+</tr>
+<tr>
+<td></td>
+<td>- 蜂鸣器报警鸣叫</td>
+<td></td>
+</tr>
+<tr>
+<td>数字通信</td>
+<td>- SPI时钟线(SCK)</td>
+<td>协议要求精确的0&#x2F;1跳变</td>
+</tr>
+<tr>
+<td></td>
+<td>- I²C起始信号</td>
+<td></td>
+</tr>
+<tr>
+<td>按钮读取</td>
+<td>检测按键是否按下(HIGH&#x2F;LOW)</td>
+<td>输入本身就是数字信号</td>
+</tr>
+</tbody></table>
+<p><strong><code>analogWrite()</code>：模拟效果仿真</strong></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>典型应用</th>
+<th>PWM的优势</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>调光&#x2F;调色</td>
+<td>- LED呼吸灯</td>
+<td>✅ 无极调节亮度&#x2F;颜色，无级变速平滑</td>
+</tr>
+<tr>
+<td></td>
+<td>- RGB灯颜色渐变</td>
+<td></td>
+</tr>
+<tr>
+<td>电机调速</td>
+<td>- 直流电机转速控制</td>
+<td>✅ 精确控制功率输出，替代笨重的模拟电路</td>
+</tr>
+<tr>
+<td></td>
+<td>- 风扇风力调节</td>
+<td></td>
+</tr>
+<tr>
+<td>舵机角度控制</td>
+<td>机器人关节舵机（50Hz PWM信号）</td>
+<td>✅ 用脉冲宽度精确映射角度 (0°~180°)</td>
+</tr>
+<tr>
+<td>简易音频合成</td>
+<td>生成方波音乐（如8-bit游戏音效）</td>
+<td>✅ 频率可调，占空比改变音色</td>
+</tr>
+<tr>
+<td>加热功率控制</td>
+<td>电热丝&#x2F;加热片温控</td>
+<td>✅ 高效调节发热功率</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong><code>digitalWrite</code>是控制世界的开关</strong></li>
+<li><strong><code>analogWrite</code>是调节万物的旋钮</strong></li>
+</ul>
+</blockquote>
+<ol>
+<li><p><strong>PWM是“假”模拟</strong>：<br><strong>Arduino Uno&#x2F;Nano 没有真正的DAC（数模转换器）。<code>analogWrite()</code>只是通过PWM高速开关模拟出中间电压效果。需外接DAC芯片才能输出真实连续电压（如音频输出）。</strong></p>
+</li>
+<li><p><strong>分辨率限制</strong>：<br>标准Arduino PWM为8位 (0-255共256级)，精细度有限。STM32等高端MCU可达16位(0-65535)，精度提升256倍！</p>
+</li>
+<li><p><strong>引脚冲突风险</strong>：<br>修改PWM频率（如 TCCR1B寄存器）会影响同一定时器的所有引脚！例如改Timer1频率后，Pin9和Pin10行为会同时变化。</p>
+</li>
+<li><p><strong>驱动能力≠输出类型</strong>：<br>无论<code>digitalWrite</code>还是<code>analogWrite</code>，最大输出电流仅约40mA。驱动大功率设备（电机&#x2F;灯带）必须加晶体管&#x2F;MOSFET驱动电路！</p>
+</li>
+</ol>
+<h3 id="PWM引脚的”bug”"><a href="#PWM引脚的”bug”" class="headerlink" title="PWM引脚的”bug”"></a>PWM引脚的”bug”</h3><p>以ARDUINO UNO板子为例,会有下面的情况:</p>
+<ul>
+<li>舵机影响9和10引脚pwm </li>
+<li>蜂鸣器和红外接收影响3和11引脚pwm</li>
+</ul>
+<p>原因是: Arduino UNO (基于ATmega328P芯片) 只有<strong>3个</strong>独立的硬件定时器</p>
+<p>Arduino UNO的PWM引脚是这样分配给各个定时器的：</p>
+<ul>
+<li><strong>Timer0</strong> -&gt; 控制引脚 <strong>5</strong> 和 <strong>6</strong></li>
+<li><strong>Timer1</strong> -&gt; 控制引脚 <strong>9</strong> 和 <strong>10</strong></li>
+<li><strong>Timer2</strong> -&gt; 控制引脚 <strong>3</strong> 和 <strong>11</strong></li>
+</ul>
+<p>一些复杂的库（如舵机库<code>Servo.h</code>、红外接收库<code>IRremote.h</code>）为了实现其功能，需要<strong>接管（Reconfigure）</strong> 整个定时器。</p>
+<ul>
+<li>**舵机库 (<code>Servo.h</code>) 与 引脚9和10 (Timer1)**：<ul>
+<li>舵机需要非常精确的50Hz PWM信号。</li>
+<li>为了方便和保证精度，<code>Servo.h</code>库默认会<strong>接管16位的Timer1</strong>，将其强制设置为产生50Hz的PWM模式。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>更强大的板子（如ESP32, STM32, Arduino Mega）情况好得多</strong></p>
+<p>例如，ESP32有高达16个定时器，STM32F4系列有14个以上，Arduino Mega有6个</p>
+<p><strong>更简单的板子（如ATTiny85）情况更糟</strong></p>
+<p>如<strong>ATTiny85</strong>,只有1~2个定时器</p>
+</blockquote>
+<h2 id="模拟引脚"><a href="#模拟引脚" class="headerlink" title="模拟引脚"></a>模拟引脚</h2><ul>
+<li><p>在Arduino等开发板上，通常标有 **”A0”, “A1”, “A2”…**。</p>
+</li>
+<li><p>其背后连接的是一个叫做 <strong>ADC (Analog-to-Digital Converter，模数转换器)</strong> 的硬件模块</p>
+</li>
+<li><p><strong>模拟引脚 (Analog Input Pins) -&gt; 负责读取</strong>外部的模拟世界（如温度、光线强度）。</p>
+</li>
+<li><p><strong>PWM引脚 (Digital PWM Pins) -&gt; <strong>负责</strong>模拟输出</strong>一个中间值，去控制外部设备。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>模拟输入引脚 (A0, A1, A2…)</th>
+<th>PWM引脚 (D3, D5, D6, D9, D10, D11 ~)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>核心功能</td>
+<td>读取外部模拟电压值</td>
+<td>输出脉冲宽度调制信号</td>
+</tr>
+<tr>
+<td>信号类型</td>
+<td>输入</td>
+<td>输出</td>
+</tr>
+<tr>
+<td>工作方式</td>
+<td>ADC (模数转换器)</td>
+<td>定时器产生特殊方波</td>
+</tr>
+<tr>
+<td>测量&#x2F;控制对象</td>
+<td>物理世界的连续变化量</td>
+<td>输出效果的“平均强度”</td>
+</tr>
+<tr>
+<td>分辨率</td>
+<td>10位 (0-1023)</td>
+<td>8位 (0-255)</td>
+</tr>
+<tr>
+<td>返回值&#x2F;参数</td>
+<td><code>int value = analogRead(A0);</code></td>
+<td><code>analogWrite(9, value);</code></td>
+</tr>
+<tr>
+<td>典型应用</td>
+<td>读取电位器、光敏电阻、温度传感器</td>
+<td>控制LED亮度、电机转速、舵机角度</td>
+</tr>
+</tbody></table>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>模拟引脚的实现依赖于一个叫做 <strong>ADC (Analog-to-Digital Converter，模数转换器)</strong> 的硬件模块。它的任务是将一个连续的模拟电压信号，转换成一个离散的数字数值，以便MCU的数字核心能够读取和处理</p>
+<p>当你执行 <code>analogRead(A0)</code>时，底层硬件悄然完成以下操作：</p>
+<ol>
+<li>MCU内部的多路选择器将A0引脚连接到ADC模块。</li>
+<li>ADC启动一次转换。</li>
+<li>采样保持电路捕获A0引脚上的瞬时电压。</li>
+<li>ADC进行量化，将电压值转换为0-1023之间的数字。</li>
+<li>转换完成，结果被存入数据寄存器。</li>
+<li><code>analogRead()</code>函数从这个寄存器中取出这个值并返回给你的程序。</li>
+</ol>
+<p>详细如下:</p>
+<ol>
+<li><p><strong>采样 (Sampling)</strong></p>
+<p>ADC并不是持续不断地测量电压，而是以一个固定的时间间隔（由<strong>采样频率</strong>决定），快速地“瞥一眼”输入引脚上的电压值，并把这个瞬间的电压值捕获下来</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>采样率 (Sample Rate)<strong>。根据</strong>奈奎斯特采样定理</strong>，采样频率必须至少是输入信号最高频率的<strong>2倍</strong>，才能无失真地还原原始信号。但对于大多数Arduino测量的传感器（如缓慢变化的温度、光线），默认的采样率已经足够</p>
+</blockquote>
+<ol>
+<li><p><strong>量化 (Quantization)</strong></p>
+<p>捕获到的模拟电压值可以是某个范围内的任意值（如3.1415926… V）。但ADC需要把它“归类”到一个有限的、离散的等级中去。这就是<strong>分辨率</strong>的概念</p>
+<blockquote>
+<p><strong>分辨率 (Resolution)<strong>，通常用</strong>位数 (bits)</strong> 表示。</p>
+<ul>
+<li>Arduino UNO的ADC是 <strong>10位</strong> 的。这意味着它可以将 <strong>0V至5V</strong> 的参考电压（Vref）划分为 <strong>2¹⁰ &#x3D; 1024</strong> 个离散的等级（从0到1023）。</li>
+<li>每个等级代表的电压差是： <strong>5V &#x2F; 1024 ≈ 0.00488V (4.88mV)</strong></li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>编码 (Encoding)</strong></p>
+<p>将量化后得到的等级数值，转换成一个二进制数字，并存储到MCU的寄存器中，等待程序通过 <code>analogRead()</code>函数来读取</p>
+<p>最终在代码中得到的 <code>int sensorValue = analogRead(A0);</code>里的 <code>sensorValue</code>，就是这个编码后的数字值（0-1023）</p>
+</li>
+</ol>
+<p><strong>相关参数</strong></p>
+<ol>
+<li><p><strong>分辨率 (Resolution)</strong></p>
+<ul>
+<li><strong>定义</strong>：ADC能区分的最小电压变化能力，位数越高，分辨率越高。</li>
+<li><strong>举例</strong>：<ul>
+<li>10位 (Arduino UNO)：范围 0-1023，最小电压步进 ~4.88mV。</li>
+<li>12位 (STM32, ESP32)：范围 0-4095，最小电压步进 ~1.22mV（假设5V参考电压）。精度是10位的4倍！</li>
+</ul>
+</li>
+<li><strong>影响</strong>：分辨率决定测量的精细度，高分辨率ADC能探测到更微弱的电压变化。</li>
+</ul>
+</li>
+<li><p><strong>参考电压 (Reference Voltage, Vref)</strong></p>
+<ul>
+<li><strong>定义</strong>：ADC用于比较和量化的基准电压，通常是MCU的工作电压（如Arduino UNO为5V）。</li>
+<li><strong>重要性</strong>：测量小电压范围（如0-1V）时，若使用5V参考电压，精度会大幅浪费。</li>
+<li><strong>解决方案</strong>：许多MCU允许改变参考电压，使用<code>analogReference()</code>函数可改变Arduino的参考电压，提高精度。</li>
+</ul>
+</li>
+<li><p><strong>采样速度 (Conversion Speed)</strong></p>
+<ul>
+<li><strong>定义</strong>：ADC完成一次采样-量化-编码过程所需时间。</li>
+<li><strong>影响</strong>：决定能测量多快变化的信号，捕获音频信号（20kHz）需高采样速度（&gt;40kHz），而测量温度等缓慢变化的数据，低速ADC也足够。</li>
+</ul>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"></a><div class="post-copyright__author_name">ZEROKO14</div><div class="post-copyright__author_desc">zeroko14's blog</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://che77a38.github.io/posts/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://che77a38.github.io/posts/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3/')">嵌入式相关</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://che77a38.github.io/posts/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=嵌入式相关&amp;url=https://che77a38.github.io/posts/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://che77a38.github.io" target="_blank">ZEROKO14的个人博客</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E5%9F%BA%E7%A1%80/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>基础<span class="tagsPageCount">6</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%90%86%E8%AE%BA/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">操作系统</div></div></a></div><div class="next-post pull-right"><a href="/posts/%E5%B7%A5%E4%B8%9A%E7%9B%B8%E5%85%B3/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">工业相关</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/posts/%E5%B7%A5%E4%B8%9A%E7%9B%B8%E5%85%B3/" title="工业相关"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-02-14</div><div class="title">工业相关</div></div></a></div><div><a href="/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%90%86%E8%AE%BA/" title="操作系统"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-12-16</div><div class="title">操作系统</div></div></a></div><div><a href="/posts/%E7%89%A9%E7%90%86/" title="物理"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-29</div><div class="title">物理</div></div></a></div><div><a href="/posts/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" title="编译原理"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-07-15</div><div class="title">编译原理</div></div></a></div><div><a href="/posts/%E8%AE%A1%E7%BB%84/" title="计算机组成原理"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-12-16</div><div class="title">计算机组成原理</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">欢迎来到ZEROKO14的个人博客</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">ZEROKO14</h1><div class="author-info__desc">zeroko14's blog</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/che77a38" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.</span> <span class="toc-text">电路基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E5%B0%94%E9%9C%8D%E5%A4%AB%E5%AE%9A%E5%BE%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">基尔霍夫定律</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF"><span class="toc-number">1.1.2.</span> <span class="toc-text">模拟数字电路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E7%89%87%E6%9C%BA%E5%9F%BA%E7%A1%80"><span class="toc-number">1.2.</span> <span class="toc-text">单片机基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%84%E6%88%90"><span class="toc-number">1.2.1.</span> <span class="toc-text">计算机的最小组成</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E7%BB%84%E6%88%90%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="toc-number">2.</span> <span class="toc-text">硬件组成三要素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text">控制器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SoC"><span class="toc-number">2.1.1.</span> <span class="toc-text">SoC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MCU"><span class="toc-number">2.1.2.</span> <span class="toc-text">MCU</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%A0%B8%E5%BF%83%E5%B1%82%E7%BA%A7"><span class="toc-number">3.</span> <span class="toc-text">软件核心层级</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FreeRTOS%E6%9E%B6%E6%9E%84%E8%A7%A3%E6%9E%90"><span class="toc-number">3.0.1.</span> <span class="toc-text">FreeRTOS架构解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E6%9C%BA%E5%88%B6%EF%BC%88%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE%EF%BC%89"><span class="toc-number">3.0.1.1.</span> <span class="toc-text">任务调度机制（状态转换图）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8E%E5%BB%B6%E8%BF%9F%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="toc-number">3.0.1.2.</span> <span class="toc-text">低延迟实现机制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6"><span class="toc-number">3.0.1.2.1.</span> <span class="toc-text">中断管理框架</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7%E7%BB%A7%E6%89%BF%E8%A7%A3%E5%86%B3%E8%B5%84%E6%BA%90%E7%AB%9E%E4%BA%89"><span class="toc-number">3.0.1.2.2.</span> <span class="toc-text">优先级继承解决资源竞争</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8E%E5%8A%9F%E8%80%97%E4%B8%8E%E5%AE%9E%E6%97%B6%E6%80%A7%E5%B9%B3%E8%A1%A1%EF%BC%88Tickless%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="toc-number">3.0.1.3.</span> <span class="toc-text">低功耗与实时性平衡（Tickless模式）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="toc-number">3.1.</span> <span class="toc-text">开发工具链</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E8%AE%BE%E5%A4%87%E5%BC%80%E5%8F%91%E8%B7%AF%E5%BE%84"><span class="toc-number">4.</span> <span class="toc-text">自动化设备开发路径</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B6%E6%AE%B51%EF%BC%9A%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5%EF%BC%882-4%E5%91%A8%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">阶段1：基础实践（2-4周）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B6%E6%AE%B52%EF%BC%9A%E7%B3%BB%E7%BB%9F%E8%BF%9B%E9%98%B6%EF%BC%884-8%E5%91%A8%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">阶段2：系统进阶（4-8周）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B6%E6%AE%B53%EF%BC%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%AE%BE%E5%A4%87%E9%9B%86%E6%88%90%EF%BC%888-%E5%91%A8%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">阶段3：自动化设备集成（8+周）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B%EF%BC%9A%E5%9C%9F%E5%A3%A4%E6%B9%BF%E5%BA%A6%E6%8E%A7%E5%88%B6"><span class="toc-number">4.3.1.</span> <span class="toc-text">伪代码示例：土壤湿度控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="toc-number">4.3.2.</span> <span class="toc-text">硬件配置：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E6%8E%A8%E8%8D%90"><span class="toc-number">4.4.</span> <span class="toc-text">资源推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%8F%90%E7%A4%BA%EF%BC%9A"><span class="toc-number">4.5.</span> <span class="toc-text">关键提示：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ESP%E5%BC%80%E5%8F%91%E6%9D%BF%E5%AF%B9%E6%AF%94"><span class="toc-number">5.</span> <span class="toc-text">ESP开发板对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GPIO"><span class="toc-number">6.</span> <span class="toc-text">GPIO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">仿真软件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%B5%81%E4%BB%BF%E7%9C%9F%E5%B7%A5%E5%85%B7"><span class="toc-number">7.1.</span> <span class="toc-text">主流仿真工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Tinkercad-Circuits%EF%BC%88%E6%9C%80%E9%80%82%E5%90%88%E5%88%9D%E5%AD%A6%E8%80%85%EF%BC%89"><span class="toc-number">7.1.0.1.</span> <span class="toc-text">Tinkercad Circuits（最适合初学者）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Proteus%EF%BC%88%E4%B8%93%E4%B8%9A%E7%BA%A7%E4%BB%BF%E7%9C%9F%EF%BC%89"><span class="toc-number">7.1.1.</span> <span class="toc-text">Proteus（专业级仿真）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fritzing"><span class="toc-number">7.1.2.</span> <span class="toc-text">fritzing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Virtual-Breadboard"><span class="toc-number">7.1.3.</span> <span class="toc-text">Virtual Breadboard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WOKWi"><span class="toc-number">7.1.4.</span> <span class="toc-text">WOKWi</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%B5%E5%AD%90%E5%85%83%E5%99%A8%E4%BB%B6"><span class="toc-number">8.</span> <span class="toc-text">基本电子元器件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%88%B5%E6%9C%BA"><span class="toc-number">8.1.</span> <span class="toc-text">舵机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">8.1.1.</span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86"><span class="toc-number">8.1.2.</span> <span class="toc-text">控制原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">8.1.3.</span> <span class="toc-text">注意事项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF"><span class="toc-number">9.</span> <span class="toc-text">电子电路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E6%8B%89%E5%92%8C%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB"><span class="toc-number">9.1.</span> <span class="toc-text">上拉和下拉电阻</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%BB%96%E4%BB%AC"><span class="toc-number">9.1.1.</span> <span class="toc-text">为什么需要他们</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PWM%E5%BC%95%E8%84%9A"><span class="toc-number">9.2.</span> <span class="toc-text">PWM引脚</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PWM%E5%BC%95%E8%84%9A%E7%9A%84%E2%80%9Dbug%E2%80%9D"><span class="toc-number">9.2.1.</span> <span class="toc-text">PWM引脚的”bug”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E5%BC%95%E8%84%9A"><span class="toc-number">9.3.</span> <span class="toc-text">模拟引脚</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">9.3.1.</span> <span class="toc-text">原理</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E7%89%A9%E7%90%86/" title="物理">物理</a><time datetime="2025-09-29T01:48:42.561Z" title="发表于 2025-09-29 09:48:42">2025-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%B7%A5%E4%B8%9A%E7%9B%B8%E5%85%B3/" title="工业相关">工业相关</a><time datetime="2025-02-14T03:04:40.761Z" title="发表于 2025-02-14 11:04:40">2025-02-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3/" title="嵌入式相关">嵌入式相关</a><time datetime="2025-02-14T03:04:40.761Z" title="发表于 2025-02-14 11:04:40">2025-02-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%90%86%E8%AE%BA/" title="操作系统">操作系统</a><time datetime="2024-12-16T01:38:01.470Z" title="发表于 2024-12-16 09:38:01">2024-12-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E8%AE%A1%E7%BB%84/" title="计算机组成原理">计算机组成原理</a><time datetime="2024-12-16T01:38:01.470Z" title="发表于 2024-12-16 09:38:01">2024-12-16</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="ZEROKO14" target="_blank">ZEROKO14</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu"></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">74</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/AI/" style="font-size: 0.88rem;">AI<sup>1</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C#<sup>3</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 0.88rem;">CSS<sup>1</sup></a><a href="/tags/CSharp/" style="font-size: 0.88rem;">CSharp<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 0.88rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 0.88rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 0.88rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 0.88rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 0.88rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 0.88rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 0.88rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 0.88rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 0.88rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 0.88rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 0.88rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>1</sup></a><a href="/tags/nas/" style="font-size: 0.88rem;">nas<sup>1</sup></a><a href="/tags/next/" style="font-size: 0.88rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 0.88rem;">ppt<sup>1</sup></a><a href="/tags/python/" style="font-size: 0.88rem;">python<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 0.88rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 0.88rem;">vue<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 0.88rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 0.88rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 0.88rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 0.88rem;">加解密<sup>1</sup></a><a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 0.88rem;">基础<sup>6</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 0.88rem;">多线程<sup>1</sup></a><a href="/tags/%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%BC%8F/" style="font-size: 0.88rem;">并发模式<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">开发<sup>4</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.88rem;">数学<sup>1</sup></a><a href="/tags/%E6%9D%82%E9%A1%B9/" style="font-size: 0.88rem;">杂项<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 0.88rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%89%A9%E7%90%86/" style="font-size: 0.88rem;">物理<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 0.88rem;">监控<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 0.88rem;">网络<sup>3</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 0.88rem;">逆向<sup>5</sup></a><a href="/tags/%E9%AD%94%E6%B3%95/" style="font-size: 0.88rem;">魔法<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

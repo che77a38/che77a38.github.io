@@ -1,0 +1,750 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>AI相关开发 | ZEROKO14的个人博客</title><meta name="keywords" content="AI"><meta name="author" content="ZEROKO14"><meta name="copyright" content="ZEROKO14"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="AI相关开发"><meta name="application-name" content="AI相关开发"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="AI相关开发"><meta property="og:url" content="https://che77a38.github.io/posts/AI%E7%9B%B8%E5%85%B3%E5%BC%80%E5%8F%91/index.html"><meta property="og:site_name" content="ZEROKO14的个人博客"><meta property="og:description" content="AI相关工具和技术盘点   基本术语 向量数据库: CloseVector LLM:大语言模型 介绍几种联系上下文的方式 下面均以langchain为例    Buffer Memory 存储每段对话作为LLM的新输入  Conversation Sumary Momory 将对话信息传给LLM进行"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta property="article:author" content="ZEROKO14"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta name="description" content="AI相关工具和技术盘点   基本术语 向量数据库: CloseVector LLM:大语言模型 介绍几种联系上下文的方式 下面均以langchain为例    Buffer Memory 存储每段对话作为LLM的新输入  Conversation Sumary Momory 将对话信息传给LLM进行"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://che77a38.github.io/posts/AI%E7%9B%B8%E5%85%B3%E5%BC%80%E5%8F%91/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":true,"limitCount":50,"languages":{"author":"作者: ZEROKO14","link":"链接: ","source":"来源: ZEROKO14的个人博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'ZEROKO14的个人博客',
+  title: 'AI相关开发',
+  postAI: '',
+  pageFillDescription: '介绍几种联系上下文的方式, 对长文本做总结的方式, 爬虫相关, 无头浏览器, 现成的ai爬虫项目, gemini有效的提示, 获取格式化后的时间, 总结精炼, 本地大模型, Ollama, 相关命令, 终端对话中命令, API接口, 盘点某些本地大模型, qwen2.5-coder, 修改本地模型上下文, Aider, vscode aide拓展, One-api, 免费API平台盘点, SuperMaven, cline, Continue, litellm, github models转换为类openai接口, AI请求反代服务器, 无限邮箱方式, vscode相关拓展, 编程提示词, 腾讯云算力云端主机, 大模型函数调用开发, 设计函数接口, 描述函数, 将助手与功能连接起来, AI IDE盘点, Aide IDE, Exponent, 盘点一些开源AI项目, 浏览器使用x2F拓展, bolt.new-any-llm, 闲鱼开源监控, 人声生成带情绪, 解除cursor机器限制使用, 模型支持浏览器搜索, AI模型运行要求, 前端绘制网站盘点, deepseek r1函数调用功能赋予, AI建模, 便宜域名盘点, AI小工具盘点, comfyUI, 光影工作流, 抠图, 换背景, 打光, 提高画质, 高低频细节恢复, ai动效制作流程, AI相关开发理论盘点, ai手办制作流程, 提示词工程指导, Nano Banana用法盘点, claude code, MCP盘点, 一人AI公司相关工具和技术盘点基本术语向量数据库大语言模型介绍几种联系上下文的方式下面均以为例存储每段对话作为的新输入将对话信息传给进行摘要将此摘要作为开头部分传入将最近的组对话存储起来作为下一轮的的输入第种和第种方式的结合将最近的组对话存储起来以及上一轮的摘要老组对话的摘要新组对话作为下一轮的的输入使用长度来决定什么时候刷新输入优点不仅有短期记忆也有长期记忆通过提取对话中有关实体的知识并积累或思维导图记忆方式向量数据库匹配或思维导图记忆方式对长文本做总结的方式下面均以为例模式直接将传给做总结模式分割多个片段通过对每个片段进行总结再将总结拼接再交给总结模式分割多个片段先对第一个片段进行总结再将前一个片段的总结加上下一个片段进行总结以此总结递推直到只有一个总结优点增加了总结内容的连贯性模式一种搜索答案的匹配方式根据一个问题给每个片段计算一个能回答这个问题的概率分数然后找到分数最高的片段将其转换为问题的一部分加问题发送给想获得更综合性的知识使用或模式获取更精确的细节知识使用模式爬虫相关无头浏览器无头浏览器是一种不带图形用户界面的网络浏览器这意味着它不会显示任何窗口或菜单而是将其所有输出发送到文本终端或其他输出设备无头浏览器通常用于自动化测试和网络抓取因为它们可以通过编程控制并且不需要任何用户交互有许多不同的无头浏览器可用包括和这些浏览器都有自己的优点和缺点因此选择最适合您需求的浏览器非常重要无头浏览器可以成为自动化网络任务的有用工具但必须负责任地使用它们无头浏览器可以用于爬取网站并提取数据但也可以用于发起拒绝服务攻击现成的爬虫项目项目本质是利用无头浏览器实现从这个开始爬取只爬取此正则匹配的只从这个选择器中提取文本爬取的页面不超过多少页输出的文件名实例站简介站标题站评论是一个用于爬取网站数据的工具它是基于库构建的可以模拟浏览器行为来爬取网页内容这个错误可能是由于超时设置或选择器的问题导致的正确的回复如下您好很高兴为您服务请问您有什么想了解或需要帮助的吗发送了一个的情况有效的提示获取格式化后的时间现在时间是年月日请将接下来这句话提取出具体的时间和具体提醒项按照年月日做什么事回复给我如明天和后天晚上点提醒我吃饭返回年月日吃饭年月日吃饭现在时间是年月日请将接下来这句话提取出具体的时间和具体提醒项按照日期时间字符串做什么事回复给我明天和后天晚上点提醒我吃饭转换成的第一个参数的定时库总结精炼用中文总结精炼这段网页信息的重点内容本地大模型下载地址模型库开放对外连接相关命令展示本地大模型列表删除单个本地大模型本地模型名称启动本地模型本地模型名查看本地运行中模型列表复制本地大模型本地存在的模型名新复制模型名下载或者更新本地大模型本地远程仓库模型名称模型名称格式为模型名称参数规格如终端对话中命令若需要输入多行文本需要用三引号包裹如这里是多行文本清除对话上下文信息则退出对话窗口可设置窗口大小为个也可以通过请求设置如可以查看当前模型详情启动服务接口默认提供了和这个原始的接口使用方式如下接口的使用样例为什么天空是蓝色的接口的使用样例为什么天空是蓝色的盘点某些本地大模型模型修改本地模型上下文创建一个修改了上下文长度的本地大模型因为默认的上下文都非常短创建文件就是指的上面的文件安装方式文件名指定编写的代码写入哪个文件解除与文件的联系退出程序多行文本问答官方文档用法参考中个模型的基准测试更新方式拓展配套使用官方参考文档可以把多种模型接口统一为格式注意类通信协议中所有的格式不用写后面的及其后续内容开放地址执行命令免费平台盘点注意支持等模型音频转文字音频文件需小于以及视觉识别模型带速率限制的免费版本亮点提供模型调用绑定信用卡美金不绑定美金额度参考此处使用频率限制比宽松每分钟个每小时个特色在线对话支持语音对话需要申请用法记录每秒一次请求其中最强的模型性能与持平每月美金官方地址测试阶段完全免费使用没有任何限制支持所有开源模型所有开源模型理论上包含模型但是实际上跑不起来自定义运行功能效果不好地址白嫖教程末前两个月每月美金上的模型可以通过来免费使用参考视频提供了免费以及的免费注册即送美金可申请新人送美金额度免费实现自动补全响应非常快的配置是到前一层即看不到比如说的对话拓展配置格式参考注意的设置到那一层可以将非兼容的转换成兼容的如果缺乏依赖使用类似因为后端也使用的是启动后的为随意填写模型名称填转换为类接口参考链接但以失败告终使用此命令来启动的服务器将显示作为代理的模型设置为请求反代服务器实现反代提供一键部署脚本通过搭建的代理项目上述项目支持但实测似乎只支持调用而不支持调用下面反向代理项目支持一切反向代理开源部署项目访问你的域名实际上会替换为无限邮箱方式可使用无限邮除此之外谷歌邮箱可以当无限邮箱使用相关拓展拓展仿开源开源自托管补全对话补全免费可以一键生成代码地图幽灵助手平替是一个中文的类似的插件同样是到那一层是的分支谷歌推出的编程助手插件字节跳动的编程插件现已可以免费使用编程提示词你是一名极其优秀具有年经验的产品经理和精通所有编程语言的工程师与你交流的用户是不懂代码的初中生不善于表达产品和代码需求你的工作对用户来说非常重要完成后将获得美元奖励你的目标是帮助用户以他容易理解的方式完成他所需要的产品设计和开发工作你始终非常主动完成所有工作而不是让用户多次推动你在理解用户的产品需求编写代码解决代码问题时你始终遵循以下原则第一步当用户向你提出任何需求时你首先应该浏览根目录下的文件和所有代码文档理解这个项目的目标架构实现方式等如果还没有文件你应该创建这个文件将作为用户使用你提供的所有功能的说明书以及你对项目内容的规划因此你需要在文件中清晰描述所有功能的用途使用方法参数说明返回值说明等确保用户可以轻松理解和使用这些功能第二步你需要理解用户正在给你提供的是什么任务当用户直接为你提供需求时你应当首先你应当充分理解用户需求并且可以站在用户的角度思考如果我是用户我需要什么其次你应该作为产品经理理解用户需求是否存在缺漏你应当和用户探讨和补全需求直到用户满意为止最后你应当使用最简单的解决方案来满足用户需求而不是使用复杂或者高级的解决方案当用户请求你编写代码时你应当首先你会思考用户需求是什么目前你有的代码库内容并进行一步步的思考与规划接着在完成规划后你应当选择合适的编程语言和框架来实现用户需求你应该选择原则来设计代码结构并且使用设计模式解决常见问题再次编写代码时你总是完善撰写所有代码模块的注释并且在代码中增加必要的监控手段让你清晰知晓错误发生在哪里最后你应当使用简单可控的解决方案来满足用户需求而不是使用复杂的解决方案当用户请求你解决代码问题是你应当首先你需要完整阅读所在代码文件库并且理解所有代码的功能和逻辑其次你应当思考导致用户所发送代码错误的原因并提出解决问题的思路最后你应当预设你的解决方案可能不准确因此你需要和用户进行多次交互并且每次交互后你应当总结上一次交互的结果并根据这些结果调整你的解决方案直到用户满意为止第三步在完成用户要求的任务后你应该对改成任务完成的步骤进行反思思考项目可能存在的问题和改进方式并更新在文件中比方说添加在的设置中的但把完全写死不是个好主意可以使用可以认为这是个更高级的项目定制系统提示词的模式如果你的项目需要更细致的规则那么可以在项目根目录下创建一个文件这样会自动加载其中的定制化指令为这个项目量身打造生成效果腾讯云算力云端主机网址每月免费分钟带显卡内存安装及示范参考链接大模型函数调用开发函数调用使语言模型能够使用外部工具从而将模型与数字和物理世界紧密联系起来这是一个强大的功能可以用于实现广泛的用例调用公共执行各种操作从查询足球比赛结果到获取实时卫星定位数据分析内部数据库浏览网页执行代码与物理世界互动例如预订机票打开特斯拉车门控制机械臂官网参考的函数调用流程流程图参考步骤如下设计函数接口能真正实现函数接口功能的描述函数用于传递给来定义格式的将助手与功能连接起来首先让我们从助手那里获取工具执行请求为此我们需要开始将函数定义系统提示和任何先前的对话传递给助手如果助手决定不需要调用工具在这种情况下响应将以聊天完成的正常方式直接回复用户这通常发生在助手希望用户澄清或用户询问一些不需要函数调用的问题时或者如果助手决定需要调用工具则响应将包含函数调用请求您可以在下面看到一个示例接下来我们需要处理来自模型的工具执行请求让我们实现模型将调用的函数最后我们需要将工具执行结果提供给模型考虑一下模型可能决定需要更多函数调用的可能性然后模型将生成另一个函数调用请求或者根据函数调用结果生成对用户的响应盘点独特优势前瞻性方式主动建议修复可以使用原生回滚不依赖于需要自己提供对接众多全栈应用生成目前还在早期访问阶段预约没被通过盘点一些开源项目浏览器使用拓展参考使用链接浏览器自动化拓展开源地址闲鱼开源监控基于和过滤的闲鱼多任务实时定时监控与智能分析工具配备了功能完善的后台管理界面帮助用户节省闲鱼商品过滤能及时找到心仪商品人声生成带情绪是全球首个支持强烈情绪控制的开源模型解除机器限制使用全平台开源解决方案下载链接地址会给予一个拓展命令栏输入选中下载的文件就会安装上扩展于是命令栏就可以输入就会显示修改成功路径新的最后命令栏输入就可以正常使用了模型支持浏览器搜索可以配合浏览器插件使用搜索内容解析模型可以安装模型运行要求前端绘制网站盘点用于快速应用原型的流行工具在创建可视化原型方面获得了开发者的良好反馈支持快速构建和部署项目有开发者用一个周末就上线了网站可生成基于和的移动应用函数调用功能赋予是一款让不支持的模型通过提示词方式支持兼容格式的桥接插件把原有接口替换为调用的实际效果未经测试建模月度积分文本生成模型图像生成模型材质生成便宜域名盘点域名全网最便宜的平台美刀一年续费同价小工具盘点唇形同步图片去水印语音输入法与项目对话免费代码工程师支持所有中插件牛马开源可接本地模型桌面开源助手记住每一个操作光影工作流抠图抠图开源模型中效果最好的技术之一换背景支持和的模型是基于来训练的是基于来训练的打光打光后会降低画质有一个致命缺陷打光后会改变图像细节提高画质优化画质虽然对图像尺寸没有明确限制但是最好还是控制在以内否则会脱离模型出图的舒适区高低频细节恢复打光多多少少会改变图像细节因此这块才是该工作流中最核心的部分动效制作流程在即梦里制作图标提示词一个汉堡卡通图标不要有拟人的表情统表情符号风格白色背景使用这款工具可以免费使用的图像处理模型先把主体抠出来在即梦首尾帧生成视频视频提示词参考碗里的食物从碗底中慢慢生长出来首先是米饭满满从碗底生长出来然后上边冒出其他食材最终达到参考图里的状态保持画面中元素不变效果必须自然视频导出照片序列再使用生成苹果安卓或演示三种格式相关开发理论盘点个原则用于构建真正可以交付给生产客户使用的驱动软件深入理解核心原理手办制作流程一些小程序号称可以免费做如图文创作工坊造物相机付费直接出手办出图可以使用谷歌的图片模型中文关键词使用模型绘制图中的角色比例的商业化手办写实风格真实环境手办放在电脑桌上电脑屏幕里的内容为该手办的建模过程中文关键词使用模型绘制图中的角色比例的商业化手办写实风格真实环境手办放在电脑桌上手办使用圆形透明亚克力底座底座上无文字电脑屏幕里的内容为该手办的建模过程电脑屏幕旁放着印有原画的风格的玩具包装盒中文关键词底座水印可以改为自己的创意使用模型生成一款商业化的手办角色为图片中的人物写实风格真实环境手办被放置在干净的桌面上旁边有一个屏幕里是在浏览一个杂志网站网站显示一张大图就是原图环境是暖光源设计工作室内手办配有圆形透明亚克力底座底座上有浅浅的水印英文关键词英文关键词使用转模型提示词工程指导参考这篇文章用法盘点界面操作开源项目开源最全提示词盘点参考链接制作手办创建一个比例的商业化手办角色来自插图风格和环境要逼真将手办放置在电脑桌上使用无文字的圆形透明亚克力底座在电脑屏幕上显示手办的建模过程电脑屏幕旁边放置一个印有原始艺术作品的风格玩具包装盒玩只需要给一张你的照片和你想的角色的照片提示词非常简单让图一的人物图二的角色服饰妆容道具和图二一致换动作让图二的人物做出图一的动作产品内部结构图超详细的产品爆炸视图金属部件和电子元件悬浮在空中完美对齐揭示内部结构未来科技美学分辨率柔和的电影灯光高度逼真提示词在此转线稿上色按图一的色卡的配色给图二的线稿上色制作游戏示例一张幻想游戏截图特色是图中的单一主角站在中心手持一本书和一根火炬详细的废墟寺庙环境古老的石柱藤蔓彩色玻璃窗发光的魔法氛围电影灯光包含风格的元素角落的角色肖像顶部的生命值和法力值条右下角的小地图底部的对话文本这一定是地方高度详细动漫风格的游戏艺术沉浸式氛围超高质量示例一张视觉小说截图设置在奢华的洛可可风格城堡内部装饰华丽吊灯金色细节优雅家具和柔和的色彩图中的单一角色站在前景中央动漫风格插图表情丰富包含元素底部的对话文本框用英文显示角色名选择菜单按钮干净的界面设计柔和的灯光浪漫的氛围高质量视觉小说风格艺术作品漫画分镜根据图片内容生成九格漫画用画面和镜头讲故事生成漫画第一步给一张真实的自动驾驶汽车照片提示词将照片转换为黑白漫画风格不仅保留了车辆和背景的细节还添加了动态效果第二步加一句提示模型就生成了下一帧车里出现了一只猫还配了幽默的对话框总之不仅能改风格还能顺着提示自动编故事生成连贯的漫画修复老照片上色对于修复老照片给黑白照片上色等常规操作更是手拿把掐提示词提示词打光示例给这个男人生成一张艺术肖像照片通过半明半暗的打光效果赋予男人亦正亦邪的特征示例让这张照片中的天空变成晚霞的颜色空中有很多鸟在飞和原图融为一体做商品图示例给被子上面印上老花示例做一张口红的商品宣传海报图中的女人手握口红看向镜头生图推理能力物件标记你是一个基于位置的体验生成器突出显示图像中的兴趣点并注释相关信息前谷歌产品经理直接上传了现实中的建筑截图让标注相关信息提示词可以直接给几何题图片让他标记并讲解今日穿搭关键词今日穿搭现在只要上传一张穿搭照片就能秒出穿搭清单提示词换发型换眼镜模型和工业设计中的常见六视图它还能做出类似产品建模或工业设计里常见的六视图主体在各个角度都保持一致同时还保留等距视角效果提示词在白色背景上展示正面背面左侧右侧顶部和底部视图间距均匀主体一致保持等距视角地图变成实景上传东京塔金门大桥的谷歌地图截图在上面标个红色箭头输入提示词模型就像人站在某个地点朝某个方向看一样生成箭头标记位置和方向的景色甚至是一张虚构的旧金山纽约混合城市地图的红箭头视角它都能生成接近真实景观的图像提示词生成电影分镜更绝的是还能识别手绘内容并根据手绘姿势生成复杂的战斗场景只需提供两个角色图像再加上一张手绘简笔画指定战斗姿势输入提示词就能将这些元素整合还能添加丰富的背景和特效顶级肖像将上图转换为一张摄影棚拍摄的顶级肖像照要求半身照动作协调自然特写镜头聚焦在面部人物的服装和动作改为都市休闲风格整体氛围偏向深邃但不刻意整体效果安静深邃且温柔背景呈现柔和渐变效果营造出层次感与寂静氛围细腻的胶片颗粒质感为画面增添了一种可触摸的模拟摄影般的柔和质地让人联想到经典的黑白摄影一束温柔的定向光柔和地漫射开来轻抚他的面颊曲线或在眼中闪现光点这是画面的情感核心其余部分以大量负空间占据刻意保持简洁使画面自由呼吸画面中没有文字没有标志只有光影与情绪交织顶级摄影师的人物肖像照风格非中心构图简历肖像提示词高级简历照提示词英文推荐版提示词高级简历照提示词中文版将上传的生活照片转换为一张高端的男士商务简历照保持人物的原始面部特征和身份完全一致构图为正式的头肩半身照长宽比画面干净比例均衡人物穿着高质感的纯色衬衣海军蓝深灰或浅蓝必须有领整洁优雅无图案或标志背景为柔和的渐变或微纹理摄影棚背景颜色选择中性色浅灰或米色并略微虚化以增加景深采用柔和的棚拍光线自然突出面部特征肤色真实清晰度高整体氛围应当自信亲和现代表情自然放松且专业最终照片应呈现出精致的企业高管风格适合用于简历或不要文字标志水印杂乱或艺术滤镜效果一键配置工具完全指南路由用于连接所有大模型的配置方式参考换行操作如下用反斜杠结尾再按换行用结尾再按换行盘点让调的集成的云端浏览器聚合全网热点热榜适用于任何组件收费一人公司一人公司工具推荐',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-09-29 09:32:05',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://th.bing.com/th/id/OIP.wtmjepfWPBvn26uz7s18dgHaHa?rs=1&amp;pid=ImgDetMain"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">ZEROKO14的个人博客</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/AI/" style="font-size: 1.05rem;">AI<sup>1</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C#<sup>3</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 1.05rem;">CSS<sup>1</sup></a><a href="/tags/CSharp/" style="font-size: 1.05rem;">CSharp<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.05rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 1.05rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 1.05rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 1.05rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 1.05rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 1.05rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 1.05rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 1.05rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 1.05rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 1.05rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 1.05rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>1</sup></a><a href="/tags/nas/" style="font-size: 1.05rem;">nas<sup>1</sup></a><a href="/tags/next/" style="font-size: 1.05rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 1.05rem;">ppt<sup>1</sup></a><a href="/tags/python/" style="font-size: 1.05rem;">python<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 1.05rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 1.05rem;">vue<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 1.05rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 1.05rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 1.05rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 1.05rem;">加解密<sup>1</sup></a><a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 1.05rem;">基础<sup>6</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 1.05rem;">多线程<sup>1</sup></a><a href="/tags/%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%BC%8F/" style="font-size: 1.05rem;">并发模式<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">开发<sup>4</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">数学<sup>1</sup></a><a href="/tags/%E6%9D%82%E9%A1%B9/" style="font-size: 1.05rem;">杂项<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%89%A9%E7%90%86/" style="font-size: 1.05rem;">物理<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 1.05rem;">监控<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.05rem;">网络<sup>3</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 1.05rem;">逆向<sup>5</sup></a><a href="/tags/%E9%AD%94%E6%B3%95/" style="font-size: 1.05rem;">魔法<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">14</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url">技术</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/AI/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>AI</span></a></span></div></div><h1 class="post-title" itemprop="name headline">AI相关开发</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-01-09T09:38:08.185Z" title="发表于 2024-01-09 17:38:08">2024-01-09</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-09-29T01:32:05.627Z" title="更新于 2025-09-29 09:32:05">2025-09-29</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="AI相关开发"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为新加坡"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>新加坡</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://che77a38.github.io/posts/AI%E7%9B%B8%E5%85%B3%E5%BC%80%E5%8F%91/"><header><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url">技术</a><a href="/tags/AI/" tabindex="-1" itemprop="url">AI</a><h1 id="CrawlerTitle" itemprop="name headline">AI相关开发</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">ZEROKO14</span><time itemprop="dateCreated datePublished" datetime="2024-01-09T09:38:08.185Z" title="发表于 2024-01-09 17:38:08">2024-01-09</time><time itemprop="dateCreated datePublished" datetime="2025-09-29T01:32:05.627Z" title="更新于 2025-09-29 09:32:05">2025-09-29</time></header><p>AI相关工具和技术盘点</p>
+<span id="more"></span>
+
+<p>基本术语</p>
+<p>向量数据库: CloseVector</p>
+<p>LLM:大语言模型</p>
+<h1 id="介绍几种联系上下文的方式"><a href="#介绍几种联系上下文的方式" class="headerlink" title="介绍几种联系上下文的方式"></a>介绍几种联系上下文的方式</h1><blockquote>
+<p>下面均以langchain为例</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401092251406.png" alt="image-20240109225128511"></p>
+<ol>
+<li><p>Buffer Memory</p>
+<p>存储每段对话作为LLM的新输入</p>
+</li>
+<li><p>Conversation Sumary Momory</p>
+<p>将对话信息传给LLM进行摘要,将此摘要作为开头部分传入LLM</p>
+</li>
+<li><p>Conversation Buffer Window Memory</p>
+<p>将最近的k组对话存储起来,作为下一轮的LLM的输入</p>
+</li>
+<li><p>Conversation Summary Buffer Memory</p>
+<p>第2种和第3种方式的结合,将最近的k组对话存储起来以及[上一轮的摘要+老k组对话]的摘要+新k组对话,作为下一轮的LLM的输入(使用token长度来决定什么时候刷新输入)</p>
+<p>优点,不仅有短期记忆,也有长期记忆</p>
+</li>
+<li><p>entity memory</p>
+<p>通过LLM提取对话中有关实体的知识并积累</p>
+</li>
+<li><p>vector store back memory或思维导图记忆方式</p>
+<p>向量数据库匹配或思维导图记忆方式</p>
+</li>
+</ol>
+<h1 id="对长文本做总结的方式"><a href="#对长文本做总结的方式" class="headerlink" title="对长文本做总结的方式"></a>对长文本做总结的方式</h1><blockquote>
+<p>下面均以langchain为例</p>
+</blockquote>
+<ol>
+<li><p>stuff模式</p>
+<p>直接将document传给LLM做总结</p>
+</li>
+<li><p>map_reduce模式</p>
+<p>分割多个片段,通过LLM对每个片段进行总结,再将总结拼接再交给LLM总结</p>
+</li>
+<li><p>refine模式</p>
+<p>分割多个片段,先对第一个片段进行总结,再将前一个片段的总结加上下一个片段进行总结,以此总结递推直到只有一个总结</p>
+<p>优点:增加了总结内容的连贯性</p>
+</li>
+<li><p>map_rerank模式</p>
+<p>一种搜索答案的匹配方式</p>
+<p>根据一个问题,给每个document片段计算一个能回答这个问题的概率分数,然后找到分数最高的document片段,将其转换为问题的一部分,加问题发送给LLM </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202401092301208.png" alt="image-20240109230115463"></p>
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>想获得更综合性的知识:使用refine或map_reduce模式</li>
+<li>获取更精确的细节知识:使用map_rerank模式</li>
+</ul>
+</blockquote>
+<h1 id="爬虫相关"><a href="#爬虫相关" class="headerlink" title="爬虫相关"></a>爬虫相关</h1><h2 id="无头浏览器"><a href="#无头浏览器" class="headerlink" title="无头浏览器"></a>无头浏览器</h2><blockquote>
+<p>无头浏览器是一种不带图形用户界面 (GUI) 的网络浏览器。这意味着它不会显示任何窗口或菜单，而是将其所有输出发送到文本终端或其他输出设备。</p>
+<p>无头浏览器通常用于自动化测试和网络抓取，因为它们可以通过编程控制，并且不需要任何用户交互。 有许多不同的无头浏览器可用，包括 PhantomJS、SlimerJS 和 Puppeteer。</p>
+<p>这些浏览器都有自己的优点和缺点，因此选择最适合您需求的浏览器非常重要。 无头浏览器可以成为自动化网络任务的有用工具，但必须负责任地使用它们。无头浏览器可以用于爬取网站并提取数据，但也可以用于发起拒绝服务攻击。</p>
+</blockquote>
+<h2 id="现成的ai爬虫项目"><a href="#现成的ai爬虫项目" class="headerlink" title="现成的ai爬虫项目"></a>现成的ai爬虫项目</h2><p><a target="_blank" rel="noopener" href="https://github.com/BuilderIO/gpt-crawler?tab=readme-ov-file#create-a-custom-gpt">gpt-crawler项目</a></p>
+<p>本质是利用无头浏览器实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">type Config = &#123;</span><br><span class="line">  /** URL to start the crawl, if sitemap is provided then it will be used instead and download all pages in the sitemap */</span><br><span class="line">  //从这个url开始爬取</span><br><span class="line">  url: string;</span><br><span class="line">  /** Pattern to match against for links on a page to subsequently crawl */</span><br><span class="line">  //只爬取此正则匹配的url</span><br><span class="line">  match: string;</span><br><span class="line">  /** Selector to grab the inner text from */</span><br><span class="line">  //只从这个选择器中提取文本</span><br><span class="line">  selector: string;</span><br><span class="line">  /** Don&#x27;t crawl more than this many pages */</span><br><span class="line">  //爬取的页面不超过多少页</span><br><span class="line">  maxPagesToCrawl: number;</span><br><span class="line">  /** File name for the finished data */</span><br><span class="line">  //输出的文件名</span><br><span class="line">  outputFileName: string;</span><br><span class="line">  /** Optional resources to exclude</span><br><span class="line">   *</span><br><span class="line">   * @example</span><br><span class="line">   * [&#x27;png&#x27;,&#x27;jpg&#x27;,&#x27;jpeg&#x27;,&#x27;gif&#x27;,&#x27;svg&#x27;,&#x27;css&#x27;,&#x27;js&#x27;,&#x27;ico&#x27;,&#x27;woff&#x27;,&#x27;woff2&#x27;,&#x27;ttf&#x27;,&#x27;eot&#x27;,&#x27;otf&#x27;,&#x27;mp4&#x27;,&#x27;mp3&#x27;,&#x27;webm&#x27;,&#x27;ogg&#x27;,&#x27;wav&#x27;,&#x27;flac&#x27;,&#x27;aac&#x27;,&#x27;zip&#x27;,&#x27;tar&#x27;,&#x27;gz&#x27;,&#x27;rar&#x27;,&#x27;7z&#x27;,&#x27;exe&#x27;,&#x27;dmg&#x27;,&#x27;apk&#x27;,&#x27;csv&#x27;,&#x27;xls&#x27;,&#x27;xlsx&#x27;,&#x27;doc&#x27;,&#x27;docx&#x27;,&#x27;pdf&#x27;,&#x27;epub&#x27;,&#x27;iso&#x27;,&#x27;dmg&#x27;,&#x27;bin&#x27;,&#x27;ppt&#x27;,&#x27;pptx&#x27;,&#x27;odt&#x27;,&#x27;avi&#x27;,&#x27;mkv&#x27;,&#x27;xml&#x27;,&#x27;json&#x27;,&#x27;yml&#x27;,&#x27;yaml&#x27;,&#x27;rss&#x27;,&#x27;atom&#x27;,&#x27;swf&#x27;,&#x27;txt&#x27;,&#x27;dart&#x27;,&#x27;webp&#x27;,&#x27;bmp&#x27;,&#x27;tif&#x27;,&#x27;psd&#x27;,&#x27;ai&#x27;,&#x27;indd&#x27;,&#x27;eps&#x27;,&#x27;ps&#x27;,&#x27;zipx&#x27;,&#x27;srt&#x27;,&#x27;wasm&#x27;,&#x27;m4v&#x27;,&#x27;m4a&#x27;,&#x27;webp&#x27;,&#x27;weba&#x27;,&#x27;m4b&#x27;,&#x27;opus&#x27;,&#x27;ogv&#x27;,&#x27;ogm&#x27;,&#x27;oga&#x27;,&#x27;spx&#x27;,&#x27;ogx&#x27;,&#x27;flv&#x27;,&#x27;3gp&#x27;,&#x27;3g2&#x27;,&#x27;jxr&#x27;,&#x27;wdp&#x27;,&#x27;jng&#x27;,&#x27;hief&#x27;,&#x27;avif&#x27;,&#x27;apng&#x27;,&#x27;avifs&#x27;,&#x27;heif&#x27;,&#x27;heic&#x27;,&#x27;cur&#x27;,&#x27;ico&#x27;,&#x27;ani&#x27;,&#x27;jp2&#x27;,&#x27;jpm&#x27;,&#x27;jpx&#x27;,&#x27;mj2&#x27;,&#x27;wmv&#x27;,&#x27;wma&#x27;,&#x27;aac&#x27;,&#x27;tif&#x27;,&#x27;tiff&#x27;,&#x27;mpg&#x27;,&#x27;mpeg&#x27;,&#x27;mov&#x27;,&#x27;avi&#x27;,&#x27;wmv&#x27;,&#x27;flv&#x27;,&#x27;swf&#x27;,&#x27;mkv&#x27;,&#x27;m4v&#x27;,&#x27;m4p&#x27;,&#x27;m4b&#x27;,&#x27;m4r&#x27;,&#x27;m4a&#x27;,&#x27;mp3&#x27;,&#x27;wav&#x27;,&#x27;wma&#x27;,&#x27;ogg&#x27;,&#x27;oga&#x27;,&#x27;webm&#x27;,&#x27;3gp&#x27;,&#x27;3g2&#x27;,&#x27;flac&#x27;,&#x27;spx&#x27;,&#x27;amr&#x27;,&#x27;mid&#x27;,&#x27;midi&#x27;,&#x27;mka&#x27;,&#x27;dts&#x27;,&#x27;ac3&#x27;,&#x27;eac3&#x27;,&#x27;weba&#x27;,&#x27;m3u&#x27;,&#x27;m3u8&#x27;,&#x27;ts&#x27;,&#x27;wpl&#x27;,&#x27;pls&#x27;,&#x27;vob&#x27;,&#x27;ifo&#x27;,&#x27;bup&#x27;,&#x27;svcd&#x27;,&#x27;drc&#x27;,&#x27;dsm&#x27;,&#x27;dsv&#x27;,&#x27;dsa&#x27;,&#x27;dss&#x27;,&#x27;vivo&#x27;,&#x27;ivf&#x27;,&#x27;dvd&#x27;,&#x27;fli&#x27;,&#x27;flc&#x27;,&#x27;flic&#x27;,&#x27;flic&#x27;,&#x27;mng&#x27;,&#x27;asf&#x27;,&#x27;m2v&#x27;,&#x27;asx&#x27;,&#x27;ram&#x27;,&#x27;ra&#x27;,&#x27;rm&#x27;,&#x27;rpm&#x27;,&#x27;roq&#x27;,&#x27;smi&#x27;,&#x27;smil&#x27;,&#x27;wmf&#x27;,&#x27;wmz&#x27;,&#x27;wmd&#x27;,&#x27;wvx&#x27;,&#x27;wmx&#x27;,&#x27;movie&#x27;,&#x27;wri&#x27;,&#x27;ins&#x27;,&#x27;isp&#x27;,&#x27;acsm&#x27;,&#x27;djvu&#x27;,&#x27;fb2&#x27;,&#x27;xps&#x27;,&#x27;oxps&#x27;,&#x27;ps&#x27;,&#x27;eps&#x27;,&#x27;ai&#x27;,&#x27;prn&#x27;,&#x27;svg&#x27;,&#x27;dwg&#x27;,&#x27;dxf&#x27;,&#x27;ttf&#x27;,&#x27;fnt&#x27;,&#x27;fon&#x27;,&#x27;otf&#x27;,&#x27;cab&#x27;]</span><br><span class="line">   */</span><br><span class="line">  resourceExclusions?: string[];</span><br><span class="line">  /** Optional maximum file size in megabytes to include in the output file */</span><br><span class="line">  maxFileSize?: number;</span><br><span class="line">  /** Optional maximum number tokens to include in the output file */</span><br><span class="line">  maxTokens?: number;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>实例:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Config</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./src/config&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="attr">defaultConfig</span>: <span class="title class_">Config</span> = &#123;</span><br><span class="line">  <span class="attr">url</span>: <span class="string">&quot;https://www.bilibili.com/video/BV1jG411q72C&quot;</span>,</span><br><span class="line">  <span class="attr">match</span>: <span class="string">&quot;https://www.bilibili.com/video/BV1jG411q72C&quot;</span>,</span><br><span class="line">  <span class="attr">maxPagesToCrawl</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">outputFileName</span>: <span class="string">&quot;output.json&quot;</span>,</span><br><span class="line">  <span class="comment">//maxTokens: 2000000,</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><code>.desc-info-text</code>  :b站简介</p>
+<p><code>.video-title</code>  :b站标题</p>
+<p><code>.reply-content</code>  :b站评论</p>
+<p>PlaywrightCrawler</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PlaywrightCrawler </span><br></pre></td></tr></table></figure>
+
+<p>是一个用于爬取网站数据的工具，它是基于Playwright库构建的，可以模拟浏览器行为来爬取网页内容。这个错误可能是由于超时设置或选择器的问题导致的。</p>
+</blockquote>
+<p>SeleniumCrawler</p>
+<p>gemini正确的回复如下:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;candidates&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;parts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">          <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;您好！很高兴为您服务。请问您有什么想了解或需要帮助的吗？&quot;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;model&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;finishReason&quot;</span><span class="punctuation">:</span> <span class="string">&quot;STOP&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;index&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;safetyRatings&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HARM_CATEGORY_SEXUALLY_EXPLICIT&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;probability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NEGLIGIBLE&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HARM_CATEGORY_HATE_SPEECH&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;probability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NEGLIGIBLE&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HARM_CATEGORY_HARASSMENT&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;probability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NEGLIGIBLE&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HARM_CATEGORY_DANGEROUS_CONTENT&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;probability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NEGLIGIBLE&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;promptFeedback&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;safetyRatings&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HARM_CATEGORY_SEXUALLY_EXPLICIT&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;probability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NEGLIGIBLE&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HARM_CATEGORY_HATE_SPEECH&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;probability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NEGLIGIBLE&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HARM_CATEGORY_HARASSMENT&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;probability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NEGLIGIBLE&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HARM_CATEGORY_DANGEROUS_CONTENT&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;probability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NEGLIGIBLE&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//发送了一个.的情况</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;candidates&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;finishReason&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RECITATION&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;index&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;promptFeedback&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;safetyRatings&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HARM_CATEGORY_SEXUALLY_EXPLICIT&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;probability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NEGLIGIBLE&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HARM_CATEGORY_HATE_SPEECH&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;probability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;LOW&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HARM_CATEGORY_HARASSMENT&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;probability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;LOW&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HARM_CATEGORY_DANGEROUS_CONTENT&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;probability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NEGLIGIBLE&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;error&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">400</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Invalid JSON payload received. Unexpected token.\n\&quot;: \n                &#125;\n            ]\n    \n                    ^&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;status&quot;</span><span class="punctuation">:</span> <span class="string">&quot;INVALID_ARGUMENT&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="gemini有效的提示"><a href="#gemini有效的提示" class="headerlink" title="gemini有效的提示"></a>gemini有效的提示</h1><h2 id="获取格式化后的时间"><a href="#获取格式化后的时间" class="headerlink" title="获取格式化后的时间"></a>获取格式化后的时间</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">现在时间是<span class="number">2024</span>年<span class="number">1</span>月<span class="number">10</span>日<span class="number">14</span>:<span class="number">33</span>,请将接下来这句话提取出具体的时间和具体提醒项,按照<span class="string">&quot;xxxx年xx月xx日xx:xx|做什么事&quot;</span>回复给我:</span><br><span class="line"></span><br><span class="line"><span class="comment">//如:</span></span><br><span class="line">明天和后天晚上<span class="number">6</span>点提醒我吃饭</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回:</span></span><br><span class="line"><span class="number">2024</span>年<span class="number">1</span>月<span class="number">11</span>日<span class="number">18</span>:<span class="number">00</span>|吃饭</span><br><span class="line"><span class="number">2024</span>年<span class="number">1</span>月<span class="number">12</span>日<span class="number">18</span>:<span class="number">00</span>|吃饭</span><br><span class="line">  </span><br><span class="line">现在时间是<span class="number">2024</span>年<span class="number">1</span>月<span class="number">10</span>日<span class="number">14</span>:<span class="number">33</span>,请将接下来这句话提取出具体的时间和具体提醒项,按照<span class="string">&quot;ISO日期时间字符串|做什么事&quot;</span>回复给我:明天和后天晚上<span class="number">6</span>点提醒我吃饭</span><br><span class="line">  </span><br><span class="line"><span class="number">2024</span><span class="number">-01</span><span class="number">-10</span> <span class="number">23</span>:<span class="number">07</span>转换成schedule.scheduleJob的第一个参数</span><br><span class="line"><span class="string">&quot;07 23 10 1 2024&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>ts的定时库:node-cron</p>
+<h2 id="总结精炼"><a href="#总结精炼" class="headerlink" title="总结精炼"></a>总结精炼</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用中文总结精炼这段网页信息的重点内容:</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti --rm --volume=&quot;$(pwd)&quot;:/share/homes/zeroko14/bot wechaty/wechaty /share/homes/zeroko14/bot/bot.ts</span><br></pre></td></tr></table></figure>
+
+<h1 id="本地大模型"><a href="#本地大模型" class="headerlink" title="本地大模型"></a>本地大模型</h1><h2 id="Ollama"><a href="#Ollama" class="headerlink" title="Ollama"></a>Ollama</h2><p><a target="_blank" rel="noopener" href="https://ollama.com/">下载地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://ollama.com/library">模型库</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/2401_83416930/article/details/139408710">mac开放ollama对外连接</a></p>
+<h3 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h3><ul>
+<li><p>展示本地大模型列表：<code>ollama list</code></p>
+</li>
+<li><p>删除单个本地大模型：<code>ollama rm 本地模型名称</code></p>
+</li>
+<li><p>启动本地模型：<code>ollama run 本地模型名</code></p>
+</li>
+<li><p>查看本地运行中模型列表：<code>ollama ps</code></p>
+</li>
+<li><p>复制本地大模型：<code>ollama cp 本地存在的模型名 新复制模型名</code></p>
+</li>
+<li><p>下载或者更新本地大模型：<code>ollama pull 本地/远程仓库模型名称</code> </p>
+<p>模型名称格式为:<strong>模型名称:参数规格</strong>；如<code>ollama pull qwen2:0.5b</code></p>
+</li>
+</ul>
+<h4 id="终端对话中命令"><a href="#终端对话中命令" class="headerlink" title="终端对话中命令"></a>终端对话中命令</h4><ol>
+<li>若需要输入多行文本，需要用<strong>三引号</strong>包裹，如：<code>&quot;&quot;&quot;这里是多行文本&quot;&quot;&quot;</code></li>
+<li><code>/clear</code>清除对话上下文信息</li>
+<li><code>/bye</code>则退出对话窗口</li>
+<li><code>/set parameter num_ctx 4096</code>可设置窗口大小为 4096 个 Token，也可以通过请求设置，如：<code>curl &lt;http://localhost:11434/api/generate&gt; -d &#39;&#123; &quot;model&quot;: &quot;qwen2:7b&quot;, &quot;prompt&quot;: &quot;Why is the sky blue?&quot;, &quot;options&quot;: &#123; &quot;num_ctx&quot;: 4096 &#125;&#125;&#39;</code></li>
+<li><code>/show info</code>可以查看当前模型详情：</li>
+<li>启动服务：<code>ollama serve</code></li>
+</ol>
+<h3 id="API接口"><a href="#API接口" class="headerlink" title="API接口"></a>API接口</h3><p>Ollama 默认提供了<code>generate</code>和<code>chat</code>这 2 个原始的 API 接口，使用方式如下：</p>
+<ol>
+<li><p><code>generate</code>接口的使用样例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:11434/api/generate -d &quot;&#123;</span><br><span class="line">  &#x27;model&#x27;: &#x27;qwen:0.5b&#x27;,</span><br><span class="line">  &#x27;prompt&#x27;: &#x27;为什么天空是蓝色的？&#x27;</span><br><span class="line">&#125;&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>chat</code>接口的使用样例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">	curl http://localhost:11434/api/chat -d &#x27;&#123;</span><br><span class="line">  &quot;model&quot;: &quot;qwen:7b&quot;,</span><br><span class="line">  &quot;messages&quot;: [</span><br><span class="line">    &#123; &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;为什么天空是蓝色的？&quot; &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="盘点某些本地大模型"><a href="#盘点某些本地大模型" class="headerlink" title="盘点某些本地大模型"></a>盘点某些本地大模型</h2><p>qwen2.5-coder模型</p>
+<p><a target="_blank" rel="noopener" href="https://ollama.com/library/llama3.1">llama3.1</a></p>
+<h2 id="qwen2-5-coder"><a href="#qwen2-5-coder" class="headerlink" title="qwen2.5-coder"></a>qwen2.5-coder</h2><h3 id="修改本地模型上下文"><a href="#修改本地模型上下文" class="headerlink" title="修改本地模型上下文"></a>修改本地模型上下文</h3><p>创建一个修改了上下文长度的本地大模型,因为默认的上下文都非常短</p>
+<p>创建文件<code>Qwen2.5Coder</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FROM qwen2.5-coder:7b</span><br><span class="line">PARAMETER num_ctx 32768</span><br></pre></td></tr></table></figure>
+
+<p><code>ollama create -f Qwen2.5Coder qwen2.5-coder-ottodev:7b</code></p>
+<p>Qwen2.5Coder就是指的上面的文件</p>
+<h1 id="Aider"><a href="#Aider" class="headerlink" title="Aider"></a>Aider</h1><p>安装方式: <code>python -m pip install aider-chat</code></p>
+<ul>
+<li><code>/add 文件名</code>:指定编写的代码写入哪个文件</li>
+<li><code>/drop</code>:解除与文件的联系</li>
+<li><code>/quit</code> 退出程序</li>
+<li>{多行文本问答}</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://aider.chat/docs/llms/groq.html">官方文档用法参考</a></p>
+<p><a target="_blank" rel="noopener" href="https://aider.chat/docs/leaderboards/">Aider中个模型的基准测试</a></p>
+<p>更新方式: <code>pip install --upgrade aider-chat</code></p>
+<h2 id="vscode-aide拓展"><a href="#vscode-aide拓展" class="headerlink" title="vscode aide拓展"></a>vscode aide拓展</h2><p>配套Aider使用</p>
+<p><a target="_blank" rel="noopener" href="https://aide.nicepkg.cn/guide/use-another-llm/google">官方参考文档</a></p>
+<h1 id="One-api"><a href="#One-api" class="headerlink" title="One-api"></a>One-api</h1><p>可以把多种ai模型接口统一为openai格式</p>
+<p>注意类openai通信协议中所有的base格式不用写后面的v1及其后续内容</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/songquanpeng/one-api">one-api开放地址</a></p>
+<p>执行命令<code>docker run --name one-api -d --restart always -p 3000:3000 -e TZ=Asia/Shanghai -v /Users/zeroko/Documents/one-api:/data justsong/one-api</code></p>
+<h1 id="免费API平台盘点"><a href="#免费API平台盘点" class="headerlink" title="免费API平台盘点"></a>免费API平台盘点</h1><p>Groke    注意,支持<a target="_blank" rel="noopener" href="https://console.groq.com/docs/models#whisper-large-v3-turbo">Whisper Large V3 Turbo</a>等模型,音频转文字,音频文件需小于25MB,以及视觉识别模型</p>
+<p>SambaNova   带速率限制的免费版本,亮点:提供llama-3.1-405b模型调用</p>
+<p>Vertex   绑定信用卡300美金,不绑定150美金额度  <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Tox9eREzn/">参考此处</a></p>
+<p>Cerebras 使用频率限制比Groke宽松,每分钟30个,每小时900个   特色:在线对话支持语音对话  需要申请  <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1EPs9eTEDP">用法记录</a></p>
+<p>Mistral  每秒一次请求,其中最强的模型性能与gemini flask持平</p>
+<p>grok 每月25美金  <a target="_blank" rel="noopener" href="https://console.x.ai/team/a84e4b1d-1650-44dd-937c-e54e80bf01fb">官方地址</a></p>
+<p>GLHF  测试阶段完全免费使用,没有任何限制,支持所有开源模型,Hugging Face所有开源模型,理论上包含DeepSeek V2模型,但是实际上跑不起来,自定义运行功能效果不好   <a target="_blank" rel="noopener" href="https://glhf.chat/users/settings/api">地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv36242294/">白嫖Groq API教程</a>  2024末前两个月每月25美金</p>
+<p>github models上的模型可以通过litellm来免费使用  <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1prS2YKE8C/">参考视频</a></p>
+<p>Open Router提供了Gemini2.0 Flash免费API  以及  DeepSeekV3的免费api</p>
+<p><a target="_blank" rel="noopener" href="https://app.hyperbolic.xyz/models">Hyperbolic 注册即送10美金</a></p>
+<p><a target="_blank" rel="noopener" href="https://anyrouter.top/register?aff=phXB">any router 可申请calude api 新人送50美金额度</a></p>
+<h1 id="SuperMaven"><a href="#SuperMaven" class="headerlink" title="SuperMaven"></a>SuperMaven</h1><p>免费实现自动补全,响应非常快</p>
+<h1 id="cline"><a href="#cline" class="headerlink" title="cline"></a>cline</h1><p>apiBase的配置是到v1前一层(即看不到v1),比如说deepseek的apiBase: <code>https://api.deepseek.com</code></p>
+<h1 id="Continue"><a href="#Continue" class="headerlink" title="Continue"></a>Continue</h1><p>vscode ai对话拓展</p>
+<p>配置格式参考</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202410201435062.png" alt="image-20241020143516494"></p>
+<p>注意apiBase的设置到v1那一层</p>
+<h1 id="litellm"><a href="#litellm" class="headerlink" title="litellm"></a>litellm</h1><p>可以将非openai兼容的api转换成openai兼容的api</p>
+<p><code>pip install litellm</code></p>
+<p>如果缺乏依赖: <code>pip install &#39;litellm[proxy]&#39;</code></p>
+<p>使用类似<a href="#Aider">Aider</a>,因为Aider后端也使用的是Aider</p>
+<p><code>litellm --model mistral/mistral-large-latest</code></p>
+<p>启动后的Base URL为<code>http://localhost:4000</code></p>
+<p>API KEY随意填写,模型名称填<code>mistral-large-latest</code></p>
+<h2 id="github-models转换为类openai接口"><a href="#github-models转换为类openai接口" class="headerlink" title="github models转换为类openai接口"></a>github models转换为类openai接口</h2><p><a target="_blank" rel="noopener" href="https://github.com/aigem/videos/blob/main/md/9.md">参考链接,但以失败告终</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export GITHUB_API_KEY=xxxxxxx</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">使用此命令来启动litellm的服务器</span></span><br><span class="line">litellm --model github/gpt-4o</span><br></pre></td></tr></table></figure>
+
+<p>将显示作为代理的Base URL,模型设置为gpt-4o</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202411090025593.png" alt="image-20241109002541457"></p>
+<h1 id="AI请求反代服务器"><a href="#AI请求反代服务器" class="headerlink" title="AI请求反代服务器"></a>AI请求反代服务器</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ultrasev/llmproxy-vercel">vercel实现反代,提供vercel一键部署脚本</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ultrasev/llmproxy">通过 cloudflare worker 搭建的 API 代理项目</a></li>
+</ul>
+<p>上述项目支持Groq,Google,OpenAI,sambanova,Cerebras</p>
+<p>但实测似乎只支持python调用,而不支持api调用?</p>
+<p>下面反向代理项目支持一切</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/souying/vercel-api-proxy">反向代理开源vercel部署项目</a></p>
+<p>访问<a target="_blank" rel="noopener" href="https://你的域名/https/github.com/souying/serverMmon/">https:&#x2F;&#x2F;你的域名&#x2F;https&#x2F;github.com&#x2F;souying&#x2F;serverMmon&#x2F;</a> 实际上会替换为<a target="_blank" rel="noopener" href="https://github.com/souying/serverMmon/">https://github.com/souying/serverMmon/</a></p>
+<h1 id="无限邮箱方式"><a href="#无限邮箱方式" class="headerlink" title="无限邮箱方式"></a>无限邮箱方式</h1><p>可使用无限邮</p>
+<p>除此之外,<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Oo0HO8Y8dFgZ444DvNhL2g">谷歌邮箱可以当无限邮箱使用</a></p>
+<h1 id="vscode相关拓展"><a href="#vscode相关拓展" class="headerlink" title="vscode相关拓展"></a>vscode相关拓展</h1><p><a target="_blank" rel="noopener" href="https://github.com/Ciciella/AIcoder">vscode 拓展,仿cline</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/cline/cline">cline开源</a></p>
+<p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-windows-ai-studio.windows-ai-studio">AI Toolkit for Visual Studio Code</a></p>
+<p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=TabbyML.vscode-tabby">Tabby 开源自托管补全</a></p>
+<p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Codeium.codeium">Codeium 对话补全免费</a></p>
+<p>codegeex  可以一键生成代码地图  幽灵助手</p>
+<p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=BuddyRed.buddyred">Buddy - Cursor平替</a>    Buddy是一个中文的类似Continue的插件,APIBase同样是到v1那一层</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/RooVetGit/Roo-Code">Roo Code</a> 是cline的分支</p>
+<p>谷歌推出的ai编程助手插件Gemini Code Assist</p>
+<p>Marscode  字节跳动的ai编程插件 现已可以免费使用deepseek r1</p>
+<h1 id="编程提示词"><a href="#编程提示词" class="headerlink" title="编程提示词"></a>编程提示词</h1><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># Role    </span><br><span class="line">你是一名极其优秀具有20年经验的产品经理和精通所有编程语言的工程师。与你交流的用户是不懂代码的初中生，不善于表达产品和代码需求。你的工作对用户来说非常重要，完成后将获得10000美元奖励。</span><br><span class="line"># Goal    </span><br><span class="line">你的目标是帮助用户以他容易理解的方式完成他所需要的产品设计和开发工作，你始终非常主动完成所有工作，而不是让用户多次推动你。</span><br><span class="line">在理解用户的产品需求、编写代码、解决代码问题时，你始终遵循以下原则：</span><br><span class="line">## 第一步    </span><br><span class="line">- 当用户向你提出任何需求时，你首先应该浏览根目录下的readme.md文件和所有代码文档，理解这个项目的目标、架构、实现方式等。如果还没有readme文件，你应该创建，这个文件将作为用户使用你提供的所有功能的说明书，以及你对项目内容的规划。因此你需要在readme.md文件中清晰描述所有功能的用途、使用方法、参数说明、返回值说明等，确保用户可以轻松理解和使用这些功能。</span><br><span class="line">## 第二步    </span><br><span class="line">你需要理解用户正在给你提供的是什么任务    </span><br><span class="line">### 当用户直接为你提供需求时，你应当：    </span><br><span class="line">- 首先，你应当充分理解用户需求，并且可以站在用户的角度思考，如果我是用户，我需要什么？    </span><br><span class="line">- 其次，你应该作为产品经理理解用户需求是否存在缺漏，你应当和用户探讨和补全需求，直到用户满意为止；    </span><br><span class="line">- 最后，你应当使用最简单的解决方案来满足用户需求，而不是使用复杂或者高级的解决方案。</span><br><span class="line">### 当用户请求你编写代码时，你应当：    </span><br><span class="line">- 首先，你会思考用户需求是什么，目前你有的代码库内容，并进行一步步的思考与规划    </span><br><span class="line">- 接着，在完成规划后，你应当选择合适的编程语言和框架来实现用户需求，你应该选择solid原则来设计代码结构，并且使用设计模式解决常见问题；    </span><br><span class="line">- 再次，编写代码时你总是完善撰写所有代码模块的注释，并且在代码中增加必要的监控手段让你清晰知晓错误发生在哪里；    </span><br><span class="line">- 最后，你应当使用简单可控的解决方案来满足用户需求，而不是使用复杂的解决方案。</span><br><span class="line">### 当用户请求你解决代码问题是，你应当：</span><br><span class="line">- 首先，你需要完整阅读所在代码文件库，并且理解所有代码的功能和逻辑；    </span><br><span class="line">- 其次，你应当思考导致用户所发送代码错误的原因，并提出解决问题的思路；    </span><br><span class="line">- 最后，你应当预设你的解决方案可能不准确，因此你需要和用户进行多次交互，并且每次交互后，你应当总结上一次交互的结果，并根据这些结果调整你的解决方案，直到用户满意为止。</span><br><span class="line">## 第三步</span><br><span class="line">在完成用户要求的任务后，你应该对改成任务完成的步骤进行反思，思考项目可能存在的问题和改进方式，并更新在readme.md文件中</span><br></pre></td></tr></table></figure>
+
+<p>比方说添加在cursor的设置中的Rules for AI</p>
+<p>但把Rules for AI完全写死不是个好主意,可以使用.cursorrules，可以认为这是个更高级的项目定制系统提示词的模式。</p>
+<p>如果你的项目需要更细致的规则，那么可以在项目根目录下创建一个 .cursorrules 文件。这样，Cursor 会自动加载其中的定制化指令，为这个项目量身打造生成效果</p>
+<h1 id="腾讯云算力云端主机"><a href="#腾讯云算力云端主机" class="headerlink" title="腾讯云算力云端主机"></a>腾讯云算力云端主机</h1><p><a target="_blank" rel="noopener" href="https://ide.cloud.tencent.com/">cloud studio 网址 </a></p>
+<p>每月免费50000分钟</p>
+<p>带显卡,32G内存</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1VYUAYZEH7/">Cloud Studio 安装ollama及Qwen2.5 Coder 32B示范</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/aigem/videos/blob/main/md/14.md">参考链接</a></p>
+<h1 id="大模型函数调用开发"><a href="#大模型函数调用开发" class="headerlink" title="大模型函数调用开发"></a>大模型函数调用开发</h1><p>函数调用使语言模型能够使用外部工具，从而将模型与数字和物理世界紧密联系起来。</p>
+<p>这是一个强大的功能，可以用于实现广泛的用例。</p>
+<ul>
+<li>调用公共 API 执行各种操作，从查询足球比赛结果到获取实时卫星定位数据</li>
+<li>分析内部数据库</li>
+<li>浏览网页</li>
+<li>执行代码</li>
+<li>与物理世界互动（例如预订机票、打开特斯拉车门、控制机械臂）</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://docs.x.ai/docs/guides/function-calling#overview"> grok官网参考的函数调用流程 </a></p>
+<p>流程图参考<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202411211741471.png" alt="mermaid" style="zoom: 33%;" /></p>
+<p>步骤如下:</p>
+<h2 id="设计函数接口"><a href="#设计函数接口" class="headerlink" title="设计函数接口"></a>设计函数接口</h2><p>能真正实现函数接口功能的:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">open_website</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">   </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">click</span>(<span class="params">html, button</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">   </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">assistant</span>():</span><br><span class="line">    <span class="built_in">input</span> = Input(<span class="string">&quot;Hello! I am here helping you to navigate a website! What do you want to do?&quot;</span>)</span><br><span class="line">    html = open_website(url)</span><br><span class="line">    button1 = ... <span class="comment"># parse out a button from input magically</span></span><br><span class="line">    html = click(html, button1)</span><br><span class="line">    button2 = ... <span class="comment"># parse out another button from input magically</span></span><br><span class="line">    html = click(html, button2)</span><br><span class="line">    input2 = Input(<span class="string">&quot;Voilà we are done! Do you want to join xAI? :)&quot;</span>)</span><br><span class="line">    button3 = ... <span class="comment"># parse out a button from input2 magically</span></span><br><span class="line">    html = click(html, button3)</span><br><span class="line">    ...</span><br><span class="line">    input3 = Input(<span class="string">&quot;We will get back to you soon!&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="描述函数"><a href="#描述函数" class="headerlink" title="描述函数"></a>描述函数</h2><p>用于传递给AI来定义格式的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">functions = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;name&quot;</span>: <span class="string">&quot;open_website&quot;</span>,</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Open a website and return the HTML as a string&quot;</span>,</span><br><span class="line">        <span class="string">&quot;parameters&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;type&quot;</span>: <span class="string">&quot;object&quot;</span>,</span><br><span class="line">            <span class="string">&quot;properties&quot;</span>: &#123;</span><br><span class="line">                <span class="string">&quot;url&quot;</span>: &#123;</span><br><span class="line">                    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;string&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;A URL&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;example_value&quot;</span>: <span class="string">&quot;https://x.ai/&quot;</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">&quot;required&quot;</span>: [<span class="string">&quot;url&quot;</span>],</span><br><span class="line">            <span class="string">&quot;optional&quot;</span>: [],</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;name&quot;</span>: <span class="string">&quot;click&quot;</span>,</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Click any button on a website and returns the new HTML&quot;</span>,</span><br><span class="line">        <span class="string">&quot;parameters&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;type&quot;</span>: <span class="string">&quot;object&quot;</span>,</span><br><span class="line">            <span class="string">&quot;properties&quot;</span>: &#123;</span><br><span class="line">                <span class="string">&quot;html&quot;</span>: &#123;</span><br><span class="line">                    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;string&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;A HTML&quot;</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="string">&quot;button&quot;</span>: &#123;</span><br><span class="line">                    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;string&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;A text description of a button on the html page&quot;</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">&quot;required&quot;</span>: [<span class="string">&quot;html&quot;</span>, <span class="string">&quot;button&quot;</span>],</span><br><span class="line">            <span class="string">&quot;optional&quot;</span>: [],</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="将助手与功能连接起来"><a href="#将助手与功能连接起来" class="headerlink" title="将助手与功能连接起来"></a>将助手与功能连接起来</h2><p>首先，让我们从助手那里获取工具执行请求。为此，我们需要开始将函数定义、系统提示和任何先前的对话传递给助手。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">MODEL_NAME = <span class="string">&quot;grok-beta&quot;</span></span><br><span class="line">XAI_API_KEY = os.getenv(<span class="string">&quot;XAI_API_KEY&quot;</span>)</span><br><span class="line"></span><br><span class="line">client = OpenAI(</span><br><span class="line">    api_key=XAI_API_KEY,</span><br><span class="line">    base_url=<span class="string">&quot;https://api.x.ai/v1&quot;</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">tools = [&#123;<span class="string">&quot;type&quot;</span>: <span class="string">&quot;function&quot;</span>, <span class="string">&quot;function&quot;</span>: f&#125; <span class="keyword">for</span> f <span class="keyword">in</span> functions]</span><br><span class="line"></span><br><span class="line">messages = [</span><br><span class="line">    &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You are a helpful webpage navigation assistant. Use the supplied tools to assist the user.&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;Hi, can you go to the career page of xAI website?&quot;</span>&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">response = client.chat.completions.create(</span><br><span class="line">    model=MODEL_NAME,</span><br><span class="line">    messages=messages,</span><br><span class="line">    tools=tools,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>如果助手决定不需要调用工具。在这种情况下，响应将以聊天完成的正常方式直接回复用户。这通常发生在助手希望用户澄清或用户询问一些不需要函数调用的问题时。</p>
+<p>或者，如果助手决定需要调用工具，则响应将包含函数调用请求。您可以在下面看到一个示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Choice(</span><br><span class="line">    finish_reason=<span class="string">&#x27;tool_calls&#x27;</span>, </span><br><span class="line">    index=<span class="number">0</span>, </span><br><span class="line">    logprobs=<span class="literal">None</span>, </span><br><span class="line">    message=chat.completionsMessage(</span><br><span class="line">        content=<span class="string">&quot;I am opening the xAI website to navigate to the career page.&quot;</span>, </span><br><span class="line">        role=<span class="string">&#x27;assistant&#x27;</span>, </span><br><span class="line">        function_call=<span class="literal">None</span>, </span><br><span class="line">        tool_calls=[</span><br><span class="line">            chat.completionsMessageToolCall(</span><br><span class="line">                <span class="built_in">id</span>=<span class="string">&#x27;call_1234&#x27;</span>, </span><br><span class="line">                function=Function(</span><br><span class="line">                    arguments=<span class="string">&#x27;&#123;&quot;url&quot;:&quot;https://x.ai/&quot;&#125;&#x27;</span>, </span><br><span class="line">                    name=<span class="string">&#x27;open_website&#x27;</span>), </span><br><span class="line">                <span class="built_in">type</span>=<span class="string">&#x27;function&#x27;</span>)</span><br><span class="line">        ])</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>接下来，我们需要处理来自模型的工具执行请求。让我们实现模型将调用的函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tool_call = response.choices[<span class="number">0</span>].message.tool_calls[<span class="number">0</span>]</span><br><span class="line">arguments = json.loads(tool_call[<span class="string">&#x27;function&#x27;</span>][<span class="string">&#x27;arguments&#x27;</span>])</span><br><span class="line"></span><br><span class="line">url = arguments.get(<span class="string">&#x27;url&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Call the open_website function with the extracted url</span></span><br><span class="line"></span><br><span class="line">html = open_website(url)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最后，我们需要将工具执行结果提供给模型。考虑一下模型可能决定需要更多函数调用的可能性。然后，模型将生成另一个函数调用请求，或者根据函数调用结果生成对用户的响应。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a message containing the result of the function call</span></span><br><span class="line"></span><br><span class="line">function_call_result_message = &#123;</span><br><span class="line">    <span class="string">&quot;role&quot;</span>: <span class="string">&quot;tool&quot;</span>,</span><br><span class="line">    <span class="string">&quot;content&quot;</span>: <span class="string">&quot;&lt;html&gt;...&lt;html&gt;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;tool_call_id&quot;</span>: response[<span class="string">&#x27;choices&#x27;</span>][<span class="number">0</span>][<span class="string">&#x27;message&#x27;</span>][<span class="string">&#x27;tool_calls&#x27;</span>][<span class="number">0</span>][<span class="string">&#x27;id&#x27;</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Prepare the chat completion call payload</span></span><br><span class="line"></span><br><span class="line">messages = [</span><br><span class="line">    &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You are a helpful webpage navigation assistant. Use the supplied tools to assist the user.&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;Hi, can you go to the career page of xAI website?&quot;</span>&#125;</span><br><span class="line">    response[<span class="string">&#x27;choices&#x27;</span>][<span class="number">0</span>][<span class="string">&#x27;message&#x27;</span>],</span><br><span class="line">    function_call_result_message</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">response = client.chat.completions.create(</span><br><span class="line">    model=MODEL_NAME,</span><br><span class="line">    messages=messages,</span><br><span class="line">    tools=tools,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h1 id="AI-IDE盘点"><a href="#AI-IDE盘点" class="headerlink" title="AI IDE盘点"></a>AI IDE盘点</h1><h2 id="Aide-IDE"><a href="#Aide-IDE" class="headerlink" title="Aide IDE"></a>Aide IDE</h2><p>独特优势:</p>
+<ul>
+<li>前瞻性方式主动建议修复</li>
+<li>可以使用原生回滚,不依赖于git</li>
+<li>需要自己提供LLM,对接众多LLM</li>
+</ul>
+<h2 id="Exponent"><a href="#Exponent" class="headerlink" title="Exponent"></a>Exponent</h2><p>全栈应用生成AI</p>
+<p>目前还在早期访问阶段,预约没被通过</p>
+<h1 id="盘点一些开源AI项目"><a href="#盘点一些开源AI项目" class="headerlink" title="盘点一些开源AI项目"></a>盘点一些开源AI项目</h1><h2 id="浏览器使用-拓展"><a href="#浏览器使用-拓展" class="headerlink" title="浏览器使用&#x2F;拓展"></a>浏览器使用&#x2F;拓展</h2><p><a target="_blank" rel="noopener" href="https://github.com/gregpr07/browser-use">browser-use</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1upScYDESU">参考使用链接</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yHrnYCEjQ">浏览器自动化拓展Midscene</a></p>
+<h2 id="bolt-new-any-llm"><a href="#bolt-new-any-llm" class="headerlink" title="bolt.new-any-llm"></a>bolt.new-any-llm</h2><p><a target="_blank" rel="noopener" href="https://github.com/coleam00/bolt.new-any-llm">开源地址</a></p>
+<h2 id="闲鱼开源监控"><a href="#闲鱼开源监控" class="headerlink" title="闲鱼开源监控"></a>闲鱼开源监控</h2><p>基于 Playwright 和 Al 过滤的闲鱼多任务实时&#x2F;定时监控与智能分析工具，配备了功能完善的后台管理界面，帮助用户节省闲鱼商品过滤，能及时找到心仪商品</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/dingyufei615/ai-goofish-monitor">ai-goofish-monitor</a></p>
+<h2 id="人声生成-带情绪"><a href="#人声生成-带情绪" class="headerlink" title="人声生成,带情绪"></a>人声生成,带情绪</h2><p><a target="_blank" rel="noopener" href="https://github.com/resemble-ai/chatterbox">Chatterbox</a> 是全球首个支持强烈情绪控制的开源TTS 模型</p>
+<h1 id="解除cursor机器限制使用"><a href="#解除cursor机器限制使用" class="headerlink" title="解除cursor机器限制使用"></a>解除cursor机器限制使用</h1><p><a target="_blank" rel="noopener" href="https://github.com/bestK/cursor-fake-machine">全平台开源解决方案下载链接地址,会给予一个vscode拓展</a></p>
+<p>命令栏输入install from vsix,选中下载的文件,就会安装上扩展</p>
+<p>于是命令栏就可以输入<code>Fake Cursor:Fake Machine</code>,就会显示:<code>修改成功！路径: C:\Users\ADMIN\AppData\Roaming\Cursor\User\globalStorage\storage.json新的 machineId: be5b885c-fa9b-49d7-b152-3a4522a0625a</code></p>
+<p>最后命令栏输入<code>Developer:Reload Window</code>就可以正常使用了</p>
+<h1 id="模型支持浏览器搜索"><a href="#模型支持浏览器搜索" class="headerlink" title="模型支持浏览器搜索"></a>模型支持浏览器搜索</h1><p>可以配合<a target="_blank" rel="noopener" href="https://github.com/n4ze3m/page-assist">浏览器插件page-assist使用</a></p>
+<p>搜索内容解析模型: nomic-embed-text  ,ollama可以安装</p>
+<h1 id="AI模型运行要求"><a href="#AI模型运行要求" class="headerlink" title="AI模型运行要求"></a>AI模型运行要求</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202501220911246.jpeg" alt="b52529e9ea29e15d98eb9a87b218f88c"></p>
+<h1 id="前端绘制网站盘点"><a href="#前端绘制网站盘点" class="headerlink" title="前端绘制网站盘点"></a>前端绘制网站盘点</h1><p>bolt.new</p>
+<p>v0.dev</p>
+<ul>
+<li><strong>Lovable</strong>：用于快速Web应用原型的流行工具。</li>
+<li><strong>Vercel v0</strong>：在创建可视化原型方面获得了开发者的良好反馈。</li>
+<li><strong>Replit</strong>：支持快速构建和部署项目，有开发者用一个周末就上线了网站。</li>
+<li><strong>Bolt.new</strong>：可生成基于React Native和Expo的移动应用。</li>
+</ul>
+<h1 id="deepseek-r1函数调用功能赋予"><a href="#deepseek-r1函数调用功能赋予" class="headerlink" title="deepseek r1函数调用功能赋予"></a>deepseek r1函数调用功能赋予</h1><p><a target="_blank" rel="noopener" href="https://github.com/xuzeyu91/FunctionCallBridge">FunctionCallBridge</a> 是一款让不支持function call的模型通过提示词方式支持兼容function call格式的桥接插件</p>
+<p>把原有ollama 接口<code>http://localhost:11434/v1/chat/completions</code> 替换为调用</p>
+<p>FunctionCallBridge 的<code>http://localhost:5000/v1/chat/completions</code></p>
+<p>实际效果未经测试</p>
+<h1 id="AI建模"><a href="#AI建模" class="headerlink" title="AI建模"></a>AI建模</h1><p><a target="_blank" rel="noopener" href="https://www.meshy.ai/discover">200月度积分ai文本生成模型,图像生成模型,材质生成</a></p>
+<h1 id="便宜域名盘点"><a href="#便宜域名盘点" class="headerlink" title="便宜域名盘点"></a>便宜域名盘点</h1><p><a target="_blank" rel="noopener" href="https://www.spaceship.com/">xyz域名,全网最便宜的平台,0.67美刀一年,续费同价</a></p>
+<h1 id="AI小工具盘点"><a href="#AI小工具盘点" class="headerlink" title="AI小工具盘点"></a>AI小工具盘点</h1><p><a target="_blank" rel="noopener" href="https://lipsync.video/">唇形同步</a></p>
+<p><a target="_blank" rel="noopener" href="https://watermarkzero.com/zh">AI图片去水印</a></p>
+<p><a target="_blank" rel="noopener" href="https://whisperkeyboard.app/">AI语音输入法</a></p>
+<p><a target="_blank" rel="noopener" href="https://deepwiki.org/">AI与github项目对话  deepwiki</a></p>
+<p><a target="_blank" rel="noopener" href="https://refact.ai/">免费ai代码工程师agent,支持所有IDE中插件</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.aipyaipy.com/">ai牛马agent,开源可接本地模型</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/pickle-com/glass">ai桌面开源助手,记住每一个操作</a></p>
+<h1 id="comfyUI"><a href="#comfyUI" class="headerlink" title="comfyUI"></a>comfyUI</h1><h2 id="光影工作流"><a href="#光影工作流" class="headerlink" title="光影工作流"></a>光影工作流</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202507251757484.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/che77a38/blogImage2/202507251754581.png" alt="img"></p>
+<h3 id="抠图"><a href="#抠图" class="headerlink" title="抠图"></a>抠图</h3><p>BiRefNet抠图  2025.6.10开源模型中效果最好的技术之一</p>
+<h3 id="换背景"><a href="#换背景" class="headerlink" title="换背景"></a>换背景</h3><p>Brushnet2.0  支持SD1.5和SDXL的模型</p>
+<ul>
+<li>SD1.5 是基于512*512来训练的</li>
+<li>SDXL 是基于1024*1024来训练的</li>
+</ul>
+<h3 id="打光"><a href="#打光" class="headerlink" title="打光"></a>打光</h3><p>LBM: 打光后会降低画质 LBM有一个致命缺陷,打光后会改变图像细节</p>
+<h3 id="提高画质"><a href="#提高画质" class="headerlink" title="提高画质"></a>提高画质</h3><p>Flux优化画质 Flux虽然对图像尺寸没有明确限制,但是最好还是控制在2k以内,否则会脱离模型出图的舒适区</p>
+<h3 id="高低频细节恢复"><a href="#高低频细节恢复" class="headerlink" title="高低频细节恢复"></a>高低频细节恢复</h3><p>打光多多少少会改变图像细节,因此这块才是该工作流中最核心的部分</p>
+<h1 id="ai动效制作流程"><a href="#ai动效制作流程" class="headerlink" title="ai动效制作流程"></a>ai动效制作流程</h1><p>在<a target="_blank" rel="noopener" href="https://jimeng.jianying.com/ai-tool/home">即梦ai</a>里制作3D图标</p>
+<p>提示词:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">一个汉堡3d卡通图标，不要有拟人的表情，ios统表情符号风格，白色背景</span><br></pre></td></tr></table></figure>
+
+<p>使用<a target="_blank" rel="noopener" href="https://lmarena.ai/?chat-modality=image&mode=direct">这款工具可以免费使用gemini的图像处理模型</a>先把主体抠出来</p>
+<p>在即梦首尾帧生成视频</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#视频提示词参考</span><br><span class="line">碗里的食物从碗 底中慢慢生长出来，首先是米饭满满从碗底生长出来，然后上边冒出其他食材，最终达到参考图里的状态，保持画面中元素不变，效果必须自然</span><br></pre></td></tr></table></figure>
+
+<p>视频导出照片序列,再使用<a target="_blank" rel="noopener" href="https://isparta.github.io/">iSparta</a>生成apng(苹果),webp(安卓)或gif(demo演示)三种格式</p>
+<h1 id="AI相关开发理论盘点"><a href="#AI相关开发理论盘点" class="headerlink" title="AI相关开发理论盘点"></a>AI相关开发理论盘点</h1><p><a target="_blank" rel="noopener" href="https://github.com/humanlayer/12-factor-agents">12个原则用于构建真正可以交付给生产客户使用的LLM驱动软件</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/datawhalechina/happy-llm">深入理解LLM核心原理 </a></p>
+<h1 id="ai手办制作流程"><a href="#ai手办制作流程" class="headerlink" title="ai手办制作流程"></a>ai手办制作流程</h1><p>一些小程序号称可以免费做:如AI图文创作工坊</p>
+<p>造物相机(付费直接出手办)</p>
+<p>出图可以使用<a target="_blank" rel="noopener" href="https://lmarena.ai/?chat-modality=image&mode=direct">谷歌的图片模型</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">中文关键词1：</span><br><span class="line"></span><br><span class="line">使用nano-banana模型，绘制图中的角色，1/7比例的商业化手办，写实风格，真实环境，手办放在电脑桌上，电脑屏幕里的内容为该手办的建模过程。</span><br><span class="line"></span><br><span class="line">中文关键词2：</span><br><span class="line">使用nano-banana模型，绘制图中的角色，1/7比例的商业化手办，写实风格，真实环境，手办放在电脑桌上,手办使用圆形透明亚克力底座，底座上无文字，电脑屏幕里的内容为该手办的Zbrush建模过程，电脑屏幕旁放着印有原画的BANDAI风格的玩具包装盒。</span><br><span class="line"></span><br><span class="line">中文关键词3(底座水印可以改为自己的创意)</span><br><span class="line">使用 nano-banana 模型，生成一款商业化的1/7手办，角色为图片中的人物，写实风格，真实环境，手办被放置在干净的桌面上，旁边有一个macbook，屏幕里是在浏览一个杂志网站，网站显示一张大图就是原图，环境是暖光源设计工作室内，手办配有圆形透明亚克力底座，底座上有浅浅的水印“MFF”</span><br><span class="line"></span><br><span class="line">英文关键词1：</span><br><span class="line">Use the nano-banana model to create a 1/7 scale commercialized figure of the character in the illustration, in are alistic styie and environment.Place the figure on a computer desk, using a circular transparent acrylic base.</span><br><span class="line"></span><br><span class="line">英文关键词2：</span><br><span class="line">Using the nano-banana model, create a 1/7 scale commercial figure of the character in the image, in a realistic style and authentic environment. The figure is placed on a computer desk, with the computer screen displaying the C4D modeling process of the figure. Beside the screen, there is a BANDAI-style plastic toy packaging box printed with the original artwork. On the computer desk, there are also tools for making the figure, such as brushes, paint, a knife, etc.</span><br></pre></td></tr></table></figure>
+
+<p>使用转3D模型</p>
+<h1 id="提示词工程指导"><a href="#提示词工程指导" class="headerlink" title="提示词工程指导"></a>提示词工程指导</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/6CQKUy5bvQkUVsx5btoAFA">参考这篇文章</a></p>
+<h1 id="Nano-Banana用法盘点"><a href="#Nano-Banana用法盘点" class="headerlink" title="Nano Banana用法盘点"></a>Nano Banana用法盘点</h1><p><a target="_blank" rel="noopener" href="https://github.com/ZHO-ZHO-ZHO/Nano-Bananary">界面操作Nano Banana开源项目</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/JimmyLv/awesome-nano-banana?tab=readme-ov-file#cases-63">开源最全提示词盘点</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/_xqGjYMhCI1nYheiztBi5A">参考链接</a></p>
+<ul>
+<li><p><strong>制作手办</strong>：</p>
+<ul>
+<li>创建一个1&#x2F;7比例的商业化手办，角色来自插图，风格和环境要逼真。将手办放置在电脑桌上，使用无文字的圆形透明亚克力底座。在电脑屏幕上显示手办的ZBrush建模过程。电脑屏幕旁边放置一个印有原始艺术作品的BANDAI风格玩具包装盒。</li>
+<li>create a 1&#x2F;7 scale commercialized figure of thecharacter in the illustration, in a realistic styie and environment.Place the figure on a computer desk, using a circular transparent acrylic base without any text.On the computer screen, display the ZBrush modeling process of the figure.Next to the computer screen, place a BANDAl-style toy packaging box printedwith the original artwork.</li>
+</ul>
+</li>
+<li><p><strong>玩cosplay</strong>：</p>
+<ul>
+<li>只需要给NB一张你的照片，和你想cos的角色的照片，提示词非常简单：让图一的人物cosplay图二的角色，服饰、妆容、道具和图二一致</li>
+</ul>
+</li>
+<li><p><strong>换动作</strong>：</p>
+<ul>
+<li>让图二的人物做出图一的动作。</li>
+</ul>
+</li>
+<li><p><strong>产品内部结构图</strong>：</p>
+<ul>
+<li>超详细的产品爆炸视图，金属部件和电子元件悬浮在空中，完美对齐，揭示内部结构，未来科技美学，8K分辨率，柔和的电影灯光，高度逼真。</li>
+<li>提示词在此：Ultra-detailed exploded view of a product, metallic parts and electronic components floating in mid-air, perfectly aligned, revealing inner structure, futuristic technology aesthetic, 8K resolution, soft cinematic lighting, highly realistic.</li>
+</ul>
+</li>
+<li><p><strong>转线稿 &amp; 上色</strong>：</p>
+<ul>
+<li>按图一的色卡的配色给图二的线稿上色。</li>
+</ul>
+</li>
+<li><p><strong>制作游戏UI</strong>：</p>
+<ul>
+<li><p><strong>示例1</strong>：一张幻想RPG游戏截图，特色是图中的单一主角站在中心，手持一本书和一根火炬，详细的废墟寺庙环境，古老的石柱、藤蔓、彩色玻璃窗、发光的魔法氛围，电影灯光。包含RPG风格的UI元素：角落的角色肖像、顶部的生命值和法力值条、右下角的小地图、底部的对话文本“这一定是地方…”。高度详细，动漫风格的游戏艺术，沉浸式氛围，超高质量。</p>
+</li>
+<li><p><strong>示例2</strong>：一张galgame视觉小说截图，设置在奢华的洛可可风格城堡内部，装饰华丽，吊灯、金色细节、优雅家具和柔和的色彩。图中的单一角色站在前景中央，动漫风格插图，表情丰富。包含galgame UI元素：底部的对话文本框用英文显示角色名，选择菜单按钮，干净的界面设计。柔和的灯光，浪漫的氛围，高质量视觉小说风格艺术作品。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>漫画分镜</strong>：</p>
+<ul>
+<li>根据图片内容生成九格漫画，用画面和镜头讲故事。</li>
+</ul>
+</li>
+<li><p><strong>生成漫画</strong>:</p>
+<p>第一步，给一张真实的自动驾驶汽车照片，提示词「turn this into black-and-white manga」，AI 将照片转换为黑白漫画风格，不仅保留了车辆和背景的细节，还添加了动态效果。</p>
+<p>第二步，加一句提示 「make the next panel a funny cat-related twist」，模型就生成了下一帧：车里出现了一只猫，还配了幽默的对话框「Mission Complete!」</p>
+<p>总之，nano banana 不仅能改风格，还能顺着提示自动编故事，生成连贯的漫画。</p>
+</li>
+<li><p><strong>修复老照片,上色</strong></p>
+<p>对于修复老照片、给黑白照片上色等常规操作，Nano Banana 更是手拿把掐。</p>
+<p>提示词：Restore this photograph.</p>
+<p>提示词：Add color to this photo. </p>
+</li>
+<li><p><strong>打光</strong>：</p>
+<ul>
+<li><strong>示例1</strong>：给这个男人生成一张艺术肖像照片，通过半明半暗的打光效果，赋予男人亦正亦邪的特征。</li>
+<li><strong>示例2</strong>：让这张照片中的天空变成晚霞的颜色，空中有很多鸟在飞，和原图融为一体。</li>
+</ul>
+</li>
+<li><p><strong>做商品图</strong>：</p>
+<ul>
+<li><strong>示例1</strong>：给被子上面印上lv老花。</li>
+<li><strong>示例2</strong>：做一张口红的商品宣传海报，图中的女人手握口红，看向镜头。</li>
+</ul>
+</li>
+<li><p><strong>生图 + 推理能力</strong>：</p>
+<ul>
+<li><p>物件标记: 你是一个基于位置的AR体验生成器。突出显示图像中的[兴趣点]并注释相关信息。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">前谷歌产品经理 Bilawal Sidhu 直接上传了现实中的建筑截图，让 nano banana 标注相关信息，提示词：you are a location-based AR experience generator. highlight [point of interest] in this image and annotate relevant information about it.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以直接给几何题图片让他标记并讲解</p>
+</li>
+</ul>
+</li>
+<li><p><strong>今日穿搭</strong>,关键词:OOTD: outfit of the day: 今日穿搭</p>
+<p>现在只要上传一张穿搭照片，nano banana 就能秒出穿搭清单。</p>
+<p>提示词：give me this character ootd.</p>
+</li>
+<li><p><strong>换发型换眼镜</strong></p>
+</li>
+<li><p><strong>模型和工业设计中的常见六视图</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">它还能做出类似产品建模或工业设计里常见的六视图，主体在各个角度都保持一致，同时还保留等距视角效果。</span><br><span class="line"></span><br><span class="line">提示词：Front, Rear, Left, Right, Top, Bottom views on white. Evenly spaced. Consistent subject. Isometric Perspective Equivalence. （在白色背景上展示正面、背面、左侧、右侧、顶部和底部视图，间距均匀，主体一致，保持等距视角。）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>地图变成实景</strong></p>
+<p>上传东京塔、金门大桥的谷歌地图截图，在上面标个红色箭头，输入提示词 「what does the red arrow see」，模型就像人站在某个地点朝某个方向看一样，生成箭头标记位置和方向的景色</p>
+<p>甚至是一张虚构的旧金山 - 纽约混合城市地图的红箭头视角，它都能生成接近真实景观的图像。</p>
+<p>提示词：draw the ground level view of the red arrow in SanFranciscoNewYork.</p>
+</li>
+<li><p><strong>生成电影分镜</strong></p>
+<p>更绝的是，nano banana 还能识别手绘内容，并根据手绘姿势生成复杂的战斗场景。</p>
+<p>只需提供两个角色图像，再加上一张手绘简笔画指定战斗姿势，输入提示词「Have these two characters fight using the pose from Figure 3. Add appropriate visual」，AI 就能将这些元素整合，还能添加丰富的背景和特效。</p>
+</li>
+<li><p><strong>顶级肖像</strong></p>
+<p>将上图转换为一张摄影棚拍摄的顶级肖像照，要求半身照，动作协调自然，特写镜头，聚焦在面部。 人物的服装和动作改为都市休闲风格，整体氛围偏向深邃但不刻意。整体效果安静、深邃且温柔。背景呈现柔和渐变效果，营造出层次感与寂静氛围。细腻的胶片颗粒质感为画面增添了一种可触摸的、模拟摄影般的柔和质地，让人联想到经典的黑白摄影。  一束温柔的定向光，柔和地漫射开来，轻抚他的面颊曲线，或在眼中闪现光点——这是画面的情感核心。其余部分以大量负空间占据，刻意保持简洁，使画面自由呼吸。画面中没有文字、没有标志——只有光影与情绪交织。顶级摄影师的人物肖像照风格，非中心构图  </p>
+</li>
+<li><p><strong>简历肖像</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Nano Banana 提示词-高级简历照提示词（英文推荐版）</span></span><br><span class="line">Transform the uploaded casual photo into a high-end professional business portrait for a resume. Keep the original face and identity fully consistent. The composition should be a formal head-and-shoulders shot, 1:1 aspect ratio, with clean framing and balanced proportions. The man should wear a premium solid-colored dress shirt (navy blue, charcoal gray, or light blue), with a visible collar, neat and elegant, no logos or patterns. Use a subtle gradient or textured studio background in warm neutral tones (light gray or soft beige), softly blurred to create depth. Apply soft studio lighting that highlights the facial features naturally, with realistic skin tones and high clarity. The overall atmosphere must feel confident, approachable, and modern, with a relaxed but professional expression. The photo should look like a refined corporate headshot suitable for resumes or LinkedIn. --no text, logos, clutter, watermarks, artistic effects, or distracting elements</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Nano Banana 提示词-高级简历照提示词（中文版）</span></span><br><span class="line">将上传的生活照片转换为一张高端的男士商务简历照。  保持人物的原始面部特征和身份完全一致。  构图为正式的头肩半身照，1:1 长宽比，画面干净，比例均衡。  人物穿着高质感的纯色衬衣（海军蓝、深灰或浅蓝），必须有领，整洁优雅，无图案或标志。  背景为柔和的渐变或微纹理摄影棚背景，颜色选择中性色（浅灰或米色），并略微虚化以增加景深。  采用柔和的棚拍光线，自然突出面部特征，肤色真实，清晰度高。  整体氛围应当自信、亲和、现代，表情自然放松且专业。  最终照片应呈现出精致的企业高管风格，适合用于简历或 LinkedIn。  --不要文字、标志、水印、杂乱或艺术滤镜效果</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="claude-code"><a href="#claude-code" class="headerlink" title="claude code"></a>claude code</h1><p><a target="_blank" rel="noopener" href="https://github.com/UfoMiao/zcf">一键配置工具</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/23-HkZOylhVA7DzkYKYL5w">完全指南</a></p>
+<p><a target="_blank" rel="noopener" href="https://rosetears.cn/archives/61/">claude code路由,用于连接所有大模型的calude code route配置方式参考</a></p>
+<p>换行操作如下:</p>
+<ul>
+<li><strong>Linux&#x2F;macOS</strong>：用反斜杠 <code>\</code> 结尾再按<code>Enter</code> 换行</li>
+<li><strong>Windows</strong>：用 <code>^</code>结尾再按 <code>Enter</code>换行</li>
+</ul>
+<h1 id="MCP盘点"><a href="#MCP盘点" class="headerlink" title="MCP盘点"></a>MCP盘点</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/AIDC-AI/Pixelle-MCP">让 AI 调 ComfyUI 的 MCP</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/cameroncooke/XcodeBuildMCP">AI 集成 XCode 的 MCP</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/browserbase/mcp-server-browserbase">云端浏览器MCP</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/wopal-cn/mcp-hotnews-server">聚合全网热点 MCP</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hetaoBackend/mcp-github-trending">GitHub 热榜 MCP</a></li>
+<li><a target="_blank" rel="noopener" href="https://web-to-mcp.com/">WebtoMCP,适用于任何组件,收费</a></li>
+</ul>
+<h1 id="一人AI公司"><a href="#一人AI公司" class="headerlink" title="一人AI公司"></a>一人AI公司</h1><p><a target="_blank" rel="noopener" href="https://github.com/cyfyifanchen/one-person-company">一人AI公司工具推荐</a></p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"></a><div class="post-copyright__author_name">ZEROKO14</div><div class="post-copyright__author_desc">zeroko14's blog</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://che77a38.github.io/posts/AI%E7%9B%B8%E5%85%B3%E5%BC%80%E5%8F%91/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://che77a38.github.io/posts/AI%E7%9B%B8%E5%85%B3%E5%BC%80%E5%8F%91/')">AI相关开发</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://che77a38.github.io/posts/AI%E7%9B%B8%E5%85%B3%E5%BC%80%E5%8F%91/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=AI相关开发&amp;url=https://che77a38.github.io/posts/AI%E7%9B%B8%E5%85%B3%E5%BC%80%E5%8F%91/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://che77a38.github.io" target="_blank">ZEROKO14的个人博客</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/AI/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>AI<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/C++11%E4%B8%8E14/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C++11与14</div></div></a></div><div class="next-post pull-right"><a href="/posts/%E5%8A%A0%E5%A3%B3%E5%B7%A5%E5%85%B7%E8%AF%84%E4%BC%B0/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">加壳工具评估</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">欢迎来到ZEROKO14的个人博客</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">ZEROKO14</h1><div class="author-info__desc">zeroko14's blog</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/che77a38" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D%E5%87%A0%E7%A7%8D%E8%81%94%E7%B3%BB%E4%B8%8A%E4%B8%8B%E6%96%87%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">介绍几种联系上下文的方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E9%95%BF%E6%96%87%E6%9C%AC%E5%81%9A%E6%80%BB%E7%BB%93%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">对长文本做总结的方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E7%9B%B8%E5%85%B3"><span class="toc-number">3.</span> <span class="toc-text">爬虫相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">3.1.</span> <span class="toc-text">无头浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E6%88%90%E7%9A%84ai%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AE"><span class="toc-number">3.2.</span> <span class="toc-text">现成的ai爬虫项目</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#gemini%E6%9C%89%E6%95%88%E7%9A%84%E6%8F%90%E7%A4%BA"><span class="toc-number">4.</span> <span class="toc-text">gemini有效的提示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%90%8E%E7%9A%84%E6%97%B6%E9%97%B4"><span class="toc-number">4.1.</span> <span class="toc-text">获取格式化后的时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E7%B2%BE%E7%82%BC"><span class="toc-number">4.2.</span> <span class="toc-text">总结精炼</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.</span> <span class="toc-text">本地大模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ollama"><span class="toc-number">5.1.</span> <span class="toc-text">Ollama</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-number">5.1.1.</span> <span class="toc-text">相关命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%88%E7%AB%AF%E5%AF%B9%E8%AF%9D%E4%B8%AD%E5%91%BD%E4%BB%A4"><span class="toc-number">5.1.1.1.</span> <span class="toc-text">终端对话中命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API%E6%8E%A5%E5%8F%A3"><span class="toc-number">5.1.2.</span> <span class="toc-text">API接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%98%E7%82%B9%E6%9F%90%E4%BA%9B%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.2.</span> <span class="toc-text">盘点某些本地大模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#qwen2-5-coder"><span class="toc-number">5.3.</span> <span class="toc-text">qwen2.5-coder</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">5.3.1.</span> <span class="toc-text">修改本地模型上下文</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Aider"><span class="toc-number">6.</span> <span class="toc-text">Aider</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#vscode-aide%E6%8B%93%E5%B1%95"><span class="toc-number">6.1.</span> <span class="toc-text">vscode aide拓展</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#One-api"><span class="toc-number">7.</span> <span class="toc-text">One-api</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%8D%E8%B4%B9API%E5%B9%B3%E5%8F%B0%E7%9B%98%E7%82%B9"><span class="toc-number">8.</span> <span class="toc-text">免费API平台盘点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SuperMaven"><span class="toc-number">9.</span> <span class="toc-text">SuperMaven</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cline"><span class="toc-number">10.</span> <span class="toc-text">cline</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Continue"><span class="toc-number">11.</span> <span class="toc-text">Continue</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#litellm"><span class="toc-number">12.</span> <span class="toc-text">litellm</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#github-models%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%B1%BBopenai%E6%8E%A5%E5%8F%A3"><span class="toc-number">12.1.</span> <span class="toc-text">github models转换为类openai接口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AI%E8%AF%B7%E6%B1%82%E5%8F%8D%E4%BB%A3%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">13.</span> <span class="toc-text">AI请求反代服务器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A0%E9%99%90%E9%82%AE%E7%AE%B1%E6%96%B9%E5%BC%8F"><span class="toc-number">14.</span> <span class="toc-text">无限邮箱方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vscode%E7%9B%B8%E5%85%B3%E6%8B%93%E5%B1%95"><span class="toc-number">15.</span> <span class="toc-text">vscode相关拓展</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="toc-number">16.</span> <span class="toc-text">编程提示词</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%85%BE%E8%AE%AF%E4%BA%91%E7%AE%97%E5%8A%9B%E4%BA%91%E7%AB%AF%E4%B8%BB%E6%9C%BA"><span class="toc-number">17.</span> <span class="toc-text">腾讯云算力云端主机</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%BC%80%E5%8F%91"><span class="toc-number">18.</span> <span class="toc-text">大模型函数调用开发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3"><span class="toc-number">18.1.</span> <span class="toc-text">设计函数接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0%E5%87%BD%E6%95%B0"><span class="toc-number">18.2.</span> <span class="toc-text">描述函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E5%8A%A9%E6%89%8B%E4%B8%8E%E5%8A%9F%E8%83%BD%E8%BF%9E%E6%8E%A5%E8%B5%B7%E6%9D%A5"><span class="toc-number">18.3.</span> <span class="toc-text">将助手与功能连接起来</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AI-IDE%E7%9B%98%E7%82%B9"><span class="toc-number">19.</span> <span class="toc-text">AI IDE盘点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Aide-IDE"><span class="toc-number">19.1.</span> <span class="toc-text">Aide IDE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exponent"><span class="toc-number">19.2.</span> <span class="toc-text">Exponent</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%98%E7%82%B9%E4%B8%80%E4%BA%9B%E5%BC%80%E6%BA%90AI%E9%A1%B9%E7%9B%AE"><span class="toc-number">20.</span> <span class="toc-text">盘点一些开源AI项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BD%BF%E7%94%A8-%E6%8B%93%E5%B1%95"><span class="toc-number">20.1.</span> <span class="toc-text">浏览器使用&#x2F;拓展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bolt-new-any-llm"><span class="toc-number">20.2.</span> <span class="toc-text">bolt.new-any-llm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%B2%E9%B1%BC%E5%BC%80%E6%BA%90%E7%9B%91%E6%8E%A7"><span class="toc-number">20.3.</span> <span class="toc-text">闲鱼开源监控</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E5%A3%B0%E7%94%9F%E6%88%90-%E5%B8%A6%E6%83%85%E7%BB%AA"><span class="toc-number">20.4.</span> <span class="toc-text">人声生成,带情绪</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E9%99%A4cursor%E6%9C%BA%E5%99%A8%E9%99%90%E5%88%B6%E4%BD%BF%E7%94%A8"><span class="toc-number">21.</span> <span class="toc-text">解除cursor机器限制使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E6%94%AF%E6%8C%81%E6%B5%8F%E8%A7%88%E5%99%A8%E6%90%9C%E7%B4%A2"><span class="toc-number">22.</span> <span class="toc-text">模型支持浏览器搜索</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AI%E6%A8%A1%E5%9E%8B%E8%BF%90%E8%A1%8C%E8%A6%81%E6%B1%82"><span class="toc-number">23.</span> <span class="toc-text">AI模型运行要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E7%BB%98%E5%88%B6%E7%BD%91%E7%AB%99%E7%9B%98%E7%82%B9"><span class="toc-number">24.</span> <span class="toc-text">前端绘制网站盘点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#deepseek-r1%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%8A%9F%E8%83%BD%E8%B5%8B%E4%BA%88"><span class="toc-number">25.</span> <span class="toc-text">deepseek r1函数调用功能赋予</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AI%E5%BB%BA%E6%A8%A1"><span class="toc-number">26.</span> <span class="toc-text">AI建模</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BE%BF%E5%AE%9C%E5%9F%9F%E5%90%8D%E7%9B%98%E7%82%B9"><span class="toc-number">27.</span> <span class="toc-text">便宜域名盘点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AI%E5%B0%8F%E5%B7%A5%E5%85%B7%E7%9B%98%E7%82%B9"><span class="toc-number">28.</span> <span class="toc-text">AI小工具盘点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#comfyUI"><span class="toc-number">29.</span> <span class="toc-text">comfyUI</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%89%E5%BD%B1%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-number">29.1.</span> <span class="toc-text">光影工作流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A0%E5%9B%BE"><span class="toc-number">29.1.1.</span> <span class="toc-text">抠图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8D%A2%E8%83%8C%E6%99%AF"><span class="toc-number">29.1.2.</span> <span class="toc-text">换背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%85%89"><span class="toc-number">29.1.3.</span> <span class="toc-text">打光</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E7%94%BB%E8%B4%A8"><span class="toc-number">29.1.4.</span> <span class="toc-text">提高画质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E4%BD%8E%E9%A2%91%E7%BB%86%E8%8A%82%E6%81%A2%E5%A4%8D"><span class="toc-number">29.1.5.</span> <span class="toc-text">高低频细节恢复</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ai%E5%8A%A8%E6%95%88%E5%88%B6%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">30.</span> <span class="toc-text">ai动效制作流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AI%E7%9B%B8%E5%85%B3%E5%BC%80%E5%8F%91%E7%90%86%E8%AE%BA%E7%9B%98%E7%82%B9"><span class="toc-number">31.</span> <span class="toc-text">AI相关开发理论盘点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ai%E6%89%8B%E5%8A%9E%E5%88%B6%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">32.</span> <span class="toc-text">ai手办制作流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E6%8C%87%E5%AF%BC"><span class="toc-number">33.</span> <span class="toc-text">提示词工程指导</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Nano-Banana%E7%94%A8%E6%B3%95%E7%9B%98%E7%82%B9"><span class="toc-number">34.</span> <span class="toc-text">Nano Banana用法盘点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#claude-code"><span class="toc-number">35.</span> <span class="toc-text">claude code</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MCP%E7%9B%98%E7%82%B9"><span class="toc-number">36.</span> <span class="toc-text">MCP盘点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%BAAI%E5%85%AC%E5%8F%B8"><span class="toc-number">37.</span> <span class="toc-text">一人AI公司</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E7%89%A9%E7%90%86/" title="物理">物理</a><time datetime="2025-09-29T01:48:42.561Z" title="发表于 2025-09-29 09:48:42">2025-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%B7%A5%E4%B8%9A%E7%9B%B8%E5%85%B3/" title="工业相关">工业相关</a><time datetime="2025-02-14T03:04:40.761Z" title="发表于 2025-02-14 11:04:40">2025-02-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3/" title="嵌入式相关">嵌入式相关</a><time datetime="2025-02-14T03:04:40.761Z" title="发表于 2025-02-14 11:04:40">2025-02-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%90%86%E8%AE%BA/" title="操作系统">操作系统</a><time datetime="2024-12-16T01:38:01.470Z" title="发表于 2024-12-16 09:38:01">2024-12-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E8%AE%A1%E7%BB%84/" title="计算机组成原理">计算机组成原理</a><time datetime="2024-12-16T01:38:01.470Z" title="发表于 2024-12-16 09:38:01">2024-12-16</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="ZEROKO14" target="_blank">ZEROKO14</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu"></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">74</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/AI/" style="font-size: 0.88rem;">AI<sup>1</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C#<sup>3</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 0.88rem;">CSS<sup>1</sup></a><a href="/tags/CSharp/" style="font-size: 0.88rem;">CSharp<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 0.88rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 0.88rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 0.88rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 0.88rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 0.88rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 0.88rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 0.88rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 0.88rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 0.88rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 0.88rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 0.88rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>1</sup></a><a href="/tags/nas/" style="font-size: 0.88rem;">nas<sup>1</sup></a><a href="/tags/next/" style="font-size: 0.88rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 0.88rem;">ppt<sup>1</sup></a><a href="/tags/python/" style="font-size: 0.88rem;">python<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 0.88rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 0.88rem;">vue<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 0.88rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 0.88rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 0.88rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 0.88rem;">加解密<sup>1</sup></a><a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 0.88rem;">基础<sup>6</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 0.88rem;">多线程<sup>1</sup></a><a href="/tags/%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%BC%8F/" style="font-size: 0.88rem;">并发模式<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">开发<sup>4</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.88rem;">数学<sup>1</sup></a><a href="/tags/%E6%9D%82%E9%A1%B9/" style="font-size: 0.88rem;">杂项<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 0.88rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%89%A9%E7%90%86/" style="font-size: 0.88rem;">物理<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 0.88rem;">监控<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 0.88rem;">网络<sup>3</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 0.88rem;">逆向<sup>5</sup></a><a href="/tags/%E9%AD%94%E6%B3%95/" style="font-size: 0.88rem;">魔法<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
