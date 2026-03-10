@@ -1,0 +1,1639 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>后端 | ZEROKO14的个人博客</title><meta name="keywords" content="后端"><meta name="author" content="ZEROKO14"><meta name="copyright" content="ZEROKO14"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="后端"><meta name="application-name" content="后端"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="后端"><meta property="og:url" content="https://che77a38.github.io/posts/%E5%90%8E%E7%AB%AF/index.html"><meta property="og:site_name" content="ZEROKO14的个人博客"><meta property="og:description" content="此处记录一些后端框架相关   主流框架盘点   语言 框架 综合评级 流行度 性能 学习曲线 企业级功能 生态丰富度 开发效率 长期维护 社区支持 部署运维 最佳场景    Java Spring Boot ★★★★★ ★★★★★ ★★★★☆ ★☆☆☆☆ ★★★★★ ★★★★★ ★★★★★☆ ★★★"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta property="article:author" content="ZEROKO14"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4"><meta name="description" content="此处记录一些后端框架相关   主流框架盘点   语言 框架 综合评级 流行度 性能 学习曲线 企业级功能 生态丰富度 开发效率 长期维护 社区支持 部署运维 最佳场景    Java Spring Boot ★★★★★ ★★★★★ ★★★★☆ ★☆☆☆☆ ★★★★★ ★★★★★ ★★★★★☆ ★★★"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://che77a38.github.io/posts/%E5%90%8E%E7%AB%AF/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":true,"limitCount":50,"languages":{"author":"作者: ZEROKO14","link":"链接: ","source":"来源: ZEROKO14的个人博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'ZEROKO14的个人博客',
+  title: '后端',
+  postAI: '',
+  pageFillDescription: '主流框架盘点, 选型决策, 流行度对比, 性能对比(请求处理与资源使用), 学习曲线评分 (上手难度), 企业级功能评分 (生产就绪特性), 生态丰富度评分 (第三方库与工具), 开发效率评分 (构建速度与工具支持), 长期维护评分 (版本支持与升级), 社区支持评分 (文档与问题解决), 部署运维评分 (容器化与云支持), supabase此处记录一些后端框架相关主流框架盘点语言框架综合评级流行度性能学习曲线企业级功能生态丰富度开发效率长期维护社区支持部署运维最佳场景大型企业应用金融系统高并发微服务高性能微服务机器学习服务全栈应用内容平台小型应用服务快速原型快速开发中小型应用企业级应用大型可维护项目全栈应用快速开发创业项目高性能微服务实时通信企业级应用服务微软生态极致性能要求系统级编程快速原型创业内容网站选型决策需求场景首选框架次选框架关键考量因素大型企业系统企业级功能长期维护生态创业公司开发速度快速迭代高性能服务性能资源使用并发全栈应用开箱即用功能全面微服务架构微服务支持云原生快速原型开发学习成本开发速度高并发实时应用性能内存安全内部管理后台功能快速开发机器学习异步支持数据科学生态实时聊天应用支持结构严谨云原生应用容器友好无状态跨平台跨平台支持微软生态流行度对比框架评分标签数就业需求企业采用率评分依据高生态标准全球企业广泛采用高生态基础最流行框架中高生态最流行框架高微框架首选中高功能全面全栈应用流行快速增长增长最快但较新中企业级框架增长快中生态最流行中高微软生态内流行中低曾经流行现市场萎缩低小众但高性能性能对比请求处理与资源使用框架评分请求处理内存使用并发能力响应时间测试基准极高基准领先顶级异步性能极致高异步支持优秀高服务器优化高需调优中高事件驱动中单线程需集群中同步模型中低较重同步低模型限制低解释器性能学习曲线评分上手难度框架评分上手时间概念复杂度文档质量示例丰富度难点说明天极简优秀海量最小化设计直观易懂天简单优秀极多中间件模式简单直接天中等极佳丰富类型提示现代化周中等良好多约定优于配置需适应周中等偏上优秀多优雅语法但功能多周复杂优秀多方式需理解周中等偏上良好中等生态需学习周中等良好中等语言特性需掌握个月复杂优秀多生态庞大概念多个月复杂良好中等装饰器等概念个月极复杂中等少所有权异步复杂企业级功能评分生产就绪特性框架评分微服务安全监控事务多租户特性说明原生全面完整分布式完整完整生态良好全面完整分布式完整微软企业级支持良好完善良好本地需配置模块化架构优秀需配置良好良好本地完整后台强大良好基础需集成本地需开发现代化但较新需扩展基础需扩展本地需扩展扩展生态丰富需自研基础需集成简单需自研极简需自扩展需自研基础需集成简单需自研高性能但功能少需自研基础需集成简单需自研微框架需自组装需自研基础需集成简单需自研高性能但企业功能少需配置良好需扩展本地需扩展传统但功能完整生态丰富度评分第三方库与工具框架评分官方库第三方包插件中间件工具链说明极丰富完整生态宇宙基础极丰富良好最大生态丰富丰富完整最完整生态全面丰富完整电池包含理念最小丰富足够灵活但需组合完整丰富完整完整但增长慢完整良好完整生态丰富良好良好良好快速增长中中等中等良好新但增长快最小中等基础生态相对小少少基础生态初期开发效率评分构建速度与工具支持框架评分开发速度代码量调试体验热重载生产力工具说明极快极少优秀原生极丰富极快较少优秀支持丰富快速较少良好支持丰富快速较少良好支持较多快速中等良好支持丰富快速中等良好支持较多中等中等优秀支持丰富中等较多良好支持启动慢但工具全中等较多良好支持结构严谨但代码多较慢较多良好需配置基础慢多中等需配置编译慢难调试长期维护评分版本支持与升级框架评分支持周期向后兼容升级难度社区支持代码稳定说明年优秀中等长期高企业级长期支持年良好低长期高微软长期路线图年良好低长期高成熟稳定年良好中等长期高活跃维护长期优秀低长期高稳定成熟年一般中等高稳定稳定但更新慢活跃良好中等活跃中高快速迭代活跃良好低活跃中快速发展中活跃优秀低活跃高语言稳定性稳定优秀低长期高稳定成熟活跃一般高活跃中语言保证社区支持评分文档与问题解决框架评分文档质量教程资源书籍会议活动说明优秀万问题海量等全球最大社区之一良好万问题极多等生态基础优秀万问题极多文档典范社区活跃优秀万问题极多优秀教程良好万问题极多相关简单易学社区大优秀万问题多大会微软官方支持强极佳万问题快速增长专场文档极佳增长快优秀万问题多成熟但增长放缓良好万问题中等快速增长社区良好问题中等社区活跃中等问题少小众社区部署运维评分容器化与云支持框架评分容器支持云原生部署复杂度监控集成扩缩容说明极佳优秀极简良好简单单二进制部署简单优秀优秀简单需配置简单编译部署简单优秀良好简单需集成简单无状态适合容器优秀良好简单需集成简单无状态容器友好优秀良好简单需集成简单轻量容器友好良好良好中等完整中等优化需经验优秀良好中等需集成简单容器友好优秀良好中等完整中等跨平台部署良好良好中等中等需配置中等有状态需注意良好中等中等需配置中等传统部署复杂良好中等中等需配置中等传统部署成熟是一个平台核心理念它为你提供了一个现成的后端你不需要自己去搭建服务器编写接口配置数据库管理用户鉴权你只需要关注前端逻辑直接调用提供的即可完成所有后端操作技术基石它的核心是世界上最强大的开源关系型数据库开源性质与的不同是开源的',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-02-05 09:27:25',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 8.1.1"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://th.bing.com/th/id/OIP.wtmjepfWPBvn26uz7s18dgHaHa?rs=1&amp;pid=ImgDetMain"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">ZEROKO14的个人博客</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/AI/" style="font-size: 1.05rem;">AI<sup>1</sup></a><a href="/tags/ASP-NET/" style="font-size: 1.05rem;">ASP.NET<sup>1</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C#<sup>4</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 1.05rem;">CSS<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.05rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 1.05rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 1.05rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 1.05rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 1.05rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 1.05rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 1.05rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 1.05rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 1.05rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 1.05rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 1.05rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/json/" style="font-size: 1.05rem;">json<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>1</sup></a><a href="/tags/nas/" style="font-size: 1.05rem;">nas<sup>1</sup></a><a href="/tags/next/" style="font-size: 1.05rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 1.05rem;">ppt<sup>1</sup></a><a href="/tags/python/" style="font-size: 1.05rem;">python<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 1.05rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 1.05rem;">vue<sup>1</sup></a><a href="/tags/xml/" style="font-size: 1.05rem;">xml<sup>1</sup></a><a href="/tags/yaml/" style="font-size: 1.05rem;">yaml<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 1.05rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 1.05rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 1.05rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 1.05rem;">加解密<sup>1</sup></a><a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 1.05rem;">后端<sup>1</sup></a><a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 1.05rem;">基础<sup>6</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 1.05rem;">多线程<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">开发<sup>4</sup></a><a href="/tags/%E6%9D%82%E9%A1%B9/" style="font-size: 1.05rem;">杂项<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 1.05rem;">监控<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.05rem;">网络<sup>3</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 1.05rem;">逆向<sup>5</sup></a><a href="/tags/%E9%AD%94%E6%B3%95/" style="font-size: 1.05rem;">魔法<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">14</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url">技术</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>后端</span></a></span></div></div><h1 class="post-title" itemprop="name headline">后端</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2023-11-24T02:49:02.204Z" title="发表于 2023-11-24 10:49:02">2023-11-24</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-02-05T01:27:25.588Z" title="更新于 2026-02-05 09:27:25">2026-02-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="后端"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为新加坡"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>新加坡</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://che77a38.github.io/posts/%E5%90%8E%E7%AB%AF/"><header><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url">技术</a><a href="/tags/%E5%90%8E%E7%AB%AF/" tabindex="-1" itemprop="url">后端</a><h1 id="CrawlerTitle" itemprop="name headline">后端</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">ZEROKO14</span><time itemprop="dateCreated datePublished" datetime="2023-11-24T02:49:02.204Z" title="发表于 2023-11-24 10:49:02">2023-11-24</time><time itemprop="dateCreated datePublished" datetime="2026-02-05T01:27:25.588Z" title="更新于 2026-02-05 09:27:25">2026-02-05</time></header><p>此处记录一些后端框架相关</p>
+<span id="more"></span>
+
+<h1 id="主流框架盘点"><a href="#主流框架盘点" class="headerlink" title="主流框架盘点"></a>主流框架盘点</h1><table>
+<thead>
+<tr>
+<th>语言</th>
+<th>框架</th>
+<th>综合评级</th>
+<th>流行度</th>
+<th>性能</th>
+<th>学习曲线</th>
+<th>企业级功能</th>
+<th>生态丰富度</th>
+<th>开发效率</th>
+<th>长期维护</th>
+<th>社区支持</th>
+<th>部署运维</th>
+<th>最佳场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Java</td>
+<td>Spring Boot</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★☆</td>
+<td>★☆☆☆☆</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★★☆</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★☆</td>
+<td>大型企业应用、金融系统、高并发微服务</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>FastAPI</td>
+<td>★★★★★</td>
+<td>★★★★☆</td>
+<td>★★★★★</td>
+<td>★★★☆☆</td>
+<td>★★☆☆☆</td>
+<td>★★☆☆☆</td>
+<td>★★★★★</td>
+<td>★★★★★☆</td>
+<td>★★★★★</td>
+<td>★★★★★☆</td>
+<td>高性能API、微服务、机器学习服务</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>Django</td>
+<td>★★★☆☆</td>
+<td>★★★★☆</td>
+<td>★★☆☆☆</td>
+<td>★★☆☆☆</td>
+<td>★★★☆☆</td>
+<td>★★★★☆</td>
+<td>★★★★☆</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★☆</td>
+<td>全栈Web应用、CMS、内容平台</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>Flask</td>
+<td>★★★☆☆</td>
+<td>★★★★☆</td>
+<td>★★☆☆☆</td>
+<td>★★★★★</td>
+<td>★☆☆☆☆</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★☆</td>
+<td>小型应用、API服务、快速原型</td>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>Express</td>
+<td>★★★☆☆</td>
+<td>★★★★☆</td>
+<td>★★☆☆☆</td>
+<td>★★★★★</td>
+<td>★☆☆☆☆</td>
+<td>★★★★★</td>
+<td>★★★★☆</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★☆</td>
+<td>REST API、快速开发、中小型应用</td>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>NestJS</td>
+<td>★★★☆☆</td>
+<td>★★★☆☆</td>
+<td>★★★☆☆</td>
+<td>★☆☆☆☆</td>
+<td>★★★★★</td>
+<td>★★★☆☆</td>
+<td>★★★★☆</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★☆</td>
+<td>企业级Node.js应用、大型可维护项目</td>
+</tr>
+<tr>
+<td>PHP</td>
+<td>Laravel</td>
+<td>★★★☆☆</td>
+<td>★★★★☆</td>
+<td>★☆☆☆☆</td>
+<td>★★☆☆☆</td>
+<td>★★☆☆☆</td>
+<td>★★★★☆</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★☆</td>
+<td>全栈PHP应用、快速开发、创业项目</td>
+</tr>
+<tr>
+<td>Go</td>
+<td>Gin</td>
+<td>★★★☆☆</td>
+<td>★★★☆☆</td>
+<td>★★★★★</td>
+<td>★★☆☆☆</td>
+<td>★☆☆☆☆</td>
+<td>★★☆☆☆</td>
+<td>★★☆☆☆</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>高性能API、微服务、实时通信</td>
+</tr>
+<tr>
+<td>C#</td>
+<td>ASP.NET Core</td>
+<td>★★★☆☆</td>
+<td>★★☆☆☆</td>
+<td>★★★☆☆</td>
+<td>★★★☆☆</td>
+<td>★★★★★</td>
+<td>★★★☆☆</td>
+<td>★★★★☆</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★☆</td>
+<td>企业级应用、Windows服务、微软生态</td>
+</tr>
+<tr>
+<td>Rust</td>
+<td>Actix-web</td>
+<td>★★☆☆☆</td>
+<td>★☆☆☆☆</td>
+<td>★★★★★</td>
+<td>★☆☆☆☆</td>
+<td>★☆☆☆☆</td>
+<td>★☆☆☆☆</td>
+<td>★☆☆☆☆</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★★☆</td>
+<td>极致性能要求、系统级编程</td>
+</tr>
+<tr>
+<td>Ruby</td>
+<td>Ruby on Rails</td>
+<td>★★☆☆☆</td>
+<td>★★☆☆☆</td>
+<td>★☆☆☆☆</td>
+<td>★★★☆☆</td>
+<td>★★★☆☆</td>
+<td>★★★☆☆</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★☆</td>
+<td>快速原型、创业MVP、内容网站</td>
+</tr>
+</tbody></table>
+<h2 id="选型决策"><a href="#选型决策" class="headerlink" title="选型决策"></a>选型决策</h2><table>
+<thead>
+<tr>
+<th>需求场景</th>
+<th>首选框架</th>
+<th>次选框架</th>
+<th>关键考量因素</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>大型企业系统</td>
+<td>Spring Boot</td>
+<td>ASP.NET Core</td>
+<td>企业级功能、长期维护、生态</td>
+</tr>
+<tr>
+<td>创业公司MVP</td>
+<td>Ruby on Rails</td>
+<td>Laravel</td>
+<td>开发速度、快速迭代</td>
+</tr>
+<tr>
+<td>高性能API服务</td>
+<td>Gin (Go)</td>
+<td>FastAPI</td>
+<td>性能、资源使用、并发</td>
+</tr>
+<tr>
+<td>全栈Web应用</td>
+<td>Django</td>
+<td>ASP.NET Core</td>
+<td>开箱即用、功能全面</td>
+</tr>
+<tr>
+<td>微服务架构</td>
+<td>Spring Boot</td>
+<td>FastAPI</td>
+<td>微服务支持、云原生</td>
+</tr>
+<tr>
+<td>快速原型开发</td>
+<td>Flask</td>
+<td>Express</td>
+<td>学习成本、开发速度</td>
+</tr>
+<tr>
+<td>高并发实时应用</td>
+<td>Actix-web</td>
+<td>Gin</td>
+<td>性能、内存安全</td>
+</tr>
+<tr>
+<td>内部管理后台</td>
+<td>Django</td>
+<td>Laravel</td>
+<td>Admin功能、快速开发</td>
+</tr>
+<tr>
+<td>机器学习API</td>
+<td>FastAPI</td>
+<td>Flask</td>
+<td>异步支持、数据科学生态</td>
+</tr>
+<tr>
+<td>实时聊天应用</td>
+<td>NestJS</td>
+<td>ASP.NET Core</td>
+<td>WebSocket支持、结构严谨</td>
+</tr>
+<tr>
+<td>云原生应用</td>
+<td>Gin</td>
+<td>FastAPI</td>
+<td>容器友好、无状态</td>
+</tr>
+<tr>
+<td>跨平台API</td>
+<td>ASP.NET Core</td>
+<td>Spring Boot</td>
+<td>跨平台支持、微软生态</td>
+</tr>
+</tbody></table>
+<h2 id="流行度对比"><a href="#流行度对比" class="headerlink" title="流行度对比"></a>流行度对比</h2><table>
+<thead>
+<tr>
+<th>框架</th>
+<th>评分</th>
+<th>GitHub Stars</th>
+<th>Stack Overflow标签数</th>
+<th>就业需求</th>
+<th>企业采用率</th>
+<th>评分依据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spring Boot</td>
+<td>★★★★★</td>
+<td>70k+</td>
+<td>200k+</td>
+<td>高</td>
+<td>80%+</td>
+<td>Java生态标准，全球企业广泛采用</td>
+</tr>
+<tr>
+<td>Express</td>
+<td>★★★★★</td>
+<td>63k+</td>
+<td>150k+</td>
+<td>高</td>
+<td>70%+</td>
+<td>Node.js生态基础，最流行框架</td>
+</tr>
+<tr>
+<td>Laravel</td>
+<td>★★★★★</td>
+<td>75k+</td>
+<td>120k+</td>
+<td>中高</td>
+<td>60%+</td>
+<td>PHP生态最流行框架</td>
+</tr>
+<tr>
+<td>Flask</td>
+<td>★★★★★</td>
+<td>65k+</td>
+<td>100k+</td>
+<td>高</td>
+<td>65%+</td>
+<td>Python微框架首选</td>
+</tr>
+<tr>
+<td>Django</td>
+<td>★★★☆☆</td>
+<td>73k+</td>
+<td>150k+</td>
+<td>中高</td>
+<td>55%+</td>
+<td>功能全面，全栈应用流行</td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td>★★★☆☆</td>
+<td>68k+</td>
+<td>25k+</td>
+<td>快速增长</td>
+<td>40%+</td>
+<td>增长最快，但较新</td>
+</tr>
+<tr>
+<td>NestJS</td>
+<td>★★★☆☆</td>
+<td>63k+</td>
+<td>15k+</td>
+<td>中</td>
+<td>35%+</td>
+<td>Node.js企业级框架增长快</td>
+</tr>
+<tr>
+<td>Gin</td>
+<td>★★★☆☆</td>
+<td>72k+</td>
+<td>8k+</td>
+<td>中</td>
+<td>30%+</td>
+<td>Go生态最流行</td>
+</tr>
+<tr>
+<td>ASP.NET Core</td>
+<td>★★☆☆☆</td>
+<td>30k+</td>
+<td>80k+</td>
+<td>中高</td>
+<td>45%+</td>
+<td>微软生态内流行</td>
+</tr>
+<tr>
+<td>Ruby on Rails</td>
+<td>★★☆☆☆</td>
+<td>54k+</td>
+<td>120k+</td>
+<td>中低</td>
+<td>25%+</td>
+<td>曾经流行，现市场萎缩</td>
+</tr>
+<tr>
+<td>Actix-web</td>
+<td>★☆☆☆☆</td>
+<td>20k+</td>
+<td>1k+</td>
+<td>低</td>
+<td>5%+</td>
+<td>小众但高性能</td>
+</tr>
+</tbody></table>
+<h2 id="性能对比-请求处理与资源使用"><a href="#性能对比-请求处理与资源使用" class="headerlink" title="性能对比(请求处理与资源使用)"></a>性能对比(请求处理与资源使用)</h2><table>
+<thead>
+<tr>
+<th>框架</th>
+<th>评分</th>
+<th>请求处理</th>
+<th>内存使用</th>
+<th>并发能力</th>
+<th>响应时间</th>
+<th>测试基准</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gin (Go)</td>
+<td>★★★★★</td>
+<td>200k req&#x2F;s</td>
+<td>50-100MB</td>
+<td>极高</td>
+<td>0.1-1ms</td>
+<td>TechEmpower基准领先</td>
+</tr>
+<tr>
+<td>Actix-web (Rust)</td>
+<td>★★★★★</td>
+<td>300k+ req&#x2F;s</td>
+<td>30-80MB</td>
+<td>顶级</td>
+<td>0.05-0.5ms</td>
+<td>Rust异步性能极致</td>
+</tr>
+<tr>
+<td>FastAPI (Python)</td>
+<td>★★★☆☆</td>
+<td>50-80k req&#x2F;s</td>
+<td>150-300MB</td>
+<td>高</td>
+<td>5-20ms</td>
+<td>异步支持优秀</td>
+</tr>
+<tr>
+<td>ASP.NET Core</td>
+<td>★★★☆☆</td>
+<td>100-150k req&#x2F;s</td>
+<td>200-400MB</td>
+<td>高</td>
+<td>1-5ms</td>
+<td>Kestrel服务器优化</td>
+</tr>
+<tr>
+<td>Spring Boot</td>
+<td>★★★☆☆</td>
+<td>80-120k req&#x2F;s</td>
+<td>300-800MB</td>
+<td>高</td>
+<td>5-15ms</td>
+<td>需JVM调优</td>
+</tr>
+<tr>
+<td>NestJS</td>
+<td>★★★☆☆</td>
+<td>40-60k req&#x2F;s</td>
+<td>200-400MB</td>
+<td>中高</td>
+<td>10-30ms</td>
+<td>Node.js事件驱动</td>
+</tr>
+<tr>
+<td>Express</td>
+<td>★★☆☆☆</td>
+<td>20-40k req&#x2F;s</td>
+<td>150-300MB</td>
+<td>中</td>
+<td>20-50ms</td>
+<td>单线程，需集群</td>
+</tr>
+<tr>
+<td>Flask</td>
+<td>★★☆☆☆</td>
+<td>10-20k req&#x2F;s</td>
+<td>100-200MB</td>
+<td>中</td>
+<td>30-80ms</td>
+<td>WSGI同步模型</td>
+</tr>
+<tr>
+<td>Django</td>
+<td>★★☆☆☆</td>
+<td>5-10k req&#x2F;s</td>
+<td>200-400MB</td>
+<td>中低</td>
+<td>50-150ms</td>
+<td>ORM较重，同步</td>
+</tr>
+<tr>
+<td>Laravel</td>
+<td>★☆☆☆☆</td>
+<td>2-5k req&#x2F;s</td>
+<td>300-600MB</td>
+<td>低</td>
+<td>100-300ms</td>
+<td>PHP-FPM模型限制</td>
+</tr>
+<tr>
+<td>Ruby on Rails</td>
+<td>★☆☆☆☆</td>
+<td>1-3k req&#x2F;s</td>
+<td>400-800MB</td>
+<td>低</td>
+<td>150-500ms</td>
+<td>Ruby解释器性能</td>
+</tr>
+</tbody></table>
+<h2 id="学习曲线评分-上手难度"><a href="#学习曲线评分-上手难度" class="headerlink" title="学习曲线评分 (上手难度)"></a>学习曲线评分 (上手难度)</h2><table>
+<thead>
+<tr>
+<th>框架</th>
+<th>评分</th>
+<th>上手时间</th>
+<th>概念复杂度</th>
+<th>文档质量</th>
+<th>示例丰富度</th>
+<th>难点说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Flask</td>
+<td>★★★★★</td>
+<td>1-3天</td>
+<td>极简</td>
+<td>优秀</td>
+<td>海量</td>
+<td>最小化设计，直观易懂</td>
+</tr>
+<tr>
+<td>Express</td>
+<td>★★★★★</td>
+<td>2-5天</td>
+<td>简单</td>
+<td>优秀</td>
+<td>极多</td>
+<td>中间件模式简单直接</td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td>★★★★★</td>
+<td>3-7天</td>
+<td>中等</td>
+<td>极佳</td>
+<td>丰富</td>
+<td>类型提示现代化</td>
+</tr>
+<tr>
+<td>Ruby on Rails</td>
+<td>★★★☆☆</td>
+<td>1-2周</td>
+<td>中等</td>
+<td>良好</td>
+<td>多</td>
+<td>约定优于配置需适应</td>
+</tr>
+<tr>
+<td>Laravel</td>
+<td>★★☆☆☆</td>
+<td>2-4周</td>
+<td>中等偏上</td>
+<td>优秀</td>
+<td>多</td>
+<td>优雅语法但功能多</td>
+</tr>
+<tr>
+<td>Django</td>
+<td>★★☆☆☆</td>
+<td>2-4周</td>
+<td>复杂</td>
+<td>优秀</td>
+<td>多</td>
+<td>“Django方式”需理解</td>
+</tr>
+<tr>
+<td>ASP.NET Core</td>
+<td>★★☆☆☆</td>
+<td>3-6周</td>
+<td>中等偏上</td>
+<td>良好</td>
+<td>中等</td>
+<td>C#&#x2F;.NET生态需学习</td>
+</tr>
+<tr>
+<td>Gin</td>
+<td>★★☆☆☆</td>
+<td>2-4周</td>
+<td>中等</td>
+<td>良好</td>
+<td>中等</td>
+<td>Go语言特性需掌握</td>
+</tr>
+<tr>
+<td>Spring Boot</td>
+<td>★☆☆☆☆</td>
+<td>1-3个月</td>
+<td>复杂</td>
+<td>优秀</td>
+<td>多</td>
+<td>生态庞大，概念多</td>
+</tr>
+<tr>
+<td>NestJS</td>
+<td>★☆☆☆☆</td>
+<td>1-2个月</td>
+<td>复杂</td>
+<td>良好</td>
+<td>中等</td>
+<td>装饰器、DI等概念</td>
+</tr>
+<tr>
+<td>Actix-web</td>
+<td>★☆☆☆☆</td>
+<td>3-6个月</td>
+<td>极复杂</td>
+<td>中等</td>
+<td>少</td>
+<td>Rust所有权、异步复杂</td>
+</tr>
+</tbody></table>
+<h2 id="企业级功能评分-生产就绪特性"><a href="#企业级功能评分-生产就绪特性" class="headerlink" title="企业级功能评分 (生产就绪特性)"></a>企业级功能评分 (生产就绪特性)</h2><table>
+<thead>
+<tr>
+<th>框架</th>
+<th>评分</th>
+<th>微服务</th>
+<th>安全</th>
+<th>监控</th>
+<th>事务</th>
+<th>多租户</th>
+<th>特性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spring Boot</td>
+<td>★★★★★</td>
+<td>原生</td>
+<td>全面</td>
+<td>完整</td>
+<td>分布式</td>
+<td>完整</td>
+<td>Spring Cloud完整生态</td>
+</tr>
+<tr>
+<td>ASP.NET Core</td>
+<td>★★★★★</td>
+<td>良好</td>
+<td>全面</td>
+<td>完整</td>
+<td>分布式</td>
+<td>完整</td>
+<td>微软企业级支持</td>
+</tr>
+<tr>
+<td>NestJS</td>
+<td>★★★★★</td>
+<td>良好</td>
+<td>完善</td>
+<td>良好</td>
+<td>本地</td>
+<td>需配置</td>
+<td>模块化架构优秀</td>
+</tr>
+<tr>
+<td>Django</td>
+<td>★★★☆☆</td>
+<td>需配置</td>
+<td>良好</td>
+<td>良好</td>
+<td>本地</td>
+<td>完整</td>
+<td>Admin后台强大</td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td>★★☆☆☆</td>
+<td>良好</td>
+<td>基础</td>
+<td>需集成</td>
+<td>本地</td>
+<td>需开发</td>
+<td>现代化但较新</td>
+</tr>
+<tr>
+<td>Laravel</td>
+<td>★★☆☆☆</td>
+<td>需扩展</td>
+<td>基础</td>
+<td>需扩展</td>
+<td>本地</td>
+<td>需扩展</td>
+<td>扩展生态丰富</td>
+</tr>
+<tr>
+<td>Express</td>
+<td>★☆☆☆☆</td>
+<td>需自研</td>
+<td>基础</td>
+<td>需集成</td>
+<td>简单</td>
+<td>需自研</td>
+<td>极简需自扩展</td>
+</tr>
+<tr>
+<td>Gin</td>
+<td>★☆☆☆☆</td>
+<td>需自研</td>
+<td>基础</td>
+<td>需集成</td>
+<td>简单</td>
+<td>需自研</td>
+<td>高性能但功能少</td>
+</tr>
+<tr>
+<td>Flask</td>
+<td>★☆☆☆☆</td>
+<td>需自研</td>
+<td>基础</td>
+<td>需集成</td>
+<td>简单</td>
+<td>需自研</td>
+<td>微框架需自组装</td>
+</tr>
+<tr>
+<td>Actix-web</td>
+<td>★☆☆☆☆</td>
+<td>需自研</td>
+<td>基础</td>
+<td>需集成</td>
+<td>简单</td>
+<td>需自研</td>
+<td>高性能但企业功能少</td>
+</tr>
+<tr>
+<td>Ruby on Rails</td>
+<td>★★☆☆☆</td>
+<td>需配置</td>
+<td>良好</td>
+<td>需扩展</td>
+<td>本地</td>
+<td>需扩展</td>
+<td>传统但功能完整</td>
+</tr>
+</tbody></table>
+<h2 id="生态丰富度评分-第三方库与工具"><a href="#生态丰富度评分-第三方库与工具" class="headerlink" title="生态丰富度评分 (第三方库与工具)"></a>生态丰富度评分 (第三方库与工具)</h2><table>
+<thead>
+<tr>
+<th>框架</th>
+<th>评分</th>
+<th>官方库</th>
+<th>第三方包</th>
+<th>插件&#x2F;中间件</th>
+<th>工具链</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spring Boot</td>
+<td>★★★★★</td>
+<td>100+</td>
+<td>20k+</td>
+<td>极丰富</td>
+<td>完整</td>
+<td>Spring生态宇宙</td>
+</tr>
+<tr>
+<td>Express</td>
+<td>★★★★★</td>
+<td>基础</td>
+<td>20k+</td>
+<td>极丰富</td>
+<td>良好</td>
+<td>Node.js最大生态</td>
+</tr>
+<tr>
+<td>Laravel</td>
+<td>★★★★★</td>
+<td>丰富</td>
+<td>15k+</td>
+<td>丰富</td>
+<td>完整</td>
+<td>PHP最完整生态</td>
+</tr>
+<tr>
+<td>Django</td>
+<td>★★★★★</td>
+<td>全面</td>
+<td>10k+</td>
+<td>丰富</td>
+<td>完整</td>
+<td>电池包含理念</td>
+</tr>
+<tr>
+<td>Flask</td>
+<td>★★★☆☆</td>
+<td>最小</td>
+<td>8k+</td>
+<td>丰富</td>
+<td>足够</td>
+<td>灵活但需组合</td>
+</tr>
+<tr>
+<td>Ruby on Rails</td>
+<td>★★★☆☆</td>
+<td>完整</td>
+<td>8k+</td>
+<td>丰富</td>
+<td>完整</td>
+<td>完整但增长慢</td>
+</tr>
+<tr>
+<td>ASP.NET Core</td>
+<td>★★★☆☆</td>
+<td>完整</td>
+<td>5k+</td>
+<td>良好</td>
+<td>完整</td>
+<td>NuGet生态丰富</td>
+</tr>
+<tr>
+<td>NestJS</td>
+<td>★★★☆☆</td>
+<td>良好</td>
+<td>3k+</td>
+<td>良好</td>
+<td>良好</td>
+<td>快速增长中</td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td>★★☆☆☆</td>
+<td>中等</td>
+<td>2k+</td>
+<td>中等</td>
+<td>良好</td>
+<td>新但增长快</td>
+</tr>
+<tr>
+<td>Gin</td>
+<td>★★☆☆☆</td>
+<td>最小</td>
+<td>1k+</td>
+<td>中等</td>
+<td>基础</td>
+<td>Go生态相对小</td>
+</tr>
+<tr>
+<td>Actix-web</td>
+<td>★☆☆☆☆</td>
+<td>少</td>
+<td>200+</td>
+<td>少</td>
+<td>基础</td>
+<td>Rust生态初期</td>
+</tr>
+</tbody></table>
+<h2 id="开发效率评分-构建速度与工具支持"><a href="#开发效率评分-构建速度与工具支持" class="headerlink" title="开发效率评分 (构建速度与工具支持)"></a>开发效率评分 (构建速度与工具支持)</h2><table>
+<thead>
+<tr>
+<th>框架</th>
+<th>评分</th>
+<th>开发速度</th>
+<th>代码量</th>
+<th>调试体验</th>
+<th>热重载</th>
+<th>生产力工具</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ruby on Rails</td>
+<td>★★★★★</td>
+<td>极快</td>
+<td>极少</td>
+<td>优秀</td>
+<td>原生</td>
+<td>极丰富</td>
+<td></td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td>★★★★★</td>
+<td>极快</td>
+<td>较少</td>
+<td>优秀</td>
+<td>支持</td>
+<td>丰富</td>
+<td></td>
+</tr>
+<tr>
+<td>Laravel</td>
+<td>★★★★★</td>
+<td>快速</td>
+<td>较少</td>
+<td>良好</td>
+<td>支持</td>
+<td>丰富</td>
+<td></td>
+</tr>
+<tr>
+<td>Flask</td>
+<td>★★★☆☆</td>
+<td>快速</td>
+<td>较少</td>
+<td>良好</td>
+<td>支持</td>
+<td>较多</td>
+<td></td>
+</tr>
+<tr>
+<td>Django</td>
+<td>★★★☆☆</td>
+<td>快速</td>
+<td>中等</td>
+<td>良好</td>
+<td>支持</td>
+<td>丰富</td>
+<td></td>
+</tr>
+<tr>
+<td>Express</td>
+<td>★★★☆☆</td>
+<td>快速</td>
+<td>中等</td>
+<td>良好</td>
+<td>支持</td>
+<td>较多</td>
+<td></td>
+</tr>
+<tr>
+<td>ASP.NET Core</td>
+<td>★★★☆☆</td>
+<td>中等</td>
+<td>中等</td>
+<td>优秀</td>
+<td>支持</td>
+<td>丰富</td>
+<td></td>
+</tr>
+<tr>
+<td>Spring Boot</td>
+<td>★★★☆☆</td>
+<td>中等</td>
+<td>较多</td>
+<td>良好</td>
+<td>支持</td>
+<td>启动慢但工具全</td>
+<td></td>
+</tr>
+<tr>
+<td>NestJS</td>
+<td>★★★☆☆</td>
+<td>中等</td>
+<td>较多</td>
+<td>良好</td>
+<td>支持</td>
+<td>结构严谨但代码多</td>
+<td></td>
+</tr>
+<tr>
+<td>Gin</td>
+<td>★★☆☆☆</td>
+<td>较慢</td>
+<td>较多</td>
+<td>良好</td>
+<td>需配置</td>
+<td>基础</td>
+<td></td>
+</tr>
+<tr>
+<td>Actix-web</td>
+<td>★☆☆☆☆</td>
+<td>慢</td>
+<td>多</td>
+<td>中等</td>
+<td>需配置</td>
+<td>Rust编译慢，难调试</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="长期维护评分-版本支持与升级"><a href="#长期维护评分-版本支持与升级" class="headerlink" title="长期维护评分 (版本支持与升级)"></a>长期维护评分 (版本支持与升级)</h2><table>
+<thead>
+<tr>
+<th>框架</th>
+<th>评分</th>
+<th>支持周期</th>
+<th>向后兼容</th>
+<th>升级难度</th>
+<th>社区支持</th>
+<th>代码稳定</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spring Boot</td>
+<td>★★★★★</td>
+<td>5年+ LTS</td>
+<td>优秀</td>
+<td>中等</td>
+<td>长期</td>
+<td>高</td>
+<td>企业级长期支持</td>
+</tr>
+<tr>
+<td>ASP.NET Core</td>
+<td>★★★★★</td>
+<td>3-5年 LTS</td>
+<td>良好</td>
+<td>低</td>
+<td>长期</td>
+<td>高</td>
+<td>微软长期路线图</td>
+</tr>
+<tr>
+<td>Django</td>
+<td>★★★★★</td>
+<td>3年+</td>
+<td>良好</td>
+<td>低</td>
+<td>长期</td>
+<td>高</td>
+<td>成熟稳定</td>
+</tr>
+<tr>
+<td>Laravel</td>
+<td>★★★★★</td>
+<td>2年+</td>
+<td>良好</td>
+<td>中等</td>
+<td>长期</td>
+<td>高</td>
+<td>活跃维护</td>
+</tr>
+<tr>
+<td>Express</td>
+<td>★★★★★</td>
+<td>长期</td>
+<td>优秀</td>
+<td>低</td>
+<td>长期</td>
+<td>高</td>
+<td>稳定成熟</td>
+</tr>
+<tr>
+<td>Ruby on Rails</td>
+<td>★★★☆☆</td>
+<td>1年+</td>
+<td>一般</td>
+<td>中等</td>
+<td>高</td>
+<td>稳定</td>
+<td>稳定但更新慢</td>
+</tr>
+<tr>
+<td>NestJS</td>
+<td>★★★☆☆</td>
+<td>活跃</td>
+<td>良好</td>
+<td>中等</td>
+<td>活跃</td>
+<td>中高</td>
+<td>快速迭代</td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td>★★★☆☆</td>
+<td>活跃</td>
+<td>良好</td>
+<td>低</td>
+<td>活跃</td>
+<td>中</td>
+<td>快速发展中</td>
+</tr>
+<tr>
+<td>Gin</td>
+<td>★★★☆☆</td>
+<td>活跃</td>
+<td>优秀</td>
+<td>低</td>
+<td>活跃</td>
+<td>高</td>
+<td>Go语言稳定性</td>
+</tr>
+<tr>
+<td>Flask</td>
+<td>★★★☆☆</td>
+<td>稳定</td>
+<td>优秀</td>
+<td>低</td>
+<td>长期</td>
+<td>高</td>
+<td>稳定成熟</td>
+</tr>
+<tr>
+<td>Actix-web</td>
+<td>★★★☆☆</td>
+<td>活跃</td>
+<td>一般</td>
+<td>高</td>
+<td>活跃</td>
+<td>中</td>
+<td>Rust语言保证</td>
+</tr>
+</tbody></table>
+<h2 id="社区支持评分-文档与问题解决"><a href="#社区支持评分-文档与问题解决" class="headerlink" title="社区支持评分 (文档与问题解决)"></a>社区支持评分 (文档与问题解决)</h2><table>
+<thead>
+<tr>
+<th>框架</th>
+<th>评分</th>
+<th>文档质量</th>
+<th>Stack Overflow</th>
+<th>教程资源</th>
+<th>书籍</th>
+<th>会议活动</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spring Boot</td>
+<td>★★★★★</td>
+<td>优秀</td>
+<td>20万+问题</td>
+<td>海量</td>
+<td>50+</td>
+<td>SpringOne等</td>
+<td>全球最大社区之一</td>
+</tr>
+<tr>
+<td>Express</td>
+<td>★★★★★</td>
+<td>良好</td>
+<td>15万+问题</td>
+<td>极多</td>
+<td>30+</td>
+<td>NodeConf等</td>
+<td>Node.js生态基础</td>
+</tr>
+<tr>
+<td>Django</td>
+<td>★★★★★</td>
+<td>优秀</td>
+<td>15万+问题</td>
+<td>极多</td>
+<td>40+</td>
+<td>DjangoCon</td>
+<td>文档典范，社区活跃</td>
+</tr>
+<tr>
+<td>Laravel</td>
+<td>★★★★★</td>
+<td>优秀</td>
+<td>12万+问题</td>
+<td>极多</td>
+<td>30+</td>
+<td>Laracon</td>
+<td>Laracasts优秀教程</td>
+</tr>
+<tr>
+<td>Flask</td>
+<td>★★★★★</td>
+<td>良好</td>
+<td>10万+问题</td>
+<td>极多</td>
+<td>20+</td>
+<td>PyCon相关</td>
+<td>简单易学社区大</td>
+</tr>
+<tr>
+<td>ASP.NET Core</td>
+<td>★★★☆☆</td>
+<td>优秀</td>
+<td>8万+问题</td>
+<td>多</td>
+<td>25+</td>
+<td>Build大会</td>
+<td>微软官方支持强</td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td>★★★☆☆</td>
+<td>极佳</td>
+<td>2.5万+问题</td>
+<td>快速增长</td>
+<td>5+</td>
+<td>FastAPI专场</td>
+<td>文档极佳，增长快</td>
+</tr>
+<tr>
+<td>Ruby on Rails</td>
+<td>★★★☆☆</td>
+<td>优秀</td>
+<td>12万+问题</td>
+<td>多</td>
+<td>30+</td>
+<td>RailsConf</td>
+<td>成熟但增长放缓</td>
+</tr>
+<tr>
+<td>NestJS</td>
+<td>★★★☆☆</td>
+<td>良好</td>
+<td>1.5万+问题</td>
+<td>中等</td>
+<td>10+</td>
+<td>NestJS Conf</td>
+<td>快速增长社区</td>
+</tr>
+<tr>
+<td>Gin</td>
+<td>★★★☆☆</td>
+<td>良好</td>
+<td>8k+问题</td>
+<td>中等</td>
+<td>5+</td>
+<td>GopherCon</td>
+<td>Go社区活跃</td>
+</tr>
+<tr>
+<td>Actix-web</td>
+<td>★★☆☆☆</td>
+<td>中等</td>
+<td>1k+问题</td>
+<td>少</td>
+<td>1+</td>
+<td>RustConf</td>
+<td>Rust小众社区</td>
+</tr>
+</tbody></table>
+<h2 id="部署运维评分-容器化与云支持"><a href="#部署运维评分-容器化与云支持" class="headerlink" title="部署运维评分 (容器化与云支持)"></a>部署运维评分 (容器化与云支持)</h2><table>
+<thead>
+<tr>
+<th>框架</th>
+<th>评分</th>
+<th>容器支持</th>
+<th>云原生</th>
+<th>部署复杂度</th>
+<th>监控集成</th>
+<th>扩缩容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gin</td>
+<td>★★★★★</td>
+<td>极佳</td>
+<td>优秀</td>
+<td>极简</td>
+<td>良好</td>
+<td>简单</td>
+<td>单二进制，部署简单</td>
+</tr>
+<tr>
+<td>Actix-web</td>
+<td>★★★★★</td>
+<td>优秀</td>
+<td>优秀</td>
+<td>简单</td>
+<td>需配置</td>
+<td>简单</td>
+<td>编译部署简单</td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td>★★★★★</td>
+<td>优秀</td>
+<td>良好</td>
+<td>简单</td>
+<td>需集成</td>
+<td>简单</td>
+<td>无状态，适合容器</td>
+</tr>
+<tr>
+<td>Express</td>
+<td>★★★★★</td>
+<td>优秀</td>
+<td>良好</td>
+<td>简单</td>
+<td>需集成</td>
+<td>简单</td>
+<td>无状态，容器友好</td>
+</tr>
+<tr>
+<td>Flask</td>
+<td>★★★★★</td>
+<td>优秀</td>
+<td>良好</td>
+<td>简单</td>
+<td>需集成</td>
+<td>简单</td>
+<td>轻量，容器友好</td>
+</tr>
+<tr>
+<td>Spring Boot</td>
+<td>★★★★★</td>
+<td>良好</td>
+<td>良好</td>
+<td>中等</td>
+<td>完整</td>
+<td>中等</td>
+<td>JVM优化需经验</td>
+</tr>
+<tr>
+<td>NestJS</td>
+<td>★★★★★</td>
+<td>优秀</td>
+<td>良好</td>
+<td>中等</td>
+<td>需集成</td>
+<td>简单</td>
+<td>Node.js容器友好</td>
+</tr>
+<tr>
+<td>ASP.NET Core</td>
+<td>★★★★★</td>
+<td>优秀</td>
+<td>良好</td>
+<td>中等</td>
+<td>完整</td>
+<td>中等</td>
+<td>跨平台部署良好</td>
+</tr>
+<tr>
+<td>Django</td>
+<td>★★★★★</td>
+<td>良好</td>
+<td>中等</td>
+<td>中等</td>
+<td>需配置</td>
+<td>中等</td>
+<td>有状态需注意</td>
+</tr>
+<tr>
+<td>Laravel</td>
+<td>★★★★★</td>
+<td>良好</td>
+<td>中等</td>
+<td>中等</td>
+<td>需配置</td>
+<td>中等</td>
+<td>传统部署复杂</td>
+</tr>
+<tr>
+<td>Ruby on Rails</td>
+<td>★★★★★</td>
+<td>良好</td>
+<td>中等</td>
+<td>中等</td>
+<td>需配置</td>
+<td>中等</td>
+<td>传统部署成熟</td>
+</tr>
+</tbody></table>
+<h1 id="supabase"><a href="#supabase" class="headerlink" title="supabase"></a>supabase</h1><p>Supabase 是一个 <strong>Backend-as-a-Service (BaaS)</strong> 平台。</p>
+<ul>
+<li><strong>核心理念：</strong> 它为你提供了一个现成的后端，你不需要自己去搭建服务器、编写 API 接口、配置数据库、管理用户鉴权。你只需要关注前端逻辑，直接调用 Supabase 提供的 SDK 即可完成所有后端操作。</li>
+<li><strong>技术基石：</strong> 它的核心是世界上最强大的开源关系型数据库——<strong>PostgreSQL</strong>。</li>
+<li><strong>开源性质：</strong> 与 Google 的 Firebase 不同，Supabase 是开源的</li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" title="头像" alt="头像"></a><div class="post-copyright__author_name">ZEROKO14</div><div class="post-copyright__author_desc">zeroko14's blog</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://che77a38.github.io/posts/%E5%90%8E%E7%AB%AF/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://che77a38.github.io/posts/%E5%90%8E%E7%AB%AF/')">后端</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://che77a38.github.io/posts/%E5%90%8E%E7%AB%AF/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=后端&amp;url=https://che77a38.github.io/posts/%E5%90%8E%E7%AB%AF/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://che77a38.github.io" target="_blank">ZEROKO14的个人博客</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E5%90%8E%E7%AB%AF/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>后端<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/%E6%91%84%E5%83%8F%E5%A4%B4%E7%9B%91%E6%8E%A7%E5%BC%80%E5%8F%91/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">摄像头监控开发</div></div></a></div><div class="next-post pull-right"><a href="/posts/prism/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Prism</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/27732581?s=400&amp;u=303b2c0e2118ad20406f8d718e885bcf99fc8bf8&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">欢迎来到ZEROKO14的个人博客</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">ZEROKO14</h1><div class="author-info__desc">zeroko14's blog</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/che77a38" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E6%B5%81%E6%A1%86%E6%9E%B6%E7%9B%98%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">主流框架盘点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E5%9E%8B%E5%86%B3%E7%AD%96"><span class="toc-number">1.1.</span> <span class="toc-text">选型决策</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E8%A1%8C%E5%BA%A6%E5%AF%B9%E6%AF%94"><span class="toc-number">1.2.</span> <span class="toc-text">流行度对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94-%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E4%B8%8E%E8%B5%84%E6%BA%90%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">性能对比(请求处理与资源使用)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E6%9B%B2%E7%BA%BF%E8%AF%84%E5%88%86-%E4%B8%8A%E6%89%8B%E9%9A%BE%E5%BA%A6"><span class="toc-number">1.4.</span> <span class="toc-text">学习曲线评分 (上手难度)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%8A%9F%E8%83%BD%E8%AF%84%E5%88%86-%E7%94%9F%E4%BA%A7%E5%B0%B1%E7%BB%AA%E7%89%B9%E6%80%A7"><span class="toc-number">1.5.</span> <span class="toc-text">企业级功能评分 (生产就绪特性)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%80%81%E4%B8%B0%E5%AF%8C%E5%BA%A6%E8%AF%84%E5%88%86-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E4%B8%8E%E5%B7%A5%E5%85%B7"><span class="toc-number">1.6.</span> <span class="toc-text">生态丰富度评分 (第三方库与工具)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E8%AF%84%E5%88%86-%E6%9E%84%E5%BB%BA%E9%80%9F%E5%BA%A6%E4%B8%8E%E5%B7%A5%E5%85%B7%E6%94%AF%E6%8C%81"><span class="toc-number">1.7.</span> <span class="toc-text">开发效率评分 (构建速度与工具支持)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%BF%E6%9C%9F%E7%BB%B4%E6%8A%A4%E8%AF%84%E5%88%86-%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81%E4%B8%8E%E5%8D%87%E7%BA%A7"><span class="toc-number">1.8.</span> <span class="toc-text">长期维护评分 (版本支持与升级)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BE%E5%8C%BA%E6%94%AF%E6%8C%81%E8%AF%84%E5%88%86-%E6%96%87%E6%A1%A3%E4%B8%8E%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-number">1.9.</span> <span class="toc-text">社区支持评分 (文档与问题解决)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E8%BF%90%E7%BB%B4%E8%AF%84%E5%88%86-%E5%AE%B9%E5%99%A8%E5%8C%96%E4%B8%8E%E4%BA%91%E6%94%AF%E6%8C%81"><span class="toc-number">1.10.</span> <span class="toc-text">部署运维评分 (容器化与云支持)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#supabase"><span class="toc-number">2.</span> <span class="toc-text">supabase</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E7%89%A9%E7%90%86/" title="物理">物理</a><time datetime="2025-09-29T01:48:42.561Z" title="发表于 2025-09-29 09:48:42">2025-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%B7%A5%E4%B8%9A%E7%9B%B8%E5%85%B3/" title="工业相关">工业相关</a><time datetime="2025-02-14T03:04:40.761Z" title="发表于 2025-02-14 11:04:40">2025-02-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3/" title="嵌入式相关">嵌入式相关</a><time datetime="2025-02-14T03:04:40.761Z" title="发表于 2025-02-14 11:04:40">2025-02-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%90%86%E8%AE%BA/" title="操作系统">操作系统</a><time datetime="2024-12-16T01:38:01.470Z" title="发表于 2024-12-16 09:38:01">2024-12-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E8%AE%A1%E7%BB%84/" title="计算机组成原理">计算机组成原理</a><time datetime="2024-12-16T01:38:01.470Z" title="发表于 2024-12-16 09:38:01">2024-12-16</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="ZEROKO14" target="_blank">ZEROKO14</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu"></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">76</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/AI/" style="font-size: 0.88rem;">AI<sup>1</sup></a><a href="/tags/ASP-NET/" style="font-size: 0.88rem;">ASP.NET<sup>1</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C#<sup>4</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C++<sup>5</sup></a><a href="/tags/CSS/" style="font-size: 0.88rem;">CSS<sup>1</sup></a><a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 0.88rem;">C语言<sup>1</sup></a><a href="/tags/FPS/" style="font-size: 0.88rem;">FPS<sup>1</sup></a><a href="/tags/HTML/" style="font-size: 0.88rem;">HTML<sup>1</sup></a><a href="/tags/JavaScript/" style="font-size: 0.88rem;">JavaScript<sup>1</sup></a><a href="/tags/MFC/" style="font-size: 0.88rem;">MFC<sup>1</sup></a><a href="/tags/PE/" style="font-size: 0.88rem;">PE<sup>1</sup></a><a href="/tags/QT/" style="font-size: 0.88rem;">QT<sup>1</sup></a><a href="/tags/WPF/" style="font-size: 0.88rem;">WPF<sup>3</sup></a><a href="/tags/ai/" style="font-size: 0.88rem;">ai<sup>1</sup></a><a href="/tags/cmake/" style="font-size: 0.88rem;">cmake<sup>1</sup></a><a href="/tags/doxygen/" style="font-size: 0.88rem;">doxygen<sup>1</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/json/" style="font-size: 0.88rem;">json<sup>1</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>1</sup></a><a href="/tags/nas/" style="font-size: 0.88rem;">nas<sup>1</sup></a><a href="/tags/next/" style="font-size: 0.88rem;">next<sup>1</sup></a><a href="/tags/ppt/" style="font-size: 0.88rem;">ppt<sup>1</sup></a><a href="/tags/python/" style="font-size: 0.88rem;">python<sup>1</sup></a><a href="/tags/slidev/" style="font-size: 0.88rem;">slidev<sup>1</sup></a><a href="/tags/vue/" style="font-size: 0.88rem;">vue<sup>1</sup></a><a href="/tags/xml/" style="font-size: 0.88rem;">xml<sup>1</sup></a><a href="/tags/yaml/" style="font-size: 0.88rem;">yaml<sup>1</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 0.88rem;">代码规范<sup>1</sup></a><a href="/tags/%E5%86%85%E6%A0%B8/" style="font-size: 0.88rem;">内核<sup>2</sup></a><a href="/tags/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" style="font-size: 0.88rem;">内核相关<sup>5</sup></a><a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 0.88rem;">加解密<sup>1</sup></a><a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 0.88rem;">后端<sup>1</sup></a><a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 0.88rem;">基础<sup>6</sup></a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 0.88rem;">多线程<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">开发<sup>4</sup></a><a href="/tags/%E6%9D%82%E9%A1%B9/" style="font-size: 0.88rem;">杂项<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 0.88rem;">监控<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 0.88rem;">网络<sup>3</sup></a><a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 0.88rem;">逆向<sup>5</sup></a><a href="/tags/%E9%AD%94%E6%B3%95/" style="font-size: 0.88rem;">魔法<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://cdn.cbd.int/qrcodejs@1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
